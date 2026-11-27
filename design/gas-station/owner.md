@@ -46,7 +46,7 @@ Not the owner's words; a summary of what he saved. He was "not sure" it was ther
 ## 6. More answers (verbatim, with the question each answers)
 
 - Is it public while it's only the world? If so, should it say somewhere small whose it is and how to reach you? — "yes but no"
-  (orchestrator's reading: public, yes; a small note of whose it is and how to reach him, no. His name is on the sign regardless. Unconfirmed.)
+  (orchestrator's reading: public, yes; a small note of whose it is and how to reach him, no. His name is on the sign regardless. Owner confirmed: "Yep".)
 - Walk around freely, or move between a few composed views? — "walk around"
 - Does the place have its own sound when you're doing nothing, or only sounds you cause? — "yes but idk how to even begin there"
 

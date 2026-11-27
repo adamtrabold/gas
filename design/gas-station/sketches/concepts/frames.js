@@ -175,10 +175,10 @@ FR['02d'] = () => {
   counter(F, 'sun', { S, win: { y: -3.2, x: [-10.35, -9.2], z: [.9, 2.5] }, awake: 1 }); return F.cv;
 };
 SHEETS.push(['02', '02 The Arrow', [
-  ['02a', 'Arriving, mid-morning, equinox. The view is turned a little left, toward where the shadow is. The arrow goes over the forecourt; the name stays upright on the pylon under it. Its shadow lies on the slab with the head on the ice box, which is the one thing here in solid black.'],
-  ['02b', 'Noon. Arrow in the air, arrow on the ground, both ending at the door. The door stands ajar.'],
+  ['02a', 'On the forecourt, a June morning. The arrow is behind and above you. Its shadow comes past your feet as a band and ends on the air post, which is the one thing here in solid black. The name of the shadow is not readable from eye height; the band and the black thing are.'],
+  ['02b', 'Arriving at noon, equinox. Arrow in the air, arrow on the ground, both ending at the door. The name stays upright on the pylon under the arrow. The door stands ajar.'],
   ['02c', 'Night, from the foot of the arrow. The bulbs run up the shaft. One pool of paper, at the door. The sky turns round a point just past the arrow\'s tip.'],
-  ['02d', 'Inside, late afternoon. The room is ink. The patch of sun through the window is the hand indoors; it has reached the cup.'],
+  ['02d', 'Inside, last light. The room is ink; the patch of sun through the window is the hand indoors. This still does not carry it: the patch is a sliver and the thing it is on cannot be told. Unproven.'],
 ]]);
 
 // ---------------------------------------------------------------- 03 Your light (day and indoors; the night frames come from the prototype)
@@ -216,5 +216,17 @@ FR['04a'] = () => {
   signA(F); return F.cv;
 };
 
-SHEETS.push(['03', '03 Your light', [['03a', ''], ['03e', '']]]);
-SHEETS.push(['04', '04 The makeover', [['04a', '']]]);
+SHEETS.push(['03', '03 Your light', [
+  ['03a', 'Day, best case: noon in winter, sun square behind you. Your shadow comes in from the bottom edge and points at the station. Drawn in 2D. At most other hours it leaves a tall frame to the side, or is under your feet.'],
+  ['proto/arrive.png', 'Prototype (three.js). Arriving at night with your lamp down. Mostly ink. The name, the bulbs, and the front of the station found by its one lamp. Nobody is lost.'],
+  ['proto/aim.png', 'Prototype. Your lamp on the corner of the station. A disc of paper; the pump stands in it as ink.'],
+  ['proto/wait.png', 'Prototype. Keep still: the lamp closes and the sky comes up. What you lit keeps a thin line.'],
+  ['03e', 'Inside by day, drawn in 2D. You bring in the doorway: a patch of floor with your shadow in it. The radio is on, so the bell beside it exists.'],
+]]);
+SHEETS.push(['04', '04 The makeover', [['04a', 'Three states of finish in one picture. Done: the sign and the door, in full ink. Roughed in: the building, pumps and lamps, in thin line with the construction left showing. Marked out: chalk footprints with a word in his hand. Bottom right: three circles in another hand.']]]);
+SHEETS.push(['walk', 'Walking (prototype)', [
+  ['proto/dayroad.png', 'Prototype (three.js), day, from the road. Two values, no outlines, in real time. Edges are frayed by noise, not laid as strokes.'],
+  ['proto/daywalk.png', 'Prototype, day, a spot nobody composed: walked to the east side of the forecourt and turned. It still holds as a picture.'],
+  ['proto/walk.png', 'Prototype, night, walked in under the sign and turned toward the pumps with the lamp up.'],
+]]);
+
