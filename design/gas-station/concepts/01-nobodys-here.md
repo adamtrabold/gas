@@ -100,3 +100,69 @@ That the room is worth the door: it needs eight or so things that each do someth
 
 - Whether "Pick up" earns its place before there is work to pick up.
 - Whether the first chart entry being you is liminal or too knowing.
+
+---
+
+# 01 — Nobody's here: how it looks and feels
+
+*Visual turn 1. Read the look-and-feel half of `00-shared.md` first. Pictures: `stills/sheet-01.png`, `stills/01a.png`–`01d.png`.*
+
+**Draws on:** Ruscha for the outside (the owner's images 03, 07, 10: one building, one word, a lot of nothing); the frontal Route 66 photo (02) for the building; Kirby's spotted blacks for the inside (16–18); the sightings chart (15).
+
+## The look
+
+**Outside is nearly empty paper.** The front of the station faces the sun all day, so the wall is paper against a paper sky. The building is two painted stripes, four black openings and two pumps. The arrow sign is the only large black a person made, and the only tall thing (`01a`).
+
+**I took the canopy off.** A canopy puts the whole front in shade, which turns the station into one black slot (my jam sketches) and hides the door. The owner's frontal reference (02) has no canopy either: pumps on an island, two lamp posts with shades. This is a change to the place and wants the owner's eye.
+
+**Inside is lit from behind the counter**, so everything the attendant left is a silhouette against the back wall: the register, the cup, the bell, the radio (`01c`). The counter's face is the big black of the room. The jacket on its hook is the one brushed mass on the wall; it is the size and shape of a person's shoulders, and nothing says so. The shelves are ink recesses with paper stock standing in them.
+
+## The five moments
+
+| Moment | Picture | What you see and feel |
+|---|---|---|
+| Arriving | `01a` | The station square on, small and still. The sign over it. The bottom third of the screen is empty lot. Nothing moves |
+| Crossing the door | `01b` | One stroke dragged across; the room is behind the brush. The bell's word lands flat above the door and sits there. BACK IN 5 MINUTES is typed on the card |
+| Inside | `01c` | Dense, close, still. The steam off the cup is the only thing moving |
+| Doing nothing | not drawn | Same pictures. First your own marks fade. Then one small thing changes by itself. It should be something you only notice because the picture was so still: the door card swings; the steam stops |
+| Another hour | `01d` | Night. Nearly all ink. The name, the bulbs, one lamp and what it reaches, the card in the door, the sky going round |
+
+## What the drawing found
+
+- **A night arrival holds.** `01d` is the strongest picture on the sheet. The name and the bulbs are enough to say where you are and whose place it is; one lamp is enough to say there's a station.
+- **The station is small on a tall phone at arrival**, about a tenth of the height. The sign makes that acceptable. Walking toward it is what makes it a building.
+- **Call is right for this concept, visually.** A landed word is the one thing a person adds to a Ruscha picture, and "the place gets a little quieter afterwards" can be drawn: after a Call, the next marks you make are smaller.
+
+## With "walk around"
+
+This concept changes least. "Dead frontal" becomes where you're put down, not a rule about every view. "Never from above" still holds. The gain is indoors: an aisle that runs back further than the building is deep is a thing you only believe by walking it. I'd put more of this concept's effort there than systems' file does, and I have not drawn the aisle.
+
+**Needs systems:** the seven stops become rooms and places. The restroom "round the side" and the back lot become ordinary walking.
+
+## Pushing on it
+
+- **Pick up.** Systems wasn't sure it earns its place before there's work. In a walked world I'd drop it for now. Walking up to a thing and looking at it is already handling it. Bring it back when there is something to hold.
+- **The first chart entry being you.** Keep, but as a drawing with a place and a date and no sentence. If it reads as a joke, it goes.
+- **Its risk is still the one the director named:** a well-lit shop. The drawing doesn't remove it. What lifts it is how the room behaves when you stop, and that isn't in a still.
+
+## Jobs, where the look carries them
+
+| Job | How |
+|---|---|
+| 1, 2 | `01a`, `01d`: station, sign, name, by day and by night |
+| 3, 4 | `01b`, `01c` |
+| 5 | A touch gives a thing its blacks; a Call lands a word |
+| 6 | Each landed word is the twin of a sound; the bed is the sum of the lights (shared) |
+| 7 | `01a` against `01d` |
+| 8 | The chart (in `01c`, under the clock) |
+| 9 | Stillness is the default state of every picture |
+| 10 | Blank cells on the chart |
+| 11, 12 | The four arrival stills (dawn, day, dusk, night) are the no-3D version; two are drawn |
+| 13, 14 | Things are silhouettes on a counter and stock on a shelf: one more is one more shape. Shared rules for strokes, models, textures |
+| 15–19 | Shelves, counter, payphone, blank slats; nothing drawn for them |
+
+## Not sure about
+
+- Whether the owner wants the canopy.
+- The aisle, undrawn.
+- Whether the shelves want less stock. Empty shelves suit the place better than tidy rows.

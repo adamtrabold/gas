@@ -89,3 +89,50 @@ That it isn't an excuse for being unfinished. That thin broken line under "pure 
 ## Not sure about
 
 - Whether the owner wants the stand-ins seen as stand-ins at all. He may want the generated version to look finished until he replaces it. One question to him would settle whether this lives.
+
+---
+
+# 04 — The makeover: how it looks and feels
+
+*Visual turn 1. Read the look-and-feel half of `00-shared.md` first. Picture: `stills/sheet-04.png`, `stills/04a.png`.*
+
+**Draws on:** the working marks on Kirby's original boards (16–18); the captions on the sightings chart (15).
+
+## The look, as drawn
+
+One picture with all three states in it (`04a`):
+
+- **Done:** the sign and the door, in full ink.
+- **Roughed in:** the building, pumps and lamps in thin line, with the construction left showing: lines run past their corners, openings are crossed, there's a centre line.
+- **Marked out:** dashed footprints on the ground with a word beside each in a hand ("ice box", "phone", "air").
+- Bottom right, three circles in another hand, not in the ledger.
+
+## What the drawing found
+
+- **"Marked out" works.** A dashed footprint and one handwritten word is quiet, clear, and a little eerie on an empty lot. The three circles are the best alien evidence anyone has drawn so far, and they cost nothing.
+- **"Roughed in" doesn't.** Thin precise line with construction marks is a wireframe. It is the default look of 3D software, the thing this project is trying not to look like, and the opposite of what the owner asked for in a brush ("readable but not precise"). In `04a` it makes the station look like an architect's drawing with a finished sign stuck on.
+- **It isn't liminal.** A half-built place has a reason to be empty. The feeling the owner asked for comes from a finished place with nobody in it.
+- **It tells the visitor something the owner may not want told.** He said generate for now. I read that as "it should look right now and get better", not "show which parts are placeholders".
+
+## My view: fold it, and keep two things
+
+I agree with systems that this is a layer. I'd go further and drop the middle state.
+
+- **Generated things look finished.** No "roughed in" look. A generated pump and his own pump are drawn by the same rules; his is better, and nobody is told which is which.
+- **Keep "marked out".** A thing Adam plans but hasn't made is a dashed footprint and a word in his hand. It suits any of the other three concepts, it's how he adds a thing (job 13: mark it out first), and it's the one place his handwriting appears.
+- **Keep the marks in another hand.** They belong in whichever concept survives.
+- **The ledger** is systems' to argue for. Visually it's one book on the counter and it costs nothing.
+
+**Needs systems:** if folded, where "marked out" lives in the thing model, and whether WET INK cards survive without the middle state. I'd let them go.
+
+## With "walk around"
+
+Marked-out footprints are better walked: you can stand inside the outline of a thing that isn't there yet. Nothing else changes.
+
+## Jobs
+
+As a layer it adds to jobs 8 (marks in another hand), 10 (new footprints since last time) and 13 (marking out), and leans on its host concept for the rest. As a concept by itself I don't think it carries job 1: `04a` is a place being drawn, where the owner asked for a place to be in.
+
+## Not sure about
+
+- The owner may like seeing the working. He attached three Kirby originals with the pencil showing. One question would settle it: *should a visitor be able to tell which parts you haven't got to yet?*

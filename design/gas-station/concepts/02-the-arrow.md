@@ -116,3 +116,83 @@ That the arrow can be raked over the forecourt and still be a Googie arrow sign 
 
 - Whether a Route 66 arrow sign ever leaned like this. Visual should check it against the owner's saved sign references before we fall in love with it.
 - Seven fuller answers outdoors and seven indoors is fourteen things to make well. It's the most work of the four.
+
+---
+
+# 02 — The Arrow: how it looks and feels
+
+*Visual turn 1. Read the look-and-feel half of `00-shared.md` first. Pictures: `stills/sheet-02.png`, `stills/02a.png`–`02d.png`.*
+
+**Draws on:** Ruscha's Standard Station (03) for the diagonal; the Googie references (12) for the sign; Kirby's foreshortening (16, 17) for the view from under it; the owner's brush image 14 for shadows as stacks of strokes.
+
+## The question I was asked: can a Route 66 arrow sign rake over the forecourt?
+
+**Yes, as two parts** (`02b`):
+
+- **The name stays upright.** A pylon with TRABOLD in lit boxes stacked down it, facing the road. This is the Route 66 part and it reads from anywhere.
+- **The arrow rakes over it**, from a low tail near the road up over the forecourt, with a row of bulbs along each edge. This is the Googie part.
+
+Three things I learned drawing it:
+
+1. **It can't be a flat board.** My first version was a flat arrow lying in the raked plane. From the road you look along that plane, so the arrowhead was a sliver. The arrow has to be a solid dart: a beam with a spike on the end, which reads as an arrowhead from any side. It still throws an arrow-shaped shadow.
+2. **It points up and away, not down at the door.** Arrow signs of that era usually dive at the business. This one climbs past it into the sky. In `02b` it still reads as "that way" because it recedes over the building. I think the oddness helps a liminal place, and it is true to what the arrow is for. But it is the less usual direction, and the owner's saved references should be checked by someone who can open them.
+3. **It is big.** About 20 m long with the tip 11 m up. A smaller one throws a hand too short to reach anything.
+
+So: not a piece of apparatus, in my judgement, as long as the name is on its own upright pylon. If the name had to ride on the arrow it would fail.
+
+## The look
+
+A station with a canopy over the pumps on the right, and the door standing in the open on the left. The door has to be clear of the canopy, because anything under a canopy is in shade and the arrow's shadow can't be seen there. The slab's joints are thin broken lines fanning from the foot of the arrow. They read as cracks.
+
+## The five moments
+
+| Moment | Picture | What you see and feel |
+|---|---|---|
+| Arriving | `02b` | Noon. Arrow in the air, its shadow on the ground, both ending at the door. The door stands ajar. This is the best day picture of the four concepts |
+| On the forecourt | `02a` | The arrow is behind and above you. Its shadow comes past your feet as a band and ends on the air post, which is the one thing here in solid black |
+| Crossing the door | as `01b` | The same stroke. At noon there is no latch and no word |
+| Inside | `02d` | The room is ink; a patch of sun is the hand. **This picture fails.** The patch is a sliver and you can't tell what it's on |
+| Another hour | `02c` | Night, from the foot of the arrow. Bulbs run up the shaft. One pool of paper, at the door. The sky turns round a point just past the tip |
+
+## What the drawing found
+
+- **From eye height the shadow reads as a band, not as an arrow.** Near you it is a wide dark path (`02a`, `02b`). Its head, 20 m away, is a few pixels tall. So "a big arrow lying on the ground with its head on a pump" is not what a visitor at eye height sees. They see a dark path leading somewhere.
+- **So "awake" has to be carried by the thing.** Solid black where everything else is paper and line, and its sound. The air post in `02a` does this. The shadow's job is to lead you to it.
+- **Things are too small to read from the road on a phone.** The awake thing is about 20 pixels wide from the arrival spot. You have to go to it.
+- **The real sun moves the head a long way with the season.** With the arrow as drawn, the head reaches the threshold at noon around the equinoxes, climbs the door in winter, and stops short in the open lot in summer. On winter mornings it is off the lot altogether and only the band crosses it. All honest, none of it stretched. But systems' table of seven things by hour can't be laid out once; it has to be worked from the geometry, and some hours will point at bare concrete.
+- **Morning and evening the shadow is out of a tall frame** unless you turn toward it.
+
+## With "walk around": the shadow is a path
+
+This is the concept walking helps most, and it fixes the two findings above. If you can walk, **the band on the ground is something to follow.** It starts near where you arrive and ends at the awake thing. You don't have to understand a dial or read an arrowhead; you walk along a shadow and arrive at the thing that's ticking.
+
+I'd reshape the concept round that sentence: *the arrow's shadow is the path the day has laid for you.* At noon it leads to the door. At night there's no path, only the bulbs running toward the building and a pool of light at the door.
+
+**Needs systems:** the things-by-hour table reworked from real shadow positions through the year; what happens at hours when the path ends on nothing; the wall clock swinging a path you might be standing on.
+
+## Pushing on it
+
+- **The inside is this concept's hole.** Systems said so and `02d` shows it. A sun patch through a window is small, low and mostly on the floor for much of the year. I don't have a fix. It may be that this concept is honest only outdoors, and indoors belongs to another.
+- **Fourteen fuller answers** is a lot of making. With the path doing the leading, I'd start with five outdoors and none indoors.
+
+## Jobs, where the look carries them
+
+| Job | How |
+|---|---|
+| 1, 2 | `02b`: the arrow is the biggest thing in the picture; the name is upright under it |
+| 3, 4 | The door ajar at noon; `02d` for inside, unproven |
+| 5 | You touch what the path led you to |
+| 6 | The awake thing is the loudest thing; the bulbs click as they run |
+| 7 | The path is somewhere else. `02a`, `02b`, `02c` are three hours |
+| 8 | A second band on the slab at the wrong angle, with nothing above it. Not drawn; it would be easy and good |
+| 9 | Stand still and the band's edge creeps |
+| 10 | Dates when the head reaches a mark |
+| 11, 12 | No 3D: a still of the road at this hour, and the one sentence |
+| 13, 14 | A new thing takes a place where the path passes. Shared rules for strokes, models, textures |
+| 15–19 | The path can end on work the way it ends on a thing |
+
+## Not sure about
+
+- The arrow pointing up, against the owner's references, which I couldn't open.
+- Whether a canopy only over the pumps looks like a real station.
+- The inside.
