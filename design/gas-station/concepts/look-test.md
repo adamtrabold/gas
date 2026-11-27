@@ -6,6 +6,30 @@ The owner's words this answers (`owner.md` 8 to 12): "pretty pixellated"; "when 
 
 **The one picture to open: `concepts/stills/look-test.png`** (1170 × 6404, made to be read on a phone). Everything in it is a frame of the real three.js prototype, captured in an emulated iPhone 14 at its true density.
 
+## 0. Update: after the director's judgment, and the owner's sections 13 and 14 (read this first; it overrides what is below where they differ)
+
+The director judged the test (`look-judge-1.md`): right direction, fix five things on the pump and the link, then send the pump only. While I was fixing, the owner said two more things. "Why is there a clock on the pump?" (13): the pump's face must come from his photos, 01 and 02: a grade plate, a small rectangular window of rolling numbers, a flat disc globe. No dial. And (14): "before drawing elements let's first establish a list of things they need". So **element modelling has stopped.** The pump in every still here still has the clock face and the ball globe. That is a known fault of the object, left alone on his instruction, and not what these stills are for. They show how a thing is drawn. Nothing goes on his link until the list is agreed.
+
+What I did to the director's list, on the pump as it stands. Stills are `look-fix-1.png` (pen), `look-fix-2.png` (brush), `look-fix-3.png` (paper): iPhone 14 emulation, 1170 x 1992, saved without loss so they can be zoomed.
+
+| fix | what changed | met? |
+|---|---|---|
+| 1. Texture on the lit faces | Painted steel now carries pits and chips, long reflections up the face and short scuffs across it, in every option. | Partly. The lit face is no longer blank at arm's length (`look-pump-close-*`), but in pen and brush it is still light. Paper is the only one where the lit steel is rich. |
+| 2. Tone that turns | The body is no longer a box: it is rounded in plan with a domed shoulder, so the light turns across the corner and over the top. Marks run up the body and round the dome and the globe. Small things wear their marks closer together (`fine`), so a narrow face has room for several lines, not two black bars. Pump enamel is a little darker so the lit side takes a few marks as it turns. | Partly. There is now a lit face, a thin turning band, the shade, and the dome going round: three steps in pen. In brush the shade side is still close to bars. The side faces are flat, so there is no more turning to be had without remodelling, which is stopped. I am saying so, as the director asked, not hiding it. |
+| 3. No stepped edges at 3 dots per point | Multisampling is on at every density; the contour is read at four radii for a soft edge; the sun's shadow is ten times finer round a lone element. Checked by cropping a true-density capture and enlarging it three times with no smoothing: the shoulder, neck, globe and plinth edges are soft and unbroken (row 2 of the sheet is those pixels). | Yes in capture. Cost: multisampling at 3 dots per point is the most expensive thing in the frame. Frame rate on his phone is the open risk; `?msaa=0` turns it off for a comparison. |
+| 4. Paper without the pattern on the ground | Real grey grain only on things. Open ground, road and sky are plain paper. This is the mix I recommended. | Yes. |
+| 5. The link opens on the pump only | With any hash that isn't behind `#team`, the page is the lone pump. Foot links: pen · brush · paper and day · night. Dusk is not offered and the clock never picks it. The lot, wall, ground and the old-look arrival are behind `#team-lot`, `#team-wall`, `#team-ground`, `#team` (checked: `#lot` and `#dusk` alone still give the pump by day). | Yes. |
+
+Also from the judgment: the hose is now a drawn object, not flat paint. Pen's marks are shorter and its crosshatch less square, though it is still more regular than a hand.
+
+Where I disagree: nothing in the fix list. One caution on fix 3: I bought the clean edges with multisampling because it was the certain way; if his phone stutters, the cheaper route is a soft outer fringe drawn by the contour pass, not built.
+
+`look-test.png` now shows only the pump: three ways by day, the real pixels, close, at night, other light and far off, beside his 16, 17 and 13. The lot, wall and ground stills from earlier in this turn are deleted (they showed the pump before the fixes); sections 2 and 3 below still describe those views, which remain reachable behind `#team`.
+
+The owner's phone alone can confirm: the callout gone on press and hold; no blockiness; still fluid with multisampling at full density.
+
+Next for me, when asked: add to the systems designer's element list what each element needs from the drawing side (what it is made of, which paper, which kinds of mark, where its tone must turn, what is flat paint).
+
 ## 1. The two defects
 
 ### Pixellated — cause found, fixed, checked in emulation only

@@ -2,6 +2,17 @@
 
 Last updated: after the look test (third visual designer, first turn). The owner sent Left on back at the director's 9; this turn fixed two phone defects and replaced the drawing rule. Nothing has been scored or seen by the owner yet.
 
+## Latest (end of turn; overrides anything below that disagrees)
+
+- The director judged the look test (`concepts/look-judge-1.md`): right direction, five fixes, then the pump only. Done on the pump as it stands; table in `look-test.md` section 0. Fixes 3, 4, 5 met; 1 and 2 partly (lit steel still light in pen and brush; brush shade still near bars).
+- **The owner then stopped element work** (`owner.md` 13, 14): "Why is there a clock on the pump?" and "before drawing elements let's first establish a list of things they need". The pump is to match his photos 01 and 02: grade plate, a small rectangular window of rolling numbers, a flat disc globe, a slightly domed top, dark plinth, hose looped from the side. **Not built.** The clock face and ball globe are still in `index.html` and in every still. Do not model or redraw any element until the list is agreed with him. Nothing goes to his link until then.
+- My next job: add to the systems designer's element list what each element needs from the drawing: material, paper, kinds of mark, where tone must turn (so what must be round), what is flat paint.
+- The link: any hash not behind `team` gives the lone pump. Foot links pen · brush · paper, day · night. `#team` (arrival), `#team-lot`, `#team-wall`, `#team-ground`, `#team-...-dusk` for us. `?study=` also counts as team, for the capture scripts.
+- Stills now: `look-fix-1..3.png` (pump by day in pen, brush, paper; lossless, zoomable), `look-pump-{close,night,pm,far}-*`, `look-before-*`, and `look-test.png` (pump only). The lot, wall and ground stills were deleted as stale; re-render with `study=lot` etc. if wanted.
+- New this pass in the build: `inkMat(..., { fine })` (small things wear marks closer together); `supG` (a body rounded in plan and its dome, with smooth normals: this is how tone turns); multisampling at every density (`?msaa=0` to compare); contour read at four radii; a tight sun shadow when one element is alone; paper grey only where the flag is a drawn thing (a between .215 and .6), so ground, road and sky stay plain; `window.seen()` lists what is visible (it found the sign's bulbs and the back wall plug being re-shown every frame in the lone-pump view).
+- Lesson: a box can only ever have two tones. "Tone that turns" is a modelling requirement before it is a drawing one. Put it in the element list: every element needs at least one surface that turns.
+- Lesson: brush at 15 points between strokes is too coarse for a thing half a metre wide seen from 3 m. Stroke scale has to go with the size of the thing.
+
 ## Where things stand
 
 - One concept: **Left on** (`concepts/05-left-on.md`). I own its **How it looks and feels** half; the systems designer owns how it works and `00-shared.md`. **The looks half of `05-left-on.md` now describes the old look and has not been rewritten**, on instruction. Rewrite it once the owner picks a look.
@@ -49,7 +60,7 @@ Two passes, as before, but the work moved.
 
 **Looks** are four numbers each in `LK`, `LK2`, `LK3` near the top: gaps, dryness, bristle, cross angle, where the cross starts, where black starts, mark length, widths. Query overrides for tuning: `gap`, `gap2`, `dry`, `bristle`, `cross`, `crossat`, `solid`, `len`, `texp`, `sky`, `reach`, `tex=0`, `grain=0`, `grey=1`, `line=0`, `dpr`, `res`, `dbg=1..4`.
 
-**Hash:** names joined by dashes in any order. Looks: `pen`, `brush` (default), `paper`. Hours: `day`, `dusk`, `night` (none = visitor's clock). Elements: `pump` (solo: everything else hidden, with its shadows), `wall`, `ground`, `lot`. The foot links keep whichever of the others is set. `?look=` and `?study=` do the same for the capture scripts.
+**Hash:** names joined by dashes in any order. Looks: `pen`, `brush` (default), `paper`. Hours: `day`, `night` (none = visitor's clock; `dusk` only behind `team`). The page is the lone pump unless `team` is in the hash; then `lot`, `wall`, `ground`, or none for the arrival. The foot links keep whichever of the others is set. `?look=` and `?study=` do the same for the capture scripts.
 
 **Papers:** `sketches/place/paper/*.png`, 256 px, tiling, greyscale, levelled; made by `papers.js`. Sampled at two scales. His scans replace them file for file. Real scans will be nearly white with faint tooth: they must be levelled to the full range first, or the shader needs a gain per file.
 
