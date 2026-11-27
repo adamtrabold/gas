@@ -242,3 +242,58 @@ Canopy (asked). Hour does something (now carried inside the concept). Later: sha
 Systems: merge 01 into 03, name it, rewrite day as "whole and indifferent by day, yours by night", move twilight and 02's leftovers to shared, limit landed words.
 Visual: strokes on world-fixed fibres with the walk-past test first; then paper line in shade, two shadow shapes, arrival framing at real phone sizes, sign depth, inside by day with lights on, twilight.
 Then I score the merged concept. Don't raise the score unless fix 1 is actually done and visible in a walked frame.
+
+---
+
+# Concept round 2 — score 2
+
+## Owner since last time
+
+Section 7: "Canopy over pumps yes." "Gas is unnecessary." He has agreed to walk the prototype on his phone via a private link; he is the real-phone test.
+
+## What I scored
+
+One concept, **Left on** (`05-left-on.md`): 01 merged into 03. No day/night switch: you always cast a shadow and always carry the lamp; each shows where it can; the hour sets the proportions. A new visual designer rebuilt the prototype with a world-fixed "stroke sheet" texture.
+
+## How I checked
+
+Both halves of the file; every `lo-*` frame at full size (contact sheets made in the session scratchpad); `walk-test.png`; `stroke-sheet.png`; and my own live walk at 390 × 844, three walks, ~7 fps in software rendering.
+
+## Score: 8.5 (03 was 8, 01 was 7)
+
+Work really changed: strokes exist in the walked world and stay put; arrival holds the whole name; near things exist in shade; the merge is cleaner than what I asked for.
+
+Not 9 because:
+1. GAS blade is in the frames and he said no.
+2. No desert in the day pictures. He said "set in the desert". I missed this in both rounds.
+3. Day arrival has almost no visible brush (stroke size fixed in world; merges at 37 m).
+4. Night, turned away from the station: a solid black screen.
+5. The shadow has prongs/ears in `lo-door-in` and a point in `lo-strokes-day`.
+6. Twilight undrawn.
+
+## Rulings
+
+Lamp indoors and at night only (not in day shade). Arrival across the road, 4 m/s walk. Twilight: one still before the owner sees it. Shadow: person's proportions; no A/B for the owner. GAS gone. "No edge against the sky" kept.
+
+## Fixes issued (score-2.md, 1–9)
+
+Remove GAS; put the desert in; brush in the day arrival (try a larger far stroke scale); never a black screen at night; shadow without ears; twilight frame; update how-it-works half; solve or drop the aisle look back; make the prototype safe to hand him (resolution fallback, no debug caption).
+
+## Phone test
+
+Missing device walk does not block a 9 by itself. The owner's walk can be the test if it's described as a crude test and fix 9 is done.
+
+## What keeps blocking a 9 (two rounds)
+
+- The look arrives one round behind the idea; the first three seconds by day are always last in the queue.
+- I didn't check pictures against "set in the desert" until round 2.
+- Much of the concept is words (switching in strokes, crossing, standing-still list, alien material).
+- No device.
+
+## Self-check
+
+Raised by half a point for real change. Would not raise again unless the desert and the day arrival are visibly fixed in walked frames and GAS is gone. Don't let the strength of the night frames carry the day ones.
+
+## Next
+
+Designers apply fixes 1–9 (2 and 3 are the real work, visual). I re-score. If 9, it goes to the owner with his phone walk. Sign check against his references still with the orchestrator.

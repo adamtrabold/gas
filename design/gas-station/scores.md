@@ -14,3 +14,14 @@ Steers before scoring: `concepts/steer-1.md` (not ready: concepts assumed compos
 
 Director: 01 can't reach 9 alone and should fold into 03. 03 can reach 9 with the ten fixes in `concepts/score-1.md`; the first is real strokes laid in the walked world.
 Nothing shown to the owner.
+
+## Concept round 2
+
+01 and 03 merged into 05 Left on. Detail: `concepts/score-2.md`. Director says the work really changed (brush strokes now in the walked world).
+
+| Concept | Score | Reason | Top objections |
+|---|---|---|---|
+| 05 Left on | 8.5 (was 8) | Strokes live in the walked world and stay on it; night lamp pool and lit room are plainly Kirby without being a comic; the merge is cleaner than asked | GAS blade still in frames (owner: "Gas is unnecessary"); no desert by day; day arrival shows almost no brush; solid black when turned away at night; shadow has ear-like prongs; twilight is words only |
+
+Across two rounds, per the director: the look arrives a round behind the idea; the first three seconds by day have been last in the queue both times; much of the concept is still words; nobody has held it on a device.
+Nothing shown to the owner as a candidate. (A throwaway phone-test link was given to the owner, labelled as not passed.)
