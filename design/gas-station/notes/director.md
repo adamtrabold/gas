@@ -132,3 +132,58 @@ Until 1–3 at least are answered I can rank concepts as ideas but not call any 
 - Is the work drawn? Interior first, not more exterior.
 - Does each concept differ in kind, or are 1 and 2 drifting into the same site with different signs?
 - Is machinery growing past what one visit can feel?
+
+---
+
+# Concept phase — steer 1 (not scoring)
+
+## What changed since the jam
+
+Owner answered (owner.md 2–6). His words overrule my jam close: "walk around" (not composed views); "Route 66" plain station with a Googie arrow sign and his name; "nail the world", work parked; "mainly it's for me"; alien confirmed; "pure ink for now"; brush "readable but not precise or always whole"; "liminal not funny"; place first; public, no credit line; sound wanted, "idk how to even begin"; "draw but generate for now", Blender models later; no receipt; no office-hours ordering; nowhere in particular.
+
+Still open with the owner: does the hour do something or only change the look. New from me: canopy or not.
+
+## What I looked at
+
+`00-shared.md`, concepts 01–04 (both halves), sheets 01–04 and sheet-walk. Prototype judged from stills only; I did not walk it.
+
+- Strongest: `01d` and prototype night frames; `02b` (best day picture); `proto-daywalk` (an uncomposed view that holds).
+- Weak: day arrival in 01/03 (station a tenth of the screen, doesn't read as a gas station without a canopy); `03a` shadow reads as a hooded figure; `04a` is a wireframe; `02d` inside fails.
+
+## Rulings
+
+- **Not READY.** How-it-works halves still assume composed stops.
+- **One place, three concepts.** One station, one sign, one rule set. The concepts differ in what you are and what the hour does. Do not blend this round; the owner chooses or combines from things he can see.
+- **04 folded.** Kept in shared: "marked out" footprints with a word in his hand; marks in another hand. Dropped: "roughed in" look, ledger, WET INK.
+- **02 does not stand without an inside.** One round on changed terms: raked dart dropped, upright diving-arrow sign everywhere; concept becomes "the sign's shadow is the path the day lays"; inside is where you see the dial through the window and work it with the wall clock. Kill condition: if awake can't be felt at eye height unexplained, or the inside has no job, fold to one shared line and send two concepts. This is my own idea's descendant; hold it to the kill condition.
+- **Canopy back on** in all (reads as a gas station; shade as threshold; lit disc at night). Owner question.
+- **Pick up dropped** for now: four gestures.
+- **Chart entry:** you appear on your second visit, dated your first. Not on the first.
+- **Camera at full frame rate;** only ink is held.
+- **Edge of the world:** none; walk away and you arrive again. Proposed, for both to work.
+
+## Largest risk
+
+Brushwork swims because it's attached to the screen. Brush strokes and walking are his first two asks and they currently fight. Visual to test world-anchored shadow edges in the prototype before anything else. If this fails, nothing reaches a 9.
+
+## What I asked for next
+
+Systems: rewrite shared structure for walking; fallbacks; Wait when walking; 01 aisle and timed doing-nothing; 02 rework or fold; 03 day by standing next to things, first switch in the door light, all-off pull, twilight arrival; one-page sound start with generated sounds; fold 04.
+Visual: swim test; full-rate camera; canopy and a day arrival that reads; 01 aisle and after-a-minute; 02 band from upright sign and the window view; 03 shadow that isn't a figure, day touch, remembered strokes, fourth light; one wide frame each; the horizon join; list of sign details to check against his references.
+
+## Expected owner objections, updated
+
+- "The strokes slide around when I move." (swim)
+- "That doesn't look like a gas station" for day arrival without canopy.
+- "These are all the same site." Answer: one place by his spec; the forks are what you are and what the hour does. Make the two-line header per concept do this work.
+- "Why is there a hooded figure?" (03 day)
+- "That's not an arrow sign" if the rake returns.
+- "It looks generated." Acceptable to him for now by his own words, but even combed teeth should go.
+
+## What would block a 9 at scoring
+
+Swim unsolved; any concept without a working inside; day arrival that doesn't read as a station; how-it-works still written for stops; no wide frame; sound still unbegun.
+
+## Self-check
+
+I'm inclined to protect 02 because it came from the sundial. The evidence against it is substantial (band not arrow, seasonal miss, inside fails, most work). If round 2 doesn't clear the kill condition, fold it without another round.
