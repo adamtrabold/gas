@@ -65,12 +65,12 @@ const KIND = { dirt: [0, 'dirt', .45], plaster: [1, 'plaster', .7], concrete: [2
 const paper = name => PAPERS[name] || (PAPERS[name] = (() => { const t = new T.TextureLoader().load('paper/' + name + '.png'); t.wrapS = t.wrapT = T.RepeatWrapping; t.colorSpace = T.NoColorSpace; t.anisotropy = 8; return t; })());
 T.DefaultLoadingManager.onLoad = () => { window.papersLoaded = true; };
 // kind: what it is made of. tone under 1: never quite paper. along: lay the marks this way whatever the light. vert: marks run up and down. round: [metres round, metres along] for a thing whose marks follow its own curve
-function inkMat(kind, { amb = 1, tone = 1, along = null, drift = false, vert = false, round = null } = {}) {
+function inkMat(kind, { amb = 1, tone = 1, along = null, drift = false, vert = false, round = null, fine = 1 } = {}) {   // fine under 1: a small thing wears its marks closer together, so a narrow face still has room for several
   const m = new T.MeshLambertMaterial({ color: new T.Color(tone, tone, tone) }); m.isInk = true; const [mk, pap, gsz] = KIND[kind]; const papT = paper(pap);
   m.onBeforeCompile = sh => {
-    Object.assign(sh.uniforms, SU, { mk: { value: mk }, grain: { value: papT }, gsz: { value: gsz }, amb: { value: amb }, drift: { value: drift ? 1 : 0 }, vert: { value: vert ? 1 : 0 }, along: { value: along || new T.Vector2(0, 0) }, uvS: { value: new T.Vector2(...(round || [0, 0])) } });
+    Object.assign(sh.uniforms, SU, { mk: { value: mk }, gk: { value: fine }, grain: { value: papT }, gsz: { value: gsz }, amb: { value: amb }, drift: { value: drift ? 1 : 0 }, vert: { value: vert ? 1 : 0 }, along: { value: along || new T.Vector2(0, 0) }, uvS: { value: new T.Vector2(...(round || [0, 0])) } });
     sh.vertexShader = 'varying vec3 vWp;varying vec3 vWn;varying vec2 vUv2;\n' + sh.vertexShader.replace('#include <project_vertex>', '#include <project_vertex>\nvWp=(modelMatrix*vec4(transformed,1.)).xyz;vWn=normalize(mat3(modelMatrix)*objectNormal);vUv2=uv;');
-    sh.fragmentShader = `varying vec3 vWp;varying vec3 vWn;varying vec2 vUv2;uniform sampler2D grain;uniform vec3 sunA;uniform mat4 smat;uniform vec4 lampP[4],LK,LK2,LK3;uniform int nl,mk;uniform float amb,drift,youOn,vert,pxs,gsz,texOn,grainOn,TEXP;uniform vec2 along,youR,uvS;uniform vec3 sunD,youF;
+    sh.fragmentShader = `varying vec3 vWp;varying vec3 vWn;varying vec2 vUv2;uniform sampler2D grain;uniform vec3 sunA;uniform mat4 smat;uniform vec4 lampP[4],LK,LK2,LK3;uniform int nl,mk;uniform float amb,drift,youOn,vert,pxs,gsz,texOn,grainOn,TEXP,gk;uniform vec2 along,youR,uvS;uniform vec3 sunD,youF;
       vec3 gDir;float gYou=1.;vec2 gP;
       float h1(float n){return fract(sin(n*127.1+.7)*43758.5453);}
       float n1(float x,float s){float i=floor(x),f=fract(x);f=f*f*(3.-2.*f);return mix(h1(i+s*57.3),h1(i+1.+s*57.3),f);}
@@ -118,8 +118,8 @@ function inkMat(kind, { amb = 1, tone = 1, along = null, drift = false, vert = f
         if(youOn>.5)lO=mix(min(lO,.05),lO,gYou);   // your shadow shows only where the sun would otherwise reach
         float tone=pow(1.-clamp((lO-.012)/.9,0.,1.),TEXP);                                           // 0 paper, 1 black
         float g=texture2D(grain,gP/gsz).r*.65+texture2D(grain,gP/(gsz*.31)+.37).r*.35;g=mix(.6,g,grainOn);          // this surface's paper: 1 is the high tooth, which takes ink first
-        float ink=fam(gP,smoothstep(.04,.45,tone),mix(LK3.x,LK3.y,smoothstep(.1,.92,tone)),LK.x,1.,g);                                                         // the first family: along the form
-        float cs=cos(LK2.x),sn=sin(LK2.x);ink=max(ink,fam(vec2(gP.x*cs+gP.y*sn,-gP.x*sn+gP.y*cs),smoothstep(LK2.y,.9,tone),mix(LK3.x,LK3.z,smoothstep(LK2.y,1.,tone)),LK.y,2.,g));   // the second, laid across it
+        float ink=fam(gP,smoothstep(.04,.45,tone),mix(LK3.x,LK3.y,smoothstep(.1,.92,tone)),LK.x*gk,1.,g);                                                         // the first family: along the form
+        float cs=cos(LK2.x),sn=sin(LK2.x);ink=max(ink,fam(vec2(gP.x*cs+gP.y*sn,-gP.x*sn+gP.y*cs),smoothstep(LK2.y,.9,tone),mix(LK3.x,LK3.z,smoothstep(LK2.y,1.,tone)),LK.y*gk,2.,g));   // the second, laid across it
         float so=smoothstep(LK2.z,.99,tone);ink=max(ink,smoothstep(0.,.25,so-(1.-g)*1.1*(1.-so)));                    // last, black, and the paper's valleys are the last of it to fill
         // what it is made of: marks that are there whatever the light. light only thins them
         float tk=.35+.65*tone,tx=0.;
@@ -139,7 +139,7 @@ function inkMat(kind, { amb = 1, tone = 1, along = null, drift = false, vert = f
   return m;
 }
 const TAU = Math.PI * 2;
-const Wm = inkMat('plaster'), Wg = inkMat('dirt', { drift: true }), Wt = inkMat('steel', { tone: .62 }), Wd = inkMat('steel', { tone: .6 }), Wp = inkMat('steel', { vert: true, round: [.7, 4] }), Wl = inkMat('steel', { round: [TAU * .27, Math.PI * .27] }), Wa = inkMat('plaster', { amb: 0 }), Wr = inkMat('blacktop', { tone: .42, along: new T.Vector2(1, 0) }),
+const Wm = inkMat('plaster'), Wg = inkMat('dirt', { drift: true }), Wt = inkMat('steel', { tone: .62 }), Wd = inkMat('steel', { tone: .6 }), Wp = inkMat('steel', { vert: true, round: [.7, 4] }), Wl = inkMat('steel', { round: [TAU * .27, Math.PI * .27], fine: .7 }), Wa = inkMat('plaster', { amb: 0 }), Wr = inkMat('blacktop', { tone: .42, along: new T.Vector2(1, 0) }),
   Wc = inkMat('concrete'), Wk = inkMat('wood', { tone: .7 }), Wn = inkMat('tin', { tone: .8 }), Wgl = inkMat('glass', { tone: .5 }), K = new T.MeshBasicMaterial({ color: 0 }), LIT = new T.MeshBasicMaterial({ color: 0xffffff });
 const v = (x, n, u) => new T.Vector3(x, u, -n);                         // x east, n north, u up
 const things = {};
@@ -190,7 +190,7 @@ const supG = (a, b, h, dome) => { const g = dome ? new T.SphereGeometry(1, 56, 1
   for (let i = 0; i < P.count; i++) { const X = P.getX(i), Z = P.getZ(i), rho = Math.hypot(X, Z), th = Math.atan2(Z, X), c = Math.cos(th), s = Math.sin(th), x = a * Math.sign(c) * Math.sqrt(Math.abs(c)), z = b * Math.sign(s) * Math.sqrt(Math.abs(s));
     let nx = Math.sign(c) * Math.abs(x / a) ** 3 / a, nz = Math.sign(s) * Math.abs(z / b) ** 3 / b; const l = Math.hypot(nx, nz) || 1; nx /= l; nz /= l;
     if (dome) { const y = P.getY(i); P.setXYZ(i, x * rho, y * h, z * rho); const m = Math.hypot(nx * rho, y, nz * rho) || 1; Nn.setXYZ(i, nx * rho / m, y / m, nz * rho / m); } else { P.setX(i, x); P.setZ(i, z); Nn.setXYZ(i, nx, 0, nz); } } return g; };
-const Wb = inkMat('steel', { tone: .66, vert: true, round: [1.9, 1.42] }), Wdm = inkMat('steel', { tone: .66, round: [1.9, .5] }), Wc2 = inkMat('concrete', { round: [2.4, .1] }), Wh = inkMat('steel', { tone: .3, round: [2.3, .15] }), Wt2 = inkMat('steel', { tone: .35 });
+const Wb = inkMat('steel', { tone: .52, vert: true, round: [1.9, 1.42], fine: .6 }), Wdm = inkMat('steel', { tone: .52, round: [1.9, .5], fine: .6 }), Wc2 = inkMat('concrete', { round: [2.4, .1] }), Wh = inkMat('steel', { tone: .3, round: [2.3, .15] }), Wt2 = inkMat('steel', { tone: .35 });
 const dotG = new T.CircleGeometry(.011, 10), dialG = new T.CircleGeometry(.2, 40);
 const pump = (name, x) => thing(name, x, 11.5, g => { const n = 11.5, put = (m, px, pn, pu, ry = 0) => { m.position.copy(v(px, pn, pu)); m.rotation.y = ry; g.add(m); return m; };
   put(new T.Mesh(supG(.37, .31, .1, 0), Wc2), x, n, .19).castShadow = true; { const top = put(new T.Mesh(new T.CircleGeometry(1, 48), Wc), x, n, .2401); top.rotation.x = -Math.PI / 2; const P = top.geometry.attributes.position; for (let i = 0; i < P.count; i++) { const th = Math.atan2(P.getY(i), P.getX(i)), r = Math.hypot(P.getX(i), P.getY(i)), c = Math.cos(th), s = Math.sin(th); P.setXY(i, r * .37 * Math.sign(c) * Math.sqrt(Math.abs(c)), r * .31 * Math.sign(s) * Math.sqrt(Math.abs(s))); } top.receiveShadow = true; }

@@ -2,6 +2,33 @@
 
 ## Where things stand (latest first)
 
+**Element list written (2026-11-27): `elements.md`.** No concept change. Left on and its how-it-works half stand.
+
+### What happened since round 3
+
+- Director scored Left on 9; the owner sent it back **on the look, not the idea** (`owner.md` 9–14): "pixellated… posterized… more detail via texturing and shadow methods like crosshatching"; "Two values but we can still make the illusion of grey. It's just a black and white painting"; paper grain per face from scanned papers; "develop all the elements individually"; "Why is there a clock on the pump?" (designer had invented a clock-face dial; he chose rolling-number windows and a globe, as in his photos); then "before drawing elements let's first establish a list of things they need".
+- Director's side: `concepts/steer-3.md` (how ink makes tone must change; nine outcomes), `concepts/look-judge-1.md` (pump look test: fix first, then send the pump only).
+
+### elements.md — what it is and the choices in it
+
+- Reading (unconfirmed, said at the top): the elements the place is made of, each with its parts agreed before drawing. Lesson of the clock: nothing invented at drawing time.
+- Every part tagged: a picture number, [you], [concept], [saved] (his sign article, summary only), or PROPOSED.
+- 16 elements in build order: pump; slab and island; canopy; station front; sign; road; desert/horizon/sky (→ first whole picture, day arrival); your shadow; station's own lights; your lamp (→ night arrival); small things on the lot; marks on the ground; door and front room; counter and wall things; aisle; round the back. Reason: outside before inside (his pictures are all outside), day before night, pump first because it's under his eye and has the most materials in the smallest thing.
+- Each element has: where; parts with sources; what it does (states); not known; "in your pictures, left out so far" where relevant; an empty slot for the visual designer.
+- Things found to be PROPOSED (no source in his pictures or words): stacked letter boxes, starburst, single pole and box depth on the sign; bench; phone box; separate air post; bell-line object; centre line; slab stains; the whole interior shell.
+- Things in his pictures we don't have: awnings, window lettering, door hours, roof windmill, utility poles, lamp posts with enamel domes, flower pots, clouds, boulders, tyre, cactus (left out on purpose), saucer (left out on purpose).
+- **No picture of his shows an inside.** Flagged prominently.
+- Seven questions at the end: is this the list he meant; kept up or weathered; which pump; what words on things say; canopy joined or free; wall material; inside references.
+
+### Next
+
+- Owner's wrong / missing / strike on `elements.md`.
+- Visual designer fills the empty "Drawing needs" slots.
+- If he strikes or adds things that the concept uses (e.g. phone box, bell line, payphone), update `05-left-on.md`, `00-shared.md` and `coverage-05.md` to match.
+- Handoff "How it works" still to write once the look is approved.
+
+## Earlier: concept round 3
+
 **Concept round 3, systems turn done (2026-11-27).** Left on scored 8.5 in round 2 (`concepts/score-2.md`). I brought the how-it-works half of `concepts/05-left-on.md`, my half of `00-shared.md`, and `jobs.md` in line with the rulings and `owner.md` section 7, and wrote the coverage check: `concepts/coverage-05.md`. I edited only those; the visual designer was in the look-and-feel half and the prototype at the same time.
 
 ### Owner, section 7
