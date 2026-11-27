@@ -7,3 +7,5 @@
 - Concept phase: jam done, jobs.md sent to owner (no objections so far). Round 1 scored: 01=7, 03=8. Round 2 in progress: 01+03 merged into concepts/05-left-on.md ("Left on"); visual to prove real strokes in the walked world. Director says a real-phone walk is needed before a 9 — may need a throwaway link for the owner.
 - If strokes can't be done in real time, it's an owner decision between three.js and brush strokes; tell him early.
 - Stuck rule: three rounds without a 9, or a round under 9 where the best score didn't go up.
+- Owner (section 7): canopy yes; GAS on the sign unnecessary; private link OK. Phone-test artifact published: https://claude.ai/artifact/WBj9xhFVWDkPdk2Z7cgL8T — built from sketches/place with the GAS blade removed and day/night via #day / #night (query strings don't pass in artifacts). Source copy lives in the session scratchpad (walk/), not the repo; rebuild from sketches/place if lost. The prototype in the repo still has the GAS blade until the visual designer removes it.
+- Director (a318a8c8fba02537e) was cut off by a usage limit mid round-2 scoring; resumed.
