@@ -595,3 +595,100 @@ Three.js needs one rule from the systems side: **the picture is a function of th
 
 - **Visual:** the arrival from the road looking north, on a tall phone, at three hours — nine (long shadow left), noon in June (the worst case), and ten at night with the sky turning over the sign. Does a receding shadow read as a hand? Does the night sky read as an instrument or as stars?
 - **Director:** is the length floor at midday an acceptable cheat? And is twilight allowed to point at nothing?
+
+## Pass 2 — visual
+
+I opened the seven images I'd skipped (01, 05, 06, 09, 10, 12, 17) and drew the dial: `sketches/dial-on-a-phone/sheet.png`, ten tall-phone frames (source beside it, `node render.js`). It uses real sun positions at 35°N, the station laid out as systems drew it, no outlines, and every black laid as tapered strokes in the direction of the light, as the director asked. It is a flat 2D drawing with its own projection, not three.js, and the strokes are still generated, so it tests the picture and not the build or the hand.
+
+### 1. Does a receding shadow read as a hand? Four findings
+
+**From the road at eye height, no (frames 1, 2).** The 14 m of lot between you and the pole is squeezed into a thin band under the station. At nine the hand is a hairline leaving the frame to the left. At noon in June it's a smudge at the foot of the pole. The sign and the station read well from there; the dial doesn't. Systems guessed the camera needs height. It does: about 7 m.
+
+**Lifted, the painted lines read as a dial at once (frames 3–5).** The fan of hour lines rising from the bottom of the phone is the strongest thing on the sheet. It needs no hand to say "this ground is an instrument".
+
+**A thin pole makes a thin hand.** At 7 m up the pole's shadow is still a line a few pixels wide. My first try at the cast name, separate standing letters, came out as a hairline at midday, because upright letters cast almost nothing under a high sun. The hand needs mass, which is the director's own condition.
+
+**The dial geometry needs one correction, and it helps.** For an upright pole, the hour lines do not fan from the foot of the pole, and the pole's shadow does not lie along them. The nine o'clock shadow swings about 43° between June and December. What stays true all year is the *tip*: it lands on straight hour lines that fan from a point 14.3 m south of the pole, where a line from the top of the sign aimed at the pole star would meet the ground. That point is on the road. **The centre of the dial is where the visitor stands.** On a phone the lines fan up from the thumb. So "the shadow lies along its line" (systems, section 2) holds only for the tip, and the hand needs a head to be read.
+
+### 2. Two ways to give the hand mass, both drawn
+
+**a. The sign is a stencil lying flat (frames 3–5).** A slab on top of the pole with the name cut through it, like the stencil letters in 05 and 06. A flat sign casts a shadow of the same size at every hour and season, so the hand gets a head: a black block as big as the sign, with the name let through it in sunlight. At noon in June it sits full size at the foot of the pole (frame 4). At noon in December the same block has walked 14 m up the noon line to the door (frame 5). The sun prints the name on the lot; at night a lamp above the slab would print it in light (not drawn).
+
+What it costs, seen in the sketch: at phone size from the arrival view the block reads but the name inside it doesn't (about 150 px wide, edge-on). It would be legible from a stop near it. And a stencil seen from underneath is mirrored (frames 1, 2, 6), so if the name is right on the ground it is wrong in the air.
+
+**b. The sign is a raking beam (frames 7–10).** Lean the pole until it points at the pole star: a beam rising from the roadside at 35° over the lot, the head of the sign at its end. This is what a real sundial does, and it is also 03's diagonal and the Googie pylons in 12. Then:
+
+- The shadow is a full hand from the centre of the fan to the head, and it lies exactly along the hour line in every season (frame 7). This is the frame where the answer to "does it read as a hand" is yes without a caption.
+- **Noon in June stops being a problem.** The hand is 16 m long at midsummer noon with nothing stretched (frame 8). The length floor isn't needed, so the director doesn't have to rule on a cheat.
+- At night the beam points at the one star that doesn't move, and the sky turns round the end of the sign (frame 10). Day and night use the same object for the same reason.
+- Seen from its foot it goes over your head in hard perspective, which is the thrust the owner's Kirby covers have (16, 17) without any comic-book marks.
+
+What it costs: the sign is no longer a plain pole, which pushes the station from the plain box (02, 09, 10) toward the streamlined one (01, 03, 12). That's the director's open question to the owner about which station, now with a reason attached. And one flaw shows in frame 8: from dead centre at noon the beam covers its own shadow. The arrival stop wants to be a few steps off the centre line.
+
+My lean is b, with the flat stencil as its head if the name on the ground survives a closer stop. Either way: **no length floor.**
+
+### 3. The arrival camera rides the hour
+
+The day wants the camera high and looking down; the night wants it on the road, tipped up 22° (frame 6). Same spot on the ground, one vertical move. So the arrival view is one position with a height and a tilt set by the clock: high over the lot at midday when the ground has the job, down on the road and looking up at night when the sky has it. At twilight it is level at eye height, where the dial can't be read anyway. That is systems' "twilight points at nothing" as a camera position, and frames 1 and 2 show it is a good picture: the sign, the black slot of the station, nothing else.
+
+It also settles the two tall arrivals from pass 1 without a choice. The horizon sits high on the phone at noon and low at midnight. The position of the horizon on the screen becomes a slow clock of its own.
+
+Morning and evening the camera also has to turn about 12° toward the head, or the head is out of frame on a tall phone (frame 1 against frame 3). The square-on Prada Marfa view (10) is then the noon picture only, and the three-quarter Standard view (03) is what early and late look like.
+
+### 4. Night: instrument, or stars?
+
+Frame 6. It reads as turning, and I think as an instrument, for three reasons that should be kept as rules:
+
+- **One mark per piece and nothing else.** No background stars. A sparse sky is a table; a full one is wallpaper.
+- **Every star has a tail**, a tapered stroke laid round the still point, as long as the night is old: short dashes at dusk, long arcs by four. The length of the tails is the hour. These are the concentric strokes of the owner's eye drawing (13).
+- **Exactly one is captioned**, in the typewriter voice (15): the one crossing the vertical above the sign, with the time and the title.
+
+This also answers systems' worry about stars against "dots mean not from here". Stars are strokes with tails; krackle is clustered dots with none. They can't be confused.
+
+It looks like a record turning round a spindle. For a musician's site I'd leave that unsaid and let people see it.
+
+### 5. One rule that came out of drawing it: the light source sets the stroke
+
+- Sun: parallel strokes, all leaning the same way. The lean is the hour, even where shadows are short.
+- Lamp: strokes of paper laid outward from the lamp (frame 6, under the canopy).
+- Stars: strokes laid round the pole.
+
+Three patterns, three kinds of light. You can tell day, lamplight and starlight from the brushwork alone. This is the director's "light says where, the hand says how" taken one step further: the light also says which way.
+
+And there are two blacks, which should look different. **Shadow** is brushed, tapered, and moves. **Paint** (the hour lines, lettering on signs) is flat, hard-edged, stencilled, and never moves. The hour lines in the sketch are parking-stripe dashes for this reason. The stencil letters of 05 and 06, all straight strokes with cut corners, are a better voice for painted words than the slab I proposed in pass 1; I'd keep the slab only for words that land (04).
+
+### 6. From the images I hadn't opened
+
+- **10 (Prada Marfa)** is photographed from the shadow side: the front is dark and a wide shadow lies across the road toward the camera. The most liminal picture in the set is back-lit. Our station faces the sun all day, so its front is paper and its only mass is the canopy shadow. I drew the back lot looking into the sun and it was a black slab and little else, so I cut that frame; but the back lot is where the station is a silhouette, and it deserves a composed stop of its own, not a pass-through.
+- **05** builds a mountain from thousands of small flat marks in two values. That is how the desert floor and the far hills can have texture with no grey.
+- **06** is soft cloud with hard stencil letters on top. If the owner wants haze (the director's question 1), this is the form it would take: soft world, hard words.
+- **01** is a glass box: the shop is a lit cabinet with the goods visible from the lot. That is frame 4 of the first sketch, and a reason to make the windows large.
+- **17**: Kirby builds the Thing from closed cells with spotted blacks. Good reference for interior density without outlines-on-boxes.
+- **12**: the LAX building is a disc on legs. So is a canopy. With the director's "evidence, never the creature": the canopy at night, lit from below with a pool of light under it, is already the shape. Nothing has to be added.
+
+### 7. What the sketch doesn't show, and what looked wrong
+
+- The strokes are generated. On the walls they comb into even hatching that looks like grass (frames 2, 4, 5). A real hand is still the unproven thing.
+- Whether three.js can lay shadows as strokes like this in real time is untested. Here it's brute-force sampling.
+- No list, no margin, no text over the picture. The fan from the thumb suggests the timetable sits where the lines start, but hours are lines and pieces are rows, and I haven't drawn how they meet.
+- Night shows 27 marks. Forty with captions is untested.
+- The lamp printing the name at night is an idea only.
+
+### 8. Dropped
+
+- The length floor at midday. Not needed with either sign.
+- The cast name from separate upright letters. Hairline at midday.
+- Reading the dial from eye height by day.
+- The name in the sky as flat type (frame 2b of pass 1). The sign already fills the width of a phone from the road.
+- The back lot as a quick frame; see section 6.
+
+### 9. Questions for the owner (new only)
+
+1. Could the sign be a raking beam that leans over the lot, in place of an upright pole? It makes the station a little more space-age and a little less plain.
+2. By day, is it fine for the first view to be from above head height, looking down across the lot?
+
+### 10. For the director
+
+- Stencil head, raking beam, or both. The beam removes the midday cheat; it also decides "which station" before the owner has answered.
+- The arrival camera riding the hour: one stop with a height and tilt set by the clock. Does that count as a composed view, or as too many pictures to compose?
+- Twilight: I'd let it point at nothing. Frames 1 and 2 are that picture and they hold up.

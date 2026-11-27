@@ -1,0 +1,142 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>dial on a phone — throwaway sketch</title>
+<style>
+  body{margin:0;background:#d9d4c8;font:12px/1.4 "Courier 10 Pitch",monospace;color:#111;padding:24px;width:1720px}
+  h1{font:bold 15px "Courier 10 Pitch",monospace;margin:0 0 4px}
+  p{margin:0 0 18px;max-width:1100px}
+  #sheet{display:flex;flex-wrap:wrap;gap:22px;align-items:flex-start}
+  figure{margin:0;width:300px} figcaption{margin-top:6px}
+  canvas{display:block;border:1px solid #111;width:300px;height:650px}
+</style>
+<h1>THE DIAL ON A TALL PHONE — throwaway sketch, jam pass 2 (visual)</h1>
+<p>Real sun geometry at 35°N. No outlines anywhere: every black is a stack of tapered strokes laid in the direction the light travels (by night: paper strokes laid away from the lamp, and star tails laid round the pole). Station faces south, 10 m sign pole, viewer on the road 14.3 m south of the pole, eye height 1.7 m. Drawn in 2D with a hand-rolled projection, not three.js: this tests the picture, not the build. Lettering is a stand-in.</p>
+<div id="sheet"></div>
+<script>
+const W=600,H=1300, PAPER='#ece7db', INK='#141312', RAD=Math.PI/180, LAT=35*RAD, PH=10, CEN=-PH/Math.tan(LAT);
+let seed=11; const rnd=()=>(seed=(seed*16807)%2147483647)/2147483647, rr=(a,b)=>a+(b-a)*rnd();
+const add=(a,b,k=1)=>[a[0]+b[0]*k,a[1]+b[1]*k,a[2]+b[2]*k], dot=(a,b)=>a[0]*b[0]+a[1]*b[1]+a[2]*b[2];
+const norm=a=>{const l=Math.hypot(...a)||1;return a.map(v=>v/l)};
+function sunAt(hour,decl){const d=decl*RAD,Hh=(hour-12)*15*RAD;
+  return [-Math.cos(d)*Math.sin(Hh), Math.cos(LAT)*Math.sin(d)-Math.sin(LAT)*Math.cos(d)*Math.cos(Hh), Math.sin(LAT)*Math.sin(d)+Math.cos(LAT)*Math.cos(d)*Math.cos(Hh)]}
+// occluders: [x0,x1,y0,y1,z0,z1]
+const BOX={bld:[-10,10,16,23,0,3.5],can:[-7,7,10,16,3.9,4.3],p1:[-1.9,-1.3,11.25,11.75,0,1.6],p2:[1.3,1.9,11.25,11.75,0,1.6]};
+function hit(o,d,b){let t0=1e-4,t1=1e9;for(let i=0;i<3;i++){const lo=b[i*2],hi=b[i*2+1];
+  if(Math.abs(d[i])<1e-9){if(o[i]<lo||o[i]>hi)return false}else{let a=(lo-o[i])/d[i],c=(hi-o[i])/d[i];if(a>c)[a,c]=[c,a];t0=Math.max(t0,a);t1=Math.min(t1,c);if(t0>t1)return false}}return true}
+const shaded=(p,S)=>S[2]<=0||Object.values(BOX).some(b=>hit(p,S,b));
+
+function make(cfg){
+  const cv=document.createElement('canvas');cv.width=W;cv.height=H;const g=cv.getContext('2d');
+  const night=cfg.night, S=night?null:sunAt(cfg.hour,cfg.decl);
+  const yaw=cfg.yaw*RAD,pit=cfg.pitch*RAD,C=cfg.cam,F=(H/2)/Math.tan(cfg.vfov*RAD/2);
+  const f=[Math.sin(yaw)*Math.cos(pit),Math.cos(yaw)*Math.cos(pit),Math.sin(pit)], r=[Math.cos(yaw),-Math.sin(yaw),0], u=[-Math.sin(yaw)*Math.sin(pit),-Math.cos(yaw)*Math.sin(pit),Math.cos(pit)];
+  const pj=p=>{const d=add(p,C,-1),z=dot(d,f);if(z<0.6)return null;return [W/2+dot(d,r)/z*F,H/2-dot(d,u)/z*F]};
+  const pjd=d=>{const z=dot(d,f);if(z<0.05)return null;return [W/2+dot(d,r)/z*F,H/2-dot(d,u)/z*F]};
+  // ---------- the sign: a flat slab on top of the pole with the name cut through it (a stencil). Its shadow is the same size at every hour
+  const tc=document.createElement('canvas');tc.width=280;tc.height=80;const tg=tc.getContext('2d');tg.font='bold 78px "DejaVu Sans"';tg.textBaseline='alphabetic';tg.textAlign='center';tg.fillText('TRABOLD',140,68,268);
+  const bm=tg.getImageData(0,0,280,80).data, SLX=3.6,SLY=1.35;
+  const hole=(x,y)=>{const c=Math.floor((x+SLX)/(2*SLX)*280),q=Math.floor((SLY-y)/(2*SLY)*80);return c>=0&&c<280&&q>=0&&q<80&&bm[(q*280+c)*4+3]>110};
+  const inSlab=(x,y)=>Math.abs(x)<=SLX&&Math.abs(y)<=SLY&&!hole(x,y);
+  const slabShade=p=>{if(!S||S[2]<=0||p[2]>=PH)return false;const t=(PH-p[2])/S[2];return inSlab(p[0]+S[0]*t,p[1]+S[1]*t)};
+  g.fillStyle=night?INK:PAPER;g.fillRect(0,0,W,H);
+  // one brush stroke on a plane: A->B, half width hw along perp. swell and taper, ragged edge, tails overshoot
+  function stroke(A,B,hw,perp,col,o={}){const n=18,L=[],Rr=[],dir=add(B,A,-1),len=Math.hypot(...dir);
+    const e0=o.e0??rr(.02,.3)/Math.max(len,.5), e1=o.e1??rr(.05,.6)/Math.max(len,.5), sk=rr(.35,.6), ph=rnd()*9;
+    for(let i=0;i<=n;i++){const t=i/n, tt=-e0+t*(1+e0+e1), P=add(A,dir,tt);
+      let w=Math.pow(Math.sin(Math.PI*Math.pow(t,sk/.5*.5+.5)),.6)*hw*(o.flat?1:1)*(1+.18*Math.sin(t*23+ph)+.1*Math.sin(t*61+ph*3));
+      if(o.flat)w=hw*(.8+.2*Math.sin(t*40+ph))*(t<.03||t>.97?.5:1);
+      const a=pj(add(P,perp,w)),b=pj(add(P,perp,-w));if(!a||!b)continue;L.push(a);Rr.push(b)}
+    if(L.length<3)return;g.fillStyle=col;g.beginPath();L.forEach((p,i)=>i?g.lineTo(...p):g.moveTo(...p));Rr.reverse().forEach(p=>g.lineTo(...p));g.closePath();g.fill()}
+  // fill the shaded part of a plane with strokes running the way the light runs
+  function shadowPlane(O,a,b,ar,br,sp,test,col=INK,dirS){
+    const SS=dirS||S;let d2=[-dot(SS,a),-dot(SS,b)];const l=Math.hypot(...d2);if(l<1e-3)d2=[1,0];else d2=d2.map(v=>v/l);const p2=[-d2[1],d2[0]];
+    const pt=(uu,vv)=>add(add(O,a,uu*d2[0]+vv*p2[0]),b,uu*d2[1]+vv*p2[1]);
+    const R=Math.hypot(Math.max(Math.abs(ar[0]),Math.abs(ar[1])),Math.max(Math.abs(br[0]),Math.abs(br[1])));
+    const dW=add([0,0,0],a,d2[0]),pW=add([0,0,0],a,p2[0]);const dirW=add(dW,b,d2[1]),perW=add(pW,b,p2[1]);
+    for(let v=-R;v<R;v+=sp*rr(.8,1.2)){let run=null;
+      for(let uu=-R;uu<=R+.12;uu+=.12){const ca=uu*d2[0]+v*p2[0],cb=uu*d2[1]+v*p2[1];
+        const inside=ca>=ar[0]&&ca<=ar[1]&&cb>=br[0]&&cb<=br[1];const P=pt(uu,v);
+        const sh=inside&&(test?test(P):(shaded(add(P,S,.02),S)||slabShade(P)));
+        if(sh&&run===null)run=uu; if((!sh||run!==null&&uu-run>rr(5,11))&&run!==null){if(uu-run>.25)stroke(pt(run,v),pt(uu,v),sp*rr(.5,.72),perW,col,test?{e0:0,e1:0}:{});run=sh?uu-.4:null}}}}
+  const gshadow=(p,z)=>[p[0]-S[0]/S[2]*z,p[1]-S[1]/S[2]*z,0];
+
+  // ---------- far hills: only their shade sides exist
+  if(!night){[[-70,150,16,40],[-15,170,11,55],[60,160,19,45],[120,140,9,30]].forEach(([x,y,h,w])=>{const side=S[0]>0?-1:1; if(Math.abs(S[0])<.25)return;
+    for(let i=0;i<7;i++){const k=i/7;stroke([x+side*w*k*.55,y,h*(1-k)*.95],[x+side*w*(.25+k*.6),y,.2],h*.05*(1-k*.5),[1,0,0],INK)}});
+    // horizon: one dry broken line
+    for(let x=-400;x<400;x+=rr(18,50))if(rnd()>.35)stroke([x,300,0],[x+rr(10,30),300,0],.35,[0,0,1],INK,{flat:1,e0:0,e1:0})}
+
+  // ---------- painted hour lines. They fan from the foot of the polar axis (14.3 m south of the pole), which is where the viewer stands
+  if(!night&&cfg.view!=='back'){for(let h=7;h<=17;h++){const th=Math.atan(Math.sin(LAT)*Math.tan((h-12)*15*RAD)),d=[Math.sin(th),Math.cos(th),0],pp=[Math.cos(th),-Math.sin(th),0];
+      for(let q=(C[2]<3?4.6:1.6);q<46;q+=2.6){const A=add([0,CEN,0],d,q),B=add([0,CEN,0],d,q+1.5);if(B[1]>15.8||Math.abs(B[0])>40)continue;stroke(A,B,h==12?.11:.07,pp,INK,{flat:1,e0:0,e1:0})}}
+    // noon marks for the three seasons: where the name lands at midday
+    [23.44,0,-23.44].forEach(dc=>{const s=sunAt(12,dc),y=PH*(-s[1]/s[2]);stroke([-.9,y,0],[.9,y,0],.1,[0,1,0],INK,{flat:1,e0:0,e1:0})})}
+
+  if(!night){
+    // ---------- ground shadows
+    if(cfg.view==='back') shadowPlane([0,0,0],[1,0,0],[0,1,0],[-45,45],[23.05,75],.5);
+    else shadowPlane([0,0,0],[1,0,0],[0,1,0],[-45,45],[-12,15.97],.3);
+    // pole shadow: the hand
+    if(cfg.view!=='back'){const tip=gshadow([0,0,0],PH),foot=cfg.beam?[0,CEN,0]:[0,0,0],L2=norm([tip[0]-foot[0],tip[1]-foot[1],0]);stroke(foot,tip,cfg.beam?.42:.2,[-L2[1],L2[0],0],INK,{e0:0,e1:0})}
+  }
+  if(cfg.view==='back'){
+    // back wall: one black slab, laid in strokes
+    g.fillStyle=PAPER;const q=[[-10,23,0],[10,23,0],[10,23,3.5],[-10,23,3.5]].map(pj);g.beginPath();q.forEach((p,i)=>i?g.lineTo(...p):g.moveTo(...p));g.fill();
+    shadowPlane([0,23.03,0],[1,0,0],[0,0,1],[-10,10],[0,3.5],.3);
+  } else if(!night){
+    // ---------- front wall: paper, lost against the sky. Only its shadow and its openings exist
+    shadowPlane([0,15.97,0],[1,0,0],[0,0,1],[-10,10],[0,3.5],.3);
+    [[-.6,.6,0,2.2],[1.5,4.2,.9,2.4],[-4.2,-1.5,.9,2.4],[-9.3,-5.6,0,2.9]].forEach(([x0,x1,z0,z1])=>{for(let x=x0+.12;x<x1;x+=.26)stroke([x,15.96,z1],[x,15.96,z0],.17,[1,0,0],INK,{e0:0,e1:.03})});
+    // canopy underside: always in shade by day
+    if(C[2]<3.9){for(let y=10.15;y<16;y+=.36)stroke([-7,y,3.9],[7,y,3.9],.25,[0,1,0],INK,{e0:.01,e1:.03})}
+    // posts and pumps: paper where the sun finds them
+    [-6.4,6.4].forEach(x=>{if(!shaded([x,10.2,2],S))stroke([x,10.2,0],[x,10.2,3.9],.09,[1,0,0],PAPER,{flat:1,e0:0,e1:0})});
+    [-1.6,1.6].forEach(x=>{if(!shaded([x,11.2,1],S)){stroke([x,11.25,0],[x,11.25,1.6],.3,[1,0,0],PAPER,{flat:1,e0:0,e1:0});stroke([x,11.25,1.62],[x,11.25,2.1],.26,[1,0,0],PAPER,{e0:0,e1:0})}});
+    if(C[2]>4.3){g.fillStyle=PAPER;[[[-7,10,4.3],[7,10,4.3],[7,16,4.3],[-7,16,4.3]],[[-7,10,3.9],[7,10,3.9],[7,10,4.3],[-7,10,4.3]],[[-10,16,3.5],[10,16,3.5],[10,23,3.5],[-10,23,3.5]]].forEach(Q=>{const q=Q.map(pj);if(q.some(x=>!x))return;g.beginPath();q.forEach((p,i)=>i?g.lineTo(...p):g.moveTo(...p));g.fill()});
+      // the one edge the eye cannot close: the canopy's own shade side
+      if(S[0]>.2)for(let z=3.94;z<4.3;z+=.12)stroke([-7,10,z],[-7,16,z],.07,[0,0,1],INK,{e0:0,e1:.02});
+      if(S[0]<-.2)for(let z=3.94;z<4.3;z+=.12)stroke([7,10,z],[7,16,z],.07,[0,0,1],INK,{e0:0,e1:.02});}
+  } else {
+    // ---------- night: the brush paints light. Strokes run away from the lamp
+    const lamp=[0,12.6,0];
+    for(let a=0;a<360;a+=rr(2.2,4.2)){const d=[Math.cos(a*RAD),Math.sin(a*RAD)*.8,0];let r1=rr(5.5,8.2);
+      [-1.6,1.6].forEach(px=>{const b=Math.atan2((11.5-12.6)/.8,px)/RAD,da=Math.abs(((a-b+540)%360)-180);if(da<9)r1=Math.min(r1,Math.hypot(px,1.1)*.92)});
+      let B=add(lamp,d,r1);if(B[1]>15.9){const k=(15.9-lamp[1])/(B[1]-lamp[1]);B=add(lamp,d,r1*k)}
+      stroke(add(lamp,d,.3),B,.24,[-d[1],d[0],0],PAPER,{e0:0,e1:rr(0,.08)})}
+    // lit door and windows, with what is on the shelves in ink
+    [[-.6,.6,0,2.2],[1.5,4.2,.9,2.4],[-4.2,-1.5,.9,2.4]].forEach(([x0,x1,z0,z1])=>{for(let x=x0+.1;x<x1;x+=.2)stroke([x,15.96,z1],[x,15.96,z0],.13,[1,0,0],PAPER,{e0:0,e1:.02});
+      if(z0>0)for(let z=z0+.35;z<z1-.1;z+=.45){stroke([x0+.1,15.95,z],[x1-.1,15.95,z],.03,[0,0,1],INK,{flat:1,e0:0,e1:0});for(let x=x0+.25;x<x1-.2;x+=rr(.22,.4))stroke([x,15.95,z],[x,15.95,z+rr(.15,.3)],.07,[1,0,0],INK,{flat:1,e0:0,e1:0})}});
+    [-1.6,1.6].forEach(x=>{stroke([x,11.5,0],[x,11.5,1.6],.3,[1,0,0],INK,{flat:1,e0:0,e1:0});stroke([x,11.5,1.62],[x,11.5,2.1],.26,[1,0,0],INK,{e0:0,e1:0})});
+    stroke([-.5,12.6,3.88],[.5,12.6,3.88],.16,[0,1,0],PAPER,{e0:0,e1:0});
+    // ---------- the sky: one tail per piece of work, laid round the still point above the sign
+    const pole=[0,Math.cos(LAT),Math.sin(LAT)],e2=[0,-Math.sin(LAT),Math.cos(LAT)],e1=[1,0,0],tail=(cfg.hour-18.4)*15;
+    const sdir=(rho,psi)=>add(add([0,0,0],pole,Math.cos(rho*RAD)),add(add([0,0,0],e2,Math.cos(psi*RAD)),e1,Math.sin(psi*RAD)),Math.sin(rho*RAD));
+    const stars=[[13.5,0,1]];for(let i=0;i<26;i++)stars.push([rr(5,58),rr(0,360),0]);
+    stars.forEach(([rho,psi,now])=>{const pts=[];for(let k=0;k<=40;k++){const d=sdir(rho,psi+tail*k/40);if(d[2]<.03)break;const p=pjd(d);if(!p)break;pts.push(p)}
+      if(pts.length<4)return;const hw0=now?7:rr(2.4,4.6),L=[],R2=[];
+      pts.forEach((p,i)=>{const q=pts[Math.min(i+1,pts.length-1)],o=pts[Math.max(i-1,0)],nx=-(q[1]-o[1]),ny=q[0]-o[0],l=Math.hypot(nx,ny)||1,t=i/40,w=hw0*Math.pow(1-t,1.5)*(1+.15*Math.sin(i*1.7+rho))+.3;L.push([p[0]+nx/l*w,p[1]+ny/l*w]);R2.push([p[0]-nx/l*w,p[1]-ny/l*w])});
+      g.fillStyle=PAPER;g.beginPath();L.forEach((p,i)=>i?g.lineTo(...p):g.moveTo(...p));R2.reverse().forEach(p=>g.lineTo(...p));g.fill();g.beginPath();g.arc(pts[0][0],pts[0][1],hw0*1.25,0,7);g.fill();
+      if(now){g.font='22px "Courier 10 Pitch"';g.fillText('22:00  PIECE No. 9',pts[0][0]+20,pts[0][1]-14)}});
+    const ps=pjd(pole);g.beginPath();g.arc(ps[0],ps[1],2.2,0,7);g.fill();
+  }
+  // pole, and the slab seen from underneath: ink, with the name as holes of sky (by night: holes of lamp light)
+  if(cfg.beam)stroke([0,CEN,0],[0,0,PH],.3,[1,0,0],night?PAPER:INK,{flat:1,e0:0,e1:0});else stroke([0,0,0],[0,0,PH],.13,[1,0,0],INK,{flat:1,e0:0,e1:0});
+  if(night) shadowPlane([0,0,PH],[1,0,0],[0,1,0],[-SLX,SLX],[-SLY,SLY],.09,P=>hole(P[0],P[1]),PAPER,[0,-1,-1]);
+  else shadowPlane([0,0,PH],[1,0,0],[0,1,0],[-SLX,SLX],[-SLY,SLY],.1,P=>inSlab(P[0],P[1]),INK);
+  // paper grain, two values only
+  const fig=document.createElement('figure'),cap=document.createElement('figcaption');cap.textContent=cfg.label;fig.append(cv,cap);document.getElementById('sheet').append(fig);
+}
+const ROAD=[0,CEN,1.7], CRANE=[0,-21,7.5];
+make({label:'1. 9:00, equinox, standing on the road (eye 1.7 m). The lot is edge-on: 14 m of dial squeezed into a band under the station. The hand is a hairline leaving frame left. From here the sign and the station read; the dial does not.',hour:9,decl:0,cam:ROAD,yaw:0,pitch:-2,vfov:68});
+make({label:'2. Noon, 21 June, same spot. Honest worst case. The station is one black slot. The hand is there (the black block at the foot of the pole) but edge-on.',hour:12,decl:23.44,cam:ROAD,yaw:0,pitch:-2,vfov:68});
+make({label:'3. 9:00, equinox, camera lifted to 7.5 m and turned 12° toward the tip. The sign is a flat stencil, so the hand has a head: a black block the size of the sign with the name let through it in sunlight, lying on the nine line.',hour:9,decl:0,cam:CRANE,yaw:-12,pitch:-21,vfov:68});
+make({label:'4. Noon, 21 June, lifted, no length floor. The pole shadow is 2 m. The block is full size, because a flat sign casts the same shadow at every hour. The name is printed on the lot at the foot of the pole.',hour:12,decl:23.44,cam:CRANE,yaw:0,pitch:-21,vfov:68});
+make({label:'5. Noon, 21 December, lifted. The same block has walked 14 m up the noon line and reached the door. Where the name lies at midday is the date.',hour:12,decl:-23.44,cam:CRANE,yaw:0,pitch:-21,vfov:68});
+make({label:'6. 22:00, back on the road, camera tipped up 22°. One tail per piece, as long as the night is old, laid round the still point just above the sign. The head crossing the vertical over the sign is the piece of the hour.',hour:22,night:1,cam:ROAD,yaw:0,pitch:22,vfov:68});
+const SIDE=[5.5,CEN-3,1.7], CR2=[0,-24,7.5];
+make({label:'7. Variant: the sign is a raking beam, rising from the roadside at 35° and aimed at the pole star. 9:00, equinox, lifted. Its shadow is a full hand from the centre of the fan to the head, and it lies exactly along the nine line, at any season.',hour:9,decl:0,cam:CR2,yaw:-10,pitch:-21,vfov:68,beam:1});
+make({label:'8. Raking beam, noon, 21 June, lifted. The worst case is gone: the hand is 16 m long at midsummer noon with nothing stretched.',hour:12,decl:23.44,cam:CR2,yaw:0,pitch:-21,vfov:68,beam:1});
+make({label:'9. Raking beam, 16:00, late November, from the road at eye height, a few steps to the side. The beam goes over your head; its shadow runs off right.',hour:16,decl:-21,cam:SIDE,yaw:-6,pitch:6,vfov:68,beam:1});
+make({label:'10. Raking beam, 22:00, from its foot. It points at the one star that does not move. The tails turn round the end of the sign.',hour:22,night:1,cam:[1.2,CEN-2,1.7],yaw:-2,pitch:24,vfov:68,beam:1});
+document.title='done';
+</script>
