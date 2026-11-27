@@ -1,161 +1,119 @@
 # Notes — product designer (visual)
 
-Last updated: after the look test (third visual designer, first turn). The owner sent Left on back at the director's 9; this turn fixed two phone defects and replaced the drawing rule. Nothing has been scored or seen by the owner yet.
-
-## Latest: Sheet 1, the pump (read this first; it overrides anything below that disagrees)
-
-Last updated: after Sheet 1. Waiting on the design director, who wants to see the sheet before the owner does. Nothing goes on the owner's link until then.
-
-**Newest: Sheet 1 passed the director with six fixes, all done** (`concepts/sheet-1-judge.md`; list and evidence at the top of `concepts/sheet-1.md`). It can go to the owner without a second check. In short: the link now opens in "drawn once" light like the sheet (`lit` in the hash for the hour's light; the old `fixed` token is gone); PLAYA replaced, four names offered on the sheet: LLANO, CALICHE, BAJADA, TULAROSA (two web searches, no fuel brand found; not a trademark check; ARROYO dropped, real operators exist); grade plates HI-TEST and REGULAR to match the list (ETHYL is a real trade name); brush is now slanted fat dabs, clearly unlike cut; nozzle taken off the sheet as not drawn; the light question uses the morning pair; captions say "after" and "loosely after"; short pump's top flattened. `owner.md` 16: abandoned with the power on ("Maybe someone's squatting"), so the globe is lit at night; made-up items accepted; brand names "propose"; the sign is to be neon and historically accurate with letters that may flicker (the next big drawing question). Anything below that says PLAYA, ETHYL, `fixed`, or afternoon frames is out of date.
-
-Watch out: `elements.md` was rewritten by the systems designer while I worked and my pump slot was wiped once. I re-filled it and added one line under "Still works" (globe lit at night). Check the slot is still there after any further edit of that file. Also, `sketches/place/out/` got committed by someone while it existed; it is throwaway and I delete it after every run.
-
-**What happened since the look test.** The director judged it (`concepts/look-judge-1.md`) and asked for five fixes; done (`look-test.md` section 0). The owner asked "Why is there a clock on the pump?" and then for a list before any drawing. The systems designer wrote `elements.md`; he said yes to it, and: "abandoned", "realistic labeling with fake brand names", canopy "joined", "stucco over brick". Then: "I'm also thinking maybe a bit of flash sheet vibes should enter the visual approach equation", with `inspo/19` to `22`. The director's reading is `concepts/steer-4.md`: each thing a complete drawing alone on old paper, line first, tone by hatching, stipple or spotted black, worn print, drawn lettering; not the creatures, not the charm.
-
-**Delivered this turn**
-- `concepts/stills/sheet-1-pump.png`: the flash sheet. Write-up: `concepts/sheet-1.md` (what it shows, how it was made, what transfers to 3D, what is not good).
-- The pump rebuilt from his photos in `sketches/place/index.html`: two shapes (short [Route 66] at x -8.2, tall [1934] at x -5.4), disc globe with brand, grade plate, knob, rolling-number window, badge, notice, hose, nozzle, dark base. No clock. Abandoned: rust, pits, flecked lettering, dusty window, one cracked globe (PROPOSED).
-- Three hands: `brush`, `cut`, `dot` (and `paper` still works by name: brush on real grey papers). `pen` is gone; `cut` replaced it.
-- "Drawn once" (`fixed`): things keep their own shading from a light at upper left; night and shadows only add. Only materials made with `thing: 1` obey it (the pump's).
-- `elements.md`: the pump's drawing-needs slot is filled. The other fifteen are empty.
-- Walked stills `look-pump-*` (16 `look-` files in all, with the before pictures and the old `look-test.png`, which shows the clock pump and is superseded).
-
-**Routes.** Plain names after `#`, joined by dashes, any order: hands `brush` (default) `cut` `dot`; `tall`; `fixed`; `day` `night`. The page is the lone pump unless `team` is present (`#team`, `#team-lot`, `#team-wall`, `#team-ground`, dusk only there). Query, for scripts: `look`, `study`, `tall`, `fixed`, `h` (eye height), `fov`, plus the tuning ones listed further down and `wear`, `msaa`.
-
-**How the hands are made** (all in `inkMat`'s shader; numbers in `LK`, `LK2`, `LK3`, `lw`, `wear` near the top, one entry per hand):
-- brush: two families of broad dry strokes 15 and 12 points apart, bristle streaks, black from tone .86.
-- cut: one family 7.5 points apart, short marks, no second family (cross-at over 1 switches it off; that guard matters, without it the whole world hatches), black only in the full dark, contour 1.7 times wider and nearly even.
-- dot: families switched off, three layers of `spots` whose density follows tone, finer contour, most wear.
-- `fine` scales gaps for small things; `rust: 1` adds blotches and stipple rising from the ground (uses world height, so it is for things standing on the ground); `wear` drops ink where the paper is low.
-- Lettering and faces are canvas pictures on flat planes (`cv`, `globeM`, `plateM`, `windowM`, `badgeM`, `noteM`), with `worn` and `dust`.
-
-**How the sheet is made.** `look.js` with `look-shots.js` captures `s-*` flash views (long lens, `fixed=1`, front quarter) and `look-*` walked frames into `out/`. `python3 sheet1.py` (in `sketches/place/`, needs numpy and PIL) cuts pieces out, generates the aged sheet, sets captions, saves the PNG. Then quantise the walked frames into `concepts/stills/` and delete `out/`. The sheet is honest about its flattery: long lens, chosen side, own light, generated paper.
-
-**Decisions I made, and why**
-- The sheet is built from real frames, not drawn separately, so it cannot promise what the world can't do.
-- Flash views use `fixed` light because sunlit faces by the hour are nearly bare; said on the sheet and in `sheet-1.md`.
-- No weeds at the base: not on the pump's list.
-- Brand names PLAYA and LLANO, PROPOSED, with a low sun on a flat horizon. **Not checked against real brands.**
-- Dots (the steer's tension D): if dot is the hand, bulbs stay a ruled row of round lamps and alien marks become open rings.
-
-**Known weak points**: nozzle doesn't read; tall pump is not particular enough to his 1934 photo; lettering is type, not a hand; brush strokes on the cabinet are straight and can read as wood grain; rust heavy at the base; D1/D2 and E1/E2 hard to tell apart at phone size; the world's paper is still flat cream (the aged sheet exists only in `sheet1.py`); nothing seen in motion or on a real phone; multisampling at 3 dots per point is the frame-rate risk; dusk, room, aisle, horizon and scrub are still not looked at in any new hand.
-
-**Open questions**: owner: A1 or A2 (and same or different), B1/B2/B3, D1 or D2, E1 or E2, the brand name; still the phone checks (callout gone, fluid, no blockiness). Director: is the sheet honest enough to send; is `fixed` light fair for the flash views.
-
-**Next**: the director's read of the sheet. Then, once the owner picks: slab and island, then canopy (the order in `elements.md`), each as a sheet made the same way, filling each element's drawing slot as it is drawn. Fix the nozzle. Put the aged paper into the world if he picks one sheet. Draw the lettering.
-
-Folder is about 19 MB.
+Last updated: after Sheet 2 (fourth visual designer, first turn). Sheet 2 has not been seen by the director or the owner. Nothing is committed.
 
 ## Where things stand
 
-- One concept: **Left on** (`concepts/05-left-on.md`). I own its **How it looks and feels** half; the systems designer owns how it works and `00-shared.md`. **The looks half of `05-left-on.md` now describes the old look and has not been rewritten**, on instruction. Rewrite it once the owner picks a look.
-- This turn's write-up: `concepts/look-test.md`. The one picture: `concepts/stills/look-test.png`. Stills: `concepts/stills/look-*`. Last round's `lo-*` stills are all still there.
-- The steer I worked to: `concepts/steer-3.md`. Then the owner changed the shape of the job mid-turn (below).
+- One concept: **Left on** (`concepts/05-left-on.md`). Its looks half still describes the round-3 look and has not been rewritten. Rewrite it once the owner has agreed how light is drawn (Sheet 2, section D).
+- The look is being settled element by element, as flash sheets, in the order in `elements.md`. Done: 1 pump (Sheet 1, then his picks), 2 slab and island, 3 canopy (Sheet 2). Next: 4 station front. **5, the sign, is not to be drawn until his photos arrive.**
+- **His picks (`owner.md` 18):** the short flat-topped pump; the dot hand; "no" to "does the light redraw it?" (read as drawn once; reading not confirmed by him); a scanned paper on each part with real grey; brand names his to supply, mock for now.
+- The link now opens on the lone pump in those picks. Other hands, the tall pump and "lit by the hour" are behind `#team`.
 
-## The owner's words that govern the look (all verbatim in `owner.md`; his words win)
+## Delivered this turn
 
-Earlier: "monocolor black and white brush strokes"; "Ed Ruscha meets Jack Kirby's sketches"; "pure ink for now"; "readable but note precise or always whole"; "liminal not funny"; "hard to really make out objects … more detail and variation in the brush stroke size".
+- `concepts/stills/sheet-2-island-canopy.png` (1170 x 7993) and `concepts/sheet-2.md` (what is on it, the stipple test with numbers, what "drawn once" became, how it was made, what transfers, what each frame proves, questions).
+- Walked stills at true density: `concepts/stills/s2-together-day.png`, `s2-together-night.png`, `s2-together-night-far.png`, `s2-pump-day.png`, `s2-pump-night.png`, `s2-slab-your-shadow.png`.
+- `sketches/place/index.html`: new stipple; dots-for-things and lines-for-light; hose and nozzle; two short pumps; slab, island, bell line, scrub; canopy with fascia, posts, three lamps; views `#pump`, `#slab`, `#together`.
+- `sketches/place/walk3.js` (the crawl measurement), `sheet2-shots.js`, `sheet2.py`, `paper/rubber.png` (and its line in `papers.js`).
+- `elements.md`: drawing-needs slots for 1, 2 and 3 filled. Slots 4 to 16 are empty. Another designer edits the rest of that file and it changed under me once; check the slots survive.
+- Deleted as superseded: every `concepts/stills/look-*` (the Sheet 1 walked frames in three hands, the before pictures, and `look-test.png` with the clock pump). `sheet-1.md` and `look-test.md` still name those files; they are gone on purpose.
 
-Section 9 (the rejection): "It's looking pretty pixellated and when I press and hold it often brings up the copy paste tooltip on mobile. I think we need more detail boss texturing and shadow methods like crosshatching etc it looks posterized".
+## The rule the look now runs on
 
-Sections 10 to 12, which arrived while I worked:
-- "Detail via* texturing. Two values but we can still make the illusion of grey. It's just a black and white painting."
-- "We could also leverage different paper textures for the forms" … "Within black and white, different grain showing through the ink" … "think like if I'd scanned in various paper textures, made them greyscale and multiplied onto the vintage color, and then applied them to each face / element".
-- "Instead of trying to one shot this in one view maybe it would be helpful to develop all the elements individually?"
+1. **Dots belong to the thing.** Its form shading, rust, stains, pits. Put down once; they never change with the hour.
+2. **Lines belong to the light.** Cast shade by day and the dark at night, laid along the sun or outward from a fixed lamp. A shadow ends where its lines stop. Deeper dark crosses, then goes black.
+3. **Ground and walls are where the light writes.** They have no shading of their own. They carry what they are made of and take shade in full.
+4. **A thing in shade** keeps its dots and takes a thin veil of lines (`veil`, 0.4 of the ground's). Your shadow on a thing is a stronger veil (`veilyou`, 0.8).
+5. **The canopy takes no shade** (it makes it); its underside is dark by its own drawing.
+6. **At night** a lamp does not re-shade a thing; it shows the same drawing whichever way the face is turned. Dark is how far light reaches, nothing else.
+7. Flat paint (lettering, globe faces, the working bulb) is always paper-white with ink on it.
 
-So: two values, grey as an illusion made by marks; texture is how detail arrives; papers per face or element; and work element by element, not one composed view.
+Why: he said "no" to light redrawing a thing, on a lone pump. Ground has nothing to keep, and Left on is light. If "drawn once" covered the ground the concept would have nothing to show (Sheet 2, D3 renders that). This split keeps both. It also fixed the old together-view failure: a shaded pump no longer sinks into the shade behind it, because the pump is dots with a light veil and the wall is full lines. **Not confirmed by him.** The alternative, shade as more dots (`shadedots=1`), is D2 on the sheet.
 
-## The two defects (detail and evidence in `look-test.md` section 1)
+Dots as a signal (steer 4, tension D): dots mean matter. Bulbs are white discs. Alien marks stay dashed rings.
 
-- **Pixellated.** Cause: drew at a cap of 2 on a 3-dot screen; a resolution fallback with no floor that never recovered (measured in emulation: 2 → 1.5 → 0.63 dots per point within 70 s on a slow machine); hard on/off edges and an enlarged stroke picture. Now: draws at the screen's density up to 3, marks computed per pixel with a one-pixel soft edge, fallback floored at 2 and slow to act.
-- **Copy/paste on press and hold.** Cause: nothing on the page refused selection, the long-press menu or the touch. Now: touch refused on the canvas (pointer events still drive walking), `contextmenu`/`selectstart`/`dragstart`/`gesture*` refused page-wide, `user-select`/`touch-callout` none, zoom and overscroll off, pointer capture.
-- **Verified only in emulation** (Playwright's iPhone 14 and Pixel 7 descriptors). The callout can't be shown by a headless browser at all. Frame rate at 3 dots per point on his phone is unknown. Both need his phone.
+## The stipple test (full table in `sheet-2.md`)
 
-## How the look is built now (`sketches/place/index.html`)
+- The old stipple cross-faded two sets of dots, so every dot was replaced over each halving of distance. That was the crawl.
+- Now: a dot has a place and a rank for good; three nested levels; only the finest level fades as you back away; a dot grows in as tone passes its rank; dots are round on the screen (the inverse of the surface's screen derivative); the pump cabinet's uv is true arc length.
+- Measured by `walk3.js` on an emulated iPhone 14: at 1.6 m, one frame of walking changes 0.012 of the ink (old 0.024, cut hand 0.025); half a metre changes 0.053 with 2.3 % of points flipped (old 0.104 and 6.8 %, cut 0.125 and 10.6 %). From 6.5 m out all three sit at about 0.02 per frame with nothing flipped; that is mostly the same dot landing on different pixels and I can't separate it from real shimmer in stills.
+- At 3 m dots read as dots. At 6 m they clump. At 13 m speckle; the outline carries the pump.
+- `walk3.js` takes about 12 minutes here (ray casting on the CPU). "Stipple as on Sheet 1" in it is the old cross-fade (`oldstip=1&nopick=1`) inside today's file, a stand-in for the old build.
 
-Two passes, as before, but the work moved.
+## Routes
 
-**Pass 1: every drawn surface is `inkMat(kind, opts)`**, a Lambert material with its fragment shader extended. `kind` is what it is made of: dirt, plaster, concrete, blacktop, steel, wood, tin, glass. Options: `tone` (never quite paper), `amb`, `along` (fix the mark direction), `vert` (marks run up), `round: [metres round, metres along]` (marks follow the mesh's own uv: globe, posts), `drift` (the desert floor's darker patches).
+Plain names after `#`, joined by dashes.
 
-- `where()` gives each fragment `gP` (its place on its own surface in metres; marks run along `gP.x`) and `gDir` (that direction in the world). Flat things: along the sun, or log-polar round the nearest fixed lamp at night. Walls: along the wall, leaning. Round things: their uv.
-- Light → `tone` (0 paper, 1 black): `pow(1 - clamp((l - .012)/.9), 2.6)`. Day sky light is 0.75 and the hemisphere's ground colour was lifted, so shade lands around 0.45 to 0.6 and undersides about 0.6. These three numbers set how dark the whole place is; I tuned them by eye in three passes.
-- `fam(p, a, width, gap, seed, grain)` draws one family of lines. The important ideas:
-  - Spacing comes from the screen: `log2(fwidth(p.y) * gap * pxs)` picks an octave; odd-numbered lines fade (by width) as you back away, so close up new lines grow between old ones and nothing pops. Width and wander scale with `S*(1+f)` so they're continuous across an octave change.
-  - Each line's identity is its world position (`j*S`), so its hash survives octave changes. Its length scale is tied to the octave at which it first appears (`lv`), so lines seen from far are long and heavy.
-  - Along a line, noise minus the tone decides where it exists and how wide; that gives tapers, breaks, and a feathered shadow edge.
-  - Dryness: the edge of a mark is pushed in by the paper's grain (and bristle streaks in brush), more toward its ends.
-  - Two neighbouring lines are evaluated per pixel so swollen lines can close up.
-- Two families (the second rotated by `LK2.x`), then black with the paper's valleys last to fill, then the material's own marks (`spots`, `ruled`, more `fam`) which ignore light except to thin.
-- Output: r = paper left, g = grain, b = tone (for contour weight), a = flag (.25 drawn surface, .18 ground/road which get no contour, 1 = flat paint from `MeshBasicMaterial`).
-- The sun's shadow lookup is still overridden (`SHADOW`): eight taps along `gDir` over `reach` (50 cm each way). No per-pixel jitter: jitter in screen space made stroke widths shimmer in my head before I ever ran it, so I left it out.
+- Owner's views: `pump` (default), `slab`, `together`, each with `-day` or `-night` (no hour: the visitor's clock picks). Foot links offer exactly these.
+- Each view has its own day hour: pump and slab at 10:30 in winter (long shadows, your shadow ahead of you on the slab); together at 13:30 in summer, because that is when the canopy's shade covers the pumps. In winter mid-morning the shade falls on the wall and the pumps stand in sun.
+- `#team`: everything, old arrival. `#team-pump`, `#team-lot`, `#team-wall`, `#team-ground`; hands `brush` `cut` `dot`; `tall`; `lit`; `dusk`. Example: `#team-pump-brush-night`. Foot links there offer hands and toggles as before.
+- Query, for scripts: `view=pump|slab|together` (owner's view, not team), `day=1`, `night=1`, `hour`, `decl`, `x n h head pitch fov`, `hide=pumps,canopy,shell,slab`, `one`, `body=0`. Tuning: `stg` (dot gap in points, 3), `std` (density, 2.2), `str` (dot radius, .32), `veil`, `veilyou`, `dayk` (how dark day shade is, .72), `shadedots`, `oldstip`, `nopick`, `und` (underside tone), plus the older ones (`gap`, `len`, `wear`, `msaa`, `dpr`, `res`, `grey`, `line`, `dbg`).
+- `study=` still works and implies team.
 
-**Pass 2 (the quad):** contour from depth (outline = jump in depth, corner = bend in 1/depth, six taps, at two radii for a soft edge), width from tone and a slow world noise; paper line inside black; far things lost; paper colour (warm, his "vintage color") times grain in `#paper`.
+## How it is built (`sketches/place/index.html`)
 
-**Looks** are four numbers each in `LK`, `LK2`, `LK3` near the top: gaps, dryness, bristle, cross angle, where the cross starts, where black starts, mark length, widths. Query overrides for tuning: `gap`, `gap2`, `dry`, `bristle`, `cross`, `crossat`, `solid`, `len`, `texp`, `sky`, `reach`, `tex=0`, `grain=0`, `grey=1`, `line=0`, `dpr`, `res`, `dbg=1..4`.
+Two passes as before. What is new, all inside `inkMat`'s shader unless said:
 
-**Hash:** names joined by dashes in any order. Looks: `pen`, `brush` (default), `paper`. Hours: `day`, `night` (none = visitor's clock; `dusk` only behind `team`). The page is the lone pump unless `team` is in the hash; then `lot`, `wall`, `ground`, or none for the arrival. The foot links keep whichever of the others is set. `?look=` and `?study=` do the same for the capture scripts.
+- `PICK` (dot hand and drawn once) switches the rule above on. `LK`, `LK2`, `LK3` hold the light's line numbers for the picks: gap 4.6 points, second family from tone .62, black from .93, thin (.1 to .27 of the gap).
+- `tone` is now the light's tone only (lines, then black). `tO` is the thing's own tone (dots). For a thing by day `tone` is just the veil; at night it comes from the lamps.
+- `spots()` is the new hierarchy; `spots0()` is the old one, kept for the measurement. `stipple(t)` is one layer plus a finer second layer above tone .45.
+- `gM` is a point's place in its own material and never turns with the light (world x,z on flat surfaces; the old `gP` elsewhere). Dots, grain, wear and rust use `gM`. Lines use `gP`, which runs along the sun.
+- `structSh()` works out the canopy's and the building's shade for things from two rectangles (`cRect`, `bRect`, `cbTop`), so a thing is never shaded by itself and the veil has a clean edge. Ground and walls still use the sun's shadow map.
+- Things do not receive shadows (`receiveShadow` off) and take lamp light without the facing term (`dotNL` replaced by uniform). **One compiled program serves every `inkMat`**, because three caches by the text of `onBeforeCompile`: anything per-material must be a uniform, not a text change. That cost me a wrong night.
+- `thing: 1` drawn once; `thing: 2` drawn once and takes no shade (canopy parts). `bare: 1` no marks of its own (the wall in the owner's views). `slab`, `kerb`, `stain`, `flat` options. Kinds added: `fascia`, `rubber`.
+- Concrete (`mk==2`): pits; on the slab, joints every 3.2 m by 4 m, cracks as the borders of big uneven cells (`crk`), a ragged discarded edge with a broken edge line, stains as closer dots (heavier south of the island), sand against kerb and wall. On the island, a kerb line set in 11 cm.
+- Papers: `KIND` now carries how strongly a paper's grain shows as grey and how much darker than the sheet it is. The grey is applied in the last pass for anything flagged .2 (slab) or .25 (things, walls); open dirt and road stay bare.
+- Layers: `layer(name)` tags scene children by section (`road`, `shell`, `detail`, `canopy`, `slab`, `pumps`, `rest`); a view shows only its layers. Lights are never hidden by this.
+- **A bug that was there all along:** the sun's shadow camera was resized without `updateProjectionMatrix()`, so its frustum stayed at three's default 5 m. Small things outside that window cast nothing. Fixed. Any earlier still of the whole lot had shadows only near the middle.
+- Geometry: pump cabinet uv by arc length (`supG`), `perim()`; hose, fitting, grip, spout, trigger guard and boot as tubes and boxes; `pump(name, x, tall, brand, grade, side, cracked)`.
+- Removed as not on the list: post feet and heads, the building's eave (hidden outside team). Hidden in the owner's views: oil rack, bucket and squeegee, garage door paint, stripes, door card, everything indoors.
 
-**Papers:** `sketches/place/paper/*.png`, 256 px, tiling, greyscale, levelled; made by `papers.js`. Sampled at two scales. His scans replace them file for file. Real scans will be nearly white with faint tooth: they must be levelled to the full range first, or the shader needs a gain per file.
+## How a sheet is made
 
-## What I learned
+`SHOTS=./sheet2-shots.js node look.js [prefix]` captures into `out/` (a shot may name its own device; wide things use `iPhone 14 landscape`). `python3 sheet2.py` (numpy, PIL) cuts, lays on by multiplying, generates the aged sheet, sets captions, quantises to 20 colours. Then save the walked frames you want into `concepts/stills/` (12 greys) and **delete `out/`**: it is tens of MB and someone commits it if it is left. All captures here took 5 to 8 minutes.
 
-- The look was posterized because tone was a threshold. Spending tone on line count and width fixes it at the root; everything else (texture, contour) is seasoning.
-- First calibration was far too dark: any tone over 0.4 went shut. Width must be set from the tone you want covered, separately from whether a line is present.
-- Spots must be small and sparse. At my first size the lot looked like a Dalmatian: funny, not liminal.
-- Ground "flicks" across the light converged at the horizon like speed lines. Removed. Low sun still makes long hatching toward the horizon (`look-pump-pm-pen.png`); watch it.
-- Real grey paper on the open ground reads as a rendered texture and tiles in the distance. Normalising it round its mean (so the ground isn't darker than the sky) helped; I still think open ground and sky should stay bare.
-- A pump alone on bare ground in the same sun is a good way to judge an element: its own shadow is in the frame, and so is yours in the afternoon.
-- Lit faces go empty. Painted steel needed its reflections turned up to have anything at arm's length, and still has too little.
-- The headless browser here runs a few frames a second and never shows a long-press callout. `window.bench` is not trustworthy (finish doesn't block). Don't claim frame rates from it.
-- Renders are quick now: about 6 s a still. `look.js` waits for the papers to load (`window.papersLoaded`); if a still hangs, that is why.
+## Decisions I made, and why
 
-## Files
+- Dots for things, lines for light: above. The main thing for the director to judge.
+- Two pumps the same, facing each other: his Route 66 photo shows one model in two grades. Marked as a question on the sheet.
+- LLANO kept as the stand-in; he supplies names.
+- Dots round on the screen, not on the surface: a pen makes round dots, and stretched ovals read as a rendered texture.
+- The together view is shown in summer early afternoon so the pumps really are in shade; otherwise the frame would dodge the test.
+- The wall is an outline that takes shade. Hiding the building would have left the canopy floating and the shade with nothing to fall on.
+- Fascia stripes and rust as packed dots, not solid black: solid flakes looked torn and posterized.
+- Shade lines thinned twice after looking at actual pixels; they were louder than the things in them.
 
-`sketches/place/` (serve `sketches/`; three.js is shared from `../ink-is-shadow/vendor`, the only copy):
+## Known weak points
 
-- `index.html` — the prototype, new look. `round3.html` — last round's, untouched, for before pictures.
-- `paper/`, `papers.js` — the stand-in grains and their generator.
-- `look.js [prefix] [device]`, `look-shots.js` — stills from an emulated phone (default iPhone 14) into `out/`. Then quantise to 16 greys (paper stills as JPEG) into `concepts/stills/` and delete `out/` (it is 25 MB raw). The sheet was built with a few lines of PIL; not kept as a script.
-- `walk2.js` — the walk-past numbers for the new look.
-- `strokes.js` — last round's stroke sheet. Now only feeds the painted mesas and the dusk sky.
-- `render.js`, `shots.js`, `sheets.js`, `walk.js`, `review.js` — last round's scripts. `walk.js` and the `lo-` shot list use parameters that no longer exist (`detail`, `big`, `anchor`, `strokes`, `sheet`); they will run against `round3.html` if pointed at it, not against `index.html`.
-
-Folder is about 17 MB (was 12): 3.6 MB of look stills, the 1.8 MB sheet, the papers.
-
-## The director's bar (steer-3) and where each stands
-
-| Bar | Status |
-|---|---|
-| A small look test before a rebuilt world | Done, as elements (the owner's change) |
-| Side by side with 16/17 and 13 | In the sheet, row 4 |
-| Real captures from a real phone | Not met: emulation at true density |
-| Both defects gone, checked on touch | Fixed; checked in emulation only |
-| Outcomes 1 to 7 in a walked frame, marks on the world | In frames, and measured; not seen in motion |
-| No words for pictures | Everything claimed is in a still, except the mix I recommend for paper |
+- Slab is plain in open sun; joints are rules; sand barely reads; cracks are generated, not placed.
+- Shade lines are still the loudest marks in the day frame.
+- Fascia stripes now hardly read as stripes. Posts are round and plain; his abandoned-station photo has square ones, one with a painted band.
+- Lamps are small and plain.
+- Lone pump at night outside your cone: solid black cabinet with white plates floating.
+- The veil is hard to tell from no veil at phone size.
+- Lettering is set type. Tall pump still a stretched short one.
+- The world's own sheet is flat cream; the aged paper exists only in the sheet scripts.
+- Dusk, room, aisle, road, horizon, scrub, sign: untouched in the picks. `#team` views run but nobody has looked at them since the shader changed; `walk2.js`, `walk.js`, `shots.js`, `sheets.js`, `render.js`, `review.js`, `look-shots.js` are older scripts and may not match.
 
 ## Not proven
 
-- Frame rate and heat at 3 dots per point on his phone.
-- The callout really gone on iOS Safari and Android Chrome.
-- Lines growing in and letting go as you walk and sidestep: measured (12 % of cells change on a 60 cm sidestep), unseen.
-- Shimmer of fine pen hatching on far surfaces in motion.
-- Outdoors legibility of thin lines.
-- Dusk (untouched, tuned for the old look), the room and the aisle in the new look (they render; nobody has looked).
-- Whether quiet open ground reads as quiet or unfinished.
+- Anything in motion. Anything on a real phone: frame rate at 3 dots per point (the stipple now reads twelve or more dot places per pixel, up from six), heat, the press-and-hold callout, sharpness.
+- Whether 2 % per-frame change reads as still.
+- A pump in shade against a detailed shaded wall (the wall is blank for now).
+- Your own lamp on the group; the four-minute lamp event; your shadow on a thing up close.
+- Whether he meant shadows to fall on things at all.
 
 ## Open questions
 
-Owner: pen, brush or paper; grain strictly through ink, or real grey too, and on what; is this pump the pump; which element next; does hold only walk and is it fluid; where did he open the link; will he scan papers and draw one pump.
-Director: may paint stay flat; is the lot too empty by day; is the tamed fallback acceptable.
-Systems: nothing changed in how it works. Elements are reachable by hash; the default arrival is unchanged.
-Orchestrator: the private-link copy needs `index.html`, `strokes.js` and the whole `paper/` folder (seven PNGs) beside it. Without `paper/` the surfaces draw with no grain.
+Owner (plain words; never by picture number): two pumps the same or one of each; is shade and night in lines right, or should shade be more dots; should a pump in the canopy's shade look shaded at all; do the dots hold still on his phone; which canopy lamp works; still unanswered from before: is this what he meant by flash sheet vibes, and the phone check.
+Director: is dots-for-things, lines-for-light a fair reading of "no", or "lit by the hour" for the ground under another name; is the sheet too long.
+Orchestrator: the private-link copy needs `index.html`, `strokes.js` and the whole `paper/` folder (eight PNGs now, `rubber.png` is new) beside the shared three.js. Folder is about 23 MB.
 
 ## Next
 
-1. His answer on the look. Then the sign as the next element (his name is on it; it has been unchecked against his references for three rounds).
-2. The remaining list in `look-test.md`: canopy, building front with glass, road edge, horizon and scrub in the new look, your shadow, lamp pools, room, aisle, dusk, stars.
-3. Lit faces: more to find at arm's length. Plaster and dirt further apart. Curved strokes for brush (13's strokes bend; ours don't).
-4. The last stepped silhouettes: give the contour pass a proper soft edge.
-5. If frames are slow on his phone: cap at 2.5, cut the shadow taps from 8 to 5, drop the second line evaluation in the far octave.
-6. Rewrite the looks half of `05-left-on.md` once the look is chosen.
-7. How his own strokes get in now that there is no single sheet.
+1. The director's read of Sheet 2, then the owner's.
+2. Element 4, the station front, as Sheet 3: stucco over brick, door with card, two lettered windows, garage door, two stripes, boarded side window. It is the real test of a pump in shade against a drawn wall.
+3. Make the slab less plain: placed cracks near the island, a real sand drift, joints with weight.
+4. Put the aged sheet into the walked world, if he wants one paper under everything as well as a paper per part.
+5. Draw the lettering.
+6. Rewrite the looks half of `05-left-on.md` once section D is answered.

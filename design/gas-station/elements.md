@@ -139,15 +139,18 @@ Outside before inside, day before night. The inside is last, so nothing waits on
 - Metal ticks in the heat — [concept]
 - The globe is lit at night: the power never went off — [you]
 
-**Drawing needs (visual designer):**
+**Drawing needs (visual designer):** *(settled in your picks: the short pump, dots, drawn once, a paper on each part)*
+- *Shape:* the short flat-topped pump after your Route 66 photo. Rounded in plan, a nearly flat top with a soft edge, a dark base, a disc globe on a short neck.
 - *Made of:* painted steel cabinet and base; glass globe face and number window; rubber hose; cast metal nozzle; enamel or decal lettering.
-- *Paper:* the steel paper (smooth, faint streaks one way) on cabinet, base, rim, nozzle and hose. Glass and lettering have no paper: they are flat paint.
-- *Kinds of mark:* a contour with weight; then, by the hand he picks, slanted dry brush dabs, or fine upright hatching, or stipple, running with the cabinet and round the globe's rim; pits and chips on lit steel; rust as blotches and close stipple rising from the base and at the seams; the print itself worn (ink dropping out in the paper's low places).
-- *Where tone turns:* the cabinet is rounded in plan with a rounded top edge, so tone turns across its corners; the globe's rim turns; the hose is a tube. No part is a plain box.
-- *Flat paint (hard, like lettering):* the globe's face with the brand, grade plate, number window and its digits, badge, notice, knob, the two seam lines. All worn: flecks of paint gone, dust on the window, a crack on one globe.
-- *At night:* the power is on, so the globe's face is lit: the one part of the pump that is paper-white in the dark, with its lettering in ink.
-- *Its own ground:* its cast shadow, feathered, and the pebbles under it. No weeds: none are on this list.
-- *Open:* the hose and nozzle are not drawn well enough yet (off Sheet 1 for now); lettering is set type until someone draws it; the brand name is PROPOSED, for him to pick: LLANO, CALICHE, BAJADA or TULAROSA (two web searches found no fuel brand by any of them; not a trademark check).
+- *Paper, one per part:* steel paper (smooth, faint streaks one way) under the cabinet, base, rim and nozzle; rubber paper (fine, crazed, much darker) under the hose. Each shows as real grey under the ink. Glass and lettering have no paper: they are flat paint. Stand-in papers for now; your scans replace them file for file.
+- *Kinds of mark:* a fine contour; then dots, packed closer for dark, round on the screen, each with a place on the pump that it keeps as you walk. Pits on the steel. Rust as packed dots rising from the base. Cracks across the hose. The print itself worn (ink dropping out in the paper's low places).
+- *Where tone turns:* across the cabinet's rounded corners, round the globe's rim, round the hose. Lightest on the side toward the upper left. This shading is the pump's own and is the same at every hour.
+- *Hose and nozzle:* the hose leaves the side high up through a small fitting, hangs in one long loop nearly to the island, and comes back up to the nozzle. The nozzle hangs by its hooked spout in a boot on the side: a grip, a thin trigger guard, a spout.
+- *Two pumps:* drawn as the same pump twice, turned to face each other with the hoses inward, as in your Route 66 photo. HI-TEST on one, REGULAR on the other; one globe cracked. **Same or one of each is still your call.**
+- *Flat paint (hard, like lettering):* the globe's face with the brand, grade plate, number window and its digits, notice, knob, the two seam lines. All worn.
+- *What light does to it:* by day, in the shade of the canopy or in your shadow, a thin veil of lines is laid over it; its dots do not change. At night it is black until a lamp reaches it, and then the same drawing shows. The globe's face is lit all night.
+- *Its own ground:* its cast shadow, in lines along the sun.
+- *Open:* lettering is set type until someone draws it. LLANO is a stand-in name; you are supplying the brands.
 
 ---
 
@@ -170,7 +173,15 @@ Outside before inside, day before night. The inside is last, so nothing waits on
 - The bell line rings — [concept]
 - Takes every shadow: the canopy's, the sign's, yours — [concept]
 
-**Drawing needs (visual designer):** _empty_
+**Drawing needs (visual designer):**
+- *Made of:* poured concrete, in slabs about 3 m by 4 m; a rubber hose (the bell line).
+- *Paper:* concrete paper (fine, pitted), a little greyer than the bare sheet, so the slab reads as a floor laid on the desert. The island has the same paper. The bell line has the rubber paper.
+- *Kinds of mark:* it has no shading of its own. Its drawing is what it is made of and what has happened to it: thin broken lines for the joints; straight, angular cracks, more of them toward the edges; pits; stains as patches of closer dots (heaviest where cars stood by the island); sand as a bare patch that covers joints and cracks, with a scatter of fine dots along its edge; a few flicked tufts of scrub on the joint lines.
+- *Edge:* ragged, drawn as a broken line, with dirt beyond it. The edge against the building is hidden by the wall.
+- *The island:* a raised block 14 cm high with a contour, and a line set in from its edge for the kerb stones. Drips and stains on top. Sand drifted against its foot.
+- *The bell line:* a thin dark hose that wanders across the forecourt south of the island and turns in to the wall beside the door.
+- *What light does to it:* everything. Shade and shadows are drawn on it in lines laid along the sun, and each shadow ends where its lines stop. At night it is black except in a lamp's pool, where lines run out from the lamp and cross as they close to black. This is where your shadow and your lamp show.
+- *Open:* cracks, stains and sand are generated, not placed by hand. Up close the joints are plain rules. Sand against the wall is hard to see. Not yet seen with the road beside it.
 
 ---
 
@@ -195,7 +206,14 @@ Outside before inside, day before night. The inside is last, so nothing waits on
 - Night: one lamp lights it from below — [concept]
 - After four minutes of standing still: that lamp goes out, a disc of light crosses the forecourt, the lamp comes back — [concept]
 
-**Drawing needs (visual designer):** _empty_
+**Drawing needs (visual designer):**
+- *Made of:* a flat slab with a plastered fascia 46 cm deep; two thin steel posts; three lamp fittings (a ceiling plate, a stem, an enamel shade, a bulb).
+- *Paper:* plaster paper under the fascia and the underside; steel paper under the posts and shades.
+- *Kinds of mark:* dots, like the pump. It is a thing, so it is drawn once: the underside is dark with close dots because it is an underside, at every hour. Stains underneath as patches of closer dots. On the fascia, two stripes of which only broken bands of packed dots are left, and patches of close dots where paint has peeled. Posts: rust rising from the foot.
+- *Lamps:* west, dead (shade and stem, no bulb). Middle, the one that works. East, gone (a plate and a stub of flex). PROPOSED, as on the list.
+- *What light does to it:* by day it takes no shade; it makes it. Its shade is drawn in lines on the slab, the island, the wall behind and, as a thin veil, on the pumps. At night the working lamp's bulb is paper-white, and the underside, the forecourt under it and the pumps show in its light; beyond its reach, black.
+- *Joined:* it runs into the front wall. The wall is element 4 and is not drawn yet; for now it is an outline that takes the canopy's shade.
+- *Open:* the posts in your abandoned-station photo are square and one has a painted band; ours are round and plain. The fascia has no lettering. Which lamp works is ours to choose until you say.
 
 ---
 
