@@ -167,6 +167,19 @@ Against the questions asked:
 
 "The others" (Sheet 1 picks A/B/D/E/F and the phone check) — he will get back.
 
+## 18. His picks on Sheet 1, the pump (verbatim)
+
+"A1 b3 d no e2 f I'll deal with that just mock for now"
+
+Against the sheet:
+- A. Which pump? — A1: short and flat-topped, after his Route 66 photo. (Two the same or one of each: not answered.)
+- B. Which hand? — B3: dot (stipple, packed closer for dark).
+- D. "Does the light redraw it?" — "no". Orchestrator's reading, to be confirmed: D1, drawn once — a thing keeps its own shading at every hour; shadows and night are added on top.
+- E. One paper, or a paper each? — E2: a scanned paper on each part, with real grey in the material, as he described earlier. (This is real grey in the paper grain; the ink itself stays black. It refines "two values".)
+- F. Brand name — "I'll deal with that just mock for now": he will name the brands himself; use placeholders until then.
+
+Not yet answered: whether this is what he meant by flash sheet vibes; the phone check (sharp, fluid, press-and-hold only walks, which browser).
+
 ## Still open (asked, not answered)
 
 - Should the time of day do something (choose which work shows), or only change how the place looks and what odd things happen? (Related: he said "no" to choosing what shows in office hours versus at night.)
