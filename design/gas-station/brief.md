@@ -4,22 +4,16 @@
 
 > I want to work on a new portfolio site. But I want it to be set in a vintage gas station. Aesthetic should be monocolor black and white brush strokes. It should be a bit of a liminal world - you start out of the gas station and can go in. It should have Easter eggs like alike stuff and time of day stuff and be set in the desert. Think Ed Ruscha meets Jack Kirby's sketches. It should feel liminal and like every interaction has some artistic meaning. I've attached various screenshots for inspo.
 
-Orchestrator's reading, not the owner's words: "alike stuff" is probably a typo for
-"alien stuff" (the inspiration includes the Little A'Le'Inn sign and a UFO sighting
-chart). Unconfirmed.
+The owner has since confirmed: "I meant alien."
 
 ## What's known about the owner (from records)
 
 - Adam Trabold: designer, musician, design director. This is his own portfolio.
-- Nothing else is known yet about which work goes in the portfolio, or who it is
-  mainly for. Those are open questions to the owner — design so the answer can
-  slot in, and name what you need to know.
+- See `owner.md` for what he has said about the work and who the site is for.
 
-## The owner's later direction (verbatim)
+## The owner's later direction
 
-> I'm thinking threejs
-
-See `owner.md` for everything the owner has said since the brief.
+The owner has answered questions since the brief. Read `owner.md` in full — it is all verbatim and it overrides anything provisional in the jam.
 
 ## The project
 

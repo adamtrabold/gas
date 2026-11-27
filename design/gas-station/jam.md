@@ -692,3 +692,94 @@ And there are two blacks, which should look different. **Shadow** is brushed, ta
 - Stencil head, raking beam, or both. The beam removes the midday cheat; it also decides "which station" before the owner has answered.
 - The arrival camera riding the hour: one stop with a height and tilt set by the clock. Does that count as a composed view, or as too many pictures to compose?
 - Twilight: I'd let it point at nothing. Frames 1 and 2 are that picture and they hold up.
+
+## Pass 2 — director
+
+Last turn of the jam. Nothing from the owner yet beyond "I'm thinking threejs", so everything here is provisional. No scores.
+
+### 1. What I see on the dial sheet
+
+I proposed the sundial, so I'm reading this sheet against it harder than I would someone else's idea.
+
+- **The stroke rule works.** No outlines, shadow laid in the direction of the light, and it no longer looks like a filter on boxes. That part of the foundation is proven as a picture. It isn't yet proven as a hand or as a build, and visual says so.
+- **The night frames (6, 10) are the best things drawn so far.** One tail per piece, one caption, the sky turning round the sign. They read without explanation.
+- **Frame 9 is the best day picture**, and it is the one where the dial can't be read. Eye height, the beam going over your head, the station across the middle. It is 03.
+- **Frames 3, 4, 5, 7, 8 are diagrams.** The station is a slot taking up a tenth of the screen, seen from the height of a lamp post, and the subject of the picture is a fan of painted lines. The owner asked for a vintage gas station that you start outside of. In these frames you are looking at an instrument that has a station at the far end of it.
+- **Two passes in, nobody has drawn the work.** No interior, no piece held, no list over the picture. We know where the sun is on the winter solstice and we don't know what a project looks like on a shelf. That is my doing as much as anyone's; the dial was interesting and we followed it.
+
+So the sundial stays, with one condition that goes above all the geometry: **it has to be felt by someone who never works out that it's a dial.** If a visitor has to understand hour lines to get anything from the arrival, it has failed. The geometry being true is what makes it feel right; it is not the thing on show.
+
+### 2. The rulings I was asked for
+
+**Stencil head or raking beam?** The beam, where there is a dial. It is a full hand in every season, it needs no cheat, it gives 03's diagonal and Kirby's thrust without comic marks, and at night it points at the one still star. The flat stencil sign is dropped: a name that is mirrored in the air fails the first job of a sign, which is to say whose place this is. A name printed on the ground is a bonus; the name in the air is the requirement.
+
+But the beam does decide "which station", and that is the owner's to decide, not mine. So I'm not making it the foundation. It belongs to one concept (section 3, The Instrument), and a second concept keeps the plain box and the upright pole. The owner then chooses between two stations he can see, which is a better way to ask him than a question in a list.
+
+**The length floor at midday.** Not needed. No cheats anywhere on the clock. If a thing can't be done honestly, the picture changes, not the sun.
+
+**Does a camera that rides the hour count as a composed view?** Yes, on these terms: it is a small number of composed pictures with the camera easing between them, not a continuous function someone hopes will look good. Compose four: twilight level, morning and evening three-quarter, midday, night tipped up. Each has to pass the print test by itself. And in every one of them **the station is the subject**. On the sheet the high midday view fails that. Lower it until the building has weight in the frame again, even if the dial reads less clearly. Reading the dial clearly is not the goal.
+
+**Twilight pointing at nothing.** Yes. Leave it broken. The hand has gone, the stars aren't out, the lamp comes on, the station recommends nothing. It is the station's own half hour. If the odd things happen at any time, they happen then.
+
+**Also agreed:** the light source sets the stroke (sun parallel, lamp outward, stars round the pole). Two blacks: shadow is brushed and moves, paint is flat and doesn't. Stars are strokes with tails, krackle is clustered dots. The timetable with a fixed order and a bar at "now" in place of a reordering list. Links never carry the hour. The wound clock is marked as wound and lets go when you leave. The record turning round a spindle stays unsaid.
+
+**One caution on systems' turn.** Pieces taking turns by date, queues per stretch of day, a receipt with stamped hours: each is sound, and together they are a lot of machinery for a site that may hold eight projects. Keep what a visitor can feel in one visit. The rest waits until the owner says how much work there is.
+
+### 3. Directions to carry into concepts
+
+The concepts have to differ in kind. These three differ in **what the time of day does** and in **where the idea lives**. Build the first two. The third is there if a designer wants it, and there is room for one more of your own if it is different again.
+
+**1. The Instrument.** The station tells the time and the time chooses the work.
+- The raking beam, the painted fan on the lot, the hand by day and the turning sky by night. The streamlined station (01, 03, 12).
+- The list is a timetable in the order of the day. The wall clock inside runs it.
+- The idea lives outside, on the lot and in the sky.
+- What it has to prove: that the station is still the subject; that it works for someone who never notices the dial; that it holds with three pieces and with thirty; that the inside is as strong as the outside.
+
+**2. Nobody's here.** The station is a place someone has just left, and you are what turned up.
+- The plain box in the middle of nowhere (02, 09, 10), an upright sign, dead frontal, eye height, never from above. No hour lines, no instrument. Time of day changes the light and what odd things happen, and nothing else. The shadow is only a shadow.
+- The idea lives at the door and inside. Outside is Ruscha: one building, one word, empty. Inside is Kirby: dense, built, deeper than the building could hold, with the work as the lit thing. The attendant's things are the About. The visitor is the sighting, if "alike" is "alien"; the customer if it isn't.
+- The list is the price board.
+- What it has to prove: that it is more than a nicely lit shop; that crossing the door is an event worth the trip; that the absence is felt and not just stated; that "time of day stuff" is still enough without the dial.
+
+**3. The board.** (Optional.) The station is a drawing on Adam's board, and the site is the board.
+- The paste-up: flats, the strip of every piece, the margin with its production notes, attention as the inker so the drawing is more finished each visit. Four tiers for four hours, where a gutter is time (06).
+- The least 3D of the three. It is here so the owner sees what he gives up and gains by "threejs", which he stated as a lean.
+- What it has to prove: that "go in" is still an event when the world is paper; that it isn't a comic.
+
+**Shared by every concept**, so they can be compared:
+- Ink is where the light isn't. Mass before line. Light says where and which way, the hand says how. Shadow brushed, paint flat.
+- The world may hide surprises, never the work. A plain list with a fixed order, one action from anywhere. An address for every piece.
+- Five gestures. A latch at the door, never a puzzle. Stepped, composed views, each printable.
+- Deadpan. Evidence, never the creature. Nothing responds except by ink.
+- The real hour is the hour. Only the wall clock moves it, and it says so.
+
+**Every concept shows the same five moments**, on a tall phone first: arriving; crossing the door; inside with the work lit; one piece held; the list. A concept that only shows the outside isn't a concept yet. The interior as Kirby density with the work lit, which visual still owes, is now owed by every concept.
+
+### 4. Dropped
+
+- The flat stencil sign.
+- Any stretched or floored shadow.
+- The high camera where the station shrinks to a slot.
+- Panels as the layout of the world (kept only as tiers of time, in The board).
+- The lap changing the hour; the list reordering by the hour; a link that carries the hour.
+- The cast name as a requirement. It is a bonus where the sun gives it.
+- From my own pass 1: "the shadow comes down the page toward you" from the front. Systems is right, it runs away from you, and that is the better picture.
+
+### 5. What a concept can't be judged without
+
+Until the owner answers these, I can say which concept is the stronger idea, but not that I'd defend it to him:
+
+1. **Which brush, and will Adam make the marks himself?** Every sketch so far uses generated strokes. "Brush strokes" is the first thing he asked for and the least proven thing we have.
+2. **Strictly ink or paper, or is grey haze allowed?**
+3. **Which station:** plain box or streamlined? Concepts 1 and 2 now show him one each.
+4. **What goes in, and how much?** Three pieces and thirty are different sites, and the timetable depends on it.
+5. **Place first or work first on arrival?**
+6. **"Alike" = "alien"?** Concept 2 leans on it.
+
+Everything else on the earlier lists can wait for his reaction to the concepts.
+
+### Questions for the owner (director)
+
+One new one. It is the fork between concepts 1 and 2.
+
+1. **Should the time of day do something, or only change how the place looks?** In one version the hour chooses which piece of work the station is showing, so a visitor at nine sees something different from a visitor at four. In the other, the hour changes the light and what odd things happen, and the work is the same whenever you come. Which is closer to what you meant by "time of day stuff"?

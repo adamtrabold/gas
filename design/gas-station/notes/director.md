@@ -60,3 +60,75 @@ Nothing scored yet. Before scoring I need at least: the two-value answer, which 
 ## Next
 
 Pass 2 of the jam. I asked systems to lay out the lot as a dial and test it at two pieces and at forty; visual to redo one frame as mass without outline and to try the two tall arrivals side by side; both to find where the sundial breaks, starting with night.
+
+---
+
+# After jam pass 2 (jam closed)
+
+## State
+
+- Jam is over. Next: the two designers build 2–4 concepts that differ in kind; I steer after each pair of turns, then score.
+- Still no owner answers beyond "I'm thinking threejs". All steers provisional. No scores given yet.
+
+## What I looked at
+
+`sketches/dial-on-a-phone/sheet.png` (ten tall frames, 2D, generated strokes, real sun at 35°N).
+
+- Stroke rule (no outline, shadow laid along the light) works as a picture. Not proven as a real hand or in three.js.
+- Night frames 6 and 10 are the strongest things drawn so far.
+- Frame 9 (eye height, raking beam overhead) is the best day picture, and the dial isn't readable in it.
+- Frames 3, 4, 5, 7, 8 are diagrams: station is a slot, a tenth of the screen, seen from 7 m up.
+- Two passes in, nobody has drawn the interior, a piece held, or the list.
+
+## Self-check on my favourite
+
+I proposed the sundial and the team spent a whole pass on its geometry. Risk: a clever instrument the visitor has to decode, with the gas station (the owner's actual subject) pushed to the back. Condition I set: it must be felt by someone who never works out it's a dial. When scoring, hold The Instrument to that and don't reward the geometry for being true.
+
+## Rulings
+
+- Raking beam over flat stencil, where there is a dial. Flat stencil dropped (name mirrored in the air). But the beam decides "which station", which is the owner's call, so it lives in one concept only.
+- No length floor, no cheats with the sun.
+- Camera riding the hour: allowed as four composed pictures with easing between (twilight, morning/evening, midday, night). Station must be the subject in each. The high midday view on the sheet fails this; lower it.
+- Twilight points at nothing. Yes.
+- Agreed: light source sets stroke direction; two blacks (brushed shadow, flat paint); stars with tails versus krackle dots; timetable with fixed order and a bar at "now"; links never carry the hour; wound clock marked and released on leaving.
+- Caution given to systems: turns-by-date, queues and stamped receipts are a lot of machinery for a possibly small portfolio. Keep what's felt in one visit.
+
+## Directions carried into concepts
+
+1. **The Instrument** — beam, painted fan, timetable, sky at night; streamlined station; time chooses the work; idea lives outside. Must prove: station stays the subject, works unnoticed, holds at 3 and 30 pieces, inside as strong as outside.
+2. **Nobody's here** — plain box, upright sign, frontal, eye height, no dial; time only changes light and oddities; idea lives at the door and inside (Ruscha out, Kirby in, work lit, attendant's things as About, visitor as the sighting). Must prove: more than a lit shop, the door is an event, absence is felt.
+3. **The board** (optional) — paste-up, flats, margin notes, attention as inker, four tiers for four hours; least 3D. Must prove: "go in" is still an event; not a comic.
+A fourth of the designers' own is welcome if different in kind.
+
+Shared rules for all, and five moments every concept must show on a tall phone: arrive, cross the door, inside with work lit, one piece held, the list.
+
+## Dropped
+
+Flat stencil sign; floored shadow; high camera where the station is a slot; panels as world layout; lap changing the hour; list reordering; hour in links; cast name as a requirement; my own "shadow toward you from the front".
+
+## Can't judge a concept without (owner)
+
+1. Which brush, and will Adam make the marks? (Largest unproven thing.)
+2. Strict ink/paper or grey haze?
+3. Which station: box or streamlined? (Concepts 1 and 2 show one each.)
+4. What goes in and how much?
+5. Place first or work first?
+6. "Alike" = "alien"?
+
+New question asked this turn: should the time of day choose which work is shown, or only change how the place looks and what odd things happen?
+
+Until 1–3 at least are answered I can rank concepts as ideas but not call any a 9.
+
+## Expected owner objections, updated
+
+- "Where's my gas station?" if The Instrument's arrival is a diagram.
+- "These aren't brush strokes" — generated hatching combs like grass on walls.
+- "It's a filter / it's a comic / it's a theme park" as before.
+- "It's a nice shop but what's the idea?" for Nobody's here if the absence isn't felt.
+- "I said threejs" for The board.
+
+## What to watch when steering the build of concepts
+
+- Is the work drawn? Interior first, not more exterior.
+- Does each concept differ in kind, or are 1 and 2 drifting into the same site with different signs?
+- Is machinery growing past what one visit can feel?
