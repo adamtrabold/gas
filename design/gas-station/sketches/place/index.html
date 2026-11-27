@@ -10,7 +10,7 @@
   #note{position:fixed;left:0;right:0;bottom:calc(5px + env(safe-area-inset-bottom,0px));text-align:center;font:11px/1.9 "Courier 10 Pitch","Courier New",monospace;color:#8a857a;pointer-events:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
   #note a{pointer-events:auto;color:inherit;text-decoration:none;padding:8px 2px;-webkit-touch-callout:none;-webkit-user-drag:none}#note a.on{text-decoration:underline}#hint{transition:opacity 1.5s}
 </style>
-<div id="note"><span id="looks"><a data-look="pen">pen</a> · <a data-look="brush">brush</a> · <a data-look="paper">paper</a></span><br><a data-hour="day">day</a> · <a data-hour="dusk">dusk</a> · <a data-hour="night">night</a><span id="hint"> &nbsp; drag to look · hold to walk</span></div>
+<div id="note"><span id="looks"><a data-look="pen">pen</a> · <a data-look="brush">brush</a> · <a data-look="paper">paper</a></span><br><a data-hour="day">day</a> · <a data-hour="night">night</a><span id="hint"> &nbsp; drag to look · hold to walk</span></div>
 <script type="module">
 // The place, walked. Throwaway: it exists to test the look, not to be built on.
 // Systems' lot: sign at the road, door 16 m straight north of it, canopy and pumps to the west.
@@ -32,11 +32,12 @@ import { makeSheet } from './strokes.js';
 const Q = new URLSearchParams(location.search), num = (k, d) => Q.has(k) ? +Q.get(k) : d, STILL = Q.has('still');
 // which hour and which look: names after the #, joined by a dash in any order (#night, #brush, #pen-dusk). with no hour, the visitor's own clock picks one of the three
 const HASH = location.hash.replace('#', '').toLowerCase().split(/[-+,]/), CLOCK = new Date().getHours() + new Date().getMinutes() / 60; addEventListener('hashchange', () => location.reload());
-const HOURH = HASH.find(h => ['day', 'dusk', 'night'].includes(h)), LOOKS = ['pen', 'brush', 'paper'], LOOKH = HASH.find(h => LOOKS.includes(h));
-const MODE = Q.has('night') ? 'night' : Q.has('dusk') ? 'dusk' : Q.has('hour') ? 'day' : HOURH ? HOURH : CLOCK >= 7 && CLOCK < 17.25 ? 'day' : (CLOCK >= 6 && CLOCK < 7) || (CLOCK >= 17.25 && CLOCK < 18.25) ? 'dusk' : 'night', DUSK = MODE === 'dusk';
-const STUDIES = { pump: [-10.3, 9.2, -43, -2], wall: [2.6, 11.2, -4, 1], ground: [-.8, 7.6, 74, -24], lot: [-2.5, 6.5, 42, 0] }, STUDY = STUDIES[Q.get('study')] ? Q.get('study') : HASH.find(h => STUDIES[h]), SV = STUDIES[STUDY] || [2.6, -21, 6, 9], SOLO = STUDY === 'pump' && num('solo', 1);
+const HOURH = HASH.find(h => ['day', 'night'].concat(HASH.includes('team') ? ['dusk'] : []).includes(h)), LOOKS = ['pen', 'brush', 'paper'], LOOKH = HASH.find(h => LOOKS.includes(h));
+const MODE = Q.has('night') ? 'night' : Q.has('dusk') ? 'dusk' : Q.has('hour') ? 'day' : HOURH ? HOURH : CLOCK >= 6.5 && CLOCK < 17.75 ? 'day' : 'night', DUSK = MODE === 'dusk';   // dusk has not been redrawn: only by name, behind #team
+const STUDIES = { pump: [-10.3, 9.2, -43, -2], wall: [2.6, 11.2, -4, 1], ground: [-.8, 7.6, 74, -24], lot: [-2.5, 6.5, 42, 0] }, TEAM = HASH.includes('team') || Q.has('study') || Q.has('team'), STUDY = !TEAM ? 'pump' : STUDIES[Q.get('study')] ? Q.get('study') : HASH.find(h => STUDIES[h]),   // the link shows the pump and nothing else. the rest of the place is not redrawn yet: it is behind #team (#team-lot, #team-wall, #team-ground, #team alone for the arrival)
+  SV = STUDIES[STUDY] || [2.6, -21, 6, 9], SOLO = STUDY === 'pump' && num('solo', 1);
 const LOOKN = LOOKS.includes(Q.get('look')) ? Q.get('look') : LOOKH || 'brush', LOOK = LOOKS.indexOf(LOOKN);
-document.querySelectorAll('#note a').forEach(a => { const h = a.dataset.hour, l = a.dataset.look; a.href = '#' + (STUDY ? STUDY + '-' : '') + (l || LOOKN) + (h || HOURH ? '-' + (h || HOURH) : ''); a.classList.toggle('on', h === MODE || l === LOOKN); }); if (STILL) document.getElementById('note').style.display = 'none';
+document.querySelectorAll('#note a').forEach(a => { const h = a.dataset.hour, l = a.dataset.look; a.href = '#' + (TEAM ? 'team-' + (STUDY ? STUDY + '-' : '') : '') + (l || LOOKN) + (h || HOURH ? '-' + (h || HOURH) : ''); a.classList.toggle('on', h === MODE || l === LOOKN); }); if (STILL) document.getElementById('note').style.display = 'none';
 const LAT = 35 * Math.PI / 180, RAD = Math.PI / 180;
 const R = new T.WebGLRenderer({ antialias: false, preserveDrawingBuffer: true, powerPreference: 'high-performance' });
 R.shadowMap.enabled = true; R.shadowMap.type = T.PCFShadowMap; R.outputColorSpace = T.LinearSRGBColorSpace; document.body.prepend(R.domElement);
@@ -46,7 +47,7 @@ const scene = new T.Scene();
 const sheet = makeSheet();                                                           // last round's stroke sheet: still what the far mesas and the dusk sky are painted from
 const BX0 = -13, BX1 = 7, FN = 16, BN = 24, BH = 3.8, WT = .22;                    // the station: a plain box, 20 m by 8 m, front faces south at n = 16
 // the three looks. [gap between lines in screen points, gap of the second family, how dry, bristle streaks], [angle of the second family, the tone it starts at, the tone that goes solid, how long a mark is in gaps]
-const LK = [[6.5, 9, .3, 0], [15, 12, 1, .6], [15, 12, 1, .6]][LOOK], LK2 = [[1.08, .5, .9, 16], [.3, .5, .86, 9], [.3, .5, .86, 9]][LOOK];
+const LK = [[6.5, 9, .3, 0], [15, 12, 1, .6], [15, 12, 1, .6]][LOOK], LK2 = [[.95, .52, .9, 7], [.3, .5, .86, 9], [.3, .5, .86, 9]][LOOK];
 const SU = { sunD: { value: new T.Vector3(0, 1, 0) }, youF: { value: new T.Vector3() }, youR: { value: new T.Vector2(1, 0) }, youOn: { value: 0 }, sunA: { value: new T.Vector3(1, 0, 0) }, smat: { value: new T.Matrix4() }, lampP: { value: [new T.Vector4(), new T.Vector4(), new T.Vector4(), new T.Vector4()] }, nl: { value: 0 }, pxs: { value: 1 },
   LK: { value: new T.Vector4(num('gap', LK[0]), num('gap2', LK[1]), num('dry', LK[2]), num('bristle', LK[3])) }, LK2: { value: new T.Vector4(num('cross', LK2[0]), num('crossat', LK2[1]), num('solid', LK2[2]), num('len', LK2[3])) }, LK3: { value: new T.Vector4(...[[.13, .5, .42, 0], [.2, .72, .6, 0], [.2, .72, .6, 0]][LOOK]) }, TEXP: { value: num('texp', 2.6) }, texOn: { value: num('tex', 1) }, grainOn: { value: num('grain', 1) } };
 const SHADOW = T.ShaderChunk.shadowmap_pars_fragment.replace('float getShadow(', 'float getShadow0(') + `
@@ -127,7 +128,7 @@ function inkMat(kind, { amb = 1, tone = 1, along = null, drift = false, vert = f
           else if(mk==1){tx=spots(gP,6.,.1+.25*tone,.1,2.);tx=max(tx,fam(gP,.22,.1,34.,6.,g)*step(.6,dn2(gP*.45)));}                                                  // plaster: trowel flecks, and here and there a drag of the float
           else if(mk==2){tx=max(ruled(vWp.x+.3,1.3,.012,dn2(vWp.xz*3.)),ruled(vWp.z+.2,1.3,.012,dn2(vWp.zx*3.)))*step(.9,abs(normalize(vWn).y));tx=max(tx,spots(gP,5.,.1+.2*tone,.09,3.));}   // concrete: joints and pits
           else if(mk==3){tx=spots(gP,4.5,.4,.2,4.);tx=max(tx,fam(gP,.34,.22,9.,7.,g));}                                                                                    // blacktop: aggregate, and the drag of tyres along it
-          else if(mk==4){tx=fam(gP,.4,.15,13.,8.,g)*step(.42,dn2(gP*vec2(.6,5.)));}                                                                              // painted steel: clean, a few long reflections
+          else if(mk==4){tx=fam(gP,.5,.15,11.,8.,g)*step(.36,dn2(gP*vec2(.7,6.)));tx=max(tx,spots(gP,6.,.2,.11,8.)*step(.35,g));tx=max(tx,fam(gP.yx,.3,.11,17.,12.,g)*step(.55,dn2(gP.yx*vec2(.9,7.)+3.)));}                                                                              // painted steel: clean, a few long reflections
           else if(mk==5){vec2 w=gP+vec2(0.,.035*sin(gP.x*5.+3.*dn2(gP*3.)));tx=fam(w,.42+.2*tone,.2,5.,9.,g);}                                                           // wood: grain, always
           else if(mk==6){tx=ruled(gP.x,.18,.014,1.);tx=max(tx,fam(gP.yx,.22,.12,14.,10.,g));}                                                                              // tin: ribs
           else if(mk==7){vec2 w=vec2(gP.x*.7+gP.y*.7,-gP.x*.7+gP.y*.7);tx=fam(w,.75,.4,7.,11.,g)*step(.42,dn2(w*vec2(.5,1.6)));}                                         // glass: slanting reflections with gaps
@@ -184,16 +185,22 @@ const dialMat = (() => { const c = document.createElement('canvas'); c.width = c
   g.font = 'bold 50px "DejaVu Sans",sans-serif'; g.textAlign = 'center'; g.textBaseline = 'middle'; for (let i = 0; i < 12; i++) { const a = i / 12 * TAU; g.fillText(String(i || 12), 256 + Math.sin(a) * 124, 258 - Math.cos(a) * 124); }
   g.lineWidth = 16; g.beginPath(); g.moveTo(256, 256); g.lineTo(256 + 96, 256 - 150); g.stroke(); g.lineWidth = 22; g.beginPath(); g.moveTo(256, 256); g.lineTo(256 - 70, 256 - 40); g.stroke(); g.beginPath(); g.arc(256, 256, 22, 0, 7); g.fill();
   const tx = new T.CanvasTexture(c); tx.colorSpace = T.NoColorSpace; tx.anisotropy = 8; return new T.MeshBasicMaterial({ map: tx }); })();
+// the pump's body is rounded in plan (a squared-off oval) so the light turns across it; dome: the shoulder that closes it
+const supG = (a, b, h, dome) => { const g = dome ? new T.SphereGeometry(1, 56, 14, 0, TAU, 0, Math.PI / 2) : new T.CylinderGeometry(1, 1, h, 72, 1, true), P = g.attributes.position, Nn = g.attributes.normal;
+  for (let i = 0; i < P.count; i++) { const X = P.getX(i), Z = P.getZ(i), rho = Math.hypot(X, Z), th = Math.atan2(Z, X), c = Math.cos(th), s = Math.sin(th), x = a * Math.sign(c) * Math.sqrt(Math.abs(c)), z = b * Math.sign(s) * Math.sqrt(Math.abs(s));
+    let nx = Math.sign(c) * Math.abs(x / a) ** 3 / a, nz = Math.sign(s) * Math.abs(z / b) ** 3 / b; const l = Math.hypot(nx, nz) || 1; nx /= l; nz /= l;
+    if (dome) { const y = P.getY(i); P.setXYZ(i, x * rho, y * h, z * rho); const m = Math.hypot(nx * rho, y, nz * rho) || 1; Nn.setXYZ(i, nx * rho / m, y / m, nz * rho / m); } else { P.setX(i, x); P.setZ(i, z); Nn.setXYZ(i, nx, 0, nz); } } return g; };
+const Wb = inkMat('steel', { tone: .66, vert: true, round: [1.9, 1.42] }), Wdm = inkMat('steel', { tone: .66, round: [1.9, .5] }), Wc2 = inkMat('concrete', { round: [2.4, .1] }), Wh = inkMat('steel', { tone: .3, round: [2.3, .15] }), Wt2 = inkMat('steel', { tone: .35 });
 const dotG = new T.CircleGeometry(.011, 10), dialG = new T.CircleGeometry(.2, 40);
 const pump = (name, x) => thing(name, x, 11.5, g => { const n = 11.5, put = (m, px, pn, pu, ry = 0) => { m.position.copy(v(px, pn, pu)); m.rotation.y = ry; g.add(m); return m; };
-  box(.74, .62, .1, x, n, .14, Wc, g); box(.58, .46, 1.42, x, n, .24, Wd, g);
-  const cap = put(new T.Mesh(new T.CylinderGeometry(.29, .29, .46, 24), Wd), x, n, 1.66); cap.rotation.x = Math.PI / 2; cap.castShadow = cap.receiveShadow = true;
-  rod(.045, .07, .16, x, n, 1.94, Wp, g); const s = put(new T.Mesh(new T.SphereGeometry(.25, 24, 14), Wl), x, n, 2.33); s.castShadow = s.receiveShadow = true; put(new T.Mesh(new T.TorusGeometry(.253, .011, 6, 36), K), x, n, 2.33);
+  put(new T.Mesh(supG(.37, .31, .1, 0), Wc2), x, n, .19).castShadow = true; { const top = put(new T.Mesh(new T.CircleGeometry(1, 48), Wc), x, n, .2401); top.rotation.x = -Math.PI / 2; const P = top.geometry.attributes.position; for (let i = 0; i < P.count; i++) { const th = Math.atan2(P.getY(i), P.getX(i)), r = Math.hypot(P.getX(i), P.getY(i)), c = Math.cos(th), s = Math.sin(th); P.setXY(i, r * .37 * Math.sign(c) * Math.sqrt(Math.abs(c)), r * .31 * Math.sign(s) * Math.sqrt(Math.abs(s))); } top.receiveShadow = true; }
+  const body = put(new T.Mesh(supG(.29, .23, 1.42, 0), Wb), x, n, .24 + .71); body.castShadow = body.receiveShadow = true; const dome = put(new T.Mesh(supG(.29, .23, .26, 1), Wdm), x, n, 1.66); dome.castShadow = dome.receiveShadow = true;
+  rod(.045, .07, .18, x, n, 1.9, Wp, g); const s = put(new T.Mesh(new T.SphereGeometry(.25, 24, 14), Wl), x, n, 2.33); s.castShadow = s.receiveShadow = true; put(new T.Mesh(new T.TorusGeometry(.253, .011, 6, 36), K), x, n, 2.33);
   [1, -1].forEach(sd => { const f = n - sd * .236, ry = sd > 0 ? 0 : Math.PI;
     put(new T.Mesh(dialG, dialMat), x, f, 1.3, ry); plane(.3, .1, x, f, .93, label('0 0 4 7', .3, .1, 'bold 120px "Courier 10 Pitch",monospace'), g, ry); plane(.34, .014, x, f - sd * .001, .93 + .062, K, g, ry); plane(.34, .014, x, f - sd * .001, .93 - .062, K, g, ry);
-    [.66, 1.58].forEach(u => plane(.58, .012, x, f, u, K, g, ry)); for (let k = 0; k < 7; k++) [-1, 1].forEach(e => put(new T.Mesh(dotG, K), x + e * .262, f, .32 + k * .2, ry)); });
-  const hose = new T.Mesh(new T.TubeGeometry(new T.CatmullRomCurve3([[x + .29, n + .05, 1.42], [x + .5, n, 1.2], [x + .52, n - .1, .5], [x + .43, n - .2, .34], [x + .35, n - .26, .62], [x + .32, n - .27, 1.04]].map(q => v(...q))), 28, .021, 6), K); hose.castShadow = true; g.add(hose);
-  box(.05, .15, .09, x + .32, n - .31, 1.0, K, g); box(.03, .05, .12, x + .32, n - .36, .9, K, g);
+    [.66, 1.58].forEach(u => plane(.44, .012, x, f + sd * .003, u, K, g, ry)); for (let k = 0; k < 7; k++) [-1, 1].forEach(e => put(new T.Mesh(dotG, K), x + e * .2, f + sd * .004, .32 + k * .2, ry)); });
+  const hose = new T.Mesh(new T.TubeGeometry(new T.CatmullRomCurve3([[x + .29, n + .05, 1.42], [x + .5, n, 1.2], [x + .52, n - .1, .5], [x + .43, n - .2, .34], [x + .35, n - .26, .62], [x + .32, n - .27, 1.04]].map(q => v(...q))), 40, .024, 10), Wh); hose.castShadow = true; g.add(hose);
+  box(.05, .15, .09, x + .32, n - .31, 1.0, Wt2, g); box(.03, .05, .12, x + .32, n - .36, .9, Wt2, g);
   mark(g, x - .31, 11.24, .9, .05, 1.3); mark(g, x + .1, 11.24, 1.72, .5, .05); mark(g, x + .2, 11.24, .5, .05, .7); });
 pump('pumpW', -8.2); pump('pumpE', -5.4);
 { box(.5, .34, .78, -6.8, 11.5, .14, Wt); box(.56, .4, .03, -6.8, 11.5, .92, Wt); for (let k = 0; k < 4; k++) { const c = rod(.05, .05, .15, -6.98 + k * .12, 11.5, .95, Wp); c.geometry = canG; } rod(.17, .14, .34, -4.5, 11.3, .14, Wp); rod(.012, .012, .7, -4.42, 11.3, .3, K); }   // between the pumps: a rack of oil cans. a bucket and its squeegee
@@ -261,7 +268,7 @@ for (let i = 0; i < 36; i++) { const rho = (5 + rnd() * 60) * RAD, psi = rnd() *
 const HOUR = num('hour', 10.5), DECL = num('decl', -21) * RAD, Hh = (HOUR - 12) * 15 * RAD;
 const sE = -Math.cos(DECL) * Math.sin(Hh), sN = Math.cos(LAT) * Math.sin(DECL) - Math.sin(LAT) * Math.cos(DECL) * Math.cos(Hh), sU = Math.sin(LAT) * Math.sin(DECL) + Math.cos(LAT) * Math.cos(DECL) * Math.cos(Hh);
 const NIGHT = MODE === 'night' || (MODE === 'day' && sU <= 0), DAY = !NIGHT && !DUSK, SUN = new T.Vector3(sE, sU, -sN).normalize();
-const sun = new T.DirectionalLight(0xffffff, DAY ? 5.0 : 0); sun.castShadow = DAY; sun.shadow.mapSize.set(2048, 2048); Object.assign(sun.shadow.camera, { left: -48, right: 48, top: 48, bottom: -48, near: 1, far: 400 }); sun.shadow.bias = -.0012; sun.shadow.normalBias = .05;
+const sun = new T.DirectionalLight(0xffffff, DAY ? 5.0 : 0); sun.castShadow = DAY; sun.shadow.mapSize.set(2048, 2048); Object.assign(sun.shadow.camera, SOLO ? { left: -5, right: 5, top: 5, bottom: -5, near: 1, far: 400 } : { left: -48, right: 48, top: 48, bottom: -48, near: 1, far: 400 }); sun.shadow.bias = -.0012; sun.shadow.normalBias = .05;
 sun.shadow.radius = num('reach', 50);                                                                        // 8 and over: centimetres each side of a stroke that the sun's shadow is read over
 scene.add(sun, sun.target);
 SU.sunA.value.set(-SUN.x, 0, -SUN.z).normalize();                                                                          // the way the sun's shadows run along the ground
@@ -339,13 +346,13 @@ const quad = new T.Mesh(new T.PlaneGeometry(2, 2), new T.ShaderMaterial({
       else{ink=1.-c.r;gr=c.g;
         if(lineOn>.5&&c.a>.215){float z=zl(d);if(z<60.){                                                   // the contour. a brush line with weight: heavy where the form is in shade, thin and broken where it is lit, swelling and thinning along its length
             float tone=c.b,sw=n3(p*1.6)*.6+n3(p*4.3)*.4,wd=mix(.011,.05,smoothstep(.12,.75,tone))*(.4+1.4*sw),r=clamp(wd/(z*pxa),.75*pxs,4.5*pxs);
-            if(!(tone<.3&&sw<.4)){float e0=edge(z,r),e1=edge(z,r+pxs),k=(e0+e1)*.5;if(e0<.9&&e1<.9&&tone<.3)k*=step(.5,sw);      // a corner in the light is let go more often than an outline
-              if(tone>.93)ink=mix(ink,tone>.995?ink:0.,k*step(.45,sw));else ink=max(ink,k);}}}                                     // in black, a line of paper; in the full dark, nothing
+            {float brk=tone<.3?smoothstep(.34,.46,sw):1.;float e0=edge(z,max(r-.5,.5)),e1=edge(z,r),e2=edge(z,r+.5),e3=edge(z,r+1.),k=(e0+e1+e2+e3)*.25;if(max(max(e0,e1),max(e2,e3))<.9&&tone<.3)k*=smoothstep(.42,.58,sw);      // a corner in the light is let go more often than an outline
+              k*=brk;if(tone>.93)ink=mix(ink,tone>.995?ink:0.,k*smoothstep(.4,.5,sw));else ink=max(ink,k);}}}                                     // in black, a line of paper; in the full dark, nothing
       }
       float far=lost+(n3(p*.06)-.5)*30.;if(dist>far&&dist<330.)ink=night;                               // far things are lost
     }
     float g=f<-.5?0.:(fract(sin(dot(floor(v*res/pxs),vec2(12.9898,78.233)))*43758.5453)-.5)*.02;
-    vec3 pap=paper*(1.+.3*(gr-.5)*grey*step(d,.99998));                                               // paper look: each thing's own paper, in real grey, under the ink
+    vec3 pap=paper*(1.+.34*(gr-.5)*grey*step(d,.99998)*step(.215,c.a)*step(c.a,.6));                // paper look: each thing's own paper in real grey under the ink. the open ground, the road and the sky stay plain                                               // paper look: each thing's own paper, in real grey, under the ink
     gl_FragColor=vec4(mix(pap+g,black+g*.5,ink),1.);
     if(dbg>.5)gl_FragColor=dbg<1.5?vec4(vec3(c.r),1.):dbg<2.5?vec4(vec3(c.g),1.):dbg<3.5?vec4(vec3(c.b),1.):vec4(vec3(fract(zl(d))),1.);}` }));
 const ps = new T.Scene(); ps.add(quad); const pc = new T.Camera(); let rt, DPX = 1;
@@ -353,7 +360,7 @@ const ps = new T.Scene(); ps.add(quad); const pc = new T.Camera(); let rt, DPX =
 // only if the phone can't keep up does it drop, gently, and never under 2 (or the screen's own density if that is less): at that the edges are soft, not blocky. ?res= fixes it
 const FLOOR = () => Math.min(2, devicePixelRatio || 1) / Math.min(num('dpr', 3), devicePixelRatio || 1); let RES = num('res', 1);
 function size() { const w = innerWidth, h = innerHeight; let d = Math.min(num('dpr', 3), devicePixelRatio || 1); d = Math.min(d, Math.sqrt(3.4e6 / (w * h))) * RES; DPX = d; R.setPixelRatio(d); R.setSize(w, h); cam.aspect = w / h; cam.fov = FOV(); cam.updateProjectionMatrix(); rt?.dispose();
-  const W = R.domElement.width, H = R.domElement.height; rt = new T.WebGLRenderTarget(W, H, { samples: d < 1.75 ? 4 : 0, minFilter: T.NearestFilter, magFilter: T.NearestFilter }); rt.depthTexture = new T.DepthTexture(W, H); const u = quad.material.uniforms; u.res.value.set(W, H); u.pxa.value = 2 * Math.tan(FOV() / 2 * RAD) / H; SU.pxs.value = d; }
+  const W = R.domElement.width, H = R.domElement.height; rt = new T.WebGLRenderTarget(W, H, { samples: num('msaa', 4), minFilter: T.NearestFilter, magFilter: T.NearestFilter }); rt.depthTexture = new T.DepthTexture(W, H); const u = quad.material.uniforms; u.res.value.set(W, H); u.pxa.value = 2 * Math.tan(FOV() / 2 * RAD) / H; SU.pxs.value = d; }
 addEventListener('resize', size); size();
 
 // ---------------------------------------------------------------- walking
@@ -386,10 +393,10 @@ function step(now) {
     const r = Math.hypot(EYE.x, EYE.z); if (r > 130) { EYE.x = -EYE.x * 128 / r; EYE.z = -EYE.z * 128 / r; }                 // where the world ends: you are put down on the far side, facing the same way
     if (!drag && !fwd && Math.abs(pitch - .1) > .01 && now - lastMove > 1200) pitch += (.1 - pitch) * .04;                    // stop, and the view levels
     const idle = (now - lastMove) / 1000; lamp += ((idle < 4 ? 1 : 0) - lamp) * (idle < 4 ? .3 : .02); if (NIGHT) adapt += ((idle > 9 ? 1 : 0) - adapt) * (idle > 9 ? .01 : .3); }
-  aisle.visible = inside; backPlug.visible = !inside;
+  aisle.visible = inside; backPlug.visible = !inside && !SOLO;
   aisleLights.forEach((l, i) => l.intensity = inside && (AISLEON === 1 || AISLEON === 2 && i < 2) ? 9 : 0);
   cam.position.copy(EYE); cam.rotation.set(pitch, heading, 0, 'YXZ'); cam.updateMatrixWorld();
-  sun.target.position.set(0, 0, -8); sun.position.copy(sun.target.position).addScaledVector(SUN, 150);          // fixed to the lot, so nothing about the shadow moves with you
+  sun.target.position.set(SOLO ? -8.2 : 0, 0, SOLO ? -11.5 : -8); sun.position.copy(sun.target.position).addScaledVector(SUN, 150);          // fixed to the lot, so nothing about the shadow moves with you
   const fw = new T.Vector3(0, 0, -1).applyEuler(cam.rotation), rg = new T.Vector3(1, 0, 0).applyEuler(cam.rotation);
   const dark = NIGHT || inside;                               // the lamp shows only where no daylight reaches: indoors and at night
   you.position.copy(EYE).addScaledVector(rg, .3).add(new T.Vector3(0, .45, 0)); you.target.position.copy(EYE).addScaledVector(fw, 30); you.angle = .012 + .1 * lamp; you.intensity = dark && lamp > .05 ? 3.6 : 0;
@@ -397,7 +404,7 @@ function step(now) {
   SU.youF.value.set(EYE.x, 0, EYE.z); SU.youR.value.set(rg.x, rg.z).normalize(); far.position.set(EYE.x, 0, EYE.z);
   if (NIGHT && lamp > .6 && !STILL) for (const k in things) { const g = things[k], to = v(g.userData.x, g.userData.n, 1).sub(EYE), dd = to.length(); if (dd < 30 && to.normalize().dot(fw) > .992) g.userData.marks.visible = true; }
   const nvis = NIGHT ? Math.floor(adapt * stars.length) : 0; stars.forEach((s, i) => s.visible = i < nvis);
-  bulbs.forEach(b => { b.visible = true; b.scale.setScalar(NIGHT ? 1 : .55); });
+  bulbs.forEach(b => { b.visible = !SOLO; b.scale.setScalar(NIGHT ? 1 : .55); });
   const u = quad.material.uniforms; u.t.value = rt.texture; u.td.value = rt.depthTexture; u.inv.value.copy(cam.matrixWorld).multiply(cam.projectionMatrixInverse); u.eye.value.copy(EYE);
   // the fixed lamps near you: the ground round each wears the sheet laid outward from it
   const L = []; const add = (l, r) => { if (l.intensity > 0) L.push([l.position.clone().applyMatrix4(l.parent.matrixWorld), r, l.position.distanceTo(EYE)]); };
@@ -407,7 +414,7 @@ function step(now) {
   u.f.value = STILL ? -1 : 0;
   R.setRenderTarget(rt); R.render(scene, cam); R.setRenderTarget(null); R.render(ps, pc);
 }
-window.where = () => [EYE.x, -EYE.z];
+window.where = () => [EYE.x, -EYE.z]; window.seen = () => { const o = []; scene.traverse(m => { if (m.isMesh && m.visible && m !== ground) { let p = m, vis = true; while (p) { vis = vis && p.visible; p = p.parent; } if (!vis) return; m.geometry.computeBoundingBox(); const b = m.geometry.boundingBox.clone().applyMatrix4(m.matrixWorld); o.push(m.geometry.type + " " + [b.min.x, b.max.x, -b.max.z, -b.min.z, b.min.y, b.max.y].map(x => x.toFixed(2)).join(" ")); } }); return o; };
 window.proj = (x, n, u) => { const p = v(x, n, u).project(cam); return [(p.x + 1) / 2 * innerWidth, (1 - p.y) / 2 * innerHeight]; };
 window.sunShadow = (x, n, u) => [x - sE / sU * u, n - sN / sU * u];
 window.shot = (x, n, headDeg, pitchDeg) => { EYE.x = x; EYE.z = -n; heading = headDeg * RAD; pitch = pitchDeg * RAD; step(performance.now()); step(performance.now()); };

@@ -98,6 +98,12 @@ He then described the method he has in mind (verbatim): "Yeah think like if I'd 
 
 (Said while the look test — one view, the pumps under the canopy — was in progress.)
 
+## 13. On seeing the look-test pump (verbatim)
+
+"Why is there a clock on the pump?"
+
+(He saw a frame of the rebuilt pump: a round dial with 1–12 and two hands. The designer intended a 1930s "clock-face" pump's gallon dial. He has been asked: match his photos — rolling-number windows and a globe, no dial — or keep a clock-face pump redrawn so it doesn't read as a clock. Not yet answered.)
+
 ## Still open (asked, not answered)
 
 - Should the time of day do something (choose which work shows), or only change how the place looks and what odd things happen? (Related: he said "no" to choosing what shows in office hours versus at night.)
