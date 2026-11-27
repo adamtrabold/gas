@@ -1,55 +1,46 @@
-// node sheets.js -> copies the stills into ../../concepts/stills/ and builds one sheet per concept there. throwaway
+// node sheets.js -> copies the stills from out/ into ../../concepts/stills/ and builds sheet-05-left-on.png there: one tall sheet, two frames across, to be read on a phone. throwaway
 const fs = require('fs'), path = require('path'); const { chromium } = require('playwright');
 const out = path.join(__dirname, 'out'), dest = path.join(__dirname, '..', '..', 'concepts', 'stills');
-const SHEETS = {
-  'sheet-00-place': ['The place, shared by all three (walked three.js prototype)', [
-    ['place-day-road', 'Arriving by day, from the road. Sign at the road with the name stacked and the arrow diving at the door; canopy and pumps to the west; the door clear of them. Late November, mid-morning.'],
-    ['place-day-door', 'At the door. The card is paint and stays sharp at any distance. The stripes are paint. The wall has no edge against the sky.'],
-    ['place-night-road', 'Arriving at night. The name, the bulbs, the canopy lit from below, the sky going round.'],
-    ['place-night-canopy', 'Under the sign at night, looking at the canopy. The pool on the ground breaks into the dark along fibres laid away from the lamp.'],
-    ['place-edge', 'Where the world ends: 86 m out, walking back in. Far things are lost, so the sign returns a few marks at a time. Nothing else is in the picture to show a join.'],
-    ['place-marked', 'Marks in another hand: three dashed circles on the ground east of the slab. From 04, folded in.'],
-  ]],
-  'sheet-01': ['01 Nobody\'s here (walked prototype, except the first frame)', [
-    ['cross-2d', 'Crossing the door, drawn in 2D last round, on the old building. Kept because the prototype has no crossing stroke yet: one loaded stroke across, the room behind it, the bell\'s word landed.'],
-    ['01-counter', 'Inside, from the door. Lit from behind the counter, so what he left is silhouette: register, cup, bell, radio. The jacket on the wall. Crude boxes; the picture is the arrangement.'],
-    ['01-aisle-near', 'The aisle, at the door end. Tube light every third bay; you walk from pool to pool.'],
-    ['01-aisle-far', 'The aisle from the far end, looking back. 28 m of it behind an 8 m building.'],
-    ['01-disc', 'Doing nothing, five minutes in: the canopy lamp is out and a disc of light is on the forecourt with nothing above it.'],
-    ['01-anywhere', 'A view nobody composed (position and heading drawn at random). East of the lot, looking back. The sign is flat, so from the side it is one line. Almost nothing. In a desert that is allowed.'],
-  ]],
-  'sheet-02': ['02 The Arrow (walked prototype). The thing the shadow points at is drawn in solid black', [
-    ['02-morning-pump', 'Mid-morning, equinox. The shadow has gone in under the canopy. The west pump is awake. You cannot tell: everything under a canopy is black.'],
-    ['02-late-air', 'Late morning. The shadow of the arrow lies on the slab as an arrow, and the air post stands at its tip in black. This one reads.'],
-    ['02-noon-door', 'Noon, equinox. A short dark arrow on the slab, aimed at the door.'],
-    ['02-after-bench', 'Early afternoon. The bench is awake. It is a dark bar against the wall and the shadow stops 7 m short of it. This one does not read.'],
-    ['02-winter-noon', 'Noon in winter, the best case: the arrow\'s shadow is long and lies right up to the door.'],
-    ['02-door-out', 'Inside at that hour, looking out. The doorway is the picture: the sign, the air post, and the shadow coming in over the threshold.'],
-    ['02-window', 'Inside, the east window and the clock in reach. A good picture of a window. The shadow is not in it from here.'],
-    ['02-night', 'Night. No path. Bulbs and the lit front.'],
-  ]],
-  'sheet-03': ['03 Your light (walked prototype)', [
-    ['03-shadow', 'Your shadow by day, looking down at it. A plain upright shape, no head, cut by the bottom of the screen. Noon in winter.'],
-    ['03-touch', 'Day touching. You stand by the air post with the sun behind you; your shadow runs to it and it has taken its blacks.'],
-    ['03-inside', 'Inside by day with every light off: the doorway on the floor with your shadow in it.'],
-    ['03-night-arrive', 'Arriving at night with your lamp down.'],
-    ['03-night-aim', 'Your lamp on the front wall by the door. The lamp sits a little above the eye.'],
-    ['03-night-kept', 'Lamp down, sky up. The phone box, lit a moment ago and left, keeps three strokes of itself (lower right).'],
-    ['03-other', 'A disc on the ground that is not yours.'],
-    ['03-anywhere', 'A view nobody composed (random position and heading), at night with the lamp up: a disc on a wall and nothing else.'],
-  ]],
-  'sheet-wide': ['One wide desktop frame per concept (walked prototype, 1280 x 720)', [
-    ['01-wide', '01, day, from the road.'], ['02-wide', '02, mid-morning at the equinox, west pump awake.'], ['03-wide', '03, night, lamp up.'],
-  ]],
-};
+const ROWS = [
+  ['h', 'Arriving'],
+  ['lo-arrive-day', 'Arriving by day, 390 × 844. The first frame anyone sees, untouched. His whole name, the arrow, the door under it, the road as a band of dry strokes.'],
+  ['lo-arrive-night', 'Arriving at night, same spot, lamp down. The name, the bulbs, the canopy lamp\'s pool breaking outward in strokes.'],
+  ['lo-arrive-day-small', 'The same arrival on a smaller phone, 360 × 740. The name is whole.'],
+  ['lo-arrive-night-small', 'Night, 360 × 740.'],
+  ['h', 'Brush strokes in the walked world'],
+  ['lo-strokes-day', 'Day, on the slab, looking at the canopy. The far edge of its shadow is strokes ending, each with its own taper. The post is dry brush. Your shadow is one loaded mark.'],
+  ['lo-strokes-night', 'Night, the canopy lamp\'s pool from the forecourt. The strokes are laid outward from the lamp and stay on the ground when you walk (walk-test.png).'],
+  ['lo-strokes-day-drawn', 'The same view with the stroke sheet loaded from a picture file (sheet-example.png) the way his own drawn sheet would be. Coarser, because a hard black-and-white drawing carries less than a grey one.'],
+  ['lo-night-lamp', 'Your lamp on the front wall at night. Its rim breaks along the wall\'s own strokes; the strokes do not follow the lamp.'],
+  ['h', 'Under the canopy at noon in summer (the deepest shade the lot has)'],
+  ['lo-canopy-shade-before', 'Last round\'s rule: shade is flat black. The pumps read only where they stand against the light.'],
+  ['lo-canopy-shade', 'This round: shade is brushed, not filled, and a near thing in shade keeps a broken paper edge. The island, the pump\'s sides and its globe are there.'],
+  ['lo-canopy-shade-lamp', 'The same with your lamp on, as the systems designer proposed. It lands as a sliver on the globe. It does not read as a lamp. I would drop it by day.'],
+  ['lo-anywhere-night', 'A view nobody composed, night (position and heading drawn with a random number generator): under the canopy, facing the garage door.'],
+  ['h', 'Your shadow: column or person'],
+  ['lo-shadow-column', 'A plain column. Noon in late November, looking down. The sign\'s shadow is the long mark on the left.'],
+  ['lo-shadow-person', 'A plain standing person. At brush size the two come out nearly the same: the hand decides more than the shape does.'],
+  ['h', 'Inside'],
+  ['lo-door-in', 'Just through the door by day, every light off. The doorway on the floor with your shadow in it; your lamp on the back wall.'],
+  ['lo-inside-lights', 'Inside by day with three lights on: the counter tube, the cooler (off frame left) and the attendant\'s light at the aisle mouth. Shelves, jacket, the things on the counter, the door\'s sun on the floor.'],
+  ['lo-inside-lights-b', 'The same room from the east window, looking at the cooler. Your lamp\'s disc is on the partition; the tube\'s pool breaks across the floor.'],
+  ['lo-aisle', 'The aisle from its mouth with two stretches switched on.'],
+  ['lo-aisle-back', 'The far end, looking back. Not solved: the front window is not yet the bright thing in this picture.'],
+  ['lo-sign-side', 'The sign from the east, on the road. It used to be a line. Now: the arrow as a slab, the starburst, and a blade that says GAS to the road.'],
+  ['lo-anywhere-day', 'A view nobody composed, day (random position and heading): behind the east end, facing south. Nothing. In a desert that is allowed, and it is the honest result.'],
+  ['w', 'lo-wide-day', 'Wide desktop, 1440 × 810, day.'],
+  ['w', 'lo-wide-night', 'Wide desktop, night.'],
+];
 (async () => {
   fs.mkdirSync(dest, { recursive: true });
-  const b = await chromium.launch();
-  for (const [name, [title, frames]] of Object.entries(SHEETS)) {
-    const wide = name === 'sheet-wide';
-    const html = `<body style="margin:0;background:#d9d4c8;font:12px/1.4 'Courier 10 Pitch',monospace;color:#111;padding:14px;width:max-content"><div style="font-weight:bold;margin:0 0 10px">${title}</div><div style="display:flex;gap:16px;align-items:flex-start;${wide ? 'flex-direction:column' : ''}">${frames.map(([f, cap]) => { const src = fs.existsSync(path.join(out, f + '.png')) ? path.join(out, f + '.png') : path.join(dest, f + '.png'); if (src.startsWith(out)) fs.copyFileSync(src, path.join(dest, f + '.png')); return `<figure style="margin:0;width:${wide ? 640 : 240}px"><img src="data:image/png;base64,${fs.readFileSync(src).toString('base64')}" style="width:${wide ? 640 : 240}px;border:1px solid #111;display:block"><figcaption style="margin-top:5px">${cap}</figcaption></figure>`; }).join('')}</div></body>`;
-    const p = await b.newPage({ viewport: { width: 1200, height: 600 } }); await p.setContent(html); await p.screenshot({ path: path.join(dest, name + '.png'), fullPage: true }); await p.close();
+  for (const f of fs.readdirSync(out)) if (f.endsWith('.png') && (f.startsWith('lo-') || f === 'walk-test.png')) fs.copyFileSync(path.join(out, f), path.join(dest, f));
+  fs.copyFileSync(path.join(__dirname, 'sheet-example.png'), path.join(dest, 'stroke-sheet.png'));
+  const img = f => `data:image/png;base64,${fs.readFileSync(path.join(out, f + '.png')).toString('base64')}`;
+  let html = `<body style="margin:0;background:#d9d4c8;font:15px/1.4 'Courier 10 Pitch',monospace;color:#111;padding:16px;width:780px"><div style="font-weight:bold;font-size:19px">Left on — frames from the walked three.js prototype</div><div style="margin:4px 0 6px">Every frame is the live prototype at the size named, at double density, not retouched. Boxes stand in for models; generated strokes stand in for his.</div><div style="display:flex;flex-wrap:wrap;gap:14px 20px;align-items:flex-start">`;
+  for (const r of ROWS) {
+    if (r[0] === 'h') html += `<div style="width:100%;font-weight:bold;font-size:17px;border-top:2px solid #111;padding-top:8px;margin-top:8px">${r[1]}</div>`;
+    else if (r[0] === 'w') html += `<figure style="margin:0;width:780px"><img src="${img(r[1])}" style="width:778px;border:1px solid #111;display:block"><figcaption style="margin-top:5px">${r[2]}</figcaption></figure>`;
+    else html += `<figure style="margin:0;width:380px"><img src="${img(r[0])}" style="width:378px;border:1px solid #111;display:block"><figcaption style="margin-top:5px">${r[1]}</figcaption></figure>`;
   }
-  fs.copyFileSync(path.join(out, 'swim-test.png'), path.join(dest, 'swim-test.png'));
-  await b.close();
+  const b = await chromium.launch(), p = await b.newPage({ viewport: { width: 812, height: 800 } }); await p.setContent(html + '</div></body>'); await p.screenshot({ path: path.join(dest, 'sheet-05-left-on.png'), fullPage: true }); await b.close();
 })();

@@ -228,6 +228,8 @@ Sound on or off; the chart; the date of your first visit. Concepts add to it whe
 
 # Shared by every concept — how it looks and feels
 
+*Round 2 note (visual): this half is from round 1 and is kept for its reasoning. Where it and the look-and-feel half of `05-left-on.md` differ, that file is current: the rules of the drawing, the stroke method and its walk-past test, the sign, the arrival framing. The stills and sheets named below were deleted when they were superseded; the current set is listed in `05-left-on.md`. The six questions about the sign at the end still stand.*
+
 *Visual turn 2 of the concept phase. Rewritten after `steer-1.md` and the systems designer's rewrite for walking. Replaces my first version.*
 
 ## The swim test (asked for first)
