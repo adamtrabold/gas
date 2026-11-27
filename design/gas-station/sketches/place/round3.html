@@ -1,0 +1,343 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>the place — throwaway walked prototype</title>
+<style>
+  html,body{margin:0;height:100%;background:#141312;overflow:hidden;touch-action:none}
+  canvas{display:block;width:100vw;height:100vh}
+  #note{position:fixed;left:0;right:0;bottom:5px;text-align:center;font:11px/1.3 "Courier 10 Pitch","Courier New",monospace;color:#8a857a;pointer-events:none;user-select:none;-webkit-user-select:none}
+  #note a{pointer-events:auto;color:inherit;text-decoration:none;padding:8px 2px}#note a.on{text-decoration:underline}#hint{transition:opacity 1.5s}
+</style>
+<div id="note"><a href="#day">day</a> · <a href="#dusk">dusk</a> · <a href="#night">night</a><span id="hint"> &nbsp; drag to look · hold to walk</span></div>
+<script type="module">
+// The place, walked. Throwaway: it exists to test the look, not to be built on.
+// Systems' lot: sign at the road, door 16 m straight north of it, canopy and pumps to the west.
+// Serve the `sketches/` folder (three.js is shared from ../ink-is-shadow/vendor).
+//
+// HOW THE INK IS MADE (round 2). Two values, and every mark is a brush stroke that belongs to a surface.
+//  1. Every surface carries the stroke sheet (strokes.js) like any other texture. On the ground the sheet is laid along the light:
+//     along the sun by day, outward from a fixed lamp at night. On walls and things it is laid along the surface with a slight lean.
+//  2. The light on a surface decides how much of each stroke shows. Full light: none. Half light: the loaded spines of some strokes.
+//     Shade: nearly all of every stroke, with paper between and dry gaps. Full dark: whole.
+//  3. A shadow's edge is read a little ahead of and behind each stroke, along the stroke, so the edge is the strokes ending, each with its own taper.
+// Nothing here depends on where you stand, so the ink stays on the world when you walk. To swap in a drawn sheet: ?sheet=file.png
+import * as T from '../ink-is-shadow/vendor/three.module.min.js';
+import { makeSheet, sheetFromImage } from './strokes.js';
+const Q = new URLSearchParams(location.search), num = (k, d) => Q.has(k) ? +Q.get(k) : d, STILL = Q.has('still');
+// which hour: #day, #dusk or #night after the address (or ?night=1, ?dusk=1, ?hour=). with none, the visitor's own clock picks one of the three
+const HASH = location.hash.replace('#', ''), CLOCK = new Date().getHours() + new Date().getMinutes() / 60; addEventListener('hashchange', () => location.reload());
+const MODE = Q.has('night') ? 'night' : Q.has('dusk') ? 'dusk' : Q.has('hour') ? 'day' : ['day', 'dusk', 'night'].includes(HASH) ? HASH : CLOCK >= 7 && CLOCK < 17.25 ? 'day' : (CLOCK >= 6 && CLOCK < 7) || (CLOCK >= 17.25 && CLOCK < 18.25) ? 'dusk' : 'night', DUSK = MODE === 'dusk';
+document.querySelectorAll('#note a').forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + MODE)); if (STILL) document.getElementById('note').style.display = 'none';
+const ANCHOR = Q.get('anchor') || 'world', STROKES = num('strokes', 1), LAT = 35 * Math.PI / 180, RAD = Math.PI / 180;
+const R = new T.WebGLRenderer({ antialias: false, preserveDrawingBuffer: true });
+R.shadowMap.enabled = true; R.shadowMap.type = T.PCFShadowMap; R.outputColorSpace = T.LinearSRGBColorSpace; document.body.prepend(R.domElement);
+const scene = new T.Scene();
+
+// ---------------------------------------------------------------- the stroke sheet, and the material that wears it
+const sheetTex = (() => { const s = makeSheet(); const t = new T.DataTexture(s.data, s.N, s.N, T.RGBAFormat); t.wrapS = t.wrapT = T.RepeatWrapping; t.minFilter = T.LinearMipmapLinearFilter; t.magFilter = T.LinearFilter; t.generateMipmaps = true; t.anisotropy = R.capabilities.getMaxAnisotropy(); t.colorSpace = T.NoColorSpace; t.needsUpdate = true; return t; })();
+if (Q.get('sheet')) new T.ImageLoader().load(Q.get('sheet'), img => { const s = sheetFromImage(img); sheetTex.image = { data: s.data, width: s.N, height: s.N }; sheetTex.needsUpdate = true; window.sheetLoaded = true; });
+window.sheetPNG = T0 => { const d = sheetTex.image.data, N = sheetTex.image.width, c = document.createElement('canvas'); c.width = c.height = N; const g = c.getContext('2d'), im = g.createImageData(N, N); for (let i = 0; i < N * N; i++) { const v = T0 == null ? 255 - d[i * 4] : d[i * 4] / 255 > T0 ? 0 : 255; im.data[i * 4] = im.data[i * 4 + 1] = im.data[i * 4 + 2] = v; im.data[i * 4 + 3] = 255; } g.putImageData(im, 0, 0); return c.toDataURL('image/png'); };
+const BX0 = -13, BX1 = 7, FN = 16, BN = 24, BH = 3.8, WT = .22;                    // the station: a plain box, 20 m by 8 m, front faces south at n = 16
+const SU = { sunD: { value: new T.Vector3(0, 1, 0) }, youF: { value: new T.Vector3() }, youR: { value: new T.Vector2(1, 0) }, youOn: { value: 0 }, big: { value: num('big', 1) }, sheet: { value: sheetTex }, sunA: { value: new T.Vector3(1, 0, 0) }, smat: { value: new T.Matrix4() }, lampP: { value: [new T.Vector4(), new T.Vector4(), new T.Vector4(), new T.Vector4()] }, nl: { value: 0 }, screenA: { value: ANCHOR === 'screen' ? 1 : 0 }, res: { value: new T.Vector2() } };
+const SHADOW = T.ShaderChunk.shadowmap_pars_fragment.replace('float getShadow(', 'float getShadow0(') + `
+#ifdef USE_SHADOWMAP
+  float blS(sampler2D m,vec2 sz,vec2 uv,float z){vec2 q=uv*sz-.5,f=fract(q),b=(floor(q)+.5)/sz,e=1./sz;return mix(mix(texture2DCompare(m,b,z),texture2DCompare(m,b+vec2(e.x,0.),z),f.x),mix(texture2DCompare(m,b+vec2(0.,e.y),z),texture2DCompare(m,b+e,z),f.x),f.y);}
+  float getShadow(sampler2D m,vec2 sz,float si,float bias,float radius,vec4 sc){
+    sc.xyz/=sc.w;sc.z+=bias;if(sc.x<0.||sc.x>1.||sc.y<0.||sc.y>1.||sc.z>1.)return 1.;
+    if(radius<8.)return mix(1.,blS(m,sz,sc.xy,sc.z),si);
+    // the sun: the shadow is read along the stroke, eight times over about a metre, shifted by the stroke's own amount. that is what tapers a stroke at a shadow's edge
+    vec3 dS=(smat*vec4(gDir,0.)).xyz*(radius*.01*(1.+2.*gK));float s=0.;
+    for(int i=0;i<8;i++){float k=(float(i)+gJit)/4.-1.+gOff;vec3 q=sc.xyz+dS*k;s+=blS(m,sz,q.xy,q.z);}
+    gYou=mix(1.,youSh(vWp),clamp(s/8.*1.5-.25,0.,1.));return mix(1.,s/8.,si);}
+#endif`;
+function inkMat(scale, amb = 1, tone = 1, along = null, drift = false, vert = false) {   // vert: a post wears its strokes up and down, not across like rungs                     // tone under 1: a surface that is never quite paper, so some of its strokes always show. along: lay the sheet this way whatever the light
+  const m = new T.MeshLambertMaterial({ color: new T.Color(tone, tone, tone) }); m.isInk = true;
+  m.onBeforeCompile = sh => {
+    Object.assign(sh.uniforms, SU, { sscale: { value: scale }, amb: { value: amb }, drift: { value: drift ? 1 : 0 }, vert: { value: vert ? 1 : 0 }, along: { value: along || new T.Vector2(0, 0) } });
+    sh.vertexShader = 'varying vec3 vWp;varying vec3 vWn;\n' + sh.vertexShader.replace('#include <project_vertex>', '#include <project_vertex>\nvWp=(modelMatrix*vec4(transformed,1.)).xyz;vWn=normalize(mat3(modelMatrix)*objectNormal);');
+    sh.fragmentShader = `varying vec3 vWp;varying vec3 vWn;uniform sampler2D sheet;uniform vec3 sunA;uniform mat4 smat;uniform vec4 lampP[4];uniform int nl;uniform float sscale,amb,screenA,drift,youOn,big,vert;uniform vec2 res,along,youR;uniform vec3 sunD,youF;
+      vec3 gDir;float gOff,gJit,gK,gYou=1.;vec4 gS;
+      float dh2(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}float dn2(vec2 x){vec2 i=floor(x),f=fract(x);f=f*f*(3.-2.*f);return mix(mix(dh2(i),dh2(i+vec2(1.,0.)),f.x),mix(dh2(i+vec2(0.,1.)),dh2(i+vec2(1.,1.)),f.x),f.y);}
+      // your shadow. you are never drawn; this is the shape that keeps the sun off things: a head, shoulders, a body, arms, two legs. it is the one mark that is kept cleaner than the brush
+      float capS(vec3 p,vec3 a,vec3 b,float r){vec3 pa=p-a,ba=b-a;pa-=sunD*dot(pa,sunD);vec3 bq=ba-sunD*dot(ba,sunD);float h=clamp(dot(pa,bq)/max(dot(bq,bq),1e-5),0.,1.);return dot(mix(a,b,h)-p,sunD)>.03?smoothstep(r-.02,r+.03,length(pa-bq*h)):1.;}
+      float youSh(vec3 p){vec3 F=youF,U=vec3(0.,1.,0.),Rr=vec3(youR.x,0.,youR.y);if(distance(p.xz,F.xz)>14.)return 1.;
+        return capS(p,F+U*1.6,F+U*1.61,.115)*capS(p,F+U*.92,F+U*1.3,.19)*capS(p,F+U*1.38-Rr*.16,F+U*1.38+Rr*.16,.09)*capS(p,F-Rr*.1+U*.08,F-Rr*.11+U*.85,.085)*capS(p,F+Rr*.1+U*.08,F+Rr*.11+U*.85,.085)*capS(p,F-Rr*.22+U*1.33,F-Rr*.21+U*.86,.06)*capS(p,F+Rr*.22+U*1.33,F+Rr*.21+U*.86,.06);}
+      void strokeSetup(){vec3 n=normalize(vWn);vec2 uv,ub;float sc=sscale/8.;                   // one sheet covers 8 m of ground; things wear it smaller
+        if(abs(n.y)>.7){vec2 p=vWp.xz;int best=-1;float bd=1e9;for(int i=0;i<4;i++){if(i>=nl||dot(along,along)>0.)break;float d=distance(p,lampP[i].xz);if(d<lampP[i].w&&d<bd){bd=d;best=i;}}
+          if(best>=0){vec2 r=p-lampP[best].xz;uv=vec2(log(max(bd,.05)),atan(r.y,r.x))*(6./6.2832)*max(1.,sscale*.5);ub=uv*vec2(.4,.5)+.31;gDir=vec3(r.x,0.,r.y)/max(bd,.05);}      // a fixed lamp: strokes laid away from it
+          else{vec2 a=dot(along,along)>0.?along:sunA.xz;uv=vec2(dot(p,a),dot(p,vec2(-a.y,a.x)))*sc;ub=uv*.27+.31;gDir=vec3(a.x,0.,a.y);}}                                         // the sun: strokes laid along it
+        else{vec3 t=normalize(cross(n,vec3(0.,1.,0.)));float u=dot(vWp,t),w=vWp.y;uv=vec2(u*.97+w*.24,-u*.24+w*.97)*sc;ub=uv*.27+.31;gDir=normalize(t*.97+vec3(0.,.24,0.));if(vert>.5){uv=uv.yx;ub=ub.yx;gDir=vec3(0.,1.,0.);}}  // walls and things: along the surface, leaning
+        if(screenA>.5){uv=gl_FragCoord.xy/res.y*2.4;ub=uv;}                                       // the control for the walk-past test: the same sheet stuck to the screen
+        // from far off the same surface wears the sheet nearly four times larger, so a mass seen from the road is still a few big strokes. both sizes are fixed to the world; one gives way to the other between 12 and 32 m
+        gK=big>.5?smoothstep(12.,32.,distance(vWp,cameraPosition)):0.;
+        gS=mix(texture2D(sheet,uv),texture2D(sheet,ub),gK);gOff=(gS.g-.5)*1.4;gJit=gS.b;}
+      float ambK(){vec3 p=vWp;return (p.x>${BX0 + .1}&&p.x<${BX1 - .1}&&-p.z>${FN + .1}&&-p.z<${BN - .1}&&p.y<${BH + .05})?0.:amb;}                       // no sky gets indoors
+      ` + sh.fragmentShader.replace('#include <shadowmap_pars_fragment>', SHADOW).replace('void main() {', 'void main() {\nstrokeSetup();')
+      .replace('#include <lights_fragment_end>', '#if defined( RE_IndirectDiffuse )\nirradiance*=ambK();\n#endif\n#include <lights_fragment_end>')
+      .replace('#include <dithering_fragment>', `#include <dithering_fragment>
+        float lO=gl_FragColor.r;
+        if(drift>.5){float nn=-vWp.z,lot=smoothstep(-18.,-14.,vWp.x)*(1.-smoothstep(12.,16.,vWp.x))*smoothstep(-4.,-2.,nn)*(1.-smoothstep(26.,30.,nn));lO*=mix(1.,.2,smoothstep(.58,.7,dn2(vWp.xz/vec2(14.,6.))*.65+dn2(vWp.xz/3.1+7.)*.35)*(1.-lot)*smoothstep(5.,9.,distance(vWp.xz,vec2(2.6,21.))));}   // the desert floor: drifts of ground that are never quite paper, so dry strokes lie across them
+        if(youOn>.5)lO=mix(min(lO,.05),lO,gYou);   // your shadow shows only where the sun would otherwise reach: never under the room's own lights
+        gl_FragColor=vec4(lO,gS.r,dn2(vWp.xz*1.1+vWp.y*1.9)*.6+dn2(vWp.xz*2.9-vWp.y*3.3)*.4,drift>.5||dot(along,along)>0.?.18:.25);`);   // a: under .6 is a lit surface, not paint. .18 is the ground and the road, which never get a drawn line           // r: light. g: the stroke sheet here. a: this is a lit surface, not paint
+  };
+  return m;
+}
+// round 3, after the owner walked it ("hard to really make out objects ... more detail and variation in the brush stroke size"): ?detail=0 is how it was.
+// with detail on, every kind of thing wears the sheet at its own size, and things have a tone of their own: a painted pump is never quite paper, so it is always drawn, in fine strokes
+const DETAIL = num('detail', 1);
+const Wm = inkMat(DETAIL ? 1.7 : 1), Wg = inkMat(1, 1, 1, null, true), Wt = inkMat(DETAIL ? 3.6 : 3, 1, DETAIL ? .62 : 1), Wd = inkMat(DETAIL ? 7 : 3, 1, DETAIL ? .3 : 1), Wp = inkMat(3, 1, 1, null, false, true), Wl = inkMat(DETAIL ? 4.2 : 3), Wa = inkMat(2, 0), Wr = inkMat(.5, 1, .2, new T.Vector2(1, 0)), K = new T.MeshBasicMaterial({ color: 0 }), LIT = new T.MeshBasicMaterial({ color: 0xffffff });
+const v = (x, n, u) => new T.Vector3(x, u, -n);                         // x east, n north, u up
+const things = {};
+function box(w, d, h, x, n, u, m = Wm, parent = scene) { const o = new T.Mesh(new T.BoxGeometry(w, h, d), m); o.position.copy(v(x, n, u + h / 2)); o.castShadow = o.receiveShadow = !!m.isInk; parent.add(o); return o; }
+function plane(w, h, x, n, u, m = K, parent = scene, ry = 0) { const o = new T.Mesh(new T.PlaneGeometry(w, h), m); o.position.copy(v(x, n, u)); o.rotation.y = ry; parent.add(o); return o; }
+function label(txt, w, h, font, bg = '#fff', fg = '#000') { const c = document.createElement('canvas'); c.width = 512; c.height = Math.round(512 * h / w); const g = c.getContext('2d'); g.fillStyle = bg; g.fillRect(0, 0, c.width, c.height); g.fillStyle = fg; g.font = font; g.textAlign = 'center'; g.textBaseline = 'middle'; txt.split('\n').forEach((t, i, a) => g.fillText(t, c.width / 2, c.height * (i + .5) / a.length + 6)); const tx = new T.CanvasTexture(c); tx.colorSpace = T.NoColorSpace; tx.anisotropy = 8; return new T.MeshBasicMaterial({ map: tx, transparent: bg === 'transparent' }); }
+function thing(name, x, n, build) { const g = new T.Group(); g.name = name; g.userData = { x, n, marks: new T.Group() }; scene.add(g); build(g); g.userData.marks.visible = false; scene.add(g.userData.marks); things[name] = g; return g; }
+function mark(g, x, n, u, w, h, ry = 0) { plane(w, h, x, n, u, LIT, g.userData.marks, ry); }
+const rod = (r0, r1, h, x, n, u, m = Wp, parent = scene) => { const p = new T.Mesh(new T.CylinderGeometry(r0, r1, h, 28), m); p.position.copy(v(x, n, u + h / 2)); p.castShadow = p.receiveShadow = true; parent.add(p); return p; };
+
+// the ground is cut into 6 m squares: across one huge triangle a place on the ground is only known to within centimetres, and the strokes creep as you move (found by walk.js)
+const ground = new T.Mesh(new T.PlaneGeometry(720, 720, 120, 120), Wg); ground.rotation.x = -Math.PI / 2; ground.receiveShadow = true; scene.add(ground);
+// the road: worn blacktop, a band of long dry strokes running east and west between you and the sign
+{ const r = new T.Mesh(new T.PlaneGeometry(720, 6.4, 120, 2), Wr); r.rotation.x = -Math.PI / 2; r.position.copy(v(0, -6.6, .006)); r.receiveShadow = true; scene.add(r); }
+
+// ---------------------------------------------------------------- the station
+const shell = new T.Group(); scene.add(shell);
+const wallPiece = (x0, x1, z0, z1) => box(x1 - x0, WT, z1 - z0, (x0 + x1) / 2, FN + WT / 2, z0, Wm, shell);
+// front wall with real holes: west window, door, east window. the garage door is a painted panel
+const WW = [-4.6, -2.0], DR = [-.6, .6], EW = [4.0, 6.2], WZ = [.9, 2.5], DZ = 2.25;
+wallPiece(BX0, WW[0], 0, BH); wallPiece(WW[0], WW[1], 0, WZ[0]); wallPiece(WW[0], WW[1], WZ[1], BH); wallPiece(WW[1], DR[0], 0, BH); wallPiece(DR[0], DR[1], DZ, BH);
+wallPiece(DR[1], EW[0], 0, BH); wallPiece(EW[0], EW[1], 0, .4); wallPiece(EW[0], EW[1], WZ[1], BH); wallPiece(EW[1], BX1, 0, BH);
+box(WT, BN - FN, BH, BX0 + WT / 2, (FN + BN) / 2, 0, Wm, shell); box(WT, BN - FN, BH, BX1 - WT / 2, (FN + BN) / 2, 0, Wm, shell);
+box(BX1 - BX0 + .3, BN - FN + .3, .25, (BX0 + BX1) / 2, (FN + BN) / 2, BH, Wm, shell);                                  // roof
+box(BX1 - BX0 + .5, .95, .12, (BX0 + BX1) / 2, FN - .47, BH + .06, Wm, shell);                                           // an eave along the front: its shade is the one brushed band on the sunlit wall
+const AX0 = 4.6, AX1 = 6.4, ALEN = 28;                                                                                   // the aisle opening in the back wall
+box(AX0 - BX0, WT, BH, (BX0 + AX0) / 2, BN - WT / 2, 0, Wm, shell); box(BX1 - AX1, WT, BH, (AX1 + BX1) / 2, BN - WT / 2, 0, Wm, shell);
+const backPlug = box(AX1 - AX0, WT, BH, (AX0 + AX1) / 2, BN - WT / 2, 0, Wm, shell);                                     // seen from outside, the back wall is whole
+plane(3.8, 3.0, -8.6, FN - .02, 1.5); [[BH - .5, .22], [BH - .92, .13]].forEach(([z, h]) => plane(BX1 - BX0, h, (BX0 + BX1) / 2, FN - .02, z));   // garage door, two stripes: paint
+plane(.5, .34, 0, FN + .02, 1.5, label('BACK IN\n5 MINUTES', .5, .34, 'bold 84px "Courier 10 Pitch",monospace'));
+const inner = new T.Group(); scene.add(inner);                                                                            // partition between the front room and the garage
+box(WT, BN - FN, BH, -5.2, (FN + BN) / 2, 0, Wm, inner);
+
+// canopy and pumps, west of the door. the door stands clear of it
+const CX0 = -11.6, CX1 = -2.2, CN0 = 8.4, CZ = 3.9;
+box(CX1 - CX0, FN - CN0, .3, (CX0 + CX1) / 2, (CN0 + FN) / 2, CZ, Wm); [[CX0 + .5, CN0 + .4], [CX1 - .5, CN0 + .4]].forEach(([x, n]) => rod(.08, .08, CZ, x, n, 0));
+plane(CX1 - CX0, .12, (CX0 + CX1) / 2, CN0 - .01, CZ + .15);
+box(5.2, 1.3, .14, -6.8, 11.5, 0, Wt);                                                                                     // the island
+const pump = (name, x) => thing(name, x, 11.5, g => { box(.6, .5, 1.55, x, 11.5, .14, Wd, g); const s = new T.Mesh(new T.SphereGeometry(.27, 16, 10), Wl); s.position.copy(v(x, 11.5, 2.0)); s.castShadow = s.receiveShadow = true; g.add(s); plane(.4, .34, x, 11.24, 1.3, K, g); mark(g, x - .31, 11.24, .9, .05, 1.3); mark(g, x + .1, 11.24, 1.72, .5, .05); mark(g, x + .2, 11.24, .5, .05, .7); });
+pump('pumpW', -8.2); pump('pumpE', -5.4);
+thing('air', -1.5, 9.6, g => { rod(.09, .11, 1.25, -1.5, 9.6, 0, Wt, g); const d = new T.Mesh(new T.CylinderGeometry(.22, .22, .12, 20), Wt); d.rotation.x = Math.PI / 2; d.position.copy(v(-1.5, 9.6, 1.42)); d.castShadow = true; g.add(d); plane(.26, .26, -1.5, 9.53, 1.42, K, g); mark(g, -1.62, 9.5, .7, .04, 1.0); mark(g, -1.5, 9.5, 1.66, .4, .04); });
+thing('bench', 3.2, 15.4, g => { box(2.2, .45, .1, 3.2, 15.4, .42, Wd, g); box(2.2, .08, .5, 3.2, 15.62, .52, Wd, g); box(.1, .4, .42, 2.3, 15.4, 0, Wt, g); box(.1, .4, .42, 4.1, 15.4, 0, Wt, g); mark(g, 3.2, 15.17, .52, 2.0, .04); mark(g, 2.26, 15.17, .2, .04, .4); });
+thing('phone', 12, 6, g => { box(.9, .9, 2.3, 12, 6, 0, Wd, g); plane(.6, 1.2, 12, 5.54, 1.5, K, g); box(1.05, 1.05, .1, 12, 6, 2.3, Wt, g); mark(g, 11.54, 5.54, 1.1, .05, 2.0); mark(g, 12.1, 5.54, 2.32, .8, .05); mark(g, 12.46, 5.54, .6, .05, 1.0); });
+thing('door', 0, FN, g => { mark(g, -.62, FN - .03, 1.1, .05, 2.1); mark(g, 0, FN - .03, 2.27, 1.1, .05); });
+thing('station', -3, FN, g => { mark(g, -3, FN - .03, BH - .5, 12, .08); mark(g, BX0 + .1, FN - .03, 1.6, .06, 3.0); mark(g, 4, FN - .03, BH - .92, 5, .05); });
+{ const hose = plane(9.6, .05, -6.8, 9.2, .012); hose.rotation.x = -Math.PI / 2; }                                         // the bell line, across the forecourt
+// the canopy lamp, lit from below at night
+const canLamp = new T.PointLight(0xffffff, 0, 14, 1.5); canLamp.position.copy(v(-6.8, 12, CZ - .25)); canLamp.castShadow = true; canLamp.shadow.bias = -.004; canLamp.shadow.radius = 4; scene.add(canLamp);
+const canGlow = plane(1.0, 1.0, -6.8, 12, CZ - .02, K); canGlow.rotation.x = Math.PI / 2;
+
+// ---------------------------------------------------------------- the sign. at the road, straight in front of the door. 12 m.
+// it has depth: the letter cabinets are 0.6 m deep and the arrow is a slab. his name and nothing else ("Gas is unnecessary.")
+const SIGN = new T.Group(); scene.add(SIGN); const STOP = 12;
+{ rod(.14, .14, STOP, 0, 0, 0, Wp, SIGN);
+  const LF = 'bold 440px "DejaVu Sans",sans-serif';
+  'TRABOLD'.split('').forEach((ch, i) => { const z = STOP - .84 - i * .84; box(.82, .6, .82, -.6, 0, z - .41, Wt, SIGN); const on = !DUSK || i < num('letters', 4); plane(.8, .8, -.6, -.305, z, on ? label(ch, 1, 1, LF) : K, SIGN); plane(.8, .8, -.6, .305, z, on ? label(ch, 1, 1, LF) : K, SIGN, Math.PI); });
+  const sh = new T.Shape(); [[-.42, 0], [-.42, -4.6], [-1.25, -4.6], [0, -6.9], [1.25, -4.6], [.42, -4.6], [.42, 0], [0, -.9]].forEach((q, i) => i ? sh.lineTo(q[0], q[1]) : sh.moveTo(q[0], q[1]));
+  const ag = new T.ExtrudeGeometry(sh, { depth: .34, bevelEnabled: false }); ag.translate(0, 0, -.17);
+  const a = new T.Mesh(ag, K); a.position.copy(v(.75, 0, STOP - .9)); a.rotation.z = .1; SIGN.add(a);
+  const ac = new T.Mesh(ag, new T.MeshLambertMaterial({ colorWrite: false, depthWrite: false })); ac.position.copy(a.position); ac.rotation.z = .1; ac.castShadow = true; SIGN.add(ac);
+  for (let i = 0; i < 8; i++) for (let k = 0; k < 2; k++) { const r = new T.Mesh(new T.BoxGeometry(i % 2 ? 1.0 : 1.9, .05, .05), K); r.position.copy(v(0, 0, STOP + .55)); r.rotation.z = i * Math.PI / 8; if (k) r.rotation.y = Math.PI / 2; SIGN.add(r); } }
+const bulbs = []; for (let s = .45; s < 6.6; s += .56) { const hw = s < 4.6 ? .42 : 1.25 * (6.9 - s) / 2.3; [-1, 1].forEach(k => [-1, 1].forEach(face => { const b = new T.Mesh(new T.SphereGeometry(.085, 8, 6), LIT); const w = k * Math.max(.05, hw - .14), c = Math.cos(.1), sn = Math.sin(.1); b.position.copy(v(.75 + sn * s + c * w, face * .2, STOP - .9 - c * s + sn * w)); b.userData.s = s / 6.9; SIGN.add(b); bulbs.push(b); })); }
+
+// ---------------------------------------------------------------- inside: the front room, then an aisle longer than the building
+const tube = new T.PointLight(0xffffff, 0, 4.6, 1.1); tube.position.copy(v(.6, 21.45, 2.35)); tube.castShadow = true; tube.shadow.bias = -.004; scene.add(tube);               // the cord by the door: the counter and little else
+plane(1.4, .1, .6, 21.45, 2.42, LIT, inner).rotation.x = Math.PI / 2;
+box(6.4, .7, 1.02, .6, 21.4, 0, Wm, inner);                                                                                 // the counter, across the back
+[[-.95, .56, .46], [-.1, .09, .11], [.38, .12, .08], [.98, .36, .22]].forEach(([x, w, h]) => box(w, .3, h, x, 21.3, 1.02, Wt, inner));   // register, cup, bell, radio
+box(.9, .7, 1.9, -4.3, 18.6, 0, Wd, inner); const cooler = new T.PointLight(0xffffff, 0, 3.4, 1.2); cooler.position.copy(v(-3.5, 18.6, 1.2)); scene.add(cooler); const coolGlow = plane(.6, 1.5, -3.84, 18.6, 1.05, K, inner, Math.PI / 2);   // the cooler, against the partition
+const mouth = new T.PointLight(0xffffff, 0, 3.2, 1.2); mouth.position.copy(v((AX0 + AX1) / 2, BN - .7, 2.75)); scene.add(mouth); plane(.3, .3, (AX0 + AX1) / 2, BN - .7, 2.9, LIT, inner).rotation.x = Math.PI / 2;   // the attendant's light at the mouth of the aisle: on when you came
+{ const j = new T.Shape(); [[-.12, 0], [-.42, -.22], [-.36, -.95], [.36, -.95], [.42, -.22], [.12, 0]].forEach((q, i) => i ? j.lineTo(q[0], q[1]) : j.moveTo(q[0], q[1])); const m = new T.Mesh(new T.ShapeGeometry(j), new T.MeshBasicMaterial({ color: 0, side: T.DoubleSide })); m.position.copy(v(1.75, BN - WT - .03, 2.05)); m.rotation.y = Math.PI; inner.add(m); }   // the jacket on its hook
+{ const c = document.createElement('canvas'); c.width = c.height = 256; const g = c.getContext('2d'); g.fillStyle = '#fff'; g.fillRect(0, 0, 256, 256); g.lineWidth = 14; g.beginPath(); g.arc(128, 128, 112, 0, 7); g.stroke(); g.lineWidth = 10; g.beginPath(); g.moveTo(128, 128); g.lineTo(128, 50); g.moveTo(128, 128); g.lineTo(180, 150); g.stroke(); const tx = new T.CanvasTexture(c); tx.colorSpace = T.NoColorSpace; plane(.44, .44, 3.55, FN + WT + .02, 1.75, new T.MeshBasicMaterial({ map: tx }), inner, Math.PI); }
+plane(2.7, 1.45, -.35, BN - WT - .03, 2.0, K, inner);                                                                // the shelf recess is ink; the stock stands in it
+for (let lv = 0; lv < 3; lv++) { box(2.7, .28, .04, -.35, BN - WT - .16, 1.3 + lv * .46, Wt, inner); for (let k = 0; k < 9; k++) { const h = .14 + ((k * 7 + lv * 3) % 5) * .05; if ((k + lv) % 4 === 3) continue; box(.2, .2, h, -1.55 + k * .3, BN - WT - .16, 1.34 + lv * .46, Wt, inner); } }
+box(.02, .02, .7, .9, 16.9, 2.2, K, inner); box(.07, .07, .07, .9, 16.9, 2.14, K, inner);                                 // the pull cord, a step inside the door
+const aisle = new T.Group(); scene.add(aisle);
+box(WT, ALEN, 3.2, AX0 - WT / 2, BN + ALEN / 2, 0, Wa, aisle); box(WT, ALEN, 3.2, AX1 + WT / 2, BN + ALEN / 2, 0, Wa, aisle); box(AX1 - AX0 + .5, ALEN, .2, (AX0 + AX1) / 2, BN + ALEN / 2, 3.2, Wa, aisle); box(AX1 - AX0, WT, 3.2, (AX0 + AX1) / 2, BN + ALEN + WT / 2, 0, Wa, aisle);
+const aisleLights = [];
+for (let b = 0; b < 14; b++) { const n0 = BN + b * 2;
+  [AX0 + .2, AX1 - .2].forEach((x, side) => { for (let lv = 0; lv < 5; lv++) { box(.36, 1.9, .04, x, n0 + 1, .3 + lv * .5, Wa, aisle); if (b < 6) for (let k = 0; k < 5; k++) { if ((k * 3 + lv * 5 + b * 7 + side) % (b < 3 ? 6 : 3) === 0) continue; const h = .16 + ((k * 5 + lv + b) % 4) * .07; box(.26, .26, h, x, n0 + .3 + k * .36, .34 + lv * .5, Wa, aisle); } } box(.06, .06, 2.8, x, n0, 0, Wa, aisle); });
+  if (b % 3 === 1) { const l = new T.PointLight(0xffffff, 0, 5.2, 1.3); l.position.copy(v((AX0 + AX1) / 2, n0 + 1, 2.9)); aisle.add(l); aisleLights.push(l); plane(.9, .1, (AX0 + AX1) / 2, n0 + 1, 3.18, LIT, aisle).rotation.x = Math.PI / 2; } }
+box(.5, .16, .9, AX0 + .3, BN + ALEN - .6, 1.0, Wa, aisle); plane(1.0, 2.2, AX1 - .65, BN + ALEN - .02, 1.1, K, aisle);        // the payphone, and the back door
+const payLamp = new T.PointLight(0xffffff, 0, 3, 1.2); payLamp.position.copy(v(AX0 + .7, BN + ALEN - .9, 2.2)); aisle.add(payLamp); plane(.2, .2, AX0 + .3, BN + ALEN - .6, 2.05, LIT, aisle).rotation.x = Math.PI / 2;
+
+// marked out, and in another hand (folded in from 04): dashed footprints and three circles on the ground
+function dashes(pts, close) { for (let i = 0; i < pts.length - (close ? 0 : 1); i++) { const a = pts[i], b = pts[(i + 1) % pts.length], L = Math.hypot(b[0] - a[0], b[1] - a[1]), nseg = Math.max(1, Math.round(L / .5)); for (let k = 0; k < nseg; k++) { const t0 = k / nseg, t1 = (k + .55) / nseg, m = plane(L * (t1 - t0), .09, a[0] + (b[0] - a[0]) * (t0 + t1) / 2, a[1] + (b[1] - a[1]) * (t0 + t1) / 2, .012, K); m.rotation.set(-Math.PI / 2, 0, Math.atan2(b[1] - a[1], b[0] - a[0])); } } }
+dashes([[5.6, 14.6], [6.9, 14.6], [6.9, 15.8], [5.6, 15.8]], true);
+{ const m = plane(1.5, .5, 6.25, 14.1, .012, label('ice box', 1.5, .5, 'italic 150px "DejaVu Serif",serif', 'transparent')); m.rotation.x = -Math.PI / 2; }
+[[15.5, 9.5], [17.4, 11.6], [14.8, 12.2]].forEach(c => dashes(Array.from({ length: 14 }, (_, i) => [c[0] + Math.cos(i / 14 * 6.283) * .8, c[1] + Math.sin(i / 14 * 6.283) * .8]), true));
+
+// ---------------------------------------------------------------- the sky at night: one stroke per star, laid round the still point
+const pole = new T.Vector3(0, Math.sin(LAT), -Math.cos(LAT)), e1 = new T.Vector3(1, 0, 0), e2 = new T.Vector3().crossVectors(pole, e1).normalize(), stars = [];
+let sd = 9; const rnd = () => (sd = (sd * 16807) % 2147483647) / 2147483647;
+for (let i = 0; i < 36; i++) { const rho = (5 + rnd() * 60) * RAD, psi = rnd() * 6.283, tail = 60 * RAD, n = 28, pos = [], w0 = 1.6 + rnd() * 2.2;
+  const dir = a => pole.clone().multiplyScalar(Math.cos(rho)).add(e2.clone().multiplyScalar(Math.cos(a) * Math.sin(rho))).add(e1.clone().multiplyScalar(Math.sin(a) * Math.sin(rho)));
+  let ok = true; const P = []; for (let k = 0; k <= n; k++) { const d = dir(psi + tail * k / n); if (d.y < .05) { ok = false; break; } P.push(d.multiplyScalar(400)); } if (!ok) continue;
+  for (let k = 0; k < n; k++) { const a = P[k], b = P[k + 1], side = new T.Vector3().crossVectors(a, b).normalize(), wa = w0 * Math.pow(Math.sin(Math.PI * Math.pow(k / n, .6)), 1.2) + .1, wb = w0 * Math.pow(Math.sin(Math.PI * Math.pow((k + 1) / n, .6)), 1.2) + .1; const q = [a.clone().addScaledVector(side, wa), a.clone().addScaledVector(side, -wa), b.clone().addScaledVector(side, wb), b.clone().addScaledVector(side, -wb)];[0, 1, 2, 2, 1, 3].forEach(j => pos.push(q[j].x, q[j].y, q[j].z)); }
+  const geo = new T.BufferGeometry(); geo.setAttribute('position', new T.Float32BufferAttribute(pos, 3)); const m = new T.Mesh(geo, new T.MeshBasicMaterial({ color: 0xffffff, side: T.DoubleSide })); m.visible = false; m.frustumCulled = false; scene.add(m); stars.push(m); }
+
+// ---------------------------------------------------------------- light
+const HOUR = num('hour', 10.5), DECL = num('decl', -21) * RAD, Hh = (HOUR - 12) * 15 * RAD;
+const sE = -Math.cos(DECL) * Math.sin(Hh), sN = Math.cos(LAT) * Math.sin(DECL) - Math.sin(LAT) * Math.cos(DECL) * Math.cos(Hh), sU = Math.sin(LAT) * Math.sin(DECL) + Math.cos(LAT) * Math.cos(DECL) * Math.cos(Hh);
+const NIGHT = MODE === 'night' || (MODE === 'day' && sU <= 0), DAY = !NIGHT && !DUSK, SUN = new T.Vector3(sE, sU, -sN).normalize();
+const sun = new T.DirectionalLight(0xffffff, DAY ? 5.0 : 0); sun.castShadow = DAY; sun.shadow.mapSize.set(2048, 2048); Object.assign(sun.shadow.camera, { left: -48, right: 48, top: 48, bottom: -48, near: 1, far: 400 }); sun.shadow.bias = -.0012; sun.shadow.normalBias = .05;
+sun.shadow.radius = STROKES ? num('reach', 34) : 1;                                                                        // 8 and over: centimetres each side of a stroke that the sun's shadow is read over
+scene.add(sun, sun.target);
+SU.sunA.value.set(-SUN.x, 0, -SUN.z).normalize();                                                                          // the way the sun's shadows run along the ground
+const hemi = new T.HemisphereLight(0xffffff, 0x8a8a8a, NIGHT ? .03 : DUSK ? 2.2 : num('sky', DETAIL ? .3 : .2)); scene.add(hemi);   // dusk: no sun and no shadows, the flattest the place ever is;                    // by day, shade is not dark: the sky and the bright ground get into it
+scene.background = new T.Color(NIGHT ? 0 : 0xffffff);
+const CANOPY = NIGHT && num('canopy', 1); if (NIGHT) { canLamp.intensity = CANOPY ? 60 : 0; canGlow.material = CANOPY ? LIT : K; }
+const TUBE = num('tube', 0), AISLEON = num('aislelights', 0), COOL = num('cooler', 0), MOUTH = num('mouth', 1);
+tube.intensity = TUBE ? 9 : 0; cooler.intensity = COOL ? 5 : 0; if (COOL) coolGlow.material = LIT; mouth.intensity = MOUTH ? 4 : 0; payLamp.intensity = 3;
+// you. never drawn. a shape that only throws a shadow where there is sun, and a lamp a little above the eye that only shows where it is dark
+const cam = new T.PerspectiveCamera(68, 1, .1, 1500), FOV = () => innerWidth > innerHeight ? 46 : 68, EYE = v(num('x', 2.6), num('n', -21), 1.65);
+const you = new T.SpotLight(0xffffff, 0, 0, .11, .5, 0); you.castShadow = true; you.shadow.mapSize.set(1024, 1024); you.shadow.bias = -.0006; scene.add(you, you.target);
+SU.sunD.value.copy(SUN); SU.youOn.value = DAY && num('body', 1) !== 0 ? 1 : 0;
+const feet = new T.SpotLight(0xffffff, 0, 0, .42, .75, 0); scene.add(feet, feet.target);                                   // the lamp always finds the ground in front of your feet, so the dark is never a blank screen
+
+// ---------------------------------------------------------------- the desert
+const SD = sheetTex.image.data, sheetR = (u, w) => SD[((((Math.floor(w * 1024) % 1024) + 1024) % 1024) * 1024 + ((Math.floor(u * 1024) % 1024) + 1024) % 1024) * 4] / 255;
+let ds = 41; const dr = () => (ds = (ds * 16807) % 2147483647) / 2147483647;
+const paintTex = c => { const t = new T.CanvasTexture(c); t.colorSpace = T.NoColorSpace; t.anisotropy = 8; return t; };
+// the horizon, all the way round: low mesas and hills, each a few long dry strokes, dense along the top and letting go toward the ground. it goes with you, like the sky, so the world's edge can't show in it
+const far = new T.Group(); scene.add(far);
+if (!NIGHT) { const W = 4096, Hc = 256, c = document.createElement('canvas'); c.width = W; c.height = Hc; const g = c.getContext('2d'), im = g.createImageData(W, Hc), P = new Float32Array(W);
+  for (let x = 0; x < W; x++) P[x] = .09 + .035 * Math.sin(x / W * 6.283 * 3 + 1) + .025 * Math.sin(x / W * 6.283 * 11);
+  const at = (hd, wdeg, ht, sldeg) => { const th = (hd + 180) / 360 * W, wd = wdeg / 360 * W, sl = sldeg / 360 * W; for (let x = 0; x < W; x++) { let d = Math.abs(x - th); d = Math.min(d, W - d); P[x] = Math.max(P[x], ht * Math.max(0, Math.min(1, (wd / 2 - d) / sl))); } };
+  at(17, 25, .84, 1.6); at(-13, 7, .6, .8);                                            // a long mesa that stands up behind the station as you arrive, and a butte to the right of the sign
+  for (let i = 0; i < 15; i++) { const th = dr() * W, wd = (5 + dr() * 24) / 360 * W, ht = i < 4 ? .5 + dr() * .4 : .14 + dr() * .2, sl = (.5 + dr() * 2) / 360 * W; for (let x = 0; x < W; x++) { let d = Math.abs(x - th); d = Math.min(d, W - d); P[x] = Math.max(P[x], ht * Math.max(0, Math.min(1, (wd / 2 - d) / sl))); } }
+  for (let y = 0; y < Hc; y++) for (let x = 0; x < W; x++) { const h = 1 - (y + .5) / Hc; if (h < P[x]) { const rel = h / P[x]; if (sheetR(x / W * 7, y / Hc * .22 + .2) > .74 - .66 * Math.pow(rel, 1.6)) im.data[(y * W + x) * 4 + 3] = 255; } }
+  g.putImageData(im, 0, 0); const t = paintTex(c); t.wrapS = T.RepeatWrapping;
+  const m = new T.Mesh(new T.CylinderGeometry(600, 600, 95, 96, 1, true), new T.MeshBasicMaterial({ color: 0, map: t, transparent: true, depthWrite: false, side: T.BackSide })); m.position.y = 46.5; m.renderOrder = 2; far.add(m); }
+// dusk: the sky is inked in from the top, in level strokes far bigger than any on the ground
+if (DUSK) { const W = 2048, Hc = 512, c = document.createElement('canvas'); c.width = W; c.height = Hc; const g = c.getContext('2d'), im = g.createImageData(W, Hc), down = num('skydown', 13);
+  for (let y = 0; y < Hc; y++) { const el = (1 - (y + .5) / Hc) * 90, k = Math.max(0, Math.min(1, (el - down) / 24)), Tt = 1.02 - 1.12 * k * k * (3 - 2 * k); for (let x = 0; x < W; x++) if (sheetR(x / W * 3 + .2, y / Hc * .42) > Tt) im.data[(y * W + x) * 4 + 3] = 255; }
+  g.putImageData(im, 0, 0); const m = new T.Mesh(new T.SphereGeometry(650, 48, 24, 0, Math.PI * 2, 0, Math.PI / 2), new T.MeshBasicMaterial({ color: 0, map: paintTex(c), transparent: true, depthWrite: false, side: T.BackSide })); m.rotation.y = 2.2; m.renderOrder = 1; far.add(m); }
+// scrub: sparse tufts on the open ground, each a few flicked strokes. small things are lost sooner than big ones (about 45 m), which also keeps them from showing where the world turns round
+{ const tuft = () => { const c = document.createElement('canvas'); c.width = c.height = 128; const g = c.getContext('2d'); g.fillStyle = '#000'; const n = 6 + Math.floor(dr() * 6);
+    for (let i = 0; i < n; i++) { const a = (dr() - .5) * 2.3, len = 45 + dr() * 70, bend = (dr() - .5) * 40, w0 = 2.2 + dr() * 3.5, bx = 64 + (dr() - .5) * 26, L = [], Rr = [];
+      for (let k = 0; k <= 10; k++) { const t = k / 10, x = bx + Math.sin(a) * len * t + Math.cos(a) * bend * t * t, y = 124 - Math.cos(a) * len * t, w = w0 * Math.pow(1 - t, 1.1) * (1 + .25 * Math.sin(t * 9 + i)) + .3; L.push([x - w * Math.cos(a), y - w * Math.sin(a)]); Rr.unshift([x + w * Math.cos(a), y + w * Math.sin(a)]); }
+      g.beginPath(); L.concat(Rr).forEach((q, k) => k ? g.lineTo(q[0], q[1]) : g.moveTo(q[0], q[1])); g.fill(); }
+    for (let i = 0; i < 3; i++) g.fillRect(20 + dr() * 70, 121 + dr() * 4, 8 + dr() * 22, 1.5 + dr() * 2); return paintTex(c); };
+  const geo = new T.PlaneGeometry(1, 1); geo.translate(0, .5, 0); const V = 4, per = 80, o = new T.Object3D();
+  for (let k = 0; k < V; k++) { const mat = new T.MeshBasicMaterial({ color: 0, map: tuft(), alphaTest: .5, side: T.DoubleSide });
+    mat.onBeforeCompile = sh => { sh.vertexShader = 'varying float vFar;\n' + sh.vertexShader.replace('#include <project_vertex>', '#include <project_vertex>\nvFar=distance((modelMatrix*instanceMatrix*vec4(0.,0.,0.,1.)).xyz,cameraPosition)-(38.+9.*fract(sin(dot(instanceMatrix[3].xz,vec2(12.9,78.2)))*43758.5));'); sh.fragmentShader = 'varying float vFar;\n' + sh.fragmentShader.replace('void main() {', 'void main() {\nif(vFar>0.)discard;'); };
+    const im = new T.InstancedMesh(geo, mat, per * 2); im.frustumCulled = false; let i = 0;
+    while (i < per) { const r = 12 + dr() * 72, th = dr() * 6.283, x = Math.cos(th) * r, n = Math.sin(th) * r; if ((x > -18 && x < 16 && n > -3.4 && n < 29) || (n > -10.6 && n < -2.6) || Math.hypot(x - 2.6, n + 21) < 6) continue; const sz = .45 + dr() * dr() * 1.3, a = dr() * 3.14;
+      for (let q = 0; q < 2; q++) { o.position.copy(v(x, n, -.02)); o.rotation.set(0, a + q * 1.5708, 0); o.scale.setScalar(sz); o.updateMatrix(); im.setMatrixAt(i * 2 + q, o.matrix); } i++; }
+    scene.add(im); } }
+// a fence line along the far side of the road, after the one beside the building in his picture of Marfa. it runs out of sight both ways and has a gap at the lot
+{ const xs = []; for (let x = 20; x < 356; x += 4) xs.push(x, -x); const im = new T.InstancedMesh(new T.BoxGeometry(.09, 1.25, .09), K, xs.length), o = new T.Object3D(); xs.forEach((x, i) => { o.position.copy(v(x, -2.5, .62)); o.rotation.set(0, 0, (dr() - .5) * .12); o.updateMatrix(); im.setMatrixAt(i, o.matrix); }); im.frustumCulled = false; scene.add(im);
+  [1, -1].forEach(sg => [1.05, .62].forEach(u => box(336, .03, .03, sg * 188, -2.5, u, K))); }
+// a light that is not the sun's, the station's or yours
+const other = new T.SpotLight(0xffffff, Q.has('other') ? 5 : 0, 0, .07, .3, 0); other.position.copy(v(num('ox', 9), num('on', 8), 40)); other.target.position.copy(v(num('ox', 9), num('on', 8), 0)); scene.add(other, other.target);
+(Q.get('seen') || '').split(',').forEach(n => { if (things[n]) things[n].userData.marks.visible = true; });
+
+// ---------------------------------------------------------------- the last pass: light and sheet become two values. paint stays sharp. far things are lost. near things in shade keep a paper line
+const quad = new T.Mesh(new T.PlaneGeometry(2, 2), new T.ShaderMaterial({
+  uniforms: { t: { value: null }, td: { value: null }, res: SU.res, inv: { value: new T.Matrix4() }, eye: { value: new T.Vector3() }, night: { value: NIGHT ? 1 : 0 }, f: { value: 0 }, lost: { value: num('lost', 105) }, pxa: { value: .001 }, strokes: { value: STROKES }, lineOn: { value: num('line', DETAIL ? 2 : 1) }, dbg: { value: num('dbg', 0) } },
+  vertexShader: 'varying vec2 v;void main(){v=uv;gl_Position=vec4(position.xy,0.,1.);}',
+  fragmentShader: `
+  precision highp float;varying vec2 v;uniform sampler2D t,td;uniform vec2 res;uniform mat4 inv;uniform vec3 eye;uniform float night,f,lost,pxa,strokes,lineOn,dbg;
+  float h3(vec3 p){p=fract(p*.3183099+.1);p*=17.;return fract(p.x*p.y*p.z*(p.x+p.y+p.z));}
+  float n3(vec3 x){vec3 i=floor(x),q=fract(x);q=q*q*(3.-2.*q);return mix(mix(mix(h3(i),h3(i+vec3(1,0,0)),q.x),mix(h3(i+vec3(0,1,0)),h3(i+vec3(1,1,0)),q.x),q.y),mix(mix(h3(i+vec3(0,0,1)),h3(i+vec3(1,0,1)),q.x),mix(h3(i+vec3(0,1,1)),h3(i+vec3(1,1,1)),q.x),q.y),q.z);}
+  float zl(float d){return 150./(1500.-d*1499.9);}
+  // how dark a place must be before a given bit of a stroke shows. full dark is whole; shade is strokes with paper between; light is paper
+  float thr(float l){return strokes>.5?mix(-.1,1.02,pow(clamp((l-.02)/.43,0.,1.),.8)):(l<.2?-1.:2.);}
+  void main(){
+    float d=texture2D(td,v).x;vec4 c=texture2D(t,v);float l=c.r;bool lit=c.a<.6;
+    vec3 paper=vec3(.925,.905,.86),black=vec3(.078,.074,.07);float ink;
+    if(d>=.99999)ink=l<.5?1.:0.;
+    else{
+      if(!lit)ink=clamp((.5-l)*4.+.5,0.,1.);                                                            // paint: flat and sharp
+      else{float e=c.g-thr(l),aa=min(fwidth(e)*.7,.05)+1e-4;ink=smoothstep(-aa,aa,e);
+        if(lineOn>1.5&&c.a>.215){float z=zl(d);if(z<34.){                                                         // the drawn line. where a thing's edge or a corner would be lost (paper on paper, ink on ink) it gets a line of the other value: thin, about 2 cm in the world, swelling and breaking with the sheet
+            // its weight is a brush's: it swells to about 5 cm and thins to nothing along its length (the sheet's slow noise), heavier in shade. only outlines and square corners get one
+            float sw=smoothstep(.32,.7,c.b),wv=1./z,wd=(ink>.5?.034:.008+.04*sw),r=clamp(wd/(z*pxa),1.,9.),lap=-6.*wv,far=0.;
+            for(int i=0;i<6;i++){float a=float(i)*1.0472+.5;vec2 o=vec2(cos(a),sin(a))*r/res;float dn=texture2D(td,v+o).x,zn=dn>=.99999?1e5:zl(dn);lap+=1./zn;far=max(far,zn-z);}
+            bool sil=far>.09+.04*z,crease=abs(lap)>.0042*wv*r;
+            if(sil||crease){if(ink>.5){if(l>.022&&c.b<.72)ink=0.;}else if(sil?c.b>.3:c.b>.5)ink=1.;}}}
+        else if(lineOn>.5&&ink>.4&&l>.022){float z=zl(d);if(z<16.){float r=clamp(.012/(z*pxa),1.3,4.);bool edge=false;   // round 2's rule, kept for the before pictures: a paper edge on near things in shade only
+          for(int i=0;i<4;i++){float a=float(i)*1.5708;vec2 o=vec2(cos(a),sin(a))*r/res;float dn=texture2D(td,v+o).x;if(dn<.99999&&zl(dn)>z+.1+.05*z){vec4 cn=texture2D(t,v+o);if(cn.a<.6&&cn.g>thr(cn.r))edge=true;}}
+          if(edge&&c.b<.8)ink=0.;}}}
+      vec4 w=inv*vec4(v*2.-1.,d*2.-1.,1.);vec3 p=w.xyz/w.w;float dist=distance(p,eye);
+      float far=lost+(n3(p*.06)-.5)*30.;if(dist>far&&dist<330.)ink=night;                               // far things are lost
+    }
+    float g=f<-.5?0.:(fract(sin(dot(v*res,vec2(12.9898,78.233)))*43758.5453)-.5)*.03;   // paper grain, off for stills so the files stay small
+    gl_FragColor=vec4(mix(paper+g,black+g*.5,ink),1.);
+    if(dbg>.5)gl_FragColor=dbg<1.5?vec4(vec3(c.r),1.):dbg<2.5?vec4(vec3(c.g),1.):dbg<3.5?vec4(vec3(c.a),1.):vec4(vec3(fract(zl(d))),1.);}` }));
+const ps = new T.Scene(); ps.add(quad); const pc = new T.Camera(); let rt;
+let RES = num('res', 1);                                    // the drawing's resolution. dropped a step at a time if the frame rate is poor, so a slow phone gets a coarser drawing and not a slideshow
+function size() { const w = innerWidth, h = innerHeight, d = Math.min(2, devicePixelRatio || 1) * RES; R.setPixelRatio(d); R.setSize(w, h); cam.aspect = w / h; cam.fov = FOV(); cam.updateProjectionMatrix(); rt?.dispose(); rt = new T.WebGLRenderTarget(w * d, h * d, { type: T.HalfFloatType, samples: d >= 1 ? 4 : 0 }); rt.depthTexture = new T.DepthTexture(w * d, h * d); const u = quad.material.uniforms; u.res.value.set(w * d, h * d); u.pxa.value = 2 * Math.tan(FOV() / 2 * RAD) / (h * d); }
+addEventListener('resize', size); size();
+
+// ---------------------------------------------------------------- walking
+// you arrive on the road, far enough back that the whole sign, his name and the door are in a tall phone's frame
+const aim = new T.Vector2(0, 0); let heading = num('head', 6) * RAD, pitch = num('pitch', 9) * RAD, lastMove = performance.now(), lamp = num('lamp', 1), adapt = num('adapt', 0), held = 0, inside = Q.has('inside');
+const keys = {}; let drag = null;
+addEventListener('keydown', e => { keys[e.key.toLowerCase()] = 1; lastMove = performance.now(); }); addEventListener('keyup', e => { keys[e.key.toLowerCase()] = 0; });
+addEventListener('pointerdown', e => { drag = [e.clientX, e.clientY]; held = performance.now(); lastMove = held; });
+addEventListener('pointermove', e => { aim.set(e.clientX / innerWidth * 2 - 1, -(e.clientY / innerHeight * 2 - 1)); if (drag) { heading -= (e.clientX - drag[0]) * .005; pitch = Math.max(-1.2, Math.min(1.3, pitch + (e.clientY - drag[1]) * .004)); drag = [e.clientX, e.clientY]; if (Math.abs(e.movementX) + Math.abs(e.movementY) > 3) held = performance.now(); } lastMove = performance.now(); });
+addEventListener('pointerup', () => { drag = null; held = 0; }); addEventListener('pointercancel', () => { drag = null; held = 0; });
+function canStand(x, n) {                                      // crude: the building is solid except through the door; the aisle exists only from inside
+  if (inside) { const room = x > -5.0 && x < BX1 - .4 && n > FN + .35 && n < BN - .4 && !(n > 20.6 && n < 22.2 && x < 4.2) && !(x < -3.6 && n > 18 && n < 19.2), al = x > AX0 + .45 && x < AX1 - .45 && n >= BN - .5 && n < BN + ALEN - .4, dr = Math.abs(x) < .5 && n > FN - .6 && n <= FN + .4; return room || al || dr; }
+  const near = (cx, cn, r) => Math.hypot(x - cx, n - cn) < r;   // the sign's pole, the canopy posts, the pumps, the air post and the phone box are solid. so nothing can fill the screen
+  if (near(0, 0, .6) || near(CX0 + .5, CN0 + .4, .45) || near(CX1 - .5, CN0 + .4, .45) || near(-8.2, 11.5, .75) || near(-5.4, 11.5, .75) || near(-1.5, 9.6, .5) || near(12, 6, .95) || (x > 1.8 && x < 4.6 && n > 14.8)) return false;
+  const inB = x > BX0 - .3 && x < BX1 + .3 && n > FN - .3 && n < BN + .3; return !inB || (Math.abs(x) < .5 && n < FN + .4);
+}
+let last = performance.now(), frames = 0, ftime = 0;
+function step(now) {
+  const dt = Math.min(.05, (now - last) / 1000); last = now;
+  if (!STILL) { const fwd = (keys['w'] || keys['arrowup'] ? 1 : 0) - (keys['s'] || keys['arrowdown'] ? 1 : 0) + (held && now - held > 350 ? 1 : 0), turn = (keys['d'] || keys['arrowright'] ? 1 : 0) - (keys['a'] || keys['arrowleft'] ? 1 : 0);
+    heading -= turn * 1.6 * dt;
+    if (fwd) { const sp = 4 * dt * fwd, nx = EYE.x - Math.sin(heading) * sp, nz = EYE.z - Math.cos(heading) * sp; if (canStand(nx, -nz)) { EYE.x = nx; EYE.z = nz; } else if (canStand(nx, -EYE.z)) EYE.x = nx; else if (canStand(EYE.x, -nz)) EYE.z = nz; lastMove = now; }
+    if (!inside && -EYE.z > FN + .2 && Math.abs(EYE.x) < .6) inside = true; if (inside && -EYE.z < FN - .3) inside = false;
+    const r = Math.hypot(EYE.x, EYE.z); if (r > 130) { EYE.x = -EYE.x * 128 / r; EYE.z = -EYE.z * 128 / r; }                 // where the world ends: you are put down on the far side, facing the same way
+    if (!drag && !fwd && Math.abs(pitch - .1) > .01 && now - lastMove > 1200) pitch += (.1 - pitch) * .04;                    // stop, and the view levels
+    const idle = (now - lastMove) / 1000; lamp += ((idle < 4 ? 1 : 0) - lamp) * (idle < 4 ? .3 : .02); if (NIGHT) adapt += ((idle > 9 ? 1 : 0) - adapt) * (idle > 9 ? .01 : .3); }
+  aisle.visible = inside; backPlug.visible = !inside;
+  aisleLights.forEach((l, i) => l.intensity = inside && (AISLEON === 1 || AISLEON === 2 && i < 2) ? 9 : 0);
+  cam.position.copy(EYE); cam.rotation.set(pitch, heading, 0, 'YXZ'); cam.updateMatrixWorld();
+  sun.target.position.set(0, 0, -8); sun.position.copy(sun.target.position).addScaledVector(SUN, 150);          // fixed to the lot, so nothing about the shadow moves with you
+  const fw = new T.Vector3(0, 0, -1).applyEuler(cam.rotation), rg = new T.Vector3(1, 0, 0).applyEuler(cam.rotation);
+  const dark = NIGHT || inside;                               // the lamp shows only where no daylight reaches: indoors and at night
+  you.position.copy(EYE).addScaledVector(rg, .3).add(new T.Vector3(0, .45, 0)); you.target.position.copy(EYE).addScaledVector(fw, 30); you.angle = .012 + .1 * lamp; you.intensity = dark && lamp > .05 ? 3.6 : 0;
+  const flat = new T.Vector3(-Math.sin(heading), 0, -Math.cos(heading)); feet.position.copy(EYE).add(new T.Vector3(0, .3, 0)); feet.target.position.copy(EYE).addScaledVector(flat, 2.6 + 1.5 * (1 - lamp)).setY(0); feet.angle = .13 + .29 * lamp; feet.intensity = dark && num('feet', 1) ? 2.2 : 0;   // stand still and it draws in to a small pool a few steps ahead, and stays. the dark is never a blank screen
+  SU.youF.value.set(EYE.x, 0, EYE.z); SU.youR.value.set(rg.x, rg.z).normalize(); far.position.set(EYE.x, 0, EYE.z);
+  if (NIGHT && lamp > .6 && !STILL) for (const k in things) { const g = things[k], to = v(g.userData.x, g.userData.n, 1).sub(EYE), dd = to.length(); if (dd < 30 && to.normalize().dot(fw) > .992) g.userData.marks.visible = true; }
+  const nvis = NIGHT ? Math.floor(adapt * stars.length) : 0; stars.forEach((s, i) => s.visible = i < nvis);
+  bulbs.forEach(b => { b.visible = true; b.scale.setScalar(NIGHT ? 1 : .55); });
+  const u = quad.material.uniforms; u.t.value = rt.texture; u.td.value = rt.depthTexture; u.inv.value.copy(cam.matrixWorld).multiply(cam.projectionMatrixInverse); u.eye.value.copy(EYE);
+  // the fixed lamps near you: the ground round each wears the sheet laid outward from it
+  const L = []; const add = (l, r) => { if (l.intensity > 0) L.push([l.position.clone().applyMatrix4(l.parent.matrixWorld), r, l.position.distanceTo(EYE)]); };
+  if (CANOPY) add(canLamp, 16); add(tube, 4.6); add(cooler, 3.4); add(mouth, 3.2); if (inside) { aisleLights.forEach(l => add(l, 5.2)); add(payLamp, 3); }
+  L.sort((a, b) => a[2] - b[2]); SU.nl.value = Math.min(4, L.length); L.slice(0, 4).forEach(([p, r], i) => SU.lampP.value[i].set(p.x, p.y, p.z, r));
+  SU.smat.value.copy(sun.shadow.matrix);
+  u.f.value = STILL ? -1 : 0;
+  R.setRenderTarget(rt); R.render(scene, cam); R.setRenderTarget(null); R.render(ps, pc);
+}
+window.where = () => [EYE.x, -EYE.z];
+window.proj = (x, n, u) => { const p = v(x, n, u).project(cam); return [(p.x + 1) / 2 * innerWidth, (1 - p.y) / 2 * innerHeight]; };
+window.sunShadow = (x, n, u) => [x - sE / sU * u, n - sN / sU * u];
+window.shot = (x, n, headDeg, pitchDeg) => { EYE.x = x; EYE.z = -n; heading = headDeg * RAD; pitch = pitchDeg * RAD; step(performance.now()); step(performance.now()); };
+// the ink of a square of ground, read at fixed points in the world and laid out flat: the same picture from wherever you stand, if the ink is on the world
+const pcv = document.createElement('canvas');
+window.groundInk = (x0, n0, side, N) => { const W = R.domElement.width, Hh = R.domElement.height, d = R.getPixelRatio(); pcv.width = W; pcv.height = Hh; const g = pcv.getContext('2d', { willReadFrequently: true }); g.drawImage(R.domElement, 0, 0); const a = g.getImageData(0, 0, W, Hh).data;
+  const cs = [[x0, n0], [x0 + side, n0], [x0, n0 + side], [x0 + side, n0 + side]].map(c => window.proj(c[0], c[1], 0)), X0 = Math.max(0, Math.floor(Math.min(...cs.map(c => c[0])) * d)), X1 = Math.min(W - 1, Math.ceil(Math.max(...cs.map(c => c[0])) * d)), Y0 = Math.max(0, Math.floor(Math.min(...cs.map(c => c[1])) * d)), Y1 = Math.min(Hh - 1, Math.ceil(Math.max(...cs.map(c => c[1])) * d));
+  const sum = new Float32Array(N * N), cnt = new Float32Array(N * N), q = new T.Vector3();
+  for (let Y = Y0; Y <= Y1; Y++) for (let X = X0; X <= X1; X++) { q.set((X + .5) / W * 2 - 1, 1 - (Y + .5) / Hh * 2, .5).unproject(cam).sub(EYE); if (q.y >= 0) continue; const k = -EYE.y / q.y, gx = EYE.x + q.x * k, gn = -(EYE.z + q.z * k), i = Math.floor((gx - x0) / side * N), j = Math.floor((n0 + side - gn) / side * N); if (i < 0 || j < 0 || i >= N || j >= N) continue; sum[j * N + i] += 1 - a[(Y * W + X) * 4] / 255; cnt[j * N + i]++; }
+  let o = ''; for (let i = 0; i < N * N; i++) o += cnt[i] < 2 ? '?' : String.fromCharCode(97 + Math.max(0, Math.min(25, Math.round((sum[i] / cnt[i] * 1.12 - .05) * 25)))); return o; };   // per cell of ground: how much of it is ink, a (none) to z (all), averaged over every pixel of the frame that shows it
+window.bench = n => { const t0 = performance.now(); for (let i = 0; i < n; i++) { heading += .01; step(performance.now()); R.getContext().finish(); } return (performance.now() - t0) / n; };
+if (STILL) { const go = () => { if (Q.get('sheet') && !window.sheetLoaded) return setTimeout(go, 50); step(performance.now()); step(performance.now()); document.title = 'done'; }; go(); }
+else { let n = -30, t0 = 0, walked = false; const loop = now => { requestAnimationFrame(loop); step(now); if (n === 0) t0 = now;
+    if (!walked && held && now - held > 600) { walked = true; document.getElementById('hint').style.opacity = 0; }
+    if (++n === 16) { const ms = (now - t0) / 16; n = 0; if (ms > 30 && RES > .4 && !document.hidden && !Q.has('res')) { RES *= .75; size(); n = -8; } } }; requestAnimationFrame(loop); }
+</script>

@@ -92,6 +92,12 @@ He then described the method he has in mind (verbatim): "Yeah think like if I'd 
 
 (Orchestrator's note, not his words: "the vintage color" suggests the paper/ground has a vintage tone rather than pure white; and a greyscale scan multiplied on is, literally, continuous tone in the grain. How that sits with "two values… the illusion of grey" is for the look test to show him, not for us to decide.)
 
+## 12. On how to work the look (verbatim)
+
+"Instead of trying to one shot this in one view maybe it would be helpful to develop all the elements individually?"
+
+(Said while the look test — one view, the pumps under the canopy — was in progress.)
+
 ## Still open (asked, not answered)
 
 - Should the time of day do something (choose which work shows), or only change how the place looks and what odd things happen? (Related: he said "no" to choosing what shows in office hours versus at night.)
