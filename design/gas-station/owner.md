@@ -43,6 +43,13 @@ Not the owner's words; a summary of what he saved. He was "not sure" it was ther
 - Where is the station — a real place, or nowhere in particular? — "nowhere in particular. Middle of the desert. Texas, New Mexico, Nevada, Southern California"
 - Would you want a "receipt": a shareable shortlist of pieces a visitor picked up? — "no"
 
+## 6. More answers (verbatim, with the question each answers)
+
+- Is it public while it's only the world? If so, should it say somewhere small whose it is and how to reach you? — "yes but no"
+  (orchestrator's reading: public, yes; a small note of whose it is and how to reach him, no. His name is on the sign regardless. Unconfirmed.)
+- Walk around freely, or move between a few composed views? — "walk around"
+- Does the place have its own sound when you're doing nothing, or only sounds you cause? — "yes but idk how to even begin there"
+
 ## Still open (asked, not answered)
 
 - Should the time of day do something (choose which work shows), or only change how the place looks and what odd things happen? (Related: he said "no" to choosing what shows in office hours versus at night.)
