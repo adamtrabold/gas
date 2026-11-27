@@ -50,6 +50,12 @@ Not the owner's words; a summary of what he saved. He was "not sure" it was ther
 - Walk around freely, or move between a few composed views? — "walk around"
 - Does the place have its own sound when you're doing nothing, or only sounds you cause? — "yes but idk how to even begin there"
 
+## 7. More answers (verbatim, with the question each answers)
+
+- Canopy over the pumps, yes or no? — "Canopy over pumps yes."
+- Does the sign carry only your name, or also GAS (the visual designer added a blade reading GAS)? — "Gas is unnecessary."
+- Can the prototype go on a private link so you can walk it on your phone? — "private link is great."
+
 ## Still open (asked, not answered)
 
 - Should the time of day do something (choose which work shows), or only change how the place looks and what odd things happen? (Related: he said "no" to choosing what shows in office hours versus at night.)
