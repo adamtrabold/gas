@@ -56,6 +56,12 @@ Not the owner's words; a summary of what he saved. He was "not sure" it was ther
 - Does the sign carry only your name, or also GAS (the visual designer added a blade reading GAS)? — "Gas is unnecessary."
 - Can the prototype go on a private link so you can walk it on your phone? — "private link is great."
 
+## 8. The owner walked the round-2 prototype on his phone (verbatim)
+
+"Prototype feels pretty good and fluid. Rendering is pretty high contrast though ... hard to really make out objects. I think there can be slightly  more detail and variation in the brush stroke size or something to give more detail to the scene"
+
+(He walked the private-link copy of `sketches/place` as it stood after round 2, with the GAS blade removed. Not shown to him as a candidate.)
+
 ## Still open (asked, not answered)
 
 - Should the time of day do something (choose which work shows), or only change how the place looks and what odd things happen? (Related: he said "no" to choosing what shows in office hours versus at night.)
