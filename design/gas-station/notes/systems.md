@@ -1,5 +1,41 @@
 # Systems notes — gas station portfolio
 
+## Where things stand (latest first)
+
+**Jam closed. Owner has answered. `jobs.md` written (2026-11-27).** Concepts not started — waiting for the owner's "wrong / missing" on the job list and for the director's steer, which was written before the owner's answers and needs re-reading against them.
+
+### What the owner's answers did to the jobs
+
+Source: `owner.md` (verbatim; overrides the jam).
+
+- "let's not worry about the work right now I just want to nail the world" → jobs split into **world (now, 1–14)** and **work (later, 15–19, parked)**. The world only has to keep room for the work. Parked with it: the timetable, piece of the hour, turns by date, the receipt (old J14), work-in-colour.
+- "mainly it's for me … always wanted to own an old gas station to make into something" → Adam is the first user. Two owner jobs: keep making it into something (13), swap generated strokes / stand-in shapes for his drawings and Blender models bit by bit (14).
+- "we need sound effects at least" → hearing the place is job 6; every act answers in ink *and* sound. Music stays undecided.
+- "definitely needs an arrow sign" / "Route 66 but there's gotta be a googie arrow sign" → job 2: the arrow sign pulls you to the door. Saved article (vacuum-formed signs, the "Superior arrow") is reference for visual.
+- "liminal not funny"; alien confirmed; "pure ink for now"; brush "readable but not precise or always whole" (reading of a typo, unconfirmed).
+
+### What this does to the directions (my view, not a ruling)
+
+- The director's fork — does the hour choose the work (The Instrument) or only change light and odd things (Nobody's here) — can't be judged without work. For now the hour does light, sound and odd things. The dial can still exist as a clock; it just has nothing to point at yet.
+- "Route 66 … googie arrow sign … elements of that era in places" answers "which station": a plain Route 66 box with one Googie element, the arrow sign. That fits Nobody's here better than the raking beam, though an arrow sign on a leaning pylon is not ruled out.
+- New structural need from jobs 13–14: the world must be made of replaceable parts (each object has a stand-in and can take a drawn/modelled version; each odd event is an addable cue with an optional hour).
+
+### Still open with the owner (listed in jobs.md)
+
+What goes on the arrow sign; is it public while it's only the world (and should it say whose it is / how to reach him); free walking or composed views; does the place have its own sound at rest.
+
+Dropped as no longer mattering: place first or work first; hour choosing work; office hours vs night; receipt; where exactly (Route 66 is enough); work in colour (parked).
+
+### Next
+
+- Owner's reaction to `jobs.md`.
+- Then concepts in `concepts/` — my half is how each works: the stops, the door, what each act does in ink and sound, the hour's cue sheet, the alien log, the replaceable-parts model, every state. Each concept must show: arriving, crossing the door, inside, doing nothing, another hour. (The director's "one piece held" and "the list" moments are parked with the work unless the director says otherwise.)
+- Before the owner sees concepts: coverage check of each against jobs 1–14, and that 15–19 have somewhere to go.
+
+---
+
+# Earlier record (jam passes 1–2), kept for reasons
+
 ## Where things stand
 
 Jam pass 2, turn 1 done (2026-11-27). `jam.md` now has: Pass 1 systems, Pass 1 visual, Pass 1 director, Pass 2 systems (mine, latest). No `jobs.md`, no concepts, no scores yet.

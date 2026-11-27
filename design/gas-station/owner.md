@@ -35,11 +35,14 @@ Not the owner's words; a summary of what he saved. He was "not sure" it was ther
   Saved summary: vacuum-formed (thermoformed) plastic signs came out of WWII manufacturing and changed sign design in the 1950s; Conrad Escalante and Kozy Boren of Superior Outdoor Display Co. made affordable, mass-produced lit signs for small businesses; signature products include the flashing "Superior arrow" and standard models such as the Dynalite and Big Sig; described as folk art that creates small human connections in neighbourhoods.
 - Also saved: the Flickr group "Vacuum Formed Signs" (photo pool of vintage dimensional plastic signs). https://www.flickr.com/groups/vacuumformedsigns/pool/
 
+## 5. More answers (verbatim, with the question each answers)
+
+- Place first or work first: may a first-time visitor spend ten seconds with the place before any work shows? — "place first"
+- Whose name is on the sign? — "Me"
+- Do you want to choose which work shows in office hours versus at night? — "no"
+- Where is the station — a real place, or nowhere in particular? — "nowhere in particular. Middle of the desert. Texas, New Mexico, Nevada, Southern California"
+- Would you want a "receipt": a shareable shortlist of pieces a visitor picked up? — "no"
+
 ## Still open (asked, not answered)
 
-- Place first or work first: may a first-time visitor spend ten seconds with the place before any work shows?
-- Whose name is on the sign?
-- Should the time of day do something (choose which work shows), or only change how the place looks and what odd things happen?
-- Do you want to choose what shows in office hours versus at night?
-- Where is the station — a real place or nowhere in particular? (Partly answered: Route 66.)
-- Would you want a "receipt", a shareable shortlist of pieces a visitor picked up?
+- Should the time of day do something (choose which work shows), or only change how the place looks and what odd things happen? (Related: he said "no" to choosing what shows in office hours versus at night.)
