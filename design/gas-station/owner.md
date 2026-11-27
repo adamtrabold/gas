@@ -62,6 +62,18 @@ Not the owner's words; a summary of what he saved. He was "not sure" it was ther
 
 (He walked the private-link copy of `sketches/place` as it stood after round 2, with the GAS blade removed. Not shown to him as a candidate.)
 
+## 9. The owner's response to Left on at 9 — SENT BACK (verbatim)
+
+He was shown Left on (director's score 9), the before/after pairs, the sheet, and walked the refreshed round-3 prototype on his phone. His words:
+
+"It's looking pretty pixellated and when I press and hold it often brings up the copy paste tooltip on mobile. I think we need more detail boss texturing and shadow methods like crosshatching etc it looks posterized"
+
+Orchestrator's notes, not his words:
+- This is a rejection of a 9. It is about the look and the prototype's behaviour; he said nothing against the idea (shadow / lamp / left on) or the place.
+- "detail boss texturing" is unclear as typed — possibly "more detail, [em]boss/texturing". Unconfirmed; asked.
+- Two of the points are defects in the prototype on a real phone: it renders pixellated, and press-and-hold (which is how you walk) brings up the phone's copy/paste tooltip.
+- Earlier words that still stand unless he says otherwise: "pure ink for now"; strokes "readable but not precise or always whole"; "Ed Ruscha meets Jack Kirby's sketches"; and after the round-2 walk: "pretty high contrast… hard to really make out objects… more detail and variation in the brush stroke size".
+
 ## Still open (asked, not answered)
 
 - Should the time of day do something (choose which work shows), or only change how the place looks and what odd things happen? (Related: he said "no" to choosing what shows in office hours versus at night.)

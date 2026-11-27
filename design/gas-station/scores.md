@@ -36,3 +36,7 @@ Detail: `concepts/score-3.md`. The owner walked the round-2 prototype on his pho
 
 Jobs coverage (`concepts/coverage-05.md`): every job supported; stated gaps — sound designed but not audible, the shadow has no no-3D version.
 Goes to the owner after five small pre-link fixes the director listed (no re-score needed).
+
+## Owner's response to round 3
+
+Left on (9) was shown to the owner and SENT BACK — see `owner.md` section 9: pixellated on his phone, press-and-hold brings up the copy/paste tooltip, and "we need more detail boss texturing and shadow methods like crosshatching etc it looks posterized". First rejection of a 9. Round count restarts with this direction.
