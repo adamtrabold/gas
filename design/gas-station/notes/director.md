@@ -482,3 +482,48 @@ Which part of "flash" he means most (drawing manner, things alone on old paper, 
 ## Status
 
 No live score. The 9 on Left on is void for the look. Concept stands. Next thing I judge: Sheet 1.
+
+---
+
+# Sheet 1 judge (not a score)
+
+## Owner since steer 4 (owner.md 16)
+
+"This is liminal space logic so abandoned can still have power. Maybe someone's squatting." How-far-gone proposal accepted. Brand names: "propose". Made-up items: "sounds good". From his photos: lettering, utility poles, lamp post, clouds, boulders, mountains and brush in the distance: yes. Sign: "it should be neon and historically accurate [his article] and also maybe some of the letters could flicker". Article now readable at `inspo/sign-article/` (look at images 04, 05, 08 for the sign sheet).
+
+## What I checked
+
+Sheet 1 at full size in five pieces; beside 19–22, 16–18, 13; his Route 66 photo cropped to one pump against A1 part by part; the walked pump in iPhone 14 emulation at 3× in default, cut, dot, tall, fixed, night, dot-night.
+
+## Verdict: fix first (six small things), then send; no re-judge needed
+
+Right: reads as flash; not posterized; not pixellated; no clock; parts match his photo (the knob under the grade plate is in the photo); honest "Plainly" block; abandoned drawn in.
+
+One-glance catches:
+1. The link opens on "lit by the hour", which is far barer than the sheet's "drawn once" flash views. Sunlit face nearly blank with spots: two zones again. Biggest risk.
+2. PLAYA reads as slang. Only funny thing on the sheet.
+3. B1 (brush) and B2 (cut) look the same at phone size; B1 doesn't look brushed.
+4. C5 nozzle doesn't read.
+5. D1 and D2 are indistinguishable in the afternoon frames.
+6. Captions say "from your photo" for shapes that aren't matched to the photos (A1 is domed, the photo's pump is flat-topped with a proud front panel; A2 is A1 stretched).
+
+Fixes: link opens in the sheet's light and "Plainly" says so; replace PLAYA and list three or four checked names; make B1 visibly brush or withdraw it; remove C5; show D at mid-morning or drop it; honest captions and updated tags.
+
+Section 16 on the pump: globe lit at night (power on) is the pump's own "left on"; add to elements.md. Squatting changes nothing on the pump. Accepted items lose their PROPOSED tags.
+
+## My picks (for the orchestrator only; not to be told to him first)
+
+- Pump: the short one, both the same shape, different grades, one globe cracked.
+- Hand: cut (even line, short hatching), with stipple used for rust and wear only. Nearest his woodcut sheet and Kirby's line, cleanest on a phone, least likely to crawl. Brush kept for what light does on the ground and walls.
+- Light: things keep their own drawing; sun, his shadow and his lamp add on top. Ground and walls stay drawn by the light, as the designer argues.
+- Paper: one old sheet, two values, grain breaking the ink. This reverses my earlier pick of real grey on things: he has said "two values" twice since, and E2's gain is small.
+
+## Recalibration, continued
+
+- My steer asked for weeds that weren't on the list. The designer was right to refuse. "Nothing invented" applies to me too.
+- The gap that would have bitten this time was between the still and the walked thing, not in the still. Always open the link he will open, in the state it opens in.
+- Check any word on the sheet for a second reading before it goes.
+
+## Next
+
+Sign sheet: neon, historically accurate to his article, some letters flickering. Read `inspo/sign-article/README.md` and images 04, 05, 08 before judging it. My earlier ruling that the sign is "one letter to a lit box, stacked" and a flat painted arrow is unchecked against the article and may be wrong.
