@@ -104,6 +104,12 @@ He then described the method he has in mind (verbatim): "Yeah think like if I'd 
 
 (He saw a frame of the rebuilt pump: a round dial with 1–12 and two hands. The designer intended a 1930s "clock-face" pump's gallon dial. He has been asked: match his photos — rolling-number windows and a globe, no dial — or keep a clock-face pump redrawn so it doesn't read as a clock. Not yet answered.)
 
+## 14. Pump answer, and how to proceed (verbatim)
+
+"1. And before drawing elements let's first establish a list of things they need"
+
+("1" answers the pump question: match his photos — rolling-number windows and a globe, no dial. The second sentence is a process instruction: before any element is drawn, establish a list. Orchestrator's reading, unconfirmed: the list of elements the place has, and for each one what it needs — its parts, materials and details — agreed with him before drawing.)
+
 ## Still open (asked, not answered)
 
 - Should the time of day do something (choose which work shows), or only change how the place looks and what odd things happen? (Related: he said "no" to choosing what shows in office hours versus at night.)
