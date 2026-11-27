@@ -129,6 +129,30 @@ Against the questions asked:
 
 He did not strike or accept the individual PROPOSED items, or comment on the things in his pictures that aren't on the list.
 
+## 16. Answers on abandoned-vs-on, the proposed items, and the sign (verbatim)
+
+His message: "1. This is liminal space logic so abandoned can still have power. Maybe someone's squatting. So a
+2 Proposal sounds good
+3 propose
+4 sounds good
+5 lettering yes utility poles yes lamp post yes clouds boulders mountains and brush in the distance yes
+
+Re sign and name it should be neon and historically accurate https://bethmathews.substack.com/p/the-history-behind-the-signs-lighting?r=6g26r&utm_medium=ios and also maybe some of the letters could flicker"
+
+Against the questions asked:
+1. Abandoned, but things are on — which is it? — (a): abandoned for years and the power never went off. "This is liminal space logic so abandoned can still have power. Maybe someone's squatting."
+2. How far gone (glass kept in the door and two front windows, filthy and cracked; garage panes broken; one side window boarded)? — "Proposal sounds good"
+3. Brand names: name them or shall we propose? — "propose"
+4. The made-up things (sign on one pole; TRABOLD one letter to a box, stacked; starburst on top; rubber bell line; road centre line; bench under the window; phone box alone to the east; air hose on its own post) — accept all or strike any? — "sounds good"
+5. Things in his photos not yet used — "lettering yes utility poles yes lamp post yes clouds boulders mountains and brush in the distance yes" (awnings, opening hours on the door and the roof windmill were not mentioned.)
+
+On the sign: neon, historically accurate, with the article as the reference; "maybe some of the letters could flicker".
+
+Orchestrator's notes, not his words:
+- From its saved summary, that article is about vacuum-formed plastic lit signs of the 1950s (Superior Outdoor Display Co., the flashing "Superior arrow"), not neon tube signs as such. "Neon" and "accurate to the article" may point at two different kinds of sign; the article has to be read before anyone decides.
+- "Some letters could flicker" touches the list's rule that every letter of his name still lights (so the sign never spells something else).
+- "Maybe someone's squatting" is offered as a maybe.
+
 ## Still open (asked, not answered)
 
 - Should the time of day do something (choose which work shows), or only change how the place looks and what odd things happen? (Related: he said "no" to choosing what shows in office hours versus at night.)
