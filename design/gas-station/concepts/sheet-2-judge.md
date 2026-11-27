@@ -137,3 +137,39 @@ Both of my predecessor's Sheet 1 picks that differed from the owner's (the cut h
 ## For the next director
 
 Where I'd place this if it were scored as a look: the lone pump, 8.5. The three together by day, 7. Night under the one lamp, 8. Nothing here is a 9, and nothing here is being put to him as finished.
+
+---
+
+# After the fixes: send
+
+Checked: the four stills I asked for (`s2-fix-1` to `s2-fix-4`), the refreshed sheet (1170 × 6642) at phone size with its last screen at full size, and the new top section of `sheet-2.md`. I did not walk the prototype again.
+
+**Decision: it goes to the owner now, as a test, once one line is added to "Plainly".** No further look from me.
+
+| Fix | Result |
+|---|---|
+| 1. A thing stays in dots | Done. In his own lamp at night the pump is dots packing to black, no lines. Beside a pump under the canopy by day the cabinet is dots and paper; the veil no longer shows as ruling |
+| 2. Shade lines | Half done, and honestly reported. The herringbone and the zigzag seam are gone. The lines are still even and ruled. His shadow has ragged ends now but is still upright parallel lines, and it reads less clearly as a head and shoulders than before |
+| 3. Opening stand | Done: the three together, by day, square on, whatever his clock says |
+| 4. Shorter sheet, strongest frame first | Done. 6,642 px against my 5,000 target; acceptable, since nothing left on it fails to read |
+| 5. The light question in words | Done, and the captions are neutral |
+| 6. Small honest things | Done |
+
+**Why the even shade lines don't hold it.** They no longer look like something else (a wood floor, a zip). What is left is a matter of hand, and that is exactly what his answer steers: if he says "dots for shade", refining the lines was wasted work. He should be told plainly, so he reacts to the rule and not to the ruling.
+
+**The line to add to "Plainly", as its second item:**
+
+> - The shade lines are still even and ruled, as if drawn with a straightedge, and your own shadow is upright stripes more than a figure. Both are being redrawn to swell, taper and break like a hand's. Judge where the lines go, not how they are drawn.
+
+**What he may still say, and we accept:** the ground is plain; the dots are coarse from a distance; there is no black by day. All stated on the sheet or in the notes, all his to steer.
+
+## Final wording of the questions
+
+1. **Your two pumps.** We've drawn the same short pump twice, mirror images, both facing the road with their hoses toward each other, like the two yellow pumps in your Route 66 photo. One says HI-TEST, one REGULAR, one globe is cracked. Is that right, or do you want two different pumps?
+2. **Dots and lines.** You said the light shouldn't redraw a thing. So each thing is drawn once in dots and never changes. Shade, your shadow and the dark at night are drawn in lines, on the ground and the walls. Is that the split you want? Or should shade be dots too, so everything is in one hand? The last section of the sheet shows both, and what happens if nothing changes at all.
+3. **A pump standing in the canopy's shade.** Right now it looks almost exactly as it does in the sun, and only the ground and wall behind it are shaded. Is that right, or should the pump itself look shaded?
+4. **On your phone.** Walk up to a pump. Do the dots hold still or shimmer? Is it still fluid? Does press and hold only walk now?
+
+Tell him, don't ask: this is a test of how things and light are drawn, not a finished picture; the middle canopy lamp is the one that works unless he says otherwise; LLANO is still a stand-in.
+
+Question 3 is reworded from my first version because the veil is now nearly gone: the default he sees is "not shaded", so the question has to start from that.

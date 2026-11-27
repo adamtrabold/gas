@@ -7,7 +7,7 @@ Rewritten at the Sheet 2 judge as a compact, current file. I am the third direct
 - **Concept:** Left on (`concepts/05-left-on.md`) stands. The owner has objected only to the look.
 - **Process (his words):** "develop all the elements individually"; "before drawing elements let's first establish a list of things they need". So: an agreed list (`elements.md`), then one flash sheet per element or family, each with the same things walkable on his phone. Small things, one at a time. Don't batch.
 - **Sheet 1 (pump):** sent. His picks: the short flat-topped pump; dots (stipple); "no" to the light redrawing it; a scanned paper on each part, real grey in the paper; brand names his to supply, mock for now.
-- **Sheet 2 (slab, island, canopy; the pump settled):** judged in `concepts/sheet-2-judge.md`. Verdict: fix first (six fixes), then send as a decision question labelled as a test. Four stills to look at afterwards; no full re-judge.
+- **Sheet 2 (slab, island, canopy; the pump settled):** judged in `concepts/sheet-2-judge.md`. Fix first (six fixes), then checked from four stills and the refreshed sheet: **cleared to send as a test**, with one line added to "Plainly" saying the shade lines are still even and ruled and are being redrawn. Fixes 1, 3, 4, 5, 6 done; fix 2 half done (herringbone and zigzag gone; lines not yet hand-like; his shadow is stripes more than a figure). The four questions for him are at the end of the judge file.
 - **No live score.** The 9 on Left on is void for the look.
 
 ## Score history
@@ -21,7 +21,7 @@ Rewritten at the Sheet 2 judge as a compact, current file. I am the third direct
 | 3 | 05 Left on | 9 | All six fixed. **Sent to the owner and sent back**: "pixellated… posterized… more detail via texturing and shadow methods like crosshatching". Void |
 | Look test 1 | pump, three hands | not scored | Fix first, then pump only |
 | Sheet 1 | pump | not scored | Six fixes, then sent. He picked |
-| Sheet 2 | slab, island, canopy | not scored | Six fixes, then send. Private placing: lone pump 8.5; together by day 7; night under the one lamp 8 |
+| Sheet 2 | slab, island, canopy | not scored | Six fixes, then cleared to send as a test. Private placing: lone pump 8.5; together by day 7; night under the one lamp 8 |
 
 What blocked a 9 across rounds: the look ran a round behind the idea; the first seconds by day were always last in the queue; nobody had held it on a phone; much of the concept was words.
 
@@ -79,7 +79,7 @@ My reading: a fair reading of his picks, supported by his own phrase "shadow met
 - Does the hour choose anything, or only change the look?
 
 **With the team**
-- The six Sheet 2 fixes (`sheet-2-judge.md`).
+- Shade lines that swell, taper and break like a hand's; his shadow reading as head and shoulders again (left over from Sheet 2 fix 2; wait for his answer on lines or dots before spending on it).
 - Dots are coarse against the thing from 3 m out; fine within arm's reach.
 - No solid black and little line weight by day outside the pumps; the day frames read as a light pen drawing, not "a black and white painting".
 - "Abandoned" is carried by speckle only; the geometry is new.
@@ -100,7 +100,7 @@ My reading: a fair reading of his picks, supported by his own phrase "shadow met
 
 ## Next
 
-1. Designer does the Sheet 2 fixes. I look at four stills: the pump at night in his lamp; beside a pump under the canopy by day; the forecourt shade from the east; his shadow.
-2. Sheet 2 goes to him with four questions in plain words (in the judge file).
+1. Add the one line to "Plainly"; Sheet 2 goes to him with four questions in plain words (end of the judge file).
+2. Read his answer against my guess below before steering anything.
 3. Then the station front (element 4), which is the hardest test of the rule: a detailed wall in shade behind a pump. The sign waits for his photos.
 4. My guess at his reply, to check myself against: yes to twin pumps; yes to lines for shade, with a remark that the lines look mechanical or the ground is plain; a wish for more black by day.
