@@ -2,6 +2,40 @@
 
 ## Where things stand (latest first)
 
+**Concept phase, systems turn 1 done (2026-11-27).** Files in `concepts/`: `00-shared.md`, `01-nobodys-here.md`, `02-the-arrow.md`, `03-your-light.md`, `04-the-makeover.md`. Each has only the "how it works" half; visual hasn't added to them yet; no director steer on them yet. `jobs.md` is with the owner (no reaction yet). Sign-name question is closed ("Me") and not listed in `jobs.md`.
+
+### The four concepts and why these
+
+They differ in where the idea lives and what the hour does:
+- **01 Nobody's here** — idea at the door and inside; hour = light, sound, odd things only. The "no" answer to the owner's open question. Call (asking for someone who isn't there) is its heart; doing nothing has three depths (20 s, 1 min, a few min); first chart entry is the visitor.
+- **02 The Arrow** — director's Instrument, reshaped: the Googie arrow sign is raked over the forecourt and its shadow is the hand; the hour chooses which *thing* is awake (not a piece of work); hour lines are the concrete's expansion joints; indoors the sun patch is the hand; at night the lit arrow points only at the door; noon the door stands ajar; solstice alignment; second shadow as alien evidence. The "yes" answer.
+- **03 Your light** — new since the owner's answers. The visitor is a shadow by day and a lamp by night, never drawn; indoors every thing is a light with a sound, and the room's drawing and sound are the sum of the lights on; lights stay as you left them; twilight you have no effect; keyboard focus is the light. Limited look-around at each stop. Needs a throwaway prototype — not built yet.
+- **04 The makeover** — from "make into something" and "draw but generate for now": every thing is visibly marked out / roughed in / done, tied to its real build state; a dated ledger. I said in the file it's probably a layer, not a concept, and should be folded or killed; one owner question would settle it (does he want stand-ins to look like stand-ins).
+
+### Decisions in the shared file, with reasons
+
+- Every concept is a plain Route 66 station with one Googie arrow sign carrying his name (owner's words override the director's plain/streamlined split).
+- Five moments are now: arriving, crossing the door, inside, doing nothing, another hour (work parked).
+- World = stops + things + cues; each thing declares how finished it is (generated / his strokes / his model + strokes); one shared brush sheet. This is what makes jobs 13–14 possible.
+- One address for now, lands on the road (place first; job 11). Back button steps out.
+- Margin holds sound, way out, the hour (and "wound").
+- Sound: bed, answers, events; starts on first touch; every answer sound has an ink twin (a landed word), which doubles as the caption.
+- No-3D fallback: four pre-made stills of the road stop plus stops described in words with things as buttons.
+- Dropped: timetable/piece of the hour (parked with work), receipt, office-hours order, real latitude, The board as a concept, streamlined station.
+
+### Open
+
+- Owner: does the hour do something (01 vs 02 show both); free walking vs composed views (03 is the nearest to free); for 04, should stand-ins look like stand-ins.
+- Visual to check: can a Route 66 arrow sign plausibly rake over the forecourt (owner's saved sign references); does your own shadow read as yours without becoming a character; night arrival not lost in black.
+- Mine: prototype 03's night forecourt if the director keeps it.
+
+### Next
+
+- Visual's turn on the four files; then the director steers.
+- React to both; cut to the survivors; then the coverage check against jobs 1–14 before the owner sees anything.
+
+## Earlier: after the jam
+
 **Jam closed. Owner has answered. `jobs.md` written (2026-11-27).** Concepts not started — waiting for the owner's "wrong / missing" on the job list and for the director's steer, which was written before the owner's answers and needs re-reading against them.
 
 ### What the owner's answers did to the jobs
