@@ -80,6 +80,12 @@ Orchestrator's notes, not his words:
 
 (So section 9 reads: "we need more detail via texturing and shadow methods like crosshatching etc". Two values stands: black and white only, with grey as an illusion made by marks. His phrase for the whole thing: "a black and white painting".)
 
+## 11. A further idea from the owner (verbatim)
+
+"We could also leverage different paper textures for the forms"
+
+(Offered as an option — "could" — alongside texturing and crosshatching. How it sits with "two values" is not stated.)
+
 ## Still open (asked, not answered)
 
 - Should the time of day do something (choose which work shows), or only change how the place looks and what odd things happen? (Related: he said "no" to choosing what shows in office hours versus at night.)
