@@ -70,9 +70,15 @@ He was shown Left on (director's score 9), the before/after pairs, the sheet, an
 
 Orchestrator's notes, not his words:
 - This is a rejection of a 9. It is about the look and the prototype's behaviour; he said nothing against the idea (shadow / lamp / left on) or the place.
-- "detail boss texturing" is unclear as typed — possibly "more detail, [em]boss/texturing". Unconfirmed; asked.
+- "detail boss texturing" was a typo for "detail via texturing" — see section 10.
 - Two of the points are defects in the prototype on a real phone: it renders pixellated, and press-and-hold (which is how you walk) brings up the phone's copy/paste tooltip.
 - Earlier words that still stand unless he says otherwise: "pure ink for now"; strokes "readable but not precise or always whole"; "Ed Ruscha meets Jack Kirby's sketches"; and after the round-2 walk: "pretty high contrast… hard to really make out objects… more detail and variation in the brush stroke size".
+
+## 10. Clarifications after sending it back (verbatim)
+
+"Detail via* texturing. Two values but we can still make the illusion of grey. It's just a black and white painting."
+
+(So section 9 reads: "we need more detail via texturing and shadow methods like crosshatching etc". Two values stands: black and white only, with grey as an illusion made by marks. His phrase for the whole thing: "a black and white painting".)
 
 ## Still open (asked, not answered)
 
