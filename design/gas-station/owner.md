@@ -180,6 +180,12 @@ Against the sheet:
 
 Not yet answered: whether this is what he meant by flash sheet vibes; the phone check (sharp, fluid, press-and-hold only walks, which browser).
 
+## 19. A project site (verbatim)
+
+"I don't want to be jockeying repos I'll make it a GitHub page give me a website like the synths that we can share concepts through"
+
+("The synths" is his other project, adamtrabold/synths-to-go, whose site is at https://adamtrabold.github.io/synths-to-go/ — a static site generated from that repo by a build script and pushed to a gh-pages branch; he turns Pages on in the repo's settings. His standing rules from that site's record: public is fine; it is a viewing site, chat stays the place for decisions; everything must be viewable on a phone; text is real HTML, not markdown files and not baked into images; prototypes are hosted on the site.)
+
 ## Still open (asked, not answered)
 
 - Should the time of day do something (choose which work shows), or only change how the place looks and what odd things happen? (Related: he said "no" to choosing what shows in office hours versus at night.)
