@@ -44,6 +44,13 @@ All in `/home/user/gas/design/gas-station/inspo/` — open them yourself.
 - 17 Jack Kirby, Fantastic Four #86 cover, original black and white art
 - 18 Silver Surfer #1 original page, heavy ink blacks, "Kirby krackle" dots
 
+Added later by the owner with the words "maybe a bit of flash sheet vibes should enter the visual approach equation" (see `owner.md` section 15):
+
+- 19 flash sheet in a medieval woodcut manner: figures, ouroboros, clasped hands, stars; line hatching, on aged paper over faint blackletter
+- 20 flash sheet: candelabra, thorns, eyes, skull; stipple and dotted shading, rough photocopy blacks, on speckled paper
+- 21 flash sheet in soft pencil: birds, tiger, small figures; short fur-like strokes, pale paper
+- 22 flash sheet: frogs, figures, starburst with an eye; loose brush-pen line, solid blacks, dotted halftone fills, on flecked paper
+
 ## Files for this work
 
 Folder: `/home/user/gas/design/gas-station/`

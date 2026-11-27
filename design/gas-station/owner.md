@@ -110,6 +110,25 @@ He then described the method he has in mind (verbatim): "Yeah think like if I'd 
 
 ("1" answers the pump question: match his photos — rolling-number windows and a globe, no dial. The second sentence is a process instruction: before any element is drawn, establish a list. Orchestrator's reading, unconfirmed: the list of elements the place has, and for each one what it needs — its parts, materials and details — agreed with him before drawing.)
 
+## 15. Answers on the element list, and a new look direction (verbatim)
+
+His message: "1 yes 2 abandoned 3 I don't know what you're talking about 4 realistic labeling with fake brand names 5 joined 6stucco over brick 7 not yet
+
+I'm also thinking maybe a bit of flash sheet vibes should enter the visual approach equation"
+
+with four new images, saved as `inspo/19.jpg`–`22.jpg` (described in `brief.md`).
+
+Against the questions asked:
+1. Is this the kind of list you meant? — "yes"
+2. Kept up or weathered? — "abandoned"
+3. Which pump: the rounded one in [02] or the taller one in [01]; two the same or two different? — "I don't know what you're talking about" (the question leaned on picture numbers he can't see; to be re-asked plainly. NOT ANSWERED.)
+4. What do the words on things say? — "realistic labeling with fake brand names"
+5. Is the canopy joined to the building or standing on its own? — "joined"
+6. What is the wall? — "stucco over brick"
+7. A picture in mind for the inside? — "not yet"
+
+He did not strike or accept the individual PROPOSED items, or comment on the things in his pictures that aren't on the list.
+
 ## Still open (asked, not answered)
 
 - Should the time of day do something (choose which work shows), or only change how the place looks and what odd things happen? (Related: he said "no" to choosing what shows in office hours versus at night.)
