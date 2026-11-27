@@ -109,7 +109,14 @@ Outside before inside, because your pictures are all outside and you start outsi
 **Not known**
 - The shape (question 3). The brand's name (question 4).
 
-**Drawing needs (visual designer):** _empty_
+**Drawing needs (visual designer):**
+- *Made of:* painted steel cabinet and base; glass globe face and number window; rubber hose; cast metal nozzle; enamel or decal lettering.
+- *Paper:* the steel paper (smooth, faint streaks one way) on cabinet, base, rim, nozzle and hose. Glass and lettering have no paper: they are flat paint.
+- *Kinds of mark:* a contour with weight; hatching (or strokes, or stipple, by the hand he picks) that runs up the cabinet and round the dome and the globe's rim; pits and chips and long reflections on lit steel; rust as blotches and close stipple rising from the base and at the seams; the print itself worn (ink dropping out in the paper's low places).
+- *Where tone turns:* the cabinet is rounded in plan and domed on top so tone turns across its corners and over its shoulder; the globe's rim turns; the hose is a tube. No part is a plain box.
+- *Flat paint (hard, like lettering):* the globe's face with the brand, grade plate, number window and its digits, badge, notice, knob, the two seam lines. All worn: flecks of paint gone, dust on the window, a crack on one globe (PROPOSED).
+- *Its own ground:* its cast shadow, feathered, and the pebbles under it. No weeds: none are on this list.
+- *Open:* the nozzle and its holder do not read yet and need a closer look at his photos; lettering is set type until someone draws it; brand names PLAYA and LLANO are PROPOSED and unchecked against real brands.
 
 ---
 

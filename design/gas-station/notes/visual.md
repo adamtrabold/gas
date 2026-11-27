@@ -2,16 +2,45 @@
 
 Last updated: after the look test (third visual designer, first turn). The owner sent Left on back at the director's 9; this turn fixed two phone defects and replaced the drawing rule. Nothing has been scored or seen by the owner yet.
 
-## Latest (end of turn; overrides anything below that disagrees)
+## Latest: Sheet 1, the pump (read this first; it overrides anything below that disagrees)
 
-- The director judged the look test (`concepts/look-judge-1.md`): right direction, five fixes, then the pump only. Done on the pump as it stands; table in `look-test.md` section 0. Fixes 3, 4, 5 met; 1 and 2 partly (lit steel still light in pen and brush; brush shade still near bars).
-- **The owner then stopped element work** (`owner.md` 13, 14): "Why is there a clock on the pump?" and "before drawing elements let's first establish a list of things they need". The pump is to match his photos 01 and 02: grade plate, a small rectangular window of rolling numbers, a flat disc globe, a slightly domed top, dark plinth, hose looped from the side. **Not built.** The clock face and ball globe are still in `index.html` and in every still. Do not model or redraw any element until the list is agreed with him. Nothing goes to his link until then.
-- My next job: add to the systems designer's element list what each element needs from the drawing: material, paper, kinds of mark, where tone must turn (so what must be round), what is flat paint.
-- The link: any hash not behind `team` gives the lone pump. Foot links pen · brush · paper, day · night. `#team` (arrival), `#team-lot`, `#team-wall`, `#team-ground`, `#team-...-dusk` for us. `?study=` also counts as team, for the capture scripts.
-- Stills now: `look-fix-1..3.png` (pump by day in pen, brush, paper; lossless, zoomable), `look-pump-{close,night,pm,far}-*`, `look-before-*`, and `look-test.png` (pump only). The lot, wall and ground stills were deleted as stale; re-render with `study=lot` etc. if wanted.
-- New this pass in the build: `inkMat(..., { fine })` (small things wear marks closer together); `supG` (a body rounded in plan and its dome, with smooth normals: this is how tone turns); multisampling at every density (`?msaa=0` to compare); contour read at four radii; a tight sun shadow when one element is alone; paper grey only where the flag is a drawn thing (a between .215 and .6), so ground, road and sky stay plain; `window.seen()` lists what is visible (it found the sign's bulbs and the back wall plug being re-shown every frame in the lone-pump view).
-- Lesson: a box can only ever have two tones. "Tone that turns" is a modelling requirement before it is a drawing one. Put it in the element list: every element needs at least one surface that turns.
-- Lesson: brush at 15 points between strokes is too coarse for a thing half a metre wide seen from 3 m. Stroke scale has to go with the size of the thing.
+Last updated: after Sheet 1. Waiting on the design director, who wants to see the sheet before the owner does. Nothing goes on the owner's link until then.
+
+**What happened since the look test.** The director judged it (`concepts/look-judge-1.md`) and asked for five fixes; done (`look-test.md` section 0). The owner asked "Why is there a clock on the pump?" and then for a list before any drawing. The systems designer wrote `elements.md`; he said yes to it, and: "abandoned", "realistic labeling with fake brand names", canopy "joined", "stucco over brick". Then: "I'm also thinking maybe a bit of flash sheet vibes should enter the visual approach equation", with `inspo/19` to `22`. The director's reading is `concepts/steer-4.md`: each thing a complete drawing alone on old paper, line first, tone by hatching, stipple or spotted black, worn print, drawn lettering; not the creatures, not the charm.
+
+**Delivered this turn**
+- `concepts/stills/sheet-1-pump.png`: the flash sheet. Write-up: `concepts/sheet-1.md` (what it shows, how it was made, what transfers to 3D, what is not good).
+- The pump rebuilt from his photos in `sketches/place/index.html`: two shapes (short [Route 66] at x -8.2, tall [1934] at x -5.4), disc globe with brand, grade plate, knob, rolling-number window, badge, notice, hose, nozzle, dark base. No clock. Abandoned: rust, pits, flecked lettering, dusty window, one cracked globe (PROPOSED).
+- Three hands: `brush`, `cut`, `dot` (and `paper` still works by name: brush on real grey papers). `pen` is gone; `cut` replaced it.
+- "Drawn once" (`fixed`): things keep their own shading from a light at upper left; night and shadows only add. Only materials made with `thing: 1` obey it (the pump's).
+- `elements.md`: the pump's drawing-needs slot is filled. The other fifteen are empty.
+- Walked stills `look-pump-*` (16 `look-` files in all, with the before pictures and the old `look-test.png`, which shows the clock pump and is superseded).
+
+**Routes.** Plain names after `#`, joined by dashes, any order: hands `brush` (default) `cut` `dot`; `tall`; `fixed`; `day` `night`. The page is the lone pump unless `team` is present (`#team`, `#team-lot`, `#team-wall`, `#team-ground`, dusk only there). Query, for scripts: `look`, `study`, `tall`, `fixed`, `h` (eye height), `fov`, plus the tuning ones listed further down and `wear`, `msaa`.
+
+**How the hands are made** (all in `inkMat`'s shader; numbers in `LK`, `LK2`, `LK3`, `lw`, `wear` near the top, one entry per hand):
+- brush: two families of broad dry strokes 15 and 12 points apart, bristle streaks, black from tone .86.
+- cut: one family 7.5 points apart, short marks, no second family (cross-at over 1 switches it off; that guard matters, without it the whole world hatches), black only in the full dark, contour 1.7 times wider and nearly even.
+- dot: families switched off, three layers of `spots` whose density follows tone, finer contour, most wear.
+- `fine` scales gaps for small things; `rust: 1` adds blotches and stipple rising from the ground (uses world height, so it is for things standing on the ground); `wear` drops ink where the paper is low.
+- Lettering and faces are canvas pictures on flat planes (`cv`, `globeM`, `plateM`, `windowM`, `badgeM`, `noteM`), with `worn` and `dust`.
+
+**How the sheet is made.** `look.js` with `look-shots.js` captures `s-*` flash views (long lens, `fixed=1`, front quarter) and `look-*` walked frames into `out/`. `python3 sheet1.py` (in `sketches/place/`, needs numpy and PIL) cuts pieces out, generates the aged sheet, sets captions, saves the PNG. Then quantise the walked frames into `concepts/stills/` and delete `out/`. The sheet is honest about its flattery: long lens, chosen side, own light, generated paper.
+
+**Decisions I made, and why**
+- The sheet is built from real frames, not drawn separately, so it cannot promise what the world can't do.
+- Flash views use `fixed` light because sunlit faces by the hour are nearly bare; said on the sheet and in `sheet-1.md`.
+- No weeds at the base: not on the pump's list.
+- Brand names PLAYA and LLANO, PROPOSED, with a low sun on a flat horizon. **Not checked against real brands.**
+- Dots (the steer's tension D): if dot is the hand, bulbs stay a ruled row of round lamps and alien marks become open rings.
+
+**Known weak points**: nozzle doesn't read; tall pump is not particular enough to his 1934 photo; lettering is type, not a hand; brush strokes on the cabinet are straight and can read as wood grain; rust heavy at the base; D1/D2 and E1/E2 hard to tell apart at phone size; the world's paper is still flat cream (the aged sheet exists only in `sheet1.py`); nothing seen in motion or on a real phone; multisampling at 3 dots per point is the frame-rate risk; dusk, room, aisle, horizon and scrub are still not looked at in any new hand.
+
+**Open questions**: owner: A1 or A2 (and same or different), B1/B2/B3, D1 or D2, E1 or E2, the brand name; still the phone checks (callout gone, fluid, no blockiness). Director: is the sheet honest enough to send; is `fixed` light fair for the flash views.
+
+**Next**: the director's read of the sheet. Then, once the owner picks: slab and island, then canopy (the order in `elements.md`), each as a sheet made the same way, filling each element's drawing slot as it is drawn. Fix the nozzle. Put the aged paper into the world if he picks one sheet. Draw the lettering.
+
+Folder is about 19 MB.
 
 ## Where things stand
 
