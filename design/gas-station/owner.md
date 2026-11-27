@@ -153,6 +153,20 @@ Orchestrator's notes, not his words:
 - "Some letters could flicker" touches the list's rule that every letter of his name still lights (so the sign never spells something else).
 - "Maybe someone's squatting" is offered as a maybe.
 
+## 17. Answers on the sign questions (verbatim)
+
+His message: "1. Here are some more photos to draw inspo from. I want the best amalgamation? 2+3 don't care 4. Well it would probably be me squatting
+
+Will get back to you on the others"
+
+Against the questions asked:
+1. Your name on the sign: neon, or plastic boxes? — he doesn't pick one: "I want the best amalgamation?", drawing on more photos. NO PHOTOS ARRIVED with the message; asked to resend.
+2. Which arrow (hooked, or through the sign)? — "don't care"
+3. Keep or drop the starburst? — "don't care"
+4. Take up the squatter? — "Well it would probably be me squatting"
+
+"The others" (Sheet 1 picks A/B/D/E/F and the phone check) — he will get back.
+
 ## Still open (asked, not answered)
 
 - Should the time of day do something (choose which work shows), or only change how the place looks and what odd things happen? (Related: he said "no" to choosing what shows in office hours versus at night.)
