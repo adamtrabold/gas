@@ -84,7 +84,9 @@ Orchestrator's notes, not his words:
 
 "We could also leverage different paper textures for the forms"
 
-(Offered as an option — "could" — alongside texturing and crosshatching. How it sits with "two values" is not stated.)
+(Offered as an option — "could" — alongside texturing and crosshatching.)
+
+Asked whether the paper textures stay within black and white or a form could sit on differently toned paper, he said: "Within black and white, different grain showing through the ink"
 
 ## Still open (asked, not answered)
 
