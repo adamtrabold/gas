@@ -297,3 +297,53 @@ Raised by half a point for real change. Would not raise again unless the desert 
 ## Next
 
 Designers apply fixes 1–9 (2 and 3 are the real work, visual). I re-score. If 9, it goes to the owner with his phone walk. Sign check against his references still with the orchestrator.
+
+---
+
+# Concept round 3 — score 3
+
+## Owner since last time
+
+Section 8, after walking the round-2 prototype on his phone: "Prototype feels pretty good and fluid. Rendering is pretty high contrast though ... hard to really make out objects. I think there can be slightly more detail and variation in the brush stroke size or something to give more detail to the scene". Phone feel is retired as a risk. His real objection: legibility of objects, stroke detail and size variation.
+
+## How I checked
+
+Rewritten look half, coverage-05, all round-3 frames incl. five before/after pairs (contact sheets in the session scratchpad), and my own live walk at #day, #dusk, #night (390 × 844, software rendering).
+
+## Score: 9 — Left on goes to the owner
+
+All six round-2 blockers fixed and verified: GAS gone, desert in, brush in the day arrival, pool at your feet at night, clean person shadow, dusk frame. His legibility objection answered with one clear step (tone per thing, more stroke sizes, a line on lost edges, more open shade), shown as pairs.
+
+## Rulings
+
+- Edgeless sunlit wall: my ruling withdrawn; the owner's eye wins.
+- Shadow: clean-outlined person. Tidy the ragged tuft indoors.
+- Far-stroke handover: on for his walk; `?big=0` ready.
+
+## Before the link goes (no re-score needed)
+
+1. Edge line needs a brush's weight and fewer lines; worst at dusk.
+2. Pole ladder at dusk.
+3. A solid black frame by day at the foot of the sign after a turn (I saw it once; likely view inside the pole).
+4. Tuft at feet indoors.
+5. Standing still at night can leave a solid black frame if not facing the sky.
+
+## Residual objections I expect
+
+Thin even outlines read slightly as line render; noon canopy shade still slabs the pump; silent; strokes look generated; possible crawl on the walk in. None judged likely enough to hold it.
+
+## What he should be told
+
+What it is; what's walkable; what's words only (all sound, switching, crossing, bell, standing-still list, memory, chart, most alien material); the five pairs and "enough, too much, or wrong kind?"; three things only he can judge (focus vs crawl, edge lines, his shadow); what's his to replace.
+
+## Fallback questions if he says "still not it"
+
+One grey allowed, or more line? Lines heavier and fewer, or off the building? Draw one stroke sheet of his own now?
+
+## Lesson
+
+The look ran a round behind the idea each time. The owner's one sentence after walking it did more than two rounds of my objections, and it named something I hadn't. In the build: walkable thing in front of him early and often.
+
+## Next
+
+If he approves: handoff is written; I check `handoff.md` against Left on as approved and his notes in owner.md, and send back any drift before the build starts.

@@ -25,3 +25,14 @@ Nothing shown to the owner.
 
 Across two rounds, per the director: the look arrives a round behind the idea; the first three seconds by day have been last in the queue both times; much of the concept is still words; nobody has held it on a device.
 Nothing shown to the owner as a candidate. (A throwaway phone-test link was given to the owner, labelled as not passed.)
+
+## Concept round 3
+
+Detail: `concepts/score-3.md`. The owner walked the round-2 prototype on his phone between rounds (owner.md section 8). Director says the work really changed.
+
+| Concept | Score | Reason | Remaining objections (none judged likely enough to hold it) |
+|---|---|---|---|
+| 05 Left on | 9 (was 8.5) | All six round-2 blockers fixed and verified in stills and a live walk; the owner's legibility objection answered in one clear step (tone on things, four or five stroke sizes, lines on lost edges, more open shade) | Edge lines thin and even, a little like a line render; pump under the noon canopy still a slab; prototype silent; strokes look generated; building's marks redraw as you walk in, unseen in motion |
+
+Jobs coverage (`concepts/coverage-05.md`): every job supported; stated gaps — sound designed but not audible, the shadow has no no-3D version.
+Goes to the owner after five small pre-link fixes the director listed (no re-score needed).
