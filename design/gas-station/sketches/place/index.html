@@ -10,7 +10,7 @@
   #note{position:fixed;left:0;right:0;bottom:calc(5px + env(safe-area-inset-bottom,0px));text-align:center;font:11px/1.9 "Courier 10 Pitch","Courier New",monospace;color:#8a857a;pointer-events:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
   #note a{pointer-events:auto;color:inherit;text-decoration:none;padding:8px 2px;-webkit-touch-callout:none;-webkit-user-drag:none}#note a.on{text-decoration:underline}#hint{transition:opacity 1.5s}
 </style>
-<div id="note"><span id="looks"><a data-look="brush">brush</a> · <a data-look="cut">cut</a> · <a data-look="dot">dot</a></span> &nbsp; <a data-t="tall">short/tall</a> · <a data-t="lit">drawn once/lit by the hour</a><br><a data-hour="day">day</a> · <a data-hour="night">night</a><span id="hint"> &nbsp; drag to look · hold to walk</span></div>
+<div id="note"><span id="views"><a data-view="pump">pump</a> · <a data-view="slab">slab</a> · <a data-view="together">together</a></span><span id="looks"> &nbsp; <a data-look="brush">brush</a> · <a data-look="cut">cut</a> · <a data-look="dot">dot</a> &nbsp; <a data-t="tall">short/tall</a> · <a data-t="lit">drawn once/lit by the hour</a></span><br><a data-hour="day">day</a> · <a data-hour="night">night</a><span id="hint"> &nbsp; drag to look · hold to walk</span></div>
 <script type="module">
 // The place, walked. Throwaway: it exists to test the look, not to be built on.
 // Systems' lot: sign at the road, door 16 m straight north of it, canopy and pumps to the west.
@@ -26,20 +26,29 @@
 //  4. Every kind of surface has its own marks whatever the light (pebbles, trowel flecks, joints, ribs, grain) and its own paper: a grain that shows through the ink where a mark runs dry.
 //     The grains are pictures in paper/ and are meant to be replaced by the owner's scans.
 //  5. The last pass draws the contour: heavy where the form is in shade, thin and broken where it is lit.
-// Three ways to do it, by name after the # (alone or with the hour: #brush, #pen-night): pen, brush, paper.
+// THE OWNER'S PICKS (owner.md 18), which is how the link now opens: the short pump, the dot hand, drawn once, a paper on each part.
+//  - Dots belong to the thing: its form, its rust, its stains. They are put down once and never change with the hour.
+//  - Lines belong to the light: a cast shadow by day, the dark at night. They are laid along the sun (or away from a lamp) over whatever is there.
+//  - The ground and the walls have no shading of their own, so they are where the light writes.
+// Views, by name after the #: pump (alone), slab (slab, island, both pumps, open sun), together (with the canopy and a blank wall). With -day or -night.
+// The other hands (brush, cut), the tall pump and "lit by the hour" are behind #team (#team-brush, #team-lot-cut-night ...).
 import * as T from '../ink-is-shadow/vendor/three.module.min.js';
 import { makeSheet } from './strokes.js';
 const Q = new URLSearchParams(location.search), num = (k, d) => Q.has(k) ? +Q.get(k) : d, STILL = Q.has('still');
 // which hour and which look: names after the #, joined by a dash in any order (#night, #brush, #pen-dusk). with no hour, the visitor's own clock picks one of the three
 const HASH = location.hash.replace('#', '').toLowerCase().split(/[-+,]/), CLOCK = new Date().getHours() + new Date().getMinutes() / 60; addEventListener('hashchange', () => location.reload());
 const HOURH = HASH.find(h => ['day', 'night'].concat(HASH.includes('team') ? ['dusk'] : []).includes(h)), LOOKS = ['brush', 'cut', 'dot', 'paper'], LOOKH = HASH.find(h => LOOKS.includes(h));
-const MODE = Q.has('night') ? 'night' : Q.has('dusk') ? 'dusk' : Q.has('hour') ? 'day' : HOURH ? HOURH : CLOCK >= 6.5 && CLOCK < 17.75 ? 'day' : 'night', DUSK = MODE === 'dusk';   // dusk has not been redrawn: only by name, behind #team
-const TALL = HASH.includes('tall') || Q.has('tall'), OWN = !(HASH.includes('lit') || Q.has('lit')),   // things keep their own drawing (as on the sheet) unless the link says lit: then the hour's light makes all of it
+const MODE = Q.has('night') ? 'night' : Q.has('dusk') ? 'dusk' : Q.has('hour') || Q.has('day') ? 'day' : HOURH ? HOURH : CLOCK >= 6.5 && CLOCK < 17.75 ? 'day' : 'night', DUSK = MODE === 'dusk';   // dusk has not been redrawn: only by name, behind #team
+const TEAM = HASH.includes('team') || Q.has('study') || Q.has('team');
+const TALL = TEAM && (HASH.includes('tall') || Q.has('tall')), OWN = !(TEAM && (HASH.includes('lit') || Q.has('lit'))),   // things keep their own drawing (as on the sheet) unless the link says lit: then the hour's light makes all of it
   PX = TALL ? -5.4 : -8.2;
-const STUDIES = { pump: [PX - 2.1, 9.2, -43, -2], wall: [2.6, 11.2, -4, 1], ground: [-.8, 7.6, 74, -24], lot: [-2.5, 6.5, 42, 0] }, TEAM = HASH.includes('team') || Q.has('study') || Q.has('team'), STUDY = !TEAM ? 'pump' : STUDIES[Q.get('study')] ? Q.get('study') : HASH.find(h => STUDIES[h]),   // the link shows the pump and nothing else. the rest of the place is not redrawn yet: it is behind #team (#team-lot, #team-wall, #team-ground, #team alone for the arrival)
-  SV = STUDIES[STUDY] || [2.6, -21, 6, 9], SOLO = STUDY === 'pump' && num('solo', 1);
-const LOOKN = LOOKS.includes(Q.get('look')) ? Q.get('look') : LOOKH || 'brush', LOOK = LOOKS.indexOf(LOOKN);
-document.querySelectorAll('#note a').forEach(a => { const h = a.dataset.hour, l = a.dataset.look, tg = a.dataset.t; if (tg) { const on = { tall: TALL, lit: !OWN }, fl = k => (k === tg ? !on[k] : on[k]) ? k + '-' : ''; a.href = '#' + (TEAM ? 'team-' + (STUDY ? STUDY + '-' : '') : '') + fl('tall') + fl('lit') + LOOKN + (HOURH ? '-' + HOURH : ''); a.classList.toggle('on', on[tg]); return; } a.href = '#' + (TEAM ? 'team-' + (STUDY ? STUDY + '-' : '') : '') + (TALL ? 'tall-' : '') + (OWN ? '' : 'lit-') + (l || LOOKN) + (h || HOURH ? '-' + (h || HOURH) : ''); a.classList.toggle('on', h === MODE || l === LOOKN); }); if (STILL) document.getElementById('note').style.display = 'none';
+// a view: where you stand [x, n, heading, pitch], and (for the owner's three) the hour and season it is shown in by day
+const STUDIES = { pump: [PX - 2.1, 9.2, -43, -2], slab: [-11.6, 5.6, -40, -5, 10.5, -21], together: [-13.2, 3.4, -36, 3, 13.5, 15], wall: [2.6, 11.2, -4, 1], ground: [-.8, 7.6, 74, -24], lot: [-2.5, 6.5, 42, 0] }, VIEWS = ['pump', 'slab', 'together'],
+  STUDY = STUDIES[Q.get('study')] ? Q.get('study') : VIEWS.includes(Q.get('view')) ? Q.get('view') : HASH.find(h => STUDIES[h] && (TEAM || VIEWS.includes(h))) || (TEAM ? undefined : 'pump'), VIEW = VIEWS.includes(STUDY) ? STUDY : null,   // the link shows the pump and nothing else. the rest of the place is not redrawn yet: it is behind #team (#team-lot, #team-wall, #team-ground, #team alone for the arrival)
+  SV = STUDIES[STUDY] || [2.6, -21, 6, 9], SOLO = STUDY === 'pump' && num('solo', 1), NEAR = !TEAM && VIEW !== 'pump';
+const LOOKN = LOOKS.includes(Q.get('look')) ? Q.get('look') : (TEAM && LOOKH) || 'dot', LOOK = LOOKS.indexOf(LOOKN), PICK = LOOKN === 'dot' && OWN && !Q.has('nopick');   // the owner's picks: dots for the thing, lines for the light
+document.getElementById('looks').style.display = TEAM ? '' : 'none'; document.getElementById('views').style.display = TEAM ? 'none' : '';
+document.querySelectorAll('#note a').forEach(a => { const h = a.dataset.hour, l = a.dataset.look, tg = a.dataset.t, vw = a.dataset.view; if (!TEAM) { a.href = '#' + (vw || STUDY) + (vw ? (HOURH ? '-' + HOURH : '') : '-' + h); a.classList.toggle('on', vw ? vw === STUDY : h === MODE); return; } if (vw) return; if (tg) { const on = { tall: TALL, lit: !OWN }, fl = k => (k === tg ? !on[k] : on[k]) ? k + '-' : ''; a.href = '#' + (TEAM ? 'team-' + (STUDY ? STUDY + '-' : '') : '') + fl('tall') + fl('lit') + LOOKN + (HOURH ? '-' + HOURH : ''); a.classList.toggle('on', on[tg]); return; } a.href = '#' + (TEAM ? 'team-' + (STUDY ? STUDY + '-' : '') : '') + (TALL ? 'tall-' : '') + (OWN ? '' : 'lit-') + (l || LOOKN) + (h || HOURH ? '-' + (h || HOURH) : ''); a.classList.toggle('on', h === MODE || l === LOOKN); }); if (STILL) document.getElementById('note').style.display = 'none';
 const LAT = 35 * Math.PI / 180, RAD = Math.PI / 180;
 const R = new T.WebGLRenderer({ antialias: false, preserveDrawingBuffer: true, powerPreference: 'high-performance' });
 R.shadowMap.enabled = true; R.shadowMap.type = T.PCFShadowMap; R.outputColorSpace = T.LinearSRGBColorSpace; document.body.prepend(R.domElement);
@@ -50,9 +59,9 @@ const sheet = makeSheet();                                                      
 const BX0 = -13, BX1 = 7, FN = 16, BN = 24, BH = 3.8, WT = .22;                    // the station: a plain box, 20 m by 8 m, front faces south at n = 16
 // the three looks. [gap between lines in screen points, gap of the second family, how dry, bristle streaks], [angle of the second family, the tone it starts at, the tone that goes solid, how long a mark is in gaps]
 // brush: broad dry strokes, a second coat, spotted black. cut: an even line and short hatching one way, no black by day. dot: stipple, packed closer for dark, and the most worn. paper: brush on real grey papers
-const LK = [[15, 12, 1, .6], [7.5, 7.5, .15, 0], [9, 9, .3, 0], [15, 12, 1, .6]][LOOK], LK2 = [[-.75, .55, .86, 4.5], [.95, 2, .965, 4], [.95, 2, .95, 5], [.3, .5, .86, 9]][LOOK];
+const LK = PICK ? [4.6, 4.6, .1, 0] : [[15, 12, 1, .6], [7.5, 7.5, .15, 0], [9, 9, .3, 0], [15, 12, 1, .6]][LOOK], LK2 = PICK ? [.9, .62, .93, 11] : [[-.75, .55, .86, 4.5], [.95, 2, .965, 4], [.95, 2, .95, 5], [.3, .5, .86, 9]][LOOK], LK3 = PICK ? [.13, .36, .3, 0] : [[.2, .72, .6, 0], [.17, .5, .4, 0], [.1, .16, .1, 0], [.2, .72, .6, 0]][LOOK];
 const SU = { sunD: { value: new T.Vector3(0, 1, 0) }, youF: { value: new T.Vector3() }, youR: { value: new T.Vector2(1, 0) }, youOn: { value: 0 }, sunA: { value: new T.Vector3(1, 0, 0) }, smat: { value: new T.Matrix4() }, lampP: { value: [new T.Vector4(), new T.Vector4(), new T.Vector4(), new T.Vector4()] }, nl: { value: 0 }, pxs: { value: 1 },
-  LK: { value: new T.Vector4(num('gap', LK[0]), num('gap2', LK[1]), num('dry', LK[2]), num('bristle', LK[3])) }, LK2: { value: new T.Vector4(num('cross', LK2[0]), num('crossat', LK2[1]), num('solid', LK2[2]), num('len', LK2[3])) }, LK3: { value: new T.Vector4(...[[.2, .72, .6, 0], [.17, .5, .4, 0], [.1, .16, .1, 0], [.2, .72, .6, 0]][LOOK]) }, TEXP: { value: num('texp', 2.6) }, stip: { value: LOOK === 2 ? 1 : 0 }, wear: { value: num('wear', [.14, .1, .2, .14][LOOK]) }, own: { value: OWN ? 1 : 0 }, nightU: { value: 0 }, texOn: { value: num('tex', 1) }, grainOn: { value: num('grain', 1) } };
+  LK: { value: new T.Vector4(num('gap', LK[0]), num('gap2', LK[1]), num('dry', LK[2]), num('bristle', LK[3])) }, LK2: { value: new T.Vector4(num('cross', LK2[0]), num('crossat', LK2[1]), num('solid', LK2[2]), num('len', LK2[3])) }, LK3: { value: new T.Vector4(...LK3) }, pick: { value: PICK ? 1 : 0 }, veil: { value: num('veil', .55) }, veilYou: { value: num('veilyou', .8) }, shadeDots: { value: num('shadedots', 0) }, oldStip: { value: num('oldstip', 0) }, stG: { value: num('stg', 3) }, dayK: { value: num('dayk', .8) }, stP: { value: new T.Vector2(num('std', 2.2), num('str', .32)) }, structOn: { value: 0 }, cRect: { value: new T.Vector4() }, bRect: { value: new T.Vector4() }, cbTop: { value: new T.Vector2() }, TEXP: { value: num('texp', 2.6) }, stip: { value: LOOK === 2 ? 1 : 0 }, wear: { value: num('wear', [.14, .1, .2, .14][LOOK]) }, own: { value: OWN ? 1 : 0 }, nightU: { value: 0 }, texOn: { value: num('tex', 1) }, grainOn: { value: num('grain', 1) } };
 const SHADOW = T.ShaderChunk.shadowmap_pars_fragment.replace('float getShadow(', 'float getShadow0(') + `
 #ifdef USE_SHADOWMAP
   float blS(sampler2D m,vec2 sz,vec2 uv,float z){vec2 q=uv*sz-.5,f=fract(q),b=(floor(q)+.5)/sz,e=1./sz;return mix(mix(texture2DCompare(m,b,z),texture2DCompare(m,b+vec2(e.x,0.),z),f.x),mix(texture2DCompare(m,b+vec2(0.,e.y),z),texture2DCompare(m,b+e,z),f.x),f.y);}
@@ -64,17 +73,17 @@ const SHADOW = T.ShaderChunk.shadowmap_pars_fragment.replace('float getShadow(',
     for(int i=0;i<8;i++){float k=(float(i)+.5)/4.-1.;vec3 q=sc.xyz+dS*k;s+=blS(m,sz,q.xy,q.z);}
     gYou=mix(1.,youSh(vWp),clamp(s/8.*1.5-.25,0.,1.));return mix(1.,s/8.,si);}
 #endif`;
-const KIND = { dirt: [0, 'dirt', .45], plaster: [1, 'plaster', .7], concrete: [2, 'concrete', .6], blacktop: [3, 'blacktop', .8], steel: [4, 'steel', .5], wood: [5, 'wood', .45], tin: [6, 'tin', .5], glass: [7, 'steel', .9] }, PAPERS = {};
+const KIND = { dirt: [0, 'dirt', .45, 1, 0], plaster: [1, 'plaster', .7, .5, -.08], concrete: [2, 'concrete', .6, .45, -.2], blacktop: [3, 'blacktop', .8, 1, 0], steel: [4, 'steel', .5, .8, -.1], wood: [5, 'wood', .45, .8, -.2], tin: [6, 'tin', .5, .6, -.16], glass: [7, 'steel', .9, 1, 0], fascia: [8, 'plaster', .5, .55, -.1], rubber: [9, 'rubber', .25, .5, -.42] }, PAPERS = {};
 const paper = name => PAPERS[name] || (PAPERS[name] = (() => { const t = new T.TextureLoader().load('paper/' + name + '.png'); t.wrapS = t.wrapT = T.RepeatWrapping; t.colorSpace = T.NoColorSpace; t.anisotropy = 8; return t; })());
 T.DefaultLoadingManager.onLoad = () => { window.papersLoaded = true; };
 // kind: what it is made of. tone under 1: never quite paper. along: lay the marks this way whatever the light. vert: marks run up and down. round: [metres round, metres along] for a thing whose marks follow its own curve
-function inkMat(kind, { amb = 1, tone = 1, along = null, drift = false, vert = false, round = null, fine = 1, thing = 0, rust = 0 } = {}) {   // fine under 1: a small thing wears its marks closer together, so a narrow face still has room for several
-  const m = new T.MeshLambertMaterial({ color: new T.Color(tone, tone, tone) }); m.isInk = true; const [mk, pap, gsz] = KIND[kind]; const papT = paper(pap);
+function inkMat(kind, { amb = 1, tone = 1, along = null, drift = false, vert = false, round = null, fine = 1, thing = 0, rust = 0, slab = null, kerb = null, stain = 0, bare = 0, flat = 0 } = {}) {   // thing 1: drawn once. thing 2: drawn once and takes no shade (the canopy, which makes it). slab: [x0, x1, z0, z1], a ragged-edged floor. kerb: [cx, cz, half w, half d]. bare: no marks of its own (not drawn yet)   // fine under 1: a small thing wears its marks closer together, so a narrow face still has room for several
+  const m = new T.MeshLambertMaterial({ color: new T.Color(tone, tone, tone) }); m.isInk = true; const [mk, pap, gsz, pk, ps] = KIND[kind]; const papT = paper(pap);
   m.onBeforeCompile = sh => {
-    Object.assign(sh.uniforms, SU, { mk: { value: mk }, gk: { value: fine }, isT: { value: thing }, rustK: { value: rust }, mt: { value: tone }, grain: { value: papT }, gsz: { value: gsz }, amb: { value: amb }, drift: { value: drift ? 1 : 0 }, vert: { value: vert ? 1 : 0 }, along: { value: along || new T.Vector2(0, 0) }, uvS: { value: new T.Vector2(...(round || [0, 0])) } });
+    Object.assign(sh.uniforms, SU, { mk: { value: mk }, gk: { value: fine }, isT: { value: thing }, rustK: { value: rust }, mt: { value: tone }, slabR: { value: new T.Vector4(...(slab || [0, 0, 0, 0])) }, slabOn: { value: slab ? 1 : 0 }, kerbR: { value: new T.Vector4(...(kerb || [0, 0, 0, 0])) }, kerbOn: { value: kerb ? 1 : 0 }, stainK: { value: stain }, bareK: { value: bare }, flatK: { value: flat }, pkk: { value: new T.Vector2(PICK ? pk : 1, PICK ? ps : 0) }, grain: { value: papT }, gsz: { value: gsz }, amb: { value: amb }, drift: { value: drift ? 1 : 0 }, vert: { value: vert ? 1 : 0 }, along: { value: along || new T.Vector2(0, 0) }, uvS: { value: new T.Vector2(...(round || [0, 0])) } });
     sh.vertexShader = 'varying vec3 vWp;varying vec3 vWn;varying vec2 vUv2;\n' + sh.vertexShader.replace('#include <project_vertex>', '#include <project_vertex>\nvWp=(modelMatrix*vec4(transformed,1.)).xyz;vWn=normalize(mat3(modelMatrix)*objectNormal);vUv2=uv;');
-    sh.fragmentShader = `varying vec3 vWp;varying vec3 vWn;varying vec2 vUv2;uniform sampler2D grain;uniform vec3 sunA;uniform mat4 smat;uniform vec4 lampP[4],LK,LK2,LK3;uniform int nl,mk;uniform float amb,drift,youOn,vert,pxs,gsz,texOn,grainOn,TEXP,gk,stip,wear,own,nightU,isT,rustK,mt;uniform vec2 along,youR,uvS;uniform vec3 sunD,youF;
-      vec3 gDir;float gYou=1.;vec2 gP;
+    sh.fragmentShader = `varying vec3 vWp;varying vec3 vWn;varying vec2 vUv2;uniform sampler2D grain;uniform vec3 sunA;uniform mat4 smat;uniform vec4 lampP[4],LK,LK2,LK3;uniform int nl,mk;uniform float amb,drift,youOn,vert,pxs,gsz,texOn,grainOn,TEXP,gk,stip,wear,own,nightU,isT,rustK,mt,pick,veil,veilYou,shadeDots,oldStip,stG,structOn,slabOn,kerbOn,stainK,bareK,flatK;uniform vec2 along,youR,uvS,cbTop,pkk,stP;uniform float dayK;uniform vec3 sunD,youF;uniform vec4 cRect,bRect,slabR,kerbR;
+      vec3 gDir;float gYou=1.;vec2 gP,gM;void where0();float spots0(vec2 p,float gap,float dens,float rad,float seed);
       float h1(float n){return fract(sin(n*127.1+.7)*43758.5453);}
       float n1(float x,float s){float i=floor(x),f=fract(x);f=f*f*(3.-2.*f);return mix(h1(i+s*57.3),h1(i+1.+s*57.3),f);}
       float dh2(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}float dn2(vec2 x){vec2 i=floor(x),f=fract(x);f=f*f*(3.-2.*f);return mix(mix(dh2(i),dh2(i+vec2(1.,0.)),f.x),mix(dh2(i+vec2(0.,1.)),dh2(i+vec2(1.,1.)),f.x),f.y);}
@@ -83,7 +92,11 @@ function inkMat(kind, { amb = 1, tone = 1, along = null, drift = false, vert = f
       float youSh(vec3 p){vec3 F=youF,U=vec3(0.,1.,0.),Rr=vec3(youR.x,0.,youR.y);if(distance(p.xz,F.xz)>14.)return 1.;
         return capS(p,F+U*1.6,F+U*1.61,.115)*capS(p,F+U*.92,F+U*1.3,.19)*capS(p,F+U*1.38-Rr*.16,F+U*1.38+Rr*.16,.09)*capS(p,F-Rr*.1+U*.08,F-Rr*.11+U*.85,.085)*capS(p,F+Rr*.1+U*.08,F+Rr*.11+U*.85,.085)*capS(p,F-Rr*.22+U*1.33,F-Rr*.21+U*.86,.06)*capS(p,F+Rr*.22+U*1.33,F+Rr*.21+U*.86,.06);}
       // where this point is on its own surface, in metres (gP), and which way a mark runs there in the world (gDir). marks run along gP.x
-      void where(){vec3 n=normalize(vWn);
+      void where(){vec3 n=normalize(vWn);where0();gM=abs(n.y)>.7&&uvS.x<=0.?vWp.xz:gP;}
+      // the shade of a flat roof, worked out, not looked up: is the roof between this point and the sun? used for things, which take shade as a veil and never from themselves
+      float roofSh(vec3 p,vec4 r,float top){if(p.y>top-.02||sunD.y<.03)return 0.;vec2 q=p.xz+sunD.xz*((top-p.y)/sunD.y),d=min(q-r.xz,r.yw-q);return smoothstep(-.1,.14,min(d.x,d.y));}
+      float structSh(vec3 p){return structOn>.5?max(roofSh(p,cRect,cbTop.x),roofSh(p,bRect,cbTop.y)):0.;}
+      void where0(){vec3 n=normalize(vWn);
         if(uvS.x>0.){gP=vUv2*uvS;gDir=normalize(cross(n,vec3(0.,1.,0.))+vec3(1e-4,0.,0.));if(vert>.5){gP=gP.yx;gDir=vec3(0.,1.,0.);}}                       // round things: round the form, or up it
         else if(abs(n.y)>.7){vec2 p=vWp.xz;int best=-1;float bd=1e9;for(int i=0;i<4;i++){if(i>=nl||dot(along,along)>0.)break;float d=distance(p,lampP[i].xz);if(d<lampP[i].w&&d<bd){bd=d;best=i;}}
           if(best>=0){vec2 r=p-lampP[best].xz;gP=vec2(log(max(bd,.05))*2.4,atan(r.y,r.x)*2.4);gDir=vec3(r.x,0.,r.y)/max(bd,.05);}                                     // under a fixed lamp: laid away from it
@@ -106,13 +119,24 @@ function inkMat(kind, { amb = 1, tone = 1, along = null, drift = false, vert = f
           cov=max(cov,clamp(sd/fw+.5,0.,1.)*step(1e-4,wf));}
         return cov;}
       // spots: pebbles, pits, flecks. sized by the screen like the lines, each in its own place
-      float spots(vec2 p,float gap,float dens,float rad,float seed){vec2 fwv=fwidth(p);float fw=max(max(fwv.x,fwv.y),1e-6),L=log2(fw*gap*pxs),o=floor(L),f=L-o,cov=0.;
+      // Each dot has a place and a rank for good. Dots are sized and spaced by the screen. Walking away, the finest dots shrink out and the rest do not move or change; walking in, new ones grow between
+      // them. (Before, every dot was swapped for another over each halving of the distance: that is what crawled.) dens: the share of places that hold a dot; a dot grows as dens passes its rank
+      float spots(vec2 p,float gap,float dens,float rad,float seed){if(oldStip>.5)return spots0(p,gap,dens,rad*1.3,seed);if(dens<=0.)return 0.;vec2 fwv=fwidth(p);float fa=max(max(fwv.x,fwv.y),1e-6),fw=fa/min(sqrt(fa/max(min(fwv.x,fwv.y),1e-7)),2.4),L=log2(fw*gap*pxs),o=floor(L),f=L-o,cov=0.,Rp=rad*gap*pxs;   // on a surface seen edge-on the places are let crowd a little, or it would go bare
+        vec2 jx=dFdx(p),jy=dFdy(p);float det=jx.x*jy.y-jx.y*jy.x;if(abs(det)<1e-14)return 0.;mat2 iJ=mat2(jy.y,-jx.y,-jy.x,jx.x)/det;                 // a dot's place is on the thing; its shape is round on the screen, as a pen makes it
+        for(int k=0;k<3;k++){float S=exp2(o+float(k)),lv=(o+float(k))*7.31,wk=k==0?1.-f:k==2?f:1.;vec2 c0=floor(p/S),hf=step(.5,fract(p/S))*2.-1.;
+          for(int q=0;q<4;q++){vec2 c=c0+hf*vec2(float(q-(q/2)*2),float(q/2));float h=dh2(c+seed+lv),e=dens-h;if(e<=0.)continue;float hb=dh2(c*1.7+seed+3.1+lv),hc=dh2(c*2.3-seed+lv);
+            vec2 ctr=(c+vec2(hb,hc))*S;float r=min(Rp*(.55+.9*fract(hb*5.3)),.5*S/fw)*sqrt(wk)*smoothstep(0.,.3,e);cov=max(cov,clamp(r-length(iJ*(p-ctr))+.5,0.,1.)*step(.2,r));}}
+        return cov;}
+      float stipple(float t){if(t<=.02)return 0.;float gq=stG*gk,c=spots(gM,gq,t*stP.x,stP.y,31.);if(t>.45)c=max(c,spots(gM+5.7,gq*.72,(t-.45)*stP.x*1.4,stP.y,32.));return c;}
+      float spots0(vec2 p,float gap,float dens,float rad,float seed){vec2 fwv=fwidth(p);float fw=max(max(fwv.x,fwv.y),1e-6),L=log2(fw*gap*pxs),o=floor(L),f=L-o,cov=0.;
         for(int k=0;k<2;k++){float S=exp2(o+float(k)),wgt=k==0?1.-f:f;vec2 c=floor(p/S);float h=dh2(c+seed),hb=dh2(c*1.7+seed+3.1);if(h>dens)continue;
           vec2 ctr=(c+.25+.5*vec2(hb,fract(hb*7.3)))*S;float r=rad*S*(.5+hb)*sqrt(wgt);vec2 q=(p-ctr)*vec2(1.,1.+hb);cov=max(cov,clamp((r-length(q))/fw+.5,0.,1.));}
         return cov;}
       // a ruled thing that is really there (a joint, a rib): every W metres, never thinner than a line can be, let go when they crowd
       float ruled(float y,float W,float wd,float brk){float fw=max(fwidth(y),1e-6),d=abs(fract(y/W+.5)-.5)*W,hw=max(wd*.5,.55*pxs*fw);return clamp((hw-d)/fw+.5,0.,1.)*smoothstep(4.,9.,W/(fw*pxs))*step(.22,brk);}
-      float ambK(){vec3 p=vWp;return (p.x>${BX0 + .1}&&p.x<${BX1 - .1}&&-p.z>${FN + .1}&&-p.z<${BN - .1}&&p.y<${BH + .05})?0.:amb;}                       // no sky gets indoors
+      // cracks in a slab: the borders between big uneven cells, straight and angular, as concrete breaks
+      float crk(vec2 w){vec2 p=w/2.3+vec2(dn2(w*.9),dn2(w*.9+5.))*.22,ip=floor(p),fp=fract(p);float f1=9.,f2=9.;for(int j=-1;j<=1;j++)for(int i=-1;i<=1;i++){vec2 o=vec2(float(i),float(j)),c=o+vec2(dh2(ip+o),dh2(ip+o+7.7))-fp;float d=dot(c,c);if(d<f1){f2=f1;f1=d;}else if(d<f2)f2=d;}return sqrt(f2)-sqrt(f1);}
+      float ambK(){vec3 p=vWp;if(bareK>.5)return amb;return (p.x>${BX0 + .1}&&p.x<${BX1 - .1}&&-p.z>${FN + .1}&&-p.z<${BN - .1}&&p.y<${BH + .05})?0.:amb;}                       // no sky gets indoors
       ` + sh.fragmentShader.replace('#include <shadowmap_pars_fragment>', SHADOW).replace('void main() {', 'void main() {\nwhere();')
       .replace('#include <lights_fragment_end>', '#if defined( RE_IndirectDiffuse )\nirradiance*=ambK();\n#endif\n#include <lights_fragment_end>')
       .replace('#include <dithering_fragment>', `#include <dithering_fragment>
@@ -120,35 +144,59 @@ function inkMat(kind, { amb = 1, tone = 1, along = null, drift = false, vert = f
         if(drift>.5){float nn=-vWp.z,lot=smoothstep(-18.,-14.,vWp.x)*(1.-smoothstep(12.,16.,vWp.x))*smoothstep(-4.,-2.,nn)*(1.-smoothstep(26.,30.,nn));lO*=mix(1.,.45,smoothstep(.58,.7,dn2(vWp.xz/vec2(14.,6.))*.65+dn2(vWp.xz/3.1+7.)*.35)*(1.-lot)*smoothstep(5.,9.,distance(vWp.xz,vec2(2.6,21.))));}   // the desert floor: drifts of darker ground
         if(youOn>.5)lO=mix(min(lO,.05),lO,gYou);   // your shadow shows only where the sun would otherwise reach
         float tone=pow(1.-clamp((lO-.012)/.9,0.,1.),TEXP);                                           // 0 paper, 1 black
-        if(own>.5&&isT>.5){float tf=pow(1.-clamp((mt*(clamp(dot(normalize(vWn),normalize(vec3(-.8,.5,.35))),0.,1.)*1.3+.14)-.012)/.9,0.,1.),TEXP);tone=nightU>.5?max(tf,tone):tf;}   // drawn once: the thing keeps its own shading whatever the hour; the dark can only add to it
-        float g=texture2D(grain,gP/gsz).r*.65+texture2D(grain,gP/(gsz*.31)+.37).r*.35;g=mix(.6,g,grainOn);          // this surface's paper: 1 is the high tooth, which takes ink first
+        vec3 nW=normalize(vWn);float tO=0.,tf=pow(1.-clamp((mt*(clamp(dot(nW,normalize(vec3(-.8,.5,.35))),0.,1.)*1.3+.14)-.012)/.9,0.,1.),TEXP);
+        if(slabOn>.5){vec2 w=vWp.xz;float e=min(min(w.x-slabR.x,slabR.y-w.x),min(w.y-slabR.z,slabR.w-w.y))-dn2(w*.45)*1.3-dn2(w*2.1)*.4+.25;if(e<0.)discard;}   // the slab's edge: broken, giving way to dirt
+        if(pick>.5&&isT<.5&&nightU<.5)tone*=dayK;
+        if(pick>.5){if(isT>.5){tO=tf;if(nightU<.5){float sh=isT>1.5?0.:structSh(vWp)*veil;if(youOn>.5)sh=max(sh,(1.-youSh(vWp))*veilYou);tone=sh*.6;}}}   // the picks. a thing keeps its own shading (tO, in dots) at every hour. by day the light only lays a veil of lines over it where a roof or you stand in the sun's way; at night the dark is added
+        else if(own>.5&&isT>.5){tone=nightU>.5?max(tf,tone):tf;}   // drawn once, in the other hands: the thing keeps its own shading whatever the hour; the dark can only add to it
+        float g=texture2D(grain,gM/gsz).r*.65+texture2D(grain,gM/(gsz*.31)+.37).r*.35;g=mix(.6,g,grainOn);          // this surface's paper: 1 is the high tooth, which takes ink first
         float bq=step(.5,LK.w),bc=cos(.55*bq),bs=sin(.55*bq),gb=mix(gk,1.,.55*bq);float ink=fam(vec2(gP.x*bc+gP.y*bs,-gP.x*bs+gP.y*bc),smoothstep(.04,.45,tone),mix(LK3.x,LK3.y,smoothstep(.1,.92,tone)),LK.x*gb,1.,g);                                                         // the first family: along the form
         float cs=cos(LK2.x),sn=sin(LK2.x);ink=max(ink,fam(vec2(gP.x*cs+gP.y*sn,-gP.x*sn+gP.y*cs),LK2.y>1.?0.:smoothstep(LK2.y,.9,tone),mix(LK3.x,LK3.z,smoothstep(LK2.y,1.,tone)),LK.y*gb,2.,g));   // the second, laid across it
-        if(stip>.5){float gq=7.*gk;ink=max(ink*.0,spots(gP,gq*.5,tone*1.1,.4,31.));ink=max(ink,spots(gP+7.3,gq*.5,(tone-.3)*1.4,.46,32.));ink=max(ink,spots(gP-3.1,gq*.4,(tone-.55)*2.2,.52,33.));}   // stipple: dots, packed closer for dark
+        if(pick>.5){if(shadeDots>.5){ink=0.;tO=max(tO,tone*.92);}ink=max(ink,stipple(tO));}                                                                // the picks: lines are the light's, dots are the thing's. (shadeDots: the other way to do it, shade as more dots)
+        else if(stip>.5){float gq=7.*gk;ink=max(ink*.0,spots(gM,gq*.5,tone*1.1,.3,31.));ink=max(ink,spots(gM+7.3,gq*.5,(tone-.3)*1.4,.3,32.));ink=max(ink,spots(gM-3.1,gq*.4,(tone-.55)*2.2,.3,33.));}   // stipple: dots, packed closer for dark
         float so=smoothstep(LK2.z,.99,tone);ink=max(ink,smoothstep(0.,.25,so-(1.-g)*1.1*(1.-so)));                    // last, black, and the paper's valleys are the last of it to fill
         // what it is made of: marks that are there whatever the light. light only thins them
         float tk=.35+.65*tone,tx=0.;
         if(texOn>.5){
-          if(mk==0){tx=spots(gP,7.,.1+.2*tone,.11,1.)*step(.3,g);}                       // dirt: pebbles, and a few flicks across the light
-          else if(mk==1){tx=spots(gP,6.,.1+.25*tone,.1,2.);tx=max(tx,fam(gP,.22,.1,34.,6.,g)*step(.6,dn2(gP*.45)));}                                                  // plaster: trowel flecks, and here and there a drag of the float
-          else if(mk==2){tx=max(ruled(vWp.x+.3,1.3,.012,dn2(vWp.xz*3.)),ruled(vWp.z+.2,1.3,.012,dn2(vWp.zx*3.)))*step(.9,abs(normalize(vWn).y));tx=max(tx,spots(gP,5.,.1+.2*tone,.09,3.));}   // concrete: joints and pits
+          if(mk==0){tx=spots(gM,7.,.16,.13,1.)*step(.3,g);}                       // dirt: pebbles, and a few flicks across the light
+          else if(mk==1){tx=spots(gM,6.,.16,.12,2.);if(pick<.5)tx=max(tx,fam(gP,.22,.1,34.,6.,g)*step(.6,dn2(gP*.45)));}                                                  // plaster: trowel flecks, and here and there a drag of the float
+          else if(mk==2){vec2 w=vWp.xz;float up=step(.9,nW.y);tx=spots(gM,5.,.15,.12,3.);                                                                    // concrete: pits everywhere
+            float st=smoothstep(.56,.74,dn2(w*.42+11.)*.7+dn2(w*2.3)*.3);                                                                                       // old stains: patches of closer dots
+            if(kerbOn>.5){vec2 dk=abs(w-kerbR.xy)-kerbR.zw;float d=max(dk.x,dk.y)+.11;tx=max(tx,clamp(.55*pxs-abs(d)/max(fwidth(d),1e-6)+.5,0.,1.)*step(.25,dn2(w*5.))*up);st=max(st,.5*step(.6,dn2(w*3.1)));}   // the island: the line of its kerb stones, and drips
+            if(slabOn>.5){float e=min(min(w.x-slabR.x,slabR.y-w.x),min(w.y-slabR.z,slabR.w-w.y))-dn2(w*.45)*1.3-dn2(w*2.1)*.4+.25;
+              tx=max(tx,max(ruled(w.x+.4,3.2,.012,dn2(w*vec2(9.,.7))),ruled(w.y+.2,4.,.012,dn2(w.yx*vec2(9.,.7)))));                                                        // joints between the slabs
+              float cv=crk(w),cw=max(fwidth(cv),1e-6);
+              tx=max(tx,clamp(.42*pxs-cv/cw+.5,0.,1.)*step(.6-.34*smoothstep(3.5,.3,e),dn2(w*.3+4.))*step(.3,dn2(w*2.3+1.))*smoothstep(.4,.15,cw));                                  // cracks: more of them toward the edges
+              tx=max(tx,clamp(.9*pxs-e/max(fwidth(e),1e-6)+.5,0.,1.)*step(.2,dn2(w*2.7)));                                                                       // the broken edge itself
+              vec2 di=abs(w-vec2(-6.8,-11.5))-vec2(3.1,.75);float dkb=length(max(di,0.)),sand=max(smoothstep(.75,.15,dkb+(dn2(w*.7)-.5)*1.1),smoothstep(1.3,.3,w.y+16.+(dn2(w*.5+2.)-.5)*1.6));   // sand drifted against the kerb and the wall: nothing shows through it, and its edge is a scatter of fine dots
+              st=max(st,smoothstep(1.7,.2,length((w-vec2(-6.8,-10.2))*vec2(.3,1.)))*.55*step(.35,dn2(w*1.9)));                                                 // where cars stood by the island: oil
+              tx=max(tx,spots(gM,2.8,st*.5,.3,41.))*(1.-sand);tx=max(tx,spots(gM,3.,sand*(1.-sand)*2.2,.2,43.));}
+            else tx=max(tx,spots(gM,2.8,st*.5,.3,41.));}
           else if(mk==3){tx=spots(gP,4.5,.4,.2,4.);tx=max(tx,fam(gP,.34,.22,9.,7.,g));}                                                                                    // blacktop: aggregate, and the drag of tyres along it
-          else if(mk==4){tx=fam(gP,.5,.15,11.,8.,g)*step(.36,dn2(gP*vec2(.7,6.)));tx=max(tx,spots(gP,6.,.2,.11,8.)*step(.35,g));tx=max(tx,fam(gP.yx,.3,.11,17.,12.,g)*step(.55,dn2(gP.yx*vec2(.9,7.)+3.)));}                                                                              // painted steel: clean, a few long reflections
+          else if(mk==4){tx=pick>.5?0.:fam(gP,.5,.15,11.,8.,g)*step(.36,dn2(gP*vec2(.7,6.)));tx=max(tx,spots(gM,6.,.2,.13,8.)*step(.35,g));if(pick<.5)tx=max(tx,fam(gP.yx,.3,.11,17.,12.,g)*step(.55,dn2(gP.yx*vec2(.9,7.)+3.)));}                                                                              // painted steel: clean, a few long reflections
           else if(mk==5){vec2 w=gP+vec2(0.,.035*sin(gP.x*5.+3.*dn2(gP*3.)));tx=fam(w,.42+.2*tone,.2,5.,9.,g);}                                                           // wood: grain, always
           else if(mk==6){tx=ruled(gP.x,.18,.014,1.);tx=max(tx,fam(gP.yx,.22,.12,14.,10.,g));}                                                                              // tin: ribs
+          else if(mk==8){float yb=vWp.y-cbTop.x,fy=max(fwidth(yb),1e-6),bnd=max(smoothstep(.07-fy,.07,yb)*smoothstep(.16+fy,.16,yb),smoothstep(.24-fy,.24,yb)*smoothstep(.37+fy,.37,yb));   // the fascia: two painted stripes, faded almost to nothing, and paint peeling
+            float left=step(.47,dn2(gM*vec2(1.7,9.))*.55+dn2(gM*vec2(7.,31.))*.45);tx=bnd*left*ruled(yb,.024,.008,1.);
+            float pe=dn2(gM*1.6)*.7+dn2(gM*6.)*.3;tx=max(tx,spots(gM,2.6,smoothstep(.56,.7,pe)*.75,.3,44.));tx=max(tx,spots(gM,6.,.14,.12,2.));}                 // peeling: where the paint has gone, the bare stuff shows as close dots
+          else if(mk==9){tx=ruled(gP.x,.026,.005,dn2(gP*vec2(9.,40.))+.1)*step(.4,dn2(gP*vec2(3.,1.)));tx=max(tx,spots(gM,5.,.3,.14,45.));}                    // rubber, perished: cracks across it
           else if(mk==7){vec2 w=vec2(gP.x*.7+gP.y*.7,-gP.x*.7+gP.y*.7);tx=fam(w,.75,.4,7.,11.,g)*step(.42,dn2(w*vec2(.5,1.6)));}                                         // glass: slanting reflections with gaps
         }
-        if(rustK>.5){float low=clamp(1.1-(vWp.y-.14)*1.6,0.,1.),pat=dn2(gP*vec2(5.,2.5))*.6+dn2(gP*13.)*.4;tx=max(tx,spots(gP,2.6,low*low*.9*step(.38,pat)+.05,.5,21.));tx=max(tx,step(.63-low*.22,pat)*step(.3,g)*step(.3,low));}   // rust: coming up from the base in patches, and through the seams
-        ink=max(ink,tx*smoothstep(-.4,.5,tk));ink*=smoothstep(wear-.07,wear+.07,g*.55+dn2(gP*11.)*.45);   // the print is worn: ink drops out where the paper is low
-        gl_FragColor=vec4(1.-ink,g,tone,drift>.5||dot(along,along)>0.?.18:.25);`);   // r: paper left. g: the paper's grain. b: tone, for the weight of the contour. a: under .6 is a drawn surface, not paint; .18 is ground and road, which get no contour
+        if(bareK>.5)tx=0.;
+        if(stainK>.5){float sp=dn2(gM*.55+3.)*.65+dn2(gM*2.4)*.35;tx=max(tx,spots(gM,2.8,smoothstep(.5,.72,sp)*.6,.3,46.));}                                 // stained: patches of closer dots
+        if(rustK>.5){float low=clamp(1.1-(vWp.y-.14)*1.6,0.,1.),pat=dn2(gP*vec2(5.,2.5))*.6+dn2(gP*13.)*.4;tx=max(tx,spots(gM,2.6,low*low*.9*step(.38,pat)+.05,.3,21.));float bl=step(.66-low*.2,pat)*step(.3,low);tx=max(tx,pick>.5?spots(gM+2.2,2.1,bl*.95,.3,22.):bl*step(.3,g));}   // rust: coming up from the base in patches, and through the seams. in the picks a patch is packed dots, not a pool of ink   // rust: coming up from the base in patches, and through the seams
+        ink=max(ink,tx*smoothstep(-.4,.5,tk));ink*=smoothstep(wear-.07,wear+.07,g*.55+dn2(gM*11.)*.45);   // the print is worn: ink drops out where the paper is low
+        gl_FragColor=vec4(1.-ink,clamp(.5+(g-.5)*pkk.x+pkk.y,0.,1.),max(tone,tO),drift>.5||dot(along,along)>0.?.18:slabOn>.5||flatK>.5?.2:.25);`);   // r: paper left. g: the paper's grain. b: tone, for the weight of the contour. a: under .6 is a drawn surface, not paint; .18 is ground and road, which get no contour
   };
   return m;
 }
 const TAU = Math.PI * 2;
-const Wm = inkMat('plaster'), Wg = inkMat('dirt', { drift: true }), Wt = inkMat('steel', { tone: .62 }), Wd = inkMat('steel', { tone: .6 }), Wp = inkMat('steel', { vert: true, round: [.7, 4] }), Wl = inkMat('steel', { round: [TAU * .27, Math.PI * .27], fine: .7 }), Wa = inkMat('plaster', { amb: 0 }), Wr = inkMat('blacktop', { tone: .42, along: new T.Vector2(1, 0) }),
+const Wm = inkMat('plaster', { bare: VIEW ? 1 : 0 }), Wg = inkMat('dirt', { drift: true }), Wt = inkMat('steel', { tone: .62 }), Wd = inkMat('steel', { tone: .6 }), Wp = inkMat('steel', { vert: true, round: [.7, 4] }), Wl = inkMat('steel', { round: [TAU * .27, Math.PI * .27], fine: .7 }), Wa = inkMat('plaster', { amb: 0 }), Wr = inkMat('blacktop', { tone: .42, along: new T.Vector2(1, 0) }),
   Wc = inkMat('concrete'), Wk = inkMat('wood', { tone: .7 }), Wn = inkMat('tin', { tone: .8 }), Wgl = inkMat('glass', { tone: .5 }), K = new T.MeshBasicMaterial({ color: 0 }), LIT = new T.MeshBasicMaterial({ color: 0xffffff });
 const v = (x, n, u) => new T.Vector3(x, u, -n);                         // x east, n north, u up
 const things = {};
+// which element a piece of the scene belongs to, so that an element (or a small group of them) can be shown by itself. called at the end of each section
+let lmark = 0; const layer = name => { scene.children.slice(lmark).forEach(o => { o.userData.layer ||= name; }); lmark = scene.children.length; };
 function box(w, d, h, x, n, u, m = Wm, parent = scene) { const o = new T.Mesh(new T.BoxGeometry(w, h, d), m); o.position.copy(v(x, n, u + h / 2)); o.castShadow = o.receiveShadow = !!m.isInk; parent.add(o); return o; }
 function plane(w, h, x, n, u, m = K, parent = scene, ry = 0) { const o = new T.Mesh(new T.PlaneGeometry(w, h), m); o.position.copy(v(x, n, u)); o.rotation.y = ry; parent.add(o); return o; }
 function label(txt, w, h, font, bg = '#fff', fg = '#000') { const c = document.createElement('canvas'); c.width = 512; c.height = Math.round(512 * h / w); const g = c.getContext('2d'); g.fillStyle = bg; g.fillRect(0, 0, c.width, c.height); g.fillStyle = fg; g.font = font; g.textAlign = 'center'; g.textBaseline = 'middle'; txt.split('\n').forEach((t, i, a) => g.fillText(t, c.width / 2, c.height * (i + .5) / a.length + 6)); const tx = new T.CanvasTexture(c); tx.colorSpace = T.NoColorSpace; tx.anisotropy = 8; return new T.MeshBasicMaterial({ map: tx, transparent: bg === 'transparent' }); }
@@ -160,6 +208,7 @@ const rod = (r0, r1, h, x, n, u, m = Wp, parent = scene) => { const p = new T.Me
 const ground = new T.Mesh(new T.PlaneGeometry(720, 720, 120, 120), Wg); ground.rotation.x = -Math.PI / 2; ground.receiveShadow = true; scene.add(ground);
 // the road: worn blacktop, a band of long dry strokes running east and west between you and the sign
 { const r = new T.Mesh(new T.PlaneGeometry(720, 6.4, 120, 2), Wr); r.rotation.x = -Math.PI / 2; r.position.copy(v(0, -6.6, .006)); r.receiveShadow = true; scene.add(r); }
+ground.userData.layer = 'ground'; layer('road');
 
 // ---------------------------------------------------------------- the station
 const shell = new T.Group(); scene.add(shell);
@@ -170,26 +219,45 @@ wallPiece(BX0, WW[0], 0, BH); wallPiece(WW[0], WW[1], 0, WZ[0]); wallPiece(WW[0]
 wallPiece(DR[1], EW[0], 0, BH); wallPiece(EW[0], EW[1], 0, .4); wallPiece(EW[0], EW[1], WZ[1], BH); wallPiece(EW[1], BX1, 0, BH);
 box(WT, BN - FN, BH, BX0 + WT / 2, (FN + BN) / 2, 0, Wm, shell); box(WT, BN - FN, BH, BX1 - WT / 2, (FN + BN) / 2, 0, Wm, shell);
 box(BX1 - BX0 + .3, BN - FN + .3, .25, (BX0 + BX1) / 2, (FN + BN) / 2, BH, Wm, shell);                                  // roof
-box(BX1 - BX0 + .5, .95, .12, (BX0 + BX1) / 2, FN - .47, BH + .06, Wm, shell);                                           // an eave along the front: its shade is the one brushed band on the sunlit wall
+box(BX1 - BX0 + .5, .95, .12, (BX0 + BX1) / 2, FN - .47, BH + .06, Wm, shell).visible = TEAM;                                           // an eave along the front: its shade is the one brushed band on the sunlit wall
 const AX0 = 4.6, AX1 = 6.4, ALEN = 28;                                                                                   // the aisle opening in the back wall
 box(AX0 - BX0, WT, BH, (BX0 + AX0) / 2, BN - WT / 2, 0, Wm, shell); box(BX1 - AX1, WT, BH, (AX1 + BX1) / 2, BN - WT / 2, 0, Wm, shell);
-const backPlug = box(AX1 - AX0, WT, BH, (AX0 + AX1) / 2, BN - WT / 2, 0, Wm, shell);                                     // seen from outside, the back wall is whole
+const backPlug = box(AX1 - AX0, WT, BH, (AX0 + AX1) / 2, BN - WT / 2, 0, Wm, shell); layer('shell');                                     // seen from outside, the back wall is whole
 plane(3.8, 3.0, -8.6, FN - .02, 1.5, inkMat('tin', { tone: .5, vert: true })); plane(3.9, .05, -8.6, FN - .025, 3.02); [-10.52, -6.68].forEach(x => plane(.05, 3.0, x, FN - .025, 1.5)); [[BH - .5, .22], [BH - .92, .13]].forEach(([z, h]) => plane(BX1 - BX0, h, (BX0 + BX1) / 2, FN - .02, z));   // garage door, two stripes: paint
 plane(.5, .34, 0, FN + .02, 1.5, label('BACK IN\n5 MINUTES', .5, .34, 'bold 84px "Courier 10 Pitch",monospace'));
-const inner = new T.Group(); scene.add(inner);                                                                            // partition between the front room and the garage
+layer('detail'); const inner = new T.Group(); scene.add(inner);                                                                            // partition between the front room and the garage. (detail: the front's paint and card, element 4, not drawn yet and not shown in the owner's views)
 box(WT, BN - FN, BH, -5.2, (FN + BN) / 2, 0, Wm, inner);
 
 // canopy and pumps, west of the door. the door stands clear of it
-const CX0 = -11.6, CX1 = -2.2, CN0 = 8.4, CZ = 3.9;
-box(CX1 - CX0, FN - CN0, .3, (CX0 + CX1) / 2, (CN0 + FN) / 2, CZ, Wn); [[CX0 + .5, CN0 + .4], [CX1 - .5, CN0 + .4]].forEach(([x, n]) => rod(.08, .08, CZ, x, n, 0));
-plane(CX1 - CX0, .12, (CX0 + CX1) / 2, CN0 - .01, CZ + .15);
-box(5.2, 1.3, .14, -6.8, 11.5, 0, Wc);  const canG = new T.CylinderGeometry(.05, .05, .15, 14);                                                                                     // the island
+layer('shell');
+// ELEMENT 3, THE CANOPY (elements.md 3). Parts, and nothing else: a flat roof slab joined to the building; a fascia band round the edge with two stripes, faded almost to nothing and peeling;
+// two thin posts, rusted; lamps underneath (one working, one dead, one gone: PROPOSED). Its underside is stained (PROPOSED). It is a thing: drawn once, in dots. It takes no shade; it makes it.
+const CX0 = -11.6, CX1 = -2.2, CN0 = 8.4, CZ = 3.9, CFH = .46; let canBulb; SU.cRect.value.set(CX0, CX1, -FN, -CN0); SU.bRect.value.set(BX0, BX1, -BN, -FN); SU.cbTop.value.set(CZ, BH + .25);
+{ const Wfas = inkMat('fascia', { tone: .9, thing: 2 }), Wund = inkMat('plaster', { tone: num('und', 1.5), thing: 2, stain: 1 }), Wroof = inkMat('plaster', { thing: 2 }), Wpost = inkMat('steel', { tone: .8, vert: true, round: [.38, CZ], fine: .6, thing: 1, rust: 1 }), Wlm = inkMat('steel', { tone: .4, thing: 2, fine: .6, round: [.6, .2] });
+  const c = new T.Mesh(new T.BoxGeometry(CX1 - CX0, CFH, FN - CN0), [Wfas, Wfas, Wroof, Wund, Wfas, Wfas]); c.position.copy(v((CX0 + CX1) / 2, (CN0 + FN) / 2, CZ + CFH / 2)); c.castShadow = c.receiveShadow = true; scene.add(c);
+  [[CX0 + .5, CN0 + .4], [CX1 - .5, CN0 + .4]].forEach(([x, n]) => rod(.055, .055, CZ, x, n, 0, Wpost));
+  // the lamps: a plate, a stem, an enamel shade, a bulb. west: dead (no bulb). middle: the one that works. east: gone, a stub of flex
+  [[-9.4, 'dead'], [-6.8, 'on'], [-4.2, 'gone']].forEach(([x, st]) => { rod(.05, .05, .025, x, 12, CZ - .025, Wlm); if (st === 'gone') { rod(.007, .007, .17, x, 12, CZ - .195, K); return; }
+    rod(.012, .012, .3, x, 12, CZ - .325, Wlm); const sh = new T.Mesh(new T.CylinderGeometry(.05, .22, .11, 30, 1, true), inkMat('steel', { tone: .7, thing: 2, fine: .6, round: [1.3, .2] })); sh.material.side = T.DoubleSide; sh.position.copy(v(x, 12, CZ - .38)); sh.castShadow = true; scene.add(sh);
+    if (st === 'on') { const b = new T.Mesh(new T.SphereGeometry(.07, 20, 12), LIT); b.position.copy(v(x, 12, CZ - .46)); scene.add(b); canBulb = b; } }); }
+layer('canopy');
+// ELEMENT 2, THE SLAB AND THE ISLAND (elements.md 2). Concrete forecourt from the road edge to the front wall; joints between the slabs; a raised island with a kerb; the bell line (below).
+// Abandoned: cracked, broken at the edges and giving way to dirt, scrub in the joints, sand against the kerb and the wall, old stains. It has no shading of its own: it is where the light writes.
+const SLAB = [-15.5, 9.5, -19, 2];
+{ const s = new T.Mesh(new T.PlaneGeometry(SLAB[1] - SLAB[0], 18.5, 25, 18), inkMat('concrete', { slab: SLAB })); s.rotation.x = -Math.PI / 2; s.position.copy(v((SLAB[0] + SLAB[1]) / 2, 7.25, .004)); s.receiveShadow = true; scene.add(s); }
+box(6.2, 1.5, .14, -6.8, 11.5, 0, inkMat('concrete', { kerb: [-6.8, -11.5, 3.1, .75] }));
+{ const c = new T.CatmullRomCurve3([[-12.6, 9.1], [-10, 9.26], [-7.5, 9.12], [-5, 9.3], [-2.6, 9.18], [-1.7, 9.6], [-1.5, 12], [-1.42, 15.86]].map(q => v(q[0], q[1], .018))), b = new T.Mesh(new T.TubeGeometry(c, 160, .016, 6), inkMat('rubber', { tone: .3, round: [18, .1], thing: 1 })); scene.add(b); }   // the bell line: a rubber hose across the forecourt and in to the wall (ACCEPTED). drive over it and a bell rings inside
+layer('slab'); const canG = new T.CylinderGeometry(.05, .05, .15, 14);                                                                                     // the island
 // a pump you can walk up to: plinth, body with a round shoulder, a clock-face dial each side, a counter window, seams and rivets, a hose looped to its nozzle, a globe on a neck
 // the pump's body is rounded in plan (a squared-off oval) so the light turns across it; dome: the shoulder that closes it
 const supG = (a, b, h, dome) => { const g = dome ? new T.SphereGeometry(1, 56, 14, 0, TAU, 0, Math.PI / 2) : new T.CylinderGeometry(1, 1, h, 72, 1, true), P = g.attributes.position, Nn = g.attributes.normal;
   for (let i = 0; i < P.count; i++) { const X = P.getX(i), Z = P.getZ(i), rho = Math.hypot(X, Z), th = Math.atan2(Z, X), c = Math.cos(th), s = Math.sin(th), x = a * Math.sign(c) * Math.sqrt(Math.abs(c)), z = b * Math.sign(s) * Math.sqrt(Math.abs(s));
     let nx = Math.sign(c) * Math.abs(x / a) ** 3 / a, nz = Math.sign(s) * Math.abs(z / b) ** 3 / b; const l = Math.hypot(nx, nz) || 1; nx /= l; nz /= l;
-    if (dome) { const y = P.getY(i); P.setXYZ(i, x * rho, y * h, z * rho); const m = Math.hypot(nx * rho, y, nz * rho) || 1; Nn.setXYZ(i, nx * rho / m, y / m, nz * rho / m); } else { P.setX(i, x); P.setZ(i, z); Nn.setXYZ(i, nx, 0, nz); } } return g; };
+    if (dome) { const y = P.getY(i); P.setXYZ(i, x * rho, y * h, z * rho); const m = Math.hypot(nx * rho, y, nz * rho) || 1; Nn.setXYZ(i, nx * rho / m, y / m, nz * rho / m); } else { P.setX(i, x); P.setZ(i, z); Nn.setXYZ(i, nx, 0, nz); } }
+  const cols = dome ? 57 : 73, rows = P.count / cols, U = g.attributes.uv; let fr = null;                        // uv.x is the true distance round the form, so dots and paper lie evenly on the flat faces and round the corners
+  for (let r = rows - 1; r >= 0; r--) { const s = [0]; for (let c = 1; c < cols; c++) { const i = r * cols + c; s.push(s[c - 1] + Math.hypot(P.getX(i) - P.getX(i - 1), P.getY(i) - P.getY(i - 1), P.getZ(i) - P.getZ(i - 1))); } if (s[cols - 1] > 1e-6 && (!dome || !fr)) fr = s.map(q => q / s[cols - 1]); for (let c = 0; c < cols; c++) U.setX(r * cols + c, fr[c]); }
+  return g; };
+const perim = (a, b) => { let s = 0, px = a, pz = 0; for (let i = 1; i <= 400; i++) { const th = i / 400 * TAU, c = Math.cos(th), sn = Math.sin(th), x = a * Math.sign(c) * Math.sqrt(Math.abs(c)), z = b * Math.sign(sn) * Math.sqrt(Math.abs(sn)); s += Math.hypot(x - px, z - pz); px = x; pz = z; } return s; };
 // lettering and faces are flat paint on small canvases, worn. The pump's parts are the list's (elements.md 1) and nothing else: globe, grade plate, number window, badge, notice, hose, nozzle, dark base. No dial.
 // PROPOSED brand names for the owner to pick from: LLANO, CALICHE, BAJADA, TULAROSA (two web searches found no fuel brand by any of them; not a trademark search)
 const cv = (w, h, draw) => { const c = document.createElement('canvas'); c.width = w; c.height = h; const g = c.getContext('2d'); g.fillStyle = '#fff'; g.fillRect(0, 0, w, h); g.fillStyle = g.strokeStyle = '#000'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.lineJoin = g.lineCap = 'round'; draw(g, w, h); const tx = new T.CanvasTexture(c); tx.colorSpace = T.NoColorSpace; tx.anisotropy = 8; return new T.MeshBasicMaterial({ map: tx }); };
@@ -207,35 +275,42 @@ const windowM = tall => cv(384, tall ? 640 : 480, (g, w, h) => { g.lineWidth = 1
 const badgeM = brand => cv(384, 512, (g, w, h) => { g.lineWidth = 16; g.beginPath(); g.ellipse(w / 2, h / 2, w / 2 - 12, h / 2 - 12, 0, 0, 7); g.stroke(); g.lineWidth = 5; g.beginPath(); g.ellipse(w / 2, h / 2, w / 2 - 34, h / 2 - 34, 0, 0, 7); g.stroke(); g.font = 'italic bold 86px "DejaVu Serif",serif'; g.fillText(brand, w / 2, h / 2 - 16, 270); g.font = 'bold 30px "DejaVu Sans",sans-serif'; g.fillText('HI-TEST', w / 2, h / 2 + 66); g.fillText('· · ·', w / 2, h / 2 - 112); worn(g, w, h, 110, 3); });
 const noteM = cv(256, 256, (g, w, h) => { g.lineWidth = 8; g.strokeRect(6, 6, w - 12, h - 12); g.font = 'bold 30px "DejaVu Sans",sans-serif'; ['NO SMOKING', 'STOP MOTOR', 'CONTAINS', 'LEAD'].forEach((t, i) => g.fillText(t, w / 2, 48 + i * 54, 220)); worn(g, w, h, 60); });
 const knobM = cv(128, 128, g => { g.beginPath(); g.arc(64, 64, 58, 0, 7); g.fill(); g.fillStyle = '#fff'; g.beginPath(); g.arc(64, 64, 40, 0, 7); g.fill(); g.fillStyle = '#000'; g.beginPath(); g.arc(64, 64, 22, 0, 7); g.fill(); });
-const Wbase = inkMat('steel', { tone: .22, vert: true, round: [2.2, .16], fine: .6, thing: 1, rust: 1 }), Wrim = inkMat('steel', { tone: .7, round: [1.7, .15], fine: .6, thing: 1 }), Wh = inkMat('steel', { tone: .3, round: [2.3, .15], thing: 1 }), Wt2 = inkMat('steel', { tone: .35, thing: 1, fine: .6 });
+const Wbase = inkMat('steel', { tone: .22, vert: true, round: [perim(.345, .25), .16], fine: .6, thing: 1, rust: 1 }), Wrim = inkMat('steel', { tone: .7, round: [1.7, .15], fine: .6, thing: 1 }), Wh = inkMat('rubber', { tone: .34, round: [2.6, .12], thing: 1, fine: .6 }), Wt2 = inkMat('steel', { tone: .35, thing: 1, fine: .6 });
 // two shapes, both from his photographs: the short round-shouldered one [Route 66] and the tall stepped one [1934]. which he wants is not answered, so both stand here
-const pump = (name, x, tall, brand, grade) => thing(name, x, 11.5, g => { const n = 11.5, a = tall ? .25 : .31, b = tall ? .2 : .215, H = tall ? 1.72 : 1.36, B = .16, per = 3.5 * (a + b), z0 = .14 + B;
+// s: which side the hose hangs (1 east, -1 west). In his Route 66 photo the two are the same pump turned to face each other, hoses inward, one grade each
+const pump = (name, x, tall, brand, grade, s = 1, cracked = false) => thing(name, x, 11.5, g => { const n = 11.5, a = tall ? .25 : .31, b = tall ? .2 : .215, H = tall ? 1.72 : 1.36, B = .16, per = perim(a, b), z0 = .14 + B;
   const put = (m, px, pn, pu, ry = 0) => { m.position.copy(v(px, pn, pu)); m.rotation.y = ry; g.add(m); return m; }, ink = m => { m.castShadow = m.receiveShadow = true; return m; };
   const Wbody = inkMat('steel', { tone: .56, vert: true, round: [per, H], fine: .6, thing: 1, rust: 1 }), Wtop = inkMat('steel', { tone: .56, round: [per, .5], fine: .6, thing: 1 });
   ink(put(new T.Mesh(supG(a + .035, b + .035, B, 0), Wbase), x, n, .14 + B / 2)); ink(put(new T.Mesh(supG(a, b, H, 0), Wbody), x, n, z0 + H / 2)); let top = z0 + H;
   if (tall) { ink(put(new T.Mesh(supG(a, b, .05, 1), Wtop), x, n, top)); ink(put(new T.Mesh(supG(a * .72, b * .8, .15, 0), Wbody), x, n, top + .075)); top += .15; ink(put(new T.Mesh(supG(a * .72, b * .8, .06, 1), Wtop), x, n, top)); top += .04; }
   else { ink(put(new T.Mesh(supG(a, b, .055, 1), Wtop), x, n, top)); top += .045; }   // his Route 66 pump is nearly flat on top, with a rounded edge
-  rod(.05, .08, .1, x, n, top, Wp, g); const gr = tall ? .25 : .27, gz = top + .09 + gr, rim = ink(put(new T.Mesh(new T.CylinderGeometry(gr, gr, .15, 48, 1, true), Wrim), x, n, gz)); rim.rotation.x = Math.PI / 2;
+  rod(.05, .08, .1, x, n, top, Wrim, g); const gr = tall ? .25 : .27, gz = top + .09 + gr, rim = ink(put(new T.Mesh(new T.CylinderGeometry(gr, gr, .15, 48, 1, true), Wrim), x, n, gz)); rim.rotation.x = Math.PI / 2;
   [1, -1].forEach(sd => { const f = n - sd * (b + .004), ry = sd > 0 ? 0 : Math.PI, P = (w, h, u, m, dx = 0) => plane(w, h, x + sd * dx, f, z0 + u, m, g, ry);
-    put(new T.Mesh(new T.CircleGeometry(gr, 48), globeM(brand, sd > 0 && !tall)), x, n - sd * .076, gz, ry);
+    put(new T.Mesh(new T.CircleGeometry(gr, 48), globeM(brand, sd > 0 && cracked)), x, n - sd * .076, gz, ry);
     if (tall) { P(.19, .065, H - .1, plateM(brand), -.105); P(.19, .065, H - .1, plateM(grade), .105); P(.24, .4, H - .46, windowM(true)); P(.2, .27, H - 1.0, badgeM(brand)); P(.12, .12, H - 1.36, noteM); }
     else { P(.42, .13, H - .13, plateM(grade)); put(new T.Mesh(new T.CircleGeometry(.038, 24), knobM), x, f, z0 + H - .3, ry); P(.3, .375, H - .62, windowM(false)); P(.1, .1, H - 1.0, noteM, -.17); }
     [.02, H - .02].forEach(u => P(1.4 * a, .01, u, K)); });
-  const hz = z0 + H * .78, nz = z0 + H * .52, e = x + a, hose = ink(new T.Mesh(new T.TubeGeometry(new T.CatmullRomCurve3([[e - .02, n + .04, hz], [e + .16, n + .02, hz - .1], [e + .2, n - .04, z0 + .5], [e + .15, n - .1, z0 + .12], [e + .07, n - .14, z0 + .3], [e + .045, n - .13, nz - .06]].map(q => v(...q))), 44, .021, 10), Wh)); g.add(hose);
-  ink(box(.05, .1, .12, e + .02, n - .13, nz - .02, Wt2, g)); ink(box(.035, .05, .2, e + .045, n - .14, nz + .02, Wt2, g)); const sp = ink(put(new T.Mesh(new T.CylinderGeometry(.016, .02, .22, 12), Wt2), e + .05, n - .2, nz + .2)); sp.rotation.x = -.9;   // holder, nozzle body, spout
+  // hose and nozzle [Route 66]: the hose leaves the side high up, hangs in one long loop nearly to the island and comes back up to the nozzle, which hangs by its spout in a boot on the side
+  const e = x + s * a, X = d => e + s * d, hz = z0 + H * .86, zb = z0 + H * .7, nf = n - .1, nb = n + .07, tube = (pts, r, m, seg = 24) => { const t = ink(new T.Mesh(new T.TubeGeometry(new T.CatmullRomCurve3(pts.map(q => v(...q))), seg, r, 10), m)); g.add(t); return t; };
+  tube([[X(-.02), nb, hz], [X(.06), nb, hz + .01], [X(.105), nb, hz - .07], [X(.11), nb, z0 + .6], [X(.115), nb - .03, z0 + .17], [X(.15), (nb + nf) / 2, z0 + .035], [X(.2), nf + .01, z0 + .17], [X(.2), nf, zb - .55], [X(.165), nf, zb - .33]], .019, Wh, 72);
+  ink(box(.06, .07, .07, X(.01), nb, hz - .035, Wt2, g));                                                                                    // where the hose leaves the cabinet
+  tube([[X(.168), nf, zb - .35], [X(.15), nf, zb - .22], [X(.14), nf, zb - .12]], .03, Wt2, 8);                                               // the nozzle's grip
+  tube([[X(.14), nf, zb - .13], [X(.135), nf, zb - .03], [X(.105), nf, zb + .045], [X(.03), nf, zb + .03]], .016, Wt2, 16);                   // its spout, hooked into the boot
+  tube([[X(.165), nf, zb - .32], [X(.235), nf, zb - .3], [X(.235), nf, zb - .17], [X(.15), nf, zb - .13]], .007, Wt2, 16);                    // the trigger guard
+  ink(box(.07, .09, .1, X(.02), nf, zb - .03, Wt2, g));                                                                                       // the boot
   mark(g, x - .31, 11.24, .9, .05, 1.3); mark(g, x + .1, 11.24, 1.72, .5, .05); mark(g, x + .2, 11.24, .5, .05, .7); });
-pump('pumpW', -8.2, false, 'LLANO', 'HI-TEST'); pump('pumpE', -5.4, true, 'CALICHE', 'REGULAR');
+// two pumps. NOT ANSWERED whether they are the same or one of each. What is here: the same short pump twice, as in his Route 66 photo, turned to face each other, HI-TEST and REGULAR, one globe cracked.
+// LLANO is a stand-in name: he will supply the brands (owner.md 18)
+pump('pumpW', -8.2, false, 'LLANO', 'HI-TEST', 1, true); pump('pumpE', -5.4, TALL, TALL ? 'CALICHE' : 'LLANO', 'REGULAR', -1); layer('pumps');
 { box(.5, .34, .78, -6.8, 11.5, .14, Wt); box(.56, .4, .03, -6.8, 11.5, .92, Wt); for (let k = 0; k < 4; k++) { const c = rod(.05, .05, .15, -6.98 + k * .12, 11.5, .95, Wp); c.geometry = canG; } rod(.17, .14, .34, -4.5, 11.3, .14, Wp); rod(.012, .012, .7, -4.42, 11.3, .3, K); }   // between the pumps: a rack of oil cans. a bucket and its squeegee
-[[CX0 + .5, CN0 + .4], [CX1 - .5, CN0 + .4]].forEach(([x, n]) => { rod(.16, .2, .14, x, n, 0, Wc); rod(.13, .1, .1, x, n, CZ - .1, Wp); }); rod(.34, .2, .13, -6.8, 12, CZ - .14, Wt);                              // post feet and heads, and the lamp's shade
 thing('air', -1.5, 9.6, g => { rod(.09, .11, 1.25, -1.5, 9.6, 0, Wt, g); const d = new T.Mesh(new T.CylinderGeometry(.22, .22, .12, 20), Wt); d.rotation.x = Math.PI / 2; d.position.copy(v(-1.5, 9.6, 1.42)); d.castShadow = true; g.add(d); plane(.26, .26, -1.5, 9.53, 1.42, K, g); mark(g, -1.62, 9.5, .7, .04, 1.0); mark(g, -1.5, 9.5, 1.66, .4, .04); });
 thing('bench', 3.2, 15.4, g => { box(2.2, .45, .1, 3.2, 15.4, .42, Wk, g); box(2.2, .08, .5, 3.2, 15.62, .52, Wk, g); box(.1, .4, .42, 2.3, 15.4, 0, Wk, g); box(.1, .4, .42, 4.1, 15.4, 0, Wk, g); mark(g, 3.2, 15.17, .52, 2.0, .04); mark(g, 2.26, 15.17, .2, .04, .4); });
 thing('phone', 12, 6, g => { box(.9, .9, 2.3, 12, 6, 0, Wd, g); plane(.6, 1.2, 12, 5.54, 1.5, K, g); box(1.05, 1.05, .1, 12, 6, 2.3, Wt, g); mark(g, 11.54, 5.54, 1.1, .05, 2.0); mark(g, 12.1, 5.54, 2.32, .8, .05); mark(g, 12.46, 5.54, .6, .05, 1.0); });
 thing('door', 0, FN, g => { mark(g, -.62, FN - .03, 1.1, .05, 2.1); mark(g, 0, FN - .03, 2.27, 1.1, .05); });
 thing('station', -3, FN, g => { mark(g, -3, FN - .03, BH - .5, 12, .08); mark(g, BX0 + .1, FN - .03, 1.6, .06, 3.0); mark(g, 4, FN - .03, BH - .92, 5, .05); });
-{ const hose = plane(9.6, .05, -6.8, 9.2, .012); hose.rotation.x = -Math.PI / 2; }                                         // the bell line, across the forecourt
+layer('rest');
 // the canopy lamp, lit from below at night
-const canLamp = new T.PointLight(0xffffff, 0, 14, 1.5); canLamp.position.copy(v(-6.8, 12, CZ - .25)); canLamp.castShadow = true; canLamp.shadow.bias = -.004; canLamp.shadow.radius = 4; scene.add(canLamp);
-const canGlow = plane(1.0, 1.0, -6.8, 12, CZ - .02, K); canGlow.rotation.x = Math.PI / 2;
+const canLamp = new T.PointLight(0xffffff, 0, 14, 1.5); canLamp.position.copy(v(-6.8, 12, CZ - .46)); canLamp.castShadow = true; canLamp.shadow.bias = -.004; canLamp.shadow.radius = 4; scene.add(canLamp); layer('canopy');
 
 // ---------------------------------------------------------------- the sign. at the road, straight in front of the door. 12 m.
 // it has depth: the letter cabinets are 0.6 m deep and the arrow is a slab. his name and nothing else ("Gas is unnecessary.")
@@ -287,17 +362,17 @@ for (let i = 0; i < 36; i++) { const rho = (5 + rnd() * 60) * RAD, psi = rnd() *
   const geo = new T.BufferGeometry(); geo.setAttribute('position', new T.Float32BufferAttribute(pos, 3)); const m = new T.Mesh(geo, new T.MeshBasicMaterial({ color: 0xffffff, side: T.DoubleSide })); m.visible = false; m.frustumCulled = false; scene.add(m); stars.push(m); }
 
 // ---------------------------------------------------------------- light
-const HOUR = num('hour', 10.5), DECL = num('decl', -21) * RAD, Hh = (HOUR - 12) * 15 * RAD;
+const HOUR = num('hour', SV[4] ?? 10.5), DECL = num('decl', SV[5] ?? -21) * RAD, Hh = (HOUR - 12) * 15 * RAD;
 const sE = -Math.cos(DECL) * Math.sin(Hh), sN = Math.cos(LAT) * Math.sin(DECL) - Math.sin(LAT) * Math.cos(DECL) * Math.cos(Hh), sU = Math.sin(LAT) * Math.sin(DECL) + Math.cos(LAT) * Math.cos(DECL) * Math.cos(Hh);
 const NIGHT = MODE === 'night' || (MODE === 'day' && sU <= 0), DAY = !NIGHT && !DUSK, SUN = new T.Vector3(sE, sU, -sN).normalize();
-const sun = new T.DirectionalLight(0xffffff, DAY ? 5.0 : 0); sun.castShadow = DAY; sun.shadow.mapSize.set(2048, 2048); Object.assign(sun.shadow.camera, SOLO ? { left: -5, right: 5, top: 5, bottom: -5, near: 1, far: 400 } : { left: -48, right: 48, top: 48, bottom: -48, near: 1, far: 400 }); sun.shadow.bias = -.0012; sun.shadow.normalBias = .05;
+const sun = new T.DirectionalLight(0xffffff, DAY ? 5.0 : 0); sun.castShadow = DAY; sun.shadow.mapSize.set(2048, 2048); Object.assign(sun.shadow.camera, SOLO ? { left: -5, right: 5, top: 5, bottom: -5, near: 1, far: 400 } : NEAR ? { left: -24, right: 24, top: 24, bottom: -24, near: 1, far: 400 } : { left: -48, right: 48, top: 48, bottom: -48, near: 1, far: 400 }); sun.shadow.bias = -.0012; sun.shadow.normalBias = .05;
 sun.shadow.radius = num('reach', 50);                                                                        // 8 and over: centimetres each side of a stroke that the sun's shadow is read over
 scene.add(sun, sun.target);
 SU.sunA.value.set(-SUN.x, 0, -SUN.z).normalize();                                                                          // the way the sun's shadows run along the ground
 const hemi = new T.HemisphereLight(0xffffff, 0xb4b4b4, NIGHT ? .03 : DUSK ? 2.2 : num('sky', .75)); scene.add(hemi);   // dusk: no sun and no shadows, the flattest the place ever is;                    // by day, shade is not dark: the sky and the bright ground get into it
 scene.background = new T.Color(NIGHT ? 0 : 0xffffff);
-const CANOPY = NIGHT && num('canopy', 1); if (NIGHT) { canLamp.intensity = CANOPY ? 60 : 0; canGlow.material = CANOPY ? LIT : K; }
-const TUBE = num('tube', 0), AISLEON = num('aislelights', 0), COOL = num('cooler', 0), MOUTH = num('mouth', 1);
+const CANOPY = NIGHT && num('canopy', 1) && (TEAM || VIEW === 'together'); if (NIGHT) canLamp.intensity = CANOPY ? 60 : 0; canBulb.material = CANOPY ? LIT : inkMat('glass', { tone: .9, thing: 2, round: [.44, .22], fine: .6 }); SU.structOn.value = TEAM || VIEW === 'together' ? 1 : 0;
+const TUBE = num('tube', 0), AISLEON = num('aislelights', 0), COOL = num('cooler', 0), MOUTH = num('mouth', TEAM ? 1 : 0);
 tube.intensity = TUBE ? 9 : 0; cooler.intensity = COOL ? 5 : 0; if (COOL) coolGlow.material = LIT; mouth.intensity = MOUTH ? 4 : 0; payLamp.intensity = 3;
 // you. never drawn. a shape that only throws a shadow where there is sun, and a lamp a little above the eye that only shows where it is dark
 const cam = new T.PerspectiveCamera(68, 1, .1, 1500), FOV = () => num('fov', innerWidth > innerHeight ? 46 : 68), EYE = v(num('x', SV[0]), num('n', SV[1]), num('h', 1.65));
@@ -335,6 +410,11 @@ if (DUSK) { const W = 2048, Hc = 512, c = document.createElement('canvas'); c.wi
     const im = new T.InstancedMesh(geo, mat, per * 2); im.frustumCulled = false; let i = 0;
     while (i < per) { const r = 12 + dr() * 72, th = dr() * 6.283, x = Math.cos(th) * r, n = Math.sin(th) * r; if ((x > -18 && x < 16 && n > -3.4 && n < 29) || (n > -10.6 && n < -2.6) || Math.hypot(x - 2.6, n + 21) < 6) continue; const sz = .45 + dr() * dr() * 1.3, a = dr() * 3.14;
       for (let q = 0; q < 2; q++) { o.position.copy(v(x, n, -.02)); o.rotation.set(0, a + q * 1.5708, 0); o.scale.setScalar(sz); o.updateMatrix(); im.setMatrixAt(i * 2 + q, o.matrix); } i++; }
+    scene.add(im); }
+  // scrub in the slab's joints [Abandoned]: small tufts along the joint lines, more of them toward the slab's edges
+  { const N = 22, im = new T.InstancedMesh(geo, new T.MeshBasicMaterial({ color: 0, map: tuft(), alphaTest: .5, side: T.DoubleSide }), N * 2); im.frustumCulled = false; im.userData.layer = 'slab'; let i = 0, guard = 0;
+    while (i < N && guard++ < 4000) { const onX = dr() < .5, x = onX ? 3.2 * Math.round(-4 + dr() * 7) - .4 : -14.5 + dr() * 23, n = onX ? -1 + dr() * 16 : .2 + 4 * Math.floor(dr() * 4); if (Math.hypot((x + 3) / 12.5, (n - 7) / 9) < .35 + dr() * .75 || (Math.abs(x + 6.8) < 3.4 && Math.abs(n - 11.5) < 1)) continue; const sz = .12 + dr() * .22, a = dr() * 3.14;
+      for (let q = 0; q < 2; q++) { o.position.copy(v(x, n, 0)); o.rotation.set(0, a + q * 1.5708, 0); o.scale.setScalar(sz); o.updateMatrix(); im.setMatrixAt(i * 2 + q, o.matrix); } i++; }
     scene.add(im); } }
 // a fence line along the far side of the road, after the one beside the building in his picture of Marfa. it runs out of sight both ways and has a gap at the lot
 { const xs = []; for (let x = 20; x < 356; x += 4) xs.push(x, -x); const im = new T.InstancedMesh(new T.BoxGeometry(.09, 1.25, .09), K, xs.length), o = new T.Object3D(); xs.forEach((x, i) => { o.position.copy(v(x, -2.5, .62)); o.rotation.set(0, 0, (dr() - .5) * .12); o.updateMatrix(); im.setMatrixAt(i, o.matrix); }); im.frustumCulled = false; scene.add(im);
@@ -342,13 +422,15 @@ if (DUSK) { const W = 2048, Hc = 512, c = document.createElement('canvas'); c.wi
 // a light that is not the sun's, the station's or yours
 const other = new T.SpotLight(0xffffff, Q.has('other') ? 5 : 0, 0, .07, .3, 0); other.position.copy(v(num('ox', 9), num('on', 8), 40)); other.target.position.copy(v(num('ox', 9), num('on', 8), 0)); scene.add(other, other.target);
 // a study: one thing by itself on the bare ground, in the same light, to be judged alone (#pump). everything else is put away, and so are their shadows
-if (SOLO) { const c = new T.Vector3(); scene.traverse(o => { if (!o.isMesh || o === ground) return; o.geometry.computeBoundingSphere(); o.updateWorldMatrix(true, false); c.copy(o.geometry.boundingSphere.center).applyMatrix4(o.matrixWorld); if (Math.hypot(c.x - PX, c.z + 11.5) > .9) o.visible = false; }); canLamp.intensity = 0; }
+layer('rest');
+if (!TEAM || SOLO) { const show = { pump: ['pumps'], slab: ['slab', 'pumps'], together: ['slab', 'pumps', 'canopy', 'shell'] }[STUDY], hide = (Q.get('hide') || '').split(','); scene.children.forEach(o => { const l = o.userData.layer; if (!o.isLight && ['road', 'shell', 'detail', 'canopy', 'slab', 'pumps', 'rest'].includes(l) && (!show.includes(l) || hide.includes(l))) o.visible = false; });
+  if (SOLO) things[TALL ? 'pumpW' : 'pumpE'].visible = false; if (Q.has('one')) things.pumpE.visible = false; }
 (Q.get('seen') || '').split(',').forEach(n => { if (things[n]) things[n].userData.marks.visible = true; });
 
 // ---------------------------------------------------------------- the last pass: light and sheet become two values. paint stays sharp. far things are lost. near things in shade keep a paper line
 // ---------------------------------------------------------------- the last pass: the contour, and paper and ink. far things are lost
 const quad = new T.Mesh(new T.PlaneGeometry(2, 2), new T.ShaderMaterial({
-  uniforms: { t: { value: null }, td: { value: null }, res: { value: new T.Vector2() }, inv: { value: new T.Matrix4() }, eye: { value: new T.Vector3() }, night: { value: NIGHT ? 1 : 0 }, f: { value: 0 }, lost: { value: num('lost', 105) }, pxa: { value: .001 }, pxs: SU.pxs, lineOn: { value: num('line', 1) }, lw: { value: new T.Vector2(...[[1.25, 1], [1.7, .35], [.8, .5], [1.25, 1]][LOOK]) }, grey: { value: num('grey', LOOK === 3 ? 1 : 0) }, dbg: { value: num('dbg', 0) } },
+  uniforms: { t: { value: null }, td: { value: null }, res: { value: new T.Vector2() }, inv: { value: new T.Matrix4() }, eye: { value: new T.Vector3() }, night: { value: NIGHT ? 1 : 0 }, f: { value: 0 }, lost: { value: num('lost', 105) }, pxa: { value: .001 }, pxs: SU.pxs, lineOn: { value: num('line', 1) }, lw: { value: new T.Vector2(...[[1.25, 1], [1.7, .35], [.8, .5], [1.25, 1]][LOOK]) }, grey: { value: num('grey', LOOK === 3 || PICK ? 1 : 0) }, dbg: { value: num('dbg', 0) } },
   vertexShader: 'varying vec2 v;void main(){v=uv;gl_Position=vec4(position.xy,0.,1.);}',
   fragmentShader: `
   precision highp float;varying vec2 v;uniform sampler2D t,td;uniform vec2 res;uniform mat4 inv;uniform vec3 eye;uniform float night,f,lost,pxa,pxs,lineOn,grey,dbg;uniform vec2 lw;
@@ -374,7 +456,7 @@ const quad = new T.Mesh(new T.PlaneGeometry(2, 2), new T.ShaderMaterial({
       float far=lost+(n3(p*.06)-.5)*30.;if(dist>far&&dist<330.)ink=night;                               // far things are lost
     }
     float g=f<-.5?0.:(fract(sin(dot(floor(v*res/pxs),vec2(12.9898,78.233)))*43758.5453)-.5)*.02;
-    vec3 pap=paper*(1.+.34*(gr-.5)*grey*step(d,.99998)*step(.215,c.a)*step(c.a,.6));                // paper look: each thing's own paper in real grey under the ink. the open ground, the road and the sky stay plain                                               // paper look: each thing's own paper, in real grey, under the ink
+    vec3 pap=paper*(1.+.34*(gr-.5)*grey*step(d,.99998)*step(.19,c.a)*step(c.a,.6));                // paper look: each thing's own paper in real grey under the ink. the open ground, the road and the sky stay plain                                               // paper look: each thing's own paper, in real grey, under the ink
     gl_FragColor=vec4(mix(pap+g,black+g*.5,ink),1.);
     if(dbg>.5)gl_FragColor=dbg<1.5?vec4(vec3(c.r),1.):dbg<2.5?vec4(vec3(c.g),1.):dbg<3.5?vec4(vec3(c.b),1.):vec4(vec3(fract(zl(d))),1.);}` }));
 const ps = new T.Scene(); ps.add(quad); const pc = new T.Camera(); let rt, DPX = 1;
@@ -401,7 +483,7 @@ const lift = e => { if (e.pointerId !== finger && finger !== null) return; finge
 CV.addEventListener('pointerup', lift); CV.addEventListener('pointercancel', lift); addEventListener('blur', () => { finger = null; drag = null; held = 0; }); document.addEventListener('visibilitychange', () => { finger = null; drag = null; held = 0; });
 function canStand(x, n) {                                      // crude: the building is solid except through the door; the aisle exists only from inside
   if (inside) { const room = x > -5.0 && x < BX1 - .4 && n > FN + .35 && n < BN - .4 && !(n > 20.6 && n < 22.2 && x < 4.2) && !(x < -3.6 && n > 18 && n < 19.2), al = x > AX0 + .45 && x < AX1 - .45 && n >= BN - .5 && n < BN + ALEN - .4, dr = Math.abs(x) < .5 && n > FN - .6 && n <= FN + .4; return room || al || dr; }
-  const near = (cx, cn, r) => Math.hypot(x - cx, n - cn) < r;   // the sign's pole, the canopy posts, the pumps, the air post and the phone box are solid. so nothing can fill the screen
+  const near = (cx, cn, r) => Math.hypot(x - cx, n - cn) < r; if (VIEW === 'pump') return !near(PX, 11.5, .75); if (VIEW === 'slab') return !(near(-8.2, 11.5, .75) || near(-5.4, 11.5, .75));   // the sign's pole, the canopy posts, the pumps, the air post and the phone box are solid. so nothing can fill the screen
   if (near(0, 0, .6) || near(CX0 + .5, CN0 + .4, .45) || near(CX1 - .5, CN0 + .4, .45) || near(-8.2, 11.5, .75) || near(-5.4, 11.5, .75) || near(-1.5, 9.6, .5) || near(12, 6, .95) || (x > 1.8 && x < 4.6 && n > 14.8)) return false;
   const inB = x > BX0 - .3 && x < BX1 + .3 && n > FN - .3 && n < BN + .3; return !inB || (Math.abs(x) < .5 && n < FN + .4);
 }
@@ -418,14 +500,14 @@ function step(now) {
   aisle.visible = inside; backPlug.visible = !inside && !SOLO;
   aisleLights.forEach((l, i) => l.intensity = inside && (AISLEON === 1 || AISLEON === 2 && i < 2) ? 9 : 0);
   cam.position.copy(EYE); cam.rotation.set(pitch, heading, 0, 'YXZ'); cam.updateMatrixWorld();
-  sun.target.position.set(SOLO ? PX : 0, 0, SOLO ? -11.5 : -8); sun.position.copy(sun.target.position).addScaledVector(SUN, 150);          // fixed to the lot, so nothing about the shadow moves with you
+  sun.target.position.set(SOLO ? PX : NEAR ? -4 : 0, 0, SOLO ? -11.5 : -8); sun.position.copy(sun.target.position).addScaledVector(SUN, 150);          // fixed to the lot, so nothing about the shadow moves with you
   const fw = new T.Vector3(0, 0, -1).applyEuler(cam.rotation), rg = new T.Vector3(1, 0, 0).applyEuler(cam.rotation);
   const dark = NIGHT || inside;                               // the lamp shows only where no daylight reaches: indoors and at night
   you.position.copy(EYE).addScaledVector(rg, .3).add(new T.Vector3(0, .45, 0)); you.target.position.copy(EYE).addScaledVector(fw, 30); you.angle = .012 + .1 * lamp; you.intensity = dark && lamp > .05 ? 3.6 : 0;
   const flat = new T.Vector3(-Math.sin(heading), 0, -Math.cos(heading)); feet.position.copy(EYE).add(new T.Vector3(0, .3, 0)); feet.target.position.copy(EYE).addScaledVector(flat, 2.6 + 1.5 * (1 - lamp)).setY(0); feet.angle = .13 + .29 * lamp; feet.intensity = dark && num('feet', 1) ? 2.2 : 0;   // stand still and it draws in to a small pool a few steps ahead, and stays. the dark is never a blank screen
   SU.youF.value.set(EYE.x, 0, EYE.z); SU.youR.value.set(rg.x, rg.z).normalize(); far.position.set(EYE.x, 0, EYE.z);
-  if (NIGHT && lamp > .6 && !STILL) for (const k in things) { const g = things[k], to = v(g.userData.x, g.userData.n, 1).sub(EYE), dd = to.length(); if (dd < 30 && to.normalize().dot(fw) > .992) g.userData.marks.visible = true; }
-  const nvis = NIGHT ? Math.floor(adapt * stars.length) : 0; stars.forEach((s, i) => s.visible = i < nvis);
+  if (NIGHT && lamp > .6 && !STILL) for (const k in things) { const g = things[k], to = v(g.userData.x, g.userData.n, 1).sub(EYE), dd = to.length(); if (g.visible && dd < 30 && to.normalize().dot(fw) > .992) g.userData.marks.visible = true; }
+  const nvis = NIGHT && TEAM ? Math.floor(adapt * stars.length) : 0; stars.forEach((s, i) => s.visible = i < nvis);
   bulbs.forEach(b => { b.visible = !SOLO; b.scale.setScalar(NIGHT ? 1 : .55); });
   const u = quad.material.uniforms; u.t.value = rt.texture; u.td.value = rt.depthTexture; u.inv.value.copy(cam.matrixWorld).multiply(cam.projectionMatrixInverse); u.eye.value.copy(EYE);
   // the fixed lamps near you: the ground round each wears the sheet laid outward from it

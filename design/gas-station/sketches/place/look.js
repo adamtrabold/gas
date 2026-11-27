@@ -3,7 +3,7 @@
 const http = require('http'), fs = require('fs'), path = require('path');
 const { chromium, devices } = require('playwright');
 const root = path.join(__dirname, '..'), out = path.join(__dirname, 'out'); fs.mkdirSync(out, { recursive: true });
-const SHOTS = require('./look-shots.js'), only = process.argv[2], DEV = process.argv[3] || 'iPhone 14';
+const SHOTS = require(process.env.SHOTS || './look-shots.js'), only = process.argv[2], DEV = process.argv[3] || 'iPhone 14';
 const types = { '.js': 'text/javascript', '.png': 'image/png', '.html': 'text/html' };
 const srv = http.createServer((q, r) => { const u = decodeURIComponent(q.url.split('?')[0]); fs.readFile(path.join(root, u), (e, d) => { if (e) { r.writeHead(404); return r.end(); } r.writeHead(200, { 'content-type': types[path.extname(u)] || 'text/plain' }); r.end(d); }); }).listen(0, async () => {
   const b = await chromium.launch();

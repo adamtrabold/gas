@@ -20,3 +20,4 @@ make('blacktop', [[24, 24, .55], [64, 64, .45]], v => Math.abs(v - .5));        
 make('steel', [[3, 90, .6], [128, 128, .15], [5, 5, .25]]);                                 // smooth, with faint drawn streaks one way
 make('wood', [[2, 60, .7], [4, 128, .3]], (v, x, y) => v + .1 * Math.sin(y / N * 6.283 * 14 + 6 * Math.sin(x / N * 6.283)));   // laid: fibres along the plank
 make('tin', [[128, 4, .5], [128, 128, .12], [4, 4, .38]]);                                  // smooth, scratched across
+make('rubber', [[60, 60, .5], [128, 128, .5]], v => Math.abs(v - .5));                               // perished rubber: fine, pebbled, crazed
