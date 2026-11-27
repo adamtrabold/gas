@@ -117,8 +117,17 @@ Outside before inside, day before night. The inside is last, so nothing waits on
 - Tap the handle: the numbers roll and stop. No fuel — [concept]
 - Stand still nearby: the numbers tick over once — [concept]
 - Metal ticks in the heat — [concept]
+- The globe is lit at night: the power never went off — [you]
 
-**Drawing needs (visual designer):** _empty_
+**Drawing needs (visual designer):**
+- *Made of:* painted steel cabinet and base; glass globe face and number window; rubber hose; cast metal nozzle; enamel or decal lettering.
+- *Paper:* the steel paper (smooth, faint streaks one way) on cabinet, base, rim, nozzle and hose. Glass and lettering have no paper: they are flat paint.
+- *Kinds of mark:* a contour with weight; then, by the hand he picks, slanted dry brush dabs, or fine upright hatching, or stipple, running with the cabinet and round the globe's rim; pits and chips on lit steel; rust as blotches and close stipple rising from the base and at the seams; the print itself worn (ink dropping out in the paper's low places).
+- *Where tone turns:* the cabinet is rounded in plan with a rounded top edge, so tone turns across its corners; the globe's rim turns; the hose is a tube. No part is a plain box.
+- *Flat paint (hard, like lettering):* the globe's face with the brand, grade plate, number window and its digits, badge, notice, knob, the two seam lines. All worn: flecks of paint gone, dust on the window, a crack on one globe.
+- *At night:* the power is on, so the globe's face is lit: the one part of the pump that is paper-white in the dark, with its lettering in ink.
+- *Its own ground:* its cast shadow, feathered, and the pebbles under it. No weeds: none are on this list.
+- *Open:* the hose and nozzle are not drawn well enough yet (off Sheet 1 for now); lettering is set type until someone draws it; the brand name is PROPOSED, for him to pick: LLANO, CALICHE, BAJADA or TULAROSA (two web searches found no fuel brand by any of them; not a trademark check).
 
 ---
 

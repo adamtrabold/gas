@@ -4,6 +4,21 @@ Visual designer. For the design director first, then the owner. After `owner.md`
 
 **The picture: `concepts/stills/sheet-1-pump.png`** (1170 x 4927, made for a phone). The same pump is walkable in `sketches/place/index.html`.
 
+## After the director's check (`sheet-1-judge.md`) and `owner.md` 16: six fixes, all in the sheet now. This section overrides the rest where they differ.
+
+1. **The walked pump now matches the sheet.** The link opens in the pump's own light ("drawn once"), the same light as every flash view. "Lit by the hour" is one tap away (`lit` in the hash; foot link `drawn once/lit by the hour`). The "Plainly" block says so. Shows in: `look-pump-day-{brush,cut,dot}.png` (how it opens) against `look-pump-day-lit.png`.
+2. **PLAYA is gone.** The short pump's globe reads LLANO, the tall one CALICHE, and section F of the sheet offers four for him to pick: **LLANO, CALICHE, BAJADA, TULAROSA**. All are plain words for the country the station stands in (the plain, the hard white soil, the slope at a mountain's foot, a basin). What I checked: two web searches, one for the four names with "gasoline brand / oil company / filling station history", one for "<name> Oil" among defunct brands and operators. Neither found a fuel brand or oil company called Llano, Caliche, Bajada or Tularosa; results were place names and geology. I dropped ARROYO because the second search found two real operators (Arroyo Oil Co, Texas; Arroyo Petroleum, Kansas). **This is not a trademark search**, and the sheet says that.
+3. **Brush now looks brushed.** Fat dry dabs laid on a slant, each with a belly and a tail, very uneven in width, fewer of them. Cut stays fine upright hatching. They no longer look alike at phone size: section B.
+4. **The nozzle is off the sheet.** C5 says "not drawn yet".
+5. **The light question uses the mid-morning pair**, where the difference shows, and is relabelled: D1 drawn once (as the link opens), D2 lit by the hour.
+6. **Captions:** "after your Route 66 photo" and "loosely after your 1934 photo". I also flattened the short pump's top to match his photo (nearly flat, rounded edge). The tall one is still the short one stretched with a stepped top, hence "loosely".
+
+Also: the grade plates now read HI-TEST (short pump) and REGULAR (tall), to match `elements.md` as the systems designer rewrote it. The first sheet said ETHYL, which is a real trade name.
+
+From `owner.md` 16: the power is on, so the globe is lit at night. It already was (its face is the one paper-white thing on the pump in the dark); C1's caption and the pump's entry in `elements.md` now say so. The crack and the dust, which he accepted, have lost their PROPOSED tags. The name and the grade wording are still PROPOSED.
+
+Walked frames re-captured: `look-pump-{day,night}-{brush,cut,dot}.png`, `look-pump-{day,night}-lit.png`, `look-pump-tall-cut.png`, `look-pump-close-brush.png`. The afternoon and `-fixed` frames named further down no longer exist, and where the text below says PLAYA, ETHYL, `fixed` or D1/D2 the other way round, this section is right.
+
 ## What is on the sheet
 
 - **A. Which pump?** Both shapes from his photographs, side by side, same hand: A1 short and round-shouldered (his Route 66 photo), A2 tall with a stepped top (his 1934 station photo). He can answer by pointing.
