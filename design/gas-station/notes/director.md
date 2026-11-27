@@ -396,3 +396,50 @@ What "detail boss texturing" meant (being asked); a screenshot of the pixellatio
 ## Scores to date
 
 01: 7. 03: 8. Left on: 8.5, then 9 (rejected by the owner on the look). The 9 is void. Do not carry it forward.
+
+---
+
+# Look judge 1 (not a score)
+
+## Owner since the steer (owner.md 10–12)
+
+"Detail via* texturing. Two values but we can still make the illusion of grey. It's just a black and white painting." Paper textures per form: "Within black and white, different grain showing through the ink"; "scanned in various paper textures, made them greyscale and multiplied onto the vintage color, and then applied them to each face / element". And: "Instead of trying to one shot this in one view maybe it would be helpful to develop all the elements individually?"
+
+## What I judged
+
+Look test by a third visual designer: `look-test.md`, `look-test.png`, 24 `look-*` stills, prototype with `#pen`, `#brush`, `#paper` × `#pump`, `#wall`, `#ground`, `#lot`. Pixellation cause found (cap of 2 on 3-dot screens; my fallback with no floor; hard-edged marks). Long-press handled in the page, unverifiable off his phone.
+
+## How I checked
+
+Opened eight routes in Playwright iPhone 14 emulation at 3 dots per point (canvas 1170 × 1992 confirmed), with a hold-to-walk on each; looked at captures at full size (kept in the session scratchpad). Still headless, still no real touch.
+
+## Verdict: fix first, then send the pump only (look-judge-1.md)
+
+Real improvement: shade made of lines, shadows that end where lines end, weighted contour, a pump with things on it, true density.
+
+Not ready for his eye because:
+- Stepped edges are still visible at true density (pump shoulder notch; plinths and rack in the lot; the arrival view's building outlines and mesas, which are still the old look).
+- The pump's lit faces are nearly blank in pen and brush. Only paper has texture on a lit face.
+- The pump body has two tones with a ruled edge between, not a turn.
+- Paper shows a repeating pattern on open ground.
+- In `#lot-brush` by day a shaded pump disappears into the shaded stripes behind it: his "hard to make out objects" back again.
+
+Fix list (pump and link only): texture on lit faces; tone that turns across the body; no steps at 3×; paper without the ground pattern; link opens on the pump and only the pump. No re-judge needed if shown in three stills.
+
+## Rulings
+
+Flat paint may stay flat for lettering and the arrow; the hose is an object and gets drawn. Open ground by day is fine for now. Stills and walkable go together (I was wrong to say stills first). Fallback with a floor of 2 stays. Elements over one view: his word.
+
+## My pick (not to be told to him before he answers)
+
+Brush on paper: brush strokes, real paper grain on things, none on open ground or sky; pen's line only for small hard detail. It is his described method, the only one with texture on lit faces, nearest "a black and white painting" and image 13. Pen's crosshatch reads as a machine grid.
+
+## Questions for him when it goes
+
+Pen, brush, paper or a mix; real grey in the grain or not; is this the pump; enough detail at arm's length; long-press, fluidity, blockiness, and which browser; which element next (I'd say the sign); will he scan papers and draw one pump.
+
+## Carry forward
+
+- "Together" views are where legibility breaks. Each new element has to be checked in shade against shade.
+- Keep checking at full size at true density; page-size looks hid the steps.
+- Still owed by nobody: a real capture from a real phone.
