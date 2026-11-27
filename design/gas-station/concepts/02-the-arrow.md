@@ -1,3 +1,5 @@
+> **Folded (steer 2, design director).** Not a concept. What survived is in `00-shared.md` under "True of the place at any hour": the sign's shadow is an arrow on the slab; on winter middays it comes in at the door; the wall clock swings it; at midday the door is off the latch. Dropped: "awake", the five bearings, the second band. Kept as the record.
+
 # 02 — The Arrow
 
 **You are** someone following a shadow across a forecourt.

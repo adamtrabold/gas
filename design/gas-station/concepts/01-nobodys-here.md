@@ -1,3 +1,5 @@
+> **Superseded (round 2).** Merged into `05-left-on.md`, as `score-1.md` asked. The room, the aisle, asking for someone, the standing-still list and the chart all moved there. Kept as the record; the how-it-works half below is no longer current.
+
 # 01 — Nobody's here
 
 **You are** the one who turned up at a place somebody has just left.

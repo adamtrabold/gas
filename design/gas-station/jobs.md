@@ -82,5 +82,5 @@ The receipt and the office-hours ordering are dropped (owner: "no" to both). The
 
 ## Still open, and still matter
 
-1. **Does the time of day do something, or only change how the place looks?** Asked, not answered. The three concepts are built to show him the choices: it only changes the look (01); it lays a path and wakes one thing (02); it changes what your hand is (03).
+1. **Does the time of day do something, or only change how the place looks?** Asked, not answered. The one concept (`concepts/05-left-on.md`) answers it for him to react to: the hour changes how much of the place is the sun's and how much is yours.
 2. **Does the station have a canopy over the pumps?** Out with him now. Drawn with one for the time being; nothing in the jobs depends on it.

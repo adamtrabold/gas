@@ -2,6 +2,37 @@
 
 ## Where things stand (latest first)
 
+**Concept round 2, systems turn done (2026-11-27).** One concept now: `concepts/05-left-on.md` ("Left on"), written clean as the how-it-works for the whole thing. `01-nobodys-here.md` and `03-your-light.md` marked superseded; `02-the-arrow.md` marked folded (04 already was). `00-shared.md` updated: one-concept header, new sections "True of the place at any hour" (02's leftovers + landed words rare) and "Twilight" (moved from 03). `jobs.md`: only the wording of open question 1 changed. Visual's halves in 01/03/00 are theirs and not yet rewritten for the merge; the merged file has no look-and-feel half yet.
+
+### Round 1 result (score-1.md, steer-2.md)
+
+01 scored 7 ("what do I do at all?"), 03 scored 8 ("where are the brush strokes?", "what do I do by day?"). 02 folded by the director (kill condition failed). Director: 01 can't reach 9 alone, fold into 03. Rulings I took: canopy west accepted; third margin item accepted; first rung at 15 s; counter tube lights the counter only; light at the aisle mouth; far end must be a picture; landed words rare (bell only); twilight to shared.
+
+### What "Left on" is, and my one reshape
+
+- Merged as asked. From 03: shadow/lamp, things as lights with sounds, lights stay on, the main, fourth light, sky on standing still. From 01: attendant's things, the 28 m aisle, asking for someone, the standing-still list, nothing moves while looked at, the chart.
+- **Reshape (stated in the file as going past the scoring):** no day/night switch. You always cast a shadow and always carry the lamp; each shows only where it can (shadow in sun, lamp in dark). "The sun's part is whole and indifferent; the dark part is yours"; the hour sets the proportions. Why: most visitors come by day and were getting the thin half. Consequences: the aisle is always night (no daylight reaches it), so the lamp is fully yours there at any hour; under the canopy by day is ink, so the lamp finds the pumps (answers "I can't see the pumps" in concept terms). Flagged: a lamp in daytime shade is a drawing rule, not physics; if it looks wrong, lamp is indoors-and-night only and the rest stands.
+- Shadow is no longer a way of acting (director's fix 2); "sunny side" dropped as a rule.
+- One standing-still sequence: 1 s level; 4–8 s lamp closes; 10–15 s stars (night, outdoors); 15 s first small thing; 45 s; 2 min payphone; 4 min disc. Nothing moves in your light or while looked at. Turning reopens the lamp but doesn't restart the list; walking/using does. Each item once a visit.
+- "You never stand still" is now a survivable state — stillness adds, doesn't carry. That was 01's failing.
+- Only the counter bell lands a word.
+- No-3D: lamp ≈ "look at" gives the thing in a line; shadow has no version, said so.
+- "Choices for the owner inside the one concept": lamp in daytime shade or not; shadow as column or person; canopy; hums tuned or not.
+- I said plainly I don't see a second concept that differs in kind worth making.
+
+### Open
+
+- Owner: canopy (out). His hour question is answered by the concept for him to react to.
+- Visual (from score-1): strokes in the walked world (fix 1) — the thing both scores turn on; paper line in shade; shadow two ways; arrival framing at 390×844 and 360×640; sign depth; inside by day with lights on; twilight frame. Plus from me: does a lamp disc under a noon canopy look right; sun patches through the front windows by hour.
+- Nobody has walked it on a real phone.
+
+### Next
+
+- Visual writes the look-and-feel half for `05-left-on.md`; director scores the one concept.
+- If it reaches 9: my coverage check against `jobs.md` (jobs table is already in the file; redo it against the final text), then "How it works" in `handoff.md`.
+
+## Earlier: concept phase, systems turn 2
+
 **Concept phase, systems turn 2 done (2026-11-27).** Rewrote my halves of `concepts/00-shared.md`, `01-nobodys-here.md`, `02-the-arrow.md`, `03-your-light.md` for walking and for `concepts/steer-1.md` (director: not READY, everything assumed composed stops). `04-the-makeover.md` marked folded. `jobs.md` updated for owner section 6. Visual's halves untouched; they predate my rewrite and still describe some things I changed (the raked arrow in 02, no canopy in 01).
 
 ### Owner answers since last turn (owner.md section 6)

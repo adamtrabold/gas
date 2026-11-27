@@ -1,30 +1,22 @@
 # Shared by every concept — how it works
 
-*Systems turn 2 of the concept phase. Rewritten for "walk around" (`owner.md` section 6) and for the director's `steer-1.md`. This replaces my first version, which assumed composed stops. The look-and-feel half below is the visual designer's and is unchanged.*
+*How it works (systems). Current as of round 2, after `score-1.md`. One concept is built on this place: `05-left-on.md`. The look-and-feel half below is the visual designer's.*
 
-## Three concepts, one place
+## One place, one concept
 
-One station, one sign, one set of rules. The three differ in two things only:
-
-| | What you are | What the hour does |
-|---|---|---|
-| 01 Nobody's here | The one who turned up | Changes light, sound and odd things. Nothing else |
-| 02 The Arrow | Someone following a shadow | Lays a path and wakes one thing |
-| 03 Your light | A shadow by day, a lamp by night | Changes what your hand is |
-
-04 is folded in here, as ruled (see "Adding to the place").
+After two rounds there is one concept, `05-left-on.md`. 01 and 03 are merged into it; 02 and 04 are folded into this file. Everything here is true of the place whatever is built on it.
 
 ## Where the owner's answers overruled the jam
 
 Kept: ink is where the light isn't; a latch at the door, never a puzzle; the real hour is the hour; evidence, never the creature; nothing needed is hidden behind a time, a wait or a secret.
 
-Changed: composed stops became one walked world ("walk around"). One plain Route 66 station with one Googie arrow sign and his name ("Route 66 but there's gotta be a googie arrow sign"; "Me"). Five gestures became four: **Look, Cross, Call, Wait.** Pick up is dropped until there is something to hold. The moments each concept shows: arriving by day; arriving at night; crossing the door; inside; doing nothing; a view nobody composed.
+Changed: composed stops became one walked world ("walk around"). One plain Route 66 station with one Googie arrow sign and his name ("Route 66 but there's gotta be a googie arrow sign"; "Me"). Five gestures became four: **Look, Cross, Call, Wait.** Pick up is dropped until there is something to hold. The moments the concept shows: arriving by day; arriving at night; crossing the door; inside; doing nothing; a view nobody composed.
 
 Dropped: the timetable, the piece of the hour, the receipt, the office-hours order, a real latitude, the streamlined station, the raking beam, The board, and any note of whose it is beyond the sign ("yes but no").
 
 ## The lot
 
-One layout for all three. It comes from where the sign's shadow really falls (a 12 m sign, a generic desert sun), because in a world where ink is shadow that shadow is there in every concept, wanted or not.
+One layout. It comes from where the sign's shadow really falls (a 12 m sign, a generic desert sun), because in a world where ink is shadow that shadow is there whether wanted or not.
 
 ```
                                N
@@ -82,7 +74,7 @@ The door is still one act of about a second, answered by the stroke across the s
 
 - **Outside** is the lot and the desert. The building is 8 m deep. You can walk all the way round it.
 - **The front room** is real and the right size. You see it through the window from the lot, and you see the lot through the window from inside.
-- **Past the front room, the inside keeps going** further than the back wall you walked round. How much further is each concept's business. Nothing explains it. From no single spot can you see both facts at once; you only know because you walked both.
+- **Past the front room, the inside keeps going** further than the back wall you walked round. In the concept it is one aisle, 28 metres long. Nothing explains it. From no single spot can you see both facts at once; you only know because you walked both.
 - **The back door** at the far end lets you out behind the building. Walk round the corner and the front is eight metres away.
 
 A link someone sends always lands on the road. Crossing a door is the only thing that adds to the browser's history, so **back puts you outside the last door you came through**, and Escape does the same. Walking never fills the history.
@@ -100,16 +92,41 @@ Any direction, about forty seconds out and you're arriving again. Same station, 
 
 The one thing I'd ask visual: lights. At night the sign's bulbs would be seen from much further than 100 m, which would show the join. I'd lose lights at the same distance as everything else, and let the bulbs come on as you get near.
 
+## True of the place at any hour
+
+These came out of the folded concepts and belong to the place.
+
+- **The sign's shadow is an arrow on the slab.** The arrow is flat and faces the sun, so the sun makes one. It points toward the pumps in the morning, at the door at midday, and away east in the afternoon. In summer it's short. Nothing is done with it. It's there to be found and followed.
+- **On winter middays it reaches the door** and comes in over the threshold. On the shortest day the starburst is on the door.
+- **The wall clock swings it.** Turn the clock indoors and, through the window, the shadows go round.
+- **At midday the door is off the latch.** The one hour the place lets you in without asking. An extra; nothing depends on it.
+- **A landed word is rare.** The counter bell has one (DING), after the owner's HONK. Nothing else does. Switches, latches and steps have their light or their sound and no word.
+
+## Twilight
+
+For about half an hour at each end of the day there's no sun and not yet dark. Lights can only show against ink, so dusk is the sky being inked in from the top while the sign comes on against it.
+
+What someone arriving then sees, so it doesn't look broken:
+
+| | |
+|---|---|
+| 0 s | The road. The station with no shadows on it, the flattest it ever is. Sky still paper |
+| 3 s | A stroke of ink is laid into the top of the sky. The first letter of the name is lit against it. A buzz starts |
+| 4–9 s | A stroke and a letter about each second, down the name |
+| 10 s | The first bulb of the arrow, and a click |
+
+Whenever in the half hour you arrive, the next letter comes at three seconds. At dawn it runs the other way: the ink is lifted and the letters go out. If the odd things happen by themselves at any time, it's now.
+
 ## Wait
 
 Standing still is the gesture. Shared rules:
 
 - **Still** means not walking and not acting. The clock for it starts when the view has levelled.
-- **Turning to look does not break it** (except in 03, where turning is aiming). Otherwise you could never watch what the place does.
+- **Turning to look does not restart it.** Otherwise you could never watch what the place does. (In the concept, turning brings your lamp back; it still doesn't restart the place's list.)
 - **Walking or acting ends it at once.** Anything that was moving by itself stops. Anything that already changed stays changed for the visit: that's the evidence it happened.
 - If the page is hidden, the clock stops. Nothing happens while you can't see it; that would be a different kind of site.
 
-Each concept says what Wait gives.
+The concept says what Wait gives, second by second.
 
 ## Without the picture (job 12, line by line)
 
@@ -130,7 +147,7 @@ No 3D, or a screen reader, or keyboard only: **the named places as a list.** Eac
 | 11 Send it | Same address |
 | 12 Phone and desktop | The list is one column on both |
 
-Honest limit: 03's lamp and shadow have no meaning without a picture. There the list says what is lit and lets you switch things on and off; the room's sound still builds.
+Honest limit: your shadow has no version without a picture. Your lamp does, roughly: "look at" a thing gives it in a line. The list says what is lit and lets you switch things on and off, and the room's sound still builds.
 
 **Keyboard with the picture:** arrows walk and turn; Tab steps through the things and places you can see, nearest first; Enter goes to it, and again to act; Escape puts you outside the last door.
 
@@ -188,7 +205,7 @@ That third line matters more now that you walk. A sound behind you is the plaine
 
 **One thing to offer a musician.** A hum has a pitch. If each lamp is tuned to one note, the lights that are on make a chord, and the place's sound at any moment is a chord nobody arranged: the sign alone at dusk, more notes as the lamps come on, one note left when you've put the rest out. He picks the notes. It needs no music written, it follows from the rule we already have, and if he doesn't want it the hums are just hums. (The visual designer's offer of a tone that follows the sun's height is the daytime half of the same idea.)
 
-**Rules.** Sound starts with your first touch, never before. One switch, in the margin. Every answer has its ink twin, the landed word, so nothing depends on hearing. Music, and whether the radio plays his, is still "idk yet"; the radio gives static and a station that won't quite come in.
+**Rules.** Sound starts with your first touch, never before. One switch, in the margin. Nothing depends on hearing: with sound off, a light that's on shows a short repeating stroke where its hum would be, and anything heard-first leaves a small mark where it happened. Only the counter bell lands a word. Music, and whether the radio plays his, is still "idk yet"; the radio gives static and a station that won't quite come in.
 
 ## States, common to all
 
@@ -197,7 +214,7 @@ That third line matters more now that you walk. A sound behind you is the plaine
 | Loading | The road still for this hour and the sign's name as text, at once. The world arrives behind it and you can start walking when it has |
 | No 3D | The list of places, above |
 | Motion off | Cuts between standing spots; the light moves in steps |
-| Sound off or blocked | Landed words only; the switch shows off |
+| Sound off or blocked | Small marks where sounds would be; the bell's word; the switch shows off |
 | First visit, nothing remembered | Complete |
 | Clock wound | Marked in the margin. Stays wound while you walk about, so you can go out and see it. Lets go when you touch the clock again or leave the site |
 | Tall phone | The main canvas |

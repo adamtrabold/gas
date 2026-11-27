@@ -1,3 +1,5 @@
+> **Superseded (round 2).** Merged with 01 into `05-left-on.md`, which is now the one concept. The how-it-works half below is no longer current; in particular "shadow by day, lamp by night" and "come at things from the sunny side" are replaced there.
+
 # 03 — Your light
 
 **You are** a shadow on the ground by day and a lamp by night. You are never drawn.
