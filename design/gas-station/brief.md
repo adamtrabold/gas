@@ -57,3 +57,5 @@ Folder: `/home/user/gas/design/gas-station/`
 
 - `jam.md`, `jobs.md`, `concepts/`, `scores.md`, `owner.md`, `handoff.md`
 - `notes/systems.md`, `notes/visual.md`, `notes/director.md`
+
+Sign reference the owner linked (`owner.md` section 16): `inspo/sign-article/` — README with what the article says, and its nine images (patent drawings of the "Superior arrow", a "Spell-Out" MOTEL sign, Dynalite and Big Sig plastic signs).
