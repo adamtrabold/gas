@@ -187,3 +187,58 @@ Swim unsolved; any concept without a working inside; day arrival that doesn't re
 ## Self-check
 
 I'm inclined to protect 02 because it came from the sundial. The evidence against it is substantial (band not arrow, seasonal miss, inside fails, most work). If round 2 doesn't clear the kill condition, fold it without another round.
+
+---
+
+# Concept phase — steer 2 and score 1
+
+## How I checked
+
+Read all rewritten files and every sheet. Walked `sketches/place/` myself in headless Chromium at 390 × 844 (three walks: c=1 day, c=3 night, c=3 afternoon; frames captured at each step; capture kept in the session scratchpad, not in the work folder). Not a real phone. About 9–10 fps in software rendering, which proves nothing about a device.
+
+Found walking: ink stays put (agrees with the swim test); no brush strokes anywhere in the walked world; live arrival at 390 wide crops the name to "ABOLD"; three seconds into walking the sign leaves the frame and the building holds the picture alone; under the canopy by day is one black mass.
+
+## Rulings (steer-2.md)
+
+- 02 folds; failed my own kill condition. Kept in shared: sign's shadow is an arrow on the slab; it comes through the door on winter middays; the wall clock swings it; at midday the door is off the latch. Dropped: awake, the bearings, the second band.
+- Canopy west of the door: designers right, my steer-1 placement wrong.
+- Third margin item accepted. East window accepted; bench is furniture.
+- 01: counter tube lights the counter only; a light at the mouth of the aisle; first rung at 15 s.
+- Twilight sequence moves to shared.
+- Landed words are rare: the bell only.
+- READY: 01, 03.
+
+## Scores (score-1.md)
+
+| Concept | Score | Why | Top objection |
+|---|---|---|---|
+| 01 Nobody's here | 7 | Right place, best liminal idea (the aisle), but the visitor's hand is a tap and the concept bets on people standing still | "What do I do at all?" |
+| 03 Your light | 8 | The visitor becomes part of the ink rule, so every act means something by construction; night, stillness and sound all follow from it. Day thin; leaves out 01's best | "Where are the brush strokes?" (shared), then "what do I do by day?" |
+
+Neither is a 9. Nothing goes to the owner.
+
+01 can't reach 9 as a separate concept; it should fold into 03. 03 can reach 9 with ten numbered fixes; the first is strokes in the walked world.
+
+## What keeps blocking a 9 (first scored round, so this is the baseline)
+
+1. No brush strokes in anything walkable. The owner's first aesthetic ask.
+2. Nothing felt on a real phone.
+3. Each concept strong on half the day.
+
+Why I think it's happening: the team proved structure and light first (rightly, for a world), and the hand was always "generated for now". The two prototypes each solved one of walk/stroke and not the other.
+
+## Self-check
+
+- 01 was my direction; 03 was the systems designer's. I scored mine lower and am folding it. I think that's the evidence and not overcorrection: 01's own file says it's a shop if people don't wait.
+- The sundial line is fully closed. Don't reopen it.
+- One concept going to the owner is unusual. Reason recorded in score-1.md process note. Be ready to be told otherwise.
+
+## Open with the owner
+
+Canopy (asked). Hour does something (now carried inside the concept). Later: shadow as column or person (to be shown, not asked cold). Sign check against his saved references is the orchestrator's.
+
+## Next
+
+Systems: merge 01 into 03, name it, rewrite day as "whole and indifferent by day, yours by night", move twilight and 02's leftovers to shared, limit landed words.
+Visual: strokes on world-fixed fibres with the walk-past test first; then paper line in shade, two shadow shapes, arrival framing at real phone sizes, sign depth, inside by day with lights on, twilight.
+Then I score the merged concept. Don't raise the score unless fix 1 is actually done and visible in a walked frame.
