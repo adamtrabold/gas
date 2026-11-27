@@ -14,6 +14,15 @@ Source: `owner.md` (verbatim; overrides the jam).
 - "definitely needs an arrow sign" / "Route 66 but there's gotta be a googie arrow sign" → job 2: the arrow sign pulls you to the door. Saved article (vacuum-formed signs, the "Superior arrow") is reference for visual.
 - "liminal not funny"; alien confirmed; "pure ink for now"; brush "readable but not precise or always whole" (reading of a typo, unconfirmed).
 
+### Owner.md section 5 (arrived after the first draft of jobs.md; folded in)
+
+- "place first" → job 1 says so; arrival shows the place and nothing else.
+- Name on the sign: "Me" → job 2: the arrow sign carries Adam's name and says whose station it is. My question about "is it public / whose is it" is answered by this; contact stays parked with the work.
+- "no" to choosing office hours vs night → the editorial-order idea from pass 2 is dropped.
+- "nowhere in particular. Middle of the desert. Texas, New Mexico, Nevada, Southern California" → no real place; a generic desert latitude is fine for the sun.
+- Receipt: "no" → dropped for good, old J14 with it.
+- Open questions in jobs.md are now two: does the hour do something (asked, unanswered); free walking vs composed views (mine, not yet asked). Sound-at-rest is a design call for the concepts, not an owner question.
+
 ### What this does to the directions (my view, not a ruling)
 
 - The director's fork — does the hour choose the work (The Instrument) or only change light and odd things (Nobody's here) — can't be judged without work. For now the hour does light, sound and odd things. The dial can still exist as a clock; it just has nothing to point at yet.

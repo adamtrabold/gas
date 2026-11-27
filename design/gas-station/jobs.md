@@ -9,13 +9,17 @@ What a person needs to be able to do here. Written from the owner's words; anyth
 - "We need sound effects at least." Hearing the place is a job now, not a maybe.
 - "It definitely needs an arrow sign." The arrow sign is the thing that brings you in.
 - "It should feel liminal not funny." Applies to every job.
+- "Place first." Arrival is the place and nothing else.
+- Whose name is on the sign: "Me." So the arrow sign also says whose station this is.
+- "Nowhere in particular. Middle of the desert." No real location; the sun and sky are a desert's, not a town's.
+- No receipt, and no choosing what shows in office hours versus night. Both dropped.
 
 ## Jobs: the world (now)
 
 **Anyone who turns up**
 
-1. Arrive outside the station, in the desert, and feel where I am. — *owner*
-2. See the arrow sign from the road and be pulled toward the door. — *owner (the sign); inferred (what it does)*
+1. Arrive outside the station, in the middle of the desert, and feel where I am — the place first, before anything else. — *owner*
+2. See the arrow sign from the road, read Adam's name on it, and be pulled toward the door. — *owner (the sign, the name); inferred (what it does)*
 3. Go in. — *owner*
 4. Look around inside, and go back out. — *inferred*
 5. Touch things, and have each one answer in a way that means something. — *owner*
@@ -42,11 +46,11 @@ Parked by the owner. Nothing is designed for these now. The only requirement tod
 18. Get in touch.
 19. Get to any of these fast, without wandering; and link straight to one piece.
 
-Everything the jam built for these — the list as a timetable, the hour choosing a piece, the receipt — waits until there is work to put in it.
+The receipt and the office-hours ordering are dropped (owner: "no" to both). The list as a timetable and the hour choosing a piece wait on the one open question below.
 
 ## Flows
 
-**First arrival.** Open the site → outside, on the road, the station ahead, the arrow sign → something responds when I look or touch, in ink and sound → I know there's a way in.
+**First arrival.** Open the site → outside, on the road, the station ahead, the arrow sign with Adam's name → something responds when I look or touch, in ink and sound → I know there's a way in.
 
 **Going in and out.** At the door → one deliberate act, about a second → inside → look around, touch things → back out the way I came, or out the back and round to the front.
 
@@ -73,7 +77,5 @@ Everything the jam built for these — the list as a timetable, the hour choosin
 
 ## Still open, and still matter
 
-1. **What goes on the arrow sign?** No name yet is fine — but the sign needs a word or it needs to be blank on purpose. Your name, a station name, or nothing for now?
-2. **Is it public while it's only the world?** If you'll send people to it before the work is in, should it say whose it is and how to reach you, somewhere small? Or is it just yours for now?
-3. **Walk around freely, or move between a few composed views?** "Threejs" could mean either, and it changes jobs 4, 5 and 12 more than anything else.
-4. **Does the place have its own sound when I'm doing nothing** — wind, a hum, a radio somewhere — or only sounds I cause?
+1. **Does the time of day do something, or only change how the place looks?** Asked already, not answered. Until there is work to show, the hour changes the light, the sound and the odd things, and nothing else — so this can wait for the concepts, but it has to be answered before the work goes in.
+2. **Walk around freely, or move between a few composed views?** Not yet asked. "Threejs" could mean either, and it changes jobs 4, 5 and 12 more than anything else. The team leans composed views; the concepts will show that, and he can say no.
