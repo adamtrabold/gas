@@ -305,3 +305,109 @@ Drawn with `shuf`. An unrelated field: **letterpress printing.** An Oblique Stra
 - Ruscha for stillness, Kirby for events: a real grammar, or too tidy?
 - On the phone: big sky with the word, or the page of panels? They lead to different sites.
 - Whether B stops being a world and becomes the list.
+
+## Pass 1 — director
+
+Written after opening all 18 images and the sketch sheet. No scores; this is steering and new material. Where I say "my call", it is a jam lean so you can build on something, not a decision the owner has made.
+
+### 1. What I see in the sketch
+
+- Frames 4, 5 and 6 are the good ones. Frame 1 is the weak one. The difference: in 4–6 the ink is **mass** (a black sky, a black room, a black doorway). In 1 the ink is mostly **outline** around boxes, and outline is what makes it read as a filter on a model.
+- So the rule works when ink is shadow and fails when ink is edge. The owner's two brush images say the same: 14 is nothing but masses with tapered ends, no outline anywhere. 13 builds an eye from loaded strokes and leaves the lit side open.
+- Frame 2, "a sky with nothing to do", is the most Ruscha frame on the sheet. 07 is a strip of picture and two thirds blank poster. Don't fix the emptiness. Give it one job and leave the rest empty.
+
+### 2. The three questions I was handed
+
+**Is "ink is where the light isn't" the foundation?** Yes, as the physics of the world, with three conditions.
+
+1. **Mass before line.** Shapes are made by shadow meeting light. On the lit side an edge may be lost completely: a paper wall against a paper sky with no line between them, the eye closes it (03 does this with the white station wall). Outlines are allowed only where Kirby would put them: on things close to you and on things that are happening.
+2. **Light says where, the hand says how.** A shadow is not a filled region with a rough edge. It is laid down as strokes, in the direction the light travels, each with the swell and taper of 14. Look at 14 again: it already is a shadow, the kind a blind throws on a wall. This joins S1 and S2 instead of splitting them between "world" and "events": every black in the world is a stack of real strokes, and the sun decides how many and how long. At noon three short strokes under the canopy. At dusk forty long ones across the lot.
+3. **It is a rule about meaning, not only rendering.** If ink is shadow, then ink is also time. That leads to the direction in section 3.
+
+**Ruscha for stillness, Kirby for events?** Keep it, but as stated it is too tidy and has a trap. The trap: Kirby turns into bursts and sound effects, and the site becomes comic-book cosplay. The owner wrote "Kirby's *sketches*" and attached original boards. What those boards show is density, construction, machinery, foreshortening and the working marks. None of the three is a POW.
+
+So add a second axis:
+
+- **In time:** at rest it is Ruscha; on contact it is Kirby. (Yours.)
+- **In space:** outside is Ruscha; inside is Kirby. Outside is one building, one word, an empty lot. Inside is crammed: shelves running back in one-point perspective like the street in 16, every surface built and detailed, more than the building could hold. Going in is going from one artist to the other. This is shape C with a reason behind it.
+- **Words stay Ruscha.** When a Call lands a word (DING, HONK), it lands deadpan: a slab, sitting there, like 04. No burst outline, no exclamation mark. The force is in the ink around it, not in the lettering.
+
+**Big sky or page of panels on the phone?** Big sky for arrival, and design the tall picture first. The person in a hurry is on a phone, so the phone is the main canvas and desktop is the wide version of it.
+
+The page of panels should not be the layout of the world. Panels with gutters around a gas station say "comic", and the owner didn't ask for a comic. But panels have one use nothing else has, so keep them alive for that: **a gutter is time.** A tall page of four tiers, each the same station at a different hour (dawn, noon, dusk, night), all live. That is 06 as a layout: THAT WAS THEN, THIS IS NOW. It could be how the wound clock shows itself, or a whole concept. If a designer wants to build panels as a concept, build that one.
+
+**B as the list?** Yes. One long paste-up strip of frontages, every piece on it, deadpan title in Ruscha's manner ("Every Piece on ..."). It is the plain list, and it is in character.
+
+### 3. A direction: the station is a sundial
+
+Drawn at random with `shuf`: the field was **sundial making**. It fits so well I checked it wasn't my own pick.
+
+A sundial is a stick, a flat ground and marks. The station already has all three: the sign on its pole, the lot, and the things standing on it.
+
+- **The sign pole is the gnomon.** Its shadow is the one hand of the clock. It is the largest moving black in the picture, and it moves at the speed of the real day.
+- **The lot is the dial.** Things are placed where the shadow will reach them. At nine it lies across the pumps. At four it reaches the door. At six it runs off the edge of the picture and down the road.
+- **The shadow points.** Whatever it touches is "the piece of the hour": inked heavier, first on the list, the thing the station is showing right now. Someone who comes back at a different hour is shown different work without anyone curating it. This is J8 with a reason, and it is "time of day stuff" as the organising instrument instead of a skin.
+- **It never locks anything.** The shadow recommends. Everything stays one action away on the list. Systems' rule holds: the world may hide surprises, never the work.
+- **The name is cast.** The sign's letters throw their shadow on the ground, stretched, like the extrusions behind HONK (04). At noon the name is a small dark lozenge under the sign. At dusk it lies readable down the whole lot. The name gets bigger as the day ends.
+- **This also answers the tall phone a second way.** Give the **ground** the job instead of the sky: sign at the top, station as a stripe below it, and the bottom half of the screen is lot, with the shadow coming down the page toward you and the plain list set on the ground where a thumb reaches. So there are two tall arrivals to try against each other: the word in the sky (2b), and the shadow on the ground. They aren't exclusive. Noon wants the sky, dusk wants the ground.
+- **The wall clock inside turns the sun.** Systems had it as a way to find night at 2pm. With the sundial it becomes the best single interaction on the site: you turn a small clock hand indoors and through the window the shadows outside swing round. Cause and effect run backwards. That is an interaction with meaning.
+- **Eggs are alignments.** Some things only happen when the shadow touches a particular mark: a date, an hour, the solstice. Those are earned by coming back, and they need no hidden button.
+- **Night has no shadow hand.** At night the dial stops working, the lamps take over and the sky becomes the instrument (the star index from systems). A sundial that can't tell time at night is right for a liminal place.
+
+What it costs: the layout of the lot has to be designed as a dial, which is a real constraint on where things stand. I think that constraint is a gift, the same way "where is the light inside" was.
+
+### 4. A direction: the visitor is the sighting
+
+Depends on "alike" being "alien". If it is, this is the reading I'd push.
+
+The station is empty and still. The only thing that arrives without warning, pokes at things and leaves is the person on the site. From the station's side, **you are the visitor.**
+
+- Your touch is the only Kirby energy in a Ruscha world. Krackle is the mark of contact: it appears where you press and fades after. Visual reserved dots for "not from here". The thing not from here is you.
+- The sightings chart (15) logs **your** visits as well as the eggs you find: a small line drawing, a place on the site, a date. "Lot, north side. Nov. 2026."
+- Wait then means something sharper: stay still long enough and the station stops noticing you, and the things that only come out when nobody is there come out.
+- **Evidence, never the creature.** 15 is drawings made after the fact. 11 is a saucer hanging from a crane, an obvious fake presented with a straight face. So: lights, marks on the ground, a shape that was there a moment ago, a drawing pinned by the register. No alien on screen, ever. No green, no jokes in the copy. The moment one waves at you, the site is a theme restaurant.
+
+If "alike" is not "alien", the first two points still hold with "customer" in place of "visitor": your contact is the only energy in the place.
+
+### 5. An Oblique Strategy, applied
+
+Drawn with `shuf`: **"Look closely at the most embarrassing details and amplify them."**
+
+Three embarrassing details, and what amplifying each gives:
+
+1. **A portfolio is a big sign with your own name on it.** Don't soften it. Treat the name as Ruscha treats STANDARD: the largest object in the landscape, stated flat, a word and nothing more. The name happens to end in BOLD, and the sketch already broke it TRA / BOLD. One deadpan use of that is allowed. Two is a pun.
+2. **A station is about prices.** The price board is the list, so let it be a real price board: every piece has a number set in gas-price style with the nine-tenths. The number is the year, or the months it took, or the size of the team. A true fact about the work in the costume of a price. The designers and the owner can argue which fact.
+3. **Nobody is here.** A portfolio where the person is absent is odd, and the oddness is the liminal part. So About is not a bio page. It is what the attendant left behind: the note, the jacket on the hook, the radio still on, a half-finished drawing on the counter. You learn who he is from his things. Systems' self-service manner (D), pushed until it carries J5.
+
+### 6. Answers to systems' two questions
+
+**Friction at the door.** A latch, never a puzzle. One deliberate act that takes about a second, a press or a pull, with the door answering in ink. The cost is attention, not skill. A shared link to a piece skips it. The list skips it. Nobody is ever stuck outside.
+
+**The loop: liminal idea or gimmick?** The geometry is right: out the back, desert, and the only road brings you to the front. Nowhere else exists. What's a gimmick is the lap changing the hour. If the hour is the visitor's real hour, a lap that jumps it makes the clock a liar, and then the sundial means nothing. So: the loop stays, the lap doesn't move time. The real day moves time, and the clock on the wall is the one place a visitor can move it by hand. On the way round you see the station from behind: the back of the sign, the name reversed, the flat rear wall (10 from the side nobody photographs).
+
+### 7. Guardrails, from the brand side
+
+Adam is a designer, a musician and a design director, and this is his own site. Whatever else it says, it says "this is how I direct". So the site has to show restraint as much as invention.
+
+- **Deadpan test.** Would Ruscha caption it in one flat line? If a thing winks, cut it. Route 66 nostalgia, pump-nozzle cursors and neon OPEN signs are the first ideas and the kitsch ones. The photos (01, 02, 09) are reference for the building, not for the mood. The mood is in 03–08 and 10.
+- **Nothing responds except by ink.** No highlight boxes, no tooltips, no interface layer sitting on the picture. If something reacts to you, ink moved. Controls live in the margin as visual proposed.
+- **A small number of pictures, each good enough to print.** I side with stepped, composed views. Each stop should work as a still. If a view wouldn't hold up as a poster, it isn't a stop.
+- **The work is the lit thing.** Frame 4 found it: at night the shelves are the only light in the desert. Hold on to that at every hour. Wherever the work is, that is where the paper is.
+- **Keep it small.** Five gestures, three type voices, four hours. Systems' test stands: say what it means in one line or it goes.
+
+### 8. Where I'd like the next pass to go
+
+- **Systems:** lay out the lot as a dial. What does the shadow touch at which hour, and what does "piece of the hour" do to the list and to a shared link? Does the sundial survive two pieces of work, and forty? What is the receipt at the end, and is it the thing people send?
+- **Visual:** redo one frame as mass with no outlines, shadow laid as strokes in the light's direction. Try the two tall arrivals side by side: word in the sky at noon, cast name on the ground at dusk. Try one interior as Kirby density with the work as the lit thing.
+- **Both:** find where the sundial breaks. Overcast is no problem in a desert, but night is half of all visits. Is night strong enough without the hand?
+
+### Questions for the owner (director)
+
+New ones only; the earlier lists from systems and visual still stand.
+
+1. **Strictly black and white, or is grey allowed?** Your brush images (13, 14) are pure ink on paper. Your Ruscha images (04, 07) are soft graphite haze and grain. Should every pixel be either ink or paper, or do you want that haze?
+2. **Which brush?** The loose dry brush of the eye (13), the clean tapered strokes (14), or Kirby's inked line (16–18). Which is closest to what you mean by "brush strokes"?
+3. **Which station?** The plain box in the middle of nowhere (02, 09, 10), or the streamlined, space-age one (01, 03, 12)? They are different buildings and different moods.
+4. **How straight-faced?** Should the odd things be played completely deadpan, as evidence you might have imagined, or is the site allowed to be funny out loud?
+5. **Place first or work first?** Is it fine for a first-time visitor to spend ten seconds with the place before seeing any work, or must a piece of work be visible on arrival?
+6. **Whose name is on the sign?** Your name, as large as Ruscha would make it, or a name for the station with yours smaller?
