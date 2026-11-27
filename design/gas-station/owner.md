@@ -186,6 +186,10 @@ Not yet answered: whether this is what he meant by flash sheet vibes; the phone 
 
 ("The synths" is his other project, adamtrabold/synths-to-go, whose site is at https://adamtrabold.github.io/synths-to-go/ — a static site generated from that repo by a build script and pushed to a gh-pages branch; he turns Pages on in the repo's settings. His standing rules from that site's record: public is fine; it is a viewing site, chat stays the place for decisions; everything must be viewable on a phone; text is real HTML, not markdown files and not baked into images; prototypes are hosted on the site.)
 
+Asked: can a `gh-pages` branch be pushed to adamtrabold/gas for the site; told the inspiration images would stay off the site unless he says otherwise, and that the site is public (his verbatim record, scores and team notes visible to anyone with the address). His reply: "Yes"
+
+(Read as: yes to pushing `gh-pages`. He raised no objection to the other two points.)
+
 ## Still open (asked, not answered)
 
 - Should the time of day do something (choose which work shows), or only change how the place looks and what odd things happen? (Related: he said "no" to choosing what shows in office hours versus at night.)
