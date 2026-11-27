@@ -5,7 +5,7 @@
 
 *How it works (systems). Round 3: brought in line with `score-2.md` and `owner.md` section 7. This is the one concept: 01 Nobody's here merged into 03 Your light, as `score-1.md` asked. It replaces both files' how-it-works halves. Read `00-shared.md` for the place itself: the lot, walking, the door, the world's edge, sound, twilight.*
 
-An abandoned station with things left on. (The owner has since said the place is abandoned, not kept up: `owner.md` section 15. This file was written about a station someone had *just* left. Where that no longer fits — the power, the warm cup, the windows — is set out in `elements.md` under "Abandoned, and left on", and is out with him as a question. Nothing else below has been changed for it yet.) By day it's whole, lit by one sun, and it doesn't need you. Wherever the sun doesn't reach, it exists where you put light. Whatever you switch on stays on after you've gone.
+An abandoned station with things left on. It has been empty for years and the power never went off (the owner: "This is liminal space logic so abandoned can still have power"). Everything is faded and rusted, and everything still works. One cup on the counter is still warm. Where this file says "the attendant", read: whoever isn't here. He has also said "maybe someone's squatting"; that is a proposal in `elements.md`, not yet part of this.
 
 The name is for three things at once: the place was left with things on; you leave lights on; and sometimes one is on that nobody left.
 

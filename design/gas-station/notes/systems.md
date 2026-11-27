@@ -2,6 +2,42 @@
 
 ## Where things stand (latest first)
 
+**`elements.md` updated for `owner.md` section 16 and the sign article (2026-11-27).**
+
+### His answers (section 16)
+
+- Power: (a) abandoned for years, never went off. "This is liminal space logic so abandoned can still have power. Maybe someone's squatting."
+- How-far-gone proposal accepted (front glass kept, filthy; garage panes broken; one side window boarded).
+- Brand names: "propose". Made-up items: "sounds good" (all accepted).
+- From his photos: lettering, utility poles, lamp post, clouds, boulders, mountains and brush in the distance — yes. Awnings, hours on the door, windmill not mentioned → left out.
+- Sign: "neon and historically accurate [article] and also maybe some of the letters could flicker".
+
+### What I did
+
+- The three abandoned-vs-left-on conflicts are closed (power on, cup stays, front glass stays). Section replaced by a short "settled" table.
+- New status tag ACCEPTED (made up, he said yes) alongside PROPOSED and SETTLED.
+- Added: window lettering (wording PROPOSED: TIRES · BATTERIES · OIL / ICE · COLD DRINKS; his name kept to the sign only); utility poles and wires (far side, one wire to the station — it's where the power comes from; must line up at the world's wrap); lamp post with enamel dome (east end of slab, lit weakly — PROPOSED placing, since the pumps are under a canopy); boulders; mountains and distant brush; clouds (few, low, day only, still — PROPOSED; I'd keep night clear for the stars).
+- Brand names proposed: gasoline LLANO / DRY LAKE / TEX-O-NEV / ALKALI; oil IRONWOOD / CALICHE; BLUE MESA ICE, ARROYO COLA; register PECOS. Grades REGULAR and HI-TEST (ETHYL was a real company). **None checked against real trademarks yet.**
+- **Sign rewritten from the article** (`inspo/sign-article/README.md`, images 04, 05, 08): neon 1920s–early 50s; Superior arrow 1958 on, bulb-studded, bolted onto an existing sign, "flashing" (chasing not stated → PROPOSED); Spell-Out one-letter plastic boxes 1964 on. Consistent story: older neon name + later bolted-on bulb arrow. Tension stated: he accepted one-letter boxes, then said neon. Two choices laid out without choosing: name as neon panel (like VACANCY in the MOTEL photo) vs plastic boxes (like MOTEL); arrow hooked down the side (meat market, 1961) vs through the sign (Circle Inn, 1963). Effects on the concept noted: neon is thin lines at night — legibility from 37 m on a phone is unproven (job 2 risk); shadow becomes a bar with a hook, not a clean arrow; neon gives flicker and buzz naturally. Starburst not in the article. Kept on purpose: sign faces the visitor, though real ones face along the road.
+- **Flicker rule** replaces "every letter still lights": a letter may stutter, never dark longer than a blink; one at a time; all steady for the first seconds of a night arrival; none with motion off. Reason: TRABOLD with letters out reads BOLD / TRA OLD.
+- **Squatting** written up as a proposal: adds a reason for power/cup/jacket, a bedroll and a camp stove, a second reading of "one left on"; changes standing-still events from "the place" to "a person", so it must not tip into horror — the existing never-seen / nothing-moves-while-looked-at rule holds it. Also offered: the occupant could be him. Recommendation: never say which.
+- Concept files, only where contradicted: `05-left-on.md` opening (abandoned, power on, cup; "attendant" = whoever isn't here); `00-shared.md` (power settled, new things pointed to elements.md, sign per article, shadow no longer "an arrow", "starburst on the door" → "top of the sign").
+
+### Open with the owner (five, in elements.md)
+
+1 name: neon or plastic boxes. 2 arrow: hooked or through; starburst keep/drop. 3 pump shape (in words). 4 pick brand names. 5 squatting: take up lightly or not.
+
+### Watch
+
+- If neon is chosen and can't be read at night from across the road, job 2 is at risk: needs visual's test before anything is promised. `coverage-05.md` should be re-run after the sign is decided.
+- The visual half of the concept files still describes the old sign (stacked cabinets, flat diving arrow, starburst).
+
+### Next
+
+- His answers; visual fills "Drawing needs"; then the pump is drawn against element 1.
+
+## Earlier: elements.md, second version
+
 **`elements.md` rewritten with the owner's answers (2026-11-27).** `owner.md` section 15: "1 yes 2 abandoned 3 I don't know what you're talking about 4 realistic labeling with fake brand names 5 joined 6stucco over brick 7 not yet". He also added a look direction ("flash sheet vibes", `inspo/19`–`22`) — director's and visual's, not mine.
 
 ### What changed

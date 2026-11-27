@@ -13,58 +13,70 @@ Your words: "before drawing elements let's first establish a list of things they
 - **[Standard]** — Ruscha's Standard Station
 - **[Inn]** — your photo of the alien inn sign with the saucer on a crane
 - **[Chart]** — your chart of UFO shapes
+- **[Article]** — the sign article you sent, now read, with its pictures
 - **[you]** — your words
 - **[concept]** — Left on needs it to do something
-- **[saved]** — the sign article you saved (we only have a summary; unchecked)
-- **PROPOSED** — we made it up. Yours to accept or strike
+- **PROPOSED** — we made it up, and you haven't said yes yet
+- **ACCEPTED** — we made it up, and you said yes
 
 Each element ends with an empty slot for the visual designer. I've left those empty on purpose.
 
-## What your answers settled
+## Settled so far
 
 | You said | So |
 |---|---|
-| "yes" | This is the right list |
-| "abandoned" | The place is abandoned, not kept up. Changes nearly every element; see each one, and the next section |
-| "realistic labeling with fake brand names" | Things carry labels as real ones did, with invented brands. No blank labels, no real brands |
+| "abandoned" | Abandoned, not kept up |
+| "This is liminal space logic so abandoned can still have power" | Abandoned for years and the power never went off. Faded and rusted, and everything still works. One cup on the counter is still warm |
+| "Proposal sounds good" | Glass stays in the door and the two front windows, filthy and cracked. Garage door panes broken. One side window boarded |
+| "realistic labeling with fake brand names" / "propose" | Labels as real ones were, with invented brands. Names proposed below for you to pick |
 | "joined" | The canopy is part of the building |
 | "stucco over brick" | The wall |
-| "not yet" | No picture for the inside. The inside stays proposed |
-| "I don't know what you're talking about" | My pump question pointed at picture numbers you can't see. Asked again in words at the end |
+| "sounds good" | Bell line, road centre line, bench, phone box, air hose on its own post: all in. (The three sign items you also accepted are reopened by what you said next; see the sign) |
+| "lettering yes utility poles yes lamp post yes clouds boulders mountains and brush in the distance yes" | All added, each in its element below |
+| "not yet" | No picture for the inside. It stays proposed |
+| "neon and historically accurate… maybe some of the letters could flicker" | The sign entry is rewritten from your article. Two things for you to choose; see element 5 |
 
-**Abandoned, a joined canopy, stucco over brick: all three describe your abandoned desert station photo.** So that photo is now the main reference for the building. The pumps and the sign come from elsewhere.
+**Not mentioned, so left out unless you say:** awnings over the windows, opening hours on the door, the small windmill on the roof.
 
-## Abandoned, and left on: where they pull against each other
+**The three places abandoned and left-on pulled against each other are closed** by your answers: the power is on, the cup stays, the front glass stays.
 
-Left on was written about a station someone had *just* stepped away from. You've said it's abandoned. Mostly that makes the concept better. In three places it doesn't fit as written, and I'd sooner say so than blur it.
+## "Maybe someone's squatting" — a proposal, because you said maybe
 
-1. **Power.** An abandoned station has none. Left on needs the sign lit at night, a lamp under the canopy, lights you can switch on, a radio, a cooler, a dial tone.
-2. **The warm cup.** A cup with steam coming off it says someone was here a minute ago. So does a jacket on a hook. Abandoned says nobody has been here for years.
-3. **Windows.** Abandoned stations get boarded up; your photo has a boarded window. Left on needs glass you can see through at the front: sun on the floor inside, the lot seen from the room, and the windows you lit seen from the road at night.
+Up to now the person who isn't there was an attendant who stepped out. A squatter is a different absence: someone who is here now, and keeps out of your way.
 
-**What fits better than before:**
+**What it would add**
+- A reason for the power, the warm cup and the jacket that doesn't need explaining away.
+- Two or three signs of someone living here that an attendant wouldn't leave: a bedroll at the far end of the aisle, a camp stove by the cup, the small light at the aisle mouth that's on when you arrive.
+- A second reading of "a light on that you didn't leave on". Was it them, or the other thing? Not knowing is better than either answer.
 
-- BACK IN 5 MINUTES on a faded card, in the door of a place nobody has come back to.
-- Lights you turn on in a dead place and find still on next time.
-- A light on that you didn't leave on.
-- Your chalked outlines for things you plan to make. You said you "always wanted to own an old gas station to make into something". An abandoned one is the one you'd make into something.
-- Bare shelves at the back of the aisle.
+**What it would change**
+- The things that happen when you stand still (the cup goes cold, the phone rings, the card turns) stop being the place and start being a person. That is more unsettling. You said "liminal not funny"; it also shouldn't tip into a horror game. The rule that keeps it right is the one already there: nothing is ever seen, and nothing moves while you're looking.
+- Calling for someone still gets no answer.
 
-**How I'd settle the three** (yours to decide; question 1 and 2 at the end):
+**One more reading, yours to take or leave:** the person living in an abandoned station and making it into something, whose name is on the sign and whose handwriting is chalked on the ground, could be you.
 
-- *Power:* it never went off. Everything is faded, rusted and worn, and it all still works. Nobody is paying the bill. That is the strange thing about the place, and it's a liminal one.
-- *The cup:* keep it, still warm, as the single thing in the place that can't be explained. One, not several. The jacket goes, or stays as something dusty.
-- *Windows:* the door and the front windows keep their glass, filthy and cracked. The garage door's panes are broken. A side window is boarded.
+**As I'd do it:** never say which. Add the bedroll and the stove, keep the BACK IN 5 MINUTES card, and let attendant, squatter and owner all stay possible. Marked PROPOSED in elements 13 to 15.
 
-Nothing here has been changed in the concept yet beyond its first line. It waits for your answer.
+## Brand names, proposed
+
+You asked us to propose. Nobody has yet checked these against real trademarks; that happens before any is drawn. Pick, change or strike.
+
+| For | Proposed |
+|---|---|
+| Gasoline (pump globes, the oil drum) | LLANO · DRY LAKE · TEX-O-NEV · ALKALI |
+| Motor oil (cans, the rack) | IRONWOOD · CALICHE |
+| Ice and soda (the ice box, the cooler) | BLUE MESA ICE · ARROYO COLA |
+| Cash register | PECOS |
+
+Grades on the pumps: REGULAR and HI-TEST. (Your Route 66 photo says ETHYL, which was a real company's name, so it's out.)
 
 ## The order to build in, and why
 
-1. **Pump** — already under your eye, and the smallest thing that has steel, glass, rubber and lettering on it.
+1. **Pump** — already under your eye, and the smallest thing with steel, glass, rubber and lettering.
 2. **Slab and island** — everything stands on it and every shadow lands on it.
 3. **Canopy** — makes the shade the pumps stand in.
 4. **Station front** — wall, door, windows, garage door.
-5. **Sign** — your name. The biggest thing and the one with the most unknowns.
+5. **Sign** — your name. Waits on your two choices.
 6. **Road**
 7. **Desert, horizon, sky**
    *— first whole picture: arriving by day —*
@@ -79,7 +91,7 @@ Nothing here has been changed in the concept yet beyond its first line. It waits
 15. **The aisle**
 16. **Round the back**
 
-Outside before inside, because your pictures are all outside and you start outside. Day before night, because night is the same things in different light. The inside is last, so nothing waits on a picture for it yet.
+Outside before inside, day before night. The inside is last, so nothing waits on a picture for it.
 
 ---
 
@@ -88,56 +100,46 @@ Outside before inside, because your pictures are all outside and you start outsi
 **Where:** on the island under the canopy, west of the door.
 
 **Parts**
-- Glass globe on top — SETTLED [you]
+- Glass globe on top with the gasoline brand on it — SETTLED [you]
 - Face window with rolling numbers: this sale, gallons, price per gallon — SETTLED [you] [Route 66]
 - No clock dial — SETTLED [you]
-- A brand name on the globe and a grade plate on the body (REGULAR, ETHYL), realistic, brand invented — SETTLED [you]
-- Steel cabinet, on a dark base — [Route 66] [1934]. Which shape is question 3
+- Grade plate: REGULAR on one, HI-TEST on the other — [Route 66], wording PROPOSED
+- Steel cabinet on a dark base — [Route 66] [1934]. **Which shape is still open** (question 3)
 - Hose down the side, nozzle in a holder — [Route 66] [1934]
 - Badges and small printed notices on the body — [1934]
 
 **Abandoned means**
-- Paint faded and chalky, rust coming through at the base and seams — [Abandoned]
-- Glass of the number window dusty; one globe cracked or gone — PROPOSED
+- Paint faded and chalky, rust at the base and seams — [Abandoned]
+- Number window dusty; one globe cracked — PROPOSED
 - Hose perished and stiff — PROPOSED
 
-**Still works (left on)**
+**Still works**
 - Tap the handle: the numbers roll and stop. No fuel — [concept]
 - Stand still nearby: the numbers tick over once — [concept]
 - Metal ticks in the heat — [concept]
 
-**Not known**
-- The shape (question 3). The brand's name (question 4).
-
-**Drawing needs (visual designer):**
-- *Made of:* painted steel cabinet and base; glass globe face and number window; rubber hose; cast metal nozzle; enamel or decal lettering.
-- *Paper:* the steel paper (smooth, faint streaks one way) on cabinet, base, rim, nozzle and hose. Glass and lettering have no paper: they are flat paint.
-- *Kinds of mark:* a contour with weight; hatching (or strokes, or stipple, by the hand he picks) that runs up the cabinet and round the dome and the globe's rim; pits and chips and long reflections on lit steel; rust as blotches and close stipple rising from the base and at the seams; the print itself worn (ink dropping out in the paper's low places).
-- *Where tone turns:* the cabinet is rounded in plan and domed on top so tone turns across its corners and over its shoulder; the globe's rim turns; the hose is a tube. No part is a plain box.
-- *Flat paint (hard, like lettering):* the globe's face with the brand, grade plate, number window and its digits, badge, notice, knob, the two seam lines. All worn: flecks of paint gone, dust on the window, a crack on one globe (PROPOSED).
-- *Its own ground:* its cast shadow, feathered, and the pebbles under it. No weeds: none are on this list.
-- *Open:* the nozzle and its holder do not read yet and need a closer look at his photos; lettering is set type until someone draws it; brand names PLAYA and LLANO are PROPOSED and unchecked against real brands.
+**Drawing needs (visual designer):** _empty_
 
 ---
 
 ## 2. Slab and pump island
 
-**Where:** the forecourt, from the road edge to the front wall, 16 m deep. The island is under the canopy.
+**Where:** the forecourt, from the road edge to the front wall, 16 m deep.
 
 **Parts**
 - Concrete forecourt — [1934] [Route 66]
 - Raised island with a kerb — [1934] [Route 66] [Abandoned]
 - Joints between the slabs — [1934]
-- Bell line: a rubber hose across the forecourt that rings a bell inside when crossed — PROPOSED
+- Bell line: a rubber hose across the forecourt that rings a bell inside — ACCEPTED
 
 **Abandoned means**
 - Cracked and broken at the edges, giving way to dirt — [Abandoned]
 - Scrub in the joints; sand drifted against the kerb and the wall — [Abandoned]
-- Old stains — SETTLED by "abandoned"
+- Old stains
 
-**Still works (left on)**
+**Still works**
 - The bell line rings — [concept]
-- Takes every shadow: the canopy's, the sign's arrow, yours — [concept]
+- Takes every shadow: the canopy's, the sign's, yours — [concept]
 
 **Drawing needs (visual designer):** _empty_
 
@@ -148,8 +150,7 @@ Outside before inside, because your pictures are all outside and you start outsi
 **Where:** over the island, joined to the front of the building west of the door. The door is clear of it.
 
 **Parts**
-- A canopy over the pumps — SETTLED [you]
-- Joined to the building — SETTLED [you]
+- A canopy over the pumps, joined to the building — SETTLED [you]
 - Flat roof slab — [Abandoned] [1934]
 - Fascia band round the edge, striped — [Abandoned] [1934]
 - Two thin posts — [Abandoned]
@@ -160,9 +161,9 @@ Outside before inside, because your pictures are all outside and you start outsi
 - Posts rusted; underside stained — PROPOSED
 - One lamp working, the others dead or missing — PROPOSED
 
-**Still works (left on)**
+**Still works**
 - Day: the biggest shade on the lot — [concept]
-- Night: one lamp lights it from below, with a pool under it — [concept]
+- Night: one lamp lights it from below — [concept]
 - After four minutes of standing still: that lamp goes out, a disc of light crosses the forecourt, the lamp comes back — [concept]
 
 **Drawing needs (visual designer):** _empty_
@@ -171,29 +172,29 @@ Outside before inside, because your pictures are all outside and you start outsi
 
 ## 4. Station front
 
-**Where:** north side of the forecourt, facing the road, about 8 m deep. Left to right: garage door, canopy and pumps in front, window, door, window.
+**Where:** north side of the forecourt, facing the road, about 8 m deep. Left to right: garage door, canopy and pumps in front, window, door, window, bench.
 
 **Parts**
 - Stucco over brick — SETTLED [you]
 - Plain one-storey box — [Abandoned] [Route 66] [Marfa]
 - Door with a glass pane — [Route 66]
 - Card in the door: BACK IN 5 MINUTES — [concept]
-- Shop windows either side of the door — [Route 66] [Marfa]
+- Shop windows either side of the door, glass in — SETTLED [you]
+- **Lettering on the window glass** — SETTLED [you] [1934]. What it says is PROPOSED: TIRES · BATTERIES · OIL on one window, ICE · COLD DRINKS on the other. (Your 1934 photo has the proprietor's name on the glass. I've kept your name to the sign only.)
 - Garage door of many small panes, shut — [Route 66]
 - Two painted stripes along the front — [Route 66]
 - A step at the door — [Marfa]
-- Stepped top edge to the wall — [Route 66]. That building is painted block; on a stucco box this may not belong
+- One side window, boarded — SETTLED [you] [Abandoned]
 
 **Abandoned means**
-- Stucco fallen away in patches, brick showing — [Abandoned]
-- Stripes and any lettering faded — [Abandoned]
+- Stucco fallen in patches, brick showing — [Abandoned]
+- Stripes and window lettering faded, letters part gone
+- Front glass filthy and cracked; garage panes broken; garage door rusted shut — SETTLED [you]
 - Card yellowed
-- Garage door rusted shut, panes broken — PROPOSED
-- A window boarded — [Abandoned]. Which windows is question 2
 
-**Still works (left on)**
+**Still works**
 - Lean on the door for a second and it gives. At midday it's already off the latch — [concept]
-- Night: the windows you lit are lit, seen from the road — [concept]. Needs glass, not boards
+- Night: the windows you lit are lit, seen from the road — [concept]
 - Winter midday: the sign's shadow reaches the door — [concept]
 
 **Drawing needs (visual designer):** _empty_
@@ -202,29 +203,67 @@ Outside before inside, because your pictures are all outside and you start outsi
 
 ## 5. Sign
 
-**Where:** at the road, straight in front of the door, 16 m from it. 12 m tall.
+**Where:** at the road, straight in front of the door, 16 m from it. About 12 m tall.
 
-**Parts**
-- A Googie arrow sign — SETTLED [you]
-- Your name on it and nothing else — SETTLED [you]
-- The arrow pointing down at the door — [saved]
-- Bulbs along the arrow that light one after another — [saved]
-- One pole — PROPOSED
-- The name as TRABOLD, one letter to a box, stacked down the pole — PROPOSED
-- A starburst on top — PROPOSED
+**What you've said:** a Googie arrow sign; your name on it and nothing else; neon; historically accurate to the article; some letters could flicker.
+
+**What the article says, with dates**
+- Neon came to America in the 1920s and stayed popular until the early 1950s — [Article]
+- From the early 1950s: plastic signs lit from inside — [Article]
+- 1958 on: the "Superior arrow", a steel arrow studded with light bulbs, **made to be bolted onto a sign a business already had**. The article calls it "flashing" — [Article]
+- 1964 on: "Spell-Out" signs, one letter to a rounded plastic box. Plastic, not neon — [Article]
+
+So "neon" and "accurate to the article" fit together, and they tell a story: **an older neon name, with a newer bulb arrow bolted to it.** That's also right for an abandoned station nobody ever modernised.
+
+It does mean two things you've said don't fit. You accepted "TRABOLD, one letter to a box", and then said neon. One-letter boxes are the 1964 plastic kind.
+
+**Parts that hold either way**
+- Your name, TRABOLD, stacked top to bottom — ACCEPTED
+- A steel arrow studded with bulbs, bolted on — [Article]
+- The bulbs flash — [Article]. Lighting one after another down the arrow is PROPOSED; the article doesn't say they did
+- One steel pole — ACCEPTED
+
+**Choice 1 — how the name is made**
+
+| | Neon | Plastic boxes |
+|---|---|---|
+| Picture it as | The VACANCY sign at the left edge of the MOTEL photo in your article: a tall narrow metal panel, letters painted on it one under another, a glass tube bent along each letter | MOTEL in the same photo: one letter to a fat rounded plastic box, lit from inside |
+| Date | 1920s to early 1950s | 1964 on |
+| Is it neon? | Yes | No |
+| By day | Painted letters on a faded panel, the tubes a thin line over them | Blocks with a letter on each |
+| At night | Each letter is a line of light. Thin. From across the road on a phone it will be harder to read than boxes; it needs testing before it's promised | Each letter is a lit block. Easy to read from far off |
+| Flicker | What failing neon does: it stutters and buzzes | Possible, less natural |
+| Sound | The buzz is neon's own | A hum |
+| Its shadow on the slab | A solid bar | A bar with gaps |
+
+**Choice 2 — the arrow**
+
+| | Hooked arrow down the side | Arrow through the sign |
+|---|---|---|
+| Picture it as | The red arrow on the meat market sign in your article: a steel channel running down the edge of the sign, turning in at the bottom to a triangle head | The Circle Inn sign in your article: tail feathers sticking out above the sign and the arrowhead coming out below, as if shot through it |
+| Date | 1961 patent | 1963 patent |
+| With a tall stacked name | Runs down beside the name and points in under it. Fits | Made for a round sign. Would need the name on something round or square. Fits less well |
+
+**The starburst on top** — you accepted it; it isn't in the article. Starbursts are right for late-1950s Googie signs generally, so it isn't wrong, but nothing you've sent shows one. Keep or drop (question 2).
+
+**Kept on purpose, though a real one differed:** the sign faces you across the road. A real roadside sign faces up and down the road, for drivers. Ours has to be read from where you arrive.
 
 **Abandoned means**
 - Paint faded, rust streaks down the pole — PROPOSED
 - Some of the arrow's bulbs dead — PROPOSED
-- **Every letter of the name still lights.** A sign with letters out spells something else, and that's a joke
+- Letters flicker — [you]
 
-**Still works (left on)**
-- Day: read from across the road. Its shadow on the slab is an arrow that moves through the day — [concept]
-- Dusk: the letters come on one at a time — [concept]
-- Night: lit, buzzing, the bulbs clicking — [concept]. This is the power question
+**The flicker rule.** My earlier rule was "every letter still lights", because TRABOLD with letters out spells other things (lose the first three and it says BOLD; lose the B and it says TRA OLD). You'd like some flicker, and it can be kept if it's this:
+- A letter may stutter. It never stays dark for longer than a blink.
+- One letter at a time.
+- For the first few seconds after you arrive at night, all seven are steady. You read the name, then it starts.
+- With motion turned off on the phone, no flicker.
+- By day it doesn't matter: the letters are painted.
 
-**Not known**
-- Whether signs of this kind really looked like this. Nobody on the team has been able to open your saved article.
+**What the sign does**
+- Day: read from across the road. Its shadow lies on the slab and moves through the day. (With either choice the shadow is a tall bar with the arrow's hook at the near end. "The shadow is an arrow" in the concept becomes "the shadow is the sign's shape".) — [concept]
+- Dusk: the letters come on one at a time as the sky goes dark — [concept]
+- Night: lit, buzzing, the bulbs flashing. Never yours to switch off — [concept]
 
 **Drawing needs (visual designer):** _empty_
 
@@ -235,18 +274,19 @@ Outside before inside, because your pictures are all outside and you start outsi
 **Where:** east–west, between where you arrive and the sign.
 
 **Parts**
-- Two-lane blacktop — [Marfa]
-- Painted edge line — [Marfa]
-- Gravel shoulder — [Marfa]
+- Two-lane blacktop, painted edge line, gravel shoulder — [Marfa]
+- Centre line — ACCEPTED
 - Wire fence along the far side — [Marfa]
-- Centre line — PROPOSED
+- **Utility poles and wires along the road** — SETTLED [you] [Route 66] [Inn]. Which side, and whether a wire runs to the station, is PROPOSED: far side, one wire in to the building. It's where the power comes from
 
 **Abandoned means**
-- Cracked, patched, lines worn thin, sand creeping in from the edges — PROPOSED
-- Fence sagging, a post or two leaning — PROPOSED
+- Cracked, patched, lines worn thin, sand creeping in — PROPOSED
+- Fence sagging; a pole leaning, a wire down — PROPOSED
 
 **Still works**
 - You cross it to reach the place. Walk off along it and you arrive again — [concept]
+
+**For the build:** poles repeat along the road, so they have to line up where the world wraps round.
 
 **Drawing needs (visual designer):** _empty_
 
@@ -258,14 +298,18 @@ Outside before inside, because your pictures are all outside and you start outsi
 
 **Parts**
 - Flat dirt and gravel — [Abandoned] [Marfa] [Inn]
-- Sparse low scrub — [Marfa] [Abandoned]
-- Low mesas or hills on the horizon, all the way round — [Marfa] [Inn]
-- Empty sky by day — [Standard]
+- Sparse low scrub near the lot — [Marfa] [Abandoned]
+- **Boulders** — SETTLED [you] [Inn]. A few, near the edge of the lot — placing PROPOSED
+- **Mountains and brush in the distance**, all the way round — SETTLED [you] [Marfa] [Inn]
+- **Clouds** — SETTLED [you] [Marfa] [Abandoned]. Few, low, by day; not moving, or barely — PROPOSED
 - Stars at night, each a stroke with a tail — [concept]
 - Sky going dark from the top at dusk — [concept]
 
 **Abandoned means**
 - The desert is coming in: scrub up to the slab and through its cracks — [Abandoned]
+
+**Not known**
+- Whether clouds are there at night. They'd hide stars, and the stars are what standing still gives you. I'd keep the night clear.
 
 **Drawing needs (visual designer):** _empty_
 
@@ -283,25 +327,26 @@ Outside before inside, because your pictures are all outside and you start outsi
 - Moves as you move. Long early and late, almost nothing at noon — [concept]
 - Gone in shade, indoors and at night — [concept]
 
-**Abandoned changes nothing here.**
-
 **Drawing needs (visual designer):** _empty_
 
 ---
 
 ## 9. The station's own lights
 
-**Where:** on the sign, under the canopy, and one inside at the mouth of the aisle.
+**Where:** on the sign, under the canopy, on the forecourt, and one inside.
 
 **Parts**
 - The lit letters of the name — [concept]
-- The arrow's bulbs — [saved]
+- The arrow's bulbs — [Article]
 - One working canopy lamp — [1934] [concept]
+- **A lamp post: a pole with an enamel dome shade** — SETTLED [you] [Route 66]. Where it stands is PROPOSED: at the east end of the slab, in the open. (In your photo they stand by the pumps; ours have a canopy over them.) Whether it still lights is PROPOSED: yes, weakly
 - A small light at the aisle mouth, on when you arrive — [concept]
 
 **Abandoned means**
-- These are the heart of the power question. If the power is dead, none of them is on and a first visit at night finds an unlit sign.
-- If the power never went off: fewer of them, weaker, and some bulbs gone
+- The power never went off — SETTLED [you]. Fewer lights than there were, weaker, some bulbs gone
+
+**Does**
+- On from dusk to dawn, whatever you do. Each has a hum, a buzz or a click — [concept]
 
 **Drawing needs (visual designer):** _empty_
 
@@ -316,8 +361,6 @@ Outside before inside, because your pictures are all outside and you start outsi
 - It always lands on something; the ground at your feet if nothing else — [concept]
 - A few strokes left behind on a thing you lit and left — [concept]
 
-**Abandoned changes nothing here.** It gives the lamp more to find.
-
 **Drawing needs (visual designer):** _empty_
 
 ---
@@ -326,25 +369,21 @@ Outside before inside, because your pictures are all outside and you start outsi
 
 **Where:** around the forecourt. None is needed to get in.
 
-| Thing | Where | Source | Abandoned means |
+| Thing | Where | Status | Abandoned means |
 |---|---|---|---|
-| Oil can rack | By the island | [1934] | Rusted, a few cans left, labels faded |
+| Oil can rack | By the island | [1934] | Rusted, a few IRONWOOD or CALICHE cans left |
 | Ice box (chest cooler) | By the front wall; today only chalked out | [1934] | Lid rusted, brand faded |
 | Oil drum | By the island | [1934] | Rusted, dented |
-| Tyre on the ground | By the wall | [Abandoned] | Now belongs. Added |
-| Air hose | Edge of the canopy | [1934] has one coiled on a column | Perished. On its own post is PROPOSED |
-| Bench | Under the east window | PROPOSED | Weathered, a slat missing |
-| Phone box, standing alone | Off the slab to the east | PROPOSED | Glass gone |
-
-Labels on the rack, the cans, the ice box and the drum: realistic, invented brands — SETTLED [you].
+| Tyre on the ground | By the wall | [Abandoned] | Belongs |
+| Air hose on its own post | Edge of the canopy | ACCEPTED | Perished |
+| Bench | Under the east window | ACCEPTED | Weathered, a slat missing |
+| Phone box, standing alone | Off the slab to the east | ACCEPTED | Glass gone |
 
 **Drawing needs (visual designer):** _empty_
 
 ---
 
 ## 12. Marks on the ground
-
-**Where:** on and beyond the slab.
 
 **Parts**
 - A dashed outline and one word in your handwriting, where something is planned and not made yet — [concept]
@@ -362,27 +401,23 @@ Labels on the rack, the cans, the ice box and the drum: realistic, invented bran
 
 ## Inside
 
-You said "not yet" to a picture for the inside. None of your pictures shows one. So everything below stays **PROPOSED as a whole**, apart from what the concept needs to work. It is last in the build order, so nothing waits on it.
-
-It is also where "abandoned" and "left on" meet hardest: the cup, the power, the dust.
+You said "not yet" to a picture for the inside, and none of yours shows one. So everything below stays **PROPOSED as a whole**, apart from what the concept needs. It's last in the build order.
 
 ## 13. The door, and the front room
-
-**Where:** through the door. About 8 m deep, the size the outside says.
 
 **Parts**
 - The doorway as a patch of daylight on the floor, with your shadow in it — [concept]
 - A pull cord just inside the door, and a tube light over the counter — [concept]
 - A big knife switch by the door that puts out everything you turned on — [concept]
 - A counter across the back — [concept]
-- The front windows, with the lot in them — [concept]
+- The front windows, with the lot in them, and the lettering seen backwards from inside — [concept] [you]
 - Floor, walls, ceiling of a small shop — PROPOSED
 
 **Abandoned means**
 - Dust, sand blown in under the door, a ceiling panel down — PROPOSED
-- Windows filthy; the sun patches come through dim and streaked
+- Sun through filthy glass: dim, streaked patches
 
-**Still works (left on)**
+**Still works**
 - The cord, the tube, the switch — [concept]
 
 **Drawing needs (visual designer):** _empty_
@@ -391,16 +426,17 @@ It is also where "abandoned" and "left on" meet hardest: the cup, the power, the
 
 ## 14. Things on the counter and walls
 
-| Thing | What it does | Source | Abandoned means |
+| Thing | What it does | Source | Now |
 |---|---|---|---|
-| Cash register | Lights its little window; the drawer | [concept] | Dusty; brand plate invented |
+| Cash register (PECOS) | Lights its little window; the drawer | [concept] | Dusty |
 | Counter bell | The one thing that puts a word in the picture: DING | [concept]; the word after your HONK picture | — |
-| Cup, still warm | The steam stops when you've stood still | [concept] | **The conflict.** Question 1 |
+| Cup, still warm | The steam stops when you've stood still | [concept] | SETTLED [you]: it stays, the one warm thing |
+| Camp stove beside the cup | Nothing | PROPOSED, from "maybe someone's squatting" | — |
 | Radio | Its dial lights; static, a station that won't come in | [concept] | Works |
-| Jacket on a hook | Nothing | [concept] | Says "just left". Goes, or stays dusty |
+| Jacket on a hook | Nothing | [concept] | Stays if someone might be living here |
 | Wall clock | Turn it and the sun moves | [concept] | Running |
 | Sightings chart, pinned under the clock | Fills in as you see odd things | [Chart] | Yellowed |
-| Cooler | Lights the floor when open; a compressor | [concept]; chest cooler in [1934] | Running, empty |
+| Cooler (ARROYO COLA) | Lights the floor when open; a compressor | [concept]; chest cooler in [1934] | Running, nearly empty |
 
 **Drawing needs (visual designer):** _empty_
 
@@ -412,16 +448,17 @@ It is also where "abandoned" and "left on" meet hardest: the cup, the power, the
 
 **Parts**
 - One straight aisle of shelves, fourteen bays — [concept]
-- Cans and boxes on the first shelves, **with realistic labels and invented brands** — SETTLED [you]. (The concept said "no labels". Changed.)
+- Cans and boxes on the first shelves, realistic labels, invented brands — SETTLED [you]
 - Bare shelves further back — [concept]
 - A pull cord and tube light every third bay — [concept]
 - A payphone at the far end with its own small lamp — [concept]
 - The back door beside it — [concept]
+- A bedroll near the far end — PROPOSED, from "maybe someone's squatting"
 
 **Abandoned means**
-- Stock thin, dusty, some fallen. Bare shelves fit better than before.
+- Stock thin, dusty, some fallen.
 
-**Still works (left on)**
+**Still works**
 - The lights. The payphone rings after two minutes of standing still, and stops as you reach it — [concept]
 
 **Drawing needs (visual designer):** _empty_
@@ -441,31 +478,21 @@ It is also where "abandoned" and "left on" meet hardest: the cup, the power, the
 
 ## Questions only you can answer
 
-**1. Abandoned, but things are on. Which is it?**
-- **(a)** Abandoned for years, and the power never went off. Everything is faded and rusted, and the sign still lights at night, the lights inside still work, and one cup on the counter is still warm. Nobody can say why. *(What I'd do.)*
-- **(b)** Abandoned and dead. Nothing is on until you turn it on. The first time you arrive at night the sign is dark and you find the place by your own lamp.
-- **(c)** Something else.
+**1. The name on the sign: neon, or plastic boxes?** You said yes to "one letter to a box", then said neon. They're different things.
+- **Neon:** like the VACANCY sign at the left edge of the MOTEL photo in your article. A tall narrow metal panel, the letters painted one under another, a glass tube bent along each. Older. It's the one that flickers and buzzes. At night it's thin lines of light and may be harder to read from across the road.
+- **Plastic boxes:** like MOTEL in that same photo. One letter to a fat rounded box, lit from inside. From 1964. Not neon. Easier to read at night.
 
-**2. How far gone is it?** I'd keep glass in the door and the two front windows, filthy and cracked, so light gets in and you can see through. The garage door's panes broken, one side window boarded. Or do you want it properly boarded up?
+**2. The arrow, and the starburst.**
+- **Hooked arrow:** like the red one on the meat market sign in your article. Runs down the side of the sign and turns in at the bottom.
+- **Arrow through the sign:** like the Circle Inn sign in your article. Tail above, head below.
+- The starburst on top isn't in your article. Keep it or drop it?
 
-**3. Which pump shape?**
+**3. Which pump shape?** (Asked before with picture numbers; here in words.)
 - The short rounded yellow-and-orange ones in your Route 66 photo: a fat round globe on top, a small window with the numbers.
-- The tall red ones under the canopy in the restored 1934 station photo: taller and slimmer, a globe on top, the hose looped at the side.
-- The square blue ones at the abandoned desert station: boxy, and no globe. (You've said you want a globe, so I'd rule these out for the shape and keep them only for how worn they are.)
+- The tall red ones under the canopy in your restored 1934 station photo: taller and slimmer, a globe on top, the hose looped at the side.
 
-And: two pumps the same, or two different?
+And: two the same, or two different?
 
-**4. The invented brand names.** Do you want to name them, or shall we propose a few for you to pick from? There's one for the gasoline (on the pump globes) and a handful for oil, ice, the register.
+**4. Brand names.** Pick from the proposed list near the top, or change them.
 
-**5. Things we made up. Accept them all, or strike any:**
-- the sign on one pole
-- your name as TRABOLD, one letter to a box, stacked down the pole
-- a starburst on top of the sign
-- a rubber bell line across the forecourt
-- a centre line on the road
-- a bench under the window
-- a phone box standing alone off to the east
-- the air hose on its own post
-
-**6. Things in your photos that we haven't used. Want any?**
-Awnings over the windows; lettering on the window glass; opening hours on the door; a small windmill on the roof; utility poles and wires along the road; lamp posts with enamel shades by the pumps; clouds; boulders.
+**5. "Maybe someone's squatting."** Shall we take it up, lightly: a bedroll, a camp stove, and never say who? Or leave it as an attendant who stepped out?

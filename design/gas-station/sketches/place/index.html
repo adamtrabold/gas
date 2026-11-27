@@ -10,7 +10,7 @@
   #note{position:fixed;left:0;right:0;bottom:calc(5px + env(safe-area-inset-bottom,0px));text-align:center;font:11px/1.9 "Courier 10 Pitch","Courier New",monospace;color:#8a857a;pointer-events:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
   #note a{pointer-events:auto;color:inherit;text-decoration:none;padding:8px 2px;-webkit-touch-callout:none;-webkit-user-drag:none}#note a.on{text-decoration:underline}#hint{transition:opacity 1.5s}
 </style>
-<div id="note"><span id="looks"><a data-look="brush">brush</a> · <a data-look="cut">cut</a> · <a data-look="dot">dot</a></span> &nbsp; <a data-t="tall">short/tall</a> · <a data-t="fixed">lit/drawn once</a><br><a data-hour="day">day</a> · <a data-hour="night">night</a><span id="hint"> &nbsp; drag to look · hold to walk</span></div>
+<div id="note"><span id="looks"><a data-look="brush">brush</a> · <a data-look="cut">cut</a> · <a data-look="dot">dot</a></span> &nbsp; <a data-t="tall">short/tall</a> · <a data-t="lit">drawn once/lit by the hour</a><br><a data-hour="day">day</a> · <a data-hour="night">night</a><span id="hint"> &nbsp; drag to look · hold to walk</span></div>
 <script type="module">
 // The place, walked. Throwaway: it exists to test the look, not to be built on.
 // Systems' lot: sign at the road, door 16 m straight north of it, canopy and pumps to the west.
@@ -34,11 +34,12 @@ const Q = new URLSearchParams(location.search), num = (k, d) => Q.has(k) ? +Q.ge
 const HASH = location.hash.replace('#', '').toLowerCase().split(/[-+,]/), CLOCK = new Date().getHours() + new Date().getMinutes() / 60; addEventListener('hashchange', () => location.reload());
 const HOURH = HASH.find(h => ['day', 'night'].concat(HASH.includes('team') ? ['dusk'] : []).includes(h)), LOOKS = ['brush', 'cut', 'dot', 'paper'], LOOKH = HASH.find(h => LOOKS.includes(h));
 const MODE = Q.has('night') ? 'night' : Q.has('dusk') ? 'dusk' : Q.has('hour') ? 'day' : HOURH ? HOURH : CLOCK >= 6.5 && CLOCK < 17.75 ? 'day' : 'night', DUSK = MODE === 'dusk';   // dusk has not been redrawn: only by name, behind #team
-const TALL = HASH.includes('tall') || Q.has('tall'), OWN = HASH.includes('fixed') || Q.has('fixed'), PX = TALL ? -5.4 : -8.2;
+const TALL = HASH.includes('tall') || Q.has('tall'), OWN = !(HASH.includes('lit') || Q.has('lit')),   // things keep their own drawing (as on the sheet) unless the link says lit: then the hour's light makes all of it
+  PX = TALL ? -5.4 : -8.2;
 const STUDIES = { pump: [PX - 2.1, 9.2, -43, -2], wall: [2.6, 11.2, -4, 1], ground: [-.8, 7.6, 74, -24], lot: [-2.5, 6.5, 42, 0] }, TEAM = HASH.includes('team') || Q.has('study') || Q.has('team'), STUDY = !TEAM ? 'pump' : STUDIES[Q.get('study')] ? Q.get('study') : HASH.find(h => STUDIES[h]),   // the link shows the pump and nothing else. the rest of the place is not redrawn yet: it is behind #team (#team-lot, #team-wall, #team-ground, #team alone for the arrival)
   SV = STUDIES[STUDY] || [2.6, -21, 6, 9], SOLO = STUDY === 'pump' && num('solo', 1);
 const LOOKN = LOOKS.includes(Q.get('look')) ? Q.get('look') : LOOKH || 'brush', LOOK = LOOKS.indexOf(LOOKN);
-document.querySelectorAll('#note a').forEach(a => { const h = a.dataset.hour, l = a.dataset.look, tg = a.dataset.t; if (tg) { const on = { tall: TALL, fixed: OWN }, fl = k => (k === tg ? !on[k] : on[k]) ? k + '-' : ''; a.href = '#' + (TEAM ? 'team-' + (STUDY ? STUDY + '-' : '') : '') + fl('tall') + fl('fixed') + LOOKN + (HOURH ? '-' + HOURH : ''); a.classList.toggle('on', on[tg]); return; } a.href = '#' + (TEAM ? 'team-' + (STUDY ? STUDY + '-' : '') : '') + (TALL ? 'tall-' : '') + (OWN ? 'fixed-' : '') + (l || LOOKN) + (h || HOURH ? '-' + (h || HOURH) : ''); a.classList.toggle('on', h === MODE || l === LOOKN); }); if (STILL) document.getElementById('note').style.display = 'none';
+document.querySelectorAll('#note a').forEach(a => { const h = a.dataset.hour, l = a.dataset.look, tg = a.dataset.t; if (tg) { const on = { tall: TALL, lit: !OWN }, fl = k => (k === tg ? !on[k] : on[k]) ? k + '-' : ''; a.href = '#' + (TEAM ? 'team-' + (STUDY ? STUDY + '-' : '') : '') + fl('tall') + fl('lit') + LOOKN + (HOURH ? '-' + HOURH : ''); a.classList.toggle('on', on[tg]); return; } a.href = '#' + (TEAM ? 'team-' + (STUDY ? STUDY + '-' : '') : '') + (TALL ? 'tall-' : '') + (OWN ? '' : 'lit-') + (l || LOOKN) + (h || HOURH ? '-' + (h || HOURH) : ''); a.classList.toggle('on', h === MODE || l === LOOKN); }); if (STILL) document.getElementById('note').style.display = 'none';
 const LAT = 35 * Math.PI / 180, RAD = Math.PI / 180;
 const R = new T.WebGLRenderer({ antialias: false, preserveDrawingBuffer: true, powerPreference: 'high-performance' });
 R.shadowMap.enabled = true; R.shadowMap.type = T.PCFShadowMap; R.outputColorSpace = T.LinearSRGBColorSpace; document.body.prepend(R.domElement);
@@ -49,7 +50,7 @@ const sheet = makeSheet();                                                      
 const BX0 = -13, BX1 = 7, FN = 16, BN = 24, BH = 3.8, WT = .22;                    // the station: a plain box, 20 m by 8 m, front faces south at n = 16
 // the three looks. [gap between lines in screen points, gap of the second family, how dry, bristle streaks], [angle of the second family, the tone it starts at, the tone that goes solid, how long a mark is in gaps]
 // brush: broad dry strokes, a second coat, spotted black. cut: an even line and short hatching one way, no black by day. dot: stipple, packed closer for dark, and the most worn. paper: brush on real grey papers
-const LK = [[15, 12, 1, .6], [7.5, 7.5, .15, 0], [9, 9, .3, 0], [15, 12, 1, .6]][LOOK], LK2 = [[.3, .5, .86, 9], [.95, 2, .965, 4], [.95, 2, .95, 5], [.3, .5, .86, 9]][LOOK];
+const LK = [[15, 12, 1, .6], [7.5, 7.5, .15, 0], [9, 9, .3, 0], [15, 12, 1, .6]][LOOK], LK2 = [[-.75, .55, .86, 4.5], [.95, 2, .965, 4], [.95, 2, .95, 5], [.3, .5, .86, 9]][LOOK];
 const SU = { sunD: { value: new T.Vector3(0, 1, 0) }, youF: { value: new T.Vector3() }, youR: { value: new T.Vector2(1, 0) }, youOn: { value: 0 }, sunA: { value: new T.Vector3(1, 0, 0) }, smat: { value: new T.Matrix4() }, lampP: { value: [new T.Vector4(), new T.Vector4(), new T.Vector4(), new T.Vector4()] }, nl: { value: 0 }, pxs: { value: 1 },
   LK: { value: new T.Vector4(num('gap', LK[0]), num('gap2', LK[1]), num('dry', LK[2]), num('bristle', LK[3])) }, LK2: { value: new T.Vector4(num('cross', LK2[0]), num('crossat', LK2[1]), num('solid', LK2[2]), num('len', LK2[3])) }, LK3: { value: new T.Vector4(...[[.2, .72, .6, 0], [.17, .5, .4, 0], [.1, .16, .1, 0], [.2, .72, .6, 0]][LOOK]) }, TEXP: { value: num('texp', 2.6) }, stip: { value: LOOK === 2 ? 1 : 0 }, wear: { value: num('wear', [.14, .1, .2, .14][LOOK]) }, own: { value: OWN ? 1 : 0 }, nightU: { value: 0 }, texOn: { value: num('tex', 1) }, grainOn: { value: num('grain', 1) } };
 const SHADOW = T.ShaderChunk.shadowmap_pars_fragment.replace('float getShadow(', 'float getShadow0(') + `
@@ -97,7 +98,7 @@ function inkMat(kind, { amb = 1, tone = 1, along = null, drift = false, vert = f
           float Sn=S*exp2(lv),id=j*S+seed*13.7,h=h1(id),hb=h1(id+.37),u=p.x/(Sn*LK2.w)+h*91.;
           float n=n1(u,h)*.65+n1(u*2.7,hb)*.35;                                                                                 // along the mark: where the brush is loaded and where it runs out
           float e=a*1.55-n-.1+(hb-.5)*.3,keep=lv<.5?1.-f:1.;                                                                    // over 0, the mark is there
-          float wf=smoothstep(0.,.5,e)*wsh*(.7+.6*hb)*(1.+.14*(lv-f))*keep,hw=.5*S*(1.+f)*wf;                    // its width: swells with the dark, tapers where it runs out
+          float wf=smoothstep(0.,.5,e)*wsh*mix(.7+.6*hb,.25+1.7*hb*hb,step(.5,LK.w))*(1.+.14*(lv-f))*keep,hw=.5*S*(1.+f)*wf;                    // its width: swells with the dark, tapers where it runs out
           float c=(j+.5)*S+(n1(u*.6+7.,hb)-.5)*.7*S*(1.+f)*(1.-.6*a),d=p.y-c;                                                   // its spine wanders
           float dr=LK.z*(1.-.65*smoothstep(0.,.6,e))*(.5+.9*h)*(1.-.75*a*a);                                                     // how dry it is here: driest toward its ends
           float st=n1(d/max(hw,1e-6)*3.5+h*5.+p.x/(Sn*LK2.w)*.7,hb);                                                            // bristles: streaks that run the length of the mark
@@ -121,8 +122,8 @@ function inkMat(kind, { amb = 1, tone = 1, along = null, drift = false, vert = f
         float tone=pow(1.-clamp((lO-.012)/.9,0.,1.),TEXP);                                           // 0 paper, 1 black
         if(own>.5&&isT>.5){float tf=pow(1.-clamp((mt*(clamp(dot(normalize(vWn),normalize(vec3(-.8,.5,.35))),0.,1.)*1.3+.14)-.012)/.9,0.,1.),TEXP);tone=nightU>.5?max(tf,tone):tf;}   // drawn once: the thing keeps its own shading whatever the hour; the dark can only add to it
         float g=texture2D(grain,gP/gsz).r*.65+texture2D(grain,gP/(gsz*.31)+.37).r*.35;g=mix(.6,g,grainOn);          // this surface's paper: 1 is the high tooth, which takes ink first
-        float ink=fam(gP,smoothstep(.04,.45,tone),mix(LK3.x,LK3.y,smoothstep(.1,.92,tone)),LK.x*gk,1.,g);                                                         // the first family: along the form
-        float cs=cos(LK2.x),sn=sin(LK2.x);ink=max(ink,fam(vec2(gP.x*cs+gP.y*sn,-gP.x*sn+gP.y*cs),LK2.y>1.?0.:smoothstep(LK2.y,.9,tone),mix(LK3.x,LK3.z,smoothstep(LK2.y,1.,tone)),LK.y*gk,2.,g));   // the second, laid across it
+        float bq=step(.5,LK.w),bc=cos(.55*bq),bs=sin(.55*bq),gb=mix(gk,1.,.55*bq);float ink=fam(vec2(gP.x*bc+gP.y*bs,-gP.x*bs+gP.y*bc),smoothstep(.04,.45,tone),mix(LK3.x,LK3.y,smoothstep(.1,.92,tone)),LK.x*gb,1.,g);                                                         // the first family: along the form
+        float cs=cos(LK2.x),sn=sin(LK2.x);ink=max(ink,fam(vec2(gP.x*cs+gP.y*sn,-gP.x*sn+gP.y*cs),LK2.y>1.?0.:smoothstep(LK2.y,.9,tone),mix(LK3.x,LK3.z,smoothstep(LK2.y,1.,tone)),LK.y*gb,2.,g));   // the second, laid across it
         if(stip>.5){float gq=7.*gk;ink=max(ink*.0,spots(gP,gq*.5,tone*1.1,.4,31.));ink=max(ink,spots(gP+7.3,gq*.5,(tone-.3)*1.4,.46,32.));ink=max(ink,spots(gP-3.1,gq*.4,(tone-.55)*2.2,.52,33.));}   // stipple: dots, packed closer for dark
         float so=smoothstep(LK2.z,.99,tone);ink=max(ink,smoothstep(0.,.25,so-(1.-g)*1.1*(1.-so)));                    // last, black, and the paper's valleys are the last of it to fill
         // what it is made of: marks that are there whatever the light. light only thins them
@@ -190,7 +191,7 @@ const supG = (a, b, h, dome) => { const g = dome ? new T.SphereGeometry(1, 56, 1
     let nx = Math.sign(c) * Math.abs(x / a) ** 3 / a, nz = Math.sign(s) * Math.abs(z / b) ** 3 / b; const l = Math.hypot(nx, nz) || 1; nx /= l; nz /= l;
     if (dome) { const y = P.getY(i); P.setXYZ(i, x * rho, y * h, z * rho); const m = Math.hypot(nx * rho, y, nz * rho) || 1; Nn.setXYZ(i, nx * rho / m, y / m, nz * rho / m); } else { P.setX(i, x); P.setZ(i, z); Nn.setXYZ(i, nx, 0, nz); } } return g; };
 // lettering and faces are flat paint on small canvases, worn. The pump's parts are the list's (elements.md 1) and nothing else: globe, grade plate, number window, badge, notice, hose, nozzle, dark base. No dial.
-// PROPOSED brand names, to be chosen by the owner and checked against real ones: PLAYA, LLANO
+// PROPOSED brand names for the owner to pick from: LLANO, CALICHE, BAJADA, TULAROSA (two web searches found no fuel brand by any of them; not a trademark search)
 const cv = (w, h, draw) => { const c = document.createElement('canvas'); c.width = w; c.height = h; const g = c.getContext('2d'); g.fillStyle = '#fff'; g.fillRect(0, 0, w, h); g.fillStyle = g.strokeStyle = '#000'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.lineJoin = g.lineCap = 'round'; draw(g, w, h); const tx = new T.CanvasTexture(c); tx.colorSpace = T.NoColorSpace; tx.anisotropy = 8; return new T.MeshBasicMaterial({ map: tx }); };
 let ws = 5; const wr = () => (ws = (ws * 16807) % 2147483647) / 2147483647;
 const worn = (g, w, h, n, r = 2.2) => { g.fillStyle = '#fff'; for (let i = 0; i < n; i++) { const s = r * (.4 + wr() * wr() * 3); g.beginPath(); g.ellipse(wr() * w, wr() * h, s * (1 + wr()), s, wr() * 3, 0, 7); g.fill(); } g.fillStyle = '#000'; };   // paint gone in flecks
@@ -213,7 +214,7 @@ const pump = (name, x, tall, brand, grade) => thing(name, x, 11.5, g => { const 
   const Wbody = inkMat('steel', { tone: .56, vert: true, round: [per, H], fine: .6, thing: 1, rust: 1 }), Wtop = inkMat('steel', { tone: .56, round: [per, .5], fine: .6, thing: 1 });
   ink(put(new T.Mesh(supG(a + .035, b + .035, B, 0), Wbase), x, n, .14 + B / 2)); ink(put(new T.Mesh(supG(a, b, H, 0), Wbody), x, n, z0 + H / 2)); let top = z0 + H;
   if (tall) { ink(put(new T.Mesh(supG(a, b, .05, 1), Wtop), x, n, top)); ink(put(new T.Mesh(supG(a * .72, b * .8, .15, 0), Wbody), x, n, top + .075)); top += .15; ink(put(new T.Mesh(supG(a * .72, b * .8, .06, 1), Wtop), x, n, top)); top += .04; }
-  else { ink(put(new T.Mesh(supG(a, b, .13, 1), Wtop), x, n, top)); top += .11; }
+  else { ink(put(new T.Mesh(supG(a, b, .055, 1), Wtop), x, n, top)); top += .045; }   // his Route 66 pump is nearly flat on top, with a rounded edge
   rod(.05, .08, .1, x, n, top, Wp, g); const gr = tall ? .25 : .27, gz = top + .09 + gr, rim = ink(put(new T.Mesh(new T.CylinderGeometry(gr, gr, .15, 48, 1, true), Wrim), x, n, gz)); rim.rotation.x = Math.PI / 2;
   [1, -1].forEach(sd => { const f = n - sd * (b + .004), ry = sd > 0 ? 0 : Math.PI, P = (w, h, u, m, dx = 0) => plane(w, h, x + sd * dx, f, z0 + u, m, g, ry);
     put(new T.Mesh(new T.CircleGeometry(gr, 48), globeM(brand, sd > 0 && !tall)), x, n - sd * .076, gz, ry);
@@ -223,7 +224,7 @@ const pump = (name, x, tall, brand, grade) => thing(name, x, 11.5, g => { const 
   const hz = z0 + H * .78, nz = z0 + H * .52, e = x + a, hose = ink(new T.Mesh(new T.TubeGeometry(new T.CatmullRomCurve3([[e - .02, n + .04, hz], [e + .16, n + .02, hz - .1], [e + .2, n - .04, z0 + .5], [e + .15, n - .1, z0 + .12], [e + .07, n - .14, z0 + .3], [e + .045, n - .13, nz - .06]].map(q => v(...q))), 44, .021, 10), Wh)); g.add(hose);
   ink(box(.05, .1, .12, e + .02, n - .13, nz - .02, Wt2, g)); ink(box(.035, .05, .2, e + .045, n - .14, nz + .02, Wt2, g)); const sp = ink(put(new T.Mesh(new T.CylinderGeometry(.016, .02, .22, 12), Wt2), e + .05, n - .2, nz + .2)); sp.rotation.x = -.9;   // holder, nozzle body, spout
   mark(g, x - .31, 11.24, .9, .05, 1.3); mark(g, x + .1, 11.24, 1.72, .5, .05); mark(g, x + .2, 11.24, .5, .05, .7); });
-pump('pumpW', -8.2, false, 'PLAYA', 'ETHYL'); pump('pumpE', -5.4, true, 'LLANO', 'REGULAR');
+pump('pumpW', -8.2, false, 'LLANO', 'ETHYL'); pump('pumpE', -5.4, true, 'CALICHE', 'REGULAR');
 { box(.5, .34, .78, -6.8, 11.5, .14, Wt); box(.56, .4, .03, -6.8, 11.5, .92, Wt); for (let k = 0; k < 4; k++) { const c = rod(.05, .05, .15, -6.98 + k * .12, 11.5, .95, Wp); c.geometry = canG; } rod(.17, .14, .34, -4.5, 11.3, .14, Wp); rod(.012, .012, .7, -4.42, 11.3, .3, K); }   // between the pumps: a rack of oil cans. a bucket and its squeegee
 [[CX0 + .5, CN0 + .4], [CX1 - .5, CN0 + .4]].forEach(([x, n]) => { rod(.16, .2, .14, x, n, 0, Wc); rod(.13, .1, .1, x, n, CZ - .1, Wp); }); rod(.34, .2, .13, -6.8, 12, CZ - .14, Wt);                              // post feet and heads, and the lamp's shade
 thing('air', -1.5, 9.6, g => { rod(.09, .11, 1.25, -1.5, 9.6, 0, Wt, g); const d = new T.Mesh(new T.CylinderGeometry(.22, .22, .12, 20), Wt); d.rotation.x = Math.PI / 2; d.position.copy(v(-1.5, 9.6, 1.42)); d.castShadow = true; g.add(d); plane(.26, .26, -1.5, 9.53, 1.42, K, g); mark(g, -1.62, 9.5, .7, .04, 1.0); mark(g, -1.5, 9.5, 1.66, .4, .04); });

@@ -32,11 +32,11 @@ One layout. It comes from where the sign's shadow really falls (a 12 m sign, a g
                     you arrive here, 21 m south of the sign
 ```
 
-- **The sign stands at the road, straight in front of the door.** The arrow dives at the door. It carries his name and nothing else ("Gas is unnecessary").
+- **The sign stands at the road, straight in front of the door.** It carries his name and nothing else ("Gas is unnecessary"). He wants it **neon and historically accurate** to the article he sent, which is now read (`inspo/sign-article/`): a bulb-studded steel arrow bolted to an older sign. Whether the name is neon or plastic letter boxes, and which arrow, are out with him (`elements.md`, element 5). The arrow points down beside the name; "dives at the door" no longer describes it.
 - **You arrive across the road, 21 m south of the sign,** facing it. From there the whole name is in the picture on a phone, and the road lies between you and the place.
 - **The canopy and pumps are to the west; the door is clear of them.** This is the director's "door at the edge of the shade", with a reason he didn't have: a canopy anywhere north of the sign catches the sign's shadow on its roof, where nobody can see it. Put to the west, it only catches the morning shadow, and "the shadow goes in under the canopy" is a good thing for a shadow to do.
 - The owner has confirmed it: "Canopy over pumps yes." And it is **joined to the building** ("joined"): it comes off the front wall west of the door, as in his abandoned desert station photo.
-- **The station is abandoned** ("abandoned"), and the wall is **stucco over brick**. Labels on things are **realistic, with invented brand names**. What each of those does to each element is in `elements.md`. Whether the power is still on is out with him.
+- **The station is abandoned** ("abandoned"), and the wall is **stucco over brick**. Labels on things are **realistic, with invented brand names**. **The power never went off** ("abandoned can still have power"). What each of these does to each element is in `elements.md`, which is now the list of what the place contains: it adds utility poles and wires along the road, a lamp post on the forecourt, lettering on the window glass, boulders, clouds, and mountains and brush in the distance, all at his word.
 
 ## Moving
 
@@ -101,8 +101,8 @@ Also: lights. At night the sign's bulbs would be seen from much further than 100
 
 These came out of the folded concepts and belong to the place.
 
-- **The sign's shadow is an arrow on the slab.** The arrow is flat and faces the sun, so the sun makes one. It points toward the pumps in the morning, at the door at midday, and away east in the afternoon. In summer it's short. Nothing is done with it. It's there to be found and followed.
-- **On winter middays it reaches the door** and comes in over the threshold. On the shortest day the starburst is on the door.
+- **The sign's shadow lies on the slab and moves through the day.** With the sign as the article has it, the shadow is the sign's shape: a tall bar with the arrow's hook at the near end, not a clean arrow. It lies toward the pumps in the morning, toward the door at midday, and away east in the afternoon. In summer it's short. Nothing is done with it. It's there to be found and followed.
+- **On winter middays it reaches the door** and comes in over the threshold. On the shortest day the top of the sign is on the door.
 - **The wall clock swings it.** Turn the clock indoors and, through the window, the shadows go round.
 - **At midday the door is off the latch.** The one hour the place lets you in without asking. An extra; nothing depends on it.
 - **A landed word is rare.** The counter bell has one (DING), after the owner's HONK. Nothing else does. Switches, latches and steps have their light or their sound and no word.
