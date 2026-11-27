@@ -18,6 +18,8 @@ module.exports = [
   ...Object.entries(PAIRS).flatMap(([k, q]) => [[`lo-${k}-a`, q + '&detail=0'], [`lo-${k}-b`, q]]),
   ['lo-door-in', `${NOON}&inside=1&x=0&n=16.5&head=0&pitch=-16`],
   ['lo-night-away', `${N}&x=2.6&n=-21&head=180&pitch=2`],
+  ['lo-night-still', `${N}&lamp=0&adapt=1&x=2.6&n=-21&head=180&pitch=5.7`],
+  ['lo-sign-foot', `${D}&x=.55&n=-.3&head=40&pitch=5.7`],
   ['lo-night-lamp', `${N}&x=2.2&n=3&head=-4&pitch=1`],
   ['lo-aisle', `${NOON}&inside=1&x=5.5&n=23.2&head=0&pitch=-2&tube=1&aislelights=2`],
   ['lo-aisle-back', `${NOON}&inside=1&x=5.5&n=50.5&head=180&pitch=0&lamp=0`],

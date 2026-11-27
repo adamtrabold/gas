@@ -256,7 +256,7 @@ His open question, whether the time of day does something, is answered by the co
 
 # Left on — how it looks and feels
 
-*Look and feel (visual). Round 3. Written after `score-2.md`, the owner's answers in `owner.md` section 7 ("Canopy over pumps yes." "Gas is unnecessary.") and his walk of the round-2 prototype on his phone (section 8). Everything shown is a frame of the walked three.js prototype in `sketches/place/`. This half is current for the look; where the round-1 look-and-feel half of `00-shared.md` differs, this one stands.*
+*Look and feel (visual). Round 3, with the five small fixes the director asked for after scoring it 9 (`score-3.md`). Written after `score-2.md`, the owner's answers in `owner.md` section 7 ("Canopy over pumps yes." "Gas is unnecessary.") and his walk of the round-2 prototype on his phone (section 8). Everything shown is a frame of the walked three.js prototype in `sketches/place/`. This half is current for the look; where the round-1 look-and-feel half of `00-shared.md` differs, this one stands.*
 
 ## What the owner said after walking it, and what I did
 
@@ -266,8 +266,10 @@ So the feel and the frame rate are no longer the risk. The look had one fault he
 
 1. **A thing has a tone of its own.** Until now everything was white plaster, so anything in the sun was blank. Now a painted thing (a pump, the bench, the phone box, the cooler) is never quite paper: it is always drawn, lightly where the sun is on it and densely where it isn't. The ground and the station's walls stay paper in the sun, so the place is still mostly empty.
 2. **More sizes of stroke.** Each kind of thing wears the stroke sheet at its own size: the road largest, then the ground, then walls, then things, then small dark things finest. From far off, big surfaces wear it nearly four times larger again (below). A frame now has four or five sizes of mark in it where it had two.
-3. **A drawn line where an edge would be lost.** (Things and the building only; never the ground.) Where a thing's outline or a corner falls paper against paper it gets a thin ink line; ink against ink in shade, a thin paper line. About 2 cm wide in the world, so it thickens as you walk up; its weight wanders and it breaks, following the stroke sheet, so it reads as inked by hand and not ruled. This is Kirby's line (his references 16 and 17) used sparingly: only where a form would otherwise be lost, and only within about 35 m.
+3. **A drawn line where an edge would be lost.** (Things and the building only; never the ground.) Where a thing's outline or a corner falls paper against paper it gets a thin ink line; ink against ink in shade, a thin paper line. It has a brush's weight: it swells to about 5 cm and thins away to nothing over a metre or so of its length, is heavier in shade, and is used only for outlines and square corners, not every edge. (The first pass was an even hairline that read as a line render up close and at dusk; the director caught it.) This is Kirby's line (his references 16 and 17) used sparingly: only where a form would otherwise be lost, and only within about 35 m.
 4. **Shade is more open** by day: more paper between the strokes, so what stands in it shows.
+
+All five pairs are set side by side in `pairs-05.png`, made to be judged on a phone. The before frames are today's prototype with the detail turned off, so they also carry this round's other changes (the scrub, the shadow's shape); what differs between left and right is only the detail.
 
 | Same view | Before | After | What changed |
 |---|---|---|---|
@@ -345,8 +347,8 @@ Framing: whole name, arrow, door and both ends of the station inside the frame a
 
 | State | How it looks and feels | |
 |---|---|---|
-| Your shadow | A person: a head, shoulders, a body, two legs cut by the bottom of the screen. No ears, hood or point. It is laid by its own rule and not by the brush, so its outline is clean and only its inside is brushed. On the slab it runs away from the sun (`lo-strokes-day`); just inside the door it stands in the doorway's light on the floor (`lo-door-in`). At dusk there is none. | Built |
-| Your lamp | Only where no daylight reaches: indoors and at night. A disc of paper where you look, its rim breaking along the surface's own strokes, **and a pool on the ground in front of your feet, always.** Turn away from the station at night and the bottom of the screen is still lit ground with strokes in it (`lo-night-away`). Both close together when you stand still. | Built |
+| Your shadow | A person: a head, shoulders, a body, two legs cut by the bottom of the screen. No ears, hood or point. It shows only where the sun would otherwise reach, so never under the room's own lights (it used to leave a ragged tuft at your feet indoors that read as an animal). It is laid by its own rule and not by the brush, so its outline is clean and only its inside is brushed. On the slab it runs away from the sun (`lo-strokes-day`); just inside the door it stands in the doorway's light on the floor (`lo-door-in`). At dusk there is none. | Built |
+| Your lamp | Only where no daylight reaches: indoors and at night. A disc of paper where you look, its rim breaking along the surface's own strokes, **and a pool on the ground in front of your feet, always.** Turn away from the station at night and the bottom of the screen is still lit ground with strokes in it (`lo-night-away`). When you stand still the disc closes and the pool draws in to a small one a few steps ahead, and stays (`lo-night-still`). The dark is never a blank screen, moving or still. | Built |
 | A thing lit and left | Keeps two or three plain strokes of itself for the visit. | Built in round 1, not re-shot |
 | Sun to dark and back | No fade: one step over the threshold. | Built (`lo-door-in`) |
 
@@ -395,7 +397,7 @@ Each is a small flat bright shape for the lamp itself, a pool of paper whose rim
 
 | Since you stopped | How it looks and feels | |
 |---|---|---|
-| 4–8 s | The disc and the pool at your feet close from the rim in, in three or four held steps. Smaller, never fainter. | Built as a smooth close; the held steps are not |
+| 4–8 s | The disc closes from the rim in and the pool at your feet draws in to a small one that stays, in three or four held steps. Smaller, never fainter. | Built as a smooth close; the held steps are not |
 | 10–15 s, outdoors at night | Stars, one swelling stroke each, round the still point. | Built |
 | 15 s and after | Each event is small, to one side and already over when you turn. | Words |
 | 4 min | The canopy pool closes; a disc with no grain crosses the slab; the pool rays back. | Words |
@@ -456,13 +458,25 @@ Each is a small flat bright shape for the lamp itself, a pool of paper whose rim
 | 1 Remove the GAS blade | Done | `lo-arrive-day`, `lo-sign-side` |
 | 2 Put the desert in | Done: horizon, scrub, drifts, fence. No cactus (above) | `lo-arrive-day`, `lo-desert-east`, `lo-anywhere-day` |
 | 3 Brush in the day arrival | Done as proposed (a larger stroke size from far off), measured, **not seen in motion** | `lo-arrive-day`, `lo-walk-3s`, `lo-walk-6s`, `walk-test.png` |
-| 4 Never a black screen at night | Done: a pool at your feet | `lo-night-away` |
+| 4 Never a black screen at night | Done: a pool at your feet, which never fully closes | `lo-night-away`, `lo-night-still` |
 | 5 The shadow: head and shoulders, no ears | Done: laid by its own rule, clean outline | `lo-door-in`, `lo-strokes-day` |
 | 6 Twilight, one frame | Done | `lo-arrive-dusk` |
 | 7 Update the how-it-works half | The systems designer's; not mine | |
 | 8 The look back down the aisle | Solved for the dark aisle; said plainly that lit stretches take the picture | `lo-aisle-back` |
 | 9 Safe to hand him | Done: resolution fallback, caption off the picture, hour by `#name` | |
 | The owner's own: hard to make out objects | Done, one clear step | the five pairs |
+
+## The five small fixes after the score
+
+| Fix | What I did | Frame |
+|---|---|---|
+| 1 A brush's weight on the edge line, and fewer | The line swells and thins along its length, heavier in shade; outlines and square corners only | `lo-front-b`, `lo-pumps-b`, `lo-walk-6s`, `lo-arrive-dusk` |
+| 2 The ladder on the sign pole at dusk | It was the pole's own strokes lying across it like rungs. Posts now wear their strokes up and down | `lo-arrive-dusk` |
+| 3 Can't walk into the sign | The pole, the canopy posts, the pumps, the air post, the phone box and the bench are solid. Checked live: walking straight at the pole stops 0.62 m from it, and after a turn the frame is 7% ink | `lo-sign-foot-live` (the live frame), `lo-sign-foot` |
+| 4 The tuft at your feet indoors | Your shadow now shows only where the sun would otherwise reach | `lo-room-b`, `lo-aisle` |
+| 5 Standing still at night is never black | The pool draws in to a small one ahead of you and stays | `lo-night-still` |
+
+Still true at dusk: the pumps are small dark boxes in fine hatching and the place is carried mostly by line. It is the plainest hour, on purpose.
 
 ## Where I disagree, or went further
 
@@ -483,7 +497,9 @@ All in `concepts/stills/`. `sheet-05-left-on.png` is the one sheet, two frames a
 | `lo-desert-east`, `lo-anywhere-day` | A desert with nothing in it is now a picture | The world's edge from either side |
 | The five `-a` / `-b` pairs | Things can be made out where they couldn't | That it is enough for him |
 | `lo-strokes-day`, `lo-strokes-night`, `walk-test.png` | Strokes in the walked world that stay on it | His hand |
-| `lo-door-in`, `lo-night-away`, `lo-night-lamp` | The shadow is a person; the dark is never blank | The lamp closing in steps |
+| `lo-door-in`, `lo-night-away`, `lo-night-still`, `lo-night-lamp` | The shadow is a person; the dark is never blank, moving or stopped | The lamp closing in steps |
+| `lo-sign-foot-live`, `lo-sign-foot` | You can't walk into the sign | Every other solid thing; I checked the pole |
+| `pairs-05.png` | The five before/after pairs on one page | |
 | `lo-aisle`, `lo-aisle-back`, `lo-sign-side`, `lo-anywhere-night`, `lo-wide-day` | As named | A desktop composition anyone designed; the sign against his references |
 | `cross-2d.png` | Round 1's 2D door stroke and landed word | That either works in the walked world |
 

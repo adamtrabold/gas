@@ -30,6 +30,7 @@ const ROWS = [
   ['h', 'You'],
   ['lo-door-in', 'Just through the door by day, lights off. Your shadow in the doorway\'s light: a head, shoulders, a body. Your lamp on the back wall and at your feet.'],
   ['lo-night-away', 'Night, turned away from the station. Never a black screen: the lamp finds the ground in front of your feet.'],
+  ['lo-night-still', 'The same, twelve seconds after you stop, facing away from the still point: the lamp has closed to a small pool a few steps ahead, and a star or two is up. Never blank.'],
   ['lo-night-lamp', 'Your lamp on the front wall at night.'],
   ['lo-anywhere-night', 'A view nobody composed, night (random): under the canopy facing the garage door.'],
   ['h', 'Inside, and the sign from the side'],
@@ -48,5 +49,7 @@ const ROWS = [
     else if (r[0] === 'w') html += `<figure style="margin:0;width:780px"><img src="${img(r[1])}" style="width:778px;border:1px solid #111;display:block"><figcaption style="margin-top:5px">${r[2]}</figcaption></figure>`;
     else html += `<figure style="margin:0;width:380px"><img src="${img(r[0])}" style="width:378px;border:1px solid #111;display:block"><figcaption style="margin-top:5px">${r[1]}</figcaption></figure>`;
   }
-  const b = await chromium.launch(), p = await b.newPage({ viewport: { width: 812, height: 800 } }); await p.setContent(html + '</div></body>'); await p.screenshot({ path: path.join(dest, 'sheet-05-left-on.png'), fullPage: true }); await b.close();
+  const PAIRS = [['pumps', 'The pumps, from the forecourt, mid-morning'], ['front', 'The front wall east of the door (there is a bench)'], ['room', 'Inside by day, three lights on'], ['nightpump', 'A pump at night under the canopy lamp'], ['shade', 'Under the canopy at noon in summer']];
+  const ph = `<body style="margin:0;background:#d9d4c8;font:15px/1.4 'Courier 10 Pitch',monospace;color:#111;padding:16px;width:780px"><div style="font-weight:bold;font-size:19px">Making things out: before and after</div><div style="margin:4px 0 10px">Left: the look you walked on your phone. Right: now. Same spot, same hour, same view. Still only black and white.</div>${PAIRS.map(([k, cap]) => `<div style="font-weight:bold;font-size:16px;border-top:2px solid #111;padding-top:8px;margin-top:12px">${cap}</div><div style="display:flex;gap:20px;margin-top:6px">${[['a', 'BEFORE'], ['b', 'AFTER']].map(([v, l]) => `<figure style="margin:0;width:380px"><figcaption style="font-weight:bold;margin-bottom:4px">${l}</figcaption><img src="${img('lo-' + k + '-' + v)}" style="width:378px;border:1px solid #111;display:block"></figure>`).join('')}</div>`).join('')}</body>`;
+  const b = await chromium.launch(), p = await b.newPage({ viewport: { width: 812, height: 800 } }); await p.setContent(html + '</div></body>'); await p.screenshot({ path: path.join(dest, 'sheet-05-left-on.png'), fullPage: true }); await p.setContent(ph); await p.screenshot({ path: path.join(dest, 'pairs-05.png'), fullPage: true }); await b.close();
 })();

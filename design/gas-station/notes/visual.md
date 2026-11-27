@@ -1,11 +1,11 @@
 # Notes — product designer (visual)
 
-Last updated: concept phase, round 3, visual turn 4 (second visual designer). The director scores next. This was the last round before the team counts as stuck.
+Last updated: after the round-3 score (9), visual turn 5 (second visual designer). Left on goes to the owner.
 
 ## Where things stand
 
 - One concept: **Left on** (`concepts/05-left-on.md`). I own its **How it looks and feels** half only; the systems designer owns the how-it-works half and `00-shared.md`. Do not edit theirs.
-- Scores: round 1, 7 and 8. Round 2, 8.5. A 9 is needed before anything is shown to the owner as a candidate.
+- Scores: round 1, 7 and 8. Round 2, 8.5. Round 3, 9.
 - **The owner has walked the round-2 prototype on his phone** (`owner.md` section 8): "Prototype feels pretty good and fluid. Rendering is pretty high contrast though ... hard to really make out objects. I think there can be slightly more detail and variation in the brush stroke size or something to give more detail to the scene". So feel and frame rate are no longer the main risk; legibility became this round's first job alongside the desert and brush on arrival.
 - Also from him (section 7): "Canopy over pumps yes." "Gas is unnecessary." (the GAS blade I added in round 2 is gone).
 - Stills: `concepts/stills/` holds this round's `lo-*` set, `sheet-05-left-on.png`, `walk-test.png`, `stroke-sheet.png`, and `cross-2d.png` from round 1.
@@ -36,6 +36,20 @@ Last updated: concept phase, round 3, visual turn 4 (second visual designer). Th
 **Aisle look back (fix 8).** Shot with the lamp closed and aisle lights off: the front window is the bright thing. With stretches lit they take the picture; said so in the file.
 
 **Safe to hand him (fix 9), and the private link.** `#day` / `#dusk` / `#night` read from `location.hash`, reload on change; with none, the visitor's clock picks. Caption replaced by small grey "day · dusk · night" links and "drag to look · hold to walk" (fades after the first walk). Resolution drops by a quarter whenever 16 frames average over 30 ms, down to under half; never back up. three.js import unchanged. Walk speed 4 m/s. Lamp indoors and at night only.
+
+## After the score (round 3 scored 9; it goes to the owner)
+
+`concepts/score-3.md`. The director withdrew the edgeless-wall ruling, kept the clean shadow, and left the far-stroke handover on for the owner's walk (`?big=0` ready). Five small fixes asked for before the link goes out, all done and checked:
+
+1. Edge line with a brush's weight, fewer of them. The weight now comes from a slow world noise written to the first pass's blue channel (the same for every surface, about 0.5 to 1 m), not the sheet's fine noise, which made beads. Outlines and square corners only.
+2. Pole ladder at dusk: it was the pole's own horizontal strokes. Posts use a material that lays strokes up and down (`inkMat(..., vert)`), `Wp`.
+3. Solid things in `canStand`: sign pole, canopy posts, pumps, air post, phone box, bench. Live check: stops 0.62 m from the pole.
+4. The indoor tuft: your shadow is now multiplied in only where the sun's own shadow test says the sun reaches (`gYou`, set inside `getShadow`).
+5. The pool at your feet never fully closes; it draws in and moves a little ahead so it stays in frame when the view levels.
+
+New stills: `lo-night-still`, `lo-sign-foot`, `lo-sign-foot-live`, and `pairs-05.png` (the five before/after pairs on one page for the owner; built by `sheets.js`).
+
+The orchestrator must refresh the private-link copy from `sketches/place/index.html` and `strokes.js` before he walks it. Tell him it is silent, the strokes are generated, and the building's marks change size as he walks in.
 
 ## The walk-past test
 
