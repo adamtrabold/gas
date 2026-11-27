@@ -88,6 +88,10 @@ Orchestrator's notes, not his words:
 
 Asked whether the paper textures stay within black and white or a form could sit on differently toned paper, he said: "Within black and white, different grain showing through the ink"
 
+He then described the method he has in mind (verbatim): "Yeah think like if I'd scanned in various paper textures, made them greyscale and multiplied onto the vintage color, and then applied them to each face / element"
+
+(Orchestrator's note, not his words: "the vintage color" suggests the paper/ground has a vintage tone rather than pure white; and a greyscale scan multiplied on is, literally, continuous tone in the grain. How that sits with "two values… the illusion of grey" is for the look test to show him, not for us to decide.)
+
 ## Still open (asked, not answered)
 
 - Should the time of day do something (choose which work shows), or only change how the place looks and what odd things happen? (Related: he said "no" to choosing what shows in office hours versus at night.)
