@@ -28,38 +28,53 @@ Each element ends with an empty slot for the visual designer. I've left those em
 | "abandoned" | Abandoned, not kept up |
 | "This is liminal space logic so abandoned can still have power" | Abandoned for years and the power never went off. Faded and rusted, and everything still works. One cup on the counter is still warm |
 | "Proposal sounds good" | Glass stays in the door and the two front windows, filthy and cracked. Garage door panes broken. One side window boarded |
-| "realistic labeling with fake brand names" / "propose" | Labels as real ones were, with invented brands. Names proposed below for you to pick |
+| "realistic labeling with fake brand names" / "I'll deal with that just mock for now" | Labels as real ones were, with invented brands. **You will supply the names.** Until then the ones below are placeholders |
 | "joined" | The canopy is part of the building |
 | "stucco over brick" | The wall |
 | "sounds good" | Bell line, road centre line, bench, phone box, air hose on its own post: all in. (The three sign items you also accepted are reopened by what you said next; see the sign) |
 | "lettering yes utility poles yes lamp post yes clouds boulders mountains and brush in the distance yes" | All added, each in its element below |
 | "not yet" | No picture for the inside. It stays proposed |
-| "neon and historically accurate… maybe some of the letters could flicker" | The sign entry is rewritten from your article. Two things for you to choose; see element 5 |
+| "neon and historically accurate… maybe some of the letters could flicker" | The sign entry is rewritten from your article |
+| "I want the best amalgamation?" | The sign is to be the best mix of neon and plastic letter boxes, drawing on more photos from you. **Waiting on those photos; none has arrived** |
+| "don't care" (which arrow; the starburst) | The designers decide both |
+| "Well it would probably be me squatting" | The person who isn't there is you. Written up below as a proposal for you to check |
+| Pump sheet: "A1 b3 d no e2" | Short flat-topped pump; drawn in dots; a scanned paper on each part. "No" to the light redrawing it is read as: drawn once. See element 1 |
 
 **Not mentioned, so left out unless you say:** awnings over the windows, opening hours on the door, the small windmill on the roof.
 
 **The three places abandoned and left-on pulled against each other are closed** by your answers: the power is on, the cup stays, the front glass stays.
 
-## "Maybe someone's squatting" — a proposal, because you said maybe
+## It's you squatting — a proposal for you to check
 
-Up to now the person who isn't there was an attendant who stepped out. A squatter is a different absence: someone who is here now, and keeps out of your way.
+Your words: "Well it would probably be me squatting." So the person who isn't there is not an attendant. It's you, living in an abandoned station and making it into something. You are never shown: no figure, no photo, no voice.
 
-**What it would add**
-- A reason for the power, the warm cup and the jacket that doesn't need explaining away.
-- Two or three signs of someone living here that an attendant wouldn't leave: a bedroll at the far end of the aisle, a camp stove by the cup, the small light at the aisle mouth that's on when you arrive.
-- A second reading of "a light on that you didn't leave on". Was it them, or the other thing? Not knowing is better than either answer.
+**What it explains, with nothing added**
+- The power: you keep it on.
+- The warm cup and the jacket: yours.
+- The chalked outlines in your handwriting: your plans for the place.
+- Your name on the sign.
+- BACK IN 5 MINUTES: you wrote it.
 
-**What it would change**
-- The things that happen when you stand still (the cup goes cold, the phone rings, the card turns) stop being the place and start being a person. That is more unsettling. You said "liminal not funny"; it also shouldn't tip into a horror game. The rule that keeps it right is the one already there: nothing is ever seen, and nothing moves while you're looking.
-- Calling for someone still gets no answer.
+**What a visitor can find of yours, and where** (all PROPOSED; question 1)
+- On the counter: the cup, a camp stove, brushes and a bottle of ink, a notebook.
+- On the hook: the jacket.
+- At the far end of the aisle: a bedroll, made, and an instrument case.
+- On the ground outside: your outlines.
+- Under the clock: the chart of odd things, kept in your hand.
 
-**One more reading, yours to take or leave:** the person living in an abandoned station and making it into something, whose name is on the sign and whose handwriting is chalked on the ground, could be you.
+**What it does to standing still.** Nothing on that list needs anyone present: a cup goes cold, a phone rings for someone who's out. And that is the rule that keeps this from being frightening: **you are out, not hiding.** The card says so. Nobody is in the dark at the end of the aisle. The visitor is alone in the place of someone who'll be back.
 
-**As I'd do it:** never say which. Add the bedroll and the stove, keep the BACK IN 5 MINUTES card, and let attendant, squatter and owner all stay possible. Marked PROPOSED in elements 13 to 15.
+**What it does to coming back.** Between a visitor's visits, things have changed because you've been there: the cup has moved, an outline has become a thing. This is true as well as told. When you really add something to the site, that is you making the place into something.
 
-## Brand names, proposed
+**What it does to the alien material.** It sharpens it. There are now two hands on the lot: yours, and the one that drew the three circles. The chart is your own record of things you can't explain either. On a visitor's second visit there's an entry about *them*, in your hand: to you, they were the odd thing that turned up.
 
-You asked us to propose. Nobody has yet checked these against real trademarks; that happens before any is drawn. Pick, change or strike.
+**How it stays liminal.** No jokes, no self-portrait, no signature anywhere but the sign. Your things are ordinary and few. Nothing says who you are; a visitor who doesn't know the name learns only that someone lives here, draws, and is out.
+
+**What it opens for later** (parked; nothing designed): "who Adam is" becomes the things on the counter; "the work" becomes what you've been making in the place; "get in touch" becomes leaving word for someone who's out.
+
+## Brand names: placeholders
+
+You've said you'll supply these yourself ("just mock for now"). The names below are stand-ins so that labels can be drawn at the right size and shape. They will be replaced by yours and should not be treated as chosen.
 
 | For | Proposed |
 |---|---|
@@ -76,7 +91,7 @@ Grades on the pumps: REGULAR and HI-TEST. (Your Route 66 photo says ETHYL, which
 2. **Slab and island** — everything stands on it and every shadow lands on it.
 3. **Canopy** — makes the shade the pumps stand in.
 4. **Station front** — wall, door, windows, garage door.
-5. **Sign** — your name. Waits on your two choices.
+5. **Sign** — your name. Waits on the photos you're sending.
 6. **Road**
 7. **Desert, horizon, sky**
    *— first whole picture: arriving by day —*
@@ -100,13 +115,18 @@ Outside before inside, day before night. The inside is last, so nothing waits on
 **Where:** on the island under the canopy, west of the door.
 
 **Parts**
-- Glass globe on top with the gasoline brand on it — SETTLED [you]
+- Glass globe on top with the gasoline brand on it — SETTLED [you]. The brand name is a placeholder until you supply it
 - Face window with rolling numbers: this sale, gallons, price per gallon — SETTLED [you] [Route 66]
 - No clock dial — SETTLED [you]
 - Grade plate: REGULAR on one, HI-TEST on the other — [Route 66], wording PROPOSED
-- Steel cabinet on a dark base — [Route 66] [1934]. **Which shape is still open** (question 3)
+- **Short, flat-topped steel cabinet on a dark base, after the yellow-and-orange pumps in your Route 66 photo** — SETTLED [you: pump sheet, A1]. Two the same or one of each is not answered (question 2)
 - Hose down the side, nozzle in a holder — [Route 66] [1934]
 - Badges and small printed notices on the body — [1934]
+
+**Your picks on the pump sheet** (recorded here; the detail is the visual designer's, below)
+- Drawn in dots, packed closer where it's darker — [you: B3]
+- A scanned paper on each part, with real grey in the paper; the ink stays black — [you: E2]
+- "Does the light redraw it?" — "no". Read as: the pump is drawn once and keeps its own shading at every hour; shadows and night are laid on top. **This reading isn't confirmed** (question 3)
 
 **Abandoned means**
 - Paint faded and chalky, rust at the base and seams — [Abandoned]
@@ -214,7 +234,12 @@ Outside before inside, day before night. The inside is last, so nothing waits on
 
 **Where:** at the road, straight in front of the door, 16 m from it. About 12 m tall.
 
-**What you've said:** a Googie arrow sign; your name on it and nothing else; neon; historically accurate to the article; some letters could flicker.
+**What you've said:** a Googie arrow sign; your name on it and nothing else; neon; historically accurate to the article; some letters could flicker; and, asked to choose neon or plastic boxes: "I want the best amalgamation?"
+
+**Where it stands now**
+- **The name: a mix of neon and plastic letter boxes, on one frame.** Your article shows exactly that: the MOTEL photo has plastic letter boxes and an older neon sign on the same rusted frame. How the mix is made for TRABOLD waits on the photos you're sending. **None has arrived yet.** Nothing of the sign is drawn until they do.
+- **Which arrow, and the starburst:** you don't mind, so the designers decide. From the systems side the hooked arrow down the side fits a tall stacked name; that's a lean, not a ruling.
+- The two tables below are kept as the record of what each kind is and when it dates from. They are no longer questions for you.
 
 **What the article says, with dates**
 - Neon came to America in the 1920s and stayed popular until the early 1950s — [Article]
@@ -232,7 +257,7 @@ It does mean two things you've said don't fit. You accepted "TRABOLD, one letter
 - The bulbs flash — [Article]. Lighting one after another down the arrow is PROPOSED; the article doesn't say they did
 - One steel pole — ACCEPTED
 
-**Choice 1 — how the name is made**
+**For reference — the two ways a name was made**
 
 | | Neon | Plastic boxes |
 |---|---|---|
@@ -245,7 +270,7 @@ It does mean two things you've said don't fit. You accepted "TRABOLD, one letter
 | Sound | The buzz is neon's own | A hum |
 | Its shadow on the slab | A solid bar | A bar with gaps |
 
-**Choice 2 — the arrow**
+**For reference — the two arrows in your article**
 
 | | Hooked arrow down the side | Arrow through the sign |
 |---|---|---|
@@ -253,7 +278,7 @@ It does mean two things you've said don't fit. You accepted "TRABOLD, one letter
 | Date | 1961 patent | 1963 patent |
 | With a tall stacked name | Runs down beside the name and points in under it. Fits | Made for a round sign. Would need the name on something round or square. Fits less well |
 
-**The starburst on top** — you accepted it; it isn't in the article. Starbursts are right for late-1950s Googie signs generally, so it isn't wrong, but nothing you've sent shows one. Keep or drop (question 2).
+**The starburst on top** — you accepted it; it isn't in the article. Starbursts are right for late-1950s Googie signs generally, so it isn't wrong, but nothing you've sent shows one. The designers decide.
 
 **Kept on purpose, though a real one differed:** the sign faces you across the road. A real roadside sign faces up and down the road, for drivers. Ours has to be read from where you arrive.
 
@@ -349,7 +374,7 @@ It does mean two things you've said don't fit. You accepted "TRABOLD, one letter
 - The arrow's bulbs — [Article]
 - One working canopy lamp — [1934] [concept]
 - **A lamp post: a pole with an enamel dome shade** — SETTLED [you] [Route 66]. Where it stands is PROPOSED: at the east end of the slab, in the open. (In your photo they stand by the pumps; ours have a canopy over them.) Whether it still lights is PROPOSED: yes, weakly
-- A small light at the aisle mouth, on when you arrive — [concept]
+- A small light at the aisle mouth, on when you arrive — [concept]. Yours: you left it on
 
 **Abandoned means**
 - The power never went off — SETTLED [you]. Fewer lights than there were, weaker, some bulbs gone
@@ -380,7 +405,7 @@ It does mean two things you've said don't fit. You accepted "TRABOLD, one letter
 
 | Thing | Where | Status | Abandoned means |
 |---|---|---|---|
-| Oil can rack | By the island | [1934] | Rusted, a few IRONWOOD or CALICHE cans left |
+| Oil can rack | By the island | [1934] | Rusted, a few cans left (placeholder names) |
 | Ice box (chest cooler) | By the front wall; today only chalked out | [1934] | Lid rusted, brand faded |
 | Oil drum | By the island | [1934] | Rusted, dented |
 | Tyre on the ground | By the wall | [Abandoned] | Belongs |
@@ -400,7 +425,7 @@ It does mean two things you've said don't fit. You accepted "TRABOLD, one letter
 - A disc of light on the ground that isn't yours — [concept; alien]
 
 **Abandoned means**
-- Your outlines read as plans for a place you've taken on. The circles are fresher than anything else on the lot.
+- Your outlines are your plans for a place you're living in and making over. The circles are in another hand, and fresher than anything else on the lot.
 
 **Left out on purpose:** the saucer [Inn] and the saucer shapes [Chart]. Evidence only, never the craft.
 
@@ -437,15 +462,16 @@ You said "not yet" to a picture for the inside, and none of yours shows one. So 
 
 | Thing | What it does | Source | Now |
 |---|---|---|---|
-| Cash register (PECOS) | Lights its little window; the drawer | [concept] | Dusty |
+| Cash register (placeholder name) | Lights its little window; the drawer | [concept] | Dusty |
 | Counter bell | The one thing that puts a word in the picture: DING | [concept]; the word after your HONK picture | — |
-| Cup, still warm | The steam stops when you've stood still | [concept] | SETTLED [you]: it stays, the one warm thing |
-| Camp stove beside the cup | Nothing | PROPOSED, from "maybe someone's squatting" | — |
+| Cup, still warm | The steam stops when you've stood still | [concept] | SETTLED [you]: it stays. Yours |
+| Camp stove beside the cup | Nothing | PROPOSED, from "it would probably be me squatting" | Yours |
+| Brushes and a bottle of ink; a notebook | Nothing | PROPOSED, same | Yours. The only hint of what you do |
 | Radio | Its dial lights; static, a station that won't come in | [concept] | Works |
-| Jacket on a hook | Nothing | [concept] | Stays if someone might be living here |
+| Jacket on a hook | Nothing | [concept] | Stays. Yours |
 | Wall clock | Turn it and the sun moves | [concept] | Running |
-| Sightings chart, pinned under the clock | Fills in as you see odd things | [Chart] | Yellowed |
-| Cooler (ARROYO COLA) | Lights the floor when open; a compressor | [concept]; chest cooler in [1934] | Running, nearly empty |
+| Sightings chart, pinned under the clock | Fills in as you see odd things | [Chart] | Kept in your hand |
+| Cooler (placeholder name) | Lights the floor when open; a compressor | [concept]; chest cooler in [1934] | Running, nearly empty |
 
 **Drawing needs (visual designer):** _empty_
 
@@ -462,7 +488,7 @@ You said "not yet" to a picture for the inside, and none of yours shows one. So 
 - A pull cord and tube light every third bay — [concept]
 - A payphone at the far end with its own small lamp — [concept]
 - The back door beside it — [concept]
-- A bedroll near the far end — PROPOSED, from "maybe someone's squatting"
+- A bedroll near the far end, made, and an instrument case beside it — PROPOSED, from "it would probably be me squatting". Yours
 
 **Abandoned means**
 - Stock thin, dusty, some fallen.
@@ -487,21 +513,10 @@ You said "not yet" to a picture for the inside, and none of yours shows one. So 
 
 ## Questions only you can answer
 
-**1. The name on the sign: neon, or plastic boxes?** You said yes to "one letter to a box", then said neon. They're different things.
-- **Neon:** like the VACANCY sign at the left edge of the MOTEL photo in your article. A tall narrow metal panel, the letters painted one under another, a glass tube bent along each. Older. It's the one that flickers and buzzes. At night it's thin lines of light and may be harder to read from across the road.
-- **Plastic boxes:** like MOTEL in that same photo. One letter to a fat rounded box, lit from inside. From 1964. Not neon. Easier to read at night.
+**1. What would you really have with you, living there?** We've guessed: a cup, a camp stove, a jacket, brushes and a bottle of ink, a notebook, a bedroll, an instrument case. Strike what's wrong and add what's missing. And say if "you're out, not hiding — the card on the door is yours" is the right idea.
 
-**2. The arrow, and the starburst.**
-- **Hooked arrow:** like the red one on the meat market sign in your article. Runs down the side of the sign and turns in at the bottom.
-- **Arrow through the sign:** like the Circle Inn sign in your article. Tail above, head below.
-- The starburst on top isn't in your article. Keep it or drop it?
+**2. The two pumps: both the same, or one of each?** You picked the short flat-topped one. One says REGULAR and the other HI-TEST; should they otherwise be twins?
 
-**3. Which pump shape?** (Asked before with picture numbers; here in words.)
-- The short rounded yellow-and-orange ones in your Route 66 photo: a fat round globe on top, a small window with the numbers.
-- The tall red ones under the canopy in your restored 1934 station photo: taller and slimmer, a globe on top, the hose looped at the side.
+**3. "Does the light redraw it?" — you said no.** We've read that as: each thing is drawn once and keeps its own shading at any hour, and shadows and night are laid over it. Is that what you meant?
 
-And: two the same, or two different?
-
-**4. Brand names.** Pick from the proposed list near the top, or change them.
-
-**5. "Maybe someone's squatting."** Shall we take it up, lightly: a bedroll, a camp stove, and never say who? Or leave it as an attendant who stepped out?
+**Waiting on you, not questions:** the extra sign photos (none came through), and the brand names when you're ready.

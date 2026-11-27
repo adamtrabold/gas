@@ -2,6 +2,31 @@
 
 ## Where things stand (latest first)
 
+**Small update for `owner.md` sections 17–18 (2026-11-27).** Edited `elements.md` **in place** (a new visual designer is filling the drawing-needs slots for pump, slab/island, canopy at the same time; never rewrite that file wholesale — an earlier rewrite wiped a filled slot) and the how-it-works half of `concepts/05-left-on.md`. `jobs.md` unchanged: no job changed.
+
+### His words
+
+- Sign: no pick between neon and plastic boxes — "I want the best amalgamation?", from more photos he is sending. **None arrived.** Arrow and starburst: "don't care" → designers' call.
+- Squatter: "Well it would probably be me squatting".
+- Pump sheet: A1 short flat-topped (Route 66 photo); B3 dots; D "no" (read as drawn once — unconfirmed); E2 scanned paper per part with real grey in the paper, ink stays black; F brand names: he'll supply, "just mock for now". Two the same or one of each: unanswered.
+
+### What I changed
+
+- elements.md: settled table rows added; brand section retitled placeholders (names removed from table cells elsewhere); build-order note for the sign; pump shape settled + "Your picks on the pump sheet" block (above "Abandoned means", away from the visual slot); sign entry given a "Where it stands now" block (amalgamation on one frame, as the MOTEL photo in his article shows; waiting on photos; nothing of the sign drawn until then; arrow/starburst designers' call — my lean is the hooked arrow) and the two tables relabelled "for reference"; his things marked in elements 9, 12, 14, 15; questions rewritten to three.
+- **"It's you squatting" written as a proposal for him to check**, in elements.md and as a new section "Who isn't here" in 05-left-on.md. Core points: never shown; explains power, cup, jacket, chalked plans, name, card; things of his a visitor finds (cup, camp stove, jacket, brushes and ink, notebook, bedroll, instrument case, outlines, the chart in his hand — all PROPOSED); **he is out, not hiding** is the rule that keeps it from being frightening; between-visit changes are him having been there, and are literally true when Adam adds to the site (job 13 gains a fiction, doesn't change); two hands on the lot (his, and the circles'); the chart entry about the visitor is him writing them down; no jokes, no self-portrait. For parked jobs 15–19: who he is → his things; the work → what he's making here; get in touch → leaving word. Not designed.
+- 05 rule table row now "Adam, who lives here". Two older mentions of "the attendant's" remain in 05 (provenance line and the aisle-mouth light row); the opening says to read them as Adam.
+
+### Open with the owner (three, in elements.md)
+
+1 what he'd really have with him, and is "out, not hiding" right; 2 two pumps the same or one of each; 3 confirm the reading of "no" to the light redrawing.
+Waiting, not questions: sign photos; brand names.
+
+### Next
+
+- Sign waits on photos. Visual fills slots. Re-run `coverage-05.md` once the sign is decided (job 2 at night).
+
+## Earlier: elements.md, third version
+
 **`elements.md` updated for `owner.md` section 16 and the sign article (2026-11-27).**
 
 ### His answers (section 16)

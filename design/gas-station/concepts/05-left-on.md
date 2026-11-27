@@ -5,7 +5,7 @@
 
 *How it works (systems). Round 3: brought in line with `score-2.md` and `owner.md` section 7. This is the one concept: 01 Nobody's here merged into 03 Your light, as `score-1.md` asked. It replaces both files' how-it-works halves. Read `00-shared.md` for the place itself: the lot, walking, the door, the world's edge, sound, twilight.*
 
-An abandoned station with things left on. It has been empty for years and the power never went off (the owner: "This is liminal space logic so abandoned can still have power"). Everything is faded and rusted, and everything still works. One cup on the counter is still warm. Where this file says "the attendant", read: whoever isn't here. He has also said "maybe someone's squatting"; that is a proposal in `elements.md`, not yet part of this.
+An abandoned station with things left on. It has been empty for years and the power never went off (the owner: "This is liminal space logic so abandoned can still have power"). Everything is faded and rusted, and everything still works. One cup on the counter is still warm. Where this file says "the attendant", read: Adam. He has said "it would probably be me squatting"; see "Who isn't here" below, which is a proposal for him to check.
 
 The name is for three things at once: the place was left with things on; you leave lights on; and sometimes one is on that nobody left.
 
@@ -26,11 +26,23 @@ I don't see a second concept that differs in kind and is worth making. The owner
 
 | Who | Never seen | Seen as |
 |---|---|---|
-| The attendant | Him | His things, and what he left on |
+| Adam, who lives here | Him | His things, his plans chalked on the ground, and what he left on |
 | You | You | Your shadow in the sun; your light in the dark |
 | The other thing | It | A light that isn't the sun's, the station's or yours |
 
 Every act you can make puts light somewhere or takes it away. There is nothing else to do here, so nothing needs an interface.
+
+## Who isn't here (proposal, for the owner to check)
+
+The owner: "Well it would probably be me squatting." So the absent person is Adam, living in an abandoned station and making it into something. He is never shown: no figure, no photo, no voice.
+
+- **It explains what was unexplained:** the power (he keeps it on), the warm cup, the jacket, the plans chalked in his hand, his name on the sign, the card in the door.
+- **What a visitor finds of his:** on the counter the cup, a camp stove, brushes and ink, a notebook; the jacket on its hook; a made bedroll and an instrument case at the far end of the aisle; his outlines on the ground; the chart, kept in his hand. All proposed; the list is in `elements.md`.
+- **He is out, not hiding.** This is the rule that keeps it from being frightening. Nothing on the standing-still list needs anyone present, and nothing is ever at the dark end of the aisle but a bedroll. Asking for someone is asking for him, and he's out.
+- **Coming back:** things have changed between visits because he's been there. When Adam really adds something to the site, that is the same event. An outline becomes a thing.
+- **The alien material gets sharper:** two hands on the lot, his and another. The chart is his record of what he can't explain. The entry about you, on your second visit, is him writing you down.
+- **Liminal, not funny:** no jokes, no self-portrait, no signature but the sign. A visitor who doesn't know the name learns only that someone lives here, draws, and is out.
+- **For the parked jobs** (nothing designed): who Adam is → his things; the work → what he's been making here; get in touch → leaving word for someone who's out.
 
 ## Your two marks
 
