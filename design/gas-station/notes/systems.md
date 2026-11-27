@@ -2,6 +2,34 @@
 
 ## Where things stand (latest first)
 
+**`elements.md` rewritten with the owner's answers (2026-11-27).** `owner.md` section 15: "1 yes 2 abandoned 3 I don't know what you're talking about 4 realistic labeling with fake brand names 5 joined 6stucco over brick 7 not yet". He also added a look direction ("flash sheet vibes", `inspo/19`–`22`) — director's and visual's, not mine.
+
+### What changed
+
+- Pictures are now named in words, not numbered (he can't see numbers; that's why the pump question failed).
+- Settled: it's the right list; abandoned; realistic labels with invented brands; canopy joined; stucco over brick; inside has no picture yet (stays PROPOSED as a whole; it's last in the build order).
+- His three building answers all describe his abandoned desert station photo → that photo is now the main reference for the building; pumps and sign come from elsewhere.
+- Each element now has "Abandoned means" and "Still works (left on)".
+- **Conflict stated plainly, not smoothed** (section "Abandoned, and left on"): (1) power — an abandoned station has none, Left on needs sign, canopy lamp, switches, radio, cooler, dial tone; (2) the warm cup and the jacket say "a minute ago"; (3) windows — abandoned means boarded, Left on needs see-through glass at the front. What fits better: the faded BACK IN 5 MINUTES card, lights that stay on in a dead place, one you didn't leave on, his chalked plans ("to make into something"), bare shelves.
+- My recommendation, as question 1(a): abandoned for years and the power never went off; keep one warm cup as the single unexplained thing; jacket goes or is dusty; front glass kept, filthy.
+- Rule added: every letter of the name still lights (letters out would spell a joke).
+- Concept files touched only where his answers contradict them: `05-left-on.md` first line (abandoned, pointer to the conflict) and aisle stock now labelled; `00-shared.md` lot notes (joined canopy, abandoned, stucco, labels). Nothing else in the concept changed pending his answer.
+
+### Open with the owner (six, in elements.md)
+
+1 power: never went off / dead until you switch it on / other. 2 how far gone (glass at the front or boarded). 3 pump shape, described in words; same or different. 4 who names the invented brands. 5 the eight PROPOSED things, accept all or strike. 6 unused things from his photos.
+
+### If he answers 1(b) (dead until switched on)
+
+Job 2 at night breaks as written (name not lit on a first night arrival) and "the place is always findable" goes. `05-left-on.md`, `00-shared.md` (twilight sequence, station's own lights) and `coverage-05.md` would all need redoing. Flag before anyone builds.
+
+### Next
+
+- His answers; then update concept + coverage to match.
+- Visual designer fills the "Drawing needs" slots.
+
+## Earlier: element list, first version
+
 **Element list written (2026-11-27): `elements.md`.** No concept change. Left on and its how-it-works half stand.
 
 ### What happened since round 3

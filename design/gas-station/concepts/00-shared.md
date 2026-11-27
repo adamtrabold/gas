@@ -35,7 +35,8 @@ One layout. It comes from where the sign's shadow really falls (a 12 m sign, a g
 - **The sign stands at the road, straight in front of the door.** The arrow dives at the door. It carries his name and nothing else ("Gas is unnecessary").
 - **You arrive across the road, 21 m south of the sign,** facing it. From there the whole name is in the picture on a phone, and the road lies between you and the place.
 - **The canopy and pumps are to the west; the door is clear of them.** This is the director's "door at the edge of the shade", with a reason he didn't have: a canopy anywhere north of the sign catches the sign's shadow on its roof, where nobody can see it. Put to the west, it only catches the morning shadow, and "the shadow goes in under the canopy" is a good thing for a shadow to do.
-- The owner has confirmed it: "Canopy over pumps yes."
+- The owner has confirmed it: "Canopy over pumps yes." And it is **joined to the building** ("joined"): it comes off the front wall west of the door, as in his abandoned desert station photo.
+- **The station is abandoned** ("abandoned"), and the wall is **stucco over brick**. Labels on things are **realistic, with invented brand names**. What each of those does to each element is in `elements.md`. Whether the power is still on is out with him.
 
 ## Moving
 

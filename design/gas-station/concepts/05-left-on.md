@@ -5,7 +5,7 @@
 
 *How it works (systems). Round 3: brought in line with `score-2.md` and `owner.md` section 7. This is the one concept: 01 Nobody's here merged into 03 Your light, as `score-1.md` asked. It replaces both files' how-it-works halves. Read `00-shared.md` for the place itself: the lot, walking, the door, the world's edge, sound, twilight.*
 
-A station somebody stepped away from, with things left on. By day it's whole, lit by one sun, and it doesn't need you. Wherever the sun doesn't reach, it exists where you put light. Whatever you switch on stays on after you've gone.
+An abandoned station with things left on. (The owner has since said the place is abandoned, not kept up: `owner.md` section 15. This file was written about a station someone had *just* left. Where that no longer fits — the power, the warm cup, the windows — is set out in `elements.md` under "Abandoned, and left on", and is out with him as a question. Nothing else below has been changed for it yet.) By day it's whole, lit by one sun, and it doesn't need you. Wherever the sun doesn't reach, it exists where you put light. Whatever you switch on stays on after you've gone.
 
 The name is for three things at once: the place was left with things on; you leave lights on; and sometimes one is on that nobody left.
 
@@ -67,7 +67,7 @@ Three acts and standing still. The same everywhere, at every hour.
 
 - **No daylight gets here. It is always night in the aisle.** So at any hour this is where the lamp is fully yours.
 - A pull cord every third bay lights that stretch. You light it a stretch at a time, or walk it by lamp alone.
-- Stock on the first shelves, no labels. Bare shelves further back.
+- Stock on the first shelves, with realistic labels and invented brand names (owner: "realistic labeling with fake brand names"). Bare shelves further back.
 - **The far end:** a payphone with its own small lamp, and the back door, both big enough to be the picture when you get there.
 - **Behind you** is the way you came: the aisle runs in line with the front window, so from the far end the daylight is straight back down it. (Round 1 called this view the reason to walk the aisle. It doesn't work as a picture yet, so I've taken the claim out. If the visual designer solves it, it goes back in.)
 - It ends. One impossible thing, its length, is enough; nobody should be lost in it.
