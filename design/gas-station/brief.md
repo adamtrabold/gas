@@ -15,9 +15,15 @@ chart). Unconfirmed.
   mainly for. Those are open questions to the owner — design so the answer can
   slot in, and name what you need to know.
 
+## The owner's later direction (verbatim)
+
+> I'm thinking threejs
+
+See `owner.md` for everything the owner has said since the brief.
+
 ## The project
 
-- Empty repo: no code, no brand, no design system, no stack chosen. This round
+- Empty repo: no code, no brand, no design system. The owner is leaning three.js (see above). This round
   sets the foundation. Scores are provisional until the owner reacts.
 - It is a website (desktop and phone).
 
