@@ -142,94 +142,82 @@ That day is more than 01 with a shadow added. "Your reach is the hour" and "come
 
 # 03 — Your light: how it looks and feels
 
-*Visual turn 1. Read the look-and-feel half of `00-shared.md` first. Pictures: `stills/sheet-03.png`, `stills/sheet-walk.png`, and the single frames. Prototype: `sketches/your-light/index.html`.*
+**You are** a shadow by day and a lamp by night, and never drawn. **The hour** changes what your hand is.
 
-**Draws on:** the ink rule taken to the visitor; the owner's night references in tone only (HONK, 04; Hollywood in the Rain, 07), where a thing exists because of the light on it.
+*Visual turn 2. Read the look-and-feel half of `00-shared.md` first. Pictures: `stills/sheet-03.png`, `stills/03-wide.png`. All from the walked prototype with `?c=3`.*
 
-## The prototype
+**Draws on:** the ink rule taken to the visitor; the owner's night references in tone (HONK, 04; Hollywood in the Rain, 07).
 
-Systems asked for one before anyone rules. It exists: a three.js night forecourt you can walk in.
+## A shadow that isn't a figure
 
-- Move the pointer (or drag) and a lamp at eye height follows. What it lands on is paper; everything else is ink.
-- Hold to walk toward where you're looking; arrow keys or WASD also walk.
-- Keep still for a few seconds and the lamp closes. It doesn't fade; the disc gets smaller until it's gone. Then the stars come out, one stroke each, with tails.
-- Anything your lamp has been on keeps a thin line.
-- Add `?day=1` for the same place in sun.
+The director's objection to last round's hooded shape was right. `03-shadow`: what throws your shadow now is a plain upright shape with a round top. No head, no shoulders, no arms. It starts under the bottom of the screen and is cut off by it. It moves exactly as the view moves because it is fixed to the camera.
 
-It has no inside, no sound, and nothing to act on. Its brushwork is noise at the edges of the light, not strokes. It is there to answer whether the idea holds when used.
+It reads as "the thing standing here", which is you. It doesn't read as a person, and I think that's correct for a site with alien material in it: nothing says what you are.
 
-## The questions I was asked
+You see it only when you look down, or when the sun is low. That is unchanged from last round and it's simply true of shadows.
 
-**Is a first-time visitor at night lost in black?** No (`proto-arrive`). The name is lit, the bulbs are lit, and the station's one lamp finds the whole front of the building. You know where you are and where the door is before you've done anything. It is mostly ink and it isn't empty.
+## Day touching
 
-**Does aiming a light feel like touching?** Yes, more than I expected (`proto-aim`, `proto-walk`). The disc has a frayed edge, things stand in it as ink, and it leaves when you leave. `proto-walk`, taken from a spot I walked to, is as good as anything I composed.
+`03-touch`: you've walked up to the air post with the sun behind you. Your shadow runs along the ground to it and the post has taken its blacks. The shadow and the thing join into one mark. That joining is the feel of touching here, and it's a good one: you aren't pointing at the thing, you're connected to it.
 
-**Does your own shadow read as yours?** Partly (`03a`).
+What it needs: a thing at least as wide as your shadow, or one that goes fully black, or the join is hard to see. A bench didn't work when I tried it (too low; the shadow lay across it and showed nothing). Pumps are under the canopy, in shade, where you have no shadow.
 
-- In the best case it does: a figure's shadow coming in from the bottom edge, pointing at the station. Nobody will take it for a character; it is the oldest picture there is of the person holding the camera.
-- But the best case is narrow. The shadow is in a tall frame only when the sun is low and behind you. Around noon in summer it is a stub under your feet. In the morning and evening it runs off to one side. `03a` is noon in winter, chosen because it works.
-- And it can't reach anything. A shadow two or three metres long doesn't touch a pump twenty metres away. "Look is letting your shadow fall on a thing" can't happen from the road.
-- The generated shadow has a pointed head and looks hooded. A drawn one wouldn't.
+So by day, in this lot, your shadow can touch the air post, the phone box, the door, the wall, and the pumps only when the sun is low enough to get under the canopy. That's fewer things than systems' text assumes, and they should know.
 
-## With "walk around": by day you touch by standing next to things
+## Night
 
-Walking repairs the day half. If you can walk, your shadow reaches a thing when you stand by it with the sun behind you. So:
+- `03-night-arrive`: lamp down. Not lost: the name, the bulbs, the lit front.
+- `03-night-aim`: lamp up, on the wall by the door. **The lamp now sits above and beside the eye**, as systems asked. I agree with them: things in the disc now throw shadows you can see.
+- `03-night-kept`: lamp down, sky up. The phone box, lit a moment ago and left, keeps three strokes of itself. No outline. It works, and it's small: at 10 m on a phone three strokes are a few pixels. It will read better on near things than far ones.
+- `03-other`: a disc on the ground that isn't yours. Same mark as your own lamp makes, somewhere you aren't pointing.
+- `03-anywhere`: a random spot and heading at night with the lamp up. A disc on a wall and nothing else. Honest, and fine: your lamp always gives you something.
 
-- **By day, to touch a thing you walk up to it and stand so your shadow is on it.** It takes its blacks while you're there.
-- **Your reach is the hour.** Long in the morning and evening, so you can touch things from a few steps off. At noon almost nothing, so you have to be right on top of them. The time of day changes what your hand is, which is this concept's answer to the owner's open question, and now it has a body.
-- Under the canopy or indoors you have no shadow. You bring the doorway in with you instead (`03e`).
+## Inside
 
-This is a reshaping of systems' day rules, not a new idea, and it needs them to rework it.
+`03-inside`: every light off, by day. The doorway lies on the floor as a patch of paper with your shadow in it. This is the strongest single picture of what you are in this concept. The pull cord hangs in that patch in the prototype; it's too thin to see in the frame, and it needs to be a real object, a hand's width at least.
 
-## The look
+Not drawn: the room with lights on one by one. The aisle from 01 is there in the dark and can be walked with the lamp.
 
-- **Night:** nearly all ink. Lit signs, one lamp, and your disc. Mass only.
-- **Day:** the same place as 01. The only difference is your shadow on the ground in front of you.
-- **Inside by day** (`03e`): ink, with a patch of floor from the door and your shadow in it. A thing that's switched on throws a little paper round itself, and whatever is in that paper exists. In the picture the radio is on, so the bell beside it can be seen.
-- **What you've lit and left.** In the prototype it keeps a thin outline. That breaks the rule about never drawing an outline round a thing, and it's the weakest look in the prototype. Better: a remembered thing keeps two or three of its own strokes. Not built.
+## The moments
 
-## The five moments
+| Moment | Picture |
+|---|---|
+| Arriving by day | `place-day-road`, then `03-shadow` when you look down |
+| Arriving at night | `03-night-arrive` |
+| Crossing the door | shared (`cross-2d`), then `03-inside` |
+| Inside | `03-inside` |
+| Doing nothing | `03-night-kept`: the lamp closes and the sky comes up |
+| A view nobody composed | `03-anywhere` |
+| Wide | `03-wide` |
 
-| Moment | Picture | What you see and feel |
-|---|---|---|
-| Arriving, day | `03a` | The place, and your shadow on the ground. The shadow moves when you do |
-| Arriving, night | `proto-arrive` | Mostly ink; the name, the bulbs, the lit front |
-| Touching | `proto-aim`, `proto-walk` | A disc of paper where you point. Things stand in it |
-| Crossing the door | as `01b`, then `03e` | By day the patch of floor grows as the door opens |
-| Inside | `03e` | Dark until you turn something on |
-| Doing nothing | `proto-wait` | The lamp closes. The sky comes up. This is the best "do nothing" of the four concepts, because it gives you more than doing something did |
-| Another hour | `03a` against the night frames | You are a different thing |
+## What the frames found
 
-## What the drawing found
+- **Night is strong and whole.** Every night frame holds.
+- **Day is still thin.** It's the shared place plus a shadow you see when you look down, and a handful of things you can join with. "Your reach is the hour" is real but small.
+- **Twilight is undrawn.** Systems' ten seconds (the sky inked in from the top, the letters coming on one at a time against it) is the best new idea in the files this round and I'd want it in every concept, not only this one.
 
-- This is the concept that suits "walk around". The others put up with walking; this one is made of it.
-- Night is strong and day is thin. By day it's concept 01 with a shadow added. The idea lives after dark.
-- "Inside by day isn't a chore of switches" is not answered. `03e` is a pleasing picture and tells me nothing about whether finding the first switch is a pleasure. The pull cord should hang inside the patch of light from the door, so the first one costs nothing.
-- Twilight, when you have neither shadow nor lamp, is half an hour of having no hands. Right for the mood, and it will also look broken to someone who arrives then. It needs a sign that it's on purpose: the station's lights coming on one at a time is probably enough.
+## Disagreements
 
-## Pushing on it
-
-Not a ruling, a proposal for the director: **these four may be one place.** 03 is what the visitor is (a light). 01 is what the place is (somewhere someone just left, with things that answer). 02 is what the sign does (tells the time, and by day lays a path). 04 is how it grows. They conflict less than four concepts should, and where they do conflict (does the hour choose a thing, or not) the owner hasn't answered.
-
-If they must stay separate, this is the one I'd build first, because it's the only one whose main verb I have used and liked.
+- With systems, mildly: "come at things from the sunny side" will be fewer things than they list, because of the canopy.
+- None with the steer.
 
 ## Jobs, where the look carries them
 
 | Job | How |
 |---|---|
-| 1, 2 | `03a`, `proto-arrive` |
-| 3, 4 | The door; `03e`; the lit windows seen from outside afterwards |
-| 5 | Every act puts light somewhere or takes it away |
-| 6 | The sound is the sum of the lights (and that is the shared starting point for sound in every concept) |
-| 7 | Shadow by day, lamp by night, neither at twilight |
-| 8 | A fourth light. A disc on the ground like yours that isn't yours. Not drawn; it would need no new art at all |
-| 9 | `proto-wait` |
-| 10 | The lights you left on, and the one you didn't |
-| 11, 12 | No 3D: the arrival still at this hour. Keyboard: the lamp is the focus ring, as systems said, and it looks right |
-| 13, 14 | A new thing is a shape, what it lights, and its sound. Shared rules for strokes, models, textures |
-| 15–19 | A piece of work is a thing you hold up to the light |
+| 1, 2 | `place-day-road`, `03-night-arrive` |
+| 3, 4 | `03-inside`; the aisle by lamp |
+| 5 | `03-touch` by day; `03-night-aim` by night |
+| 6 | Each light's hum has a mark beside it (not drawn) |
+| 7 | `03-shadow` against `03-night-aim` |
+| 8 | `03-other` |
+| 9 | `03-night-kept` |
+| 10 | Lights left on (not drawn) |
+| 11, 12 | `03-wide`; no-3D has no lamp or shadow, as systems says |
+| 13, 14 | A new thing is a shape, a light and a sound |
+| 15–19 | A piece of work is a thing you put a light on |
 
 ## Not sure about
 
-- Whether the lamp should be at eye height (a torch) or a little above (a lantern). The torch lights what faces you and throws shadows straight back where you can't see them. A higher lamp would throw shadows you can see.
-- Lights staying on between visits: good. It is also the only state a visitor can't undo by leaving, and some people will want the dark back. One pull at the door that puts everything out.
+- The day. If the owner's answer to "should the hour do something" is yes, this is the concept that says so most truly, and its day is its weak half.
+- Whether a round-topped column for a shadow is too abstract. It was chosen to not be a person. He may want it to be a person.

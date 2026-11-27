@@ -96,6 +96,9 @@ That it isn't an excuse for being unfinished. That thin broken line under "pure 
 
 # 04 — The makeover: how it looks and feels
 
+*Visual, turn 2: folded, as ruled. Its pictures (`sheet-04.png`, `04a.png`) are deleted. What survives is drawn in `stills/place-marked.png` and described in the look-and-feel half of `00-shared.md` under "Marked out, and marks in another hand". The text below is last round's and is kept only as the record of why.*
+
+
 *Visual turn 1. Read the look-and-feel half of `00-shared.md` first. Picture: `stills/sheet-04.png`, `stills/04a.png`.*
 
 **Draws on:** the working marks on Kirby's original boards (16–18); the captions on the sightings chart (15).

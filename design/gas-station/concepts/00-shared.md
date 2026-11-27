@@ -211,96 +211,131 @@ Sound on or off; the chart; the date of your first visit. Concepts add to it whe
 
 # Shared by every concept — how it looks and feels
 
-*Visual turn 1 of the concept phase. Written after the owner's answers in `owner.md` sections 2–6, including the three that arrived mid-turn ("walk around"; sound "yes but idk how to even begin there"; public, "yes but no").*
+*Visual turn 2 of the concept phase. Rewritten after `steer-1.md` and the systems designer's rewrite for walking. Replaces my first version.*
 
-## The pictures, and what they are
+## The swim test (asked for first)
 
-All in `concepts/stills/`. Tall phone first (300 × 650, saved at double size). One sheet per concept, plus each frame as its own file to look at on a phone.
+**Result: the ink sits in the world.** Walk past the edge of a shadow or the edge of a lamp's pool and its broken shape stays where it is on the ground, like something painted there. It changes when the light changes and not when you move.
 
-| File | What it is | Made with |
+How it was tested. I built a new walked prototype of the whole lot in three.js (`sketches/place/`). The broken edge of every light is made from a pattern that is read at the point in the world each pixel shows, not at the pixel's place on the screen. The pattern is fibres that run the way the light runs: parallel for the sun, outward from a lamp. The test (`sketches/place/swim.js`) follows one fixed spot on the ground through six frames, turning and then walking toward it, cuts the same small square round that spot from each frame, and counts how many pixels changed from one frame to the next. It does this twice: ink fixed to the world, and ink fixed to the screen as in last round's prototype. Picture: `stills/swim-test.png`.
+
+| | Ink fixed to the world | Ink fixed to the screen |
 |---|---|---|
-| `sheet-01.png`, `01a`–`01d` | Nobody's here: arriving, the door, the counter, night | 2D drawing engine |
-| `sheet-02.png`, `02a`–`02d` | The Arrow: forecourt in the morning, arriving at noon, night, inside | 2D drawing engine |
-| `sheet-03.png`, `03a`, `03e`, `proto-arrive`, `proto-aim`, `proto-wait` | Your light: your shadow by day, three night frames, inside | 2D engine and the three.js prototype |
-| `sheet-04.png`, `04a` | The makeover: three states of finish | 2D drawing engine |
-| `sheet-walk.png`, `proto-dayroad`, `proto-daywalk`, `proto-walk` | Walking: views from spots nobody composed | three.js prototype |
+| Night, edge of the canopy lamp's pool: turning | 0.4% changed | 4.0% |
+| Night, same: walking | 1.2% | 3.5% |
+| Day, a shadow edge on the slab: turning | 1.8% | 3.5% |
+| Day, same: walking | 3.7% | 5.1% |
 
-Sources: `sketches/concepts/` (the 2D engine; `node render.js`) and `sketches/your-light/` (the prototype; serve the folder and open `index.html`, or `node render.js` for its stills). Both are throwaway.
+What I saw in the frames. At night the pool's edge has the same tongues and the same islands of light in all six frames; they grow as you approach and do nothing else. With the ink fixed to the screen, the edge is a different shape in every frame. By day the gap is smaller because a sun shadow's edge is nearly a clean line, so there is less to swim; the changes that remain in the world version are the square's perspective changing as you walk.
 
-**What these do and don't prove.**
+What it does not prove:
 
-- Every stroke is generated. The owner will draw them later ("draw but generate for now"). So the stills show where ink goes and how much of it, and they do not show a hand. Where strokes comb into even teeth (the door in `01b`, the jacket in `01c`, the shadow in `02a`) that is the generator, and it is the first thing his own marks would replace.
-- The 2D stills are single composed views with real sun positions. They prove a picture can be made. They don't prove it survives walking.
-- The prototype is real-time three.js with two values and no outlines. It proves the ink rule runs live, that you can walk in it, and that views from uncomposed spots hold. Its edges are frayed by noise in the screen, not laid as strokes on surfaces, so its brushwork is the weakest of anything here.
-- Lettering is a system font standing in. No face is chosen.
-- No sound exists in anything.
-- Nothing is drawn wide. Every picture is a tall phone; desktop is undrawn.
-- I could not open the owner's saved sign article or the Flickr pool (those hosts aren't reachable from this session). The sign is designed from the summary in `owner.md` and from what such signs generally were. It needs checking against his references by someone who can open them.
+- **I have not felt it in the hand.** The test was run in a browser without a screen. I judged from frames and counts. Someone should walk the prototype on a phone.
+- **These are fibres of noise, not brush strokes.** The edge breaks in the right direction and stays put, but it has no swell and taper. The owner's own marks would have to be laid along the same fibres. That is the next test, and it needs a sheet of his strokes.
+- **Cost.** One extra full-screen pass and a depth read. Untested on a real phone.
+
+One more thing came out of it. To keep paint sharp while light frays, the ink pass has to know which is which. In the prototype, lit surfaces carry a faint tint that paint doesn't have. So "two blacks" is now a mechanism: the door card and the letters on the sign are sharp at any distance, and no shadow edge is.
+
+## Camera at full rate, ink held
+
+Done in the prototype: the view is redrawn every frame. And with the ink fixed to the world there is nothing left to hold while you walk, because nothing swims. "Held" now applies only to things that happen: a word landing, the lamp closing in steps, the light moving on. Same caveat as above: I haven't walked it on a device.
+
+## The pictures
+
+All in `concepts/stills/`. Tall phone first (300 × 650 at double size), one wide frame per concept. Everything except `cross-2d.png` is a frame from the walked prototype at a position and heading given in `sketches/place/shots.js`.
+
+| Sheet | Frames |
+|---|---|
+| `sheet-00-place.png` | `place-day-road`, `place-day-door`, `place-night-road`, `place-night-canopy`, `place-edge`, `place-marked` |
+| `sheet-01.png` | `cross-2d`, `01-counter`, `01-aisle-near`, `01-aisle-far`, `01-disc`, `01-anywhere` |
+| `sheet-02.png` | `02-morning-pump`, `02-late-air`, `02-noon-door`, `02-after-bench`, `02-winter-noon`, `02-door-out`, `02-window`, `02-night` (and `02-anywhere`, not on the sheet) |
+| `sheet-03.png` | `03-shadow`, `03-touch`, `03-inside`, `03-night-arrive`, `03-night-aim`, `03-night-kept`, `03-other`, `03-anywhere` |
+| `sheet-wide.png` | `01-wide`, `02-wide`, `03-wide` |
+| `swim-test.png` | the test above |
+
+To walk it: serve the `sketches/` folder with any static server and open `place/index.html`. `?c=1`, `2` or `3` picks the concept; `hour=` and `decl=` set the sun; `night=1` for night. `node render.js` in `sketches/place/` remakes the stills, `node sheets.js` the sheets. Throwaway. Last round's prototype and 2D stills are deleted, except the door-crossing frame.
+
+**What the stills prove and don't.**
+
+- They are real-time frames of crude boxes. They prove where ink goes, that it holds from anywhere, and that it stays put. They don't show a hand.
+- Last round's 2D stills had better brushwork (strokes stacked along the light) and were not walkable. This round's are walkable and have worse brushwork. Nobody has both yet.
+- The prototype has no crossing stroke, no landed words, no sound, no "near things get a paper line in shade", and nothing answers a tap.
+- Lettering is a system font.
+- The three views labelled "anywhere" were placed by random numbers, to be honest about what an uncomposed view looks like.
 
 ## The look, from his words
 
-| His words | What it means on screen |
+| His words | On screen |
 |---|---|
-| "pure ink for now" | Two values. Every pixel is ink or paper. No grey, no fades. A light that dims gets smaller; it doesn't get fainter |
-| "somewhere in the middle. I want them readable but note precise or always whole" | Strokes with a swell and a taper. The bristles part toward the end of a long stroke. A few strokes are simply missing. Shapes stay readable because masses are big, not because edges are clean. Never an outline drawn round a thing |
-| "Route 66 but there's gotta be a googie arrow sign and it should have some elements of that era in places" | A plain stucco box with two painted stripes. One showpiece, the arrow sign. A few small period things: the starburst on the pylon, the lamp shades, the pump globes, the clock |
-| "it should feel liminal not funny" | Nothing winks. Words land flat and sit there. Nothing of the alien is ever drawn except what it left |
-| "place first" | The first picture is the road, the station, the sign. No title, no menu, no instruction |
-| Whose name: "Me" | TRABOLD on the sign, one letter to a lit box, stacked down the pylon |
-| "walk around" | See "Walking" below. It changes more than anything else here |
-| "yes but no" | His name is on the sign and nowhere else. No credit line, no contact note |
+| "pure ink for now" | Two values. A light that dims gets smaller, not fainter |
+| "somewhere in the middle. I want them readable but note precise or always whole" | Masses are big and plain; their edges break along the light. Not built yet as strokes |
+| "Route 66 but there's gotta be a googie arrow sign and it should have some elements of that era in places" | A plain box with two painted stripes and a canopy; one showpiece, the sign |
+| "it should feel liminal not funny" | Nothing winks. Nothing of the alien is drawn except what it left |
+| "place first" | The first picture is the road, the station, the sign. Nothing on top of it |
+| "Me" | TRABOLD on the sign, one letter to a box, stacked |
+| "walk around" | Everything here is from a walked world |
+| "yes but no" | His name is on the sign and nowhere else |
 
 ## The rules of the drawing
 
-1. **Ink is where the light isn't.** Shapes are made by shadow meeting light. A sunlit wall against a sunlit sky has no edge between them (`01a`, `proto-daywalk`): the station exists by its paint, its openings and its shadows.
-2. **Two blacks.** *Shadow* is brushed, moves with the light, and is laid in the direction the light travels. *Paint* is flat and hard and never moves: the stripes, the arrow, the lettering, the door card. The eye can tell what a person made from what the sun made.
-3. **The light source sets the stroke.** Sun: parallel strokes, all leaning one way. Lamp: strokes of paper laid away from the lamp. Stars: one stroke each, laid round the still point of the sky, as long as the night is old.
-4. **In shade, near things get a paper line; far things are lost.** Losing things is allowed. It is most of the mood.
-5. **Dots.** A regular row of dots is bulbs. A loose cluster is the alien material. Nothing else is made of dots.
-6. **Words that land** (DING) are slab letters known only by the ink they throw, after the owner's HONK image. No burst, no exclamation mark (`01b`).
+1. **Ink is where the light isn't.** A sunlit wall against the sky has no edge (`place-day-door`).
+2. **Two blacks.** Shadow breaks at its edge and moves with the light. Paint is flat and sharp and never moves: stripes, arrow, lettering, the door card, the garage door.
+3. **The light sets the grain.** Sun: parallel. Lamp: outward. Stars: one stroke each, round the still point.
+4. **Far things are lost.** Past about 100 m. This is also what hides the end of the world (below).
+5. **Dots.** A regular row is bulbs. A loose cluster is the alien material.
+6. **Words that land** are slab letters known by the ink they throw (`cross-2d`).
+
+## The building (one, for all three)
+
+I've used the systems designer's lot: sign at the road, door 16 m straight north of it, canopy and pumps to the west.
+
+- **The canopy is back on**, as the director ruled, and **it sits west of the door**, as systems argued. I agree with systems over the steer here. With the canopy in front of the door the sign's shadow would land on its roof, and the door would be in shade all day.
+- **Day arrival now reads as a gas station** (`place-day-road`): a black slab on posts with pumps under it, two stripes, a door, and the sign over all of it.
+- **What the canopy costs.** Everything under it is ink for most of the day. The pumps are lost in the shade unless the sun is low. The rule "near things get a paper line" would bring them back as you walk in; it isn't built, so in these frames the pumps come and go with the hour.
+- **Two things I added to the lot,** for the director and systems to accept or not: a shop window east of the door with a low sill (the room needs a view of the slab), and a bench under it. The garage door is paint.
+- **At night the canopy is lit from below** (`place-night-canopy`): a bright slab on posts with a pool under it. Nothing has been added to make it strange.
 
 ## The sign
 
-In every concept: a pylon by the road, the name in separate lit boxes stacked down it, a flat painted arrow with a row of bulbs, a starburst on top. In 01, 03 and 04 the arrow dives at the door. In 02 it rakes up over the forecourt.
+A 12 m pylon. The name in seven boxes stacked down the west side. A flat painted arrow hanging beside it, point down, with two rows of bulbs. A starburst on top.
 
-Stacking the name is what makes the place work on a tall phone. A low wide station is a stripe on a tall screen, however it's framed; the sign is the vertical. In `01a` the station takes about a tenth of the height and the picture still holds, because the sign carries the top two thirds and the lot carries the rest.
+- **Its shadow is an arrow.** Because the arrow is flat and faces the sun, it throws an arrow-shaped shadow on the slab, pointing away from the sign (`02-noon-door`, `02-winter-noon`). That is in every concept, because it's just the sun.
+- **From the side the sign is a line** (`01-anywhere`). It is flat. Real ones are too, but this one vanishes. Either the boxes get real depth or the owner is asked; it's on the list below.
+- **From the arrival spot the letters are small** on a phone. They're readable at 15 m and not much further.
 
-## Walking
+## Where the world ends
 
-The owner: "walk around". The concept files were written for a few composed views and need reworking by systems (noted in each file). What it means for the look:
+The director asked whether a horizon in two values can hide the join. **Yes.** By day the ground far out is paper and the sky is paper, so there is nothing at the horizon to see jump. At night both are ink. The hills are far enough to be the same from both sides. `place-edge` is the view 86 m out, walking back in: the sign is coming back a few marks at a time.
 
-- **It holds.** `proto-daywalk` and `proto-walk` are views from places I picked by walking, not by composing. Big flat masses and lost edges survive a bad angle better than detail does. This was my main worry and the prototype answers it for the masses. It doesn't answer it for brushwork.
-- **A phone sees a narrow slice.** A tall screen shows about 34° of width. From the road a pump is 20 pixels wide. So on a phone, walking is how you frame things, and anything that matters has to be worth walking up to. Nothing can depend on being read from across the lot.
-- **Brushwork swims when you move.** In the prototype the frayed edges are attached to the screen, so they slide over the world as you walk. Two things hide it for now: the picture is redrawn about twelve times a second and held, like drawn animation, and the edges re-settle only a few times a second. The real fix is strokes that belong to the surfaces, which is also what the owner's own textures on Blender models would be. Unbuilt. This is the biggest open risk in the look.
-- **Composed pictures still exist, as places you come to rest.** Where you're put down on arrival is composed. The door is still one stroke across the screen. And when you stop walking, the view should settle and level over a second or so, so that standing still always gives a picture worth having. Standing still is already a gesture here (Wait); this gives it a look.
-- **Moving on a phone:** drag to look, hold to walk toward where you're looking. In the prototype. Untested with real thumbs.
-- **Eye height, always.** Nothing in any concept needs the camera above head height. My jam finding that the ground dial needs a high camera still stands; it is why 02 changed.
+I agree with systems that lights have to be lost at the same distance as everything else. In the prototype the bulbs are, because they pass through the same test.
 
-## Feel
+## Marked out, and marks in another hand (from 04)
 
-- At rest nothing moves. No wobble, no boiling line. Stillness is the liminal part.
-- Anything that happens is drawn in a few held frames, not eased.
-- Crossing the door is one loaded stroke dragged across the screen with the other side behind it.
-- With motion turned off, moves become cuts and the light moves in steps.
+`place-marked`: three dashed circles on the ground east of the slab. The prototype also has one dashed footprint by the wall with "ice box" beside it in an italic standing in for his hand. Both are paint, so they stay sharp.
 
-## Sound: a place to begin
+## The margin
 
-The owner: "yes but idk how to even begin there." A way in that follows from the drawing, so it isn't a second design:
+Systems added a third item, the mark that opens the list of places. Fine by me. I'd draw all three as small typewriter notes outside the picture and nothing more. Not drawn.
 
-- **Every light has a sound, and the place's own sound is the sum of the lights that are on.** By day that is one light, the sun: wind, and heat ticking in metal. At night it is the lamps: the sign's buzz, a relay click as the bulbs run, a tube's hum. Under stars alone, almost nothing.
-- So the bed needs four recordings to start: wind, a sign buzz, a tube hum, the click. Plus one bell.
-- Sound follows ink the same way a landed word does: when a light comes on, its sound comes in; when it closes, the sound goes.
-- He is a musician, so one option worth offering him: the bed is a single held tone whose pitch follows the height of the sun. Low at dawn and dusk, highest at noon, gone at night. It would make the hour audible. That's his call, and it can wait.
+## Sound
 
-## Where his own drawings and models go in (job 14)
+Systems has written the fuller version above; mine is withdrawn in favour of it. The one visual rule stands: every sound has an ink twin.
 
-- **Strokes:** one sheet of his brush marks (about forty) replaces the generated stroke shapes everywhere at once.
-- **Models:** masses come from light falling on shape, so an untextured Blender model already draws correctly. Nothing is lost while a model has no texture.
-- **Textures:** in this world a texture is *paint*: stripes, lettering, labels, wear. Flat black on the model's surface, his to draw. That is the second black in rule 2, and it's the natural thing to export from Blender.
+## The sign, to check against the owner's saved references
 
-## Needs reworking by systems (all concepts)
+Neither the article nor the photo pool can be opened from this session. For whoever can:
 
-- Stops become places you can walk between; "back always means the previous stop" no longer describes anything.
-- Keyboard, screen reader and no-3D need a version of walking: probably the old stops, kept as named places you can jump to.
-- "The margin" loses the way out; a walked world has a door.
-- The public page carries no note of whose it is beyond the sign.
+1. **How the arrow is hung.** Ours is a separate flat arrow beside the pole, pointing straight down. Was the arrow of that kind usually a separate piece, part of the panel, or on top of it? Did it point straight down, dive at an angle, or curve over?
+2. **Where the bulbs are.** Ours has two rows along the arrow's edges. Were they on the face, on the edge, or outlining the whole sign? Did they chase toward the point?
+3. **How the name is carried.** Ours is one letter per lit box, stacked. Were stacked single-letter boxes used on these signs, or is that a motel habit? Would a station more likely have one long lit panel?
+4. **The starburst.** Is it of that era and that kind of sign, or a decade later?
+5. **Thickness.** How deep was such a sign? Ours disappears from the side.
+6. **The pole.** One pole or two; plain or with fins.
+
+## Not proven
+
+- A hand: strokes with swell and taper, fixed to surfaces.
+- Any of it on a real phone, in the hand.
+- The paper line for near things in shade.
+- Sound, landed words in 3D, the crossing stroke in 3D.
+- Twilight: systems' sequence of the sky being inked in with the letters coming on is undrawn.
