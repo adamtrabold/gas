@@ -347,3 +347,52 @@ The look ran a round behind the idea each time. The owner's one sentence after w
 ## Next
 
 If he approves: handoff is written; I check `handoff.md` against Left on as approved and his notes in owner.md, and send back any drift before the build starts.
+
+---
+
+# After the owner turned down my 9 (recalibration)
+
+## His words (owner.md section 9)
+
+"It's looking pretty pixellated and when I press and hold it often brings up the copy paste tooltip on mobile. I think we need more detail boss texturing and shadow methods like crosshatching etc it looks posterized"
+
+Earlier (section 8): "pretty high contrast… hard to really make out objects… slightly more detail and variation in the brush stroke size".
+
+## What this tells me about his 9
+
+- For him the look is the product. He said "I just want to nail the world". A concept that is right in idea and posterized on screen is not a 9 to him, whatever my brief says about not marking a concept down for finish.
+- His 9 looks like his Kirby boards and his brush eye: tone in many degrees, made of marks (hatching, crosshatching, feathering, texture), detail at every scale, materials you can tell apart. Not two flat levels with a rough border.
+- He judges on his phone, in his hand. Anything I haven't seen at real density on a touch device, I haven't seen.
+- He says things mildly the first time. "Slightly more detail" was a large objection said politely. When he repeats a point in stronger words, the first statement was already the full objection.
+- He has never objected to the idea, the place, the sign, walking, the lamp or the shadow. Left on stands.
+
+## Where my reading went wrong
+
+1. **I set the rule that produced the posterized look.** Jam pass 1: "mass before line", outline as "the tell of a filter", lost edges. I built the whole look on image 14 and Ruscha's flatness, and under-read "Kirby's sketches" and images 13, 16, 17, 18. Three rounds of visual work followed my rule faithfully.
+2. **I took "pure ink" as two flat values.** Pure ink still has tone, through hatching. He has now said so.
+3. **I measured "slightly more" against his word and not against his pictures.** I asked "is this one step more than before?" and should have asked "does this frame belong next to 16 and 13?" It didn't, and I had the images.
+4. **I scored from a headless browser at low density.** I never saw pixellation and never touched it. I wrote in score-2 that his walk could be the phone test, then scored 9 before the look had passed his eye. And I asked for the resolution fallback that may be part of what looked pixellated.
+5. **I let "concept phase, don't mark down for finish" excuse the look.** In score-3 I listed "thin even outlines read like a line render" and "strokes look generated" as unlikely to hold it back. Those were the objection.
+6. **I treated his round-2 comment as answered by one before/after step, without showing him the pairs first.**
+
+## Decision
+
+A change to the look, not to the concept. Left on's how-it-works half is unchanged. One drawing rule changes: tone is built from marks in many degrees; solid black is the last resort; contour has weight; materials have texture. Plus two prototype defects to fix (pixellation; press-and-hold callout).
+
+## Steer issued
+
+`concepts/steer-3.md`, for a fresh visual designer: what I now see in 13, 14, 16, 17, 18, 04, 07; nine outcomes for "not posterized"; the bar for my next 9; what must be checked on a real phone; six questions for him.
+
+## My bar from now on
+
+- No 9 on the look without: our frame side by side with his references; real captures from a real phone; both defects verified gone on touch; and his reaction to a small look test (one view, pumps under the canopy, day and night) before any full rebuild.
+- If he repeats a point, treat the earlier, milder version as having been the whole objection.
+- Score 9 only when I'd expect no objection from him on the look, not when the remaining ones seem "unlikely enough".
+
+## Open with the owner
+
+What "detail boss texturing" meant (being asked); a screenshot of the pixellation; which reference sets the density (16/17, 13 or 18); still pure ink or some grey; dense everywhere or quiet outside and dense inside; would he draw one thing himself.
+
+## Scores to date
+
+01: 7. 03: 8. Left on: 8.5, then 9 (rejected by the owner on the look). The 9 is void. Do not carry it forward.
