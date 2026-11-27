@@ -76,13 +76,16 @@ function inkMat(scale, amb = 1, tone = 1, along = null, drift = false) {        
       .replace('#include <lights_fragment_end>', '#if defined( RE_IndirectDiffuse )\nirradiance*=ambK();\n#endif\n#include <lights_fragment_end>')
       .replace('#include <dithering_fragment>', `#include <dithering_fragment>
         float lO=gl_FragColor.r;
-        if(drift>.5){float nn=-vWp.z,lot=smoothstep(-18.,-14.,vWp.x)*(1.-smoothstep(12.,16.,vWp.x))*smoothstep(-4.,-2.,nn)*(1.-smoothstep(26.,30.,nn));lO*=mix(1.,.15,smoothstep(.56,.7,dn2(vWp.xz/9.)*.65+dn2(vWp.xz/3.1+7.)*.35)*(1.-lot));}   // the desert floor: drifts of ground that are never quite paper, so dry strokes lie across them
+        if(drift>.5){float nn=-vWp.z,lot=smoothstep(-18.,-14.,vWp.x)*(1.-smoothstep(12.,16.,vWp.x))*smoothstep(-4.,-2.,nn)*(1.-smoothstep(26.,30.,nn));lO*=mix(1.,.2,smoothstep(.58,.7,dn2(vWp.xz/vec2(14.,6.))*.65+dn2(vWp.xz/3.1+7.)*.35)*(1.-lot)*smoothstep(5.,9.,distance(vWp.xz,vec2(2.6,21.))));}   // the desert floor: drifts of ground that are never quite paper, so dry strokes lie across them
         if(youOn>.5)lO=mix(min(lO,.05),lO,youSh(vWp));
-        gl_FragColor=vec4(lO,gS.r,gS.b,.25);`);           // r: light. g: the stroke sheet here. a: this is a lit surface, not paint
+        gl_FragColor=vec4(lO,gS.r,gS.b,drift>.5||dot(along,along)>0.?.18:.25);`);   // a: under .6 is a lit surface, not paint. .18 is the ground and the road, which never get a drawn line           // r: light. g: the stroke sheet here. a: this is a lit surface, not paint
   };
   return m;
 }
-const Wm = inkMat(1), Wg = inkMat(1, 1, 1, null, true), Wt = inkMat(3), Wa = inkMat(2, 0), Wr = inkMat(.5, 1, .2, new T.Vector2(1, 0)), K = new T.MeshBasicMaterial({ color: 0 }), LIT = new T.MeshBasicMaterial({ color: 0xffffff });
+// round 3, after the owner walked it ("hard to really make out objects ... more detail and variation in the brush stroke size"): ?detail=0 is how it was.
+// with detail on, every kind of thing wears the sheet at its own size, and things have a tone of their own: a painted pump is never quite paper, so it is always drawn, in fine strokes
+const DETAIL = num('detail', 1);
+const Wm = inkMat(DETAIL ? 1.7 : 1), Wg = inkMat(1, 1, 1, null, true), Wt = inkMat(DETAIL ? 3.6 : 3, 1, DETAIL ? .62 : 1), Wd = inkMat(DETAIL ? 5 : 3, 1, DETAIL ? .3 : 1), Wl = inkMat(DETAIL ? 4.2 : 3), Wa = inkMat(2, 0), Wr = inkMat(.5, 1, .2, new T.Vector2(1, 0)), K = new T.MeshBasicMaterial({ color: 0 }), LIT = new T.MeshBasicMaterial({ color: 0xffffff });
 const v = (x, n, u) => new T.Vector3(x, u, -n);                         // x east, n north, u up
 const things = {};
 function box(w, d, h, x, n, u, m = Wm, parent = scene) { const o = new T.Mesh(new T.BoxGeometry(w, h, d), m); o.position.copy(v(x, n, u + h / 2)); o.castShadow = o.receiveShadow = !!m.isInk; parent.add(o); return o; }
@@ -120,11 +123,11 @@ const CX0 = -11.6, CX1 = -2.2, CN0 = 8.4, CZ = 3.9;
 box(CX1 - CX0, FN - CN0, .3, (CX0 + CX1) / 2, (CN0 + FN) / 2, CZ, Wm); [[CX0 + .5, CN0 + .4], [CX1 - .5, CN0 + .4]].forEach(([x, n]) => rod(.08, .08, CZ, x, n, 0));
 plane(CX1 - CX0, .12, (CX0 + CX1) / 2, CN0 - .01, CZ + .15);
 box(5.2, 1.3, .14, -6.8, 11.5, 0, Wt);                                                                                     // the island
-const pump = (name, x) => thing(name, x, 11.5, g => { box(.6, .5, 1.55, x, 11.5, .14, Wt, g); const s = new T.Mesh(new T.SphereGeometry(.27, 16, 10), Wt); s.position.copy(v(x, 11.5, 2.0)); s.castShadow = s.receiveShadow = true; g.add(s); plane(.4, .34, x, 11.24, 1.3, K, g); mark(g, x - .31, 11.24, .9, .05, 1.3); mark(g, x + .1, 11.24, 1.72, .5, .05); mark(g, x + .2, 11.24, .5, .05, .7); });
+const pump = (name, x) => thing(name, x, 11.5, g => { box(.6, .5, 1.55, x, 11.5, .14, Wd, g); const s = new T.Mesh(new T.SphereGeometry(.27, 16, 10), Wl); s.position.copy(v(x, 11.5, 2.0)); s.castShadow = s.receiveShadow = true; g.add(s); plane(.4, .34, x, 11.24, 1.3, K, g); mark(g, x - .31, 11.24, .9, .05, 1.3); mark(g, x + .1, 11.24, 1.72, .5, .05); mark(g, x + .2, 11.24, .5, .05, .7); });
 pump('pumpW', -8.2); pump('pumpE', -5.4);
 thing('air', -1.5, 9.6, g => { rod(.09, .11, 1.25, -1.5, 9.6, 0, Wt, g); const d = new T.Mesh(new T.CylinderGeometry(.22, .22, .12, 20), Wt); d.rotation.x = Math.PI / 2; d.position.copy(v(-1.5, 9.6, 1.42)); d.castShadow = true; g.add(d); plane(.26, .26, -1.5, 9.53, 1.42, K, g); mark(g, -1.62, 9.5, .7, .04, 1.0); mark(g, -1.5, 9.5, 1.66, .4, .04); });
-thing('bench', 3.2, 15.4, g => { box(2.2, .45, .1, 3.2, 15.4, .42, Wt, g); box(2.2, .08, .5, 3.2, 15.62, .52, Wt, g); box(.1, .4, .42, 2.3, 15.4, 0, Wt, g); box(.1, .4, .42, 4.1, 15.4, 0, Wt, g); mark(g, 3.2, 15.17, .52, 2.0, .04); mark(g, 2.26, 15.17, .2, .04, .4); });
-thing('phone', 12, 6, g => { box(.9, .9, 2.3, 12, 6, 0, Wt, g); plane(.6, 1.2, 12, 5.54, 1.5, K, g); box(1.05, 1.05, .1, 12, 6, 2.3, Wt, g); mark(g, 11.54, 5.54, 1.1, .05, 2.0); mark(g, 12.1, 5.54, 2.32, .8, .05); mark(g, 12.46, 5.54, .6, .05, 1.0); });
+thing('bench', 3.2, 15.4, g => { box(2.2, .45, .1, 3.2, 15.4, .42, Wd, g); box(2.2, .08, .5, 3.2, 15.62, .52, Wd, g); box(.1, .4, .42, 2.3, 15.4, 0, Wt, g); box(.1, .4, .42, 4.1, 15.4, 0, Wt, g); mark(g, 3.2, 15.17, .52, 2.0, .04); mark(g, 2.26, 15.17, .2, .04, .4); });
+thing('phone', 12, 6, g => { box(.9, .9, 2.3, 12, 6, 0, Wd, g); plane(.6, 1.2, 12, 5.54, 1.5, K, g); box(1.05, 1.05, .1, 12, 6, 2.3, Wt, g); mark(g, 11.54, 5.54, 1.1, .05, 2.0); mark(g, 12.1, 5.54, 2.32, .8, .05); mark(g, 12.46, 5.54, .6, .05, 1.0); });
 thing('door', 0, FN, g => { mark(g, -.62, FN - .03, 1.1, .05, 2.1); mark(g, 0, FN - .03, 2.27, 1.1, .05); });
 thing('station', -3, FN, g => { mark(g, -3, FN - .03, BH - .5, 12, .08); mark(g, BX0 + .1, FN - .03, 1.6, .06, 3.0); mark(g, 4, FN - .03, BH - .92, 5, .05); });
 { const hose = plane(9.6, .05, -6.8, 9.2, .012); hose.rotation.x = -Math.PI / 2; }                                         // the bell line, across the forecourt
@@ -150,7 +153,7 @@ const tube = new T.PointLight(0xffffff, 0, 4.6, 1.1); tube.position.copy(v(.6, 2
 plane(1.4, .1, .6, 21.45, 2.42, LIT, inner).rotation.x = Math.PI / 2;
 box(6.4, .7, 1.02, .6, 21.4, 0, Wm, inner);                                                                                 // the counter, across the back
 [[-.95, .56, .46], [-.1, .09, .11], [.38, .12, .08], [.98, .36, .22]].forEach(([x, w, h]) => box(w, .3, h, x, 21.3, 1.02, Wt, inner));   // register, cup, bell, radio
-box(.9, .7, 1.9, -4.3, 18.6, 0, Wt, inner); const cooler = new T.PointLight(0xffffff, 0, 3.4, 1.2); cooler.position.copy(v(-3.5, 18.6, 1.2)); scene.add(cooler); const coolGlow = plane(.6, 1.5, -3.84, 18.6, 1.05, K, inner, Math.PI / 2);   // the cooler, against the partition
+box(.9, .7, 1.9, -4.3, 18.6, 0, Wd, inner); const cooler = new T.PointLight(0xffffff, 0, 3.4, 1.2); cooler.position.copy(v(-3.5, 18.6, 1.2)); scene.add(cooler); const coolGlow = plane(.6, 1.5, -3.84, 18.6, 1.05, K, inner, Math.PI / 2);   // the cooler, against the partition
 const mouth = new T.PointLight(0xffffff, 0, 3.2, 1.2); mouth.position.copy(v((AX0 + AX1) / 2, BN - .7, 2.75)); scene.add(mouth); plane(.3, .3, (AX0 + AX1) / 2, BN - .7, 2.9, LIT, inner).rotation.x = Math.PI / 2;   // the attendant's light at the mouth of the aisle: on when you came
 { const j = new T.Shape(); [[-.12, 0], [-.42, -.22], [-.36, -.95], [.36, -.95], [.42, -.22], [.12, 0]].forEach((q, i) => i ? j.lineTo(q[0], q[1]) : j.moveTo(q[0], q[1])); const m = new T.Mesh(new T.ShapeGeometry(j), new T.MeshBasicMaterial({ color: 0, side: T.DoubleSide })); m.position.copy(v(1.75, BN - WT - .03, 2.05)); m.rotation.y = Math.PI; inner.add(m); }   // the jacket on its hook
 { const c = document.createElement('canvas'); c.width = c.height = 256; const g = c.getContext('2d'); g.fillStyle = '#fff'; g.fillRect(0, 0, 256, 256); g.lineWidth = 14; g.beginPath(); g.arc(128, 128, 112, 0, 7); g.stroke(); g.lineWidth = 10; g.beginPath(); g.moveTo(128, 128); g.lineTo(128, 50); g.moveTo(128, 128); g.lineTo(180, 150); g.stroke(); const tx = new T.CanvasTexture(c); tx.colorSpace = T.NoColorSpace; plane(.44, .44, 3.55, FN + WT + .02, 1.75, new T.MeshBasicMaterial({ map: tx }), inner, Math.PI); }
@@ -189,7 +192,7 @@ const sun = new T.DirectionalLight(0xffffff, DAY ? 5.0 : 0); sun.castShadow = DA
 sun.shadow.radius = STROKES ? num('reach', 34) : 1;                                                                        // 8 and over: centimetres each side of a stroke that the sun's shadow is read over
 scene.add(sun, sun.target);
 SU.sunA.value.set(-SUN.x, 0, -SUN.z).normalize();                                                                          // the way the sun's shadows run along the ground
-const hemi = new T.HemisphereLight(0xffffff, 0x8a8a8a, NIGHT ? .03 : DUSK ? 2.2 : num('sky', .2)); scene.add(hemi);   // dusk: no sun and no shadows, the flattest the place ever is;                    // by day, shade is not dark: the sky and the bright ground get into it
+const hemi = new T.HemisphereLight(0xffffff, 0x8a8a8a, NIGHT ? .03 : DUSK ? 2.2 : num('sky', DETAIL ? .3 : .2)); scene.add(hemi);   // dusk: no sun and no shadows, the flattest the place ever is;                    // by day, shade is not dark: the sky and the bright ground get into it
 scene.background = new T.Color(NIGHT ? 0 : 0xffffff);
 const CANOPY = NIGHT && num('canopy', 1); if (NIGHT) { canLamp.intensity = CANOPY ? 60 : 0; canGlow.material = CANOPY ? LIT : K; }
 const TUBE = num('tube', 0), AISLEON = num('aislelights', 0), COOL = num('cooler', 0), MOUTH = num('mouth', 1);
@@ -228,7 +231,7 @@ if (DUSK) { const W = 2048, Hc = 512, c = document.createElement('canvas'); c.wi
   for (let k = 0; k < V; k++) { const mat = new T.MeshBasicMaterial({ color: 0, map: tuft(), alphaTest: .5, side: T.DoubleSide });
     mat.onBeforeCompile = sh => { sh.vertexShader = 'varying float vFar;\n' + sh.vertexShader.replace('#include <project_vertex>', '#include <project_vertex>\nvFar=distance((modelMatrix*instanceMatrix*vec4(0.,0.,0.,1.)).xyz,cameraPosition)-(38.+9.*fract(sin(dot(instanceMatrix[3].xz,vec2(12.9,78.2)))*43758.5));'); sh.fragmentShader = 'varying float vFar;\n' + sh.fragmentShader.replace('void main() {', 'void main() {\nif(vFar>0.)discard;'); };
     const im = new T.InstancedMesh(geo, mat, per * 2); im.frustumCulled = false; let i = 0;
-    while (i < per) { const r = 12 + dr() * 72, th = dr() * 6.283, x = Math.cos(th) * r, n = Math.sin(th) * r; if ((x > -18 && x < 16 && n > -3.4 && n < 29) || (n > -10.6 && n < -2.6)) continue; const sz = .45 + dr() * dr() * 1.3, a = dr() * 3.14;
+    while (i < per) { const r = 12 + dr() * 72, th = dr() * 6.283, x = Math.cos(th) * r, n = Math.sin(th) * r; if ((x > -18 && x < 16 && n > -3.4 && n < 29) || (n > -10.6 && n < -2.6) || Math.hypot(x - 2.6, n + 21) < 6) continue; const sz = .45 + dr() * dr() * 1.3, a = dr() * 3.14;
       for (let q = 0; q < 2; q++) { o.position.copy(v(x, n, -.02)); o.rotation.set(0, a + q * 1.5708, 0); o.scale.setScalar(sz); o.updateMatrix(); im.setMatrixAt(i * 2 + q, o.matrix); } i++; }
     scene.add(im); } }
 // a fence line along the far side of the road, after the one beside the building in his picture of Marfa. it runs out of sight both ways and has a gap at the lot
@@ -240,7 +243,7 @@ const other = new T.SpotLight(0xffffff, Q.has('other') ? 5 : 0, 0, .07, .3, 0); 
 
 // ---------------------------------------------------------------- the last pass: light and sheet become two values. paint stays sharp. far things are lost. near things in shade keep a paper line
 const quad = new T.Mesh(new T.PlaneGeometry(2, 2), new T.ShaderMaterial({
-  uniforms: { t: { value: null }, td: { value: null }, res: SU.res, inv: { value: new T.Matrix4() }, eye: { value: new T.Vector3() }, night: { value: NIGHT ? 1 : 0 }, f: { value: 0 }, lost: { value: num('lost', 105) }, pxa: { value: .001 }, strokes: { value: STROKES }, lineOn: { value: num('line', 1) }, dbg: { value: num('dbg', 0) } },
+  uniforms: { t: { value: null }, td: { value: null }, res: SU.res, inv: { value: new T.Matrix4() }, eye: { value: new T.Vector3() }, night: { value: NIGHT ? 1 : 0 }, f: { value: 0 }, lost: { value: num('lost', 105) }, pxa: { value: .001 }, strokes: { value: STROKES }, lineOn: { value: num('line', DETAIL ? 2 : 1) }, dbg: { value: num('dbg', 0) } },
   vertexShader: 'varying vec2 v;void main(){v=uv;gl_Position=vec4(position.xy,0.,1.);}',
   fragmentShader: `
   precision highp float;varying vec2 v;uniform sampler2D t,td;uniform vec2 res;uniform mat4 inv;uniform vec3 eye;uniform float night,f,lost,pxa,strokes,lineOn,dbg;
@@ -256,7 +259,12 @@ const quad = new T.Mesh(new T.PlaneGeometry(2, 2), new T.ShaderMaterial({
     else{
       if(!lit)ink=clamp((.5-l)*4.+.5,0.,1.);                                                            // paint: flat and sharp
       else{float e=c.g-thr(l),aa=min(fwidth(e)*.7,.05)+1e-4;ink=smoothstep(-aa,aa,e);
-        if(lineOn>.5&&ink>.4&&l>.022){float z=zl(d);if(z<16.){float r=clamp(.012/(z*pxa),1.3,4.);bool edge=false;   // a near thing standing in shade against more shade: its edge is left as paper, broken
+        if(lineOn>1.5&&c.a>.215){float z=zl(d);if(z<34.){                                                         // the drawn line. where a thing's edge or a corner would be lost (paper on paper, ink on ink) it gets a line of the other value: thin, about 2 cm in the world, swelling and breaking with the sheet
+            float wv=1./z,r=clamp(.016*(.5+c.b)/(z*pxa),1.,5.),lap=-4.*wv,far=0.;
+            for(int i=0;i<4;i++){float a=float(i)*1.5708+.5;vec2 o=vec2(cos(a),sin(a))*r/res;float dn=texture2D(td,v+o).x,zn=dn>=.99999?1e5:zl(dn);lap+=1./zn;far=max(far,zn-z);}
+            bool edge=far>.07+.035*z||abs(lap)>.0011*wv*r;
+            if(edge){if(ink>.5){if(l>.022&&c.b<.8)ink=0.;}else if(c.b<.86)ink=1.;}}}
+        else if(lineOn>.5&&ink>.4&&l>.022){float z=zl(d);if(z<16.){float r=clamp(.012/(z*pxa),1.3,4.);bool edge=false;   // round 2's rule, kept for the before pictures: a paper edge on near things in shade only
           for(int i=0;i<4;i++){float a=float(i)*1.5708;vec2 o=vec2(cos(a),sin(a))*r/res;float dn=texture2D(td,v+o).x;if(dn<.99999&&zl(dn)>z+.1+.05*z){vec4 cn=texture2D(t,v+o);if(cn.a<.6&&cn.g>thr(cn.r))edge=true;}}
           if(edge&&c.b<.8)ink=0.;}}}
       vec4 w=inv*vec4(v*2.-1.,d*2.-1.,1.);vec3 p=w.xyz/w.w;float dist=distance(p,eye);
@@ -325,7 +333,7 @@ window.groundInk = (x0, n0, side, N) => { const W = R.domElement.width, Hh = R.d
   let o = ''; for (let i = 0; i < N * N; i++) o += cnt[i] < 2 ? '?' : String.fromCharCode(97 + Math.max(0, Math.min(25, Math.round((sum[i] / cnt[i] * 1.12 - .05) * 25)))); return o; };   // per cell of ground: how much of it is ink, a (none) to z (all), averaged over every pixel of the frame that shows it
 window.bench = n => { const t0 = performance.now(); for (let i = 0; i < n; i++) { heading += .01; step(performance.now()); R.getContext().finish(); } return (performance.now() - t0) / n; };
 if (STILL) { const go = () => { if (Q.get('sheet') && !window.sheetLoaded) return setTimeout(go, 50); step(performance.now()); step(performance.now()); document.title = 'done'; }; go(); }
-else { let n = -40, t0 = 0, walked = false; const loop = now => { requestAnimationFrame(loop); step(now); if (n === 0) t0 = now;
+else { let n = -30, t0 = 0, walked = false; const loop = now => { requestAnimationFrame(loop); step(now); if (n === 0) t0 = now;
     if (!walked && held && now - held > 600) { walked = true; document.getElementById('hint').style.opacity = 0; }
-    if (++n === 24) { const ms = (now - t0) / 24; n = 0; if (ms > 30 && RES > .4 && !document.hidden && !Q.has('res')) { RES *= .75; size(); n = -12; } } }; requestAnimationFrame(loop); }
+    if (++n === 16) { const ms = (now - t0) / 16; n = 0; if (ms > 30 && RES > .4 && !document.hidden && !Q.has('res')) { RES *= .75; size(); n = -8; } } }; requestAnimationFrame(loop); }
 </script>

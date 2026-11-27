@@ -256,243 +256,244 @@ His open question, whether the time of day does something, is answered by the co
 
 # Left on — how it looks and feels
 
-*Look and feel (visual). Round 2. Written after `score-1.md`, on the systems designer's half above. Everything shown is a frame of the walked three.js prototype in `sketches/place/`. This half replaces the look-and-feel halves of 01 and 03 and, where they differ, the look-and-feel half of `00-shared.md`.*
+*Look and feel (visual). Round 3. Written after `score-2.md`, the owner's answers in `owner.md` section 7 ("Canopy over pumps yes." "Gas is unnecessary.") and his walk of the round-2 prototype on his phone (section 8). Everything shown is a frame of the walked three.js prototype in `sketches/place/`. This half is current for the look; where the round-1 look-and-feel half of `00-shared.md` differs, this one stands.*
 
-## The stroke question, answered first
+## What the owner said after walking it, and what I did
 
-**Brush strokes can live in a world you walk through in three.js, and stay on the world.** The owner does not have to choose between "threejs" and "brush strokes". I built it, walked past it, and measured it.
+> "Prototype feels pretty good and fluid. Rendering is pretty high contrast though ... hard to really make out objects. I think there can be slightly more detail and variation in the brush stroke size or something to give more detail to the scene"
 
-What is on screen now (`stills/lo-strokes-day.png`, `lo-strokes-night.png`, `lo-arrive-day.png`):
+So the feel and the frame rate are no longer the risk. The look had one fault he saw at once: things were either paper on paper or ink on ink, so they vanished. Three changes, all still two values ("pure ink for now") and all still broken and loose ("readable but not precise or always whole"). Each is shown as a before and after of the same view; the before frames are the prototype with `?detail=0`, which is the look he walked.
 
-- A shadow is a stack of strokes, each with a swell and a long taper, some dry toward the tail, laid side by side like his reference 14. Its edge is those strokes ending, each in its own place. No ruled edge, no noise.
-- The pool under the canopy lamp at night breaks outward into the dark in strokes laid away from the lamp, the way Kirby rays a light (his reference 18, lower right).
-- Shade by day is brushed and not filled: nearly whole, with paper between strokes. Full dark is whole. "Readable, not precise, not always whole."
-- A post in half light is a few dry vertical strokes. The road is a band of long dry strokes. Paint (his name, the arrow, the stripes, the door card) stays flat and sharp.
+1. **A thing has a tone of its own.** Until now everything was white plaster, so anything in the sun was blank. Now a painted thing (a pump, the bench, the phone box, the cooler) is never quite paper: it is always drawn, lightly where the sun is on it and densely where it isn't. The ground and the station's walls stay paper in the sun, so the place is still mostly empty.
+2. **More sizes of stroke.** Each kind of thing wears the stroke sheet at its own size: the road largest, then the ground, then walls, then things, then small dark things finest. From far off, big surfaces wear it nearly four times larger again (below). A frame now has four or five sizes of mark in it where it had two.
+3. **A drawn line where an edge would be lost.** (Things and the building only; never the ground.) Where a thing's outline or a corner falls paper against paper it gets a thin ink line; ink against ink in shade, a thin paper line. About 2 cm wide in the world, so it thickens as you walk up; its weight wanders and it breaks, following the stroke sheet, so it reads as inked by hand and not ruled. This is Kirby's line (his references 16 and 17) used sparingly: only where a form would otherwise be lost, and only within about 35 m.
+4. **Shade is more open** by day: more paper between the strokes, so what stands in it shows.
 
-**How it is made, in plain terms.** Every surface wears one picture, the *stroke sheet*: a square of brush strokes lying side by side (`stills/stroke-sheet.png`). The sheet is not a picture of ink. It records how soon each bit of each stroke shows as its place gets darker: the loaded spine of a stroke first, its thin edges and dry tail last. The light on a surface then decides how much of each stroke is there. Full sun, none. Half light, a few spines. Shade, almost all of every stroke. So one sheet gives every tone, in two values, and a shadow's edge is strokes thinning out. On the ground the sheet is laid along the light (along the sun's shadows by day, outward from a fixed lamp at night). On walls and things it is laid along the surface.
+| Same view | Before | After | What changed |
+|---|---|---|---|
+| Pumps from the forecourt | `lo-pumps-a` | `lo-pumps-b` | Pump bodies are hatched boxes with edges; the island exists; the globes are circles |
+| Front wall east of the door | `lo-front-a` | `lo-front-b` | There is a bench. It could not be seen before |
+| Under the canopy, summer noon | `lo-shade-a` | `lo-shade-b` | The island's edge and the globe; the pump body is still a slab. The weakest pair |
+| Inside, three lights on | `lo-room-a` | `lo-room-b` | Stock, counter things and cooler are separate things |
+| A pump at night under the canopy lamp | `lo-nightpump-a` | `lo-nightpump-b` | The pump is drawn |
 
-**This is the way he will replace it.** The sheet is an ordinary image on an ordinary surface. His own sheet is a page of his strokes, scanned: `?sheet=his.png` swaps it everywhere at once (`lo-strokes-day-drawn.png` is the prototype running on a sheet loaded from a file, not generated). A model from Blender carries its sheet in its own texture, so he can draw the strokes of one pump directly onto that pump, and it will be lit by the same rule as everything else. Nothing about the method is special to generated marks.
+**What this costs, said plainly.** "A sunlit wall against the sky has no edge" was the most Ruscha thing in the drawing, and the director ruled to keep it. Near the building it is now gone: within 35 m the wall has a thin broken line against the sky. I think the owner's own eye on his own phone outranks the rule. From the road the building is beyond the line's reach and is still drawn only by its shade. If he misses the edgeless wall, the line can be limited to things and kept off the building; that is one number.
 
-**The walk-past test** (`stills/walk-test.png`, `sketches/place/walk.js`). One 4 m square of ground is watched from eight stands: start, one frame of walking on (5 cm), turned 10° each way, walked 1.5 m and 3 m in, and walked past it by 3 m and 6 m. From each stand the ink is read out of the live frame at the same cells of the ground (5 cm each) and laid flat, so the pictures can be compared whatever the view. The control is the same sheet stuck to the screen and not to the world.
+**Not proven:** that this is *enough* for him. He said "slightly more". I have gone one clear step, not three. He needs to see the pairs.
 
-| How much of the ink changed from the first stand | Strokes on the world | Same sheet stuck to the screen |
+## The first three seconds by day
+
+The director's two real fixes, and the priority of the round.
+
+**The desert is in** (`lo-arrive-day`, `lo-desert-east`, `lo-anywhere-day`).
+
+- **A horizon all the way round:** low mesas and hills, each a few long dry strokes, dense along the cap and letting go toward the ground the way distance does. One long mesa stands up behind the station as you arrive, so the building sits in front of something, and a butte stands right of the sign. After his reference 10 (the long blue mesas behind Prada Marfa), drawn the way 14 is drawn.
+- **Scrub:** sparse tufts on the open ground, each six to ten flicked strokes, after the dry grass and yucca in 09 and 10.
+- **Drifts:** patches of ground that are never quite paper, so loose dry strokes lie across them along the sun. I tried placing one in the foreground of the arrival and took it out: seen that close and end-on, the strokes were a row of dabs that read as paw prints. The arrival's foreground is the road and a tuft.
+- **A fence line** along the far side of the road, running out of sight both ways with a gap at the lot. From 10. It gives the road a length.
+- I did not add the cactus from 09. A prickly pear in the foreground of a site with aliens in it is one wink too many for "liminal not funny".
+- **The join at the world's edge does not show.** The horizon goes with you like the sky does, so being put down on the far side changes nothing in it. Scrub is lost at about 45 m (small things are lost sooner than big ones), which is nearer than the nearest tuft can be when you are turned round. The fence repeats every 4 m and the turn-round is a whole number of posts. Reasoned and built; **I did not capture the frames either side of the turn-round**, so this is not yet proven by a picture.
+
+**Brush in the day arrival.** I tried what the director proposed, and it works: a second, larger size of stroke for surfaces seen from far off. Beyond about 32 m a surface wears the sheet nearly four times larger; between 32 m and 12 m the large strokes give way to the fine ones. Both sizes are fixed to the world; nothing slides. What you see while walking in is the marks on the building changing from few and big to many and fine over about five seconds (`lo-arrive-day`, `lo-walk-3s`, `lo-walk-6s`).
+
+Measured with the walk-past test, same method as last round (third block of `walk-test.png`): watching one 8 m square from 34 m in to 8 m, 15% to 23% of its ink changes on the way, against 0.9% for one frame of walking. That is as much change, over the whole walk, as the control with the sheet stuck to the screen shows. So from one frame to the next it holds still, and over the five seconds of the walk in the marks on the building are redrawn completely. **This is the one place where the ink does not simply stay put. Whether it reads as "coming into focus" or as "crawling" can only be judged in motion on a screen, and I have not seen it move.** If it crawls, the switch is `?big=0` and the desert and the road carry the arrival's brush by themselves, which they now can.
+
+Honest reading of `lo-arrive-day`: the brush in the first frame is, in order, the road, the mesa, the canopy's shade and the scrub. The station's sunlit front is still a small plain shape, on purpose.
+
+## The stroke method (unchanged since round 2, restated briefly)
+
+Every surface wears one picture, the *stroke sheet*: brush strokes lying side by side, recording how soon each bit of each stroke shows as its place gets darker. The light decides how much of each stroke is there. On the ground the sheet lies along the light (along the sun's shadows by day, outward from a fixed lamp at night); on walls and things it lies along the surface. His own sheet replaces the generated one as one image file (`?sheet=his.png`, tested last round), and a Blender model carries its own sheet in its own texture.
+
+**The walk-past test, re-run on this round's prototype** (`stills/walk-test.png`, `sketches/place/walk.js`): one 4 m square of ground read from eight stands, against a control with the same sheet stuck to the screen.
+
+| Ink changed from the first stand | Strokes on the world | Same sheet stuck to the screen |
 |---|---|---|
-| Day, edge of the canopy's shadow | 0.4% to 3.3% (0.7% after one frame of walking) | 6.7% to 12.2% once you turn or move more than a step |
-| Night, edge of the canopy lamp's pool | 0.5% to 1.4% (0.5% after one frame of walking) | 20% to 28% once you turn or move more than a step |
+| Day, edge of the canopy's shadow | 0.6% to 3.3% (0.8% after one frame of walking) | 7% to 15% once you turn or move more than a step |
+| Night, edge of the canopy lamp's pool | 0.5% to 1.4% (0.5% after one frame) | 20% to 28% |
 
-The flat pictures in the top and third rows of `walk-test.png` are the same strokes from every stand. In the control rows they are different marks each time. What does change on the world, by a percent or two, is fineness: from further away the thinnest strokes merge, and they come apart as you walk in, as they would walking up to a drawing on a wall.
+**Limits of the method.** A stroke has a size in the world and not on the screen (the far size above is the answer to that, within limits). Narrow things are eaten by the brush. The sheet repeats every 8 m. A hard black-and-white drawn sheet converts coarsely. The strokes look generated: even, combed, one family of mark; that is one file to replace, and his.
 
-**One real fault the test found, now fixed.** The first runs showed strokes creeping by a few centimetres whenever the view moved at all. The cause was the ground being one enormous triangle pair, on which a place is only known roughly. Cutting the ground into 6 m squares removed it. The builder needs to know this: world-fixed marks need the world's positions to be exact near the visitor.
+## The rules of the drawing
 
-**What this does not prove.**
-
-- **Nobody has held it.** It ran in a browser with no graphics card, at about 2.5 frames a second, the same rate as last round's version at this size. That says the new method is not heavier than the old one in software. It says nothing reliable about a phone. The work per pixel is one read of the sheet and eight short reads of the sun's shadow by day; I expect it to run, and I have not seen it run.
-- **Still frames compared, not motion watched.** The numbers above are from frames at separate stands. Fine strokes far away could still sparkle a little while moving on a real screen. I'd look for that first on a phone.
-- **His hand.** These are generated strokes. They are in the right family (14, and Kirby's feathering). Whether they are *his* is his to say, and replacing them is one file.
-- **A hard black-and-white drawing gives a coarser result than a grey one** (`lo-strokes-day-drawn.png`). His sheet wants soft edges or a better conversion than the quick one in the prototype.
-
-**The limits of the method, plainly.**
-
-1. **A stroke has a size in the world, not on the screen.** A brush mark on paper is as big as the brush. Here a stroke on the ground is about 10 to 30 cm wide and one to four metres long, whether you stand on it or see it from the road. Up close you see marks. From the road you see ragged, feathered masses, and the building is small and nearly Ruscha-flat. A stroke that stayed one size on the screen would have to slide over the world as you walked, which is the thing the owner's "walk around" rules out. So the first frame gets its brush from the big things: the road as a band of long strokes, the canopy shadow's feathered edge, and at night the pool's rays.
-2. **Narrow things are eaten by the brush.** A shadow thinner than two or three strokes comes out as a mark, not a silhouette. That is right for the look and it decides the question of your shadow's shape (below).
-3. **The sheet repeats** every 8 m of ground. I can't see the repeat in any frame because the light never shows the same part twice the same way, but it is there.
-
-## The rules of the drawing, as they now stand
-
-1. **Ink is where the light isn't, and the light decides how much of each stroke shows.** Two values only. A light that dims gets smaller, not fainter.
-2. **Shade is brushed. Dark is whole.** By day the sky and the bright ground get into every shadow a little, so day shade is strokes with paper between. Where no light reaches at all (night, indoors) the black is solid.
-3. **Two blacks.** Shadow is strokes and moves with the light. Paint is flat, sharp and never moves: the name, the arrow, the stripes, the garage door, the card, the marked-out footprints.
-4. **The light sets the grain of the ground. A thing keeps its own grain.** Sun: strokes along the shadows. Fixed lamp: outward from it. Walls: along the wall, leaning a little. Your own lamp has no grain; it shows the strokes that are already where it lands, so nothing slides when you move it.
-5. **A near thing in shade keeps a paper edge.** Within about 15 m, where a thing in shade stands against more shade, its edge is left as a thin broken line of paper. In full dark there is no such line: there the thing is yours to light.
-6. **Worn surfaces are never quite paper.** The road is the first: blacktop, always half brushed, its strokes running the way the road runs.
-7. **Far things are lost** past about 100 m, lights included.
-8. **Dots:** a regular row is bulbs; a loose cluster is the alien material.
-9. **A word that lands is rare:** the counter bell only.
+1. **Ink is where the light isn't, and the light decides how much of each stroke shows.** Two values. A light that dims gets smaller, not fainter.
+2. **Shade is brushed. Dark is whole.** By day, strokes with paper between. Where no light reaches (night, indoors), solid.
+3. **Two blacks.** Shadow is strokes and moves with the light. Paint is flat, sharp and never moves: his name, the arrow, the stripes, the garage door, the card, the marked-out footprints.
+4. **The light sets the grain of the ground. A thing keeps its own grain,** at its own size.
+5. **A thing has a tone.** The ground and plaster are paper in the sun. Painted things, the road and the drifts never quite are.
+6. **A lost edge gets a line of the other value,** thin, wandering and broken, within about 35 m. In full dark there is no line: there the thing is yours to light.
+7. **Far things are lost** past about 100 m; small things sooner. The horizon is exempt: it is the far thing.
+8. **Your shadow is the one mark kept cleaner than the brush.**
+9. **Dots:** a regular row is bulbs; a loose cluster is the alien material.
+10. **A word that lands is rare:** the counter bell only.
 
 ## The place, state by state
 
-For every state the how-it-works half names. **Built** means it is in the prototype and there is a frame. **Words** means described and not yet seen.
+**Built** means it is in the prototype and there is a frame from this round. **Words** means described and not yet seen.
 
 ### Arriving
 
 | State | How it looks and feels | |
 |---|---|---|
-| Arriving by day | You are on the far shoulder, 21 m south of the sign, the road between you and it. Top two thirds: paper sky. Centre: the sign, the full height of the picture's middle, TRABOLD stacked, the black arrow diving at the door. Under it a low strip of station, the canopy's brushed shade on the left with the pumps standing in it, the door straight under the arrow's point. Across the lower third, the road: one band of long dry strokes. Nothing moves. `lo-arrive-day`, `lo-arrive-day-small`, `lo-wide-day` | Built |
-| Arriving at night | The same frame in ink. The name is seven lit boxes. The arrow is its bulbs. The station is a lit strip with the canopy's pool raying out of it. The lower half is black. `lo-arrive-night`, `lo-arrive-night-small`, `lo-wide-night` | Built |
-| Arriving at twilight | As the shared file says: no shadows, then the sky inked in from the top one stroke a second while the letters come on. The sky strokes would be the same sheet at a much larger size, laid level. | Words. Not drawn this round |
-| Loading | The road still for this hour is `lo-arrive-day` or `lo-arrive-night` itself. The name as text sits where the sign's letters are, so the swap to the world is a change of weight and not of place. | Words |
+| By day | You stand across the road, 21 m south of the sign. Paper sky. The sign up the middle: TRABOLD stacked, the black arrow diving at the door. Behind the low strip of station, a mesa in long dry strokes; right of the sign, a butte. The canopy's brushed shade on the left with the pumps drawn in it. The road as one band of long strokes; this side of it a tuft or two. Nothing moves. `lo-arrive-day`, `lo-arrive-day-small`, `lo-wide-day` | Built |
+| At dusk | The same frame with no sun: no shadow anywhere, the flattest the place ever is, the horizon at its plainest. The top of the sky has been inked in, in level strokes far bigger than any on the ground, with a ragged lower edge. T, R, A and B are lit against it. O, L and D are dark boxes not yet on. The arrow's bulbs are not on. `lo-arrive-dusk` | Built as one still. The sequence (a stroke and a letter a second) is words |
+| At night | Ink. The name is seven lit boxes, the arrow is its bulbs, the station a lit strip with the canopy's pool raying out of it. `lo-arrive-night`, `lo-arrive-night-small` | Built |
+| Loading | The arrival still for the hour, with the name as text where the sign's letters will be. | Words |
 
-**The framing fix.** Last round the visitor was put down 9 m from a 12 m sign and the name ran off a 390-wide screen. Now you arrive 21 m back, turned 6° toward the sign, looking 9° up. At 390 × 844 and at 360 × 740 the whole name, the arrow, the door and both ends of the station are inside the frame with room to spare; the letters are about 24 pixels tall on the smaller phone. These are the live first frames, not placed stills. Cost: the door is 37 m away, about eleven seconds of walking where the systems designer wrote eight. I'd take a slightly brisker walk (4 m a second, nine seconds) over a closer start.
+Framing: whole name, arrow, door and both ends of the station inside the frame at 390 × 844 and 360 × 740, from the live first frame. The walk is 4 m a second, so the door is about nine seconds away (`lo-walk-3s`, `lo-walk-6s`).
 
 ### Your two marks
 
 | State | How it looks and feels | |
 |---|---|---|
-| Your shadow | One loaded brush mark that starts under the bottom edge of the screen and tapers away from the sun. Two to four strokes wide, the gaps between them running its length. It is the darkest, most whole thing near you. Where it lies on a thing the two are one mark. `lo-strokes-day`, `lo-shadow-column`, `lo-shadow-person`, `lo-door-in` | Built |
-| Your lamp | A disc of paper where you look, in the dark. Its rim is not a circle: it breaks along whatever strokes the surface has, so on a wall it frays level and on the ground it frays along the ground's grain. Things inside it stand as ink and throw brushed shadows away from you. `lo-night-lamp`, `lo-door-in`, `lo-inside-lights-b` | Built |
-| A thing lit and left | Keeps two or three plain strokes of itself, flat like paint, for the visit. | Built last round, unchanged; not re-shot |
-| Sun to dark and back | No fade. One step over the threshold the shadow has run out of sun to fall in, and the disc is on the far wall. | Built (`lo-door-in` is that step) |
-
-**Column or person.** I drew both, as asked (`lo-shadow-column`, `lo-shadow-person`). At the size of the brush they are nearly the same mark; a head and a pair of arms are thinner than a stroke and are taken by it. So the "tombstone" worry mostly goes away, and so does most of the choice. I'd use the person's proportions, because the mark is a little narrower and splits at the bottom like legs, and stop asking the owner to pick between two things he can barely tell apart. If he wants it to read as a figure, the shadow needs to be exempted from the brush's raggedness, and that is a different, cleaner look he'd have to want.
+| Your shadow | A person: a head, shoulders, a body, two legs cut by the bottom of the screen. No ears, hood or point. It is laid by its own rule and not by the brush, so its outline is clean and only its inside is brushed. On the slab it runs away from the sun (`lo-strokes-day`); just inside the door it stands in the doorway's light on the floor (`lo-door-in`). At dusk there is none. | Built |
+| Your lamp | Only where no daylight reaches: indoors and at night. A disc of paper where you look, its rim breaking along the surface's own strokes, **and a pool on the ground in front of your feet, always.** Turn away from the station at night and the bottom of the screen is still lit ground with strokes in it (`lo-night-away`). Both close together when you stand still. | Built |
+| A thing lit and left | Keeps two or three plain strokes of itself for the visit. | Built in round 1, not re-shot |
+| Sun to dark and back | No fade: one step over the threshold. | Built (`lo-door-in`) |
 
 ### What you can do
 
 | State | How it looks and feels | |
 |---|---|---|
-| Walk up to a thing | Nothing is added to say you've arrived. In sun your shadow reaches it. In dark the disc is on it and it gets bigger in the disc as you close. | Built |
-| Use it (a light) | The light does not fade up. It arrives as strokes: the nearest first, then outward along the grain, over about four held steps in a third of a second, with the tube's stutter. Off is the same in reverse, the far strokes of dark closing first. | Words. The lit states are built (`lo-inside-lights`); the switching is not |
-| Go through a door | One loaded stroke across the screen, as in `cross-2d.png` from round 1 (kept, on the old building). It hides the join between outside and the aisle's impossible space. | Words and the old 2D frame |
+| Walk up to a thing | Nothing is added to say you've arrived. The thing's line gets heavier and its strokes finer as you close. | Built |
+| Use it (a light) | The light arrives as strokes, nearest first, outward along the grain, in about four held steps over a third of a second. Off is the reverse. | Words. The lit states are built; the switching is not |
+| Go through a door | One loaded stroke across the screen; it hides the join into the aisle's impossible space. | Words, and `cross-2d.png` from round 1 |
 | Stand still | Below | |
 
 ### The place, by how light gets to it
 
 | State | How it looks and feels | |
 |---|---|---|
-| The lot, by day | Paper. The building has no edge against the sky on its sunlit sides. Every shadow is a feathered stack of strokes lying the way the sun lies. | Built |
-| Under the canopy by day | Brushed shade, with paper between strokes on the ground and the pumps, island and posts standing in it with broken paper edges. `lo-canopy-shade` against last round's `lo-canopy-shade-before` | Built |
-| The lot, by night | Ink, whole. The name, the bulbs, and the canopy pool raying out. Everything else exists in your disc. `lo-arrive-night`, `lo-strokes-night`, `lo-anywhere-night` | Built |
-| The front room, by day, lights off | Black, with the doorway laid on the floor as a hard-sided patch of paper whose far end frays, your shadow up the middle of it, and your disc on the back wall. `lo-door-in` | Built |
-| The front room, by day, lights on | The counter tube lights the counter's top, the things on it and the wall behind, and leaves the counter's face black: register, cup, bell and radio are small ink shapes on a paper ledge; the shelf of stock and the jacket are silhouettes on the wall; the floor between you and the counter stays dark except where the door's sun lies. The cooler lights its own patch of floor to the west, which rays out. The light at the aisle mouth is a small pool to the east. `lo-inside-lights`, `lo-inside-lights-b` | Built |
-| The aisle | Always night. Shelves as ink bars both sides, running to a point. A lit stretch is a paper floor with the shelves' ends bright; between stretches, dark. `lo-aisle` | Built |
-| The far end, the look back | The payphone has its own small lamp now and the back door is bigger. Looking back, the lit stretches are what you see. **The front window is not yet the bright thing at the end**, which the director asked for. `lo-aisle-back` | Built, and not solved |
-| Out the back | An ordinary wall in sun or dark. | Words |
+| The lot, by day | Paper, with every shadow a feathered stack of strokes along the sun, and each thing drawn in its own finer marks with a line where its edge would be lost. `lo-pumps-b`, `lo-front-b`, `lo-strokes-day` | Built |
+| Under the canopy by day | Open brushed shade; the island, posts, pumps and globes drawn in it. No lamp. `lo-shade-b` | Built |
+| The lot, by night | Ink, whole. The name, the bulbs, the canopy pool. Everything else exists in your disc and at your feet. `lo-arrive-night`, `lo-strokes-night`, `lo-nightpump-b`, `lo-anywhere-night` | Built |
+| The desert | Above. By night it is not drawn at all except in your light: a tuft is a black mark in your disc. | Built by day and dusk; night scrub in the lamp not shot |
+| The front room, by day, lights off | Black; the doorway on the floor with you standing in it; your disc on the back wall. `lo-door-in` | Built |
+| The front room, by day, lights on | The tube lights the counter's top, its things and the wall behind; the counter's face stays black. Stock, jacket, register, cup, bell, radio and cooler are separate drawn things. The door's sun lies on the floor. `lo-room-b` | Built |
+| The aisle | Always night. Shelves as bars running to a point; a lit stretch is a paper floor. `lo-aisle` | Built |
+| The far end, the look back | With your lamp closed and the aisle dark, the front window is the one bright thing: small, a long way off, with the lot in it. `lo-aisle-back` | Built. It holds only while the aisle's own lights are off; with stretches lit, they are the picture |
+| Out the back | An ordinary wall. | Words |
 
 ### The lights
 
-Each has the same three parts: a small flat bright shape (paint) for the lamp itself, a pool of paper whose rim breaks outward in strokes, and the things in the pool as ink.
+Each is a small flat bright shape for the lamp itself, a pool of paper whose rim breaks outward in strokes, and the things in the pool drawn in it.
 
 | Light | Its pool | |
 |---|---|---|
-| Counter tube | The ledge and the wall behind; a tongue of floor either end of the counter | Built |
-| Aisle cords | A stretch of floor and shelf ends each | Built |
-| Cooler | A fan of floor in front of it, its door a tall bright slab | Built |
-| Aisle mouth | A small pool at the opening; from the door it is a bright patch low on the right | Built, small in frame |
-| Payphone | A small pool on the end wall | Built |
-| Radio, register | A dial and a window: paint only, too small to throw a pool | Words |
-| The main | Every pool closes in turn, far strokes first, in the order they were lit reversed. The last thing left is the doorway on the floor (day) or your disc (night). | Words |
-| What you leave, from the road | Lit windows are flat paper rectangles in the black strip of the station; at night you can count them from the arrival spot. | Words |
+| Counter tube, aisle cords, cooler, aisle mouth, payphone | As last round | Built |
+| Radio, register | A dial and a window: paint only | Words |
+| The main | Every pool closes in turn, far strokes first. | Words |
+| What you leave, from the road | Lit windows as flat paper rectangles in the black strip of the station. | Words |
 
 ### Asking for someone
 
 | Thing | How it looks and feels | |
 |---|---|---|
-| Counter bell | DING lands as slab letters in the picture, known only by the ink they throw, and stays until you move. The radio's dial mark shifts. | Words; the 2D frame from round 1 |
-| Bell line | Nothing to see. A sound from inside the building, and with sound off a small mark on the wall where it came from. | Words |
-| Pump handle | The numbers are paint and they change. | Words |
-| Payphone | Its lamp is already on. Nothing changes that you can see. That is the point of it. | Words |
+| Counter bell | DING lands as slab letters known only by the ink they throw, and stays until you move. | Words; the round-1 2D frame |
+| Bell line, pump handle, payphone | A sound; with sound off, a small mark where it came from. The pump's numbers are paint and they change. | Words |
 
 ### Standing still
 
 | Since you stopped | How it looks and feels | |
 |---|---|---|
-| 4–8 s | The disc closes from the rim in: the strokes of dark at its edge grow back toward the centre in three or four held steps. Smaller, never fainter. | Built as a smooth close; the held steps are not |
-| 8 s | Things you joined give back their blacks. | Words |
-| 10–15 s, outdoors at night | Stars arrive one stroke at a time, each a short swelling mark laid round the still point. | Built (round 1), re-shaped this round to swell and taper |
-| 15 s and after | Each event is small, to one side, and already over when you turn. What you can see afterwards is one changed mark. | Words |
-| 4 min | The canopy pool goes: its rays close to the centre. A second disc crosses the slab with no grain of its own. The pool rays back out. | Words |
+| 4–8 s | The disc and the pool at your feet close from the rim in, in three or four held steps. Smaller, never fainter. | Built as a smooth close; the held steps are not |
+| 10–15 s, outdoors at night | Stars, one swelling stroke each, round the still point. | Built |
+| 15 s and after | Each event is small, to one side and already over when you turn. | Words |
+| 4 min | The canopy pool closes; a disc with no grain crosses the slab; the pool rays back. | Words |
 
 ### The hour
 
 | | How it looks and feels | |
 |---|---|---|
-| Midday | Short, dense shadows; the doorway's patch short on the floor; the lot nearly blank. In summer almost no marks outdoors at all except under the canopy. | Built |
-| Morning, evening | Long feathered shadows across the slab; every stroke on the ground turned to lie along them. | Built |
-| Twilight | Words only, above | |
-| Night | Above | Built |
-| Clock wound | The shadows swing while you watch through the window, and the ground's strokes turn with them. Margin: the word "wound" and the real time, typewritten. | Words |
+| Day | Shadows short at midday, long and feathered early and late; the ground's strokes turn to lie along them. | Built |
+| Dusk | Above. One still. | Built |
+| Night | Above. | Built |
+| Clock wound | The shadows swing while you watch through the window. Margin: "wound" and the real time, typewritten. | Words |
 
 ### The alien material
 
 | | How it looks and feels | |
 |---|---|---|
-| The fourth light | A disc like yours. You can tell it from yours by one thing: it is somewhere you aren't looking. | Built round 1; not re-shot |
-| One left on | A lit window you don't remember. Indistinguishable from your own, on purpose. | Words |
-| The three circles | Dashed paint on the ground east of the slab. Sharp, because paint. | Built |
-| The chart | Thin ruled lines and small line drawings after his reference 15, in paint, on the wall under the clock. The one place in the world with fine line and no brush. | Words |
+| The fourth light | A disc like yours, somewhere you aren't looking. | Built in round 1, not re-shot |
+| One left on | A lit window you don't remember. | Words |
+| The three circles | Dashed paint on the ground east of the slab. | Built |
+| The chart | Thin ruled lines and small line drawings after his reference 15, on the wall under the clock. | Words |
 
-### Every state in the table above
+### Every state
 
 | State | How it looks | |
 |---|---|---|
-| First visit | Inside: black, one doorway on the floor, one small pool at the aisle mouth | Built |
-| Return visit; everything on | The room is mostly paper, with the things as ink. It looks like a different, finished drawing of the same room. From the road, a row of lit windows. | Words |
-| After the main | First visit again | Built |
-| Noon in midsummer | The emptiest the lot ever is. The canopy's shade is the only large mark. | Built |
-| Under the canopy by day | Above. **Without your lamp.** See the disagreement below | Built |
-| You never go in | The lot is complete as a picture by itself. | Built |
-| You never stand still | Nothing is missing from any frame. | Built |
-| Sound off or blocked | Beside each light that is on, one short stroke that redraws itself about once a second where its hum would be. A heard-first event leaves a small loose cluster of dots where it happened. | Words |
-| Motion off | Cuts. A light arrives whole. The disc closes in three cuts. | Words |
-| Keyboard | The disc is the focus ring. No other outline is drawn. Outdoors by day, where there is no disc, the focused thing takes your shadow's black for as long as it has focus. | Words. The daytime half of this is new and unproven |
-| Phone | The canvas these frames are. | Built |
-| Desktop | The same world through a longer lens, so the sign still fills the height. `lo-wide-day`, `lo-wide-night` | Built |
-| No 3D, screen reader | The list of places, typewritten on paper, the road still at the top. | Words |
-| Browser memory cleared; loading; nothing made yet | As the how-it-works half says. A place with only the sign, the door, one cord and bare shelves is still this drawing. | Words |
+| First visit; after the main | Inside: black, the doorway on the floor, one small pool at the aisle mouth | Built |
+| Return visit; everything on | The room mostly paper, the things drawn in it; from the road a row of lit windows | Words |
+| Under the canopy by day | Open shade, things drawn, no lamp | Built |
+| Dusk | Outdoors you leave no mark: no shadow, no lamp | Built (one still) |
+| You never go in; you never stand still | Nothing is missing from any frame | Built |
+| Sound off or blocked | Beside each light that is on, one short stroke that redraws itself about once a second. A heard-first event leaves a small loose cluster of dots. | Words |
+| Motion off | Cuts. A light arrives whole. | Words |
+| Keyboard | The disc is the focus ring. By day outdoors the focused thing takes a heavier line for as long as it has focus. | Words |
+| Phone | These frames. The owner has walked the round-2 version on his: "pretty good and fluid". | Built |
+| A slow phone | The drawing gets coarser, a step at a time, until it moves smoothly. The strokes get softer; nothing else changes. | Built; the steps are untested on a real slow phone |
+| Desktop | The same world through a longer lens. `lo-wide-day` | Built |
+| No 3D, screen reader | The list of places, typewritten on paper, the arrival still at the top. | Words |
 
 ## Motion and feel
 
-- The view moves at the screen's full rate. The ink never moves by itself except when a light changes.
-- Anything that *happens* (a light arriving, the disc closing, a word landing, a star) happens in held steps, three or four of them, like frames of drawn animation. Walking is smooth; events are drawn.
-- Nothing eases in or out. A stroke is there or it isn't.
-- Your feet are heard, not seen. Stopping is the sound stopping.
+- The view moves at the screen's full rate. The ink does not move by itself except when a light changes.
+- On the way in from the road the building's marks go from few and large to many and fine. That is the only thing in the drawing that changes because you moved, and it is slow.
+- Anything that happens (a light arriving, the disc closing, a word landing, a star) happens in three or four held steps, like drawn animation.
+- Nothing eases. A stroke is there or it isn't.
 
-## The director's fixes, one by one
+## The prototype as handed to the owner
 
-| Fix | What I did |
-|---|---|
-| 1 Strokes in the walked world | Done and tested. Above |
-| 4 Paper line for near things in shade | Done, as two things: shade is brushed and not filled, and a near thing in shade keeps a broken paper edge. `lo-canopy-shade` |
-| 5 The shadow's shape, two ways | Drawn. They come out nearly the same; I recommend the person's proportions |
-| 6 Arrival framing at real phone sizes | Done at 390 × 844 and 360 × 740, from the live first frame |
-| 7 The sign side-on | Letter cabinets 0.6 m deep, the arrow a slab with bulbs on both faces, the starburst crossed, and a blade reading GAS to the road. `lo-sign-side` |
-| 9 Inside by day with two or three lights on | Drawn twice. `lo-inside-lights`, `lo-inside-lights-b` |
-| 10 Twilight | **Not drawn.** I spent the round on fix 1 |
-| From 01: tube lights the counter only | Done; the tube is over the counter, short-ranged |
-| From 01: a light at the aisle mouth seen from the door | Built; it is small in frame and wants to be bigger |
-| From 01: the far end has to be a picture | Half done. The look back is not solved |
+- `#day`, `#dusk` or `#night` after the address picks the hour; changing it reloads. With none, the visitor's own clock picks one of the three (7 to 5:15 day; an hour of dusk at each end; otherwise night). Query strings still work for the stills.
+- The caption is gone from the picture. At the bottom, small and grey: **day · dusk · night**, and "drag to look · hold to walk", which goes once you have walked.
+- If frames take longer than about 30 ms the drawing's resolution drops by a quarter, and again if needed, down to under half. It never goes back up in a visit.
+- Still true of it: crude boxes, generated strokes, no sound, nothing answers a tap, no door stroke, system-font lettering.
 
-## Where I disagree
+## The director's nine fixes
 
-**With the systems designer: no lamp in daytime shade.** They asked me to say whether a disc of paper under a noon canopy looks right. It doesn't (`lo-canopy-shade-lamp`). In brushed shade the things are already visible, so the lamp has nothing to reveal, and what it does add is a pale sliver on whatever is nearest that reads as a rendering fault. It also breaks the plainest sentence in the concept: daylight is the sun's. I'd make it: **the lamp shows where no daylight reaches at all, which is indoors and at night.** Under the canopy by day you get your shadow where the low sun gets in, and brushed shade where it doesn't. Their fallback ("if it doesn't, the lamp is for indoors and night only, and the rest stands") is the right one. It removes choice 1 from the list for the owner.
+| Fix | Status | Frame |
+|---|---|---|
+| 1 Remove the GAS blade | Done | `lo-arrive-day`, `lo-sign-side` |
+| 2 Put the desert in | Done: horizon, scrub, drifts, fence. No cactus (above) | `lo-arrive-day`, `lo-desert-east`, `lo-anywhere-day` |
+| 3 Brush in the day arrival | Done as proposed (a larger stroke size from far off), measured, **not seen in motion** | `lo-arrive-day`, `lo-walk-3s`, `lo-walk-6s`, `walk-test.png` |
+| 4 Never a black screen at night | Done: a pool at your feet | `lo-night-away` |
+| 5 The shadow: head and shoulders, no ears | Done: laid by its own rule, clean outline | `lo-door-in`, `lo-strokes-day` |
+| 6 Twilight, one frame | Done | `lo-arrive-dusk` |
+| 7 Update the how-it-works half | The systems designer's; not mine | |
+| 8 The look back down the aisle | Solved for the dark aisle; said plainly that lit stretches take the picture | `lo-aisle-back` |
+| 9 Safe to hand him | Done: resolution fallback, caption off the picture, hour by `#name` | |
+| The owner's own: hard to make out objects | Done, one clear step | the five pairs |
 
-**With the director, slightly: "lay strokes along the world-fixed fibres".** I didn't lay strokes along last round's noise. I threw the noise away and made the stroke the thing every surface is made of, because strokes that only decorate an edge would still leave flat fills, and the owner's objection would stand.
+## Where I disagree, or went further
 
-**With the director and the layout: where you arrive.** "You arrive on the road" put the visitor too close to read the sign on a phone. You now arrive across the road from it.
-
-**A thing I added without being asked: the GAS blade.** A sign that faces only the forecourt is a line to anyone on the road, and real ones were read from the road. It is one word and it isn't a joke. But it is a second word on his sign and it's his sign; if he wants only his name up there, the blade goes and the arrow's slab and the cabinets carry the side view.
-
-**With my predecessor: "a sunlit wall against the sky has no edge".** Still true and still right, but it means the day building is mostly not there from the road. With brushed shade I think that is now a strength: the building is drawn only by what is in shadow. The owner may read it as unfinished. One frame will tell.
+- **The edgeless wall.** The director ruled to keep "a sunlit wall against the sky has no edge". After the owner's walk I broke it within 35 m. Above.
+- **No cactus,** though the fix allowed one.
+- **Fix 5 asked for the shadow to be "less ragged than the rest".** I went further and took it out of the brush altogether: its outline is exact. It is the one mark in the place that is precise, and it is you. I think that is right; it is also a second rule, and he may prefer it brushed.
+- **With no hash, the prototype follows the visitor's clock.** Nobody asked for it. It is what the concept says ("the hour is your real hour"), and the owner opening the link at night will get night. The day preset is one fixed morning, not his real sun; the real sun is still words.
 
 ## The stills
 
-All in `concepts/stills/`. `sheet-05-left-on.png` is the one sheet, two frames across, sized to read on a phone. Tall frames are 390 × 844 unless named; all at double density; all straight from the prototype at the position in `sketches/place/shots.js`.
+All in `concepts/stills/`. `sheet-05-left-on.png` is the one sheet, two frames across, for a phone. Tall frames are 390 × 844 unless named `-small` (360 × 740); `lo-wide-day` is 1440 × 810; all at double density, straight from the prototype at the positions in `sketches/place/shots.js`. Saved in sixteen greys to keep the folder small, so the paper looks neutral; in the prototype it is a warm off-white.
 
 | Still | Proves | Does not prove |
 |---|---|---|
-| `lo-arrive-day`, `-small`, `lo-arrive-night`, `-small` | The live first frame holds the whole name at two real phone sizes; the road and the pool put brush in the first picture | That the day building is enough of a picture; it is small and plain |
-| `lo-strokes-day`, `lo-strokes-night` | Strokes with swell, taper and dry breakup, in the walked world | His hand; motion |
-| `walk-test.png` | The strokes stay on the ground from eight stands; the control doesn't | A phone; continuous motion |
-| `lo-strokes-day-drawn`, `stroke-sheet.png` | A sheet loaded from a picture file drives the whole world | That a real scan of his strokes converts well |
-| `lo-canopy-shade`, `-before`, `-lamp` | Near things exist in shade; the lamp by day adds nothing | Every hour: by mid-morning in winter the sun is under the canopy anyway |
-| `lo-shadow-column`, `lo-shadow-person` | The two are nearly the same at brush size | What a clean, un-brushed shadow would look like |
-| `lo-door-in`, `lo-inside-lights`, `-b` | The room by day, dark and with three lights on | The switching; whether the first minute is a pleasure |
-| `lo-aisle`, `lo-aisle-back` | The aisle lit by stretches | The look back |
-| `lo-sign-side` | The sign is a thing from the side | That it is right for the era; his references are still unopened |
-| `lo-night-lamp` | The lamp's rim breaks on the surface's own strokes | The disc closing in steps |
-| `lo-anywhere-day`, `lo-anywhere-night` | Two views placed by random numbers. The day one is blank paper | Anything flattering |
-| `lo-wide-day`, `lo-wide-night` | The wide frame | A desktop composition anyone designed |
-| `cross-2d.png` | Round 1's 2D crossing stroke and landed word, on the old building | That either works in the walked world |
-
-The stills are saved in sixteen greys to keep the folder small, so the paper looks neutral in them. In the prototype it is a warm off-white and the ink a warm black.
-
-Everything is crude boxes. No sound, no crossing stroke, no landed word, nothing answers a tap, and the lettering is a system font.
+| `lo-arrive-day`, `-small`, `lo-arrive-night`, `-small` | The live first frame: whole name, no GAS, a desert, brush from the road | That he reads the day building as finished |
+| `lo-arrive-dusk` | What dusk looks like, once | The sequence; dawn |
+| `lo-walk-3s`, `lo-walk-6s` | What the first six seconds of walking show | How the change of stroke size feels in motion |
+| `lo-desert-east`, `lo-anywhere-day` | A desert with nothing in it is now a picture | The world's edge from either side |
+| The five `-a` / `-b` pairs | Things can be made out where they couldn't | That it is enough for him |
+| `lo-strokes-day`, `lo-strokes-night`, `walk-test.png` | Strokes in the walked world that stay on it | His hand |
+| `lo-door-in`, `lo-night-away`, `lo-night-lamp` | The shadow is a person; the dark is never blank | The lamp closing in steps |
+| `lo-aisle`, `lo-aisle-back`, `lo-sign-side`, `lo-anywhere-night`, `lo-wide-day` | As named | A desktop composition anyone designed; the sign against his references |
+| `cross-2d.png` | Round 1's 2D door stroke and landed word | That either works in the walked world |
 
 ## Not proven
 
-- Any of it on a phone, in a hand, at a frame rate.
+- The new look on his phone: the lines, the tones, the larger far strokes in motion, the frame rate with them. The round-2 version was "fluid"; this one does a little more work per pixel (four more depth reads near things, one more sheet read).
+- That "slightly more detail" has been met and not overshot.
+- The world's edge with the desert in, by picture.
+- The resolution fallback on a real slow phone.
+- Dusk as a sequence; dawn; the real sun for the real hour.
+- Lights arriving in strokes; the lamp closing in steps; the door stroke and DING in the walked world; sound.
 - His own strokes on the sheet.
-- Twilight.
-- Lights switching on in strokes; the disc closing in held steps; the crossing stroke and DING in the walked world.
-- The look back down the aisle.
-- The day building from the road as a picture he likes.
 - The sign against his saved article and photo pool.

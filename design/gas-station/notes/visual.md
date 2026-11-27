@@ -1,98 +1,96 @@
 # Notes — product designer (visual)
 
-Last updated: concept phase, round 2, visual turn 3 (second visual designer; the first was replaced when their context got heavy). The director scores the one merged concept next.
+Last updated: concept phase, round 3, visual turn 4 (second visual designer). The director scores next. This was the last round before the team counts as stuck.
 
 ## Where things stand
 
-- One concept: **Left on** (`concepts/05-left-on.md`). The systems designer wrote its how-it-works half; I wrote its **How it looks and feels** half this turn. 01–04 are history.
-- **The stroke question is answered: yes.** Brush strokes (swell, taper, dry breakup, not always whole) live in the walked three.js world and stay fixed to it. Built in `sketches/place/`, tested with a walk-past test. The owner does not have to choose between three.js and brush strokes. Not yet seen on a real phone.
-- Stills: `concepts/stills/` holds this round's set only (`lo-*.png`, `sheet-05-left-on.png`, `walk-test.png`, `stroke-sheet.png`) plus `cross-2d.png` from round 1. Everything else from round 1 is deleted.
-- Round 1 scores: 01 = 7, 03 = 8. Nothing has gone to the owner.
+- One concept: **Left on** (`concepts/05-left-on.md`). I own its **How it looks and feels** half only; the systems designer owns the how-it-works half and `00-shared.md`. Do not edit theirs.
+- Scores: round 1, 7 and 8. Round 2, 8.5. A 9 is needed before anything is shown to the owner as a candidate.
+- **The owner has walked the round-2 prototype on his phone** (`owner.md` section 8): "Prototype feels pretty good and fluid. Rendering is pretty high contrast though ... hard to really make out objects. I think there can be slightly more detail and variation in the brush stroke size or something to give more detail to the scene". So feel and frame rate are no longer the main risk; legibility became this round's first job alongside the desert and brush on arrival.
+- Also from him (section 7): "Canopy over pumps yes." "Gas is unnecessary." (the GAS blade I added in round 2 is gone).
+- Stills: `concepts/stills/` holds this round's `lo-*` set, `sheet-05-left-on.png`, `walk-test.png`, `stroke-sheet.png`, and `cross-2d.png` from round 1.
 
 ## The owner's words that govern the look (all in `owner.md`)
 
-"Aesthetic should be monocolor black and white brush strokes"; "pure ink for now"; brush "somewhere in the middle. I want them readable but note precise or always whole" (not precise, not always whole); "Route 66 but there's gotta be a googie arrow sign and it should have some elements of that era in places"; "it should feel liminal not funny"; "place first"; name on the sign "Me"; "walk around"; "I'm thinking threejs"; "draw but generate for now. I want to eventually export blender models and texture them"; "let's not worry about the work right now I just want to nail the world"; public with a note "yes but no".
+"Aesthetic should be monocolor black and white brush strokes"; "set in the desert"; "Ed Ruscha meets Jack Kirby's sketches"; "pure ink for now"; brush "somewhere in the middle. I want them readable but note precise or always whole" (not precise, not always whole); "Route 66 but there's gotta be a googie arrow sign"; "it should feel liminal not funny"; "place first"; "Me"; "walk around"; "I'm thinking threejs"; "draw but generate for now. I want to eventually export blender models and texture them"; "Gas is unnecessary."; "hard to really make out objects ... more detail and variation in the brush stroke size".
 
-Open with him: does the station have a canopy (kept on, west of the door).
+## What I did this round, and why
 
-## How the strokes work (the decision, and why)
+**Legibility (the owner's objection).** `?detail=0` gives the look he walked, for before pictures.
+- Things have a tone: painted things (pumps, bench, phone box, cooler) are never quite paper, so they are always drawn. Ground and plaster stay paper in sun. Done with the material's colour (`inkMat(scale, amb, tone)`).
+- More stroke sizes: road 0.5, ground 1, walls 1.7, things 3.6, small dark things 5, globes 4.2 (the number is how many times smaller than the ground's the sheet is worn).
+- A drawn line where an edge would be lost: in the last pass, from depth only. An outline is a jump in depth; a corner is a bend in 1/depth. Ink line on paper, paper line in shade, about 2 cm in the world, weight and breaks from the sheet's noise channel, within 34 m. No line in full dark.
+- Day shade more open (`sky` 0.3, was 0.2).
+- This breaks "a sunlit wall against the sky has no edge" within 34 m, which the director had ruled to keep. I chose the owner's eye. Flagged in the file; it is one number to restrict the line to things only.
 
-- Every surface wears one tiling picture, the **stroke sheet** (`sketches/place/strokes.js`). It records how soon each bit of each stroke shows as its place gets darker: spine first, thin edge and dry tail last. Light on the surface sets the cut-off. So one sheet gives every tone in two values, and a shadow edge is strokes thinning out.
-- On the ground the sheet is laid along the light (sun: along the shadows; fixed lamp: outward from it, in a log-polar wrap). On walls and things it is laid along the surface with a lean. Your own lamp has no grain, on purpose: a grain that followed a moving light would slide.
-- Each stroke reads the sun's shadow a little ahead of or behind itself, along its length, over about 0.7 m. That is what makes a shadow's edge a ragged row of tapers and not a line.
-- Why this and not strokes laid on last round's noise: decorating an edge would still leave flat fills. The owner asked for brush strokes, so the stroke is what surfaces are made of.
-- Why it suits "draw, generate for now, Blender later": the sheet is an ordinary texture. `?sheet=file.png` loads a drawn sheet (tested with `sheet-example.png`). A Blender model can carry its own sheet in its own UVs.
-- Day shade is brushed, not filled, because by day a little sky light is let into shadows (`sky`, 0.2). Full dark (night, indoors) is whole. Indoors is cut off from the sky in the shader by position.
-- Paint is told from light by a flag in the first pass (alpha), not by a tint as in round 1.
+**Desert (director's fix 2).** A horizon ring of mesas (a cylinder of paint that follows the visitor, drawn from the stroke sheet, dense at the cap and dry toward the ground; one long mesa placed behind the station for the arrival, a butte right of the sign). Scrub: 320 instanced tufts, lost at about 45 m. Drifts: patches of ground with a lower tone, so dry strokes lie on them; one placed in the arrival's foreground. A fence along the north side of the road, 4 m posts. No cactus: too close to a wink.
+
+**Brush in the day arrival (fix 3).** A second, larger stroke size from far off: beyond 32 m a surface wears the sheet about 3.7 times larger; it cross-fades to the fine one by 12 m (`gK` in the shader; `?big=0` turns it off). Both world-fixed. The shadow reach grows with it. Measured in `walk.js` (third case). Not seen in motion.
+
+**Shadow (fix 5).** No longer cast by a hidden mesh through the brushed shadow. It is computed directly in every ink material: seven capsules (head, shoulders, body, arms held in, legs), a clean edge. Works on the ground, the door, walls. `?body=0` turns it off (the walk test uses that).
+
+**Night never black (fix 4).** A second, wide, shadowless spot aimed at the ground 2.6 m ahead (`feet`). Closes with the lamp.
+
+**Twilight (fix 6).** `#dusk` / `?dusk=1`: no sun, strong even sky light (flat, shadowless), a sky dome of paint inked from the top using the sheet at very large size, letters 5 to 7 of the name dark (`?letters=`), bulbs small. One still. The sequence is not built.
+
+**Aisle look back (fix 8).** Shot with the lamp closed and aisle lights off: the front window is the bright thing. With stretches lit they take the picture; said so in the file.
+
+**Safe to hand him (fix 9), and the private link.** `#day` / `#dusk` / `#night` read from `location.hash`, reload on change; with none, the visitor's clock picks. Caption replaced by small grey "day · dusk · night" links and "drag to look · hold to walk" (fades after the first walk). Resolution drops by a quarter whenever 16 frames average over 30 ms, down to under half; never back up. three.js import unchanged. Walk speed 4 m/s. Lamp indoors and at night only.
 
 ## The walk-past test
 
-`sketches/place/walk.js` → `stills/walk-test.png`. One 4 m square of ground from eight stands; ink read from the live frame per 5 cm cell of ground and compared.
+`sketches/place/walk.js` → `stills/walk-test.png`. Numbers for this round are in the concept file. Two things worth knowing:
+- Round 2: it caught strokes creeping when the ground was one huge quad. The ground must stay cut into small squares (6 m).
+- A result of exactly 0.00% everywhere means the ground isn't being drawn, not that it passed.
 
-- Strokes on the world: day 0.4–3.3% changed, night 0.5–1.4%. Control (same sheet stuck to the screen): day 7–12%, night 20–28%.
-- **It found a real fault:** with the ground as one huge quad, strokes crept by centimetres with any camera move (9% changed for a 1 cm step). Cause: position precision across a huge triangle. Fixed by cutting the ground into 6 m squares. Tell the builder.
-- `swim.js` (round 1's test) is deleted; `walk.js` replaces it.
-- I also lost twenty minutes to my own bug (a comment that swallowed the line adding the ground). The test reading 0.00% everywhere was the clue: a test that passes perfectly is worth a look.
-- Frame rate in the headless browser: about 2.5 frames a second, same as round 1's version. Software rendering; says nothing about a phone.
+## The director's objections so far, and where each stands
 
-## Limits I found (said in the concept file too)
-
-1. A stroke has a size in the world, not on the screen. From the road the strokes are texture and feathered edges; up close they are marks. The arrival gets its brush from big things: the road (a band of long dry strokes, added this turn), the canopy shadow, the night pool's rays.
-2. Narrow shadows are eaten by the brush. Column and person shadows come out nearly the same.
-3. The sheet repeats every 8 m. Not visible so far.
-4. A hard black-and-white drawn sheet converts coarsely; a grey one would do better.
-
-## The director's objections (score-1) and where each stands
-
-1. "Where are the brush strokes?" — answered. Needs his eye and the owner's.
-2. "I haven't felt it" — still true. Nobody has walked it on a phone.
-3. Day is thin — systems rewrote it; the look half follows.
-5. Tombstone shadow — both shapes drawn; nearly the same at brush size; I recommend the person's proportions.
-6. Sign unchecked against the owner's references — still unchecked (hosts blocked). The six questions are at the end of `00-shared.md`.
-7. Can't see the pumps under the canopy — fixed: brushed shade plus a broken paper edge on near things in shade.
-- Arrival crops the name at 390 wide — fixed: you arrive 21 m south of the sign. Whole name at 390 × 844 and 360 × 740 from the live first frame.
-- Sign is a line from the side — fixed: deep cabinets, slab arrow, crossed starburst, and a GAS blade facing the road (my addition; flagged).
-- Inside by day with lights on — drawn twice.
-- Twilight — **not drawn.**
-- Far end of the aisle as a picture / the look back — half done; the front window is still not the bright thing.
-
-## Where I disagreed (all written in `05-left-on.md`)
-
-- Systems: no lamp in daytime shade. `lo-canopy-shade-lamp` shows it adds a sliver that reads as a fault. Lamp is for indoors and night. This removes one of the four choices for the owner.
-- Director: I replaced the noise fibres and didn't build on them.
-- Layout: you arrive across the road, not on it. The door is about 11 s away; I'd walk a little faster (4 m/s) over starting closer.
+| Objection | Status |
+|---|---|
+| "Where are the brush strokes?" (round 1) | Answered in round 2 |
+| "I haven't felt it" | The owner has: "pretty good and fluid" (round-2 version) |
+| GAS blade | Gone |
+| No desert by day | In |
+| Day arrival shows almost no brush | Road, mesa, drift, scrub, and larger far strokes |
+| Solid black when turned away at night | Pool at the feet |
+| Shadow with ears | A person with a clean outline |
+| Twilight words only | One still |
+| Look back down the aisle promised and unbuilt | Shot; limits stated |
+| Sign unchecked against his references | Still unchecked (hosts blocked) |
+| "These look generated" | True. One file to replace |
 
 ## Sketches
 
 `sketches/place/` (serve `sketches/`, open `place/index.html`; three.js is shared from `../ink-is-shadow/vendor`, the only copy):
 
-- `index.html` — the prototype. Parameters: `hour`, `decl`, `night=1`, `x`, `n`, `head`, `pitch`, `inside=1`, `tube`, `cooler`, `mouth`, `aislelights` (1 all, 2 first two), `lamp`, `body=person`, `daylamp=1`, `strokes=0` (round 1's flat look), `line=0`, `sky`, `reach`, `sheet=file.png`, `anchor=screen` (the test's control), `dbg=1..4` (raw light, sheet, paint flag, depth), `other=1`, `seen=`.
-- `strokes.js` — the sheet generator, and the loader for a drawn sheet. The one file his strokes replace.
-- `sheet-example.png` — the generated sheet as a black-and-white drawing; also copied to `stills/stroke-sheet.png`.
-- `shots.js` (every still's position), `render.js` (stills into `out/`, at 390 × 844, 360 × 740 or 1440 × 810, double density), `walk.js` (the test), `sheets.js` (copies to `concepts/stills/` and builds the sheet), `review.js` (contact sheet). Order: `render.js`, `walk.js`, `sheets.js`. `out/` is deleted after use. A full render takes about three minutes; run it in the background.
-- Older: `sketches/concepts/` (round 1's 2D engine), `ink-is-shadow/`, `dial-on-a-phone/`. Untouched.
+- `index.html` — the prototype. Hash: `#day`, `#dusk`, `#night`. Query: `hour`, `decl`, `night=1`, `dusk=1`, `x`, `n`, `head`, `pitch`, `inside=1`, `tube`, `cooler`, `mouth`, `aislelights` (1 all, 2 first two), `lamp`, `feet=0`, `body=0`, `detail=0`, `big=0`, `line` (0 none, 1 round 2's, 2 drawn line), `sky`, `reach`, `letters`, `skydown`, `res`, `strokes=0`, `sheet=file.png`, `anchor=screen`, `dbg=1..4`, `other=1`, `seen=`, `still=1`.
+- `strokes.js` — the sheet generator and the loader for a drawn sheet. The one file his strokes replace. `sheet-example.png` is the generated sheet as a drawing.
+- `shots.js`, `render.js`, `walk.js`, `sheets.js`, `review.js`. Order: `render.js lo-`, `walk.js`, `sheets.js`. `out/` is deleted after use. A full run takes about six minutes in software; run it in the background. After `sheets.js`, the stills are re-saved in 16 greys (a few lines of Python with PIL) to keep the folder small.
+- Older, untouched: `sketches/concepts/`, `ink-is-shadow/`, `dial-on-a-phone/`.
 
 ## Not proven
 
-- Anything on a real phone in a hand: feel, frame rate, whether far fine strokes sparkle in motion.
+- This round's look on his phone: the lines, tones, the far strokes changing as you walk in, and the frame rate with them.
+- Whether "slightly more detail" is met or overshot.
+- The world's edge with the desert in (reasoned and built, not captured from both sides).
+- The resolution fallback on a slow phone.
+- Dusk as a sequence; dawn; the real sun for the real hour.
+- Lights arriving in strokes; the lamp closing in held steps; the door stroke and DING in the walked world; sound.
 - His own strokes.
-- Twilight. Lights arriving in strokes. The lamp closing in held steps. The crossing stroke and DING in the walked world. Sound.
-- The look back down the aisle.
-- Whether the day building, drawn only by its shadows and small from the road, is a picture he likes.
 - The sign against his saved article and photo pool.
 
 ## Open questions
 
-- Owner: canopy or not. Does the sign carry only his name, or also GAS on a blade facing the road. (Shadow shape: low stakes now; I'd stop asking.) Whether these generated strokes are near enough to his hand to go on with.
-- Director: accept dropping the day-shade lamp; accept arriving across the road; whether twilight must be drawn before scoring.
-- Systems: walk speed, now that the door is 37 m from the arrival; "you arrive on the road" in the shared file needs changing to "across the road".
-- Orchestrator: a throwaway link so the owner (or anyone) can walk it on a phone is now the most useful next thing. Nothing else can retire the main risk.
+- Owner: are things easy enough to make out now, and is the line welcome on the building or only on things? Do the strokes read as brush strokes to him, and does his shadow read as his? (The director's two questions.)
+- Director: I broke the edgeless-wall ruling inside 34 m; the shadow is exact, not just "less ragged"; no cactus.
+- Systems: the prototype follows the visitor's clock when no hour is named; the lamp has a second part (the pool at your feet); the walk is 4 m/s.
+- Orchestrator: the private-link copy needs refreshing from `sketches/place/` (and `strokes.js` beside it) for him to see any of this.
 
 ## Next
 
-- Read the round-2 score.
-- Twilight: sky strokes from the same sheet at large scale, letters one at a time.
-- Lights arriving and leaving in held steps; the lamp closing in steps.
-- The look back down the aisle: darken the front room from that end so the window is the bright thing.
-- The crossing stroke in the walked world.
-- If a sheet of his strokes arrives: load it with `?sheet=`, fix the conversion for hard black-and-white, re-run `walk.js`.
+- Read the round-3 score.
+- If he walks it again: listen for the far strokes crawling on the walk in. If they do, `big=0`.
+- Capture the world's edge from both sides.
+- Lights arriving and leaving in held steps; the lamp closing in steps; the door stroke.
+- Dusk as a sequence.
+- If a sheet of his strokes arrives: `?sheet=`, fix the conversion for hard black-and-white, re-run `walk.js`.
