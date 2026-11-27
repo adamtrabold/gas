@@ -146,9 +146,9 @@ Outside before inside, day before night. The inside is last, so nothing waits on
 - *Kinds of mark:* a fine contour; then dots, packed closer for dark, round on the screen, each with a place on the pump that it keeps as you walk. Pits on the steel. Rust as packed dots rising from the base. Cracks across the hose. The print itself worn (ink dropping out in the paper's low places).
 - *Where tone turns:* across the cabinet's rounded corners, round the globe's rim, round the hose. Lightest on the side toward the upper left. This shading is the pump's own and is the same at every hour.
 - *Hose and nozzle:* the hose leaves the side high up through a small fitting, hangs in one long loop nearly to the island, and comes back up to the nozzle. The nozzle hangs by its hooked spout in a boot on the side: a grip, a thin trigger guard, a spout.
-- *Two pumps:* drawn as the same pump twice, turned to face each other with the hoses inward, as in your Route 66 photo. HI-TEST on one, REGULAR on the other; one globe cracked. **Same or one of each is still your call.**
+- *Two pumps:* drawn as the same pump twice, mirror images, both facing the road with their hoses toward each other, as in your Route 66 photo. HI-TEST on one, REGULAR on the other; one globe cracked. **Same or one of each is still your call.**
 - *Flat paint (hard, like lettering):* the globe's face with the brand, grade plate, number window and its digits, notice, knob, the two seam lines. All worn.
-- *What light does to it:* by day, in the shade of the canopy or in your shadow, a thin veil of lines is laid over it; its dots do not change. At night it is black until a lamp reaches it, and then the same drawing shows. The globe's face is lit all night.
+- *What light does to it:* it stays in dots in every light. By day, in the canopy's shade or in your shadow, at most a few faint broken lines are laid over it. At night the dark comes onto it as its own dots packing closer, then black; a lamp shows the same drawing. The globe's face is lit all night.
 - *Its own ground:* its cast shadow, in lines along the sun.
 - *Open:* lettering is set type until someone draws it. LLANO is a stand-in name; you are supplying the brands.
 
@@ -211,7 +211,7 @@ Outside before inside, day before night. The inside is last, so nothing waits on
 - *Paper:* plaster paper under the fascia and the underside; steel paper under the posts and shades.
 - *Kinds of mark:* dots, like the pump. It is a thing, so it is drawn once: the underside is dark with close dots because it is an underside, at every hour. Stains underneath as patches of closer dots. On the fascia, two stripes of which only broken bands of packed dots are left, and patches of close dots where paint has peeled. Posts: rust rising from the foot.
 - *Lamps:* west, dead (shade and stem, no bulb). Middle, the one that works. East, gone (a plate and a stub of flex). PROPOSED, as on the list.
-- *What light does to it:* by day it takes no shade; it makes it. Its shade is drawn in lines on the slab, the island, the wall behind and, as a thin veil, on the pumps. At night the working lamp's bulb is paper-white, and the underside, the forecourt under it and the pumps show in its light; beyond its reach, black.
+- *What light does to it:* by day it takes no shade; it makes it. Its shade is drawn in lines on the slab, the island's top and the wall behind; the pumps under it stay in dots. At night the working lamp's bulb is paper-white, and the underside, the forecourt under it and the pumps show in its light; beyond its reach, black.
 - *Joined:* it runs into the front wall. The wall is element 4 and is not drawn yet; for now it is an outline that takes the canopy's shade.
 - *Open:* the posts in your abandoned-station photo are square and one has a painted band; ours are round and plain. The fascia has no lettering. Which lamp works is ours to choose until you say.
 

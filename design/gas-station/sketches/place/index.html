@@ -10,7 +10,7 @@
   #note{position:fixed;left:0;right:0;bottom:calc(5px + env(safe-area-inset-bottom,0px));text-align:center;font:11px/1.9 "Courier 10 Pitch","Courier New",monospace;color:#8a857a;pointer-events:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
   #note a{pointer-events:auto;color:inherit;text-decoration:none;padding:8px 2px;-webkit-touch-callout:none;-webkit-user-drag:none}#note a.on{text-decoration:underline}#hint{transition:opacity 1.5s}
 </style>
-<div id="note"><span id="views"><a data-view="pump">pump</a> · <a data-view="slab">slab</a> · <a data-view="together">together</a></span><span id="looks"> &nbsp; <a data-look="brush">brush</a> · <a data-look="cut">cut</a> · <a data-look="dot">dot</a> &nbsp; <a data-t="tall">short/tall</a> · <a data-t="lit">drawn once/lit by the hour</a></span><br><a data-hour="day">day</a> · <a data-hour="night">night</a><span id="hint"> &nbsp; drag to look · hold to walk</span></div>
+<div id="note"><span id="views"><a data-view="together">together</a> · <a data-view="pump">pump</a> · <a data-view="slab">slab</a></span><span id="looks"> &nbsp; <a data-look="brush">brush</a> · <a data-look="cut">cut</a> · <a data-look="dot">dot</a> &nbsp; <a data-t="tall">short/tall</a> · <a data-t="lit">drawn once/lit by the hour</a></span><br><a data-hour="day">day</a> · <a data-hour="night">night</a><span id="hint"> &nbsp; drag to look · hold to walk</span></div>
 <script type="module">
 // The place, walked. Throwaway: it exists to test the look, not to be built on.
 // Systems' lot: sign at the road, door 16 m straight north of it, canopy and pumps to the west.
@@ -38,13 +38,13 @@ const Q = new URLSearchParams(location.search), num = (k, d) => Q.has(k) ? +Q.ge
 // which hour and which look: names after the #, joined by a dash in any order (#night, #brush, #pen-dusk). with no hour, the visitor's own clock picks one of the three
 const HASH = location.hash.replace('#', '').toLowerCase().split(/[-+,]/), CLOCK = new Date().getHours() + new Date().getMinutes() / 60; addEventListener('hashchange', () => location.reload());
 const HOURH = HASH.find(h => ['day', 'night'].concat(HASH.includes('team') ? ['dusk'] : []).includes(h)), LOOKS = ['brush', 'cut', 'dot', 'paper'], LOOKH = HASH.find(h => LOOKS.includes(h));
-const MODE = Q.has('night') ? 'night' : Q.has('dusk') ? 'dusk' : Q.has('hour') || Q.has('day') ? 'day' : HOURH ? HOURH : CLOCK >= 6.5 && CLOCK < 17.75 ? 'day' : 'night', DUSK = MODE === 'dusk';   // dusk has not been redrawn: only by name, behind #team
+const MODE = Q.has('night') ? 'night' : Q.has('dusk') ? 'dusk' : Q.has('hour') || Q.has('day') ? 'day' : HOURH ? HOURH : !HASH.includes('team') || (CLOCK >= 6.5 && CLOCK < 17.75) ? 'day' : 'night', DUSK = MODE === 'dusk';   // dusk has not been redrawn: only by name, behind #team
 const TEAM = HASH.includes('team') || Q.has('study') || Q.has('team');
 const TALL = TEAM && (HASH.includes('tall') || Q.has('tall')), OWN = !(TEAM && (HASH.includes('lit') || Q.has('lit'))),   // things keep their own drawing (as on the sheet) unless the link says lit: then the hour's light makes all of it
   PX = TALL ? -5.4 : -8.2;
 // a view: where you stand [x, n, heading, pitch], and (for the owner's three) the hour and season it is shown in by day
-const STUDIES = { pump: [PX - 2.1, 9.2, -43, -2], slab: [-3.4, 5.2, 36, -9, 10.5, -21], together: [-13.2, 3.4, -36, 3, 13.5, 15], wall: [2.6, 11.2, -4, 1], ground: [-.8, 7.6, 74, -24], lot: [-2.5, 6.5, 42, 0] }, VIEWS = ['pump', 'slab', 'together'],
-  STUDY = STUDIES[Q.get('study')] ? Q.get('study') : VIEWS.includes(Q.get('view')) ? Q.get('view') : HASH.find(h => STUDIES[h] && (TEAM || VIEWS.includes(h))) || (TEAM ? undefined : 'pump'), VIEW = VIEWS.includes(STUDY) ? STUDY : null,   // the link shows the pump and nothing else. the rest of the place is not redrawn yet: it is behind #team (#team-lot, #team-wall, #team-ground, #team alone for the arrival)
+const STUDIES = { pump: [PX - 2.1, 9.2, -43, -2], slab: [-3.4, 5.2, 36, -9, 10.5, -21], together: [-6.8, 2.4, 0, 2, 13.5, 15], wall: [2.6, 11.2, -4, 1], ground: [-.8, 7.6, 74, -24], lot: [-2.5, 6.5, 42, 0] }, VIEWS = ['pump', 'slab', 'together'],
+  STUDY = STUDIES[Q.get('study')] ? Q.get('study') : VIEWS.includes(Q.get('view')) ? Q.get('view') : HASH.find(h => STUDIES[h] && (TEAM || VIEWS.includes(h))) || (TEAM ? undefined : 'together'), VIEW = VIEWS.includes(STUDY) ? STUDY : null,   // the link shows the pump and nothing else. the rest of the place is not redrawn yet: it is behind #team (#team-lot, #team-wall, #team-ground, #team alone for the arrival)
   SV = STUDIES[STUDY] || [2.6, -21, 6, 9], SOLO = STUDY === 'pump' && num('solo', 1), NEAR = !TEAM && VIEW !== 'pump';
 const LOOKN = LOOKS.includes(Q.get('look')) ? Q.get('look') : (TEAM && LOOKH) || 'dot', LOOK = LOOKS.indexOf(LOOKN), PICK = LOOKN === 'dot' && OWN && !Q.has('nopick');   // the owner's picks: dots for the thing, lines for the light
 document.getElementById('looks').style.display = TEAM ? '' : 'none'; document.getElementById('views').style.display = TEAM ? 'none' : '';
@@ -59,9 +59,9 @@ const sheet = makeSheet();                                                      
 const BX0 = -13, BX1 = 7, FN = 16, BN = 24, BH = 3.8, WT = .22;                    // the station: a plain box, 20 m by 8 m, front faces south at n = 16
 // the three looks. [gap between lines in screen points, gap of the second family, how dry, bristle streaks], [angle of the second family, the tone it starts at, the tone that goes solid, how long a mark is in gaps]
 // brush: broad dry strokes, a second coat, spotted black. cut: an even line and short hatching one way, no black by day. dot: stipple, packed closer for dark, and the most worn. paper: brush on real grey papers
-const LK = PICK ? [4.6, 4.6, .1, 0] : [[15, 12, 1, .6], [7.5, 7.5, .15, 0], [9, 9, .3, 0], [15, 12, 1, .6]][LOOK], LK2 = PICK ? [.9, .62, .93, 11] : [[-.75, .55, .86, 4.5], [.95, 2, .965, 4], [.95, 2, .95, 5], [.3, .5, .86, 9]][LOOK], LK3 = PICK ? [.1, .27, .24, 0] : [[.2, .72, .6, 0], [.17, .5, .4, 0], [.1, .16, .1, 0], [.2, .72, .6, 0]][LOOK];
+const LK = PICK ? [4.6, 4.6, .1, 0] : [[15, 12, 1, .6], [7.5, 7.5, .15, 0], [9, 9, .3, 0], [15, 12, 1, .6]][LOOK], LK2 = PICK ? [.33, .62, .93, 11] : [[-.75, .55, .86, 4.5], [.95, 2, .965, 4], [.95, 2, .95, 5], [.3, .5, .86, 9]][LOOK], LK3 = PICK ? [.1, .27, .24, 0] : [[.2, .72, .6, 0], [.17, .5, .4, 0], [.1, .16, .1, 0], [.2, .72, .6, 0]][LOOK];
 const SU = { sunD: { value: new T.Vector3(0, 1, 0) }, youF: { value: new T.Vector3() }, youR: { value: new T.Vector2(1, 0) }, youOn: { value: 0 }, sunA: { value: new T.Vector3(1, 0, 0) }, smat: { value: new T.Matrix4() }, lampP: { value: [new T.Vector4(), new T.Vector4(), new T.Vector4(), new T.Vector4()] }, nl: { value: 0 }, pxs: { value: 1 },
-  LK: { value: new T.Vector4(num('gap', LK[0]), num('gap2', LK[1]), num('dry', LK[2]), num('bristle', LK[3])) }, LK2: { value: new T.Vector4(num('cross', LK2[0]), num('crossat', LK2[1]), num('solid', LK2[2]), num('len', LK2[3])) }, LK3: { value: new T.Vector4(...LK3) }, pick: { value: PICK ? 1 : 0 }, veil: { value: num('veil', .4) }, veilYou: { value: num('veilyou', .8) }, shadeDots: { value: num('shadedots', 0) }, oldStip: { value: num('oldstip', 0) }, stG: { value: num('stg', 3) }, dayK: { value: num('dayk', .72) }, stP: { value: new T.Vector2(num('std', 2.2), num('str', .32)) }, structOn: { value: 0 }, cRect: { value: new T.Vector4() }, bRect: { value: new T.Vector4() }, cbTop: { value: new T.Vector2() }, TEXP: { value: num('texp', 2.6) }, stip: { value: LOOK === 2 ? 1 : 0 }, wear: { value: num('wear', [.14, .1, .2, .14][LOOK]) }, own: { value: OWN ? 1 : 0 }, nightU: { value: 0 }, texOn: { value: num('tex', 1) }, grainOn: { value: num('grain', 1) } };
+  LK: { value: new T.Vector4(num('gap', LK[0]), num('gap2', LK[1]), num('dry', LK[2]), num('bristle', LK[3])) }, LK2: { value: new T.Vector4(num('cross', LK2[0]), num('crossat', LK2[1]), num('solid', LK2[2]), num('len', LK2[3])) }, LK3: { value: new T.Vector4(...LK3) }, pick: { value: PICK ? 1 : 0 }, veil: { value: num('veil', .16) }, veilYou: { value: num('veilyou', .34) }, shadeDots: { value: num('shadedots', 0) }, oldStip: { value: num('oldstip', 0) }, stG: { value: num('stg', 3) }, dayK: { value: num('dayk', .72) }, stP: { value: new T.Vector2(num('std', 2.2), num('str', .32)) }, structOn: { value: 0 }, cRect: { value: new T.Vector4() }, bRect: { value: new T.Vector4() }, cbTop: { value: new T.Vector2() }, TEXP: { value: num('texp', 2.6) }, stip: { value: LOOK === 2 ? 1 : 0 }, wear: { value: num('wear', [.14, .1, .2, .14][LOOK]) }, own: { value: OWN ? 1 : 0 }, nightU: { value: 0 }, texOn: { value: num('tex', 1) }, grainOn: { value: num('grain', 1) } };
 const SHADOW = T.ShaderChunk.shadowmap_pars_fragment.replace('float getShadow(', 'float getShadow0(') + `
 #ifdef USE_SHADOWMAP
   float blS(sampler2D m,vec2 sz,vec2 uv,float z){vec2 q=uv*sz-.5,f=fract(q),b=(floor(q)+.5)/sz,e=1./sz;return mix(mix(texture2DCompare(m,b,z),texture2DCompare(m,b+vec2(e.x,0.),z),f.x),mix(texture2DCompare(m,b+vec2(0.,e.y),z),texture2DCompare(m,b+e,z),f.x),f.y);}
@@ -71,7 +71,7 @@ const SHADOW = T.ShaderChunk.shadowmap_pars_fragment.replace('float getShadow(',
     // the sun: its shadow is read along the mark, eight times over about a metre. so along a mark the tone comes on slowly and each mark stops in its own place; across the marks the edge is the last mark
     vec3 dS=(smat*vec4(gDir,0.)).xyz*(radius*.01);float s=0.;
     for(int i=0;i<8;i++){float k=(float(i)+.5)/4.-1.;vec3 q=sc.xyz+dS*k;s+=blS(m,sz,q.xy,q.z);}
-    gYou=mix(1.,youSh(vWp),clamp(s/8.*1.5-.25,0.,1.));return mix(1.,s/8.,si);}
+    float gy=0.;for(int i=0;i<6;i++)gy+=youSh(vWp+gDir*((float(i)-2.5)*.16));gYou=mix(1.,gy/6.,clamp(s/8.*1.5-.25,0.,1.));return mix(1.,s/8.,si);}   // your shadow is read along the mark too, so its lines end raggedly, like any other shadow's
 #endif`;
 const KIND = { dirt: [0, 'dirt', .45, 1, 0], plaster: [1, 'plaster', .7, .5, -.08], concrete: [2, 'concrete', .6, .45, -.2], blacktop: [3, 'blacktop', .8, 1, 0], steel: [4, 'steel', .5, .8, -.1], wood: [5, 'wood', .45, .8, -.2], tin: [6, 'tin', .5, .6, -.16], glass: [7, 'steel', .9, 1, 0], fascia: [8, 'plaster', .5, .55, -.1], rubber: [9, 'rubber', .25, .5, -.42] }, PAPERS = {};
 const paper = name => PAPERS[name] || (PAPERS[name] = (() => { const t = new T.TextureLoader().load('paper/' + name + '.png'); t.wrapS = t.wrapT = T.RepeatWrapping; t.colorSpace = T.NoColorSpace; t.anisotropy = 8; return t; })());
@@ -143,19 +143,21 @@ function inkMat(kind, { amb = 1, tone = 1, along = null, drift = false, vert = f
       .replace('#include <dithering_fragment>', `#include <dithering_fragment>
         float lO=gl_FragColor.r;
         if(drift>.5){float nn=-vWp.z,lot=smoothstep(-18.,-14.,vWp.x)*(1.-smoothstep(12.,16.,vWp.x))*smoothstep(-4.,-2.,nn)*(1.-smoothstep(26.,30.,nn));lO*=mix(1.,.45,smoothstep(.58,.7,dn2(vWp.xz/vec2(14.,6.))*.65+dn2(vWp.xz/3.1+7.)*.35)*(1.-lot)*smoothstep(5.,9.,distance(vWp.xz,vec2(2.6,21.))));}   // the desert floor: drifts of darker ground
-        if(youOn>.5)lO=mix(min(lO,.05),lO,gYou);   // your shadow shows only where the sun would otherwise reach
+        if(youOn>.5)lO=mix(min(lO,pick>.5?.16:.05),lO,gYou);   // your shadow shows only where the sun would otherwise reach
         float tone=pow(1.-clamp((lO-.012)/.9,0.,1.),TEXP);                                           // 0 paper, 1 black
         vec3 nW=normalize(vWn);float tO=0.,tf=pow(1.-clamp((mt*(clamp(dot(nW,normalize(vec3(-.8,.5,.35))),0.,1.)*1.3+.14)-.012)/.9,0.,1.),TEXP);
         if(slabOn>.5){vec2 w=vWp.xz;float e=min(min(w.x-slabR.x,slabR.y-w.x),min(w.y-slabR.z,slabR.w-w.y))-dn2(w*.45)*1.3-dn2(w*2.1)*.4+.25;if(e<0.)discard;}   // the slab's edge: broken, giving way to dirt
         if(pick>.5&&isT<.5&&nightU<.5)tone*=dayK;
         if(pick>.5){if(isT>.5){tO=tf;if(nightU<.5){float sh=isT>1.5?0.:structSh(vWp)*veil;if(youOn>.5)sh=max(sh,(1.-youSh(vWp))*veilYou);tone=sh*.6;}}}   // the picks. a thing keeps its own shading (tO, in dots) at every hour. by day the light only lays a veil of lines over it where a roof or you stand in the sun's way; at night the dark is added
-        else if(own>.5&&isT>.5){tone=nightU>.5?max(tf,tone):tf;}   // drawn once, in the other hands: the thing keeps its own shading whatever the hour; the dark can only add to it
+        float tl=tone;if(pick>.5&&isT>.5&&nightU>.5){tO=max(tO,tone);tl=0.;}                    // at night the dark comes onto a thing as its own dots packing closer, then black. never as lines: lines are for the ground and the walls
+        if(pick>.5&&kerbOn>.5&&nW.y<.7){tO=max(tO,tone*.85);tl=0.;}                               // the island's low kerb face: too narrow a strip to hatch (it made a herringbone seam across the forecourt). its shade is dots
+        else if(own>.5&&isT>.5&&pick<.5){tone=nightU>.5?max(tf,tone):tf;tl=tone;}   // drawn once, in the other hands: the thing keeps its own shading whatever the hour; the dark can only add to it
         float g=texture2D(grain,gM/gsz).r*.65+texture2D(grain,gM/(gsz*.31)+.37).r*.35;g=mix(.6,g,grainOn);          // this surface's paper: 1 is the high tooth, which takes ink first
-        float bq=step(.5,LK.w),bc=cos(.55*bq),bs=sin(.55*bq),gb=mix(gk,1.,.55*bq);float ink=fam(vec2(gP.x*bc+gP.y*bs,-gP.x*bs+gP.y*bc),smoothstep(.04,.45,tone),mix(LK3.x,LK3.y,smoothstep(.1,.92,tone)),LK.x*gb,1.,g);                                                         // the first family: along the form
-        float cs=cos(LK2.x),sn=sin(LK2.x);ink=max(ink,fam(vec2(gP.x*cs+gP.y*sn,-gP.x*sn+gP.y*cs),LK2.y>1.?0.:smoothstep(LK2.y,.9,tone),mix(LK3.x,LK3.z,smoothstep(LK2.y,1.,tone)),LK.y*gb,2.,g));   // the second, laid across it
-        if(pick>.5){if(shadeDots>.5){ink=0.;tO=max(tO,tone*.92);}ink=max(ink,stipple(tO));}                                                                // the picks: lines are the light's, dots are the thing's. (shadeDots: the other way to do it, shade as more dots)
+        float bq=step(.5,LK.w),bc=cos(.55*bq),bs=sin(.55*bq),gb=mix(gk,1.,.55*bq);float ink=fam(vec2(gP.x*bc+gP.y*bs,-gP.x*bs+gP.y*bc),smoothstep(.04,.45,tl),mix(LK3.x,LK3.y,smoothstep(.1,.92,tl)),LK.x*gb,1.,g);                                                         // the first family: along the form
+        float cs=cos(LK2.x),sn=sin(LK2.x);ink=max(ink,fam(vec2(gP.x*cs+gP.y*sn,-gP.x*sn+gP.y*cs),LK2.y>1.?0.:smoothstep(LK2.y,.9,tl),mix(LK3.x,LK3.z,smoothstep(LK2.y,1.,tl)),LK.y*gb*1.35,2.,g));   // the second, laid across it
+        if(pick>.5){if(shadeDots>.5){ink=0.;tO=max(tO,tl*.92);}ink=max(ink,stipple(tO));}                                                                // the picks: lines are the light's, dots are the thing's. (shadeDots: the other way to do it, shade as more dots)
         else if(stip>.5){float gq=7.*gk;ink=max(ink*.0,spots(gM,gq*.5,tone*1.1,.3,31.));ink=max(ink,spots(gM+7.3,gq*.5,(tone-.3)*1.4,.3,32.));ink=max(ink,spots(gM-3.1,gq*.4,(tone-.55)*2.2,.3,33.));}   // stipple: dots, packed closer for dark
-        float so=smoothstep(LK2.z,.99,tone);ink=max(ink,smoothstep(0.,.25,so-(1.-g)*1.1*(1.-so)));                    // last, black, and the paper's valleys are the last of it to fill
+        float so=smoothstep(LK2.z,.99,tone),sk=smoothstep(0.,.25,so-(1.-g)*1.1*(1.-so));ink=max(ink,sk);                    // last, black, and the paper's valleys are the last of it to fill
         // what it is made of: marks that are there whatever the light. light only thins them
         float tk=.35+.65*tone,tx=0.;
         if(texOn>.5){
@@ -186,7 +188,7 @@ function inkMat(kind, { amb = 1, tone = 1, along = null, drift = false, vert = f
         if(bareK>.5)tx=0.;
         if(stainK>.5){float sp=dn2(gM*.55+3.)*.65+dn2(gM*2.4)*.35;tx=max(tx,spots(gM,2.8,smoothstep(.5,.72,sp)*.6,.3,46.));}                                 // stained: patches of closer dots
         if(rustK>.5){float low=clamp(1.1-(vWp.y-.14)*1.6,0.,1.),pat=dn2(gP*vec2(5.,2.5))*.6+dn2(gP*13.)*.4;tx=max(tx,spots(gM,2.6,low*low*.9*step(.38,pat)+.05,.3,21.));float bl=step(.66-low*.2,pat)*step(.3,low);tx=max(tx,pick>.5?spots(gM+2.2,2.1,bl*.95,.3,22.):bl*step(.3,g));}   // rust: coming up from the base in patches, and through the seams. in the picks a patch is packed dots, not a pool of ink   // rust: coming up from the base in patches, and through the seams
-        ink=max(ink,tx*smoothstep(-.4,.5,tk));ink*=smoothstep(wear-.07,wear+.07,g*.55+dn2(gM*11.)*.45);   // the print is worn: ink drops out where the paper is low
+        ink=max(ink,tx*smoothstep(-.4,.5,tk));ink*=smoothstep(wear-.07,wear+.07,g*.55+dn2(gM*11.)*.45);if(pick>.5)ink=max(ink,sk*step(.6,so));   // the print is worn: ink drops out where the paper is low
         gl_FragColor=vec4(1.-ink,clamp(.5+(g-.5)*pkk.x+pkk.y,0.,1.),max(tone,tO),drift>.5||dot(along,along)>0.?.18:slabOn>.5||flatK>.5?.2:.25);`);   // r: paper left. g: the paper's grain. b: tone, for the weight of the contour. a: under .6 is a drawn surface, not paint; .18 is ground and road, which get no contour
   };
   return m;
@@ -372,7 +374,7 @@ sun.shadow.radius = num('reach', 50);                                           
 scene.add(sun, sun.target);
 SU.sunA.value.set(-SUN.x, 0, -SUN.z).normalize();                                                                          // the way the sun's shadows run along the ground
 const hemi = new T.HemisphereLight(0xffffff, 0xb4b4b4, NIGHT ? .03 : DUSK ? 2.2 : num('sky', .75)); scene.add(hemi);   // dusk: no sun and no shadows, the flattest the place ever is;                    // by day, shade is not dark: the sky and the bright ground get into it
-scene.background = new T.Color(NIGHT ? 0 : 0xffffff);
+scene.background = new T.Color(NIGHT ? 0 : 1, .5, NIGHT ? 0 : 1);   // g is the paper's grain channel: .5 is "no grain", so an edge against the sky doesn't flash light
 const CANOPY = NIGHT && num('canopy', 1) && (TEAM || VIEW === 'together'); if (NIGHT) canLamp.intensity = CANOPY ? 60 : 0; canBulb.material = CANOPY ? LIT : inkMat('glass', { tone: .9, thing: 2, round: [.44, .22], fine: .6 }); SU.structOn.value = TEAM || VIEW === 'together' ? 1 : 0;
 const TUBE = num('tube', 0), AISLEON = num('aislelights', 0), COOL = num('cooler', 0), MOUTH = num('mouth', TEAM ? 1 : 0);
 tube.intensity = TUBE ? 9 : 0; cooler.intensity = COOL ? 5 : 0; if (COOL) coolGlow.material = LIT; mouth.intensity = MOUTH ? 4 : 0; payLamp.intensity = 3;

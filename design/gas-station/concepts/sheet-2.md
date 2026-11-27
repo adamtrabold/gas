@@ -1,5 +1,37 @@
 # Sheet 2 — the slab, the island and the canopy (and the pump, settled)
 
+## After the director's check (`sheet-2-judge.md`): six fixes, all done. This section overrides the rest where they differ.
+
+The sheet is now 1170 x 6642 (the director's target was about 5,000; it is as short as I could get it with the pieces asked for). Sections are numbered 1 to 5 and nothing is lettered, because he answers in letters and Sheet 1's "D1" meant something else.
+
+1. **A thing stays in dots in every light.**
+   - At night the dark comes onto a thing as its own dots packing closer, then black. No lines on a thing, under any lamp, his included. Lines are for ground and walls only.
+   - By day the veil on a shaded thing is cut from 0.4 to 0.16 of the ground's shade (his shadow on a thing from 0.8 to 0.34): a few faint broken lines at most.
+   - Stills: `s2-fix-1.png` (the pump at night in his lamp), `s2-fix-2.png` (beside a pump under the canopy by day).
+2. **Shade lines.**
+   - The herringbone and the zigzag seam had one cause: the island's 14 cm kerb face was hatched at the wall's angle, a narrow strip of contrary lines running across the forecourt. Its shade is now dots. Still: `s2-fix-3.png` (the forecourt shade from the east).
+   - Deeper dark now crosses at a shallow angle (19 degrees, was 52) with a wider gap, so it no longer makes a lattice.
+   - His shadow is read along the mark at six points like any other shadow, so its lines end each in its own place, and it is lighter so they vary in weight. Still: `s2-fix-4.png`. **Better, not solved: the lines are still parallel and upright in the frame.**
+   - Not done: shade lines that swell and taper like a hand's. They are still even. "Plainly" does not claim otherwise.
+3. **The link opens on the three together, by day, whatever the clock says**, standing in the road square on to the pumps. Night is one tap away. Foot links: together · pump · slab, day · night.
+4. **The sheet leads with that square-on frame**, day and night, and a piece of it at actual pixels. The slab is cut to the whole, the broken edge and his shadow. The fascia, post, joints, stains, bell line and the walked-distance strip are off the sheet, and "Plainly" says what was left off and why.
+5. **The light question is asked in words:** "lines for shade", "dots for shade", "nothing changes", each with a caption that says what it is and not which is wrong. "Two on the island" now says: mirror images, both facing the road, hoses toward each other.
+6. **Small honest things.**
+   - The white hairline at the horizon and the white specks in the black at night are gone. (The sky's value was leaking into the paper-grey term at edges, and the worn-print dropout was biting into solid black.)
+   - The lamp caption says an enamel dome after the lamp posts in his Route 66 photo.
+   - The notice wording and the price are tagged PROPOSED.
+   - "Plainly" now says: he picked dots and most of the ink by day is line; plates and windows show white in the dark; the lit lamp from below is a ring; posts are round where his photo's look square.
+
+**Corrected claim.** I wrote that a pump "sinks into the wall" when shade is dots. The director ran it: the pump holds, by its outline and white plates. What fails is the shade, which reads as dirt on the wall and not as a shadow. The sheet now says that.
+
+**The director's count, not re-measured by me since the veil was thinned:** about two thirds of the ink in the walked day frame is line.
+
+Stills now in `concepts/stills/`: `sheet-2-island-canopy.png`, `s2-together-day.png`, `s2-together-night.png` (the opening stand), `s2-fix-1.png` to `s2-fix-4.png`. Deleted as superseded: `s2-pump-day`, `s2-pump-night`, `s2-slab-your-shadow`, `s2-together-night-far`. The director's own frames are `s2j-*`.
+
+Where the text below says D1/D2/D3, A1 to A4, "turned to face each other", "thin veil", `#pump` as the default, or names a deleted still, this section is right.
+
+---
+
 Visual designer. After `owner.md` 18 (his picks: the short pump, dots, drawn once, a paper on each part, brand names his to supply), `elements.md` 1 to 3, `steer-4.md` and `sheet-1-judge.md`.
 
 **The picture: `concepts/stills/sheet-2-island-canopy.png`** (1170 x 7993, made for a phone). The same things are walkable in `sketches/place/index.html`: `#pump`, `#slab`, `#together`, each with `-day` or `-night`.

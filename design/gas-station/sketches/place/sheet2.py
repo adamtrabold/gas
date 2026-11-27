@@ -25,89 +25,75 @@ def lines(x,y,ls,f=None,lh=25):
     return len(ls)*lh
 M=30
 y=40; text(40,y,'No. 2',mono(26)); text(40,y+34,'The Slab, the Island',head(64)); text(40,y+112,'and the Canopy',head(64)); y+=206
-y+=lines(44,y,['IN YOUR PICKS: THE SHORT PUMP, DOTS, DRAWN ONCE, A PAPER ON EACH PART.','EVERY DRAWING IS A FRAME OF THE PLACE YOU CAN WALK, SEEN THROUGH A LONG','LENS.  ABANDONED, AND THE POWER NEVER WENT OFF.'],monor(21),27)+34
+y+=lines(44,y,['A TEST OF HOW THINGS AND LIGHT ARE DRAWN, NOT A FINISHED PICTURE.','IN YOUR PICKS: THE SHORT PUMP, DOTS, DRAWN ONCE, A PAPER ON EACH PART.','EVERY DRAWING IS A FRAME OF THE PLACE YOU CAN WALK.  ABANDONED, POWER ON.'],monor(21),27)+30
 
-# ---- A. the pump
-text(40,y,'A.  The pump, as you picked it',head(40)); y+=62
-h1=piece(M,y,piece_of('s-pump',(150,30,1110,1950),425))
-h2=piece(560,y+6,piece_of('s-nozzle',(60,150,1170,1560),440))
-lines(568,y+h2+12,['','[Route 66] the hose leaves the side','high up, hangs in one loop, and the','nozzle hangs by its spout in a boot.','Rubber perished: cracks across it.'],None,25); text(568,y+h2+12,'A2  HOSE AND NOZZLE  (new)',mono(21))
-ya=y+h2+12+172
-lines(568,ya,['LLANO is a stand-in. Your brand','names go here when you have them.'],None,25); text(568,ya-30,'THE NAME',mono(21))
-y+=h1+6; text(M+8,y,'A1  SHORT, FLAT-TOPPED, IN DOTS',mono(21)); text(M+8,y+27,'its shading is its own, the same at every hour.',monor(19)); text(M+8,y+52,'Steel and rubber each have their own paper under the ink.',monor(19)); y+=98
+# ---- 1. together, from the road
+text(40,y,'1.  Together, from the road',head(40)); y+=58
+y+=lines(M+8,y,["How the link opens: the phone's own lens, standing in front of the pumps."])+10
+h=piece(M+70,y,piece_of('w-together-day',None,470,None,.03)); piece(M+570,y,piece_of('w-together-night',None,470,None,.03)); y+=h+6
+text(M+78,y,'BY DAY, EARLY AFTERNOON',mono(20)); text(M+578,y,'AT NIGHT, THE ONE LAMP',mono(20)); y+=40
+h=piece(0,y,piece_of('w-together-day',(0,880,1170,1300),1170,exact=True,fade=0)); y+=h+8
+text(M+8,y,'A PIECE OF THE DAY FRAME AT THE ACTUAL PIXELS OF AN iPHONE 14',mono(20)); y+=52
+
+# ---- 2. the pump
+text(40,y,'2.  The pump, as you picked it',head(40)); y+=58
+h1=piece(M,y,piece_of('s-pump',(150,30,1110,1950),370))
+h2=piece(470,y+6,piece_of('s-nozzle',(60,150,1170,1560),330))
+tx=830
+lines(tx,y+10,['','[Route 66] it leaves','the side high up,','hangs in one loop;','the nozzle hangs by','its spout in a boot.','Rubber perished.'],None,24); text(tx,y+10,'HOSE AND NOZZLE',mono(20))
+lines(tx,y+200,['','LLANO is a stand-in.','Your brand names go','here.'],None,24); text(tx,y+200,'THE NAME',mono(20))
+lines(tx,y+318,['','NO SMOKING / STOP','MOTOR / CONTAINS','LEAD, and the price:','ours. PROPOSED.'],None,24); text(tx,y+318,'THE NOTICE',mono(20))
+y+=max(h1,h2+6)+4; text(M+8,y,'SHORT, FLAT-TOPPED, IN DOTS.',mono(20)); text(M+380,y+1,'Its shading is its own, the same at every hour.',monor(18)); y+=44
 h=piece(M,y,piece_of('s-two',(430,175,1820,830),1110)); y+=h+6
-text(M+8,y,'A3  TWO ON THE ISLAND: A QUESTION',mono(21)); y+=28
-y+=lines(M+8,y,['What we would do, after your Route 66 photo: the same pump twice, turned to','face each other, hoses inward. HI-TEST on one, REGULAR on the other, one','globe cracked. Or would you rather have one of each shape?'])+26
-a=[Image.open(O+'w-dist-%s.png'%k) for k in 'abc']
-h=piece(M,y,piece_of('w-dist-a',(335,640,835,1090),500,exact=True,fade=.06)); piece(M+520,y+60,piece_of('w-dist-b',(435,750,735,1210),300,exact=True,fade=.08)); piece(M+850,y+220,piece_of('w-dist-c',(480,830,690,1150),210,exact=True,fade=.1)); y+=h+6
-text(M+8,y,'A4  WALKED, FROM 3 m, 6 m AND 13 m',mono(21)); y+=28
-y+=lines(M+8,y,["The phone's own lens, its actual pixels (zoom in). Dots are sized by the",'screen, so far off there are fewer of them and the outline does the work.'])+26
+text(M+8,y,'TWO ON THE ISLAND: A QUESTION',mono(21)); y+=28
+y+=lines(M+8,y,['What we would do, after your Route 66 photo: the same short pump twice, mirror','images, both facing the road with their hoses toward each other. HI-TEST on','one, REGULAR on the other, one globe cracked. Or do you want two different pumps?'])+30
 
-# ---- B. the slab and island
-text(40,y,'B.  The slab and the island',head(40)); y+=62
+# ---- 3. the slab and island
+text(40,y,'3.  The slab and the island',head(40)); y+=58
 h=piece(M,y,piece_of('s-slab',(0,290,2250,1000),1110)); y+=h+4
-text(M+8,y,'B  THE FORECOURT, WHOLE, PUMPS LIFTED OFF',mono(21)); y+=28
-y+=lines(M+8,y,['It has no shading of its own. Its drawing is what it is made of and what has','happened to it. The light writes on it (section D).'])+22
-P=[('s-joint',(250,150,1650,1020),'B1 JOINTS, CRACKS, SCRUB','[1934] joints  [Abandoned] cracks,','scrub in the joints'),
-   ('s-island',(150,60,1850,1020),'B2 ISLAND AND KERB','[Route 66] [1934] raised, a kerb;','[Abandoned] sand against it'),
-   ('s-bell',(300,200,1900,1020),'B3 BELL LINE','ACCEPTED  a rubber hose across the','forecourt and in to the wall'),
-   ('s-stain',(450,250,1850,1020),'B4 OLD STAINS','[list] where cars stood by the','island: closer dots'),
-   ('s-slab',(1150,480,2250,1020),'B5 BROKEN EDGE','[Abandoned] giving way to dirt',''),
-   ('w-you',(100,1000,1170,1992),'B6 YOUR SHADOW ON IT','[concept] it takes every shadow.','In lines: that is the light')]
-for i,(n,bx,a1,b1,c1) in enumerate(P):
-    x=M+(i%3)*375; yy=y+(i//3)*326; w=360; hh=min(250,int(w*(bx[3]-bx[1])/(bx[2]-bx[0]))); piece(x,yy+(250-hh)//2,piece_of(n,bx,w,hh,.1))
-    text(x+8,yy+258,a1,mono(19)); text(x+8,yy+283,b1,monor(16)); text(x+8,yy+303,c1,monor(16))
-y+=652+6
-y+=lines(M+8,y,['WORN: cracked, broken at the edges, scrub in the joints, sand drifted against','the kerb and the wall, old stains.','STILL WORKS: the bell line rings. It takes every shadow: the canopy\'s, yours.'])+26
+text(M+8,y,'THE FORECOURT, WHOLE, PUMPS LIFTED OFF',mono(21)); y+=28
+y+=lines(M+8,y,['[1934] [Route 66] concrete, joints, a raised island with a kerb. ACCEPTED: the','bell line. It has no shading of its own; the light writes on it.'])+14
+ha=piece(M,y,piece_of('s-slab',(1150,480,2250,1020),545)); hb=piece(M+565,y,piece_of('f-4',(0,1050,1170,1992),545,None,.08)); 
+text(M+8,y+ha+6,'BROKEN EDGE  [Abandoned]',mono(19)); text(M+573,y+hb+6,'YOUR SHADOW ON IT  [concept]',mono(19)); y+=max(ha,hb)+40
+y+=lines(M+8,y,['WORN: cracked, broken at the edges, scrub in the joints, sand against the','kerb and the wall, old stains.  STILL WORKS: the bell line rings.'])+30
 
-# ---- C. the canopy
-text(40,y,'C.  The canopy',head(40)); y+=62
+# ---- 4. the canopy
+text(40,y,'4.  The canopy',head(40)); y+=58
 h=piece(M,y,piece_of('s-canopy',(330,80,2250,1000),1110)); y+=h+4
-text(M+8,y,'C  THE CANOPY, WHOLE, JOINED TO THE BUILDING',mono(21)); y+=28
-y+=lines(M+8,y,['[you] joined. A thing, so it is drawn once, in dots; dark underneath because','that is its own underside, not because of the hour. The wall behind is element 4,','not drawn yet: an outline, with only the shade the canopy lays on it.'])+22
-P=[('s-fascia',(0,0,2250,1020),'C1 FASCIA, STRIPED','[Abandoned] [1934] two stripes, faded','almost to nothing; paint peeling'),
-   ('s-post',(250,500,1010,1992),'C2 POST','[Abandoned] thin; rusted from the','base: PROPOSED'),
-   ('s-lamps',(0,0,2250,1020),'C3 LAMP UNDERNEATH','[1934] the one that works. One dead,','one gone: PROPOSED. Underside stained'),]
-for i,(n,bx,a1,b1,c1) in enumerate(P):
-    x=M+(i%3)*375; w=360; hh=min(300,int(w*(bx[3]-bx[1])/(bx[2]-bx[0]))); ww=w if hh<300 else int(300*(bx[2]-bx[0])/(bx[3]-bx[1])); piece(x+(w-ww)//2,y+(300-hh)//2,piece_of(n,bx,ww,hh,.1))
-    text(x+8,y+308,a1,mono(19)); text(x+8,y+333,b1,monor(16)); text(x+8,y+353,c1,monor(16))
-y+=380
-h=piece(M,y,piece_of('s-lamps-night',(0,0,2250,1020),540,None,.08));
-lines(600,y+20,['','The power never went off. One lamp','lights the canopy from below, the','forecourt under it, and the pumps.','Their globes are lit too.','','WORN: stripes faded, paint peeling,','posts rusted, underside stained,','two lamps of three dead or gone.','STILL WORKS: by day the biggest','shade on the lot; by night one lamp.'],None,24); text(600,y+20,'C4  AT NIGHT',mono(21))
-y+=max(h,270)+26
+text(M+8,y,'THE CANOPY, WHOLE, JOINED TO THE BUILDING',mono(21)); y+=28
+y+=lines(M+8,y,['[you] joined. [Abandoned] a flat slab, a fascia, two thin posts. Drawn once, in','dots: dark underneath because it is an underside, not because of the hour. The','wall behind is not drawn yet: an outline that takes the shade.'])+14
+h=piece(M,y,piece_of('s-lamps',(0,0,2250,1020),400,None,.08)); piece(M+410,y,piece_of('s-lamps-night',(0,0,2250,1020),400,None,.08))
+lines(850,y+4,['','One works, one is','dead, one is gone:','PROPOSED. An enamel','dome, after the lamp','posts in your Route','66 photo.'],None,24); text(850,y+4,'LAMPS UNDERNEATH',mono(20))
+y+=max(h,180)+14
+y+=lines(M+8,y,['WORN: stripes faded to almost nothing, posts rusted, underside stained.','STILL WORKS: by day the biggest shade on the lot; by night one lamp.'])+30
 
-# ---- D. the light
-text(40,y,'D.  What the light does now',head(40)); y+=58
-y+=lines(M+8,y,['You said a thing is drawn once. Ground and walls have no shading of their own,','and the whole idea of the place is light: by day you are a shadow, by night a','lamp. If nothing may change with the hour, that idea has nothing left to show.','Three ways, from the same spot at the same hour:'])+16
-for i,(n,a1,ls) in enumerate([('w-light-lines','D1 DOTS FOR THE THING,',['LINES FOR THE LIGHT','what we would do. The link','opens like this']),('w-light-dots','D2 SHADE AS MORE DOTS',['one hand for everything.','A pump in shade sinks into','the shade behind it']),('w-light-none','D3 NOTHING CHANGES',['everything drawn once, the','ground too. No shade, no','shadow of yours, no hour'])]):
-    x=M+i*375; hh=piece(x,y,piece_of(n,(0,330,1170,1830),360,None,.05)); text(x+6,y+hh+6,a1,mono(19)); lines(x+6,y+hh+31,ls[1:] if i==0 else ls,monor(17),22) if i else (text(x+6,y+hh+31,ls[0],mono(19)),lines(x+6,y+hh+56,ls[1:],monor(17),22))
-y+=hh+116
-y+=lines(M+8,y,['In D1 a pump in the canopy\'s shade keeps its own drawing and takes a thin veil','of lines; the slab and the wall take the shade in full. Your shadow is lines','too (B6). At night the dark is black, and a lamp shows the drawing that was','always there (C4, and below).'])+26
-
-# ---- E. together
-text(40,y,'E.  Together, walked',head(40)); y+=58
-y+=lines(M+8,y,["The phone's own lens, standing on the forecourt. No long lens, no chosen light."])+12
-h=piece(M+80,y,piece_of('w-together-day',None,410,None,.03)); piece(M+570,y,piece_of('w-together-night',None,410,None,.03)); y+=h+6
-text(M+88,y,'E1  EARLY AFTERNOON, SUMMER',mono(20)); text(M+578,y,'E2  NIGHT, THE ONE LAMP',mono(20)); y+=44
-h=piece(0,y,piece_of('w-together-day',(0,930,1170,1420),1170,exact=True,fade=0)); y+=h+8
-text(M+8,y,'E3  A PIECE OF E1 AT THE ACTUAL PIXELS OF AN iPHONE 14',mono(20)); y+=50
+# ---- 5. the light
+text(40,y,'5.  How shade is drawn: your call',head(40)); y+=58
+y+=lines(M+8,y,['You said the light should not redraw a thing. So each thing is drawn once, in','dots. But the ground and the walls have no shading of their own, and the place','is about light: by day you are a shadow, by night a lamp. Three ways to draw','shade, from the same spot at the same hour:'])+14
+for i,(n,a1,ls) in enumerate([('w-light-lines','LINES FOR SHADE',['Things in dots. Shade, your','shadow and the dark in lines.','The link opens like this.']),('w-light-dots','DOTS FOR SHADE',['Everything in one hand.','Shade is more dots, on the','ground and the wall.']),('w-light-none','NOTHING CHANGES',['The ground drawn once too.','No shade, no shadow of','yours, no hour.'])]):
+    x=M+i*375; hh=piece(x,y,piece_of(n,(0,330,1170,1830),360,None,.05)); text(x+6,y+hh+6,a1,mono(20)); lines(x+6,y+hh+32,ls,monor(17),22)
+y+=hh+112
 
 notes=['PLAINLY:',
-'- Every drawing is the walkable place. Sections A to C use a long lens and the',
-"  thing's best side; D and E are what you get walking.",
-'- Not seen moving, and not on a real phone. Measured in an emulated one: walking',
-'  one frame toward the pump, about 1 to 2 % of its ink changes, at any distance;',
-'  close up that is half what the Sheet 1 stipple did. Whether the eye calls',
-'  that still or crawling, only your phone can say.',
-'- Far off (13 m) the dots turn to speckle. The outline carries the pump there.',
-'- The veil of lines on a shaded pump is our guess at "shadows are added on top".',
-'- The slab\'s cracks, stains and sand are generated. So are the papers; your',
-'  scans replace them file for file.',
-'- Lettering is set type. The wall, door and windows are outline only. No sign.',
-'- Lamps: one working, one dead, one gone is PROPOSED. Rust on the posts and the',
-'  stained underside are PROPOSED.',
-'- Night beyond the lamp is flat black. Nothing of the desert is drawn yet.']
-for i,s in enumerate(notes): text(40,y+i*27,s,monor(19) if i else mono(20))
+"- Section 1 and 5 are what you get walking. Sections 2 to 4 use a long lens and",
+"  the thing's best side.",
+'- You picked dots. With lines for shade, most of the ink in the day frame is',
+'  line. That is the thing we are asking you about.',
+'- With dots for shade the pumps still hold, by outline and their white plates.',
+'  What goes is the shade: on the wall it reads as dirt, not as a shadow.',
+'- Not seen moving, and not on a real phone. Measured in an emulated one: one',
+'  frame of walking changes 1 to 2 % of the pump\'s ink; close up, half what the',
+'  Sheet 1 stipple did. Still or shimmer, only your phone can say.',
+'- From 6 m the dots clump; from 13 m they are speckle and the outline carries',
+'  the pump. On the canopy they can read as a speckled ceiling.',
+'- At night the plates and number windows show white in the dark, as well as the',
+'  globes. Seen from below, the lit lamp is a ring with a bright centre.',
+'- Posts are round; in your abandoned-station photo they look square.',
+'- Left off this sheet because they do not read yet: the fascia stripes, the',
+'  post, joints, stains, the bell line up close. Cracks and stains are generated.',
+'- Lettering is set type. The papers are stand-ins for your scans. The wall,',
+'  door and windows are outline only. No sign, no desert.']
+for i,s_ in enumerate(notes): text(40,y+i*27,s_,monor(19) if i else mono(20))
 y+=len(notes)*27+50; Ht=y
 # the sheet of paper
 def blur_noise(sig,rad): return np.asarray(Image.effect_noise((W,Ht),sig).filter(ImageFilter.GaussianBlur(rad)),np.float32)/255.-.5

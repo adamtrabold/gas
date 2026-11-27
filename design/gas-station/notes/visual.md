@@ -1,6 +1,27 @@
 # Notes — product designer (visual)
 
-Last updated: after Sheet 2 (fourth visual designer, first turn). Sheet 2 has not been seen by the director or the owner. Nothing is committed.
+Last updated: after the director's check of Sheet 2 and its six fixes (fourth visual designer). The owner has not seen Sheet 2. Nothing is committed by me.
+
+## Latest: Sheet 2 after the director's fixes (read this first; it overrides anything below that disagrees)
+
+The director (`concepts/sheet-2-judge.md`) judged the pump settled and the rule "dots for the thing, lines for the light" a fair reading of his "no", then asked for six fixes and four stills, no full re-judge. All six are done; the list with evidence is at the top of `concepts/sheet-2.md`. In short:
+
+- **A thing stays in dots in every light.** At night the dark on a thing is its own dots packing to black (in the shader, for things at night: `tl=0`, `tO=max(tO,tone)`; `tl` is the tone the lines are drawn from). Day veil 0.16, your shadow on a thing 0.34. `s2-fix-1.png`, `s2-fix-2.png`.
+- **The herringbone was the island's kerb face** hatched at the wall's angle. Its shade is now dots. The cross family is at .33 rad with a wider gap. `s2-fix-3.png`.
+- **Your shadow** is read along the mark at six points, so its lines end raggedly; lighter. `s2-fix-4.png`. Better, not solved: still parallel upright lines. Shade lines in general are still even and ruled; making them swell and taper like a hand's is the open drawing job.
+- **The link opens on `together` by day whatever the clock** (non-team routes default to day), from the road square on: stand x -6.8, n 2.4, looking north. Foot: together · pump · slab.
+- **Sheet 2 is now 1170 x 6642**, sections numbered 1 to 5, nothing lettered, the light question in words. Off the sheet: fascia, post, joints, stains, bell line, distance strip.
+- White hairline and night specks fixed (`scene.background` green channel .5; wear no longer bites solid black).
+- My claim that a pump sinks when shade is dots was overstated: the pump holds; the shade reads as dirt.
+- The director's count: about two thirds of the day frame's ink is line. He picked dots. "Plainly" tells him.
+
+Stills now: `sheet-2-island-canopy.png`, `s2-together-day.png`, `s2-together-night.png`, `s2-fix-1.png` to `-4.png`; the director's `s2j-*`. The earlier `s2-pump-*`, `s2-slab-your-shadow`, `s2-together-night-far` are deleted. `sheet2-shots.js` now lists only what the sheet uses plus `f-1` to `f-4`.
+
+The director's picks (for the orchestrator, not to be told to the owner first): same pump twice, mirrored; lines for the light; a pump in shade shaded but barely; the middle lamp; open square on from the road. Their guess at his answer: yes to the pumps, yes to lines with a remark that they look mechanical or the ground is plain, and a wish for more black by day. Their placing: lone pump 8.5, together by day 7, night under the lamp 8.
+
+Not asked for now, all real: finer dots at distance, a less plain slab, heavier contour on the canopy, drawn lettering, the desert.
+
+Below, anything that says the link opens on the pump, veil 0.4 or 0.8, "turned to face each other", or names a deleted still is out of date.
 
 ## Where things stand
 
