@@ -1,0 +1,133 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>ink is shadow — throwaway sketch</title>
+<style>
+  body{margin:0;background:#d9d4c8;font:12px/1.4 "Courier 10 Pitch",monospace;color:#111;padding:24px}
+  h1{font:bold 15px "Courier 10 Pitch",monospace;margin:0 0 4px}
+  p{margin:0 0 18px;max-width:900px}
+  #sheet{display:flex;flex-wrap:wrap;gap:18px;align-items:flex-start}
+  figure{margin:0} figcaption{margin-top:6px;max-width:390px}
+  canvas{display:block;border:1px solid #111}
+</style>
+<h1>INK IS SHADOW — throwaway sketch, jam pass 1 (visual)</h1>
+<p>One three.js scene, one rule: a pixel is ink where light does not reach, paper where it does. Nothing is redrawn between frames; only the camera and the lights move. Edges and dry-brush are a crude procedural stand-in for a real hand.</p>
+<div id="sheet"></div>
+<script type="module">
+import * as T from './vendor/three.module.min.js';
+
+const R = new T.WebGLRenderer({antialias:true, preserveDrawingBuffer:true});
+R.shadowMap.enabled = true; R.shadowMap.type = T.PCFShadowMap;
+R.outputColorSpace = T.LinearSRGBColorSpace;
+
+const scene = new T.Scene();
+const W = new T.MeshLambertMaterial({color:0xffffff});
+const box=(w,h,d,x,y,z,m=W)=>{const o=new T.Mesh(new T.BoxGeometry(w,h,d),m);o.position.set(x,y,z);o.castShadow=o.receiveShadow=true;scene.add(o);return o};
+const cyl=(r,h,x,y,z,r2=r)=>{const o=new T.Mesh(new T.CylinderGeometry(r2,r,h,14),W);o.position.set(x,y,z);o.castShadow=o.receiveShadow=true;scene.add(o);return o};
+
+// ground + far hills
+const g=new T.Mesh(new T.PlaneGeometry(600,600),W);g.rotation.x=-Math.PI/2;g.receiveShadow=true;scene.add(g);
+[[-60,-90,14,40],[-10,-110,9,50],[50,-95,17,45],[95,-80,8,30],[-110,-70,10,35]].forEach(([x,z,h,r])=>{const o=new T.Mesh(new T.ConeGeometry(r,h,5),W);o.position.set(x,h/2-0.5,z);o.rotation.y=x;scene.add(o)});
+
+// building shell: x -5..5, z -7..0, h 3.4, front wall at z=0 with door + two windows
+const H=3.4;
+box(0.2,H,7,-5,H/2,-3.5); box(0.2,H,7,5,H/2,-3.5); box(10,H,0.2,0,H/2,-7); box(10.6,0.25,7.6,0,H+0.12,-3.5);
+box(0.9,H,0.2,-4.55,H/2,0); box(0.9,H,0.2,4.55,H/2,0);            // outer piers
+box(0.8,H,0.2,-1.1,H/2,0); box(0.8,H,0.2,1.1,H/2,0);              // door jambs
+box(10,0.9,0.2,0,H-0.45,0);                                        // head
+box(2.6,0.9,0.2,-2.8,0.45,0); box(2.6,0.9,0.2,2.8,0.45,0);         // sills
+// canopy + posts + pumps
+box(8,0.35,5,0,3.9,2.7); cyl(0.09,3.8,-3.4,1.9,4.8); cyl(0.09,3.8,3.4,1.9,4.8);
+box(5,0.25,1.2,0,0.12,4.6);
+[-1.4,1.4].forEach(x=>{box(0.55,1.5,0.45,x,1.0,4.6);const s=new T.Mesh(new T.SphereGeometry(0.28,14,10),W);s.position.set(x,2.02,4.6);s.castShadow=true;scene.add(s)});
+// sign on its pole
+cyl(0.12,9,-8,4.5,7);
+const cv=document.createElement('canvas');cv.width=1024;cv.height=420;const c=cv.getContext('2d');
+c.fillStyle='#fff';c.fillRect(0,0,1024,420);c.fillStyle='#000';c.font='bold 210px "DejaVu Serif"';c.textAlign='center';c.textBaseline='middle';c.fillText('TRABOLD',512,170,960);
+c.font='bold 70px "DejaVu Serif"';c.fillText('GAS · WORK · OPEN',512,345);
+const signM=new T.MeshBasicMaterial({map:new T.CanvasTexture(cv)});
+const sign=box(4.6,1.9,0.25,-8,9.4,7,[W,W,W,W,signM,signM]);
+// saguaro, road stripes
+cyl(0.3,4,9,2,3); cyl(0.2,1.6,9.9,2.6,3); box(1,0.3,0.3,9.5,1.9,3); cyl(0.2,1.2,8.1,3.0,3); box(1,0.3,0.3,8.5,2.5,3);
+for(let i=-12;i<=12;i++){const o=box(2.2,0.02,0.25,i*5,0.01,14);o.castShadow=false}
+// interior: counter, shelves down both walls, things on shelves
+box(2.4,1.0,0.7,2.6,0.5,-1.6);
+for(const sx of[-4.5,4.5]) for(let lv=0;lv<4;lv++){box(0.7,0.06,4.4,sx,0.5+lv*0.65,-4.4);
+  for(let k=0;k<7;k++){const h=0.25+((k*7+lv*3)%5)*0.07;box(0.3,h,0.35,sx,0.53+lv*0.65+h/2,-6.3+k*0.62)}}
+for(let lv=0;lv<4;lv++){box(3,0.06,0.6,-0.2,0.5+lv*0.65,-6.6);for(let k=0;k<5;k++){const h=0.3+((k*3+lv)%4)*0.08;box(0.32,h,0.3,-1.4+k*0.6,0.53+lv*0.65+h/2,-6.6)}}
+// saucer (night only)
+const ufo=new T.Group();const d1=new T.Mesh(new T.SphereGeometry(2.2,24,10),new T.MeshBasicMaterial({color:0xffffff}));d1.scale.y=0.16;
+const d2=new T.Mesh(new T.SphereGeometry(0.8,16,10),new T.MeshBasicMaterial({color:0xffffff}));d2.position.y=0.3;d2.scale.y=0.6;ufo.add(d1,d2);ufo.position.set(14,19,-30);scene.add(ufo);
+const stars=new T.Group();let sd=7;const rnd=()=>(sd=(sd*16807)%2147483647)/2147483647;
+for(let i=0;i<260;i++){const cl=i<170; const cx=cl?(-40+rnd()*50+ (rnd()-.5)*30):(rnd()-.5)*300, cy=cl?(38+rnd()*30+(cx+15)*0.5):(8+rnd()*110);
+  const s=new T.Mesh(new T.SphereGeometry(0.25+rnd()*rnd()*1.6,8,6),d1.material);s.position.set(cx,cy,-120);stars.add(s)}
+scene.add(stars);
+
+// lights
+const sun=new T.DirectionalLight(0xffffff,1.0);sun.castShadow=true;sun.shadow.mapSize.set(4096,4096);
+Object.assign(sun.shadow.camera,{left:-30,right:30,top:30,bottom:-30,near:1,far:200});sun.shadow.bias=-0.0006;scene.add(sun,sun.target);
+const hemi=new T.HemisphereLight(0xffffff,0x444444,0.3);scene.add(hemi);
+const lamp=new T.PointLight(0xffffff,0,30,1.2);lamp.position.set(0,3.5,2.7);lamp.castShadow=true;lamp.shadow.bias=-0.002;scene.add(lamp);
+const room=new T.PointLight(0xffffff,0,26,1.1);room.position.set(0,3.0,-3.4);room.castShadow=true;room.shadow.bias=-0.002;scene.add(room);
+
+// post: 1-bit ink/paper
+const cam=new T.PerspectiveCamera(40,1,0.1,800);
+const normM=new T.MeshNormalMaterial();
+const quad=new T.Mesh(new T.PlaneGeometry(2,2),new T.ShaderMaterial({
+  uniforms:{tLit:{value:null},tNorm:{value:null},res:{value:new T.Vector2()}},
+  vertexShader:'varying vec2 v;void main(){v=uv;gl_Position=vec4(position.xy,0.,1.);}',
+  fragmentShader:`
+  varying vec2 v;uniform sampler2D tLit,tNorm;uniform vec2 res;
+  float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
+  float n(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(h(i),h(i+vec2(1,0)),f.x),mix(h(i+vec2(0,1)),h(i+1.),f.x),f.y);}
+  float fb(vec2 p){return n(p)*.5+n(p*2.1)*.3+n(p*4.3)*.2;}
+  float L(vec2 u){return dot(texture2D(tLit,u).rgb,vec3(.333));}
+  void main(){
+    vec2 px=v*res; float sc=res.x/390.;
+    vec2 wob=(vec2(fb(px/(26.*sc)),fb(px/(26.*sc)+9.))-.5)*5.*sc/res;      // hand wobble
+    vec2 u=v+wob; vec2 e=(1.2+1.6*fb(px/(60.*sc)))*sc/res;                  // thick-thin line
+    float l=L(u);
+    vec3 n0=texture2D(tNorm,u).rgb;
+    float ed=0.;
+    for(int i=0;i<4;i++){vec2 o=i==0?vec2(e.x,0.):i==1?vec2(-e.x,0.):i==2?vec2(0.,e.y):vec2(0.,-e.y);
+      ed+=length(texture2D(tNorm,u+o).rgb-n0)+abs(L(u+o)-l)*1.5;}
+    // dry brush: streaks along a slight diagonal, breaking up the mid tone
+    float st=fb(vec2(px.x/(34.*sc)+px.y/(90.*sc),px.y/(1.6*sc)-px.x/(7.*sc)));
+    float ink= l<.30?1.: (l<.52? step(.30+ (l-.30)*1.6, st):0.);
+    float line=step(.55,ed)*step(.22,fb(px/(9.*sc))+.25);                   // line skips where the brush runs dry
+    float edgeFray=step(.5,fb(px/(3.*sc)));                                 // rough stroke edge
+    if(abs(l-.30)<.03) ink=edgeFray;
+    ink = line>0. ? (l<.30?0.:1.) : ink;                                    // line reverses inside black
+    float grain=(h(px)-.5)*.035;
+    vec3 paper=vec3(.925,.905,.86)+grain, black=vec3(.07,.065,.06)+grain*.5;
+    gl_FragColor=vec4(mix(paper,black,ink),1.);
+  }`}));
+const pscene=new T.Scene();pscene.add(quad);const pcam=new T.Camera();
+
+function frame({w,h,label,pos,look,fov=40,mode,sunDir=[-0.7,0.62,0.6],sky}){
+  const s=2; R.setPixelRatio(1); R.setSize(w*s,h*s,false);
+  const a=new T.WebGLRenderTarget(w*s,h*s,{type:T.FloatType}), b=new T.WebGLRenderTarget(w*s,h*s,{type:T.FloatType});
+  cam.fov=fov;cam.aspect=w/h;cam.position.set(...pos);cam.lookAt(...look);cam.updateProjectionMatrix();
+  const night=mode==='night';
+  scene.background=new T.Color(night?0x000000:0xffffff);
+  sun.intensity=night?0:3.3; sun.position.set(sunDir[0]*60,sunDir[1]*60,sunDir[2]*60);
+  hemi.intensity=night?0.12:0.75; lamp.intensity=night?14:0; room.intensity=night?12:0;
+  ufo.visible=stars.visible=night; signM.color.set(0xffffff);
+  R.setRenderTarget(a);R.render(scene,cam);
+  scene.overrideMaterial=normM;const bg=scene.background;scene.background=new T.Color(0x000000);R.setRenderTarget(b);R.render(scene,cam);scene.overrideMaterial=null;scene.background=bg;
+  quad.material.uniforms.tLit.value=a.texture;quad.material.uniforms.tNorm.value=b.texture;quad.material.uniforms.res.value.set(w*s,h*s);
+  R.setRenderTarget(null);R.render(pscene,pcam);
+  const out=document.createElement('canvas');out.width=w*s;out.height=h*s;out.style.width=w+'px';out.style.height=h+'px';out.getContext('2d').drawImage(R.domElement,0,0);
+  if(sky){const x=out.getContext('2d');x.fillStyle='#121110';x.textAlign='left';x.font='bold '+(w*s*0.2)+'px "DejaVu Serif"';x.save();x.translate(w*s*0.06,h*s*0.30);x.transform(1,-0.18,0,1,0,0);sky.forEach((t,i)=>x.fillText(t,0,i*w*s*0.2));x.restore();}
+  const f=document.createElement('figure');f.append(out);const cap=document.createElement('figcaption');cap.textContent=label;f.append(cap);document.getElementById('sheet').append(f);
+  a.dispose();b.dispose();
+}
+const P=[300,650];
+frame({w:760,h:428,label:'1. Desktop, day. The dead-frontal elevation (inspo 02, 10). Shadow under the canopy is the biggest black on the page.',pos:[0,1.7,34],look:[-1,3.6,0],fov:30,mode:'day'});
+frame({w:P[0],h:P[1],label:'2. Tall phone, same frontal camera. The station becomes a stripe under a sky with nothing to do.',pos:[0,1.7,34],look:[-1,3.6,0],fov:30,mode:'day'});
+frame({w:P[0],h:P[1],label:'2b. Same, with the sky given a job: the word is the picture (inspo 04, 06, 07). Type here is pasted on flat, only to judge the proportion.',pos:[0,1.7,40],look:[0,9.5,0],fov:30,mode:'day',sky:['TRA','BOLD']});
+frame({w:P[0],h:P[1],label:'3. Tall phone, the Ruscha corner (inspo 03): camera on the ground at the corner, canopy thrown up the page, sign pole as the vertical. Same scene, nothing redrawn.',pos:[10.5,0.35,12.5],look:[-3.2,5.6,3],fov:66,mode:'day'});
+frame({w:P[0],h:P[1],label:'4. Same camera at night. Not an invert: the sun is off, the canopy lamp and the shop light are on. Paper is where their light lands.',pos:[10.5,0.35,12.5],look:[-3.2,5.6,3],fov:66,mode:'night'});
+frame({w:P[0],h:P[1],label:'5. Inside, late afternoon. The room is ink; the door and windows are the paper. Crossing the door swaps the page without a rule saying so.',pos:[-0.9,1.6,-6.2],look:[0.3,1.3,0],fov:64,mode:'day',sunDir:[-0.25,0.42,0.9]});
+frame({w:P[0],h:P[1],label:'6. Inside at night. The room is paper; the doorway is ink. Both swaps (hour and door) hold at once.',pos:[-0.9,1.6,-6.2],look:[0.3,1.3,0],fov:64,mode:'night'});
+document.title='done';
+</script>

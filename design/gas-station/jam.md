@@ -185,3 +185,123 @@ Written against no particular shape; each has to survive whichever we pick.
 
 - **Visual**: which of the four shapes can brush strokes carry on a tall phone? Does the paper/ink swap read as night or as inside? What does a single stroke-long gesture look like at each of the five?
 - **Director**: how much friction at the door is right — a latch, or nothing? And is the loop (out the back and round to the front, later) the liminal idea or a gimmick?
+
+## Pass 1 — visual
+
+Written after opening all the owner's images and after "I'm thinking threejs". I built one throwaway sketch to test the handoff question: `sketches/ink-is-shadow/sheet.png` (source beside it; `node render.js` redraws it). It is a crude three.js scene with a procedural stand-in for brushwork. Judge the rule it shows, not the drawing.
+
+### 1. What three.js changes
+
+The systems turn assumed drawings. A real-time 3D scene changes the cost of things:
+
+- **Cheap now:** any camera position, any sun angle, shadows, depth, a place that is bigger inside. Time of day stops being "a second set of drawings".
+- **Expensive now:** looking drawn by a hand. 3D's default look is smooth, shaded, grey. The owner asked for black and white brush strokes. The whole visual risk of this project is a station that looks like a filter on a 3D model.
+- **Still needed:** the plain list, real text, an address per piece. A 3D canvas holds none of these by itself. They live in the page around and over the picture.
+
+So the question I'd put first is not "which shape" but **what is a brush stroke in a 3D world?** Three answers that differ in kind:
+
+| | What a stroke is | What it's good at | Where it breaks |
+|---|---|---|---|
+| **S1. Ink is shadow** | The scene is solid and lit. A pixel is ink where light doesn't reach, paper where it does. Edges and mid-tones get a brush treatment | Time of day, inside/outside, Kirby's big spotted blacks (16–18), Ruscha's hard slabs (03). Everything stays consistent as you move | The hand. A shader's line is never quite a stroke. Needs real scanned brush marks feeding it, or it looks processed |
+| **S2. Strokes hung in the air** | The station is a few hundred real brush marks, each a flat ribbon placed in 3D. From the arrival spot they line up into a station. Move and they drift apart into marks (14 is this already: strokes that only suggest a shape together) | The hand is real: every mark is a scan of an actual stroke. "A place that is only a place from where you stand" is the liminal idea made visible. Loading is the strokes arriving | Interiors, small objects, anything you need to read from many angles. Every object is hand-placed, so J13 needs slots |
+| **S3. Flats** | Drawings on flat sheets standing in the desert, like a film set or a paste-up (08, 16). Walk past and the station is paper-thin. Prada Marfa (10) is a facade | Cheapest. Fully hand-drawn. Honest about being a picture | Uses almost nothing 3D offers. "Go in" becomes a cut |
+
+My lean: **S1 as the rule of the world, S2 for the things that happen in it.** The still world is lit geometry rendered as ink; events (the door, a Call, an egg, loading) are real strokes laid over it. That split is also the owner's sentence, see section 4.
+
+### 2. The handoff question, tested: does the ink/paper swap mean night, or inside?
+
+The systems turn said it can't be both. The sketch says it can, because both are the same fact. One rule: **ink is where the light isn't.**
+
+| | Outside | Inside |
+|---|---|---|
+| **Day** | Paper. The sun is on everything; ink is the shadow under the canopy (frame 1) | Ink. The room is dark against the glare; door and windows are the paper (frame 5) |
+| **Night** | Ink. Paper is only where the canopy lamp and shop light land (frame 4) | Paper. A lit room; the doorway is black (frame 6) |
+
+- **Crossing the door always turns the page over, at any hour.** By day you step from paper into ink; at night from ink into paper. Nobody has to learn a rule; it's how a doorway looks.
+- **Night is not an invert.** A plain invert reads as a photographic negative. Night is the same scene with the sun off and the station's own lamps on. In frame 4 the shelves show through the window from across the lot: the work is the lit thing in the dark, which is the right thing for a portfolio to be.
+- **Time of day is one number**, the sun's angle. Dawn and dusk are long shadows, noon is almost no ink at all, night is the lamps. The systems designer's "wait" gesture is the shadow creeping. Coming round the loop "later" is the same station with the ink moved.
+- **A problem the sketch found:** inside by day, the shelves vanish into the black (frame 5). The work must never sit in the dark. So the things that hold work need their own light: a cooler that glows, a lamp over the rack, the sun patch falling on the counter. That turns "where is the light inside" into the layout question for the interior. Good constraint.
+
+### 3. The handoff question, tested: a wide station on a tall phone
+
+Frame 2 is the failure: frontal camera, tall screen, the station is a stripe and the sign is out of shot. Three ways out, all from the owner's images:
+
+1. **Give the sky the job (04, 06, 07).** Ruscha's picture is a word with a landscape under it. On a tall phone the station sits in the bottom quarter and the name fills the sky as letters standing in the scene (frame 2b, type pasted on flat for proportion only). 07 is this exact layout: a wide picture, a lot of nothing, small text. The emptiness is the liminal part, so the phone may be the better version.
+2. **The Ruscha corner (03).** Camera on the ground at the corner so the canopy runs up the page and the sign pole is the vertical. Frames 3 and 4. It works as a rule (same scene, only the camera moved) but my framing is weak: the station still sits low and the sign is cropped. It needs composing by hand, and the station may need designing from this corner first, the way Ruscha's is.
+3. **The page of panels (18).** Kirby's page is tall panels in tiers. A phone screen is a comic page: a tall panel for the sign, a wide one for the station, a strip for the ground with the list in it. Each panel is a different camera on the same live scene. Desktop is the splash page. Going in is crossing a gutter.
+
+I'd take 1 for arrival and keep 3 alive as a whole direction, because it gives the phone its own form instead of a cropped desktop. 2 is a camera move to use, not a layout.
+
+**Against the four shapes:**
+
+- **A (the loop):** carries well. A lap is a camera on a rail, and "later" is the sun having moved.
+- **B (the two-sided strip):** weakest with three.js and with a tall phone; a horizontal strip in a tall frame is a ribbon with dead space. I'd stop treating it as the world and keep it as the form of the plain list: every piece as a frontage on one long paste-up strip (08). Proposing that, not deciding it.
+- **C (bigger inside):** strongest. Outside is wide and low; an aisle is tall and deep, one-point perspective running away like the street in 16. A tall phone suits an aisle. The phone problem only exists outside.
+- **D (self-service):** a manner, carried by lettering: the attendant's notes are in a hand, everything else is signage.
+
+### 4. A grammar from the owner's sentence: Ruscha is the stillness, Kirby is the event
+
+"Ed Ruscha meets Jack Kirby's sketches" could be a blend. Sharper as a split:
+
+- **The world at rest is Ruscha.** Deadpan, empty, level horizon, one word, hard slabs of black, nothing moving. No wobble, no line boil. Stillness is where the liminal feeling comes from.
+- **Anything that happens is Kirby.** A response to you arrives as an inked mark with force: speed lines, a burst, krackle dots (18), a foreshortened shape coming at the camera (the fist in 16), a slab word landing (04's HONK in Kirby's lettering energy).
+
+Every interaction is then the moment the still picture gets drawn on, and the mark fades back to stillness. That's a visual meaning for "every interaction has artistic meaning" and it tells the builder when things may move: only when something happened.
+
+**Krackle is the alien material.** Kirby's dots are his sign for energy that isn't from here. They are the stars at night, radio static between stations, the edge of the saucer's light, and the trace left where an egg was found. Nothing else in the world is made of dots, so dots always mean "not from here".
+
+**"Sketches" is the frame.** The originals (16–18) show blue pencil, margin notes, pinholes, registration marks, a title scrawled on top. So the screen is an art board, and the margin is where the site's plain controls live: the list, sound, the way out, written as production notes outside the picture. Controls never have to be disguised as objects, and the picture never has a menu bar on it.
+
+### 5. The five gestures, each as one stroke
+
+| Gesture | The mark |
+|---|---|
+| Look | The thing gets its blacks. At rest it's outline and shadow; under attention its solid black fills in, one loaded stroke, swell then taper (14) |
+| Cross | One full-width stroke dragged across the screen; behind the brush is the other side of the page. With motion off: a cut |
+| Pick up | The thing lifts off as a cut-out with a hard paste-up shadow; the world drops back to outline; the piece shows in its true form |
+| Call | A slab word lands in the scene, extruded, casting its own ink (04). DING. HONK. Then it stays a while, like a sign |
+| Wait | Nothing is drawn. The shadows move |
+
+One I'd add to argue over: **attention is the inker.** Kirby pencilled, someone else inked. Detail in the world sits in thin pencil line until looked at, then it's inked, and it stays inked on your next visit. A returning visitor's station is more finished than a stranger's, and the visited state is the drawing itself. Risk: a first-time station that looks faint. Structure would have to be fully inked from the start; only detail waits.
+
+### 6. Tone, type, colour
+
+- **Strictly two values.** Every pixel is ink or paper; no grey, no opacity fades. Greys come from how ink behaves: dry-brush break-up (13), stipple and grain (07), krackle. Fades become a brush running out of ink. This single rule does most of the work of making 3D look printed.
+- **Paper is not white.** 13 and the Kirby boards are on toned stock. Warm paper, near-black ink. Still "black and white" to the eye, far less like a screen.
+- **Three voices of type, each with a job.** A slab for anything the station says (the sign, landed words; 04 and 07 are both slabs). A brush hand for anything the attendant says (notes, About). A typewriter face for anything recorded (the list, captions, the sightings chart; 15 is typewritten). Actual faces not chosen. Reading text is real page text on paper, never a texture in the scene.
+- **Signs are objects.** Words stand in the desert with thickness and cast shadows, so they obey the ink rule: at noon the name is a thin outline, at dusk it throws a long black.
+- **The work in colour:** I side with systems' option (2), with a mechanism. On the shelf every piece is its own image crushed to two values by the same treatment as the world, so adding a piece needs no new drawing (J13). Picked up, it's shown true. Adam's work is the only colour on the site. Needs the owner.
+
+### 7. Motion and feel
+
+- At rest nothing moves except heat shimmer on the horizon by day and the krackle of stars at night.
+- Events are held like drawn animation, a few frames each, not eased like interface motion. A stroke lands in three or four held frames.
+- The camera is the open question: smooth travel makes a shader world look most like a 3D model. Options are a camera that steps between composed views (each stop a Ruscha picture), or smooth travel with the ink settling when you stop. I lean stepped views: a small number of composed pictures, each good enough to print, beats free roaming. It is also what makes phones, keyboards and reduced motion simple.
+- Sound is the other half of feel and is silent until the radio; agreeing with systems.
+
+### 8. Two real random draws, used
+
+Drawn with `shuf`. An unrelated field: **letterpress printing.** An Oblique Strategy: **"Emphasize the flaws."**
+
+- From printing: the world is pulled like a print, in passes. Loading is the passes going down in order: pencil key-line, then the solid blacks, then the dry brush. Name and list are readable at pass one. Slight misregistration between passes is the texture, and registration marks sit in the margin.
+- From the strategy: 3D's flaw here is that flat marks give themselves away when you move. S2 makes that the point. And the shader's flaw, that it can't hold a line everywhere, becomes the brush running dry: lines that skip, on purpose and under control.
+
+### 9. Dropped
+
+- A constant hand-drawn wobble on everything. It's the first idea, it fights the stillness, and it reads as a filter.
+- Plain invert as night. Tested; reads as a negative.
+- Halftone dots for grey. Dots are reserved for the alien material.
+- Free first-person walking with a joystick. It's a game level, and it's the hardest thing to make look drawn.
+
+### 10. What I need from the owner (adding to systems' list)
+
+1. Will Adam make the brush marks himself? A sheet of forty or so real strokes, scanned, would be the source for every line and edge. Without a real hand the look can't get past "processed".
+2. Stepped, composed views, or free movement? "Threejs" could mean either.
+3. Is toned paper acceptable as "white"?
+
+### 11. For the director
+
+- Is "ink is where the light isn't" the foundation? It settles night, inside, time of day and the loop in one move, but it commits us to a lit 3D world rather than drawn sheets.
+- Ruscha for stillness, Kirby for events: a real grammar, or too tidy?
+- On the phone: big sky with the word, or the page of panels? They lead to different sites.
+- Whether B stops being a world and becomes the list.
