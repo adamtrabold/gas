@@ -1,6 +1,6 @@
 # Shared by every concept — how it works
 
-*How it works (systems). Current as of round 2, after `score-1.md`. One concept is built on this place: `05-left-on.md`. The look-and-feel half below is the visual designer's.*
+*How it works (systems). Current as of round 3, after `score-2.md` and `owner.md` section 7. One concept is built on this place: `05-left-on.md`. The look-and-feel half below is the visual designer's.*
 
 ## One place, one concept
 
@@ -28,12 +28,14 @@ One layout. It comes from where the sign's shadow really falls (a 12 m sign, a g
    +--------------------+                 |
                                         [SIGN]                      phone box
    ============================ road, east–west ============================
-                             you arrive here
+
+                    you arrive here, 21 m south of the sign
 ```
 
-- **The sign stands at the road, straight in front of the door.** The arrow dives at the door.
+- **The sign stands at the road, straight in front of the door.** The arrow dives at the door. It carries his name and nothing else ("Gas is unnecessary").
+- **You arrive across the road, 21 m south of the sign,** facing it. From there the whole name is in the picture on a phone, and the road lies between you and the place.
 - **The canopy and pumps are to the west; the door is clear of them.** This is the director's "door at the edge of the shade", with a reason he didn't have: a canopy anywhere north of the sign catches the sign's shadow on its roof, where nobody can see it. Put to the west, it only catches the morning shadow, and "the shadow goes in under the canopy" is a good thing for a shadow to do.
-- If the owner says no canopy, nothing here breaks; the pumps stand in the open.
+- The owner has confirmed it: "Canopy over pumps yes."
 
 ## Moving
 
@@ -52,7 +54,7 @@ One world, no stops. Two ways to move, on every device, and they are the same tw
 Rules of walking:
 
 - Eye height, always. You can look up to the top of the sign and the sky, and down to your feet.
-- A brisk walk. Road to door is about eight seconds held; a go-to never takes more than four, however far.
+- Four metres a second. From where you arrive, the door is 37 m and about nine seconds held; a go-to never takes more than four, however far.
 - You slide along walls. You can't get stuck, fall, or be anywhere you can't walk out of.
 - Stop, and the view levels itself over a second.
 - Motion turned off: walking and go-to become cuts to standing spots.
@@ -88,9 +90,11 @@ The director's proposal, agreed, with a mechanism:
 - A few seconds later the top of the sign comes up ahead.
 - The centre of the turn-round is the foot of the sign, which is on the road. So someone walking off down the road comes back up the road; someone walking into the desert behind the station arrives from the front.
 
-Any direction, about forty seconds out and you're arriving again. Same station, same hour. Nobody can be lost, and "the road" is always in the list of places.
+Any direction, about half a minute out and you're arriving again. Same station, same hour. Nobody can be lost, and "the road" is always in the list of places.
 
-The one thing I'd ask visual: lights. At night the sign's bulbs would be seen from much further than 100 m, which would show the join. I'd lose lights at the same distance as everything else, and let the bulbs come on as you get near.
+**The desert has to obey the same join.** The far hills are at the horizon and look the same from both sides, so they can stay. Marks on the ground (scrub, a fence line, a cactus) either stop before 100 m, or are laid so that the ground at any spot matches the ground at the opposite spot. Otherwise the scrub at your feet jumps when you're moved.
+
+Also: lights. At night the sign's bulbs would be seen from much further than 100 m, which would show the join. I'd lose lights at the same distance as everything else, and let the bulbs come on as you get near.
 
 ## True of the place at any hour
 

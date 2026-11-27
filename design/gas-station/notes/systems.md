@@ -2,6 +2,43 @@
 
 ## Where things stand (latest first)
 
+**Concept round 3, systems turn done (2026-11-27).** Left on scored 8.5 in round 2 (`concepts/score-2.md`). I brought the how-it-works half of `concepts/05-left-on.md`, my half of `00-shared.md`, and `jobs.md` in line with the rulings and `owner.md` section 7, and wrote the coverage check: `concepts/coverage-05.md`. I edited only those; the visual designer was in the look-and-feel half and the prototype at the same time.
+
+### Owner, section 7
+
+"Canopy over pumps yes." / "Gas is unnecessary." (name only on the sign) / private link to walk the prototype on his phone is welcome. Only open question left: does the hour do something — the concept answers it for him to react to.
+
+### Rulings taken (score-2.md)
+
+- Lamp indoors and at night only. My daytime-shade lamp is out (visual drew it, reads as a fault). Under the canopy by day: brushed shade, near things keep a paper edge, no shadow, no lamp, things answer a tap.
+- Arrival across the road, 21 m south of the sign; 4 m/s; door 37 m, about nine seconds.
+- Shadow has a person's proportions (head and shoulders, plain).
+- Canopy settled, west of the door. No GAS.
+- Night must never be a black screen: the lamp always lands on something, the ground ahead of your feet if nothing else.
+- Owner choices inside the concept: down to one (hums tuned or not).
+- Fix 8 (look back down the aisle): I took the claim out of the how-it-works half and kept only the layout fact (aisle in line with the front window). Goes back in if visual solves it.
+
+### Added by me this turn
+
+- World's edge and the desert: far hills fine; ground marks (scrub, fence, cactus) must stop before 100 m or match at opposite points, or they jump when you're moved.
+- Half a minute out and back at 4 m/s.
+
+### Coverage result
+
+All 14 jobs supported; 15–19 have room. Two stated gaps: job 6 (sound designed, nothing audible yet) and job 12 (shadow has no version without the picture). The file also lists what is in the prototype versus words only.
+
+### Open
+
+- Visual: desert (fix 2), brush in the day arrival (fix 3), black screen at night (4), shadow without ears (5), twilight frame (6), prototype safe to hand over (9), the look back.
+- Owner walks the prototype on his phone — that is the phone test.
+- Orchestrator: sign against his saved references.
+
+### Next
+
+- If the next score is 9 and the owner approves: write **How it works** in `handoff.md` from `05-left-on.md` + `00-shared.md` (structure, flows, patterns, every state incl. empty, error, sizes), add reasoning to **Why**, and check the whole handoff against `jobs.md`. Redo the coverage check if the concept text changes.
+
+## Earlier: concept round 2
+
 **Concept round 2, systems turn done (2026-11-27).** One concept now: `concepts/05-left-on.md` ("Left on"), written clean as the how-it-works for the whole thing. `01-nobodys-here.md` and `03-your-light.md` marked superseded; `02-the-arrow.md` marked folded (04 already was). `00-shared.md` updated: one-concept header, new sections "True of the place at any hour" (02's leftovers + landed words rare) and "Twilight" (moved from 03). `jobs.md`: only the wording of open question 1 changed. Visual's halves in 01/03/00 are theirs and not yet rewritten for the merge; the merged file has no look-and-feel half yet.
 
 ### Round 1 result (score-1.md, steer-2.md)

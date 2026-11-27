@@ -16,6 +16,8 @@ What a person needs to be able to do here. Written from the owner's words; anyth
 - "Walk around." Job 4 is walking, outside and in, not moving between set views.
 - The place has its own sound when you're doing nothing: "yes but idk how to even begin there." Job 6 stands as written; a way to begin is in `concepts/00-shared.md`.
 - Public, with no note of whose it is beyond the sign: "yes but no."
+- "Canopy over pumps yes." Settled.
+- "Gas is unnecessary." The sign carries his name and nothing else.
 
 ## Jobs: the world (now)
 
@@ -83,4 +85,3 @@ The receipt and the office-hours ordering are dropped (owner: "no" to both). The
 ## Still open, and still matter
 
 1. **Does the time of day do something, or only change how the place looks?** Asked, not answered. The one concept (`concepts/05-left-on.md`) answers it for him to react to: the hour changes how much of the place is the sun's and how much is yours.
-2. **Does the station have a canopy over the pumps?** Out with him now. Drawn with one for the time being; nothing in the jobs depends on it.
