@@ -1,88 +1,213 @@
 # Shared by every concept — how it works
 
-Systems turn 1 of the concept phase. Four concepts follow (01–04). This file holds what they have in common, so each concept file only says what is different.
+*Systems turn 2 of the concept phase. Rewritten for "walk around" (`owner.md` section 6) and for the director's `steer-1.md`. This replaces my first version, which assumed composed stops. The look-and-feel half below is the visual designer's and is unchanged.*
 
-## The four, and how they differ in kind
+## Three concepts, one place
 
-| | The idea lives in | What the hour does | What you are |
-|---|---|---|---|
-| 01 Nobody's here | The door and the room behind it | Changes light, sound and odd things. Nothing else | The one who turned up |
-| 02 The Arrow | The sign and the ground | Chooses which thing in the place is awake | Someone reading a clock without knowing it |
-| 03 Your light | Your own hand | Decides whether you are a shadow or a lamp | The only light that moves |
-| 04 The makeover | The months, not the hours | Changes light and sound only | A caller at a place being worked on |
+One station, one sign, one set of rules. The three differ in two things only:
 
-01 and 02 are the two answers to the owner's one open question (does the hour do something, or only change the look). 03 and 04 come from his answers, not from the jam. I think 04 may be a layer on another concept, not a concept; I say so in its file.
+| | What you are | What the hour does |
+|---|---|---|
+| 01 Nobody's here | The one who turned up | Changes light, sound and odd things. Nothing else |
+| 02 The Arrow | Someone following a shadow | Lays a path and wakes one thing |
+| 03 Your light | A shadow by day, a lamp by night | Changes what your hand is |
 
-## The director's closing directions, against the owner's answers
+04 is folded in here, as ruled (see "Adding to the place").
 
-The director wrote them before the answers in `owner.md` sections 2–5. The owner's words win.
+## Where the owner's answers overruled the jam
 
-**Kept**
-- Ink is where the light isn't. Mass before line. The light says where and which way; the hand says how. ("pure ink for now")
-- Five gestures: Look, Cross, Pick up, Call, Wait. A latch at the door, never a puzzle.
-- The real hour is the hour. Only the wall clock moves it, and it says so.
-- Evidence, never the creature. ("it should feel liminal not funny"; alien confirmed)
-- Nothing needed is hidden behind a time, a wait or a secret.
+Kept: ink is where the light isn't; a latch at the door, never a puzzle; the real hour is the hour; evidence, never the creature; nothing needed is hidden behind a time, a wait or a secret.
 
-**Changed**
-- *Which station.* The director split it: streamlined for The Instrument, plain box for Nobody's here. The owner answered: "Route 66 but there's gotta be a googie arrow sign and it should have some elements of that era in places." So every concept is a plain Route 66 station with one Googie thing, the arrow sign, carrying his name ("Me"). The raking beam survives only as the arrow itself (02).
-- *The five moments.* Were: arriving, crossing the door, inside with the work lit, one piece held, the list. The work is parked ("let's not worry about the work right now I just want to nail the world"), so they are now: **arriving; crossing the door; inside; doing nothing; another hour.**
-- *Who it's for.* The jam designed for someone hiring. The owner: "mainly it's for me." So each concept has to say how Adam keeps making it into something.
+Changed: composed stops became one walked world ("walk around"). One plain Route 66 station with one Googie arrow sign and his name ("Route 66 but there's gotta be a googie arrow sign"; "Me"). Five gestures became four: **Look, Cross, Call, Wait.** Pick up is dropped until there is something to hold. The moments each concept shows: arriving by day; arriving at night; crossing the door; inside; doing nothing; a view nobody composed.
 
-**Dropped**
-- The timetable, the piece of the hour, pieces taking turns by date. Parked with the work.
-- The receipt and the office-hours ordering. Owner: "no" to both.
-- A real latitude and place. Owner: "nowhere in particular." The sun is a generic desert sun.
-- The board (director's optional third). It was there to show what "threejs" gives up; the owner has since said he wants to export Blender models. Its one live idea, showing the working, moved into 04.
-- The streamlined station.
+Dropped: the timetable, the piece of the hour, the receipt, the office-hours order, a real latitude, the streamlined station, the raking beam, The board, and any note of whose it is beyond the sign ("yes but no").
 
-## Structure common to all
+## The lot
 
-**The world is three kinds of part.** This is what makes jobs 13 and 14 possible, so it is the same everywhere.
+One layout for all three. It comes from where the sign's shadow really falls (a 12 m sign, a generic desert sun), because in a world where ink is shadow that shadow is there in every concept, wanted or not.
 
-- **Stops.** A small number of composed places the camera can be. Back always means the previous stop.
-- **Things.** Everything you can act on. Each thing has: a stop it belongs to and a slot there; a shape; what it does for each gesture it accepts, as an ink mark and a sound; optionally, hours when it behaves differently.
-- **Cues.** Anything that happens without you. Each has a *when* (an hour, a date, how long you've been still, an alignment) and a *what* (a light, a sound, an event).
+```
+                               N
+   [ ---------------- station, front faces south ---------------- ]
+        garage door       window        DOOR      bench
+   +--------------------+
+   |  canopy            |                 |
+   |  W pump    E pump  | air post        |  16 m, open slab
+   +--------------------+                 |
+                                        [SIGN]                      phone box
+   ============================ road, east–west ============================
+                             you arrive here
+```
 
-Adam adds one thing or one cue and nothing else changes (job 13).
+- **The sign stands at the road, straight in front of the door.** The arrow dives at the door.
+- **The canopy and pumps are to the west; the door is clear of them.** This is the director's "door at the edge of the shade", with a reason he didn't have: a canopy anywhere north of the sign catches the sign's shadow on its roof, where nobody can see it. Put to the west, it only catches the morning shadow, and "the shadow goes in under the canopy" is a good thing for a shadow to do.
+- If the owner says no canopy, nothing here breaks; the pumps stand in the open.
 
-**Every thing says how finished it is** (job 14): a generated stand-in shape with generated strokes; his own drawn strokes on a stand-in shape; his own Blender model with his own strokes. One thing can move up a stage without touching another. One shared sheet of brush marks feeds every stroke in the world, so swapping that sheet for his own changes everything at once.
+## Moving
 
-**One address for now.** The site opens on the road, outside (job 11, and "place first"). Going in does not change the address a person would share; the back button still steps you out. Addresses for the work come with the work.
+One world, no stops. Two ways to move, on every device, and they are the same two everywhere.
 
-**The margin.** Outside the picture, as production notes: sound on or off, the way out, the hour (and "wound" when the clock has been turned). Nothing else. No menu on the picture.
+**Walk and look.**
 
-**Room for the work later** (jobs 15–19), so nothing has to be rebuilt: shelves inside take things you pick up; the counter takes who he is; the phone takes getting in touch; the blank slats of the price board take the list; the margin takes the fast way.
+| | Look | Walk |
+|---|---|---|
+| Phone | Drag | Hold: you walk toward where you're looking |
+| Desktop | Drag, or move the pointer to the edge | W A S D or arrow keys; or hold the mouse button |
+| Keyboard only | Left and right arrows turn | Up and down arrows walk |
 
-## Sound, common to all
+**Go to.** Tap or click a spot on the ground, or a thing, and you walk there and stop. Every thing has a standing spot and a facing, so going to a thing puts you down in front of it with a picture worth having. This is where the composed views went. It is also the whole of keyboard and screen-reader movement (below), so it isn't an extra.
 
-The owner: "we need sound effects at least."
+Rules of walking:
 
-- Three layers: the **bed** (the place's own sound at this hour), **answers** (one per act), **events** (cues).
-- Starts with your first touch, never before. One switch, in the margin. Off is visibly off.
-- **Every answer sound has an ink twin.** A bell lands the word DING in the picture, flat, and it sits there a moment. So nothing depends on hearing, and the twin is the caption.
-- Whether there is music is still "idk yet". The radio is a thing in the world either way; for now it gives static and a station fading in and out.
+- Eye height, always. You can look up to the top of the sign and the sky, and down to your feet.
+- A brisk walk. Road to door is about eight seconds held; a go-to never takes more than four, however far.
+- You slide along walls. You can't get stuck, fall, or be anywhere you can't walk out of.
+- Stop, and the view levels itself over a second.
+- Motion turned off: walking and go-to become cuts to standing spots.
+
+**Named places** are the old stops, kept as standing spots with names: the road, the forecourt, the door, the counter, the aisle, the far end, the back lot. You never have to use the names. They exist so that anyone can jump (see "Without the picture").
+
+## The four gestures, walked
+
+| Gesture | What you do | Note |
+|---|---|---|
+| Look | Stand near a thing and face it | No pointing from across the lot. On a phone a pump is 20 pixels wide from the road; anything that matters is worth walking up to |
+| Call | Tap or click a thing you're standing at; Enter on the keyboard | Out of reach, the same tap is a go-to. So one tap walks you there and the next one acts |
+| Cross | Keep walking into the door for a second | The hold that walks you is the hold that leans on the latch. Tap-and-hold or Enter does the same |
+| Wait | Stand still | Below |
+
+## The door, and the inside being bigger
+
+The door is still one act of about a second, answered by the stroke across the screen. That stroke is also what hides the join between two spaces:
+
+- **Outside** is the lot and the desert. The building is 8 m deep. You can walk all the way round it.
+- **The front room** is real and the right size. You see it through the window from the lot, and you see the lot through the window from inside.
+- **Past the front room, the inside keeps going** further than the back wall you walked round. How much further is each concept's business. Nothing explains it. From no single spot can you see both facts at once; you only know because you walked both.
+- **The back door** at the far end lets you out behind the building. Walk round the corner and the front is eight metres away.
+
+A link someone sends always lands on the road. Crossing a door is the only thing that adds to the browser's history, so **back puts you outside the last door you came through**, and Escape does the same. Walking never fills the history.
+
+## Where the world ends
+
+The director's proposal, agreed, with a mechanism:
+
+- Past about 100 m, things are lost. That's already a rule of the drawing (far things are lost).
+- At about 130 m from the sign, walking away, you are moved to the same distance on the opposite side, **keeping the direction you're facing.** You're now walking toward the sign. Nothing you could see has changed: the ground is bare out there, the hills are at the horizon, and the sun is where it was, so your shadow doesn't jump.
+- A few seconds later the top of the sign comes up ahead.
+- The centre of the turn-round is the foot of the sign, which is on the road. So someone walking off down the road comes back up the road; someone walking into the desert behind the station arrives from the front.
+
+Any direction, about forty seconds out and you're arriving again. Same station, same hour. Nobody can be lost, and "the road" is always in the list of places.
+
+The one thing I'd ask visual: lights. At night the sign's bulbs would be seen from much further than 100 m, which would show the join. I'd lose lights at the same distance as everything else, and let the bulbs come on as you get near.
+
+## Wait
+
+Standing still is the gesture. Shared rules:
+
+- **Still** means not walking and not acting. The clock for it starts when the view has levelled.
+- **Turning to look does not break it** (except in 03, where turning is aiming). Otherwise you could never watch what the place does.
+- **Walking or acting ends it at once.** Anything that was moving by itself stops. Anything that already changed stays changed for the visit: that's the evidence it happened.
+- If the page is hidden, the clock stops. Nothing happens while you can't see it; that would be a different kind of site.
+
+Each concept says what Wait gives.
+
+## Without the picture (job 12, line by line)
+
+No 3D, or a screen reader, or keyboard only: **the named places as a list.** Each place is two or three plain lines of what's there at this hour, then its things as ordinary buttons, then the places you can go from it. Acting on a thing gives its answer in words ("The bell rings. Nobody comes."). The list is also reachable from the margin with the picture running, as one small mark, because some people will want to jump.
+
+| Job | With no 3D / screen reader |
+|---|---|
+| 1 Arrive, place first | Opens on "The road": a still of the station at this hour (four made ahead) and three lines |
+| 2 Arrow sign, his name | The first line names the sign and what it points at |
+| 3 Go in | "The door" is a place; its one button is the latch |
+| 4 Walk around, in and out | Every place lists where you can go from it |
+| 5 Each touch means something | Each button gives the thing's answer in words, the same answer |
+| 6 Hear it | Sound runs the same if it's on; every sound also has its word |
+| 7 Another hour | The lines for each place are written per hour; the clock is a button |
+| 8 Alien things | Cues are announced once, plainly, as what was seen |
+| 9 Do nothing | Stay on a place and its cues arrive as lines, on the same timing |
+| 10 Find more next time | The chart is a place with a list |
+| 11 Send it | Same address |
+| 12 Phone and desktop | The list is one column on both |
+
+Honest limit: 03's lamp and shadow have no meaning without a picture. There the list says what is lit and lets you switch things on and off; the room's sound still builds.
+
+**Keyboard with the picture:** arrows walk and turn; Tab steps through the things and places you can see, nearest first; Enter goes to it, and again to act; Escape puts you outside the last door.
+
+## The margin
+
+Outside the picture: sound on or off; the hour (and "wound" with the real time beside it, when the clock has been turned); the mark that opens the list of places. Nothing else. No name, no credit, no contact ("yes but no").
+
+The visual designer wrote that the margin loses the way out, and it does: a walked world has a door. I've added the list of places in its place. That's a disagreement with keeping the margin to two things, and I think job 12 needs it.
+
+## Adding to the place (jobs 13 and 14; 04 folded in here)
+
+**The world is places, things and cues.** A thing has a spot, a standing spot, a shape, and its answer to Look and Call as an ink mark and a sound. A cue has a *when* (an hour, a date, how long you've stood still) and a *what*.
+
+**Marked out** (from 04). A thing Adam plans and hasn't made is a dashed footprint on the ground and one word in his hand. That's the first step of adding anything: one line saying where and what. You can stand inside the outline of something that isn't there yet. When he makes it, the outline is gone and the thing is there.
+
+**Marks in another hand** (from 04). Among his outlines, a few that aren't his and never get made. Three circles on the back lot. Alien evidence, in every concept.
+
+**No in-between look.** A generated thing is drawn by the same rules as one he made, and nobody is told which is which. The swap is per thing and unseen: his strokes (one sheet replaces the generated marks everywhere), then his Blender model, then his paint on it.
+
+Dropped from 04: the ledger, WET INK cards, the roughed-in look. `04-the-makeover.md` is kept with a line at the top saying so.
+
+## Sound: where to begin
+
+The owner: "yes but idk how to even begin there." And earlier: "we need sound effects at least." So this is a beginning he can change, built the way the strokes are.
+
+**The principle** (the visual designer's, and it's right): every light has a sound, and the place's own sound is the sum of the lights that are on. By day one light, the sun: wind and hot metal. At night the lamps. Under stars alone, almost nothing.
+
+**Three kinds of sound, and where each comes from.**
+
+| Kind | What | Heard |
+|---|---|---|
+| The bed | The lights that are on | From where each light is. Walk toward the sign and its buzz grows; walk away and it's wind |
+| Your own | Footsteps | Under you. Stop walking and they stop, so Wait is something you hear yourself begin |
+| Answers and events | The bell, the latch, a switch; and the things the place does by itself | From where the thing is, left or right, near or far. You hear it and turn |
+
+That third line matters more now that you walk. A sound behind you is the plainest reason to turn round, and most of what the place does when you're still should be heard before it's seen.
+
+**Day one: eleven sounds.**
+
+| Sound | For |
+|---|---|
+| Wind | The sun; the bed by day and the floor under everything |
+| Heat tick | Metal in the sun: pumps, canopy |
+| Sign buzz | The name and the arrow, lit |
+| Relay click | Each bulb as the arrow runs |
+| Tube hum | The canopy lamp; the lights indoors |
+| Compressor | The cooler |
+| Steps on gravel, on concrete, on lino | You, in the desert, on the slab, indoors |
+| Latch | The door giving |
+| Bell | The door; the counter |
+
+**Generate for now.** Every one of these can be made in the browser from noise and tone, with no recordings: wind is filtered noise; a buzz or hum is a low tone with its overtones; a click or a step is a short burst; a bell is two tones dying away. So sound starts exactly where the strokes start: generated stand-ins, readable, not precise.
+
+**Then his own, one at a time.** Each sound is a named slot. Drop a recording in with that name and it replaces the generated one everywhere it's used; the rest stay generated until he gets to them. Same as the stroke sheet, and as easy.
+
+**One thing to offer a musician.** A hum has a pitch. If each lamp is tuned to one note, the lights that are on make a chord, and the place's sound at any moment is a chord nobody arranged: the sign alone at dusk, more notes as the lamps come on, one note left when you've put the rest out. He picks the notes. It needs no music written, it follows from the rule we already have, and if he doesn't want it the hums are just hums. (The visual designer's offer of a tone that follows the sun's height is the daytime half of the same idea.)
+
+**Rules.** Sound starts with your first touch, never before. One switch, in the margin. Every answer has its ink twin, the landed word, so nothing depends on hearing. Music, and whether the radio plays his, is still "idk yet"; the radio gives static and a station that won't quite come in.
 
 ## States, common to all
 
 | State | What you get |
 |---|---|
-| Loading | The sign and the name first, as page text and flat ink. The world arrives after. Nothing waits on it |
-| No 3D | A still picture of the road stop at this hour (four are made ahead: dawn, day, dusk, night), and each stop described in a few plain lines with its things as ordinary buttons |
-| Motion turned off | Cuts between stops. The light moves in steps |
-| Sound blocked or off | Ink twins only |
-| Keyboard | Tab goes through the things at a stop in a sensible order; Enter acts; Escape steps back |
-| Screen reader | Each stop is a short description and a list of things. Cues are announced once, quietly, in words |
-| Tall phone | The main canvas. Every stop is composed tall first |
-| Wide desktop | The same stops, composed wide |
-| First visit / nothing remembered | Complete. Memory only adds marks |
-| Clock wound | Marked in the margin with the real time beside it. Lets go when you leave |
+| Loading | The road still for this hour and the sign's name as text, at once. The world arrives behind it and you can start walking when it has |
+| No 3D | The list of places, above |
+| Motion off | Cuts between standing spots; the light moves in steps |
+| Sound off or blocked | Landed words only; the switch shows off |
+| First visit, nothing remembered | Complete |
+| Clock wound | Marked in the margin. Stays wound while you walk about, so you can go out and see it. Lets go when you touch the clock again or leave the site |
+| Tall phone | The main canvas |
+| Wide desktop | The same world, a wider slice of it. Nothing depends on the width |
+| You walk off into the desert | You arrive again |
+| You stand inside a wall, a thing, a marked-out footprint | You can't enter the first two; the third is allowed |
 
 ## What the browser remembers
 
-Sound on or off, and the sightings chart. Concepts add to this where they say so. Clearing it loses nothing you need.
-
----
+Sound on or off; the chart; the date of your first visit. Concepts add to it where they say. Clearing it loses nothing you need.
 
 # Shared by every concept — how it looks and feels
 

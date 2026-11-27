@@ -1,139 +1,144 @@
 # 03 — Your light
 
-*How it works (systems). Read `00-shared.md` first.*
+**You are** a shadow on the ground by day and a lamp by night. You are never drawn.
+**The hour** changes what your hand is: how far you reach by day, and whether you have a shadow, a lamp, or neither.
 
-Ink is where the light isn't. So the simplest thing a visitor can be is a light, or something standing in one. By day you are a shadow on the ground. By night you are a lamp. You are never drawn; only what you do to the light is.
+*How it works (systems), turn 2. Rewritten for walking, for the visual designer's reshaping of the day, and for `steer-1.md`. Read `00-shared.md` first.*
 
-**Draws on:** "ink is where the light isn't" (visual, pass 1), taken from the world to the visitor; Look, from the five gestures; "the visitor is the sighting" and "evidence, never the creature" (director, pass 1); "attention is the inker" (visual, pass 1), in a form that doesn't leave a faint station.
-
-**Kept:** the foundation rule and nothing responding except by ink. Composed stops.
-**Changed:** in the jam the visitor pointed at the world and the world drew a mark. Here the visitor *is* one of the lights, so every act is already ink moving. Stops stay, but at each one you can swing your view a little, because a light wants aiming. This is the nearest of the four to the owner's possible meaning of "threejs" as a place you move in.
-**Dropped:** nothing from the jam fits here that isn't in the shared file. This one is new since the owner's answers ("mainly it's for me"; he wants to be in the place).
+**Draws on:** "ink is where the light isn't", taken from the world to the visitor; "evidence, never the creature", applied to everyone; the visual designer's three.js prototype (`sketches/your-light/`), which is the only one of these ideas anyone has used.
+**Kept:** you are one of the lights; indoors every thing is a light with a sound; lights stay as you left them; at twilight you have no effect.
+**Changed since turn 1:** by day you no longer point your shadow at things from the road. It can't reach. You touch by standing next to things. The lit-and-left outline is gone. There's a first switch you can't miss and one pull that puts everything out.
+**Dropped:** the limited look-around at fixed stops (you walk now); the match on the counter.
 
 ## The rule
-
-The same rule the director set for the alien applies to everyone:
 
 | Who | Never seen | Seen as |
 |---|---|---|
 | The attendant | Him | His things |
-| The visitor | You | Your shadow by day, your light by night |
-| The other thing | It | A light that is not the sun's, not the station's and not yours |
+| You | You | Your shadow by day, your light by night |
+| The other thing | It | A light that isn't the sun's, the station's or yours |
 
-## Structure
+## By day: you touch by standing next to things
 
-Six stops, as 02. At each stop the picture is composed, and dragging (or the arrow keys) turns your view through a limited arc.
+The sun is behind you as you come in from the road, so your shadow goes ahead of you toward the station.
 
-```
-road → forecourt → [door] → shop → [back door] → back lot → road
-```
+- **To touch a thing, walk up so your shadow lies on it.** It takes its blacks while your shadow is there. Step away and it gives them back.
+- **Your reach is the hour.** Early and late your shadow is long and you can touch a pump from four or five steps off. Toward noon it shortens until you have to stand right against things. In midsummer at noon it's under your feet.
+- **You have to come at things from the sunny side.** In the morning that's from the east, in the afternoon from the west. The same pump is approached from a different side at a different hour. Nobody needs to be told; they'll see where their shadow is.
+- **In shade you have no shadow.** Under the canopy, behind the building, indoors. There you can still use anything within arm's reach, and it answers, but you leave no mark on it. The shade is where you stop being able to touch and can only use.
+- **Call** is the same tap as everywhere: at a thing, tap it. Your shadow being on it isn't required. Losing the long reach never means losing the near one.
 
-## By day: you are a shadow
-
-You arrive from the road with the sun behind you, so your shadow lies ahead of you on the ground, toward the station. Long in the morning and evening, a stub at noon.
-
-- **Look** is letting your shadow fall on a thing. It goes dark and takes its blacks while you stand over it.
-- Step under the canopy and your shadow joins the canopy's and is gone. In the shade you have no hand. That is on purpose: the forecourt is where you stop being able to touch things from a distance and have to use them.
+The shadow belongs to the phone in your hand. It moves exactly as the view moves and is cut off by the bottom of the screen. Visual has that one.
 
 ## By night: you are a lamp
 
-Almost everything is ink. The arrow and the name are lit, and one lamp under the canopy, so the place is always findable. Everything else exists where you point.
+Nearly everything is ink. The name, the arrow's bulbs and the canopy lamp are the station's own and are always on at night, so the place is findable before you've done anything.
 
-- **Look** is your light landing on a thing. It appears.
-- What you've lit and left keeps a thin line for the rest of the visit, so the place assembles as you go.
-- **Wait** at night is turning your lamp off. Stay still and it dims by itself. Your eyes adjust, and the stars come out with their tails. Doing nothing shows you more sky than doing something.
+- Your lamp follows where you look. What it lands on is paper.
+- **A thing you've lit and left keeps two or three of its own strokes** for the rest of the visit. Not an outline. The lot fills in as you go round it.
+- **Wait is letting the lamp close.** Exactly:
 
-## Inside: every thing is a light
+| Since you last moved or aimed | What happens |
+|---|---|
+| 4 s | The disc starts to close. It gets smaller; it doesn't get fainter |
+| 8 s | It's gone. You're in the dark with the sign |
+| 10 s | The first stars, one stroke each |
+| 15 s | All of them, with their tails. The tails are as long as the night is old |
 
-By day the room is ink. You bring nothing in with you but the doorway: the door opens and a patch of paper grows across the floor. That's all you can see until you turn something on.
+Move or aim and the lamp is back in two held frames and the stars are gone. Here, unlike the other two concepts, turning to look does end the Wait, because turning is aiming. To look at the sky you have to stop looking at things.
 
-So indoors, **every thing is a light source, and each has a sound**:
+## Inside: every thing is a light, and each has a sound
 
-| Thing | Call it | Light | Sound |
-|---|---|---|---|
-| Pull cord | CLICK | The room | The tube stutters, then hums |
-| Cooler door | — | Spills across the floor | Compressor |
-| Radio | — | The dial | Static, a station far off |
-| Register | DING | The little window | The drawer |
-| Payphone | — | Its lamp | Dial tone |
-| Match on the counter | — | A small circle, a few seconds | The strike |
+By day the room is ink. The door opens and a patch of daylight lies on the floor with your shadow in it.
 
-**The room's drawing is the sum of the lights you've turned on. The room's sound is the sum of the same lights.** Turn everything on and the shop is fully drawn and loud with hum. Turn everything off and it's black, silent, and you can see the desert through the window.
+- **The first switch hangs in that patch.** A pull cord, a step inside the door, lit by the door. You can't not find it. CLICK: the tube over the counter stutters and holds, and the front room is drawn.
+- After that, each thing is its own light and its own sound:
 
-## What you leave
-
-Lights stay as you left them. Go back out at night and the windows you lit are lit, seen from the road. Come back another day and they're still on (the browser remembers). The place shows that someone has been here, and it was you.
-
-Then, sometimes: one is on that you didn't leave on.
-
-## The hour
-
-It decides which you are. That's how the hour "does something" here without choosing anything.
-
-- **Day:** shadow.
-- **Night:** lamp.
-- **Twilight:** neither. No sun to cast you, not dark enough for a lamp to show. For half an hour you have no effect on anything. The station's own lights come on one by one, and you watch.
-
-The wall clock turns the sun, and you change from one to the other as it goes round.
-
-## The gestures here
-
-| Gesture | Day | Night |
+| Thing | Lights | Sounds |
 |---|---|---|
-| Look | Your shadow falls on it | Your light lands on it |
-| Cross | The latch; you bring a patch of daylight in | The latch; your lamp goes in ahead of you |
-| Pick up | Hold a thing up to whatever light is on | The same |
-| Call | Switch a thing on or off | The same |
-| Wait | Your shadow moves with the sun | Your lamp goes down; the sky comes up |
+| Pull cord by the door | The front room | Tube: stutter, then hum |
+| Cooler | The floor in front of it, when the door's open | Compressor |
+| Radio | Its dial, and what's beside it | Static; a far station |
+| Register | Its little window | DING, the drawer |
+| Aisle cords, one every third bay | That stretch of aisle | A tube each, slightly different |
+| Payphone | Its lamp | Dial tone |
+
+- **The room's drawing is the sum of the lights that are on. The room's sound is the same sum.** All on: fully drawn, full of hum. All off: black, silent, the desert in the window.
+- The aisle is 01's aisle, dark. You light it a stretch at a time, walking from cord to cord. Look back and the stretches you lit are a row of pools.
+
+By night indoors you also have your lamp, so the room can be found without any switch. The switches then are for leaving lights behind you.
+
+## What you leave, and how to take it back
+
+- Lights stay as you left them. From the road at night, the windows you lit are lit.
+- They're still on next time (the browser remembers).
+- **The main.** A knife switch on the wall by the door, in the same patch of light as the cord. One pull, CLUNK, and everything you ever turned on is off, the hum drops out a note at a time, and the room is as the attendant left it. That's the undo for the only thing a visitor can't undo by leaving.
+- The sign and the canopy lamp aren't yours. The main doesn't touch them.
+- Sometimes one is on that you didn't leave on.
+
+## Twilight
+
+Half an hour at each end of the day with no sun to cast you and not enough dark for a lamp. You walk about and nothing you do leaves a mark. Things in arm's reach still answer.
+
+**What someone arriving then sees in the first ten seconds**, so it doesn't look broken:
+
+| | |
+|---|---|
+| 0 s | The road. The station with no shadows on it at all, the flattest it ever is. Sky still paper |
+| 1–2 s | You move, and nothing follows you. No shadow, no disc |
+| 3 s | A stroke of ink is laid into the top of the sky. The first letter of the name is lit against it: T. A buzz starts |
+| 4–9 s | A stroke and a letter about each second: R, A, B, O, L, D |
+| 10 s | The first bulb of the arrow, and a click |
+
+The lights can only show once there's ink behind them, so dusk is the sky being inked in from the top with the sign coming on against it. Whenever in the half hour you arrive, the next letter comes at three seconds. The place is plainly doing something, by itself, and you're watching. At dawn it runs the other way: letters go out as the ink is lifted.
 
 ## The alien material
 
-A light that isn't one of the three. A pool on the back lot with no source. A beam that crosses the forecourt from above while your lamp is off. A light inside, on, that you didn't touch. The chart logs them.
+A fourth light. A disc on the ground like yours, that isn't yours, a little way off; it closes when you turn toward it. A window lit that you didn't light. With your lamp closed and the stars out, a beam down onto the forecourt from nothing. The three circles (shared) show only when a light is on them.
 
-## Adam makes it into something
+## The sound, here
 
-A new thing is a new light with a sound. That's the whole template: a shape, what it lights, what it sounds like, and whether it stays on.
+This concept is where the shared sound principle comes from, and it's the one where the visitor plays it: each switch adds a hum, the main takes them all away. If the lamps are tuned (shared: one note each), then walking through the shop turning things on is building a chord, and leaving lights on is leaving it sounding.
 
 ## States particular to this concept
 
-- **Keyboard:** the light *is* the focus ring. Tab moves it from thing to thing; nothing extra to design.
-- **Phone:** drag aims the light or the shadow; tap acts on what it's on.
-- **Night, first arrival:** arrow, name and canopy lamp are always lit, so jobs 1 and 2 don't depend on you finding anything.
-- **Noon, in the shade:** your shadow is gone; everything in reach is still tappable. Losing the far reach must not mean losing the near one.
-- **Motion off:** the light jumps between things; your shadow steps.
-- **Sound off:** the hum of each light is shown as a short stroke pattern beside it.
-- **Nothing remembered:** all lights off, as the attendant left them.
+- **Keyboard:** the lamp is the focus ring. Tab moves it from thing to thing, nearest first. By day Tab walks you to the thing's sunny side.
+- **Phone:** drag aims; hold walks; tap acts.
+- **Noon in midsummer, or anywhere in shade:** no reach beyond your arm. Everything still answers to a tap.
+- **Motion off:** the lamp jumps between things; it closes in three steps.
+- **Sound off:** each light that's on shows a short repeating stroke beside it where its hum would be.
+- **Nothing remembered:** every light off, as he left them.
+- **No 3D:** each place lists what's lit and gives every switch as a button. The lamp and the shadow have no version here. The chord still builds.
+- **Everything on, weeks later:** fine. That's your place now. The main is by the door.
 
 ## Jobs
 
 | Job | Where |
 |---|---|
-| 1 Arrive, place first | Road; the first thing you see move is your own shadow on the ground |
-| 2 Arrow, name, pulled in | Lit at night, the tallest thing by day; your shadow points the same way it does |
-| 3 Go in | The latch; the light you bring in is the event |
-| 4 Look around, go out | Aim; switch things on; back out and see your windows |
-| 5 Each touch means something | Every act puts light somewhere or takes it away. Nothing else exists |
-| 6 Hear it | The sound is the sum of the lights |
-| 7 Another hour | You are a different thing |
+| 1 Arrive, place first | The road. By day the first thing that moves is your own shadow |
+| 2 Arrow sign, his name | Tallest thing by day; lit at night before you've done anything |
+| 3 Go in | Lean on the door; the daylight you let in is the event |
+| 4 Walk around, in and out | The lot from its sunny sides; the aisle cord by cord; out, and your windows are lit |
+| 5 Each touch means something | Every act puts light somewhere or takes it away. Nothing else can happen here |
+| 6 Hear it | The sound is the sum of the lights, and you chose them |
+| 7 Another hour | A longer or shorter reach; a shadow, a lamp, or nothing |
 | 8 Alien things | The fourth light |
-| 9 Do nothing | By night it shows you the sky |
-| 10 Find more next time | The lights you left; the one you didn't |
-| 11 Send it | One address; they arrive with everything off |
-| 12 Fallbacks | Shared; focus ring as light |
-| 13 Add a thing | A light and a sound |
-| 14 Swap in his own | Per thing |
-| 15–19 later | A piece of work is a thing you hold up to the light |
+| 9 Do nothing | By night it gives you the sky |
+| 10 Find more next time | What you left on; the one you didn't |
+| 11 Send it | They arrive with everything off |
+| 12 Fallbacks | Shared; the lamp and shadow have none, and I've said so |
+| 13 Add a thing | A shape, what it lights, its sound |
+| 14 Swap in his own | Shared; and his own recording for each hum |
+| 15–19 later | A piece of work is something you put a light on |
 
 ## What it has to prove
 
-That a first-time visitor at night isn't lost in black. That your shadow reads as yours within a few seconds, without a figure that looks like a character. That inside by day isn't a chore of switches before anything can be seen.
+That day is more than 01 with a shadow added. "Your reach is the hour" and "come at it from the sunny side" are meant to do that, and neither has been walked yet. That the first minute indoors by day is a pleasure. That twilight reads as the place's own half hour.
 
 ## Not sure about
 
-- This is the one where the idea only shows when used. A throwaway prototype of the night forecourt (aim a light, things appear, let go, stars come up) would settle it faster than argument. I haven't built it; visual or I should before the director rules.
-- Whether "lights stay on between visits" should also be true between different visitors. It can't be without a server, and I'd keep it that way.
-
----
+- Whether needing the sunny side is a quiet pleasure or a nuisance at a pump you've approached from the wrong side. If it's a nuisance, the tap in arm's reach has to carry the day, and then day really is thin.
+- Lamp at eye height or above (visual's question). From the systems side: above. A lamp that throws shadows you can see gives night the same grammar as day.
 
 # 03 — Your light: how it looks and feels
 

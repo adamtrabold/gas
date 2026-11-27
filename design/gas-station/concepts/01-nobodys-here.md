@@ -1,107 +1,120 @@
 # 01 — Nobody's here
 
-*How it works (systems). Read `00-shared.md` first.*
+**You are** the one who turned up at a place somebody has just left.
+**The hour** changes the light, the sound and the odd things. It chooses nothing and points at nothing.
 
-A station somebody has just stepped away from. The coffee is still warm. You are what turned up.
+*How it works (systems), turn 2. Rewritten for walking and for `steer-1.md`. Read `00-shared.md` first.*
 
-**Draws on:** the director's "Nobody's here"; self-service (jam, pass 1, shape D); the loop (shape A); the interior bigger than the outside (shape C); "the visitor is the sighting".
+**Draws on:** the director's "Nobody's here"; self-service, the loop and the interior bigger than the outside (jam, pass 1); "the visitor is the sighting".
+**Kept:** outside empty, inside dense; a shadow is only a shadow; Call as the heart of it.
+**Changed since turn 1:** seven stops are now one walked place. Pick up is gone. The chart no longer greets you. The canopy is back.
+**Dropped:** the restroom as a separate stop (it's a door round the side you can walk to, or not build yet).
 
-**Kept:** the plain box, dead frontal, eye height, never from above. Outside empty, inside dense. The hour changes light, sound and odd things, and nothing else. A shadow is only a shadow.
-**Changed:** the upright sign is now the Googie arrow with Adam's name. "The list is the price board" becomes a price board with blank slats. The attendant's things were going to carry the About; for now they carry only the absence.
-**Dropped:** the piece held and the list.
+## The place
 
-## Structure
+Outside is the shared lot. What this concept adds is all indoors.
 
-One line, with a loop at the end. Seven stops.
+**The front room.** Eight metres deep, the size the outside says it is. The counter across the back: register, bell, cup, radio. The jacket on its hook. The wall clock. The chart under it. The card in the door: BACK IN 5 MINUTES.
 
-```
-road → forecourt → [door] → counter → aisle → [back door] → back lot → road
-                                 ↘ restroom (round the side; the key hangs inside)
-```
+**The aisle.** To the right of the counter is an opening where the back wall should be. Through it, one aisle of shelves runs straight back.
 
-| Stop | What's there |
-|---|---|
-| Road | The station across the middle, the arrow sign, the desert. Nothing to do but look and go forward |
-| Forecourt | Under the canopy. Two pumps, the air hose, the bell line across the concrete, an ice box, the window |
-| Counter | The register, the radio, a cup, a jacket on a hook, the wall clock, a card in the door: BACK IN 5 MINUTES. The sightings chart, pinned |
-| Aisle | Shelves running back further than the building is deep. Stock with no labels yet. A cooler. A payphone at the far end |
-| Back lot | The station from behind, a silhouette against the sun. Tyres, a drum, the back of the sign with the name reversed |
-| Restroom | One bulb, a mirror with nobody in it |
+- It is fourteen bays long, about 28 metres. The building is eight. You walk it in about ten seconds.
+- A tube light every third bay. Between them the shelves are ink and you walk from pool to pool.
+- The first bays have stock, no labels. Further back the shelves are bare. The last lamp flickers.
+- **The far end:** a payphone on the wall under the last lamp, and the back door beside it.
+- **Look back from there:** the front window is a small bright rectangle a long way off, with the desert in it. That view is the reason to walk the aisle.
+- Go out of the back door and you're behind an ordinary small building. Round the corner, the front is eight metres away.
 
-## The gestures here
+It has an end. An aisle with no end is a place to get lost, and nobody should be lost. One impossible thing, its length, is enough.
 
-| Gesture | Where | What happens |
+When Adam adds things, they go on the bare shelves. When those are full the aisle gets longer by a bay (job 13). It never gets shorter than fourteen.
+
+## Call
+
+Every Call asks for someone, and the place answers, not a person.
+
+| Thing | You | It |
 |---|---|---|
-| Look | Anything | It takes its blacks; a small sound of the thing itself |
-| Cross | The door, the back door | Press and hold for a second. The latch gives, the bell over the door: DING. The page turns over |
-| Pick up | Things on the counter and shelves | It lifts off as a cut-out; you turn it once; you put it back. It's never where you left it next time |
-| Call | The bell line, the counter bell, the payphone, the pump handle | You ask for someone. A word lands. Nobody comes. The place gets a little quieter afterwards |
-| Wait | Everywhere | See below |
+| Bell line across the forecourt | Walk over it | DING, from inside the building. Nobody comes |
+| Pump handle | Tap | The numbers roll and stop. No fuel |
+| Counter bell | Tap | DING. The radio drifts off its station |
+| Radio | Tap | Static; a station that won't come in |
+| Payphone | Tap | Dial tone. Then, if you keep the receiver, something that isn't one |
+| Wall clock | Turn | The light outside the window moves. Marked as wound |
 
-**Call is the heart of this one.** Every Call is answered by the place and not by a person. Ring the counter bell and the radio drifts off its station. Lift the payphone and there's a dial tone, then something that isn't one.
+After any Call the place is a little quieter for a few seconds: the bed drops. You asked, and it's listening for an answer too.
 
 ## Doing nothing
 
-The place notices you while you act and stops noticing when you don't. Three depths:
+This is what stops it being a well-lit shop, so here it is as something a person could act out. Stand still anywhere. Turning your head is allowed.
 
-- **About twenty seconds:** your marks fade. The bed comes up: wind, the cooler, the sign's hum.
-- **About a minute:** something small moves by itself. The pump's numbers tick over once. The door card swings.
-- **A few minutes:** one of the things that only happen when nobody's there. The payphone rings.
+| Since you stopped | What happens | Heard or seen first |
+|---|---|---|
+| 1 s | The view levels | — |
+| 8 s | Your marks go: the thing you were facing gives back its blacks; a landed word lifts | Seen |
+| 20 s | The bed comes up. Without your steps you hear the wind, the cooler, the sign | Heard |
+| 40 s | One small thing near you, out of the middle of your view. Indoors: the steam off the cup stops. Outdoors: the pump's numbers tick over once | Heard, then you look and it's already done |
+| 90 s | One thing further off. The radio finds a station for a few seconds and loses it. Or the bell line rings with nobody on it | Heard, from where it is |
+| 3 min | The payphone rings, at the far end of the aisle | Heard, from wherever you are. Outside, it comes through the wall |
+| 5 min | The canopy lamp goes out. A disc of light crosses the forecourt from nothing overhead, and the lamp comes back | Seen. The only one that is |
 
-Touch anything and it stops at once, as if it hadn't happened.
+Rules for the list:
+
+- **Nothing ever moves while you're looking straight at it.** You hear it, you turn, it has happened. The cup is cold. The card in the door is the other way round. So there is never a moment that reads as a trick being performed for you.
+- **Walk or act and it all stops.** Walk toward the ringing phone and it stops when you're three steps away. Every time.
+- **What changed stays changed** until you leave. The steam doesn't come back.
+- **Each rung happens once a visit.** Stand still again and you start from 20 s, with the next rung you haven't had.
+- The five-minute one happens at any hour, but it is the only one that also happens by itself at twilight, whether or not you're still.
 
 ## The hour
 
-Four looks (dawn, day, dusk, night) on a sun that moves continuously. A cue sheet says what each hour adds. By night the station looks shut — door card turned, one lamp, the arrow lit — and the latch still gives. Twilight is when the arrow's bulbs come on, one at a time.
-
-The hour picks nothing and points at nothing.
+Four looks on a moving sun, plus a cue sheet. By night the station looks shut: card turned, one lamp, the name lit. The latch still gives. Indoors at night the room is paper and the windows are ink.
 
 ## The alien material
 
-Evidence only: a light on the ground with no lamp above it; three dents in the back lot; the radio between stations; a shadow under the canopy at noon that the canopy doesn't account for.
+- The disc at five minutes.
+- The three circles on the back lot, in another hand (shared).
+- The radio, between stations.
+- At noon, a shadow under the canopy that the canopy doesn't account for.
 
-The chart by the register logs each one as a small drawing with a place and a date. **The first entry is you**, dated today: "Forecourt." So the chart is never empty, and it tells you what kind of thing you are here.
-
-## Adam makes it into something
-
-A new thing goes in a free slot at a stop: the counter has six, each shelf bay has eight, the forecourt five. A new bay of aisle is one more stretch of the same shelf. A new odd event is one line on the cue sheet.
+**The chart.** A grid under the clock, in the manner of the owner's sightings chart: small drawing, place, date. It fills as you see things. On your first visit nothing on it is about you. **On your second visit there is an entry dated the day of your first, with the place you stood longest.** No sentence. (Ruled by the director; I think it's better than what I had.)
 
 ## States particular to this concept
 
-- **Almost nothing made yet:** the counter with three things and bare shelves is still a shop. Empty shelves suit an abandoned place.
-- **You never go in:** the road and forecourt are complete by themselves; the bell line, the pumps and the window are enough to do.
-- **Night, first visit:** the arrow and the name are lit, so job 2 holds in the dark.
+- **You never go in.** The lot is whole without it: bell line, pumps, the phone heard through the wall.
+- **You stand still for five minutes on the first visit.** You've had everything on the list. That's fine; the list isn't the place.
+- **Sound off.** The 40 s and 90 s rungs are heard-first, so with sound off each lands a small word where it happened, and that's what makes you turn.
+- **Motion off.** The disc is a held frame: there, then not.
+- **No 3D.** The rungs arrive as lines under the place you're on.
 
 ## Jobs
 
 | Job | Where |
 |---|---|
-| 1 Arrive, place first | Road stop; nothing else on screen |
-| 2 Arrow sign, name, pulled in | The sign is the only vertical; the arrow points at the door |
-| 3 Go in | The latch |
-| 4 Look around, go out | Counter, aisle; back, or out the back and round |
-| 5 Each touch means something | Call asks for someone; Pick up handles what he left |
-| 6 Hear it | Bed, answers, events |
-| 7 Another hour | Four looks, the cue sheet, the wall clock |
-| 8 Alien things | Evidence; the chart |
-| 9 Do nothing | Three depths |
-| 10 Find more next time | Blank cells on the chart; things only seen at some hours |
-| 11 Send it | One address, lands on the road |
+| 1 Arrive, place first | The road. Nothing on screen but the place |
+| 2 Arrow sign, his name | The sign, straight ahead, arrow at the door |
+| 3 Go in | Lean on the door for a second |
+| 4 Walk around, in and out | The lot, the front room, the aisle, out the back, round |
+| 5 Each touch means something | You ask for someone. The place answers |
+| 6 Hear it | Bed, steps, answers; most events are heard first |
+| 7 Another hour | Light, bed and cues change; night looks shut |
+| 8 Alien things | The disc, the circles, the radio, the wrong shadow; the chart |
+| 9 Do nothing | The timed list |
+| 10 Find more next time | Rungs you didn't reach; the entry about you |
+| 11 Send it | They land on the road |
 | 12 Phone, desktop, fallbacks | Shared |
-| 13 Add a thing | Slots and the cue sheet |
-| 14 Swap in his own | Per thing, shared |
-| 15–19 later | Shelves, counter, payphone, price board, margin |
+| 13 Add a thing | Mark it out; shelves; a bay more of aisle |
+| 14 Swap in his own | Shared; unseen |
+| 15–19 later | The shelves, the counter, the payphone, the blank price slats |
 
 ## What it has to prove
 
-That the room is worth the door: it needs eight or so things that each do something worth doing, with no work on the shelves. That absence is felt and not announced. That it's more than a well-lit shop.
+That the timed list works on a real person and not only on paper: that someone stands still long enough to reach 40 seconds. If they don't, this concept is a shop. The first rung may need to come sooner.
 
 ## Not sure about
 
-- Whether "Pick up" earns its place before there is work to pick up.
-- Whether the first chart entry being you is liminal or too knowing.
-
----
+- "Nothing moves while you're looking at it" needs the build to know what's in the middle of your view. Simple enough, but it's the one rule here a stand-in can't fake.
+- Whether three minutes is too long for the phone. It's meant for the person who put the phone down on the desk and heard it ring.
 
 # 01 — Nobody's here: how it looks and feels
 

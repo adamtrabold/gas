@@ -13,6 +13,9 @@ What a person needs to be able to do here. Written from the owner's words; anyth
 - Whose name is on the sign: "Me." So the arrow sign also says whose station this is.
 - "Nowhere in particular. Middle of the desert." No real location; the sun and sky are a desert's, not a town's.
 - No receipt, and no choosing what shows in office hours versus night. Both dropped.
+- "Walk around." Job 4 is walking, outside and in, not moving between set views.
+- The place has its own sound when you're doing nothing: "yes but idk how to even begin there." Job 6 stands as written; a way to begin is in `concepts/00-shared.md`.
+- Public, with no note of whose it is beyond the sign: "yes but no."
 
 ## Jobs: the world (now)
 
@@ -21,14 +24,14 @@ What a person needs to be able to do here. Written from the owner's words; anyth
 1. Arrive outside the station, in the middle of the desert, and feel where I am — the place first, before anything else. — *owner*
 2. See the arrow sign from the road, read Adam's name on it, and be pulled toward the door. — *owner (the sign, the name); inferred (what it does)*
 3. Go in. — *owner*
-4. Look around inside, and go back out. — *inferred*
+4. Walk around, outside and in, and walk back out. — *owner ("walk around")*
 5. Touch things, and have each one answer in a way that means something. — *owner*
-6. Hear the place: what I do makes a sound, and the place has its own. — *owner*
+6. Hear the place: what I do makes a sound, and the place has its own when I do nothing. — *owner*
 7. Find it different at a different time of day. — *owner*
 8. Come across alien things nobody told me about. — *owner*
 9. Stay and do nothing, and have that be worth it. — *inferred, from "liminal"*
 10. Come back and find something I didn't find last time. — *inferred*
-11. Send it to someone, and they arrive outside like I did. — *inferred*
+11. Send it to someone, and they arrive outside like I did. — *inferred; the owner has said it is public*
 12. Get all of this on a phone and on a desktop. If 3D, motion or sound isn't available, still get the place in some form. — *brief (phone and desktop); the rest inferred*
 
 **Adam, as the owner of the station**
@@ -52,7 +55,9 @@ The receipt and the office-hours ordering are dropped (owner: "no" to both). The
 
 **First arrival.** Open the site → outside, on the road, the station ahead, the arrow sign with Adam's name → something responds when I look or touch, in ink and sound → I know there's a way in.
 
-**Going in and out.** At the door → one deliberate act, about a second → inside → look around, touch things → back out the way I came, or out the back and round to the front.
+**Going in and out.** Walk to the door → lean on it for about a second → inside → walk about, touch things → back out the way I came, or out the back and round to the front.
+
+**Walking off.** Walk away into the desert in any direction → the station is lost behind me → the sign comes up ahead → I'm arriving again.
 
 **Doing nothing.** Stop touching → the light moves, the place makes its own sounds → sooner or later something happens that wouldn't have if I'd kept poking.
 
@@ -62,7 +67,7 @@ The receipt and the office-hours ordering are dropped (owner: "no" to both). The
 
 **Sending it.** Copy the address → the other person lands outside, at their own hour.
 
-**When things are missing.** No 3D → a still picture of the station at this hour, and the place described in words. Motion turned off → cuts in place of moves. Sound blocked or off → visibly off, and nothing depends on hearing.
+**When things are missing.** No 3D → a still picture of the station at this hour, and a list of its places, each described in words with its things as buttons. Motion turned off → cuts in place of moves. Sound blocked or off → visibly off, and nothing depends on hearing.
 
 **Adam adds a thing.** Make one object or one event → give it a place and, if wanted, an hour → it's there → nothing else was touched.
 
@@ -77,5 +82,5 @@ The receipt and the office-hours ordering are dropped (owner: "no" to both). The
 
 ## Still open, and still matter
 
-1. **Does the time of day do something, or only change how the place looks?** Asked already, not answered. Until there is work to show, the hour changes the light, the sound and the odd things, and nothing else — so this can wait for the concepts, but it has to be answered before the work goes in.
-2. **Walk around freely, or move between a few composed views?** Not yet asked. "Threejs" could mean either, and it changes jobs 4, 5 and 12 more than anything else. The team leans composed views; the concepts will show that, and he can say no.
+1. **Does the time of day do something, or only change how the place looks?** Asked, not answered. The three concepts are built to show him the choices: it only changes the look (01); it lays a path and wakes one thing (02); it changes what your hand is (03).
+2. **Does the station have a canopy over the pumps?** Out with him now. Drawn with one for the time being; nothing in the jobs depends on it.

@@ -2,6 +2,53 @@
 
 ## Where things stand (latest first)
 
+**Concept phase, systems turn 2 done (2026-11-27).** Rewrote my halves of `concepts/00-shared.md`, `01-nobodys-here.md`, `02-the-arrow.md`, `03-your-light.md` for walking and for `concepts/steer-1.md` (director: not READY, everything assumed composed stops). `04-the-makeover.md` marked folded. `jobs.md` updated for owner section 6. Visual's halves untouched; they predate my rewrite and still describe some things I changed (the raked arrow in 02, no canopy in 01).
+
+### Owner answers since last turn (owner.md section 6)
+
+"walk around"; own sound at rest "yes but idk how to even begin there"; public "yes but no" (public, no credit beyond the sign). Out with him now: canopy or not. Still open: does the hour do something.
+
+### What I decided this turn, and why
+
+Shared:
+- **One lot for all three:** sign at the road straight in front of the door (door 16 m north), canopy and pumps to the west, bench east of the door, phone box alone off the slab to the east. Reason: computed where a 12 m sign's shadow falls at 35°N; a canopy north of the sign catches the shadow on its roof. West, it only catches the morning shadow.
+- **Moving:** walk-and-look (drag to look, hold to walk; WASD/arrows) plus **go-to** (tap a spot or thing; every thing has a standing spot and facing — that's where composed views went, and it is the keyboard/screen-reader movement). Brisk pace, road to door ~8 s; go-to ≤4 s. Slide along walls.
+- **Four gestures:** Look = stand near and face; Call = tap at a thing (same tap is go-to when far); Cross = keep walking into the door for a second; Wait = stand still.
+- **Inside bigger than outside:** front room real and true size (seen through the window both ways); past it the inside continues beyond the back wall; the door stroke hides the join; back door lets you out behind an 8 m building.
+- **Back / Escape** = outside the last door you crossed. Only doors add to history. Links always land on the road.
+- **World's edge:** things lost past ~100 m; at ~130 m from the sign walking away you're moved to the same distance on the opposite side keeping your heading; centre is the sign's foot (on the road, so road-walkers return on the road). ~40 s out and back. Lights also lost at 100 m.
+- **Wait rules:** still = not walking, not acting; turning doesn't break it (except 03); walking/acting ends it; what changed stays changed; hidden page pauses.
+- **Without the picture:** named places as a list, each with lines + things as buttons; checked against jobs 1–12 in a table. Honest limit: 03's lamp/shadow have no version.
+- **Margin:** sound, hour/wound, the mark for the list of places. I added the places mark against visual's "margin loses the way out"; said so in the file.
+- **04 folded:** marked out (dashed footprint + a word) and marks in another hand kept; no in-between look; ledger and WET INK dropped.
+- **Sound page:** bed = sum of lights; your steps; answers/events heard from where they are (reason to turn). Eleven day-one sounds, all generatable in the browser from noise and tone; each a named slot he replaces with a recording. Offer: tune each lamp to a note so the lights on make a chord.
+- Clock stays wound while you walk about; lets go on touching it again or leaving the site.
+
+01: aisle is 14 bays / 28 m with an end (payphone, back door, the look back at the window). Doing-nothing as a timed ladder (8 s, 20 s, 40 s, 90 s, 3 min, 5 min); nothing moves while looked at; each rung once a visit. Chart entry about you appears on the second visit (director's ruling).
+
+02: upright sign. Honest table of where the band lies by season. Three destinations: pumps (morning), door (midday), away east / down the road (afternoon; ends on nothing → the road → the world's edge → the station). Winter: the band stands up on the front wall; starburst on the door at the shortest day. Awake = nearest thing to the band's line, five things outdoors (west pump, air post, door, bench, phone box); door awake is off the latch. Inside's job: the window is the framed fixed view, the clock is beside it. **My stated view: it half folds** — the path is real in every concept; only "awake" is 02's; keep it as the way to show the owner "the hour does something", but it's 01's place plus one rule, not a third world. Director to call.
+
+03: day = stand so your shadow is on the thing; reach is the hour; sunny side; in shade arm's reach only; tap in reach always works. Night lamp closes at 4–8 s, stars 10–15 s; turning counts as aiming. Lit-and-left keeps 2–3 strokes. First pull cord in the door's patch of light; the main (knife switch) by the door puts out everything you lit; sign and canopy lamp aren't yours. Twilight first ten seconds: sky inked from the top, a letter of the name per second from 3 s.
+
+### Disagreements with the steer, stated in the files
+
+- 02: I didn't conclude "stands" or "folds" cleanly; I said half folds and why.
+- Margin gets a third item (places).
+- Canopy: agreed it's on, but its position is forced west by the shadow.
+
+### Open
+
+- Owner: hour does something; canopy.
+- Visual: frames for all of the above (their list in steer-1); whether air post and bench read as awake; lamp height; lights lost at 100 m; shadow not a figure.
+- Director: 02's fate; whether the 40 s first rung in 01 is too late.
+
+### Next
+
+- Visual's turn 2, then the director's steer 2.
+- Then my coverage check of each surviving concept against jobs 1–14 before the owner sees them.
+
+## Earlier: concept phase, systems turn 1
+
 **Concept phase, systems turn 1 done (2026-11-27).** Files in `concepts/`: `00-shared.md`, `01-nobodys-here.md`, `02-the-arrow.md`, `03-your-light.md`, `04-the-makeover.md`. Each has only the "how it works" half; visual hasn't added to them yet; no director steer on them yet. `jobs.md` is with the owner (no reaction yet). Sign-name question is closed ("Me") and not listed in `jobs.md`.
 
 ### The four concepts and why these

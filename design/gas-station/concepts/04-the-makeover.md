@@ -1,3 +1,5 @@
+> **Folded (steer 1, design director).** This is no longer a concept. What survived is in `00-shared.md` under "Adding to the place": *marked out* (a dashed footprint and one word in his hand) and *marks in another hand* (the three circles). Dropped: the roughed-in look, the ledger, the WET INK cards. The text below is kept only as the record of what was proposed.
+
 # 04 — The makeover
 
 *How it works (systems). Read `00-shared.md` first.*
