@@ -443,3 +443,42 @@ Pen, brush, paper or a mix; real grey in the grain or not; is this the pump; eno
 - "Together" views are where legibility breaks. Each new element has to be checked in shade against shade.
 - Keep checking at full size at true density; page-size looks hid the steps.
 - Still owed by nobody: a real capture from a real phone.
+
+---
+
+# Steer 4 — flash sheets
+
+## Owner since last time (owner.md 13–15)
+
+- "Why is there a clock on the pump?" The designer invented a clock-face dial. He wants pumps to match his photos: rolling numbers and a globe.
+- "Before drawing elements let's first establish a list of things they need." `elements.md` written (16 elements, parts tagged by source or PROPOSED); he said yes to it.
+- Abandoned, not kept up. "Realistic labeling with fake brand names." Canopy joined to the building. Stucco over brick. No picture for the inside yet.
+- "I don't know what you're talking about" to a question that used picture numbers. Never ask him with numbers; describe pictures in words.
+- "I'm also thinking maybe a bit of flash sheet vibes should enter the visual approach equation", with four sheets (inspo 19–22).
+
+## What I see in 19–22
+
+Each thing drawn alone, whole, from its best side, with air round it. Line first; tone second, made of hatching, stipple, dot screens, spotted black. No common light. Aged paper with a life of its own. Drawn lettering as a piece on the sheet. Worn printing. His UFO chart (15) was already this form.
+
+## Steer (concepts/steer-4.md)
+
+- Take: thing as a complete drawing first; line first; stipple and dot tone with hatching; own bit of ground; one aged sheet; wear as "abandoned"; drawn fake-brand lettering.
+- Don't take: creatures, faces, emblems, whimsy, crowding, medieval or tattoo costume, soft grey, any motif not on the list.
+- Flash sheet = the element list drawn. One sheet per element or family is the look's design record. A thing's flash view = its go-to standing view.
+- Tensions named, not resolved: (A) a thing's own fixed drawing vs light making the drawing; (B) brush vs pen/woodcut/stipple; (C) one sheet of paper vs paper per material; (D) dots as tone vs dots meaning alien/bulbs (designer's to solve); (E) frontal flash vs walked (designer's); (F) charm vs "not funny".
+- Outcomes added to steer 3's: stands alone; line carries it; nothing invented; abandoned drawn in; lettering drawn and believable; still his place; legible shade on shade; sharp at real density.
+- First deliverable: Sheet 1, the pump. Both pumps from his photos; one in three hands; parts as separate pieces with captions and source tags; plus the pump walkable by day and in the lamp. Say plainly if the sheet outruns the walked version. I look before it goes.
+
+## Questions for him (three, in words)
+
+Which part of "flash" he means most (drawing manner, things alone on old paper, or imagery too); which of the four sheets is closest (described, not numbered); which pump and whether the two match (Sheet 1 shows both).
+
+## Recalibration, continued
+
+- He moves the look by adding references, and each addition has been toward line, texture, detail and paper, away from flat mass. My jam rule keeps being overturned in the same direction. Assume the next move is the same way.
+- He wants to agree contents before drawing and see small things one at a time. Work to that; don't batch.
+- Still unknown: whether anything richer than the last pump test runs fluidly on his phone.
+
+## Status
+
+No live score. The 9 on Left on is void for the look. Concept stands. Next thing I judge: Sheet 1.
