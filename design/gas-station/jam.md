@@ -411,3 +411,187 @@ New ones only; the earlier lists from systems and visual still stand.
 4. **How straight-faced?** Should the odd things be played completely deadpan, as evidence you might have imagined, or is the site allowed to be funny out loud?
 5. **Place first or work first?** Is it fine for a first-time visitor to spend ten seconds with the place before seeing any work, or must a piece of work be visible on arrival?
 6. **Whose name is on the sign?** Your name, as large as Ruscha would make it, or a name for the station with yours smaller?
+
+## Pass 2 — systems
+
+The director asked me to lay out the lot as a dial, test "piece of the hour" against the list, shared links, and two versus forty pieces, and find where the sundial breaks. I worked it with real sun geometry, because the hour is the visitor's real hour and a dial that fudges it is a skin after all.
+
+### 1. The geometry decides the layout
+
+Three facts about a pole's shadow in a northern desert (about 35°N):
+
+- It points **west in the morning, north at noon, east in the evening**. It never falls south of the pole, apart from a little at summer sunrise and sunset.
+- It is **long at the ends of the day and short at noon**. For a pole of height h, the noon shadow is about 1.6h in midwinter, 0.7h at the equinoxes, 0.2h in midsummer.
+- So the direction is the hour and the length is the season.
+
+That fixes where things stand. The dial has to be north of the pole, so:
+
+```
+                          N
+      [ garage ][ shop:  window   DOOR   window ]     station faces south
+      ------------------ canopy -------------------
+            pump W                  pump E
+   air +                                         phone
+   bell      \      \      |      /      /       box
+              \      \     |     /      /
+   icebox      \      \    |    /      /        bench
+                 hour lines painted on the lot
+                        [ SIGN POLE ]
+   ===================== road, east–west =====================
+                   you arrive here, looking north
+```
+
+What this orientation gives, none of it arranged by hand:
+
+- **The day reads left to right.** Morning shadow lies to the left, noon straight ahead at the door, evening to the right. Same direction as reading, as a timetable, and as the paste-up strip (08).
+- **Noon points at the door.** The shortest shadow of the day points in. At equinox sunset it runs due east, along the road and out of the picture, as the director wanted.
+- **The station front is in sun all day** — paper, with the canopy's shadow as its one mass (frame 1 of the sketch, done properly).
+- **The cast name reads the right way round** from where you stand, if the sign is separate standing letters (07) and not a solid panel. A solid panel casts a blank lozenge. Seen from the back lot on the loop, the cast name is mirrored — the director's "name reversed", for free.
+- **The still point of the night sky is directly above the station.** That's section 5.
+
+It contradicts one thing in the director's turn: the shadow can't "come down the page toward you" on a phone with the front of the station in view. From the road it runs away from you, from your thumb up to the building. I think that's the better picture — the shadow leads you in — but it's seen foreshortened, so the arrival camera needs height. Visual should test it. The toward-you shadow does exist: it's the view from the back lot.
+
+**Hour lines, not objects, are the marks.** Because the midday shadow is short, it never reaches the pumps or the door for most of the year. So the lot carries painted lines fanning out from the pole base, like parking stripes laid out by someone with a different purpose. Objects stand at the far ends of the lines and are only reached early and late, when the shadow is long. A station lot already has painted stripes. Nothing has to be explained.
+
+**One alignment the geometry hands us:** put the door 1.6 pole-heights from the pole (a 10 m sign, a 16 m lot — a normal forecourt). The tip of the shadow then touches the threshold at noon on one day a year, the winter solstice. That's the director's "eggs are alignments" with no hidden trigger at all. It's just where the sun is.
+
+**Clock rule:** the visitor's clock hour is the station's sun hour; the visitor's date is the station's date; the station sits at one fixed latitude. Noon on your clock is noon there. No time zones, no daylight saving. Sunrise and sunset follow the station's season.
+
+### 2. "Piece of the hour", tested against the list
+
+The director's version had the piece of the hour "first on the list". That part breaks:
+
+- A list that reorders by the clock can't be learned. The returning visitor (J8) loses the thing they saw yesterday; "the third one down" means nothing in a message; a screen reader user gets a different order each visit.
+
+Fix, from a real draw (`railway timetables`): **the list is a timetable.** Its order is fixed and it *is* the day's order — first row is what the station shows at dawn, last row is the small hours. The piece of the hour is not moved to the top; it's where "now" falls. One ink bar lies across that row, the way the shadow lies across its line on the lot. Open the list at any hour and you can see what was showing before and what's next.
+
+This joins three things that were separate: the shadow sweeping left to right across the lot, the paste-up strip of frontages read left to right (B, now the list), and the rows of the price board top to bottom. They are one sequence in three forms.
+
+What being the piece of the hour does, everywhere:
+
+| Where | What marks it |
+|---|---|
+| The lot | The pole's shadow lies along its line |
+| The board / the list | The ink bar across its row |
+| Inside, by day | The patch of sun through the window falls on it. Visual found that the room is ink by day and the work needs light; this is the light. Outside the hand is ink on paper, inside it's paper on ink |
+| Inside, at night | It's the piece in the lit window, seen from across the lot (frame 4) |
+| With no picture at all | One line of text above the list: the time and the title |
+
+It changes nothing else. Not the order, not what's reachable, not where a link lands.
+
+**A consequence worth telling the owner:** most people who matter for hiring visit between about nine and six. So the order of the list is an editorial decision about what the station shows during office hours and what it keeps for the night. Day shift: the work Adam wants to be hired for. Night shift: the music, the drawings, the odd things. He orders one list; the hours follow from it (J13). I think he'd enjoy that control. It's question 1 below.
+
+### 3. Two pieces, and forty
+
+Pieces are not marks. The lot has a fixed fan of lines; pieces are given stretches of the day.
+
+| Pieces | What happens |
+|---|---|
+| 0 | The dial still tells the time. The board is blank slats. The station is open and has nothing in. In character; must not look broken |
+| 1 | It's always the piece of the hour. The hand is a clock and nothing more |
+| 2 | Morning and afternoon. The change is at noon, when the shadow points at the door |
+| up to about 12 | Each piece owns roughly an hour of daylight, or a stretch of the night. Every one gets shown every day |
+| 40 | A piece would own about 35 minutes; the shadow moves about 9° in that time, which you can see. But the day pieces crowd the hours people visit, and some would only ever show at 4am |
+
+So above roughly a dozen, **pieces take turns by date**: each stretch of the day holds a short queue, and the date picks which one is up. Same hour next week, different piece. It stays a pure function — the date and the hour give the piece, no server, no randomness — so "go and look at nine tonight" is something one person can say to another.
+
+The honest limit: at forty the dial is a pointer, not an index. It shows one thing. The index is the timetable, and the aisles inside (shape C) which grow by a stretch of shelf per piece. That's fine, and it should be said plainly so nobody tries to make the lot carry forty objects.
+
+### 4. Shared links
+
+- **A link to a piece** lands you holding that piece, whatever the hour. Behind it the station is at your real hour. The link never carries the time. The latch is skipped, as the director said.
+- **A link to the station** shows whatever it's showing when it's opened. That's a different kind of link and a good one to send: it can't be previewed.
+- **The hour passes while you're there.** Outside, the shadow has been moving all along and the bar moves to the next row. A piece you're holding doesn't change.
+- **Two people in different time zones** see different stations. Fine, and rather nice, as long as anything they need to point each other to has its own link — which it does.
+
+**The receipt** (the director asked what it is and whether it's what people send). It's the timetable with only the rows you picked up, each stamped with the hour you saw it, with its own address that holds the whole thing so nothing is stored anywhere. The job it does is real and nothing else here does it: a recruiter sending three pieces to a hiring manager. One piece has a link; everything has the list; a few has nothing. So yes, it's the thing people send, and I'm adding the job (J14, inferred). It costs little because it's the list with fewer rows. It's rung up at the register (a Call) and also reachable from the margin. If the build gets heavy it's the first thing to cut, and J14 goes with it.
+
+### 5. Where the sundial breaks
+
+Worst first. Night is not the worst.
+
+**1. Midday in summer.** The noon shadow in June is a fifth of the pole's height — two metres for a ten-metre sign. The hand nearly disappears at the hour most people visit. Ways out: (a) keep the direction honest and give the length a floor, so the hand always reaches the inner ends of the hour lines; (b) let the cast letters of the sign do the pointing at midday, since a wide sign throws a wider mark than a pole; (c) accept it — noon is nearly inkless, the director already said noon wants the sky. I'd take (a) with (b). The direction is what tells the hour; the length can be stretched without lying about the time, though the solstice alignment then has to be computed from the true length, not the drawn one.
+
+**2. Night.** No sun, no hand. But there is a second real instrument for exactly this, the *nocturnal*: you tell the hour by how far the stars have turned around the pole star. From the road, looking north, the pole star sits above the station and the whole sky wheels around that point once a day. So:
+
+- By day the ground is the dial and the pole casts the hand.
+- By night the sky is the dial and **the same pole is the sight**: whatever star stands over the lit sign is the piece of the hour. The planetarium idea from pass 1 gets a mechanism.
+- The piece it picks is the one in the lit window. "The work is the lit thing" does the showing; the sky does the choosing.
+
+This also settles the two tall phone arrivals by the clock instead of by taste: the ground has the job by day, the sky has the job by night, and a tall frame with the station across the middle has room for both. One conflict for visual: stars as pieces of work against "dots mean not from here". I'd make stars plain pinholes of paper in the ink and keep the clustered krackle for the other thing.
+
+Night is strong enough with this. Without it, night is only a mood.
+
+**3. Twilight.** For about half an hour at each end the shadow has run off to the horizon and the stars aren't out. Nothing is pointed at. I'd leave it broken: the station recommends nothing, the sign lamp comes on, the bar is off the list. It's the most liminal half hour of the day and the right time for something else to happen. The work is all still there.
+
+**4. Indoors.** You can't see the lot from the aisles. Covered by the sun patch and by the wall clock.
+
+**5. The person who always comes at nine.** Same hour, same piece, forever. Covered by turns-by-date once there are more pieces than hours; with fewer, the season still moves the shadow's length and the sun patch.
+
+**6. No 3D.** A failed or slow load, a screen reader, an old phone. The dial reduces to one sentence above the timetable. That sentence is the whole instrument in words, so nothing is lost but the picture.
+
+**7. Stepped views.** The dial reads well from only one or two stops. Under the canopy you're standing on it. That's acceptable if the arrival stop is the dial view.
+
+Not a break: cloud. It's a desert.
+
+### 6. The wall clock, sharpened
+
+Once the hour picks the piece, turning the clock does more than swing the shadows: **it runs the timetable.** Wind the hand round and the station shows each piece in turn — the shadow crosses its line, the sun patch crosses the shelves, the bar moves down the list. One small control browses the whole day. It's a carousel, except the thing you're turning is the sun.
+
+Rules so the clock is never a liar:
+
+- A wound clock is marked as wound, in the margin, with the real time beside it.
+- It lets go when you leave. Every arrival is at the real hour.
+- Alignments (the solstice, anything earned by date) answer only to the real sun. Winding can show you the night; it can't fake the day you came.
+
+Of the five gestures this is Wait, done by hand. I'm not adding a sixth.
+
+### 7. The stops
+
+Agreeing with stepped, composed views. As structure, that's a short list of places the camera can be, and back always means the previous one:
+
+| Stop | What it's for | Own address |
+|---|---|---|
+| The road | Arrival; the dial; the name (J1) | yes — the front door of the site |
+| The door | The latch (J2) | no |
+| The counter | The attendant's things (J5), the register, the clock, the chart | yes |
+| The aisle | The work on shelves; extends with the amount of work (J3, J13) | yes |
+| A piece, held | One piece, in its true form (J4) | yes, each |
+| The phone | Contact (J6) | yes |
+| The back lot | The loop; the station from behind; the shadow coming toward you | no |
+| The timetable | Everything, in day order (J9); lives in the margin, reachable from every stop | yes |
+| A receipt | A few pieces, sent (J14) | yes |
+
+Three.js needs one rule from the systems side: **the picture is a function of the address, the hour and the date, and nothing else.** Everything a visitor must read is page text over or beside the picture. What the browser remembers (the chart, anything inked by attention) only adds marks; it never changes what's reachable.
+
+### 8. Jobs, updated
+
+- **J8, sharpened:** come back at another hour and be *shown different work*, not only a different light.
+- **J14, new, inferred:** send someone a few pieces at once.
+- **J3, noted:** three ways in now, each for a different person — the hand shows one, the timetable shows all in order, the aisle lets you browse.
+
+### 9. Smaller reactions
+
+- **Prices on the board (director).** With a timetable the obvious number is the hour, and I'd resist it: the row order already says when. Keep the number for a true fact about the work. The year is the one that needs no explaining.
+- **Attention is the inker (visual).** Works as a system: it makes "visited" a property of the drawing, so there's no separate visited style. Condition as visual said — structure fully inked for a stranger, only detail waits. It shares the browser's memory with the chart; one store, two uses.
+- **The visitor is the sighting (director).** The chart logging your own visits gives it something to show on the first visit instead of a blank grid. Keep.
+- **A latch, never a puzzle.** Agreed, and the same test applies to the clock, the register and the phone: one act, about a second.
+
+### 10. Dropped
+
+- The lap changing the hour. The director is right; it makes the clock a liar.
+- The list reordering by the hour.
+- Objects on the lot as the marks. The geometry won't have it.
+- B as a world. It's the timetable now.
+- A link that carries the hour. The receipt records the hour; a link doesn't set it.
+
+### 11. Questions for the owner (new only)
+
+1. The order of the work becomes the order of the day: what's listed first is shown in the morning, what's last is shown in the small hours. Would you want to choose what the station shows during office hours and what it keeps for the night?
+2. Where is the station? A real spot in a real desert would set the sun and the seasons — Amboy, Marfa, Rachel, somewhere of yours.
+3. Should a visitor be able to send a few pieces at once as a receipt, or is one piece per link enough?
+
+### 12. For the next turn
+
+- **Visual:** the arrival from the road looking north, on a tall phone, at three hours — nine (long shadow left), noon in June (the worst case), and ten at night with the sky turning over the sign. Does a receding shadow read as a hand? Does the night sky read as an instrument or as stars?
+- **Director:** is the length floor at midday an acceptable cheat? And is twilight allowed to point at nothing?

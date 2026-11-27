@@ -2,58 +2,65 @@
 
 ## Where things stand
 
-Jam pass 1, turn 1 done (2026-11-27). I went first and created `jam.md` with the section `## Pass 1 — systems`. No concepts, no `jobs.md`, no scores yet. The visual designer and the director haven't spoken.
+Jam pass 2, turn 1 done (2026-11-27). `jam.md` now has: Pass 1 systems, Pass 1 visual, Pass 1 director, Pass 2 systems (mine, latest). No `jobs.md`, no concepts, no scores yet.
 
-## What I read
+Owner since the brief: "I'm thinking threejs" (a lean, in `owner.md`). No other answers.
 
-- `brief.md` (owner's words verbatim) and all 18 images in `inspo/`.
-- Structural readings of the images that I'm leaning on: 08 Sunset Strip (one line with two sides), 02/10 dead-frontal building with one door, 09/10 nobody there, 15 UFO chart as a log format (drawing + place + date), 16–18 Kirby originals showing the working, 13/14 a stroke as a gesture with duration.
+## What the others established in pass 1 (that I'm building on)
 
-## Jobs (13, in jam.md section 1)
+- Visual: "ink is where the light isn't" — one rule gives day/night and outside/inside (sketch `sketches/ink-is-shadow/sheet.png`). Strictly two values. Controls live in the margin of an art board. Stepped, composed camera views. Work is two-value on the shelf, true colour when picked up. Found: inside by day the shelves go black, so work needs its own light.
+- Director: accepts ink-is-shadow with mass before line; outside is Ruscha, inside is Kirby density; words land deadpan. Proposed **the station is a sundial** (sign pole = gnomon, lot = dial, shadow picks "the piece of the hour", wall clock inside turns the sun, eggs are alignments). Proposed **the visitor is the sighting**. Latch at the door, never a puzzle. Loop stays; a lap must not change the hour. B becomes the list. Phone is the main canvas.
 
-J1 arrive and know whose place; J2 go in; J3 find the work; J4 look at one piece; J5 who Adam is; J6 get in touch; J7 come across eggs; J8 come back at another hour; J9 get to the work without wandering; J10 link to one piece; J11 leave; J12 hear the music; J13 Adam adds work without redrawing.
+## Jobs (now 14)
 
-From the owner's words: J1 (part), J2, J3, J7, J8. The rest are inferred and marked so.
+J1 arrive and know whose place; J2 go in; J3 find the work; J4 look at one piece; J5 who Adam is; J6 get in touch; J7 come across eggs; J8 come back at another hour and be shown different work (sharpened in pass 2); J9 get to the work without wandering; J10 link to one piece; J11 leave; J12 hear the music; J13 Adam adds work without redrawing; J14 send a few pieces at once (new, inferred, tied to the receipt — cut together if cut).
 
-## Positions I've taken, and why
+From the owner's words: J1 (part), J2, J3, J7, J8. The rest inferred.
 
-- **The world may hide surprises, never the work.** J7 and J9 pull against each other; this is how both hold. Work, About, Contact are never behind an egg, an hour or a wait.
-- **Four things true in any concept**: every piece has its own address; a plain list of everything exists inside the world (price board / receipt / Ruscha-style booklet) and is one action away; the name and station show before anything moves; adding work never needs a new world drawing.
-- **Five gestures only** — Look, Cross, Pick up, Call, Wait — as my reading of "every interaction has artistic meaning". Anything added must be explainable in one line. Wait (doing nothing) is the one to protect.
-- **One colour = two states** (ink on paper / paper on ink). Can mean day/night or outside/inside, not both. Left for the director.
-- **Hour changes mood and eggs, never access.** Visitor's clock; four states; wall clock can be wound so daytime-only visitors can reach night.
-- **Sightings chart** (from image 15) as the egg log, kept in the visitor's browser.
-- **Work colour**: I prefer ink on the shelf, true colour once picked up. Needs the owner.
+## Decisions and positions so far, with reasons
 
-## Four shapes proposed (differ in kind)
+Standing from pass 1:
+- The world may hide surprises, never the work.
+- Every piece, About, Contact has its own address; a plain list of everything is one action away; name and station visible before anything moves; adding work never needs a new world drawing.
+- Five gestures only: Look, Cross, Pick up, Call, Wait.
+- Hour changes mood, eggs and what's recommended — never access.
 
-A. The loop — outside → inside → out the back → round to the front, later. Back button means "step out".
-B. Two-sided strip — one long drawing; going in turns it over.
-C. Interior bigger than the outside — aisles extend; scales with any amount of work.
-D. Self-service — unmanned station, you do what you'd do at a real one; receipt of what you saw.
+Added in pass 2 (the sundial worked through with real sun geometry, ~35°N):
+- **Orientation:** station faces south, road east–west on the south side, sign pole at the road edge, visitor arrives looking north. Because a shadow only falls north of a pole. Gives: day reads left to right; noon points at the door; front in sun all day; cast name reads correctly (needs standing letters, not a panel); pole star above the station at night. Cost: shadow recedes from the viewer and is foreshortened — arrival camera needs height. Contradicts the director's "shadow comes down the page toward you"; that view exists only from the back lot.
+- **Marks are painted hour lines fanning from the pole, not objects.** Midday shadow is too short to reach objects (noon length ≈ 1.6h winter, 0.7h equinox, 0.2h summer).
+- **Solstice alignment:** door at 1.6 pole-heights; the shadow tip touches the threshold at noon on the winter solstice only.
+- **Clock rule:** visitor's clock hour = station sun hour; visitor's date = station date; fixed latitude; no time zones.
+- **The list is a timetable.** Fixed order = day order. Piece of the hour is where "now" falls (an ink bar on its row), never moved to the top. Reordering by the clock was rejected: unlearnable, breaks returning visitors and screen readers.
+- Piece of the hour is marked by: shadow on its line (lot), bar on its row (list), sun patch through the window (inside by day), lit window (night), one line of text (no picture).
+- **List order is editorial:** office hours show the work he wants hiring for; night holds the rest.
+- **Scale:** 0 = blank board, dial still works; 1 = always it; 2 = split at noon; ≤~12 = one stretch of day each; more = turns by date within each stretch (pure function of date + hour). At forty the dial is a pointer, not an index; the index is the timetable and the aisles.
+- **Links:** a piece link never carries the hour; a station link shows whatever's showing; held piece doesn't change when the hour turns.
+- **Receipt** = timetable with only the picked-up rows, hour-stamped, self-contained address. It is the thing people send (a shortlist). First thing to cut.
+- **Breaks, worst first:** (1) midday in summer — hand nearly vanishes at peak visiting time; proposed a length floor plus the cast letters; (2) night — solved with a nocturnal: sky turns round the pole star above the station, the sign pole is the sight, the star over the sign picks the piece, the lit window shows it; (3) twilight — points at nothing, left that way on purpose; (4) indoors; (5) the same-hour visitor; (6) no 3D — reduces to one sentence; (7) stepped views.
+- **Wall clock runs the timetable** — winding it browses every piece in turn. Marked as wound, lets go on leaving, alignments answer only to the real sun. Counts as Wait done by hand; no sixth gesture.
+- **Stops** (camera places): road, door, counter, aisle, held piece, phone, back lot, timetable (margin), receipt. Addresses for all but the door and back lot.
+- **Three.js rule:** the picture is a function of address, hour and date only; all reading text is page text; browser memory only adds marks.
 
-My lean: A's path + C's interior + D's manner; B is the strongest alternative. Not decided.
+## Dropped
 
-## Random draws used (real draw, for the record)
+Lap changes the hour; list reorders by hour; objects as dial marks; B as a world; links carrying the hour; (from pass 1) the two-colour swap having to mean only one of night/inside — visual showed it's both.
 
-Oblique Strategies: "Is there something missing?" (→ the missing attendant, D), "A line has two sides" (→ B, and the ink/paper swap), "Ask people to work against their better judgement" (→ Wait as a gesture). Fields: planetariums (night sky as second index), theatre stage management (the day as a cue sheet), lighthouse keeping (lit sign at night; not much used yet — a keeper's log could become the "now" page). Constraints: everything is a list (price board / Ruscha books), one thing at a time (Pick up), back button as main control (A).
+## Random draws used in pass 2 (real draw)
 
-## Director's objections
+Fields: railway timetables (→ the list as a timetable, turns by date), weather stations (unused). Oblique: "Short circuit" (→ tested a link that carries the hour; dropped), "Use an old idea" (→ the nocturnal, a real star-clock instrument).
 
-None yet.
+## Director's objections so far
 
-## Open questions (for the owner, listed in jam.md section 8)
+None to my pass 1 directly. Corrections taken: the lap must not move time; Kirby must not become bursts; phone first.
 
-What work and how much; who it's for; "alike" = alien?; work in colour or not; music as work or atmosphere; will Adam draw the strokes himself; station name.
+## Open questions
 
-Open for the team: what "going in" is; whether the swap means night or inside; how much friction at the door; whether the loop is liminal or a gimmick; how a wide station sits on a tall phone.
+For the owner (mine, all passes): what work and how much; who it's for; "alike" = alien?; work in colour; music as work or atmosphere; will Adam draw the strokes; station name; **does he want to choose what shows in office hours vs night; where is the station (a real place sets the sun); receipts or one piece per link.**
 
-## Not yet touched
-
-Stack. Only constraints so far: real addresses per piece, readable content underneath the drawing, world assets reusable as work is added.
+For the team: does a receding shadow read as a hand on a tall phone (visual); does the night sky read as an instrument (visual); stars-as-work vs dots-as-alien (visual); is the midday length floor an acceptable cheat, and may twilight point at nothing (director).
 
 ## Next
 
-- Read the visual designer's and director's turns; react in pass 2.
-- After the jam: write `jobs.md` (jobs + flows), tightening J1–J13 and dropping any the owner rules out.
+- Read the pass 2 turns from visual and director.
+- After the jam: write `jobs.md` — J1–J14 with flows, including the timetable, the clock and the receipt if they survive.
 - Then the "how it works" half of each concept in `concepts/`.
