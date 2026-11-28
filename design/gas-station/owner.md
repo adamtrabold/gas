@@ -386,6 +386,14 @@ With two screenshots from his iPhone (Safari) of the station in "night, light do
 
 (What the screenshots show, as the orchestrator sees them: pale outline strokes round the window and along the building's corners that are broken, blobby and of uneven weight — present on some edges and missing on others; and, in the second, rings and bands in the ground's dot screen — the moiré he named in section 44 — with a visible seam where the screen changes scale. These are the first real-device captures of the look.)
 
+## 46. The moon, and how grain should look (verbatim)
+
+With a screenshot from his iPhone of the moon in the station ("night, light dots"; saved as `concepts/stills/owner-phone-night-3-moon.png`) and five screenshots from DKNG Studios' website (saved as `inspo/26.jpg`–`30.jpg`, described in `brief.md`):
+
+"The moon dots are way too large this should look subtle and nice. Look at how like dkng studios does their grain https://www.dkngstudios.com/store/p/mezzo-editable-grain-textures https://www.dkngstudios.com/store this is how ill be redrawing it"
+
+(A new, specific reference for how tone is made — and the way he says he will redraw the place himself. In the DKNG pictures tone is carried by very fine grain: shapes are flat and hard-edged, with smooth gradients, shadows and highlights built from grain far smaller than our dots, and no outlines. "Mezzo" is their product of editable mezzotint-style grain textures. Against this, our dots — the moon's above all — are far too large and coarse: "this should look subtle and nice". Read with his earlier words: "the stipple as a sort of halftone", "dark dots but… a little too gritty", light dots "moire bad", "inconsistent distracting edges", and "a black and white painting".)
+
 ## Still open (asked, not answered)
 
 - Should the time of day do something (choose which work shows), or only change how the place looks and what odd things happen? (Related: he said "no" to choosing what shows in office hours versus at night.)

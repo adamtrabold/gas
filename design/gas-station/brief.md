@@ -64,4 +64,12 @@ Sign photos the owner sent for "the best amalgamation" (`owner.md` sections 17 a
 - 24 "The Palms Motor Hotel" at night: dense neon — script name, block letters, neon palm trees, a large arrow studded with bulbs, small neon words (Welcome, Free TV, Enter), a lit plastic panel with changeable letters
 - 25 "Desert Hills Motel" on Route 66 at dusk: neon cactus and script on a dark angled panel, MOTEL in neon on a red band, a neon arrow, a plastic reader board, slanted posts on a stone base, utility poles behind
 
+Grain reference the owner sent (`owner.md` section 46): screenshots from DKNG Studios' site, "this is how ill be redrawing it" —
+
+- 26 a night city through an aeroplane window: flat shapes, soft gradients made of very fine grain, a small crescent moon, tiny stars
+- 27 close on a black car's wing and headlamp: smooth tone on curved metal carried entirely by fine grain, hard graphic edges, no outlines
+- 28 two oranges on tarmac under a bumper: fine grain for tone, coarser mottled grain for the road's texture
+- 29 a machine seen from above: grain shading inside flat coloured shapes, soft grain shadows
+- 30 a mid-century gas station poster (angled canopy, sign, pumps, car) in flat shapes with light grain, above a close crop of it
+
 Sign reference the owner linked (`owner.md` section 16): `inspo/sign-article/` — README with what the article says, and its nine images (patent drawings of the "Superior arrow", a "Spell-Out" MOTEL sign, Dynalite and Big Sig plastic signs).
