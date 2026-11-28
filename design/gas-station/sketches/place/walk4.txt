@@ -6,3 +6,9 @@ night, reversed
  ms a frame here, turning on the spot at the opening stand: 20589
 
 halftone screen (the link)
+ slab in shade, 1.6 m away, 43% ink
+   same stand twice:          change 0.000  flipped 0.0%  (3600 points)
+   one frame forward (7 cm):  change 0.033  flipped 0.6%  (3600 points)
+   one frame sideways (7 cm): change 0.013  flipped 0.1%  (3600 points)
+   half a metre forward:      change 0.165  flipped 8.4%  (3600 points)
+ slab in shade, 3.2 m away, 40% ink
