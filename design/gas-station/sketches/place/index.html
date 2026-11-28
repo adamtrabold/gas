@@ -1,6 +1,6 @@
 <!doctype html>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>the place — throwaway walked prototype</title>
 <style>
   /* nothing on the page can be selected, called out, zoomed, scrolled or pulled: a press is only ever a press on the drawing */
@@ -8,9 +8,13 @@
   body{position:fixed;left:0;top:0;right:0;bottom:0}
   canvas{display:block;position:fixed;left:0;top:0;touch-action:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;outline:none}
   #note{position:fixed;left:0;right:0;bottom:calc(5px + env(safe-area-inset-bottom,0px));text-align:center;font:11px/1.9 "Courier 10 Pitch","Courier New",monospace;color:#8a857a;pointer-events:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
-  #note a{pointer-events:auto;color:inherit;text-decoration:none;padding:8px 2px;-webkit-touch-callout:none;-webkit-user-drag:none}#note a.on{text-decoration:underline}#hint{transition:opacity 1.5s}
+  #note a{pointer-events:auto;color:inherit;text-decoration:none;padding:8px 2px;-webkit-touch-callout:none;-webkit-user-drag:none}#note a.on{text-decoration:underline}#note a,#note button{touch-action:manipulation}#hint b{font-weight:normal;transition:opacity 1.2s}#hint b.done{opacity:.35}
+  #note button{all:unset;pointer-events:auto;touch-action:manipulation;padding:8px 4px;cursor:pointer}#note button.on{text-decoration:underline}
+  #dbg{position:fixed;left:8px;top:calc(8px + env(safe-area-inset-top,0px));font:11px/1.5 monospace;color:#8a857a;background:rgba(20,19,18,.55);pointer-events:none;white-space:pre}
+  #stroke{position:fixed;inset:0;background:#141312;transform:scaleX(0);transform-origin:left;pointer-events:none}
 </style>
-<div id="note"><span id="views"><a data-view="together">together</a> · <a data-view="pump">pump</a> · <a data-view="slab">slab</a></span><span id="looks"> &nbsp; <a data-look="brush">brush</a> · <a data-look="cut">cut</a> · <a data-look="dot">dot</a> &nbsp; <a data-t="tall">short/tall</a> · <a data-t="lit">drawn once/lit by the hour</a></span><br><a data-hour="day">day</a> · <a data-hour="night">night, dark dots</a> · <a data-hour="night-reversed" data-rev="1">night, light dots</a><span id="hint"> &nbsp; drag to look · hold to walk</span></div>
+<div id="note"><span id="views"><a data-view="together">together</a> · <a data-view="pump">pump</a> · <a data-view="slab">slab</a></span><span id="looks"> &nbsp; <a data-look="brush">brush</a> · <a data-look="cut">cut</a> · <a data-look="dot">dot</a> &nbsp; <a data-t="tall">short/tall</a> · <a data-t="lit">drawn once/lit by the hour</a></span><br><a data-hour="day">day</a> · <a data-hour="night">night, dark dots</a> · <a data-hour="night-reversed" data-rev="1">night, light dots</a><br><span id="hint"></span><span id="tiltwrap" hidden> · <button id="tilt">tilt</button></span></div>
+<div id="dbg"></div><div id="stroke"></div>
 <script type="module">
 // The place, walked. Throwaway: it exists to test the look, not to be built on.
 // Systems' lot: sign at the road, door 16 m straight north of it, canopy and pumps to the west.
@@ -552,41 +556,191 @@ function size() { const w = innerWidth, h = innerHeight; let d = Math.min(num('d
   const W = R.domElement.width, H = R.domElement.height; rt = new T.WebGLRenderTarget(W, H, { samples: num('msaa', 4), minFilter: T.NearestFilter, magFilter: T.NearestFilter }); rt.depthTexture = new T.DepthTexture(W, H); const u = quad.material.uniforms; u.res.value.set(W, H); u.pxa.value = 2 * Math.tan(FOV() / 2 * RAD) / H; SU.pxs.value = d; }
 addEventListener('resize', size); size();
 
-// ---------------------------------------------------------------- walking
-// you arrive on the road, far enough back that the whole sign, his name and the door are in a tall phone's frame
-const aim = new T.Vector2(0, 0); let heading = num('head', SV[2]) * RAD, pitch = num('pitch', SV[3]) * RAD, lastMove = performance.now(), lamp = num('lamp', 1), adapt = num('adapt', 0), held = 0, inside = Q.has('inside');
-const keys = {}; let drag = null, finger = null; const CV = R.domElement;
-addEventListener('keydown', e => { keys[e.key.toLowerCase()] = 1; lastMove = performance.now(); }); addEventListener('keyup', e => { keys[e.key.toLowerCase()] = 0; });
-// a finger held down walks; a finger dragged looks. the phone must do nothing else with it: no callout, no selection, no magnifier, no menu, no zoom, no scroll, no pull to refresh.
-// so the touch itself is refused on the drawing (that is what stops iOS's long-press), the menu and selection are refused everywhere, and the pointer is kept until it lifts
+// ---------------------------------------------------------------- moving and looking: THE SETTLED CONTROLS (concepts/controls.md), ported from sketches/controls-test/index.html, which the owner approved by hand on his iPhone
+// THE RULE: the picture follows the fingers. One finger turns you (finger right: the picture goes right, you turn left; finger down: you look up). Two fingers parting or closing move you toward or away from
+// whatever was between them (never a zoom). Two fingers sideways together slide you sideways. A tap goes there. Holding a finger down does nothing. The door is two beats. Tilt adds to the swipe after one tap on "tilt".
+// Fingers are read from TouchEvents (e.touches, the whole list, every event), never from pointer events and never by counting downs and ups: that is what made the pinch work on his iPhone.
+let heading = num('head', SV[2]) * RAD, pitch = num('pitch', SV[3]) * RAD, lastMove = performance.now(), lamp = num('lamp', 1), adapt = num('adapt', 0), inside = Q.has('inside');
+const keys = {}, CV = R.domElement, REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches || Q.has('reduced') || HASH.includes('reduced'), DEBUG = Q.has('debug') || HASH.includes('debug') || HASH.includes('dbg');
+// ---- THE NUMBERS HE TUNES BY HAND, all in one place (controls.md, "The curve" and "Numbers in one place"). Change them here and nowhere else.
+const CTL = {
+  curveFrom: 300,      // px a second of finger travel: under this the picture follows the fingers exactly (x1)
+  curveTo: 1500,       // px a second: at this and over, the same travel carries `curveTop` times as far
+  curveTop: 2,         // the most a fast move is multiplied by
+  speedMs: 80,         // the fingers' speed is measured over this much of their latest travel
+  trackGain: 1.5,      // two fingers sideways: this many times exact following
+  carryHalf: .12,      // seconds: after a flick the move carries on, its speed halving this often
+  carryTurn: 60,       // degrees: the most the carry-on adds to a turn
+  carryTrack: 100,     // px' worth: the most it adds to a track
+  carryPinch: 1.4,     // times: the most it adds to a pinch
+  pinchPow: 1.5,       // pinch out: forward by D x (1 - 1/s^pinchPow). 1 is exactly a photo
+  swipeW: 90, swipeH: 60,   // degrees turned by a swipe the full width / tilted by a swipe the full height
+  lagMs: 60,           // the view follows the fingers with this short a lag
+};
+const CURVE = !REDUCED && Q.get('curve') !== 'off', TGAIN = CURVE ? CTL.trackGain : 1, STOPD = .9, DMIN = 3, DMAX = 40, TMAX = 30, PUP = 75 * RAD, PDOWN = -60 * RAD;
+// ---- where you can stand. only what is really in this view is solid: the pumps, the canopy's posts, the building (and, behind #team, the sign's pole, the air post, the phone box and the bench)
+const HASB = TEAM || VIEW === 'together', DOORS = HASB ? [{ x: 0, n: FN }] : [];
+const CIRC = VIEW === 'pump' ? [[PX, 11.5, .75]] : VIEW === 'slab' ? [[-8.2, 11.5, .75], [-5.4, 11.5, .75]] : [[CX0 + .5, CN0 + .4, .45], [CX1 - .5, CN0 + .4, .45], [-8.2, 11.5, .75], [-5.4, 11.5, .75]].concat(TEAM ? [[0, 0, .6], [-1.5, 9.6, .5], [12, 6, .95]] : []);
+function canStand(x, n) {
+  if (inside) { const room = x > -5.0 && x < BX1 - .4 && n > FN + .35 && n < BN - .4 && !(TEAM && n > 20.6 && n < 22.2 && x < 4.2) && !(TEAM && x < -3.6 && n > 18 && n < 19.2), al = x > AX0 + .45 && x < AX1 - .45 && n >= BN - .5 && n < BN + ALEN - .4, dr = Math.abs(x) < .45 && n > FN - .6 && n <= FN + .4; return room || al || dr; }
+  for (const [cx, cn, r] of CIRC) if (Math.hypot(x - cx, n - cn) < r) return false; if (TEAM && x > 1.8 && x < 4.6 && n > 14.8 && n < FN) return false;
+  return !(HASB && x > BX0 - .35 && x < BX1 + .35 && n > FN - .35 && n < BN + .35); }
+// walk a straight line from p for t metres along (dx, dn). forward slides round things; backward stops dead. a doorway on the line stops you at it. where the world ends you are put down on the far side. returns the place and whether a door stopped you
+function march(px, pn, dx, dn, t) {
+  const back = t < 0, sgn = back ? -1 : 1, steps = Math.ceil(Math.abs(t) / .2), st = Math.abs(t) / (steps || 1) * sgn; let x = px, n = pn, atDoor = null; const ins = inside;
+  for (let i = 0; i < steps; i++) { const nx = x + dx * st, nn = n + dn * st;
+    for (const d of DOORS) if (Math.abs(nx - d.x) < .6 && (n - d.n + (ins ? -STOPD : STOPD)) * (nn - d.n + (ins ? -STOPD : STOPD)) <= 0 && Math.abs(n - d.n) <= STOPD + .21) atDoor = d;
+    if (atDoor) break;
+    if (canStand(nx, nn)) { x = nx; n = nn; } else if (!back && canStand(nx, n)) x = nx; else if (!back && canStand(x, nn)) n = nn; else break;
+    const r = Math.hypot(x, n); if (r > 130) { x = -x * 128 / r; n = -n * 128 / r; } }
+  return { x, n, atDoor }; }
+// ---- what is under a point of the screen: the anchor. the real things of the scene, as drawn. the ground, the kerb and anything else you can step onto or walk under counts as ground (you can stand there); the doorway counts as the door
+const ray = new T.Raycaster(), ndc = new T.Vector2();
+function under(cx, cy) {
+  ray.setFromCamera(ndc.set(cx / innerWidth * 2 - 1, -(cy / innerHeight * 2 - 1)), cam); const o = ray.ray.origin, dir = ray.ray.direction, az = Math.hypot(dir.x, dir.z) || 1, flat = [dir.x / az, -dir.z / az];
+  const list = []; scene.traverse(m => { if (!m.isMesh || m.isInstancedMesh || m === ground || !m.visible || m.material.colorWrite === false) return; for (let p = m.parent; p; p = p.parent) if (!p.visible || p === far) return; list.push(m); });
+  let hit = ray.intersectObjects(list, false)[0], g = null; const lev = p => Math.hypot(p.x - EYE.x, p.z - EYE.z);
+  for (const d of DOORS) { const t = (-d.n - o.z) / dir.z, p = t > 0 && ray.ray.at(t, new T.Vector3()); if (p && Math.abs(p.x - d.x) < .6 && p.y > 0 && p.y < DZ && (!hit || hit.distance > t - .3)) return { kind: 'solid', d: lev(p), flat, door: d }; }
+  if (dir.y < -.01) { const tt = -o.y / dir.y; g = { point: ray.ray.at(tt, new T.Vector3()), distance: tt }; }
+  if (hit && (hit.point.y < .3 || hit.point.y > 2.6)) { if (!g || hit.distance < g.distance) g = hit; hit = null; }
+  if (hit && (!g || hit.distance < g.distance)) return { kind: 'solid', d: lev(hit.point), flat };
+  if (g) { const d = lev(g.point); if (d <= 100) return { kind: 'ground', d, flat }; }
+  return { kind: 'none', d: DMAX, flat }; }
+// ---- the door: two beats. anything that would carry you through stops 0.9 m short; the next thing you do toward it takes you through, answered by a stroke across the screen
+const strokeEl = document.getElementById('stroke'); let crossing = 0;
+function cross(d) { if (crossing) return; crossing = 1; const to = inside ? d.n - 1.5 : d.n + 1.5;
+  const land = () => { EYE.x = d.x; EYE.z = -to; inside = !inside; lastMove = performance.now(); try { history.pushState({ door: 1 }, ''); } catch (_) { } };
+  if (REDUCED) { land(); crossing = 0; return; }
+  strokeEl.style.transition = 'transform .16s steps(4)'; strokeEl.style.transformOrigin = 'left'; strokeEl.style.transform = 'scaleX(1)';
+  setTimeout(() => { land(); strokeEl.style.transformOrigin = 'right'; strokeEl.style.transform = 'scaleX(0)'; setTimeout(() => crossing = 0, 170); }, 180); }
+const atDoorStop = () => DOORS.find(d => Math.abs(EYE.x - d.x) < .7 && Math.abs(-EYE.z - d.n) < STOPD + .5);
+const facing = d => Math.cos(heading) * Math.sign(d.n + EYE.z) > .5;       // looking through it
+// ---- fingers. one turns, two move, never both
+let mode = null, sw = null, pin = null, glide = [0, 0], go = null, lean = 0, nT = 0, wh = null, pushT = 0; const did = { swipe: 0, pinch: 0 }, evs = [];
+const hintDone = k => { did[k] = 1; document.querySelector('#hint [data-k="' + k + '"]')?.classList.add('done'); };
+const log = t => { if (!DEBUG) return; if (evs[evs.length - 1]?.[0] === t) evs[evs.length - 1][1]++; else { evs.push([t, 1]); if (evs.length > 8) evs.shift(); } };
+const turnBy = (dx, dy) => { heading += dx * (CTL.swipeW * RAD / innerWidth); pitch = Math.max(PDOWN, Math.min(PUP, pitch + dy * (CTL.swipeH * RAD / innerHeight))); };
+// THE CURVE: the same finger travel carries further when it is made faster. `v`: the fingers' own speed, px a second
+const gain = v => CURVE ? 1 + (CTL.curveTop - 1) * Math.max(0, Math.min(1, (v - CTL.curveFrom) / (CTL.curveTo - CTL.curveFrom))) : 1;
+function speedo() { const h = []; return (x, y, t) => { h.push([t, x, y]); while (h.length > 2 && t - h[1][0] >= CTL.speedMs) h.shift(); const a = h[0], dt = (t - a[0]) / 1000; return dt < .016 ? null : [(x - a[1]) / dt, (y - a[2]) / dt]; }; }
+function startPinch(a, b) { if (pin?.coast) endPinch(); const mx = (a.x + b.x) / 2, my = (a.y + b.y) / 2, an = under(mx, my);
+  pin = { base: Math.max(60, Math.hypot(a.x - b.x, a.y - b.y)), sp0: Math.hypot(a.x - b.x, a.y - b.y), mx0: mx, kind: null, an, x: EYE.x, n: -EYE.z, live: false, s: 1, door: atDoorStop(), crossed: false }; mode = 'pinch'; sw = null; glide = [0, 0]; go = null; }
+function pinchTo(s) { const p = pin; if (!p.live) { if (Math.abs(Math.log(s)) < .04) return; p.live = true; p.s0 = s; } s = s / p.s0; p.s = s;
+  if (p.door && s > 1.15 && !p.crossed && facing(p.door) && p.an.flat[1] * (p.door.n + EYE.z) > 0) { p.crossed = true; cross(p.door); return; } if (p.crossed) return;
+  const D = Math.max(DMIN, Math.min(DMAX, p.an.d)); let t = s >= 1 ? D * (1 - Math.pow(s, -CTL.pinchPow)) : -D * (1 / s - 1);   // in: a little faster than the fingers. out: exactly as a photo shrinks
+  if (REDUCED) t = s > 1.25 ? D / 2 : s < .8 ? -D : 0;
+  let over = 0; if (p.an.kind === 'solid') { const lim = Math.max(0, p.an.d - STOPD); if (t > lim) { over = t - lim; t = lim; } } t = Math.max(-TMAX, t);
+  const m = march(p.x, p.n, p.an.flat[0], p.an.flat[1], t); p.to = m; p.lean = .25 * (1 - Math.exp(-over / 2)); if (m.atDoor) p.lean = 0;
+  if (Math.abs(t) > .3 && !did.pinch) hintDone('pinch'); }
+// track: two fingers to the right, the picture goes right with them, so you step to the left
+function trackTo(dx) { const p = pin, D = Math.max(DMIN, Math.min(DMAX, p.an.d)); let t = -TGAIN * D * dx / (innerHeight / 2 / Math.tan(cam.fov / 2 * RAD));
+  if (REDUCED) t = Math.abs(dx) > 40 ? -Math.sign(dx) * .3 * D : 0;
+  p.to = trackMarch(p.x, p.n, Math.sign(t) || 1, Math.abs(t)); p.lean = 0; p.s = 1; if (Math.abs(t) > .3 && !did.pinch) hintDone('pinch'); }
+// sideways you stop at walls and things (no sliding round), and never go through a doorway
+function trackMarch(px, pn, sg, t) { const dx = Math.cos(heading) * sg, dn = Math.sin(heading) * sg, steps = Math.ceil(t / .2), st = t / (steps || 1); let x = px, n = pn; for (let i = 0; i < steps; i++) { const nx = x + dx * st, nn = n + dn * st; if (!canStand(nx, nn) || (inside && DOORS.some(d => nn < d.n + .35))) break; x = nx; n = nn; const r = Math.hypot(x, n); if (r > 130) { x = -x * 128 / r; n = -n * 128 / r; } } return { x, n }; }
+function sidestep(m) { const r = trackMarch(EYE.x, -EYE.z, Math.sign(m) || 1, Math.abs(m)); EYE.x = r.x; EYE.z = -r.n; lastMove = performance.now(); go = null; }
+// when the fingers lift while still moving, the move carries on and settles. it is the same move, so it stops where the move would (0.9 m short of a thing, at a wall, at a doorway)
+function liftPinch() { const p = pin; if (!p || !CURVE || !p.kind || p.crossed || p.safari || performance.now() - p.pt > 80 || Math.abs(p.rate) < (p.kind === 'pinch' ? .3 : 60)) return endPinch(); p.coast = { left: p.kind === 'pinch' ? Math.log(CTL.carryPinch) : CTL.carryTrack }; }
+function coastPinch(dt) { const p = pin, c = p.coast; let d = p.rate * dt; if (Math.abs(d) > c.left) d = Math.sign(d) * c.left; c.left -= Math.abs(d); p.acc += d; p.rate *= Math.pow(.5, dt / CTL.carryHalf);
+  if (p.kind === 'pinch') pinchTo(Math.exp(p.acc)); else trackTo(p.acc); if (c.left <= 0 || Math.abs(p.rate) < (p.kind === 'pinch' ? .05 : 10) || p.crossed) { if (!p.crossed && p.to) { EYE.x = p.to.x; EYE.z = -p.to.n; } pin = null; lean = 0; } }
+function endPinch() { if (pin?.to && !pin.crossed) { EYE.x = pin.to.x; EYE.z = -pin.to.n; } pin = null; lean = 0; }
+function startSwipe(x, y) { sw = { x, y, x0: x, y0: y, t0: performance.now(), moved: false, v: [0, 0], g: 1, sm: speedo(), lt: performance.now() }; mode = 'swipe'; glide = [0, 0]; go = null; }
+function swipeTo(x, y) { if (!sw) return; if (!sw.moved) { if (Math.hypot(x - sw.x0, y - sw.y0) < 10) return; sw.moved = true; sw.x = x; sw.y = y; }
+  const now = performance.now(), v = sw.sm(x, y, now); if (v) { sw.v = v; sw.g = gain(Math.hypot(v[0], v[1])); } turnBy((x - sw.x) * sw.g, (y - sw.y) * sw.g); sw.x = x; sw.y = y; sw.lt = now;
+  if (!did.swipe && Math.abs(x - sw.x0) > 40) hintDone('swipe'); }
+function endSwipe(tapOK) { if (!sw) return; const now = performance.now(); if (!sw.moved && now - sw.t0 < 500 && tapOK) tap(sw.x0, sw.y0); else if (sw.moved && now - sw.lt < 60 && !REDUCED) { glide = sw.v.map(v => v * sw.g); const m = Math.hypot(...glide), cap = CTL.carryTurn * RAD / (CTL.carryHalf / Math.LN2) / (CTL.swipeW * RAD / innerWidth); if (m > cap) glide = glide.map(v => v * cap / m); } sw = null; }
+// ---- tap: go there (0.9 m short of a thing; onto the ground). a tap on the door from the door goes through
+function tap(cx, cy) { if (Q.get('tap') === '0') return; const an = under(cx, cy); if (an.kind === 'none' || an.d > DMAX) return;
+  if (an.door && an.d < 2.5) return cross(an.door);
+  const t = an.kind === 'solid' ? Math.max(0, an.d - STOPD) : an.d, m = march(EYE.x, -EYE.z, an.flat[0], an.flat[1], t), len = Math.hypot(m.x - EYE.x, m.n + EYE.z); if (len < .05) return;
+  if (REDUCED) { EYE.x = m.x; EYE.z = -m.n; lastMove = performance.now(); return; } go = { x0: EYE.x, n0: -EYE.z, x1: m.x, n1: m.n, t0: performance.now(), dur: Math.max(.3, Math.min(2.5, len / 10)) * 1000 }; }
 if (!VIEWER) {
-['touchstart', 'touchmove', 'touchend', 'touchcancel'].forEach(t => CV.addEventListener(t, e => { if (e.cancelable) e.preventDefault(); }, { passive: false }));
-['contextmenu', 'selectstart', 'dragstart', 'gesturestart', 'gesturechange', 'gestureend'].forEach(t => addEventListener(t, e => e.preventDefault(), { capture: true }));
-document.addEventListener('touchmove', e => { if (e.cancelable && !e.target.closest?.('a')) e.preventDefault(); }, { passive: false });
-CV.addEventListener('pointerdown', e => { if (finger !== null && e.pointerType === 'touch') return; finger = e.pointerId; try { CV.setPointerCapture(e.pointerId); } catch (_) { } getSelection()?.removeAllRanges(); drag = [e.clientX, e.clientY]; held = performance.now(); lastMove = held; });
-CV.addEventListener('pointermove', e => { if (e.pointerType === 'touch' && e.pointerId !== finger) return; aim.set(e.clientX / innerWidth * 2 - 1, -(e.clientY / innerHeight * 2 - 1)); if (drag) { const dx = e.clientX - drag[0], dy = e.clientY - drag[1]; heading -= dx * .005; pitch = Math.max(-1.2, Math.min(1.3, pitch + dy * .004)); drag = [e.clientX, e.clientY]; if (Math.abs(dx) + Math.abs(dy) > 3) held = performance.now(); } lastMove = performance.now(); });
-const lift = e => { if (e.pointerId !== finger && finger !== null) return; finger = null; drag = null; held = 0; };
-CV.addEventListener('pointerup', lift); CV.addEventListener('pointercancel', lift); addEventListener('blur', () => { finger = null; drag = null; held = 0; }); document.addEventListener('visibilitychange', () => { finger = null; drag = null; held = 0; });
+  // The page, not only the picture, refuses the browser's own pinch-zoom, double-tap zoom, long-press and Safari's gesture events.
+  ['contextmenu', 'selectstart', 'dragstart', 'gesturestart', 'gesturechange', 'gestureend', 'dblclick'].forEach(t => addEventListener(t, e => { log(t); e.preventDefault(); }, { capture: true }));
+  // Safari's own pinch events carry the spread as e.scale. A second way in for the same pinch, used only if the touch list is not showing two fingers.
+  addEventListener('gesturestart', e => { if (nT >= 2 || mode === 'pinch' || mode === 'edge') return; startPinch({ x: e.clientX, y: e.clientY }, { x: e.clientX, y: e.clientY }); pin.base = 1; pin.safari = true; pin.kind = 'pinch'; }, { capture: true });
+  addEventListener('gesturechange', e => { if (mode === 'pinch' && pin?.safari) pinchTo(e.scale); }, { capture: true });
+  addEventListener('gestureend', e => { if (mode === 'pinch' && pin?.safari) { endPinch(); mode = nT ? 'after' : null; } }, { capture: true });
+  document.addEventListener('touchmove', e => { if (e.cancelable) e.preventDefault(); }, { passive: false, capture: true });
+  document.addEventListener('touchstart', e => { if (e.touches.length > 1 && e.cancelable) e.preventDefault(); }, { passive: false, capture: true });
+  // fingers, straight from touch events: the gesture is worked out from the whole list each time. If the browser swallows the second finger's "start", the very next "move" still shows two fingers and the pinch begins there.
+  const onTouch = e => { log(e.type); if (e.cancelable) e.preventDefault(); const L = e.touches, was = nT; nT = L.length;
+    if (mode === 'edge') { if (!L.length) mode = null; return; }
+    if (was === 0 && mode === null && L.length && (L[0].clientX < 20 || L[0].clientX > innerWidth - 20 || L[0].clientY > innerHeight - 40)) { mode = 'edge'; return; }   // a touch that starts at the screen's edge is the phone's (back, home), not ours
+    if (L.length >= 2) { const a = { x: L[0].clientX, y: L[0].clientY }, b = { x: L[1].clientX, y: L[1].clientY };
+      if (mode !== 'pinch' || pin?.safari || !pin || pin.coast) { startPinch(a, b); return; }
+      // two fingers do one of two things, and which is settled once, in the first 12 px: parting or closing (the spread changes more than the middle moves) is a pinch; moving sideways together is a track
+      const sp = Math.hypot(a.x - b.x, a.y - b.y), mx = (a.x + b.x) / 2, now = performance.now();
+      if (!pin.kind) { const dm = Math.abs(mx - pin.mx0), ds = Math.abs(sp - pin.sp0); if (Math.max(dm, ds) < 12) return; pin.kind = dm > ds ? 'track' : 'pinch'; pin.pm = mx; pin.ps = Math.max(60, sp); pin.pt = now; pin.acc = 0; pin.rate = 0; pin.g = 1; pin.sm = speedo(); pin.live = true; pin.s0 = 1; return; }
+      pin.pt = now;
+      if (pin.kind === 'pinch') { const sq = Math.max(60, sp), v = pin.sm(sq, 0, now); if (v) { pin.g = gain(Math.abs(v[0])); pin.rate = v[0] / sq * pin.g; } pin.acc += Math.log(sq / pin.ps) * pin.g; pin.ps = sq; pinchTo(Math.exp(pin.acc)); }
+      else { const v = pin.sm(mx, 0, now); if (v) { pin.g = gain(Math.abs(v[0])); pin.rate = v[0] * pin.g; } pin.acc += (mx - pin.pm) * pin.g; pin.pm = mx; trackTo(pin.acc); }
+      return; }
+    if (L.length === 1) { const x = L[0].clientX, y = L[0].clientY;
+      if (mode === 'pinch') { liftPinch(); mode = 'after'; return; }                 // one of two lifted: the one that is left does nothing until it lifts too
+      if (mode === 'after') return; if (mode !== 'swipe' || !sw) { if (pin?.coast) endPinch(); return startSwipe(x, y); } swipeTo(x, y); return; }
+    if (mode === 'pinch') liftPinch(); else if (mode === 'swipe') endSwipe(e.type === 'touchend'); mode = null; };
+  ['touchstart', 'touchmove', 'touchend', 'touchcancel'].forEach(t => CV.addEventListener(t, onTouch, { passive: false }));
+  // mouse and pen: drag turns (the picture follows the pointer), a click goes there
+  CV.addEventListener('pointerdown', e => { if (e.pointerType === 'touch') return; log('pointerdown'); try { CV.setPointerCapture(e.pointerId); } catch (_) { } if (pin?.coast) endPinch(); startSwipe(e.clientX, e.clientY); sw.id = e.pointerId; });
+  CV.addEventListener('pointermove', e => { if (e.pointerType === 'touch' || !sw || sw.id !== e.pointerId) return; swipeTo(e.clientX, e.clientY); });
+  const lift = e => { if (e.pointerType === 'touch' || !sw || sw.id !== e.pointerId) return; log(e.type); endSwipe(e.type === 'pointerup'); mode = null; };
+  CV.addEventListener('pointerup', lift); CV.addEventListener('pointercancel', lift);
+  // mouse wheel and trackpad pinch: the same move, anchored on the pointer. sideways (or shift + wheel): the same track
+  CV.addEventListener('wheel', e => { e.preventDefault(); const now = performance.now(); let dx = e.deltaX, dy = e.deltaY; if (e.shiftKey && !dx) { dx = dy; dy = 0; }
+    if (!e.ctrlKey && Math.abs(dx) > Math.abs(dy)) { sidestep(dx * .01); return; }
+    if (!wh || now - wh.t > 250) { pin = { base: 1, kind: 'pinch', an: under(e.clientX, e.clientY), x: EYE.x, n: -EYE.z, live: true, s0: 1, s: 1, door: atDoorStop(), crossed: false }; wh = { ls: 0 }; go = null; }
+    wh.t = now; wh.ls -= dy * (e.ctrlKey ? .01 : .0022); if (pin) pinchTo(Math.exp(wh.ls)); }, { passive: false });
+  // keys: holding a key is fine on a keyboard. arrows turn (the way the key points) and walk; W S walk; A D step sideways; Enter at a door goes through; Escape puts you outside
+  addEventListener('keydown', e => { if (e.ctrlKey || e.metaKey || e.altKey) return; keys[e.key.toLowerCase()] = 1; if (e.key.startsWith('Arrow') || e.key === ' ') e.preventDefault(); hintKeys();
+    if (e.key === 'Enter') { const d = atDoorStop(); if (d && facing(d)) cross(d); } if (e.key === 'Escape' && inside) history.back(); });
+  addEventListener('keyup', e => { keys[e.key.toLowerCase()] = 0; });
+  addEventListener('popstate', () => { if (inside) { inside = false; EYE.x = DOORS[0].x; EYE.z = -(DOORS[0].n - 1.5); heading = Math.PI; lastMove = performance.now(); } });
+  const drop = () => { if (mode === 'pinch') endPinch(); mode = null; sw = null; nT = 0; glide = [0, 0]; for (const k in keys) keys[k] = 0; };   // the page is hidden mid-gesture: the gesture ends, you stay where you were
+  addEventListener('blur', drop); document.addEventListener('visibilitychange', () => { if (document.hidden) drop(); });
 }
-function canStand(x, n) {                                      // crude: the building is solid except through the door; the aisle exists only from inside
-  if (inside) { const room = x > -5.0 && x < BX1 - .4 && n > FN + .35 && n < BN - .4 && !(n > 20.6 && n < 22.2 && x < 4.2) && !(x < -3.6 && n > 18 && n < 19.2), al = x > AX0 + .45 && x < AX1 - .45 && n >= BN - .5 && n < BN + ALEN - .4, dr = Math.abs(x) < .5 && n > FN - .6 && n <= FN + .4; return room || al || dr; }
-  const near = (cx, cn, r) => Math.hypot(x - cx, n - cn) < r; if (VIEW === 'pump') return !near(PX, 11.5, .75); if (VIEW === 'slab') return !(near(-8.2, 11.5, .75) || near(-5.4, 11.5, .75));   // the sign's pole, the canopy posts, the pumps, the air post and the phone box are solid. so nothing can fill the screen
-  if (near(0, 0, .6) || near(CX0 + .5, CN0 + .4, .45) || near(CX1 - .5, CN0 + .4, .45) || near(-8.2, 11.5, .75) || near(-5.4, 11.5, .75) || near(-1.5, 9.6, .5) || near(12, 6, .95) || (x > 1.8 && x < 4.6 && n > 14.8)) return false;
-  const inB = x > BX0 - .3 && x < BX1 + .3 && n > FN - .3 && n < BN + .3; return !inB || (Math.abs(x) < .5 && n < FN + .4);
-}
+// ---- the phone's own turning (tilt). relative, 1:1, with a little slack so a hand's tremor does nothing. added to the swipe; ignored while two fingers are down
+const tiltB = document.getElementById('tilt'), tiltW = document.getElementById('tiltwrap'); let tiltOn = false, gRef = null, gotEvent = false;
+const needAsk = typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function';
+const SLACK = .75 * RAD, zee = new T.Vector3(0, 0, 1), q1 = new T.Quaternion(-Math.SQRT1_2, 0, 0, Math.SQRT1_2), eu = new T.Euler(), qq = new T.Quaternion(), q0 = new T.Quaternion(), tf3 = new T.Vector3();
+function onTilt(e) { if (e.alpha == null) return; gotEvent = true; if (!tiltOn) return; const o = (screen.orientation?.angle || 0) * RAD;
+  eu.set(e.beta * RAD, e.alpha * RAD, -e.gamma * RAD, 'YXZ'); qq.setFromEuler(eu).multiply(q1).multiply(q0.setFromAxisAngle(zee, -o)); const f = tf3.set(0, 0, -1).applyQuaternion(qq);
+  const yaw = Math.atan2(-f.x, -f.z), pit = Math.asin(Math.max(-1, Math.min(1, f.y))); if (!gRef || mode === 'pinch' || mode === 'after' || Math.abs(pit) > 80 * RAD) { gRef = [yaw, pit]; return; }
+  let dy = yaw - gRef[0]; dy = Math.atan2(Math.sin(dy), Math.cos(dy)); const dp = pit - gRef[1];
+  if (Math.abs(dy) > SLACK) { const m = dy - Math.sign(dy) * SLACK; heading += m; gRef[0] += m; } if (Math.abs(dp) > SLACK) { const m = dp - Math.sign(dp) * SLACK; pitch = Math.max(PDOWN, Math.min(PUP, pitch + m)); gRef[1] += m; } }
+function setTilt(on) { tiltOn = on; gRef = null; tiltB.classList.toggle('on', on); try { localStorage.tilt = on ? 1 : 0; } catch (_) { } }
+if (!VIEWER && !STILL && 'DeviceOrientationEvent' in window && matchMedia('(pointer: coarse)').matches) {
+  if (needAsk) tiltW.hidden = false;                                       // iPhone: the word waits. tapping it is the ask
+  else { addEventListener('deviceorientation', onTilt); setTimeout(() => { if (gotEvent) { tiltW.hidden = false; let was = null; try { was = localStorage.tilt; } catch (_) { } setTilt(!REDUCED && was !== '0'); } }, 1000); } }
+tiltB.addEventListener('click', async () => { if (tiltOn) return setTilt(false);
+  if (needAsk && !gotEvent) { let ans = 'denied'; try { ans = await DeviceOrientationEvent.requestPermission(); } catch (_) { } if (ans !== 'granted') { tiltW.hidden = true; return; } addEventListener('deviceorientation', onTilt); }
+  setTilt(true); });
+// the words in the margin: what to do, in the plainest words, for the hand that is on it. each goes when you have done it
+const hintEl = document.getElementById('hint'), COARSE = matchMedia('(pointer: coarse)').matches; let hintK = false;
+hintEl.innerHTML = COARSE ? '<b data-k="swipe">swipe to look</b> · <b data-k="pinch">pinch to move</b> · <b data-k="tap">tap to go</b>' : '<b data-k="swipe">drag to look</b> · <b data-k="pinch">scroll to move</b> · <b data-k="tap">click to go</b>';
+function hintKeys() { if (hintK) return; hintK = true; hintEl.innerHTML = '<b>arrows turn and walk</b> · <b>a d step sideways</b> · <b>enter at the door</b>'; }
+// every frame: the moves that carry on, the keys, where you are
+function controlsStep(dt, now) {
+  if (pin?.coast) coastPinch(dt);
+  if (pin?.to && !pin.crossed) { const a = REDUCED || (wh && now - wh.t < 300) ? 1 : 1 - Math.exp(-dt / (CTL.lagMs / 1000)); EYE.x += (pin.to.x - EYE.x) * a; EYE.z += (-pin.to.n - EYE.z) * a; lean += ((pin.lean || 0) - lean) * a; lastMove = now; } else lean += (0 - lean) * (1 - Math.exp(-dt / .05));
+  if (wh && now - wh.t > 250 && mode !== 'pinch') { if (pin && !pin.coast && !pin.crossed && pin.to) { EYE.x = pin.to.x; EYE.z = -pin.to.n; } if (!pin?.coast) pin = null; wh = null; }
+  if (glide[0] || glide[1]) { turnBy(glide[0] * dt, glide[1] * dt); const k = Math.pow(.5, dt / CTL.carryHalf); glide[0] *= k; glide[1] *= k; if (Math.hypot(...glide) < 20) glide = [0, 0]; }
+  if (go) { const u = Math.min(1, (now - go.t0) / go.dur), e = u * u * (3 - 2 * u); EYE.x = go.x0 + (go.x1 - go.x0) * e; EYE.z = -(go.n0 + (go.n1 - go.n0) * e); lastMove = now; if (u >= 1) { go = null; if (!did.tap) hintDone('tap'); } }
+  const fwd = (keys['w'] || keys['arrowup'] ? 1 : 0) - (keys['s'] || keys['arrowdown'] ? 1 : 0), trn = (keys['arrowleft'] ? 1 : 0) - (keys['arrowright'] ? 1 : 0), side = (keys['d'] ? 1 : 0) - (keys['a'] ? 1 : 0); heading += trn * 90 * RAD * dt; if (side) sidestep(side * 3 * dt);
+  if (fwd) { const x0 = EYE.x, n0 = -EYE.z, m = march(x0, n0, -Math.sin(heading), Math.cos(heading), 4 * dt * fwd); EYE.x = m.x; EYE.z = -m.n; lastMove = now; go = null; const d = atDoorStop(); if (m.atDoor || (d && fwd > 0 && facing(d) && Math.hypot(m.x - x0, m.n - n0) < .01)) { pushT += dt; if (pushT > .5) { cross(d || m.atDoor); pushT = 0; } } else pushT = 0; } else pushT = 0;
+  const idle = (now - lastMove) / 1000; lamp += ((idle < 4 ? 1 : 0) - lamp) * (idle < 4 ? .3 : .02); if (NIGHT) adapt += ((idle > 9 ? 1 : 0) - adapt) * (idle > 9 ? .01 : .3);
+  if (DEBUG) dbgEl.textContent = `fingers ${nT}   mode ${mode || '-'}\n${pin ? (pin.kind || 'two fingers, undecided') + ' on ' + pin.an.kind + (pin.an.door ? ' (door)' : '') + ' at ' + pin.an.d.toFixed(1) + ' m   x' + pin.s.toFixed(2) + (pin.live ? '' : ' (waiting)') : 'no pinch'}\nevents ${evs.map(v => v[0].replace('touch', 't-') + (v[1] > 1 ? '×' + v[1] : '')).join(' ')}\nyou ${EYE.x.toFixed(1)} east ${(-EYE.z).toFixed(1)} north ${inside ? 'inside' : 'outside'}   still ${((now - lastMove) / 1000).toFixed(0)} s\npage zoom ${(window.visualViewport?.scale || 1).toFixed(2)}   motion ${REDUCED ? 'reduced (pinch jumps)' : 'normal'}   tilt ${tiltOn ? 'on' : 'off'}   ${(window.lastMs || 0).toFixed(0)} ms a frame\n${navigator.userAgent.replace(/^.*?\(([^)]*)\).*?(Version\/[\d.]+|Chrome\/[\d.]+|CriOS\/[\d.]+|FxiOS\/[\d.]+)?.*$/, '$1 $2')}`; }
+const dbgEl = document.getElementById('dbg');
+window.state = () => ({ x: +EYE.x.toFixed(2), n: +(-EYE.z).toFixed(2), head: +(heading / RAD).toFixed(1), pitch: +(pitch / RAD).toFixed(1), inside, still: (performance.now() - lastMove) / 1000, mode, kind: pin?.kind || null, anchor: pin ? pin.an.kind + (pin.an.door ? ':door' : '') + '@' + pin.an.d.toFixed(1) : null });
+window.put = (x, n, h, p = 0) => { EYE.x = x; EYE.z = -n; heading = h * RAD; pitch = p * RAD; pin = null; go = null; glide = [0, 0]; };
+window.under = under;
 let last = performance.now(), frames = 0, ftime = 0;
 function step(now) {
   const dt = Math.min(.05, (now - last) / 1000); last = now;
-  if (!STILL && !VIEWER) { const fwd = (keys['w'] || keys['arrowup'] ? 1 : 0) - (keys['s'] || keys['arrowdown'] ? 1 : 0) + (held && now - held > 350 ? 1 : 0), turn = (keys['d'] || keys['arrowright'] ? 1 : 0) - (keys['a'] || keys['arrowleft'] ? 1 : 0);
-    heading -= turn * 1.6 * dt;
-    if (fwd) { const sp = 4 * dt * fwd, nx = EYE.x - Math.sin(heading) * sp, nz = EYE.z - Math.cos(heading) * sp; if (canStand(nx, -nz)) { EYE.x = nx; EYE.z = nz; } else if (canStand(nx, -EYE.z)) EYE.x = nx; else if (canStand(EYE.x, -nz)) EYE.z = nz; lastMove = now; }
-    if (!inside && -EYE.z > FN + .2 && Math.abs(EYE.x) < .6) inside = true; if (inside && -EYE.z < FN - .3) inside = false;
-    const r = Math.hypot(EYE.x, EYE.z); if (r > 130) { EYE.x = -EYE.x * 128 / r; EYE.z = -EYE.z * 128 / r; }                 // where the world ends: you are put down on the far side, facing the same way
-    if (!drag && !fwd && Math.abs(pitch - .1) > .01 && now - lastMove > 1200) pitch += (.1 - pitch) * .04;                    // stop, and the view levels
-    const idle = (now - lastMove) / 1000; lamp += ((idle < 4 ? 1 : 0) - lamp) * (idle < 4 ? .3 : .02); if (NIGHT) adapt += ((idle > 9 ? 1 : 0) - adapt) * (idle > 9 ? .01 : .3); }
+  if (!STILL && !VIEWER) controlsStep(dt, now);
   aisle.visible = inside; backPlug.visible = !inside && !SOLO;
   aisleLights.forEach((l, i) => l.intensity = inside && (AISLEON === 1 || AISLEON === 2 && i < 2) ? 9 : 0);
-  cam.position.copy(EYE); cam.rotation.set(pitch, heading, 0, 'YXZ'); cam.updateMatrixWorld();
+  cam.position.set(EYE.x - Math.sin(heading) * lean, EYE.y, EYE.z - Math.cos(heading) * lean); cam.rotation.set(pitch, heading, 0, 'YXZ'); cam.updateMatrixWorld();   // (lean: at the end of a pinch the view leans in a little past the stop and comes back)
   sun.target.position.set(SOLO ? PX : NEAR ? -4 : 0, 0, SOLO ? -11.5 : -8); sun.position.copy(sun.target.position).addScaledVector(FARL, 150);          // fixed to the lot, so nothing about the shadow moves with you
   const fw = new T.Vector3(0, 0, -1).applyEuler(cam.rotation), rg = new T.Vector3(1, 0, 0).applyEuler(cam.rotation);
   const dark = NIGHT || inside;                               // the lamp shows only where no daylight reaches: indoors and at night
@@ -646,7 +800,6 @@ if (VIEWER) { [document.documentElement, document.body, CV].forEach(e => { e.sty
   addEventListener('resize', ask); window.turn = (a, e2, r2) => { az = a; el = e2 ?? el; orr = r2 ?? orr; orbit(); };
   const go = () => { if (!window.papersLoaded) return setTimeout(go, 50); orbit(); orbit(); document.title = 'done'; }; go(); }
 else if (STILL) { const go = () => { if (!window.papersLoaded) return setTimeout(go, 50); step(performance.now()); step(performance.now()); document.title = 'done'; }; go(); }
-else { let n = -90, t0 = 0, slow = 0, walked = false; const loop = now => { requestAnimationFrame(loop); step(now); if (n === 0) t0 = now;
-    if (!walked && held && now - held > 600) { walked = true; document.getElementById('hint').style.opacity = 0; }
+else { let n = -90, t0 = 0, slow = 0; const loop = now => { requestAnimationFrame(loop); step(now); if (n === 0) t0 = now;
     if (++n === 40) { const ms = (now - t0) / 40; window.lastMs = ms; n = 0; slow = ms > 36 && !document.hidden ? slow + 1 : 0; if (slow >= 2 && RES > FLOOR() + .01 && !Q.has('res')) { RES = Math.max(FLOOR(), RES * .85); size(); slow = 0; n = -20; } } }; requestAnimationFrame(loop); }
 </script>
