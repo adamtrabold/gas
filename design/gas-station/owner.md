@@ -267,6 +267,12 @@ Told the concept stands without the light that follows the view, and asked: shou
 
 (A rule, wider than the question. Read as: light and shadow behave as they really would — things and the visitor cast shadows from whatever light is actually there, the sun by day, a lit canopy lamp or a switched-on room light at night; where there is no light there is no shadow and it is dark; nothing is lit that a real light wouldn't light. It answers the night-shadow question as a consequence — yes, under a real lamp — and it also bears on the earlier open question of a pump standing in the canopy's shade: in the real world it is shaded. With section 18's "no" to the light redrawing a thing and section 22's dots: the marks are one hand, dots; what the light does is real.)
 
+## 31. Scene lights (verbatim)
+
+"The lighting thing means we need to establish proper scene lights"
+
+(Following "Lighting should work as in the real world". Read as: the place needs its real light sources set up properly as lights in the scene — the sun, and each lamp, sign and lit thing — and the picture lit from them, rather than light being faked per view. As with the elements, the lights should be established as a list before they are built.)
+
 ## Still open (asked, not answered)
 
 - Should the time of day do something (choose which work shows), or only change how the place looks and what odd things happen? (Related: he said "no" to choosing what shows in office hours versus at night.)
