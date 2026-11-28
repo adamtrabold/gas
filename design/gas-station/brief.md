@@ -58,4 +58,10 @@ Folder: `/home/user/gas/design/gas-station/`
 - `jam.md`, `jobs.md`, `concepts/`, `scores.md`, `owner.md`, `handoff.md`
 - `notes/systems.md`, `notes/visual.md`, `notes/director.md`
 
+Sign photos the owner sent for "the best amalgamation" (`owner.md` sections 17 and 29):
+
+- 23 a tall MOTEL sign at dusk: one neon letter to a dark box, stacked down a single pole; beside it a neon diver in three positions down the pole, with neon water at the bottom
+- 24 "The Palms Motor Hotel" at night: dense neon — script name, block letters, neon palm trees, a large arrow studded with bulbs, small neon words (Welcome, Free TV, Enter), a lit plastic panel with changeable letters
+- 25 "Desert Hills Motel" on Route 66 at dusk: neon cactus and script on a dark angled panel, MOTEL in neon on a red band, a neon arrow, a plastic reader board, slanted posts on a stone base, utility poles behind
+
 Sign reference the owner linked (`owner.md` section 16): `inspo/sign-article/` — README with what the article says, and its nine images (patent drawings of the "Superior arrow", a "Spell-Out" MOTEL sign, Dynalite and Big Sig plastic signs).

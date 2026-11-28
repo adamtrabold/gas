@@ -254,6 +254,12 @@ Asked: is "the light thing" the patch under the canopy lamp, the light that foll
 
 (So it is the visitor's lamp he dislikes — the disc of light that follows your view. The station's own lit things were not objected to. With section 26: night is simply darker, by more dots or by reversed dots on a dark ground, with no light following the view. This removes one of the two marks of the concept as written — "where the sun isn't, you are a lamp" — so the concept has to be restated.)
 
+## 29. The sign photos (verbatim)
+
+"Here are the additional images I think you still need"
+
+with three photos of neon motel signs, saved as `inspo/23.jpg`–`25.jpg` (described in `brief.md`). These are the photos he meant in section 17: "Here are some more photos to draw inspo from. I want the best amalgamation?" — for the sign and his name on it. With section 16: "it should be neon and historically accurate… and also maybe some of the letters could flicker"; arrow and starburst: "don't care".
+
 ## Still open (asked, not answered)
 
 - Should the time of day do something (choose which work shows), or only change how the place looks and what odd things happen? (Related: he said "no" to choosing what shows in office hours versus at night.)

@@ -18,7 +18,7 @@ Answered: the two pumps are the same model, each with its own wear.
 
 From earlier, still not answered:
 
-- **The sign.** You asked for "the best amalgamation" from more photos. The photos didn't arrive with the message, so the sign isn't drawn yet.
+- **The sign.** Your three neon sign photos have arrived. The sign gets its own sheet after the environment.
 - **Your things, as the squatter.** We guessed: a cup, a camp stove, a jacket, brushes and a bottle of ink, a notebook, a bedroll, an instrument case. Strike what's wrong, add what's missing.
 - **Brand names**, when you're ready. LLANO is a stand-in.
 - **"D no" on Sheet 1.** We read it as: a thing is drawn once and keeps its own shading at every hour. Is that what you meant?
