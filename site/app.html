@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-/* The synths-to-go site's viewer, adapted: same tokens, type and components. Parts with no use here are left out. */
+/* The synths-to-go site's look: same tokens, type and components. Only the parts this site uses. */
 :root{--bg:#EBEBEB;--cell:#F3F3F3;--paper:#FBFBFB;--rule:#C6C6C6;--ink2:#5A5A5A;--ink:#1A1A1A;--on:#23863F;--m:16px}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
@@ -18,7 +18,6 @@ body{margin:0;background:var(--bg);color:var(--ink);font:400 15px/1.5 Inter,syst
 :focus-visible{outline:2px solid var(--ink);outline-offset:2px}
 a{color:inherit;text-decoration:none}
 a.u,.ref{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
-button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
 .wrap{max-width:1440px;margin:0 auto;padding:0 var(--m)}
 .ink2{color:var(--ink2)}
 /* header */
@@ -35,11 +34,6 @@ nav.filters a{font-size:15px;color:var(--ink2);padding:6px 0 9px;border-bottom:2
 nav.filters a.on{color:var(--ink);font-weight:600;border-bottom-color:var(--ink)}
 .brand a{color:var(--ink);text-decoration:none;white-space:nowrap}
 @media(min-width:1024px){:root{--m:48px}.name{font-size:26px}}
-/* lists */
-h2.sec{font-size:11.5px;font-weight:500;letter-spacing:.09em;text-transform:uppercase;color:var(--ink2);margin:22px 0 10px}
-/* item */
-.back{display:flex;justify-content:space-between;align-items:center;padding:0 var(--m) 10px;font-size:14px;color:var(--ink2)}
-.back button{font-size:13px;color:var(--ink2)}
 .chips{display:flex;gap:8px;flex-wrap:wrap}
 .chips a,.chips button{border:1px solid var(--rule);padding:4px 10px;font-size:13px}
 .chips .on{border-color:var(--ink);font-weight:600}
@@ -63,8 +57,6 @@ details.jump a{display:block;padding:3px 0}
 #lights{margin-top:44px;padding-top:6px;border-top:1.5px solid var(--ink)}
 .wide{max-width:900px}
 .wrap.wide{margin-left:max(0px,calc((100% - 1440px)/2));margin-right:auto}
-/* page point, waiting list, about */
-.back a,.back button,[data-copy]{display:inline-block;padding-top:5px;padding-bottom:5px;margin-top:-5px;margin-bottom:-5px}
 .purpose{font-size:15px;margin:0 0 20px;max-width:70ch}
 main p,main pre{overflow-wrap:anywhere}
 .about{margin-top:40px;padding-top:12px;border-top:1px solid var(--rule);font-size:12.5px;color:var(--ink2)}.about b{color:var(--ink);font-weight:600}
