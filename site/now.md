@@ -14,10 +14,9 @@
 
 On Sheet 2:
 
-1. **Your two pumps.** We've drawn the same short pump twice, mirror images, both facing the road with their hoses toward each other, like the two yellow pumps in your Route 66 photo. One says HI-TEST, one REGULAR, one globe is cracked. Is that right, or do you want two different pumps?
-2. **Dots and lines.** You said the light shouldn't redraw a thing. So each thing is drawn once in dots and never changes. Shade, your shadow and the dark at night are drawn in lines, on the ground and the walls. Is that the split you want? Or should shade be dots too, so everything is in one hand? The last section of the sheet shows both, and what happens if nothing changes at all.
-3. **A pump standing in the canopy's shade.** Right now it looks almost exactly as it does in the sun, and only the ground and wall behind it are shaded. Is that right, or should the pump itself look shaded?
-4. **On your phone.** Walk up to a pump. Do the dots hold still or shimmer? Is it still fluid? Does press and hold only walk now?
+1. **Your two pumps.** The same short pump twice, mirror images, both facing the road, like the two yellow pumps in your Route 66 photo. Right, or two different pumps?
+
+Answered: shade and shadows are dots, not lines. "The world should look like walking through an illustration." The shade on Sheet 2 is being redrawn in dots.
 
 From earlier, still not answered:
 

@@ -202,6 +202,13 @@ Asked whether future sheets should be made as web pages with only the drawings a
 
 (The site is live on GitHub Pages. STANDING RULE for everyone who talks to him: one question per message, short, in plain words; hold the rest until he has answered. He set the same rule on his synths project.)
 
+## 22. Shade: lines or dots? (verbatim)
+
+Asked: on Sheet 2, should shade and shadows be drawn in lines, or in dots like everything else? —
+"Dots. The world should look like walking through an illustration"
+
+(So: one hand for everything. Shade, his shadow and the dark at night are dots, not ruled lines. "Dots for the thing, lines for the light" is rejected. His phrase for the whole experience: "walking through an illustration".)
+
 ## Still open (asked, not answered)
 
 - Should the time of day do something (choose which work shows), or only change how the place looks and what odd things happen? (Related: he said "no" to choosing what shows in office hours versus at night.)
