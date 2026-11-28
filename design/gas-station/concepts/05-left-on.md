@@ -94,7 +94,7 @@ Three acts and standing still. The same everywhere, at every hour. On a phone it
 
 **The lot, by night.** Moonlit, dimly: there is a moon every night, exaggerated, in the south sky (`lights.md`), so the ground and the station's front can be seen and the moon's shadows lie across the slab. Much darker than day. Beyond that, dark, except what the station itself keeps lit: the name, the arrow's bulbs, the canopy from below. Those are always on at night, so you know where you are before you've done anything. Everything else is there, dark, drawn. Under the canopy lamp and by the lamp post you have a shadow; between them you don't.
 
-**The front room.** Eight metres deep, the size the outside says. The counter with the register, the bell, the cup, the radio. A jacket on a hook. The wall clock, and the chart under it. The card in the door: BACK IN 5 MINUTES.
+**The front room.** Eight metres deep, the size the outside says. The counter with the register, the bell, the cup, the radio. A jacket on a hook. The wall clock, and the chart under it. Beside them, at the owner's word, a framed EMPLOYEE OF THE MONTH: a portrait of Art Bell, the plaque reading Art (`elements.md`, element 14). The card in the door: BACK IN 5 MINUTES.
 
 - By day the sun comes in through the door you opened and through the front windows, as patches on the floor. Where they fall and how deep they reach is the hour and the season: far into the room in winter, barely over the sill in midsummer. The door's patch has your shadow in it.
 - The rest of the room is dark until you pull the cord.
@@ -303,7 +303,7 @@ The lamp is out: "I don't like the light thing at night… The light that follow
 | It did this | What still does it | Left with nothing |
 |---|---|---|
 | **Showed you were there**, indoors and at night | Your shadow under any real lamp, and from the moon in the open; the lights you leave on | In the moon's shade and in unlit rooms, nothing of you. Real, and he asked for it |
-| **Found things in the dark** (the cooler, the radio, the far shelves, a pump at night away from the canopy) | The station's own lights; the cord by the door; the aisle-mouth light; the payphone's lamp; anything already on. You can pinch or tap toward a dark thing and you stop at it | Seeing a thing nothing lights, unless the dark drawing shows it. That is now the drawing's job ("more dots, or reversed dots on dark"): Sheet 3 |
+| **Found things in the dark** (the cooler, the radio, the far shelves, a pump at night away from the canopy) | The station's own lights; the cord by the door; the aisle-mouth light; the payphone's lamp; anything already on. You can pinch or tap toward a dark thing and you stop at it | Seeing a thing nothing lights, unless the dark drawing shows it. That is now the drawing's job ("more dots, or reversed dots on dark"), to be shown in the prototype |
 | **"Your lamp is on it"** when you came up to a thing | In light, your shadow joins it | In the dark, no sign you've arrived except that you stopped |
 | **Never a black screen** (it always landed on something, the ground at your feet if nothing else) | — | The duty stays; the means has to be the dark drawing itself. Not proven |
 | **Closed when you stood still** (4 s and 8 s): the first sign that stopping does something | — | Nothing before the stars at 10–15 s at night, and the first small thing at 15 s by day. Whether fifteen seconds with no sign is too long is open |

@@ -40,11 +40,12 @@ Each element ends with an empty slot for the visual designer. I've left those em
 | "neon and historically accurate… maybe some of the letters could flicker" | The sign entry is rewritten from your article |
 | "I want the best amalgamation?" / "Here are the additional images I think you still need" | The three photos arrived. The sign is now written as one sign made from them and the article: element 5 |
 | "The light that follows where I look" (the light you don't like at night) | Your lamp is gone. Element 10 is struck. Looking lights nothing |
+| "I want an employee of the month on the wall in a frame… a portrait of art bell with the name "art" on the frame name plaque" | Added to the front room: element 14 |
 | "Lighting should work as in the real world" | Every light lights what it really would; you cast a shadow wherever a real light falls on you, the sun or a lamp, and none in the dark; a thing in shade is shaded. Elements 8 and 9 |
 | "I dislike press and hold… pinch… swiping should rotate camera"; "like photos"; "phone gyro" | One finger turns you, two fingers move you, a tap goes there or uses the thing; turning the phone turns the view. Not an element; written in `concepts/controls.md` |
 | "don't care" (which arrow; the starburst) | The designers decide both |
 | "Well it would probably be me squatting" | The person who isn't there is you. Written up below as a proposal for you to check |
-| Pump sheet: "A1 b3 d no e2" | Short flat-topped pump; drawn in dots; a scanned paper on each part. "No" to the light redrawing it is read as: drawn once. See element 1 |
+| Your picks on the pump: "A1 b3 d no e2" | Short flat-topped pump; drawn in dots; a scanned paper on each part. "No" to the light redrawing it is read as: drawn once. See element 1 |
 
 **Not mentioned, so left out unless you say:** awnings over the windows, opening hours on the door, the small windmill on the roof.
 
@@ -125,11 +126,11 @@ Outside before inside, day before night. The inside is last, so nothing waits on
 - Face window with rolling numbers: this sale, gallons, price per gallon — SETTLED [you] [Route 66]
 - No clock dial — SETTLED [you]
 - Grade plate: REGULAR on one, HI-TEST on the other — [Route 66], wording PROPOSED
-- **Short, flat-topped steel cabinet on a dark base, after the yellow-and-orange pumps in your Route 66 photo** — SETTLED [you: pump sheet, A1]. Two the same or one of each is not answered (question 2)
+- **Short, flat-topped steel cabinet on a dark base, after the yellow-and-orange pumps in your Route 66 photo** — SETTLED [you: your pick, A1]. Two the same or one of each is not answered (question 2)
 - Hose down the side, nozzle in a holder — [Route 66] [1934]
 - Badges and small printed notices on the body — [1934]
 
-**Your picks on the pump sheet** (recorded here; the detail is the visual designer's, below)
+**Your picks on the pump** (recorded here; the detail is the visual designer's, below)
 - Drawn in dots, packed closer where it's darker — [you: B3]
 - A scanned paper on each part, with real grey in the paper; the ink stays black — [you: E2]
 - "Does the light redraw it?" — "no". Read as: the pump is drawn once and keeps its own shading at every hour; shadows and night are laid on top. **This reading isn't confirmed** (question 3)
@@ -507,6 +508,27 @@ You said "not yet" to a picture for the inside, and none of yours shows one. So 
 | Wall clock | Turn it and the sun moves | [concept] | Running |
 | Sightings chart, pinned under the clock | Fills in as you see odd things | [Chart] | Kept in your hand |
 | Cooler (placeholder name) | Lights the floor when open; a compressor | [concept]; chest cooler in [1934] | Running, nearly empty |
+
+### Employee of the month
+
+You: "I want an employee of the month on the wall in a frame and it should be a portrait of art bell with the name "art" on the frame name plaque."
+
+**Parts**
+- A frame on the wall — [you]
+- The heading EMPLOYEE OF THE MONTH — [you]
+- A portrait of Art Bell in it — [you]. Drawn fresh in the place's own hand, in dots like everything else; not traced from a photograph
+- A small name plaque on the frame that reads Art — [you]. Capitals or not, engraved brass or a typed card: PROPOSED engraved brass, ART
+- Where: on the wall behind the counter, beside the wall clock and the chart, at eye height — PROPOSED
+- The heading printed on a card inside the frame, above the portrait — PROPOSED
+- No month, no year, no surname, nothing else written on it — PROPOSED
+
+**Abandoned means**
+- Glass dusty, the card yellowed, the frame hanging a little off level — PROPOSED
+
+**Light**
+- It has no light of its own. It hangs where the counter tube reaches, so it is dark until you pull the first cord, and then it is one of the first things you see — PROPOSED (`lights.md`)
+
+**How it sits with the room.** Art Bell hosted Coast to Coast AM, late-night radio from the Nevada desert, with callers on UFOs and the unexplained. So it belongs with the radio on the counter that won't quite find a station, and with the chart of sightings beside it. And the only person at this station is you, squatting: an employee of the month in a place with no staff. Nothing else is built on it; the radio does not play him.
 
 **Drawing needs (visual designer):** _empty_
 

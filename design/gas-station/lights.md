@@ -73,6 +73,7 @@ Off the first time you come. Each stays as you leave it, and is still on next vi
 | Light | Where (east, north, up) | What kind | Reach | Shadows | Your shadow |
 |---|---|---|---|---|---|
 | **Counter tube** (the cord by the door) — [el. 13] [concept] | Cord just inside the door, about 0.6 m east, 17 m north. Tube over the counter, about 0 m east, 21 m north, 2.6 m up | A fluorescent tube: a long soft spread | The counter top and what's on it, the wall behind, the floor back to the door, weakly. Not the corners | Soft | Yes, soft, on the floor behind you as you face the counter |
+| *Lit by the counter tube, no light of its own:* the framed Employee of the Month — [you]; placing PROPOSED | On the wall behind the counter, at eye height | — | — | Its glass may catch the tube as a glare; visual's | — |
 | **Aisle tubes**, one cord every third bay — [el. 15] [concept] | Down the aisle (4.6 to 6.4 m east), at about 27, 33, 39 and 45 m north, 2.4 m up | A tube each | Three bays, 6 m, each | Soft; the shelves throw them | Yes, under each one you've lit |
 | **Cooler** — [el. 14] [concept] | West wall of the front room, about 4.3 m west, 18.6 m north | A small lamp under the lid | The floor in front of it, about 1.5 m | Barely | No |
 | **Radio dial** — [el. 14] [concept] | On the counter | A glow | The dial, and what's beside it on the counter | None | No |
