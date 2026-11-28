@@ -343,6 +343,10 @@ Asked which page he was in: "Ah I see I wasn't in new controls pinch works there
 
 (On the controls test page, on his iPhone in Safari: PINCH WORKS. Swipe is backwards again — after he had said of the previous published version "Swiping works great l r and u d". Between the two, the test page's touch handling was rebuilt for the pinch; the swipe direction has most likely been reversed by that rebuild. The version he approved is the one to restore, in both axes.)
 
+"Also two finger swipe should track left and right"
+
+(A new gesture: two fingers swiped sideways together "track" left and right. Orchestrator's reading, unconfirmed: tracking in the camera sense — you slide sideways, left or right, without turning — as distinct from one finger, which turns the view, and a pinch, which moves you in and out.)
+
 ## Still open (asked, not answered)
 
 - Should the time of day do something (choose which work shows), or only change how the place looks and what odd things happen? (Related: he said "no" to choosing what shows in office hours versus at night.)

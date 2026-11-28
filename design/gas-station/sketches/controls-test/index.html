@@ -15,11 +15,11 @@
 <div id="dbg"></div><div id="stroke"></div>
 <script type="module">
 // Throwaway. A test of concepts/controls.md only: crude boxes on the systems lot, no look, no lamp, no sound.
-// Swipe turns: you look the way you swipe (swipe right, look right; swipe up, look up). The owner on the first version, where the picture followed the finger: "Swiping is backwards". Pinch moves you along the line to whatever was between your fingers. Tap goes there. No press and hold.
-// Switches after the #, joined by '&':  k=1.5 (pinch gain)  turn=follow (the picture follows the finger, both ways: the first version)  updown=follow (only up and down follow the finger, as the first walkable prototype did)  tap=0 (no tap-to-go)  debug (a readout top left: fingers the page sees, the gesture, the last events. for a screenshot when something fails)
+// Swipe turns, exactly as the station prototype he called "works great l r and u d": finger right, you turn right. finger down, you look up (up and down, the picture follows the finger). Pinch moves you along the line to whatever was between your fingers. Tap goes there. No press and hold.
+// Switches after the #, joined by '&':  k=1.5 (pinch gain)  turn=follow (left and right, the picture follows the finger: the first version, which he called backwards)  updown=look (finger up looks up: the second version, which he also called backwards)  tap=0 (no tap-to-go)  debug (a readout top left: fingers the page sees, the gesture, the last events. for a screenshot when something fails)
 import * as T from '../ink-is-shadow/vendor/three.module.min.js';
 const H = new URLSearchParams(location.hash.slice(1)), num = (k, d) => H.has(k) ? +H.get(k) : d;
-const K = num('k', 1.5), GX = H.get('turn') === 'follow' ? 1 : -1, GY = H.get('turn') === 'follow' || H.get('updown') === 'follow' ? 1 : -1, REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches || H.has('reduced');
+const K = num('k', 1.5), GX = H.get('turn') === 'follow' ? 1 : -1, GY = H.get('updown') === 'look' ? -1 : 1, REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches || H.has('reduced');
 const STOP = .9, DMIN = 3, DMAX = 40, TMAX = 30, RAD = Math.PI / 180, PAPER = 0xefe9dc, INK = 0x141312;
 const R = new T.WebGLRenderer({ antialias: true }), CV = R.domElement; document.body.prepend(CV); R.setClearColor(PAPER);
 const scene = new T.Scene(), cam = new T.PerspectiveCamera(68, 1, .1, 400); scene.fog = new T.Fog(PAPER, 60, 105);
