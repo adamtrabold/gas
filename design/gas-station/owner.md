@@ -299,6 +299,13 @@ Asked which phone and browser: "iPhone safari. Also this website is too complica
 
 (The project site had eleven nav items — now, sheets, walk it, concept, elements, lights, jobs, owner record, scores, history, archive — and published every record, note and old still. He wants only the essentials in the nav and far less on the site.)
 
+## 36. Names on the site (verbatim)
+
+Told the nav would be cut to: now · sheets · walk it · lists —
+"Sheets doesn't make sense as a concept and walk it is too clever just call it test or try or something like that"
+
+("walk it" becomes "try" (or "test"). "Sheets" doesn't make sense to him as a concept — whether that is the word or the whole idea of numbered sheets is being asked.)
+
 ## Still open (asked, not answered)
 
 - Should the time of day do something (choose which work shows), or only change how the place looks and what odd things happen? (Related: he said "no" to choosing what shows in office hours versus at night.)

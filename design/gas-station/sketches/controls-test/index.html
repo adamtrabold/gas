@@ -86,6 +86,10 @@ let mode = null, sw = null, pin = null, glide = [0, 0], go = null, lean = 0, did
 const turnBy = (dx, dy) => { heading += GX * dx * (90 * RAD / innerWidth); pitch = Math.max(-60 * RAD, Math.min(75 * RAD, pitch + GY * dy * (60 * RAD / innerHeight))); };
 // The page, not only the picture, refuses the browser's own pinch-zoom, double-tap zoom, long-press and Safari's gesture events.
 ['contextmenu', 'selectstart', 'dragstart', 'gesturestart', 'gesturechange', 'gestureend', 'dblclick'].forEach(t => addEventListener(t, e => { log(t); e.preventDefault(); }, { capture: true }));
+// Safari's own pinch events carry the spread as e.scale. A second way in for the same pinch, used only if the touch list is not showing two fingers.
+addEventListener('gesturestart', e => { if (nT >= 2 || mode === 'pinch') return; startPinch({ x: e.clientX, y: e.clientY }, { x: e.clientX, y: e.clientY }); pin.base = 1; pin.safari = true; }, { capture: true });
+addEventListener('gesturechange', e => { if (mode === 'pinch' && pin?.safari) pinchTo(e.scale); }, { capture: true });
+addEventListener('gestureend', e => { if (mode === 'pinch' && pin?.safari) { endPinch(); mode = nT ? 'after' : null; } }, { capture: true });
 document.addEventListener('touchmove', e => { if (e.cancelable) e.preventDefault(); }, { passive: false, capture: true });
 document.addEventListener('touchstart', e => { if (e.touches.length > 1 && e.cancelable) e.preventDefault(); }, { passive: false, capture: true });
 const evs = []; function log(t) { if (evs[evs.length - 1]?.[0] === t) evs[evs.length - 1][1]++; else { evs.push([t, 1]); if (evs.length > 8) evs.shift(); } }
@@ -110,7 +114,7 @@ function endSwipe(tapOK) { if (!sw) return; const now = performance.now(); if (!
 let nT = 0;
 function onTouch(e) { log(e.type); if (e.cancelable) e.preventDefault(); const T = e.touches; nT = T.length;
   if (T.length >= 2) { const a = { x: T[0].clientX, y: T[0].clientY }, b = { x: T[1].clientX, y: T[1].clientY };
-    if (mode !== 'pinch') startPinch(a, b); else pinchTo(Math.hypot(a.x - b.x, a.y - b.y) / pin.base); return; }
+    if (mode !== 'pinch' || pin.safari) startPinch(a, b); else pinchTo(Math.hypot(a.x - b.x, a.y - b.y) / pin.base); return; }
   if (T.length === 1) { const x = T[0].clientX, y = T[0].clientY;
     if (mode === 'pinch') { endPinch(); mode = 'after'; return; }                 // one of two lifted: the one that is left does nothing until it lifts too
     if (mode === 'after') return; if (mode !== 'swipe' || !sw) return startSwipe(x, y); swipeTo(x, y); return; }

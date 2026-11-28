@@ -9,11 +9,12 @@ copies the stills as they are (they are already web-sized, lossless PNGs), copie
 with its three.js import path fixed, and writes one index.html with the data embedded as JSON and the
 viewer (app.html) inline. Relative URLs only, so it works from a sub-path on GitHub Pages.
 
-The one hand-kept input is site/now.md (where things stand, what is waiting on the owner).
+The site shows only: now (site/now.md, hand-kept), the sheets, the walkable prototype and controls test page,
+and three records as pages (elements, lights, the concept). Media that no page shows is not copied.
 Nothing under design/gas-station/inspo/ is ever copied: those images are other people's work.
 Needs: Python 3, markdown, Pillow.
 """
-import os, re, sys, json, html, shutil, subprocess, fnmatch, argparse
+import os, re, json, html, shutil, subprocess, argparse
 from PIL import Image
 import markdown
 
@@ -51,31 +52,6 @@ def front(text):
     return {k.strip().lower(): v.strip() for k, v in (l.split(":", 1) for l in m.group(1).splitlines() if ":" in l)}, text[m.end():]
 def git(*a): return subprocess.run(["git", "-C", ROOT, *a], capture_output=True, text=True).stdout
 
-# ------------------------------------------------------------------ stills (copies only; never inspo/)
-STILLS_DIR = "concepts/stills"
-stills = {}
-for f in sorted(os.listdir(G(STILLS_DIR))):
-    if not f.lower().endswith(".png"): continue
-    stem = f[:-4]
-    src = G(STILLS_DIR, f)
-    shutil.copyfile(src, os.path.join(MEDIA, "stills", f))
-    im = Image.open(src); W, H = im.size
-    rgb = im.convert("RGB")
-    if H > 2.2 * W: rgb = rgb.crop((0, 0, W, int(W * 2 / 3)))      # a tall sheet: its card shows the head of the sheet
-    rgb.thumbnail((640, 640), Image.LANCZOS)
-    rgb.save(os.path.join(MEDIA, "t", stem + ".jpg"), "JPEG", quality=74, optimize=True)
-    stills[stem] = {"name": stem, "src": f"media/stills/{f}", "thumb": f"media/t/{stem}.jpg", "w": W, "h": H,
-                    "tw": rgb.size[0], "th": rgb.size[1], "path": f"{GS_REL}/{STILLS_DIR}/{f}", "docs": []}
-
-def named_stills(text):
-    """stills a record names: by file name, by a range ("s2-fix-1 to s2-fix-4") or by a pattern ("s2j-*")"""
-    found = [s for s in stills if re.search(r"(?<![\w-])" + re.escape(s) + r"(?![\w-])", text)]
-    for m in re.finditer(r"([a-z0-9][a-z0-9-]*-)(\d)(?:\.png)?`?\s+to\s+`?\1(\d)", text):
-        found += [f"{m.group(1)}{i}" for i in range(int(m.group(2)), int(m.group(3)) + 1) if f"{m.group(1)}{i}" in stills]
-    for m in re.finditer(r"(?<![\w-])([a-z0-9][a-z0-9-]*\*)", text):
-        found += fnmatch.filter(stills, m.group(1))
-    return [s for s in stills if s in set(found)]
-
 # ------------------------------------------------------------------ markdown -> HTML (as on the synths site)
 PATHMAP = {}   # path relative to design/gas-station -> "#hash"
 def resolve(ref, src):
@@ -88,7 +64,6 @@ def resolve(ref, src):
     base = os.path.basename(p)
     hits = [k for k in PATHMAP if os.path.basename(k) == base]
     if len(hits) == 1: return PATHMAP[hits[0]]
-    if base.endswith(".png") and base[:-4] in stills and "inspo" not in p: return "#still-" + base[:-4]
     return None
 
 def label_cells(h):
@@ -118,22 +93,26 @@ def loosen_lists(text):
     return "\n".join(out)
 
 SHEET_IMGS = {}
-def sheet_image(href, src):
-    """a drawing a sheet places: a PNG under concepts/stills/, copied as it is. None for anything else (never inspo/)."""
+def sheet_image(href, src, card=False):
+    """a drawing a sheet places: a PNG under concepts/stills/, copied as it is. None for anything else (never inspo/).
+    card=True also makes the small picture for the sheet's card."""
     if not href or href.startswith("http") or not src: return None
     rel = os.path.normpath(os.path.join(os.path.dirname(src), html.unescape(href)))
     if not rel.startswith("concepts/stills/") or not rel.lower().endswith(".png") or not os.path.isfile(G(rel)): return None
+    sub = rel[len("concepts/stills/"):]
     if rel not in SHEET_IMGS:
-        sub = rel[len("concepts/stills/"):]
         out = os.path.join(MEDIA, "stills", sub); os.makedirs(os.path.dirname(out), exist_ok=True)
         shutil.copyfile(G(rel), out)
-        im = Image.open(G(rel)); W, H = im.size
+        W, H = Image.open(G(rel)).size
+        SHEET_IMGS[rel] = {"src": "media/stills/" + sub, "w": W, "h": H}
+    f = SHEET_IMGS[rel]
+    if card and "thumb" not in f:
         tn = re.sub(r"[^A-Za-z0-9]+", "-", sub[:-4]) + ".jpg"
-        rgb = im.convert("RGB")
-        if H > 2.2 * W: rgb = rgb.crop((0, 0, W, int(W * 2 / 3)))
+        rgb = Image.open(G(rel)).convert("RGB")
+        if f["h"] > 2.2 * f["w"]: rgb = rgb.crop((0, 0, f["w"], int(f["w"] * 2 / 3)))      # a tall sheet: its card shows the head of the sheet
         rgb.thumbnail((640, 640), Image.LANCZOS); rgb.save(os.path.join(MEDIA, "t", tn), "JPEG", quality=74, optimize=True)
-        SHEET_IMGS[rel] = {"src": "media/stills/" + sub, "thumb": "media/t/" + tn, "w": W, "h": H, "tw": rgb.size[0], "th": rgb.size[1]}
-    return SHEET_IMGS[rel]
+        f.update(thumb="media/t/" + tn, tw=rgb.size[0], th=rgb.size[1])
+    return f
 
 def figures(h, src):
     """a paragraph that is only images becomes figures: one image alone, or several side by side (they stack on a phone).
@@ -204,61 +183,16 @@ def first_para(text):
 def changed(rel):
     return git("log", "-1", "--format=%ad", "--date=format:%d %b %H:%M", "--", f"{GS_REL}/{rel}").strip().lstrip("0")
 
-# ------------------------------------------------------------------ the records
-def slug(rel): return re.sub(r"[^a-z0-9]+", "-", rel[:-3].lower()).strip("-")
-def classify(rel):
-    """-> (section of the site, kind in plain words, fixed route or None)"""
-    b = os.path.basename(rel)
-    if rel == "owner.md": return "owner", "the owner's record", "#owner"
-    if rel == "elements.md": return "elements", "the element list", "#elements"
-    if rel == "lights.md": return "lights", "the list of lights", "#lights"
-    if rel == "concepts/controls.md": return "concept", "concept: how you move and look", None
-    if rel == "jobs.md": return "jobs", "the jobs", "#jobs"
-    if rel == "scores.md": return "scores", "scores", "#scores"
-    if rel == "concepts/05-left-on.md": return "concept", "the concept", "#concept"
-    if rel in ("concepts/00-shared.md", "concepts/coverage-05.md"): return "concept", "concept", None
-    if re.match(r"sheet-\d+-judge\.md", b): return "scores", "director's check of a sheet", None
-    if re.match(r"sheet-\d+\.md", b): return "sheets", "designer's notes on a sheet", None
-    if re.match(r"sheet-\d+-notes\.md", b): return "sheets", "designer's notes on a sheet", None
-    if re.match(r"score-\d+\.md", b): return "scores", "director's score", None
-    if re.match(r"steer-\d+\.md", b): return "scores", "director's steer", None
-    if b.endswith("-judge.md"): return "scores", "director's check", None
-    if rel.startswith("notes/"): return "archive", "team notes", None
-    if rel.startswith("concepts/0"): return "archive", "superseded concept", None
-    if rel.startswith("inspo/"): return "archive", "reference notes (text only)", None
-    return "archive", "record", None
-
-docs, order = {}, []
-found = []
-for dp, dn, fs in os.walk(GS):
-    dn[:] = sorted(d for d in dn if d not in ("sketches", "stills", "out"))
-    found += [os.path.relpath(os.path.join(dp, f), GS) for f in sorted(fs) if f.endswith(".md") and f != "COPYRIGHT-NOTICE.md"]
-if FIX: found += [f"concepts/{f}" for f in sorted(os.listdir(FIX)) if f.endswith(".md") and f"concepts/{f}" not in found]
-for rel in found:
-    if True:
-        sec, kind, route = classify(rel)
-        docs[slug(rel)] = {"slug": slug(rel), "rel": rel, "path": f"{GS_REL}/{rel}", "sec": sec, "kind": kind, "route": route or "#doc-" + slug(rel)}
-        PATHMAP[os.path.normpath(rel)] = docs[slug(rel)]["route"]
-        order.append(slug(rel))
-for s in order:
-    d = docs[s]; t = front(rd(d["rel"]))[1]
-    d.update(title=plain(h1(t)) or d["rel"], lead=first_para(t), changed=changed(d["rel"]), html=md(t, src=d["rel"]),
-             jump=[plain(h) for h, _ in sections(t) if h][:40], stills=named_stills(t), kb=round(len(t) / 1024))
-    for st in d["stills"]: stills[st]["docs"].append(s)
-
-# ------------------------------------------------------------------ the owner's record, newest first (words untouched)
-ot = rd("owner.md")
-osecs = sections(ot)
-owner = {"path": docs["owner"]["path"], "changed": docs["owner"]["changed"],
-         "intro": md("\n".join(l for l in (osecs[0][1] if osecs and osecs[0][0] is None else "").splitlines() if not l.startswith("# ")), src="owner.md"),
-         "sections": [], "open": None}
-for head, body in osecs:
-    if head is None: continue
-    m = re.match(r"(\d+)\.\s*(.*)", head)
-    sec = {"n": m.group(1) if m else "", "title": plain(m.group(2) if m else head), "html": md(body, src="owner.md")}
-    if not m and head.lower().startswith("still open"): owner["open"] = sec
-    else: owner["sections"].append(sec)
-owner["sections"].reverse()
+# ------------------------------------------------------------------ the records the site shows (everything else stays in the repo)
+# The site is for three things: the latest sheet, walking the place, and the short lists the owner is asked to approve.
+PAGES = [("elements", "elements.md", "#elements"), ("lights", "lights.md", "#lights"), ("concept", "concepts/05-left-on.md", "#concept")]
+docs = {}
+for key, rel, route in PAGES:
+    if os.path.isfile(G(rel)): PATHMAP[os.path.normpath(rel)] = route
+for key, rel, route in PAGES:
+    if not os.path.isfile(G(rel)): continue
+    t = front(rd(rel))[1]
+    docs[key] = {"title": plain(h1(t)) or rel, "html": md(t, src=rel), "jump": [plain(h) for h, _ in sections(t) if h][:40]}
 
 # ------------------------------------------------------------------ the walkable prototype (copied; import path fixed; behaviour untouched)
 PROTO = "sketches/place"
@@ -281,93 +215,65 @@ if os.path.isfile(G(CT)):
     assert not re.search(r"""(?:src|href)=["'](?!#|https?:)|from\s+['"]\./|fetch\(""", cpage), "the controls test page now loads other files: copy them in site/build.py"
     os.makedirs(os.path.join(DIST, "controls-test"))
     open(os.path.join(DIST, "controls-test", "index.html"), "w", encoding="utf-8").write(cpage.replace(OLD_IMPORT, "'../walk/vendor/three.module.min.js'"))
-    controls_test = {"path": f"{GS_REL}/{CT}", "changed": changed(CT)}
+    controls_test = True
 # the three views the prototype offers by name (its own words for them, from the comment at the top of its source)
 VIEWS = [("together", "Together", "The slab, the island, both pumps and the canopy, from the road. This is how the link opens."),
          ("slab", "The slab", "The slab, the island and both pumps in open sun."),
          ("pump", "The pump", "One pump, alone.")]
-walk = {"path": f"{GS_REL}/{PROTO}/index.html", "changed": changed(PROTO + "/index.html"),
-        "views": [{"hash": k, "title": t, "line": l} for k, t, l in VIEWS if re.search(rf"\b{k}:", page)]}
+walk = {"views": [{"hash": k, "title": t, "line": l} for k, t, l in VIEWS if re.search(rf"\b{k}:", page)]}
 
-# ------------------------------------------------------------------ sheets (the current way concepts are shared)
-SHEET_VIEWS = {1: ["pump"], 2: ["together", "pump", "slab"]}   # which walkable views match a sheet; others: the views its notes name
+# ------------------------------------------------------------------ sheets
+SHEET_VIEWS = {1: ["pump"], 2: ["together", "pump", "slab"]}   # which walkable views match a tall-image sheet; page sheets say it themselves (walk:)
+CON = G("concepts")
+names = sorted(set(os.listdir(CON)) | (set(os.listdir(FIX)) if FIX else set()))
+owner_heads = re.findall(r"^## +(.*)$", rd("owner.md"), flags=re.M)
 sheets = []
-for s in order:
-    m = re.fullmatch(r"concepts/sheet-(\d+)\.md", docs[s]["rel"])
+for f in names:
+    m = re.fullmatch(r"sheet-(\d+)\.md", f)
     if not m: continue
-    n = int(m.group(1)); meta, t = front(rd(docs[s]["rel"]))
-    imgs = [k for k in stills if re.match(rf"sheet-{n}-", k)]
+    n = int(m.group(1)); rel = f"concepts/{f}"; meta, t = front(rd(rel))
     # the page format (owner.md 20): the sheet is this file, with its drawings as separate PNGs in stills/sheet-N/.
-    # It wins over a tall sheet-N-*.png if both exist.
+    # It wins over a tall stills/sheet-N-*.png if both exist.
     page = os.path.isdir(G(f"concepts/stills/sheet-{n}")) and bool(re.search(rf"!\[[^\]]*\]\(\s*stills/sheet-{n}/", t))
-    js = slug(f"concepts/sheet-{n}-judge.md")
-    jt = rd(docs[js]["rel"]) if js in docs else ""
-    qmd, qfrom = "", ""
-    for pat, lab in ((r"Questions\s*$", "the sheet's own"),) if page else ((r"Final wording of the questions", "the director's final wording"), (r"What to ask him, in plain words", "the director's wording"), (r"Questions\s*$", "the designer's wording")):
-        qmd = under(jt, pat) if lab.startswith("the director") else under(t, pat)
-        if qmd:   # the questions themselves: the numbered list only, not the director's notes to the team after it
+    tall = None if page else next((x for x in sorted(os.listdir(G("concepts/stills"))) if re.fullmatch(rf"sheet-{n}-.*\.png", x)), None)
+    if not page and not tall: continue
+    jt = rd(f"concepts/sheet-{n}-judge.md") if os.path.isfile(G(f"concepts/sheet-{n}-judge.md")) else ""
+    # what it asks him: a page sheet's own "## Questions"; for a tall-image sheet, the wording the director cleared. The numbered list only.
+    qmd = ""
+    for src_t, pat in ((t, r"Questions\s*$"),) if page else ((jt, r"Final wording of the questions"), (jt, r"What to ask him, in plain words"), (t, r"Questions\s*$")):
+        qmd = under(src_t, pat)
+        if qmd:
             keep, seen = [], False
             for ln in qmd.splitlines():
                 if re.match(r"\s*\d+[.)]\s", ln): seen = True
                 elif seen and ln.strip() and not ln.startswith((" ", "\t")): break
-                keep.append(ln)
-            qmd = "\n".join(keep).strip() if seen else qmd
-            qfrom = lab; break
-    ans = next((x for x in owner["sections"] if re.search(rf"\bSheet {n}\b", x["title"])), None)
-    views = [v.strip().lstrip("#") for v in meta["walk"].split(",")] if "walk" in meta else SHEET_VIEWS.get(n) or [k for k, _, _ in VIEWS if re.search(rf"#{k}\b", t)]
-    ns = slug(f"concepts/sheet-{n}-notes.md")
-    nt_ = rd(docs[ns]["rel"]) if ns in docs else ""
-    names = [x for x in dict.fromkeys(named_stills(t) + named_stills(jt) + named_stills(nt_)) if not re.match(r"(sheet-|pairs-)", x)]
-    body, card = "", (stills[imgs[0]] if imgs else None)
+                if seen: keep.append(ln)
+            qmd = "\n".join(keep).strip()
+            if qmd: break
+    views = [v.strip().lstrip("#") for v in meta["walk"].split(",")] if "walk" in meta else ([] if page else SHEET_VIEWS.get(n, []))
+    body, img = "", None
     if page:
-        rel = docs[s]["rel"]
         parts = [(h, b) for h, b in sections(t) if not (h and re.fullmatch(r"Questions", h.strip(), flags=re.I))]
         body = md("\n\n".join((f"## {h}\n" if h else "") + (b if h else re.sub(r"^# .*$", "", b, count=1, flags=re.M)) for h, b in parts), src=rel)
-        first = re.search(rf"!\[[^\]]*\]\(\s*(stills/sheet-{n}/[^)\s]+)", t)
-        card = sheet_image(first.group(1), rel) or card
-        docs[s]["route"] = PATHMAP[os.path.normpath(rel)] = f"#sheet-{n}"; docs[s]["kind"] = "sheet"
-        imgs = []
-    sheets.append({"n": n, "code": str(n), "title": re.sub(r"^Sheet \d+\s*[—–-]\s*", "", docs[s]["title"]), "images": imgs, "doc": s, "judge": js if js in docs else None,
-                   "page": body, "card": card, "notes": ns if ns in docs else None,
-                   "verdicts": [plain(x) for x in re.findall(r"^#{1,2} +((?:Verdict|After the fixes):?.*)$", jt, flags=re.M)],
-                   "questions": md(qmd, src=docs[s]["rel"]) if qmd else "", "qfrom": qfrom, "answered": ans["n"] if ans else None,
-                   "views": [v for v in views if any(w["hash"] == v for w in walk["views"])], "frames": names, "changed": docs[s]["changed"]})
+        card = sheet_image(re.search(rf"!\[[^\]]*\]\(\s*(stills/sheet-{n}/[^)\s]+)", t).group(1), rel, card=True)
+        PATHMAP[os.path.normpath(rel)] = f"#sheet-{n}"
+    else:
+        card = img = sheet_image(f"stills/{tall}", rel, card=True)
+    sheets.append({"n": n, "code": str(n), "title": re.sub(r"^Sheet \d+\s*[—–-]\s*", "", plain(h1(t))), "img": img, "page": body, "card": card,
+                   "questions": md(qmd, src=rel) if qmd else "", "answered": any(re.search(rf"\bSheet {n}\b", x) for x in owner_heads),
+                   "views": [v for v in views if any(w["hash"] == v for w in walk["views"])], "changed": changed(rel)})
 sheets.sort(key=lambda x: -x["n"])
-earlier = []
-if "sheet-05-left-on" in stills:
-    earlier.append({"code": "05", "title": "Left on, the concept sheet", "images": [k for k in ("sheet-05-left-on", "pairs-05") if k in stills],
-                    "captions": {"sheet-05-left-on": "The concept sheet for Left on", "pairs-05": "Before and after pairs: the five fixes made before the link went out"},
-                    "line": "The sheet and the before and after pairs shown with the concept when the director scored it 9. Sent back on the look; the sheets above came after.",
-                    "doc": "concepts-05-left-on", "judge": None, "page": "", "notes": None, "card": stills["sheet-05-left-on"], "verdicts": [], "questions": "", "qfrom": "", "answered": "9" if any(x["n"] == "9" for x in owner["sections"]) else None,
-                    "views": [], "frames": [], "changed": docs["concepts-05-left-on"]["changed"]})
-SHEET_STEMS = {i for sh in sheets + earlier for i in sh["images"]}
 
 # ------------------------------------------------------------------ now (hand-kept: site/now.md)
-nt = open(os.path.join(HERE, "now.md"), encoding="utf-8").read()
-nt = re.sub(r"<!--.*?-->", "", nt, flags=re.S)
-now = {"path": "site/now.md", "blocks": [{"title": plain(h), "html": md(b)} for h, b in sections(nt) if h]}
-
-# ------------------------------------------------------------------ history (git log)
-history = []
-for line in git("log", "--format=%h%x1f%ad%x1f%s", "--date=format:%Y-%m-%d|%d %b %Y|%H:%M").splitlines():
-    hsh, ad, subj = line.split("\x1f", 2)
-    iso, day, tm = ad.split("|")
-    if not history or history[-1]["iso"] != iso: history.append({"iso": iso, "day": day.lstrip("0"), "events": []})
-    history[-1]["events"].append({"t": tm, "s": subj, "h": hsh})
-gl = git("log", "-1", "--format=%ad|%s", "--date=format:%d %b %H:%M").strip().split("|", 1)
-updated = {"when": gl[0].lstrip("0"), "what": gl[1] if len(gl) > 1 else ""}
+nt = re.sub(r"<!--.*?-->", "", open(os.path.join(HERE, "now.md"), encoding="utf-8").read(), flags=re.S)
+now = {"blocks": [{"title": plain(h), "html": md(b)} for h, b in sections(nt) if h]}
 
 # ------------------------------------------------------------------ the viewer
 VEND = os.path.join(HERE, "vendor", "lightbox")
 shutil.copyfile(os.path.join(VEND, "lightbox.js"), os.path.join(MEDIA, "vendor", "lightbox.js"))
-three_head = re.search(r"/\*\*.*?\*/", open(G("sketches/ink-is-shadow/vendor/three.module.min.js"), encoding="utf-8").read(400), flags=re.S)
-licenses = [{"name": "Image viewer: Ramka (@ramka/react 0.0.2), React 18.3.1", "url": "https://ramka.dev",
-             "text": open(os.path.join(VEND, "LICENSES.txt"), encoding="utf-8").read()},
-            {"name": "The walkable prototype: three.js", "url": "https://github.com/mrdoob/three.js/blob/dev/LICENSE",
-             "text": (three_head.group(0) if three_head else "three.js, MIT") + "\n\nThe full MIT licence text is at the address above."}]
+shutil.copyfile(os.path.join(VEND, "LICENSES.txt"), os.path.join(MEDIA, "vendor", "LICENSES.txt"))   # MIT: the notice travels with the bundle
 
-data = {"project": {"name": NAME, "line": LINE}, "updated": updated, "now": now, "sheets": sheets, "earlier": earlier, "sheetStems": sorted(SHEET_STEMS),
-        "walk": walk, "controlsTest": controls_test, "docs": docs, "order": order, "owner": owner, "stills": stills, "history": history, "licenses": licenses}
+data = {"project": {"name": NAME, "line": LINE}, "now": now, "sheets": sheets, "walk": walk, "controlsTest": controls_test, "docs": docs}
 tpl = open(os.path.join(HERE, "app.html"), encoding="utf-8").read()
 js = json.dumps(data, ensure_ascii=False).replace("</", "<\\/")
 open(os.path.join(DIST, "index.html"), "w", encoding="utf-8").write(tpl.replace("/*DATA*/", js))
@@ -377,4 +283,4 @@ open(os.path.join(DIST, ".nojekyll"), "w").close()
 bad = [os.path.join(dp, f) for dp, _, fs in os.walk(DIST) for f in fs if f.lower().endswith((".jpg", ".jpeg", ".webp", ".gif")) and os.path.join("media", "t") not in dp]
 assert not bad, f"unexpected images in the output: {bad}"
 tot = sum(os.path.getsize(os.path.join(dp, f)) for dp, _, fs in os.walk(DIST) for f in fs)
-print(f"sheets {len(sheets)} + {len(earlier)} earlier · records {len(docs)} · stills {len(stills)} · commits {sum(len(d['events']) for d in history)} · {tot/1048576:.1f} MiB -> {os.path.relpath(DIST, ROOT)}/")
+print(f"sheets {len(sheets)} · pages {len(docs)} · {tot/1048576:.1f} MiB -> {os.path.relpath(DIST, ROOT)}/")

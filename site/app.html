@@ -171,7 +171,6 @@ main>.status{margin-bottom:12px}
 (function(){
 "use strict";
 const D = JSON.parse(document.getElementById("data").textContent);
-const DOC = D.docs, ST = D.stills;
 const $app = document.getElementById("app");
 const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 
@@ -180,13 +179,7 @@ function label(o){ // {code,title,fields,extra}
   return `<div class="label"><div class="lh"><b>${esc(o.code)}</b><span>${esc(o.title||"")}</span></div>
   <div class="lf">${esc(o.fields)}</div>${o.extra||""}</div>`;
 }
-function updatedLine(){
-  const u = D.updated || {};
-  return `<div class="status" title="${esc(u.what)}">Updated <b>${esc(u.when)}</b> · ${esc(u.what)}</div>`;
-}
-const SECTIONS = [ // the site's whole structure, one row
-  ["now","#now","now"],["sheets","#sheets","sheets"],["walk","#walk","walk it"],["concept","#concept","concept"],["elements","#elements","elements"],["lights","#lights","lights"],
-  ["jobs","#jobs","jobs"],["owner","#owner","owner record"],["scores","#scores","scores"],["history","#history","history"],["archive","#archive","archive"]];
+const SECTIONS = [["now","#now","now"],["sheets","#sheets","sheets"],["walk","#walk","walk it"],["lists","#lists","lists"]];
 function header(sel){
   return `<header class="band wrap"><div class="hgrid">
     <div class="name brand"><a href="#now">${esc(D.project.name)}</a></div>
@@ -195,239 +188,104 @@ function header(sel){
 }
 function point(t){ return `<p class="purpose">${esc(t)}</p>`; }
 function about(){
-  return `<footer class="wrap about"><div class="cap">Where things live</div><p>
-    Everything is in the repo under design/gas-station/ ·
-    <b>Now</b> ← site/now.md (kept by hand), owner.md · <b>Sheets</b> ← concepts/sheet-N.md, concepts/stills/ ·
-    <b>Walk it</b> ← sketches/place/, sketches/controls-test/ · <b>Concept</b> ← concepts/05-left-on.md, concepts/00-shared.md, concepts/controls.md ·
-    <b>Elements</b> ← elements.md · <b>Lights</b> ← lights.md · <b>Jobs</b> ← jobs.md · <b>Owner record</b> ← owner.md ·
-    <b>Scores</b> ← scores.md, concepts/score-N.md, steer-N.md, the judge files · <b>History</b> ← git log ·
-    <b>Archive</b> ← notes/, jam.md, brief.md, earlier concepts, every still.
-    Markdown is the source; site/publish.sh rebuilds this site from the repo. The inspiration images in the repo are other people's work and are not shown here.
-    <a class="u" href="#licenses">Licences</a>.</p></footer>`;
+  return `<footer class="wrap about"><p>Built from the project's repo. Everything else the team keeps is there.
+    <a class="u" href="media/vendor/LICENSES.txt">Licences</a> for the image viewer.</p></footer>`;
 }
-function docRow(slug, note){ const d = DOC[slug]; if (!d) return "";
-  return `<a class="drow" href="${d.route}"><span class="t">${esc(d.title)}</span><span class="c">${esc(note || d.lead || "")}</span><span class="x">${esc(d.kind)}${d.changed?" · "+esc(d.changed):""}</span></a>`; }
-function backBar(href, text, pt){
-  return `${pt?`<div class="wrap">${point(pt)}</div>`:""}<div class="back wrap"><a href="${href}">‹ ${esc(text)}</a><button data-copy="1">copy link</button></div>`;
+function backBar(href, text){
+  return `<div class="back wrap"><a href="${href}">‹ ${esc(text)}</a><button data-copy="1">copy link</button></div>`;
 }
-function thumb(name, cap){ const s = ST[name]; if (!s) return "";
-  return `<figure><img src="${s.thumb}" data-full="${s.src}" data-w="${s.w}" data-h="${s.h}" width="${s.tw}" height="${s.th}" alt="${esc(cap||name)}" loading="lazy"><figcaption>${esc(cap||name)}</figcaption></figure>`; }
-function gallery(names){ return names.length ? `<div class="thumbs">${names.map(n=>thumb(n)).join("")}</div>` : ""; }
 function walkBtns(sh){
   return sh.views.length ? `<div class="btns">${sh.views.map((v,i)=>{ const w = D.walk.views.find(x=>x.hash===v); return `<a class="btn" href="walk/#${v}">${i===0?"Walk it: ":""}${esc(w.title.toLowerCase())} ›</a>`; }).join("")}</div>` : ""; }
-function sheetStatus(sh){
-  const v = sh.verdicts.length ? "Director: " + sh.verdicts[sh.verdicts.length-1].replace(/^Verdict:\s*/,"").replace(/^After the fixes:\s*/,"after the fixes, ") : "";
-  const a = sh.questions ? (sh.answered ? "answered" : "waiting on you") : (sh.answered ? "answered" : "");
-  return {v, a};
-}
+const sheetState = sh => sh.questions ? (sh.answered ? "answered" : "waiting on you") : "";
 function sheetCard(sh, cls){
-  const m = sh.card; if (!m) return ""; const s = sheetStatus(sh);
+  const m = sh.card; if (!m) return ""; const st = sheetState(sh);
   return `<a class="${cls||"case"}" href="#sheet-${sh.code}">
     <div class="cimg"><img src="${m.thumb}" width="${m.tw}" height="${m.th}" alt="Sheet ${esc(sh.code)}: ${esc(sh.title)}" loading="lazy"></div>
-    <div><div class="cmeta"><b>Sheet ${esc(sh.code)}</b>${s.a?`<span class="cst">${s.a}</span>`:""}</div>
-    <div class="cline">${esc(sh.title)}</div><div class="ink2" style="font-size:12.5px">${esc(sh.changed)}${s.v?" · "+esc(s.v):""}</div>
+    <div><div class="cmeta"><b>Sheet ${esc(sh.code)}</b>${st?`<span class="cst">${st}</span>`:""}</div>
+    <div class="cline">${esc(sh.title)}</div>${sh.changed?`<div class="ink2" style="font-size:12.5px">${esc(sh.changed)}</div>`:""}
     ${cls?'<div class="u" style="margin-top:4px">Open the sheet ›</div>':""}</div></a>`;
 }
 
 /* ------- views */
 function vNow(){
   const sh = D.sheets[0];
-  const open = D.owner.open;
-  return header("now") + `<main class="wrap wide">${updatedLine()}<p class="purpose" style="font-size:18px">Where the gas station design stands, and what is waiting on you. Answer in chat; this site is for looking.</p>
-    ${sh ? `<h2 class="sec">The latest sheet</h2>${sheetCard(sh, "nowcard")}${walkBtns(sh)}` : ""}
+  return header("now") + `<main class="wrap wide">
+    ${sh ? `<h2 class="sec" style="margin-top:0">The latest sheet</h2>${sheetCard(sh, "nowcard")}${walkBtns(sh)}` : ""}
     ${D.now.blocks.map(b=>`<section class="wsec"><h2>${esc(b.title)}</h2><div class="doc-html">${b.html}</div></section>`).join("")}
-    ${open ? `<section class="wsec"><h2>${esc(open.title)}</h2><div class="doc-html">${open.html}</div><p class="hint">From the end of <a class="u" href="#owner">your record</a>.</p></section>` : ""}
-    <h2 class="sec" style="margin-top:34px">Everything else</h2>
-    <a class="drow" href="#sheets"><span class="t">Sheets</span><span class="c">Every sheet, newest first.</span></a>
-    <a class="drow" href="#walk"><span class="t">Walk it</span><span class="c">The walkable prototype, on your phone or a computer.</span></a>
-    <a class="drow" href="#concept"><span class="t">Concept</span><span class="c">Left on: the idea behind the place.</span></a>
-    <a class="drow" href="#elements"><span class="t">Elements</span><span class="c">What each thing needs before it is drawn.</span></a>
-    ${DOC["lights"] ? '<a class="drow" href="#lights"><span class="t">Lights</span><span class="c">Every real light in the place.</span></a>' : ""}
-    <a class="drow" href="#owner"><span class="t">Owner record</span><span class="c">Everything you have said, in your words, newest first.</span></a>
   </main>${about()}`;
 }
 function vSheets(){
-  return header("sheets") + `<main class="wrap">${point("Each sheet works out one part of the place and puts questions to you. Newest first. Open one to read it at full size and walk what it shows.")}
+  return header("sheets") + `<main class="wrap">${point("Each sheet works out one part of the place and puts questions to you. Newest first.")}
     <div class="cases">${D.sheets.map(s=>sheetCard(s)).join("")}</div>
-    ${D.earlier.length ? `<h2 class="sec" style="margin-top:34px">Earlier</h2><div class="cases">${D.earlier.map(s=>sheetCard(s)).join("")}</div>` : ""}
-    <p class="hint" style="margin-top:22px">Every other picture the team has kept is under <a class="u" href="#stills">all stills</a>.</p>
   </main>${about()}`;
 }
-function sheetFig(name, cap){ const m = ST[name]; if (!m) return "";
-  return `${cap?`<h2 class="sec">${esc(cap)}</h2>`:""}<div class="sheet" style="--half:${Math.round(m.w/2)}px;--full:${m.w}px"><img src="${m.src}" width="${m.w}" height="${m.h}" alt="${esc(cap||name)}"></div>
-    <div class="hint"><span class="phoneonly">Scroll to read it. Pinch to zoom.</span><span class="wideonly">Click the sheet for its actual pixels; click again to go back.</span> ${m.w} × ${m.h}, made for a phone.</div>`; }
 function vSheet(code){
-  const sh = D.sheets.concat(D.earlier).find(s => s.code === code); if (!sh) return vMissing("sheet " + code);
-  const s = sheetStatus(sh), d = DOC[sh.doc], j = sh.judge && DOC[sh.judge];
+  const sh = D.sheets.find(s => s.code === code); if (!sh) return null;
+  const m = sh.img;
   const q = sh.questions ? `<section class="wsec"><h2>${sh.answered ? "What this sheet asked you" : "What this sheet asks you"}</h2><div class="doc-html">${sh.questions}</div>
-      <p class="hint">${sh.answered ? `Answered: <a class="u" href="#owner-${sh.answered}">your record, section ${esc(sh.answered)}</a>.` : "Answer in chat."} Wording: ${esc(sh.qfrom)}.</p></section>` : "";
-  return header("sheets") + backBar("#sheets", "Sheets", sh.line || "One sheet: the picture, what it asks you, the view you can walk, and the notes behind it.") + `<main class="wrap">
-    <div class="wide">${label({code:"Sheet " + sh.code, title:sh.title, fields:["sheet", sh.changed, s.v].filter(Boolean).join(" · "), extra:walkBtns(sh)})}
-    ${!sh.questions && sh.answered ? `<p class="hint">Your response: <a class="u" href="#owner-${sh.answered}">your record, section ${esc(sh.answered)}</a>.</p>` : ""}${q}</div>
+      <p class="hint">${sh.answered ? "Answered." : "Answer in chat."}</p></section>` : "";
+  return header("sheets") + backBar("#sheets", "Sheets") + `<main class="wrap">
+    <div class="wide">${label({code:"Sheet " + sh.code, title:sh.title, fields:sh.changed, extra:walkBtns(sh)})}${q}</div>
     ${sh.page ? `<article class="doc-html sheetdoc" style="margin-top:24px">${sh.page}</article>` : ""}
-    <div style="margin-top:24px">${sh.images.map((n,i)=>sheetFig(n, sh.captions ? sh.captions[n] : (i===0 ? "The sheet" : n))).join("")}</div>
-    <div class="wide">
-    ${sh.frames.length ? `<h2 class="sec">Frames from the walk that this sheet's notes name (${sh.frames.length})</h2>${gallery(sh.frames)}` : ""}
-    ${sh.page && !sh.notes && !j ? "" : '<h2 class="sec">Behind it</h2>'}
-    ${sh.page ? (sh.notes ? docRow(sh.notes, "How the sheet was made, and what is not good yet.") : "") : d && sh.doc !== "concepts-05-left-on" ? `<details class="gdocd"><summary>The designer's notes on this sheet</summary><div class="doc-html" style="margin-top:8px">${d.html}</div></details>` : docRow(sh.doc)}
-    ${j ? docRow(sh.judge, "The design director's check before it went to you.") : ""}
-    </div>
+    ${m ? `<div style="margin-top:24px"><div class="sheet" style="--half:${Math.round(m.w/2)}px;--full:${m.w}px"><img src="${m.src}" width="${m.w}" height="${m.h}" alt="Sheet ${esc(sh.code)}: ${esc(sh.title)}"></div>
+      <div class="hint"><span class="phoneonly">Scroll to read it. Pinch to zoom.</span><span class="wideonly">Click the sheet for its actual pixels; click again to go back.</span></div></div>` : ""}
   </main>${about()}`;
 }
 function vWalk(){
   const W = D.walk;
-  return header("walk") + `<main class="wrap wide" style="max-width:1100px">${point("The place, walked: a throwaway prototype for testing the look on a real phone. It opens full screen. Drag to look, press and hold to walk. Use your browser's back to return here.")}
+  return header("walk") + `<main class="wrap wide" style="max-width:1100px">${point("The place, walked. It opens full screen; use your browser's back to return here. The station still has the old controls for now: drag to look, hold to walk.")}
     ${W.views.map(v=>`<div class="drow"><span class="t"><a href="walk/#${v.hash}">${esc(v.title)}</a></span><span class="c">${esc(v.line)}</span><span class="chips"><a href="walk/#${v.hash}-day">day</a><a href="walk/#${v.hash}-night">night</a></span></div>`).join("")}
-    <p class="hint" style="margin-top:16px">Inside it, the links at the foot switch between together, pump and slab, and between day and night. It is drawn live, so it needs a phone or computer from the last few years.</p>
-    ${D.controlsTest || DOC["concepts-controls"] ? `<h2 class="sec">The new controls</h2>
-      ${D.controlsTest ? `<a class="drow" href="controls-test/"><span class="t">Try the new controls (test page)</span><span class="c">A test of the gestures on stand-in shapes, not the station. Best on a phone. Opens full screen; use your browser's back to return.</span><span class="x">test page${D.controlsTest.changed ? " · " + esc(D.controlsTest.changed) : ""}</span></a>` : ""}
-      ${docRow("concepts-controls", "How you move and look, written out.")}` : ""}
-    <h2 class="sec">Which sheet goes with which view</h2>
-    ${D.sheets.filter(s=>s.views.length).map(s=>`<a class="drow" href="#sheet-${s.code}"><span class="t">Sheet ${esc(s.code)}</span><span class="c">${esc(s.title)}</span><span class="x">${s.views.join(" · ")}</span></a>`).join("")}
-    <p class="hint" style="margin-top:16px">Source: ${esc(W.path)} · last changed ${esc(W.changed)}</p>
+    ${D.controlsTest ? `<a class="drow" href="controls-test/"><span class="t">Try the new controls (test page)</span><span class="c">A test of the gestures on stand-in shapes, not the station. Best on a phone.</span></a>` : ""}
   </main>${about()}`;
 }
-function jumpList(d){ return (d.jump && d.jump.length > 3) ? `<details class="jump"><summary>Contents (${d.jump.length})</summary>${d.jump.map(h=>`<a href="#" data-h="${esc(h)}">${esc(h)}</a>`).join("")}</details>` : ""; }
-const BACK = {sheets:["#sheets","Sheets"], concept:["#concept","Concept"], scores:["#scores","Scores"], archive:["#archive","Archive"], owner:["#owner","Owner record"], elements:["#elements","Elements"], lights:["#lights","Lights"], jobs:["#jobs","Jobs"]};
-function vDoc(slug, o){ // o: {pt, top, noBack}
-  o = o || {}; const d = DOC[slug]; if (!d) return vMissing(slug);
-  const frames = d.stills.filter(n => !D.sheetStems.includes(n));
-  const sheet = D.sheets.find(s => s.doc === slug || s.judge === slug);
-  const b = sheet ? ["#sheet-" + sheet.code, "Sheet " + sheet.code] : BACK[d.sec];
-  return header(d.sec) + (o.noBack ? `<div class="wrap">${point(o.pt)}</div>` : backBar(b[0], b[1], o.pt || "A record the team keeps, rendered from the repo.")) + `<main class="wrap">${o.top||""}<div class="item">
-    <article class="doc-html" id="doc">${jumpList(d)}${d.html}</article>
-    <div class="aside">${label({code:d.kind, title:"", fields:[d.changed ? "last changed " + d.changed : "", "source " + d.path].filter(Boolean).join(" · ")})}</div></div>
-    ${frames.length ? `<h2 class="sec">Pictures this record names (${frames.length})</h2>${gallery(frames)}` : ""}
+const LISTS = [["elements","#elements","elements","Every thing the place has and what each one needs."],["lights","#lights","lights","Every real light in the place."]];
+function vList(key){
+  const d = D.docs[key]; if (!d) return null;
+  const tabs = LISTS.filter(l => D.docs[l[0]]);
+  const jump = (d.jump && d.jump.length > 3) ? `<details class="jump"><summary>Contents (${d.jump.length})</summary>${d.jump.map(h=>`<a href="#" data-h="${esc(h)}">${esc(h)}</a>`).join("")}</details>` : "";
+  const pt = key === "concept" ? "Left on: what the place is and what you do in it." : "The lists you are asked to approve. Against any line say wrong, missing or strike.";
+  return header("lists") + `<main class="wrap">${point(pt)}
+    <div class="chips" style="margin:0 0 20px">${tabs.map(l=>`<a class="${l[0]===key?"on":""}" href="${l[1]}">${l[2]}</a>`).join("")}${D.docs.concept ? `<a class="${key==="concept"?"on":""}" href="#concept">the concept</a>` : ""}</div>
+    <article class="doc-html" id="doc">${jump}${d.html}</article>
   </main>${about()}`;
 }
-function vConcept(){
-  const top = `<div class="wide" style="margin-bottom:22px">${docRow("concepts-00-shared", "The place itself: the lot, walking, the door, the world's edge, sound, twilight.")}${docRow("concepts-controls", "How you move and look: swipe, pinch, tilt.")}${docRow("concepts-coverage-05", "Every job walked against the concept.")}
-    ${D.earlier.map(s=>`<a class="drow" href="#sheet-${s.code}"><span class="t">Sheet ${esc(s.code)}</span><span class="c">${esc(s.title)}</span><span class="x">pictures</span></a>`).join("")}</div>`;
-  return vDoc("concepts-05-left-on", {noBack:true, top, pt:"Left on is the one concept: what the place is and what you do in it. The director scored it 9; you sent it back on the look, not the idea."});
-}
-function vOwner(n){
-  const O = D.owner;
-  const sec = s => `<section class="wsec" id="owner-${esc(s.n || "open")}"><h2>${s.n ? esc(s.n) + ". " : ""}${esc(s.title)}</h2><div class="doc-html">${s.html}</div></section>`;
-  return header("owner") + `<main class="wrap wide">${point("Everything you have said about this project, word for word, with the question each answer was given to. Newest first here; the file itself runs oldest first.")}
-    <div class="ink2" style="font-size:13px">source ${esc(O.path)} · last changed ${esc(O.changed)}</div>
-    <div class="doc-html">${O.intro}</div>
-    <details class="jump"><summary>Sections (${O.sections.length})</summary>${O.sections.map(s=>`<a href="#owner-${esc(s.n)}">${esc(s.n)}. ${esc(s.title)}</a>`).join("")}</details>
-    ${O.open ? sec(O.open) : ""}${O.sections.map(sec).join("")}
-  </main>${about()}`;
-}
-function vScores(){
-  const by = re => D.order.filter(s => re.test(DOC[s].rel)).sort((a,b)=>DOC[b].rel.localeCompare(DOC[a].rel, undefined, {numeric:true}));
-  const rows = (t, list) => list.length ? `<h2 class="sec">${t}</h2>${list.map(s=>docRow(s)).join("")}` : "";
-  const d = DOC["scores"];
-  return header("scores") + `<main class="wrap wide" style="max-width:1100px">${point("Every score the design director has given and every objection, in order, then the director's full write-ups. Directors judge; they decide nothing for you.")}
-    <article class="doc-html" id="doc" style="max-width:none">${d ? d.html : ""}</article>
-    ${rows("Checks of the sheets", by(/sheet-\d+-judge\.md$/))}
-    ${rows("Scores, round by round", by(/score-\d+\.md$/))}
-    ${rows("Steers", by(/steer-\d+\.md$/))}
-    ${rows("Other checks", by(/(?<!sheet-\d+)-judge\.md$/))}
-  </main>${about()}`;
-}
-function vHistory(){
-  const n = D.history.reduce((a,d)=>a+d.events.length,0);
-  return header("history") + `<main class="wrap wide">${point("What changed and when: every change saved to the repo, newest first.")}
-    <div class="ink2" style="font-size:13px">${n} changes · from git log</div>
-    ${D.history.map(d=>`<h2 class="sec">${esc(d.day)}</h2>${d.events.map(e=>`<div class="ev"><span class="t">${esc(e.t)}</span><span>${esc(e.s)}</span></div>`).join("")}`).join("")}
-  </main>${about()}`;
-}
-function vArchive(){
-  const pick = f => D.order.filter(s => DOC[s].sec === "archive" && f(DOC[s]));
-  const used = new Set();
-  const rows = (t, list) => { list.forEach(s=>used.add(s)); return list.length ? `<h2 class="sec">${t}</h2>${list.map(s=>docRow(s)).join("")}` : ""; };
-  const a = rows("Team notes", pick(d=>d.rel.startsWith("notes/"))), b = rows("The brief and the jam", pick(d=>["brief.md","jam.md"].includes(d.rel))),
-    c = rows("Earlier concepts, folded or merged into Left on", pick(d=>/^concepts\/0\d/.test(d.rel))), e = rows("The look test", pick(d=>/look-/.test(d.rel)));
-  const f = rows("Everything else", pick(d=>!used.has(d.slug)));
-  return header("archive") + `<main class="wrap wide" style="max-width:1100px">${point("Everything else the team has kept: working notes, the brief, the jam, earlier concepts and every still. Nothing here is waiting on you.")}
-    <h2 class="sec">Pictures</h2><a class="drow" href="#stills"><span class="t">All stills</span><span class="c">Every picture in concepts/stills: sheets, frames from the walk, tests.</span><span class="x">${Object.keys(ST).length} pictures</span></a>
-    ${b}${a}${c}${e}${f}
-  </main>${about()}`;
-}
-function vStills(){
-  const names = Object.keys(ST), used = new Set();
-  const grp = (t, f) => { const l = names.filter(n => !used.has(n) && f(n)); l.forEach(n=>used.add(n)); return l.length ? `<h2 class="sec">${t} (${l.length})</h2>${gallery(l)}` : ""; };
-  const a = grp("Sheets", n=>D.sheetStems.includes(n)), b = grp("Sheet 2: frames from the walk", n=>/^s2-/.test(n)), c = grp("Sheet 2: the director's own frames", n=>/^s2j-/.test(n)),
-    d = grp("Left on: frames from the walk", n=>/^lo-/.test(n)), e = grp("Other", n=>true);
-  return header("archive") + backBar("#archive", "Archive", "Every picture the team has kept, as it is in the repo. Tap one to see it large.") + `<main class="wrap">${a}${b}${c}${d}${e}</main>${about()}`;
-}
-function vStill(name){
-  const s = ST[name]; if (!s) return vMissing(name);
-  const sh = D.sheets.concat(D.earlier).find(x => x.images.includes(name));
-  return header("archive") + backBar("#stills", "All stills", "One picture from the team's work. Tap it to see it large.") + `<main class="wrap item">
-    <div><div class="still"><img src="${s.src}" width="${s.w}" height="${s.h}" alt="${esc(name)}"></div></div>
-    <div class="aside">${label({code:name, title:"", fields:`still · ${s.w} × ${s.h} · source ${s.path}`})}
-      ${sh ? `<p><a class="btn" href="#sheet-${sh.code}">Open Sheet ${esc(sh.code)} ›</a></p>` : ""}
-      ${s.docs.length ? `<h2 class="sec">Named in</h2>${s.docs.map(x=>`<a class="drow" style="grid-template-columns:minmax(0,1fr)" href="${DOC[x].route}"><span class="t">${esc(DOC[x].title)}</span></a>`).join("")}` : ""}</div>
-  </main>${about()}`;
-}
-function vLicenses(){
-  return header("") + `<main class="wrap wide">${point("Open-source code this site uses, with its licence.")}${(D.licenses||[]).map(l=>`<h2 class="sec">${esc(l.name)}</h2><p><a class="u" href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.url)}</a></p><pre style="white-space:pre-wrap;font-size:12.5px">${esc(l.text)}</pre>`).join("")}</main>${about()}`;
-}
-function vMissing(code){ return header("") + `<main class="wrap"><p>${esc(code)} isn't on this site. <a class="u" href="#now">Back to the start</a></p></main>`; }
 
-/* ------- router */
+/* ------- router. Addresses of pages the site no longer has land on "now". */
 function route(){
-  let h = (location.hash || "").slice(1), html, m, after = null;
+  let h = (location.hash || "").slice(1), html = null, m;
   try { h = decodeURIComponent(h); } catch(e){}
-  if (h === "" || h === "now" || h === "home") html = vNow();
-  else if (h === "sheets") html = vSheets();
+  if (h === "sheets") html = vSheets();
   else if ((m = h.match(/^sheet-(\w+)$/))) html = vSheet(m[1]);
   else if (h === "walk") html = vWalk();
-  else if (h === "concept") html = vConcept();
-  else if (h === "elements") html = vDoc("elements", {noBack:true, pt:"The list you asked for before anything is drawn: every thing the place has and what each one needs. Against any line say wrong, missing or strike."});
-  else if (h === "lights") html = vDoc("lights", {noBack:true, pt:"Every real light in the place, listed the way the elements are. Against any line say wrong, missing or strike."});
-  else if (h === "jobs") html = vDoc("jobs", {noBack:true, pt:"What a visitor comes to do, and what you need the site to do. Every concept is checked against these."});
-  else if (h === "owner") html = vOwner();
-  else if ((m = h.match(/^owner-(\w+)$/))) { html = vOwner(); after = "owner-" + m[1]; }
-  else if (h === "scores") html = vScores();
-  else if (h === "history") html = vHistory();
-  else if (h === "archive") html = vArchive();
-  else if (h === "stills") html = vStills();
-  else if ((m = h.match(/^still-([\w-]+)$/))) html = vStill(m[1]);
-  else if ((m = h.match(/^doc-([\w-]+)$/))) html = DOC[m[1]] && DOC[m[1]].route !== "#doc-" + m[1] ? (location.replace(DOC[m[1]].route), "") : vDoc(m[1]);
-  else if (h === "licenses") html = vLicenses();
-  else html = vMissing(h);
+  else if (h === "lists" || h === "elements") html = vList("elements") || vList("lights");
+  else if (h === "lights" || h === "concept") html = vList(h);
+  if (html === null) { if (h && h !== "now") { try { history.replaceState(null, "", "#now"); } catch(e){} } html = vNow(); }
   $app.innerHTML = html;
   wire();
-  return after;
 }
-function go(){ const a = route(); const e = a && document.getElementById(a); if (e) e.scrollIntoView(); else window.scrollTo(0, 0); }
-window.addEventListener("hashchange", go);
+window.addEventListener("hashchange", () => { route(); window.scrollTo(0, 0); });
 
 /* ------- wiring per view */
 function wire(){
-  const nv = document.querySelector("nav.filters"), on = nv && nv.querySelector("a.on");
-  if (nv){ const fade = () => nv.classList.toggle("fade", nv.scrollLeft + nv.clientWidth < nv.scrollWidth - 4);
-    if (on && nv.scrollWidth > nv.clientWidth) nv.scrollLeft = Math.max(0, on.offsetLeft - nv.offsetLeft - 16);
-    fade(); nv.onscroll = fade; }
   document.querySelectorAll("[data-copy]").forEach(b => b.onclick = () => {
     try { navigator.clipboard.writeText(location.href).then(() => { b.textContent = "copied"; }, () => { b.textContent = "copy the address bar"; }); } catch(e){ b.textContent = "copy the address bar"; }
   });
   document.querySelectorAll(".sheet").forEach(v => v.onclick = () => { if (window.matchMedia("(min-width: 700px)").matches) v.classList.toggle("z"); });
   document.querySelectorAll("[data-h]").forEach(a => a.onclick = ev => { ev.preventDefault();
     const t = [...document.querySelectorAll("#doc h1,#doc h2,#doc h3")].find(x => x.textContent.trim() === a.dataset.h); if (t) t.scrollIntoView(); });
-  document.querySelectorAll(".doc-html pre").forEach(p => {
-    let fs = 12.5;
-    while (p.scrollWidth > p.clientWidth + 1 && fs > 9.5){ fs -= 0.5; p.style.fontSize = fs + "px"; }
-  });
   wireLightbox();
 }
-const LB_SKIP = ".case, .nowcard, .sheet";  // navigation cards keep their own taps; a sheet is read in the page
+const LB_SKIP = ".case, .nowcard, .sheet";  // cards keep their own taps; a tall sheet is read in the page
 function wireLightbox(){
   const imgs = [...document.querySelectorAll("main img")].filter(im => !im.closest(LB_SKIP));
   const items = imgs.map(im => {
-    const w = +im.dataset.w || +im.getAttribute("width") || im.naturalWidth || 1170, h = +im.dataset.h || +im.getAttribute("height") || im.naturalHeight || 1992;
     const fig = im.closest("figure"), cap = fig && fig.querySelector("figcaption");
-    return {src: im.dataset.full || im.getAttribute("src"), alt: im.alt || "", caption: (cap ? cap.textContent : im.alt || "").trim(), width: w, height: h};
+    return {src: im.getAttribute("src"), alt: im.alt || "", caption: (cap ? cap.textContent : im.alt || "").trim(), width: +im.getAttribute("width") || 1170, height: +im.getAttribute("height") || 1992};
   });
   const set = () => window.BELightbox.set(items, imgs);
   if (window.BELightbox) set(); else document.addEventListener("belightbox-ready", set, {once: true});
 }
-const first = route();
-if (first) setTimeout(() => { const e = document.getElementById(first); if (e) e.scrollIntoView(); }, 30);
+route();
 })();
 </script>
 <script src="media/vendor/lightbox.js" defer></script>
