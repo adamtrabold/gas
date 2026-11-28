@@ -3,10 +3,10 @@
 
 ## Latest
 
+- Night: you picked the dark dots, less gritty, with no moire. That middle ground is being worked out now.
+- Then the environment: the road, the desert, the horizon and the sky, by day and at night.
 - The station has the new controls: swipe to look, pinch to move, two fingers to slide, tap to go.
-- Shade, shadows and night are dots. Night is darker, lit by one canopy lamp and a big moon behind you.
-- The sky and the land around aren't drawn yet. That's next.
 
 ## One thing to try
 
-Open the station. Tap "night, dark dots", then "night, light dots". Which one is night?
+Nothing right now.
