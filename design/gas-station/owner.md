@@ -310,6 +310,13 @@ Told the nav would be cut to: now · sheets · walk it · lists —
 
 (The nav item "lists" is to be called "elements". Orchestrator's reading: one page, the element list, with the lights as part of it rather than a second list beside it. Unconfirmed.)
 
+## 37. No sheets; what the site is for (verbatim)
+
+Asked whether "sheets" is wrong as a word or as the whole idea of separate numbered pages —
+"Sheets is wrong as a concept there's no reason for separate numbered pages really this site is for the prototypes and the logic and architecture and systems and stuff."
+
+(So: no more sheets, in any format. The site is for the prototypes — things to try — and for the logic, architecture and systems: how the place works, what it is made of, its lights, its controls. The look is to be judged in the prototypes themselves, not in composed pages of drawings. This supersedes section 20's "future sheets should just be images on a webpage with web text" and retires Sheet 3 as a deliverable; the work in it goes into the prototype.)
+
 ## Still open (asked, not answered)
 
 - Should the time of day do something (choose which work shows), or only change how the place looks and what odd things happen? (Related: he said "no" to choosing what shows in office hours versus at night.)
