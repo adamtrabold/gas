@@ -36,6 +36,8 @@ Dials (query): `lampi` 55, `lampcone` 64, `lamppen` .45, `lampreach` 11, `moon` 
 - **There is a horizon.** Moonlit ground pales with distance (the same stipple thinning dot by dot, from 12 m out to bare paper), and past the edge of the ground mesh the last pass paints paper below eye level. So: black sky, a razor horizon, a pale floor, stipple thickening toward your feet. The far shade stays dark and snaps to solid black shapes.
 - The frame from the opening stand, turned round: `night-fix-3`.
 
+**After the director's look ("Night is now night"; one fix; both solo calls accepted for this test):** the pale floor and the painted horizon are gone. Far ground at night ends in black in both nights: `nMap` takes the tone to black (or the paper to none) with `gFar` (5 m to 32 m), dark dots adds a solid fill over the last stretch, and the last pass makes everything past 240 m black. Everything in this section about a pale floor and a horizon is superseded. Day frames and the viewer were compared pixel for pixel before and after: identical. "Always epic" does not mean always low: the low moon is this test's fixed hour, not a rule.
+
 ## C. The hairline
 
 It was the edge of the ground mesh (360 m out), where the far ground was drawn as itself against the black sky. At night the last pass now makes everything past 240 m the pale floor, and paints sky pixels below eye level the same. `night-fix-5` (pump) and `-6` (slab, light dots): no line in the sky.

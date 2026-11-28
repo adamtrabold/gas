@@ -8,8 +8,8 @@ Visual designer. Short on purpose. The owner judges the prototype itself, `sketc
 |---|---|---|
 | **A. Night is darker than day, both ways** | The canopy lamp is a weak bulb throwing a pool downward: full for about 3 m, gone by 7 m, about 2 m past the canopy's edge, a metre up the wall. Real shadows in it, his included. Beyond it only the moon: open ground a little over half dark, the moon's shade the darkest thing there is. The canopy's underside is black. In dark dots the dark is now a hand's packed stipple, not a ruled screen | `night-fix-1` (dark dots), `night-fix-2` (light dots): the opening stand |
 | **Rows of half-made dots on the ground** | Dark dots: gone. The ruled screen broke into rows at night's tones, so night's dark is laid as jittered dots, and their order was changed so the tone stays even along the ground. Light dots: with the light right its dots are small and apart, and the rows are faint; left as it was | `night-fix-4` (dark), `night-fix-4b` (light) |
-| **B. The moon is epic** | 30 % of the screen's width (was a sixth), ringed by two rows of dots, 24 degrees up in the south-east so it sits in one frame with the ground it lights. A pale moonlit floor runs to a true horizon under a black sky | `night-fix-3`: the opening stand, turned round |
-| **C. No hairline** | It was the far edge of the ground. At night the far floor is now pale to the horizon | `night-fix-5` (pump), `night-fix-6` (slab, light dots) |
+| **B. The moon is epic** | 30 % of the screen's width (was a sixth), ringed by two rows of dots, 24 degrees up in the south-east so it sits in one frame with the ground it lights. **The night of these views is a fixed hour: the hour the rising moon stands 24 degrees high (about 9 pm in `together`, 7 pm in `pump` and `slab`).** It is a choice for this test, not a rule: "always epic" does not mean always low (the director). The moonlit ground reads near you and the far ground ends in black, in both nights | `night-fix-3`: the opening stand, turned round |
+| **C. No hairline** | It was the far edge of the ground. At night the far ground now ends in black | `night-fix-5` (pump), `night-fix-6` (slab, light dots) |
 | **D. The controls** | Ported from the approved test page. Drag-to-look and hold-to-walk are gone. The foot words say `swipe to look · pinch to move · tap to go` | Below |
 
 Day is untouched.
@@ -97,9 +97,8 @@ Frame to frame both hold. **Over half a metre the dark stipple re-dots: one poin
 
 - **Under the lamp, dots are cut by the shadow's edge**, his included: the lamp's shadows are worked out per pixel and are soft; the moon's and sun's are per dot. Next after the environment's first turn.
 - **Night sky is flat black**, moon aside: the top third of the opening frame. Sky, stars and clouds come with the environment. Tell him so in half a sentence.
-- **The far floor at night is a blank pale band** under the horizon. It wants mountains in front of it.
-- **Light dots has a faint grey strip** just under the horizon.
-- **The moon is low at every hour** in these fixed nights. When the clock is real it will climb out of the frame unless we say otherwise.
+- **Far ground at night ends in black** (the director's fix, after his look: a pale band at the horizon read as a glow or a fault). The moonlit ground goes dark from about 5 m out and is black by about 30 m, so there is no horizon line at night until the environment gives one. A lit patch seen from more than about 30 m away would be lost too; nothing in these views is that far off.
+- **The moon's hour is fixed** in these views (above). When the clock is real it follows `lights.md`'s path.
 - **A pump's own shading is still drawn once.** The director has ruled that real light wins; it goes in with the environment. The code is three lines from it (`notes/visual.md`).
 - **Plates and number windows at night** are still switched by view, not by light.
 - **Bands on the ground by day** (halftone): as before.
@@ -109,7 +108,7 @@ Frame to frame both hold. **Over half a metre the dark stipple re-dots: one poin
 ## Stills kept as evidence
 
 Walked frames at true density, 8 shades, nothing composed.
-- Night, this turn: `night-fix-1` opening stand, dark dots · `-2` the same, light dots · `-3` the moon · `-4` the ground looked along, dark dots · `-4b` the same, light dots · `-5` the pump alone at night · `-6` the slab, light dots.
+- Night, this turn: `night-fix-1` opening stand, dark dots · `-2` the same, light dots · `-3` the moon (re-taken after the far-ground fix, as were `-5` and `-6`) · `-4` the ground looked along, dark dots · `-4b` the same, light dots · `-5` the pump alone at night · `-6` the slab, light dots.
 - Day and the viewer, from last turn and still true: `dots-together-day`, `dots-shade-edge`, `dots-pump-in-shade`, `dots-your-shadow`, `dots-wall-stipple`, `dots-view-pump`, `dots-view-canopy`, `dots-view-slab`.
 - Deleted as superseded: the five `dots-*` night stills. The director's own `lj2-*` are his "before".
 
