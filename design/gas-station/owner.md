@@ -333,6 +333,12 @@ Asked whether "sheets" is wrong as a word or as the whole idea of separate numbe
 
 (An element for the interior, specified by him: a framed "employee of the month" on the wall — a portrait of Art Bell, with the name "Art" on the frame's name plaque. Art Bell was the late-night radio host of Coast to Coast AM, broadcast from the Nevada desert and known for its callers on UFOs and the unexplained — so it sits with the alien Easter eggs he asked for at the start, and with the radio already on the counter. Orchestrator's note for the team: the portrait should be drawn fresh in the place's own hand, not traced from someone's photograph.)
 
+## 40. Pinch, again (verbatim)
+
+Asked whether the pinch works now on the controls test page: "No pinch doesn't work because press and hold is still on"
+
+(The controls test page as published has no press-and-hold: holding does nothing there. The station still has the old controls — drag to look, hold to walk — and no pinch at all. So he may have tried the station rather than the test page, or his phone may still be showing an older copy. Asked which.)
+
 ## Still open (asked, not answered)
 
 - Should the time of day do something (choose which work shows), or only change how the place looks and what odd things happen? (Related: he said "no" to choosing what shows in office hours versus at night.)
