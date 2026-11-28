@@ -3,12 +3,12 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>controls test</title>
 <style>
-  html,body{margin:0;height:100%;background:#efe9dc;overflow:hidden;overscroll-behavior:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}
+  html,body{margin:0;height:100%;background:#efe9dc;overflow:hidden;overscroll-behavior:none;touch-action:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}
   canvas{display:block;position:fixed;left:0;top:0;touch-action:none;outline:none}
   #note{position:fixed;left:0;right:0;bottom:calc(40px + env(safe-area-inset-bottom,0px));text-align:center;font:12px/2 "Courier New",monospace;color:#6d675c;pointer-events:none}
   #note b{font-weight:normal;transition:opacity 1.2s}#note b.done{opacity:0}
   #note button{all:unset;pointer-events:auto;touch-action:manipulation;padding:10px 6px;cursor:pointer}#note button.on{text-decoration:underline}
-  #dbg{position:fixed;left:8px;top:8px;font:10px monospace;color:#9a9488;pointer-events:none;white-space:pre}
+  #dbg{position:fixed;left:8px;top:calc(8px + env(safe-area-inset-top,0px));font:11px/1.5 monospace;color:#5d574c;pointer-events:none;white-space:pre}
   #stroke{position:fixed;inset:0;background:#141312;transform:scaleX(0);transform-origin:left;pointer-events:none}
 </style>
 <div id="note"><b id="h1">swipe</b> · <b id="h2">pinch</b><span id="tiltwrap" hidden> · <button id="tilt">tilt</button></span></div>
@@ -16,7 +16,7 @@
 <script type="module">
 // Throwaway. A test of concepts/controls.md only: crude boxes on the systems lot, no look, no lamp, no sound.
 // Swipe turns: you look the way you swipe (swipe right, look right; swipe up, look up). The owner on the first version, where the picture followed the finger: "Swiping is backwards". Pinch moves you along the line to whatever was between your fingers. Tap goes there. No press and hold.
-// Switches after the #, joined by '&':  k=1.5 (pinch gain)  turn=follow (the picture follows the finger, both ways: the first version)  updown=follow (only up and down follow the finger, as the first walkable prototype did)  tap=0 (no tap-to-go)  dbg=1
+// Switches after the #, joined by '&':  k=1.5 (pinch gain)  turn=follow (the picture follows the finger, both ways: the first version)  updown=follow (only up and down follow the finger, as the first walkable prototype did)  tap=0 (no tap-to-go)  debug (a readout top left: fingers the page sees, the gesture, the last events. for a screenshot when something fails)
 import * as T from '../ink-is-shadow/vendor/three.module.min.js';
 const H = new URLSearchParams(location.hash.slice(1)), num = (k, d) => H.has(k) ? +H.get(k) : d;
 const K = num('k', 1.5), GX = H.get('turn') === 'follow' ? 1 : -1, GY = H.get('turn') === 'follow' || H.get('updown') === 'follow' ? 1 : -1, REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches || H.has('reduced');
@@ -82,30 +82,44 @@ addEventListener('popstate', () => { if (inside) { inside = false; EYE.x = 0; EY
 const atDoorStop = () => DOORS.find(d => Math.abs(EYE.x - d.x) < .7 && Math.abs(-EYE.z - d.n) < STOP + .5);
 const facing = d => { const dn = d.n - (-EYE.z); return Math.cos(heading) * Math.sign(dn) > .5; };       // looking through it
 // ---- fingers. one turns, two move, never both
-const pts = new Map(); let mode = null, sw = null, pin = null, glide = [0, 0], go = null, lean = 0, did = { swipe: 0, pinch: 0 };
+let mode = null, sw = null, pin = null, glide = [0, 0], go = null, lean = 0, did = { swipe: 0, pinch: 0 };
 const turnBy = (dx, dy) => { heading += GX * dx * (90 * RAD / innerWidth); pitch = Math.max(-60 * RAD, Math.min(75 * RAD, pitch + GY * dy * (60 * RAD / innerHeight))); };
-['touchstart', 'touchmove', 'touchend', 'touchcancel'].forEach(t => CV.addEventListener(t, e => { if (e.cancelable) e.preventDefault(); }, { passive: false }));
-['contextmenu', 'selectstart', 'dragstart', 'gesturestart', 'gesturechange', 'gestureend'].forEach(t => addEventListener(t, e => e.preventDefault(), { capture: true }));
-function startPinch() { const [a, b] = [...pts.values()], mx = (a.x + b.x) / 2, my = (a.y + b.y) / 2, an = under(mx, my);
-  pin = { base: Math.max(60, Math.hypot(a.x - b.x, a.y - b.y)), an, x: EYE.x, n: -EYE.z, live: false, s: 1, door: atDoorStop(), crossed: false, gy: null }; mode = 'pinch'; glide = [0, 0]; go = null; }
+// The page, not only the picture, refuses the browser's own pinch-zoom, double-tap zoom, long-press and Safari's gesture events.
+['contextmenu', 'selectstart', 'dragstart', 'gesturestart', 'gesturechange', 'gestureend', 'dblclick'].forEach(t => addEventListener(t, e => { log(t); e.preventDefault(); }, { capture: true }));
+document.addEventListener('touchmove', e => { if (e.cancelable) e.preventDefault(); }, { passive: false, capture: true });
+document.addEventListener('touchstart', e => { if (e.touches.length > 1 && e.cancelable) e.preventDefault(); }, { passive: false, capture: true });
+const evs = []; function log(t) { if (evs[evs.length - 1]?.[0] === t) evs[evs.length - 1][1]++; else { evs.push([t, 1]); if (evs.length > 8) evs.shift(); } }
+function startPinch(a, b) { const mx = (a.x + b.x) / 2, my = (a.y + b.y) / 2, an = under(mx, my);
+  pin = { base: Math.max(60, Math.hypot(a.x - b.x, a.y - b.y)), an, x: EYE.x, n: -EYE.z, live: false, s: 1, door: atDoorStop(), crossed: false }; mode = 'pinch'; sw = null; glide = [0, 0]; go = null; }
 function pinchTo(s) { const p = pin; if (!p.live) { if (Math.abs(Math.log(s)) < .04) return; p.live = true; p.s0 = s; } s = s / p.s0; p.s = s;
   if (p.door && s > 1.15 && !p.crossed && facing(p.door) && p.an.flat[1] * (p.door.n + EYE.z) > 0) { p.crossed = true; cross(p.door); return; } if (p.crossed) return;
-  const D = Math.max(DMIN, Math.min(DMAX, p.an.d)); let t = s >= 1 ? D * (1 - Math.pow(s, -K)) : -D * (1 / s - 1);   // in: a little faster than the fingers. out: exactly as a photo shrinks if (REDUCED) t = s > 1.25 ? D / 2 : s < .8 ? -D : 0;
+  const D = Math.max(DMIN, Math.min(DMAX, p.an.d)); let t = s >= 1 ? D * (1 - Math.pow(s, -K)) : -D * (1 / s - 1);   // in: a little faster than the fingers. out: exactly as a photo shrinks
+  if (REDUCED) t = s > 1.25 ? D / 2 : s < .8 ? -D : 0;
   let over = 0; if (p.an.kind === 'solid') { const lim = Math.max(0, p.an.d - STOP); if (t > lim) { over = t - lim; t = lim; } } t = Math.max(-TMAX, t);
   const m = march(p.x, p.n, p.an.flat[0], p.an.flat[1], t); pin.to = m; pin.lean = .25 * (1 - Math.exp(-over / 2)); if (m.atDoor) pin.lean = 0;
   if (Math.abs(t) > .3 && !did.pinch) { did.pinch = 1; document.getElementById('h2').classList.add('done'); } }
-CV.addEventListener('pointerdown', e => { if (pts.size >= 2) return; try { CV.setPointerCapture(e.pointerId); } catch (_) { } pts.set(e.pointerId, { x: e.clientX, y: e.clientY });
-  if (pts.size === 1) { sw = { x: e.clientX, y: e.clientY, x0: e.clientX, y0: e.clientY, t0: performance.now(), moved: false, v: [0, 0], lt: performance.now() }; mode = 'swipe'; glide = [0, 0]; if (go) go = null; }
-  else startPinch(); });
-CV.addEventListener('pointermove', e => { const p = pts.get(e.pointerId); if (!p) return; p.x = e.clientX; p.y = e.clientY;
-  if (mode === 'pinch') { const [a, b] = [...pts.values()]; pinchTo(Math.hypot(a.x - b.x, a.y - b.y) / pin.base); }
-  else if (mode === 'swipe' && sw) { if (!sw.moved) { if (Math.hypot(p.x - sw.x0, p.y - sw.y0) < 10) return; sw.moved = true; sw.x = p.x; sw.y = p.y; }
-    const dx = p.x - sw.x, dy = p.y - sw.y, now = performance.now(), dt = Math.max(1, now - sw.lt); turnBy(dx, dy); sw.v = [dx / dt * 1000 * .5 + sw.v[0] * .5, dy / dt * 1000 * .5 + sw.v[1] * .5]; sw.x = p.x; sw.y = p.y; sw.lt = now;
-    if (!did.swipe && Math.abs(p.x - sw.x0) > 40) { did.swipe = 1; document.getElementById('h1').classList.add('done'); } } });
-function lift(e) { if (!pts.has(e.pointerId)) return; pts.delete(e.pointerId);
-  if (mode === 'pinch') { if (pin?.to && !pin.crossed) { EYE.x = pin.to.x; EYE.z = -pin.to.n; } pin = null; lean = 0; mode = pts.size ? 'after' : null; return; }       // the finger that is left does nothing until it lifts too
-  if (mode === 'swipe' && sw) { const now = performance.now(); if (!sw.moved && now - sw.t0 < 500 && e.type === 'pointerup') tap(sw.x0, sw.y0); else if (sw.moved && now - sw.lt < 60 && !REDUCED) glide = sw.v.slice(); }
-  if (!pts.size) mode = null; sw = null; }
+function endPinch() { if (pin?.to && !pin.crossed) { EYE.x = pin.to.x; EYE.z = -pin.to.n; } pin = null; lean = 0; }
+function startSwipe(x, y) { sw = { x, y, x0: x, y0: y, t0: performance.now(), moved: false, v: [0, 0], lt: performance.now() }; mode = 'swipe'; glide = [0, 0]; go = null; }
+function swipeTo(x, y) { if (!sw) return; if (!sw.moved) { if (Math.hypot(x - sw.x0, y - sw.y0) < 10) return; sw.moved = true; sw.x = x; sw.y = y; }
+  const dx = x - sw.x, dy = y - sw.y, now = performance.now(), dt = Math.max(1, now - sw.lt); turnBy(dx, dy); sw.v = [dx / dt * 1000 * .5 + sw.v[0] * .5, dy / dt * 1000 * .5 + sw.v[1] * .5]; sw.x = x; sw.y = y; sw.lt = now;
+  if (!did.swipe && Math.abs(x - sw.x0) > 40) { did.swipe = 1; document.getElementById('h1').classList.add('done'); } }
+function endSwipe(tapOK) { if (!sw) return; const now = performance.now(); if (!sw.moved && now - sw.t0 < 500 && tapOK) tap(sw.x0, sw.y0); else if (sw.moved && now - sw.lt < 60 && !REDUCED) glide = sw.v.slice(); sw = null; }
+// ---- fingers, straight from touch events. Every touch event carries the whole list of fingers that are down (e.touches), so the gesture is worked out
+// from that list each time and never from counting downs and ups. If a browser swallows the second finger's "start" (iOS does, when it suspects a double tap),
+// the very next "move" still shows two fingers and the pinch begins there. Pointer events are used for the mouse and pen only.
+let nT = 0;
+function onTouch(e) { log(e.type); if (e.cancelable) e.preventDefault(); const T = e.touches; nT = T.length;
+  if (T.length >= 2) { const a = { x: T[0].clientX, y: T[0].clientY }, b = { x: T[1].clientX, y: T[1].clientY };
+    if (mode !== 'pinch') startPinch(a, b); else pinchTo(Math.hypot(a.x - b.x, a.y - b.y) / pin.base); return; }
+  if (T.length === 1) { const x = T[0].clientX, y = T[0].clientY;
+    if (mode === 'pinch') { endPinch(); mode = 'after'; return; }                 // one of two lifted: the one that is left does nothing until it lifts too
+    if (mode === 'after') return; if (mode !== 'swipe' || !sw) return startSwipe(x, y); swipeTo(x, y); return; }
+  if (mode === 'pinch') endPinch(); else if (mode === 'swipe') endSwipe(e.type === 'touchend'); mode = null; }
+['touchstart', 'touchmove', 'touchend', 'touchcancel'].forEach(t => CV.addEventListener(t, onTouch, { passive: false }));
+// ---- mouse and pen: drag turns
+CV.addEventListener('pointerdown', e => { if (e.pointerType === 'touch') return; log('pointerdown'); try { CV.setPointerCapture(e.pointerId); } catch (_) { } startSwipe(e.clientX, e.clientY); sw.id = e.pointerId; });
+CV.addEventListener('pointermove', e => { if (e.pointerType === 'touch' || !sw || sw.id !== e.pointerId) return; swipeTo(e.clientX, e.clientY); });
+const lift = e => { if (e.pointerType === 'touch' || !sw || sw.id !== e.pointerId) return; log(e.type); endSwipe(e.type === 'pointerup'); mode = null; };
 CV.addEventListener('pointerup', lift); CV.addEventListener('pointercancel', lift);
 // ---- tap: use it if you're at it, else go there
 function tap(cx, cy) { if (H.get('tap') === '0') return; const an = under(cx, cy); if (an.kind === 'none' || an.d > DMAX) return;
@@ -116,7 +130,7 @@ function tap(cx, cy) { if (H.get('tap') === '0') return; const an = under(cx, cy
 // ---- mouse wheel and trackpad pinch: the same move, anchored on the pointer
 let wh = null; CV.addEventListener('wheel', e => { e.preventDefault(); const now = performance.now();
   if (!e.ctrlKey && Math.abs(e.deltaX) > Math.abs(e.deltaY)) { heading -= e.deltaX * .5 * (90 * RAD / innerWidth); return; }
-  if (!wh || now - wh.t > 250) { pts.clear(); pin = { base: 1, an: under(e.clientX, e.clientY), x: EYE.x, n: -EYE.z, live: true, s0: 1, door: atDoorStop(), crossed: false }; wh = { ls: 0 }; go = null; }
+  if (!wh || now - wh.t > 250) { pin = { base: 1, an: under(e.clientX, e.clientY), x: EYE.x, n: -EYE.z, live: true, s0: 1, door: atDoorStop(), crossed: false }; wh = { ls: 0 }; go = null; }
   wh.t = now; wh.ls -= e.deltaY * (e.ctrlKey ? .01 : .0022); pinchTo(Math.exp(wh.ls)); if (pin.to) { EYE.x += (pin.to.x - EYE.x); EYE.z += (-pin.to.n - EYE.z); } }, { passive: false });
 // ---- keys: holding a key is fine on a keyboard. arrows / WASD walk and turn; Enter at a door goes through; Escape puts you outside
 const keys = {}; let pushT = 0; addEventListener('keydown', e => { if (e.ctrlKey || e.metaKey || e.altKey) return; keys[e.key.toLowerCase()] = 1; if (e.key.startsWith('Arrow') || e.key === ' ') e.preventDefault();
@@ -128,7 +142,7 @@ const needAsk = typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOr
 const SLACK = .75 * RAD, zee = new T.Vector3(0, 0, 1), q1 = new T.Quaternion(-Math.SQRT1_2, 0, 0, Math.SQRT1_2), eu = new T.Euler(), qq = new T.Quaternion(), q0 = new T.Quaternion();
 function onTilt(e) { if (e.alpha == null) return; gotEvent = true; if (!tiltOn) return; const o = (screen.orientation?.angle || 0) * RAD;
   eu.set(e.beta * RAD, e.alpha * RAD, -e.gamma * RAD, 'YXZ'); qq.setFromEuler(eu).multiply(q1).multiply(q0.setFromAxisAngle(zee, -o)); const f = new T.Vector3(0, 0, -1).applyQuaternion(qq);
-  const yaw = Math.atan2(-f.x, -f.z), pit = Math.asin(Math.max(-1, Math.min(1, f.y))); if (!gRef || mode === 'pinch' || Math.abs(pit) > 80 * RAD) { gRef = [yaw, pit]; return; }
+  const yaw = Math.atan2(-f.x, -f.z), pit = Math.asin(Math.max(-1, Math.min(1, f.y))); if (!gRef || mode === 'pinch' || mode === 'after' || Math.abs(pit) > 80 * RAD) { gRef = [yaw, pit]; return; }
   let dy = yaw - gRef[0]; dy = Math.atan2(Math.sin(dy), Math.cos(dy)); let dp = pit - gRef[1];
   if (Math.abs(dy) > SLACK) { const m = dy - Math.sign(dy) * SLACK; heading += m; gRef[0] += m; } if (Math.abs(dp) > SLACK) { const m = dp - Math.sign(dp) * SLACK; pitch = Math.max(-60 * RAD, Math.min(75 * RAD, pitch + m)); gRef[1] += m; } }
 function setTilt(on) { tiltOn = on; gRef = null; tiltB.classList.toggle('on', on); try { localStorage.tilt = on ? 1 : 0; } catch (_) { } }
@@ -143,14 +157,14 @@ function size() { R.setPixelRatio(Math.min(2, devicePixelRatio)); R.setSize(inne
 let last = performance.now(); const dbg = document.getElementById('dbg');
 function step(now) { const dt = Math.min(.05, (now - last) / 1000); last = now;
   if (pin?.to && !pin.crossed) { const a = REDUCED || wh && now - wh.t < 300 ? 1 : 1 - Math.exp(-dt / .06); EYE.x += (pin.to.x - EYE.x) * a; EYE.z += (-pin.to.n - EYE.z) * a; lean += ((pin.lean || 0) - lean) * a; lastMoved = now; } else lean += (0 - lean) * (1 - Math.exp(-dt / .05));
-  if (wh && now - wh.t > 250 && !pts.size) { pin = null; wh = null; }
+  if (wh && now - wh.t > 250 && mode !== 'pinch') { pin = null; wh = null; }
   if (glide[0] || glide[1]) { turnBy(glide[0] * dt, glide[1] * dt); const k = Math.pow(.5, dt / .12); glide[0] *= k; glide[1] *= k; if (Math.hypot(...glide) < 20) glide = [0, 0]; }
   if (go) { const u = Math.min(1, (now - go.t0) / go.dur), e = u * u * (3 - 2 * u); EYE.x = go.x0 + (go.x1 - go.x0) * e; EYE.z = -(go.n0 + (go.n1 - go.n0) * e); lastMoved = now; if (u >= 1) go = null; }
   const fwd = (keys['w'] || keys['arrowup'] ? 1 : 0) - (keys['s'] || keys['arrowdown'] ? 1 : 0), trn = (keys['a'] || keys['arrowleft'] ? 1 : 0) - (keys['d'] || keys['arrowright'] ? 1 : 0); heading += trn * 90 * RAD * dt;
   if (fwd) { const m = march(EYE.x, -EYE.z, -Math.sin(heading), Math.cos(heading), 4 * dt * fwd); EYE.x = m.x; EYE.z = -m.n; lastMoved = now; go = null; const d = atDoorStop(); if (m.atDoor || (d && fwd > 0 && facing(d) && Math.hypot(m.x - EYE.x, m.n + EYE.z) < .01)) { pushT += dt; if (pushT > .5) { cross(d || m.atDoor); pushT = 0; } } else pushT = 0; } else pushT = 0;
   outside.visible = !inside; insideG.visible = inside;
   cam.position.set(EYE.x - Math.sin(heading) * lean, EYE.y, EYE.z - Math.cos(heading) * lean); cam.rotation.set(pitch, heading, 0, 'YXZ'); cam.updateMatrixWorld();
-  if (H.has('dbg')) dbg.textContent = `x ${EYE.x.toFixed(1)}  n ${(-EYE.z).toFixed(1)}  ${inside ? 'inside' : 'outside'}\nstill ${((now - lastMoved) / 1000).toFixed(0)} s\n${pin ? 'pinch ' + pin.an.kind + ' at ' + pin.an.d.toFixed(1) + ' m  x' + pin.s.toFixed(2) : ''}`;
+  if (H.has('debug') || H.has('dbg')) dbg.textContent = `fingers ${nT}   mode ${mode || '-'}\n${pin ? 'pinch on ' + pin.an.kind + ' at ' + pin.an.d.toFixed(1) + ' m   x' + pin.s.toFixed(2) + (pin.live ? '' : ' (waiting)') : 'no pinch'}\nevents ${evs.map(v => v[0].replace('touch', 't-') + (v[1] > 1 ? '×' + v[1] : '')).join(' ')}\nyou ${EYE.x.toFixed(1)} east ${(-EYE.z).toFixed(1)} north ${inside ? 'inside' : 'outside'}   still ${((now - lastMoved) / 1000).toFixed(0)} s\npage zoom ${(window.visualViewport?.scale || 1).toFixed(2)}   motion ${REDUCED ? 'reduced (pinch jumps)' : 'normal'}   tilt ${tiltOn ? 'on' : 'off'}\n${navigator.userAgent.replace(/^.*?\(([^)]*)\).*?(Version\/[\d.]+|Chrome\/[\d.]+|CriOS\/[\d.]+|FxiOS\/[\d.]+)?.*$/, '$1 $2')}`;
   R.render(scene, cam); requestAnimationFrame(step); }
 window.state = () => ({ x: +EYE.x.toFixed(2), n: +(-EYE.z).toFixed(2), head: +(heading / RAD).toFixed(1), pitch: +(pitch / RAD).toFixed(1), inside, still: (performance.now() - lastMoved) / 1000 });
 window.put = (x, n, h, p = 0) => { EYE.x = x; EYE.z = -n; heading = h * RAD; pitch = p * RAD; };
