@@ -209,6 +209,14 @@ Asked: on Sheet 2, should shade and shadows be drawn in lines, or in dots like e
 
 (So: one hand for everything. Shade, his shadow and the dark at night are dots, not ruled lines. "Dots for the thing, lines for the light" is rejected. His phrase for the whole experience: "walking through an illustration".)
 
+## 23. Halftone, and the two pumps (verbatim)
+
+"One more thing on dots - You could consider the stipple as a sort of halftone. This fits with the inspo.
+
+Same pump is fine, that's how it'd be irl. Textures should be different so they look different from each other -- the same model just worn naturally separately"
+
+(On dots: offered as something to consider — "could" — the stipple treated as a kind of halftone, which he says fits the inspiration. Asked: the same short pump twice, or two different pumps? — the same model, but each with its own texture and wear, so they don't look identical.)
+
 ## Still open (asked, not answered)
 
 - Should the time of day do something (choose which work shows), or only change how the place looks and what odd things happen? (Related: he said "no" to choosing what shows in office hours versus at night.)

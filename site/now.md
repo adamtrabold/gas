@@ -12,11 +12,9 @@
 
 ## Waiting on you
 
-On Sheet 2:
+Answered: shade and shadows are dots, not lines. "The world should look like walking through an illustration." The shade on Sheet 2 is being redrawn in dots, with the stipple treated as a kind of halftone, as you suggested. That will be Sheet 3.
 
-1. **Your two pumps.** The same short pump twice, mirror images, both facing the road, like the two yellow pumps in your Route 66 photo. Right, or two different pumps?
-
-Answered: shade and shadows are dots, not lines. "The world should look like walking through an illustration." The shade on Sheet 2 is being redrawn in dots.
+Answered: the two pumps are the same model, each with its own wear.
 
 From earlier, still not answered:
 
