@@ -4,7 +4,7 @@
 ## Latest
 
 - The controls test page has a rebuilt pinch for iPhone Safari. Swipe is settled: you look the way you swipe.
-- The station still has the old look and the old controls. Being built into it now: shade and night in dots, real scene lights, the moon.
+- The station is mid-change and not ready to judge: shade and night in dots are going in now, then real scene lights and the moon. It still has the old controls.
 
 ## One thing to try
 
