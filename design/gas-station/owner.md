@@ -368,6 +368,10 @@ Asked whether the curves feel right on the controls test page, swiping slowly th
 
 (The curve and coasting are right in kind and a touch too strong: reduce a little, not a lot.)
 
+Asked whether the curves are right now (top gain ×1.8, eased coasting): "Ok this is good. May need to do 1.6 or 7 but let's stay here for a mjnute"
+
+(Settled for now at ×1.8. He may want it eased further, to ×1.6 or ×1.7, later; leave it until he says.)
+
 ## Still open (asked, not answered)
 
 - Should the time of day do something (choose which work shows), or only change how the place looks and what odd things happen? (Related: he said "no" to choosing what shows in office hours versus at night.)

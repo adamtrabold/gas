@@ -3,9 +3,9 @@
 
 ## Latest
 
-- Controls test page: the speed curves and coasting are eased back by about a fifth.
-- The station is mid-change and not ready to judge: night is being made darker, the moon bigger, and the new controls are going in.
+- Controls: settled for now. They go into the station next.
+- The station is mid-change: night is being made darker, the moon bigger, and the new controls are going in.
 
 ## One thing to try
 
-On the controls test page: are the curves right now?
+Nothing right now.
