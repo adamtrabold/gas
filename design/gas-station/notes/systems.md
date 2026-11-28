@@ -48,7 +48,7 @@ Listed in `05-left-on.md`, "Where this goes against the concept as written":
 - "Drawn once" (18) squared with real light: a thing's own marks are fixed; the shade and shadow on it are real.
 - **Table of everything the lamp did and what does it now** is in `05-left-on.md`. Left with nothing: any sign of you in full dark; seeing unlit things (now the dark drawing's job, Sheet 3); stillness showing before 10–15 s; a lit way to the first cord at night; a focus mark for keyboard in the dark.
 - **Table checking every light-thing against the rule** is in `05-left-on.md`. Deliberate exceptions for the director: the alien material (patch with no lamp, the light at four minutes, one left on); lights lost past 100 m; dusk's letter-a-second; the wall clock turning the sun; star tails. Flagged for visual: "dims = smaller not fainter", light "arriving in strokes", "paper edge in shade" are drawing rules from the brush rounds and want restating.
-- New PROPOSED things I added, all need a look or a yes: the arrow's bulbs as the strong night light on the forecourt (flashes throw your shadow toward the door and reach the floor inside, where the first cord hangs); a blank lit plastic reader board on the sign; no moon; no wall lamps; phone box dark; west pump globe lit, east dead; sunrise/sunset times at 35° N with the visitor's clock read as sun time.
+- New PROPOSED things I added, all need a look or a yes: **the moon (settled by him, section 32: "Yes there's a moon and it's always epic… exaggerated"; phase following the real cycle is floated, not decided)** written as: up every night dusk to dawn on a full moon's real path (east, south at midnight, west), about 15× real size, bright enough for a faint shadow of you in the open, never over the station (it would break real light; his call), moonlight through the south-facing door gives the first cord a patch at night; phase options A always full / B real phase always up (my lean, build this) / C fully real (against "always epic"); look is visual's. Also: the arrow's bulbs as the strong night light on the forecourt (flashes throw your shadow toward the door and reach the floor inside, where the first cord hangs); a blank lit plastic reader board on the sign; no wall lamps; phone box dark; west pump globe lit, east dead; sunrise/sunset times at 35° N with the visitor's clock read as sun time.
 
 ## The sign (element 5), as rewritten
 
@@ -67,7 +67,7 @@ Neon letters in dark boxes, one per box, stacked down a pole (his diver MOTEL ph
 
 ## Open with the owner (one at a time; orchestrator holds the queue)
 
-1. **Is there a moon?** (asked at the end of `lights.md`)
+1. ~~Is there a moon?~~ Answered: yes, epic, exaggerated. Left for him when convenient: its shape, A/B/C in `lights.md` (we build B unless he says); and whether it may hang over the station in the arrival picture (we've kept it real: behind you).
 2. Swipe direction: picture follows the finger, or turn the way it does now. Better answered by him trying `turn=old` on the test page.
 3. The blank board on the sign: yes or no. A neon picture: want one?
 4. His things as squatter; "out, not hiding".

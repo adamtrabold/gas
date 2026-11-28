@@ -22,7 +22,7 @@ The owner: **"Lighting should work as in the real world."** This is the rule for
 
 - **A light lights what it really would, and nothing else is lit.** The sun; the name; the arrow's bulbs; the canopy lamp; the lamp post; each thing you switch on. Where none reaches, it is dark, and the dark is drawn ("It should just be darker").
 - **Nothing follows where you look.** He turned the lamp down in so many words: "The light that follows where I look". Nothing is carried, and looking lights nothing.
-- **You have one mark: your shadow, cast by whatever light is really there.** The sun by day. At night the canopy lamp casts it, the lamp post casts it, the lit window throws it across the forecourt. Indoors the tube you just pulled on casts it on the floor. In the dark you have none.
+- **You have one mark: your shadow, cast by whatever light is really there.** The sun by day. At night the canopy lamp casts it, the lamp post casts it, the lit window throws it across the forecourt. Indoors the tube you just pulled on casts it on the floor. And the moon: he has said there is one, "always epic", so out in the open at night you have a faint shadow from it (`lights.md`). In the moon's shade and in an unlit room you have none.
 - **What you switch on stays on.** That was always the title. It is now also what gives you a shadow indoors and at night: turning a light on is how you appear.
 - **A thing in shade is shaded.** A pump under the canopy at noon is in shade and looks it.
 
@@ -64,7 +64,8 @@ The owner: "Well it would probably be me squatting." So the absent person is Ada
 - **In shade by day** (under the canopy, in the building's shadow): none. Shade is shade.
 - **At night under a lamp:** away from the lamp, short beneath it and longer as you leave it, gone when you're out of its reach. Crossing the forecourt at night you get one under the canopy lamp, lose it, and get a weaker one by the lamp post.
 - **Indoors:** in the patch of sun from the door and windows by day. Otherwise none until you turn a light on; then away from that light.
-- **In the dark:** none. There is nothing of you in the picture. What there is of you is whatever you left on.
+- **At night in the open:** a faint one from the moon, away from it. Around midnight it lies ahead of you as you arrive, toward the station, as the sun's does at midday.
+- **In the dark** (the moon's shade, an unlit room, the aisle): none. There is nothing of you in the picture. What there is of you is whatever you left on.
 - Two lamps, two shadows, as it would be. (Whether the drawing shows both or only the nearer lamp's is the visual designer's; PROPOSED: the nearer only.)
 
 Moving by a pinch changes nothing here: the shadow is cast from where you are, every frame, and slides over the ground with you. You stop 0.9 m short of a thing, which is near enough for your shadow to reach it.
@@ -91,14 +92,14 @@ Three acts and standing still. The same everywhere, at every hour. On a phone it
 
 **The lot, by day.** All the sun's. Whole, still, complete without you. You arrive across the road from the sign, and your shadow lies where the sun puts it. You can go up to anything and use it. Under the canopy is shade, with the pumps standing in it, shaded; you have no shadow there, and everything still answers a tap.
 
-**The lot, by night.** All dark, except what the station itself keeps lit: the name, the arrow's bulbs, the canopy from below. Those are always on at night, so you know where you are before you've done anything. Everything else is there, dark, drawn. Under the canopy lamp and by the lamp post you have a shadow; between them you don't.
+**The lot, by night.** Moonlit, dimly: there is a moon every night, exaggerated, in the south sky (`lights.md`), so the ground and the station's front can be seen and the moon's shadows lie across the slab. Much darker than day. Beyond that, dark, except what the station itself keeps lit: the name, the arrow's bulbs, the canopy from below. Those are always on at night, so you know where you are before you've done anything. Everything else is there, dark, drawn. Under the canopy lamp and by the lamp post you have a shadow; between them you don't.
 
 **The front room.** Eight metres deep, the size the outside says. The counter with the register, the bell, the cup, the radio. A jacket on a hook. The wall clock, and the chart under it. The card in the door: BACK IN 5 MINUTES.
 
 - By day the sun comes in through the door you opened and through the front windows, as patches on the floor. Where they fall and how deep they reach is the hour and the season: far into the room in winter, barely over the sill in midsummer. The door's patch has your shadow in it.
 - The rest of the room is dark until you pull the cord.
 - A pull cord hangs just inside the door, in the door's patch. It's the first switch and it can't be missed by day. It lights the tube over the counter, which lights the counter and little else, and puts your shadow on the floor.
-- **At night there is no patch of sun to hang it in.** What really comes through the door glass at night is the sign, 16 m straight in front of it: the arrow's bulbs, in pulses, throw a faint patch on the floor, and the cord hangs in that. PROPOSED, and it has to be seen to be believed; if it isn't enough, the cord needs a real small light of its own.
+- **At night there is no patch of sun to hang it in.** There is the moon's: the door faces south, so for most of the night a faint patch of moonlight lies inside it, and the cord hangs in that. Also, what really comes through the door glass at night is the sign, 16 m straight in front of it: the arrow's bulbs, in pulses, throw a faint patch on the floor, and the cord hangs in that. PROPOSED, and it has to be seen to be believed; if it isn't enough, the cord needs a real small light of its own.
 
 **The aisle.** Beside the counter, where the back wall should be, an opening with one small light at its mouth that you can see from the door. Through it, one aisle of shelves runs straight back for fourteen bays, about 28 metres, behind a building eight metres deep.
 
@@ -175,7 +176,7 @@ It sets how much the sun lights. That is all it does, and it's a lot.
 | Midday | The whole lot, shade included; a patch inside the door | Most of the room; the aisle |
 | Morning, evening | The lot, with long shadows; sun deep into the room | Less of the room; the aisle |
 | Twilight | Nothing: no sun, and the sky still light. No shadows anywhere, yours included, as on any evening | Indoors |
-| Night | Nothing | Everything the station doesn't light itself |
+| Night | Nothing. The moon lights the open ground and the station's front, dimly | The moon's shade, and indoors, wherever the station doesn't light itself |
 
 The wall clock turns the sun (shared). Turn it at noon to midnight and the lot outside the window goes dark.
 
@@ -301,7 +302,7 @@ The lamp is out: "I don't like the light thing at night… The light that follow
 
 | It did this | What still does it | Left with nothing |
 |---|---|---|
-| **Showed you were there**, indoors and at night | Your shadow under any real lamp; the lights you leave on | In full dark, nothing of you. Real, and he asked for it |
+| **Showed you were there**, indoors and at night | Your shadow under any real lamp, and from the moon in the open; the lights you leave on | In the moon's shade and in unlit rooms, nothing of you. Real, and he asked for it |
 | **Found things in the dark** (the cooler, the radio, the far shelves, a pump at night away from the canopy) | The station's own lights; the cord by the door; the aisle-mouth light; the payphone's lamp; anything already on. You can pinch or tap toward a dark thing and you stop at it | Seeing a thing nothing lights, unless the dark drawing shows it. That is now the drawing's job ("more dots, or reversed dots on dark"): Sheet 3 |
 | **"Your lamp is on it"** when you came up to a thing | In light, your shadow joins it | In the dark, no sign you've arrived except that you stopped |
 | **Never a black screen** (it always landed on something, the ground at your feet if nothing else) | — | The duty stays; the means has to be the dark drawing itself. Not proven |
@@ -343,7 +344,7 @@ Everything in this half and in `00-shared.md` that makes or uses light, against 
 | **The patch of light with no lamp over it; the light at four minutes; one left on that nobody left** | **Exception: the alien material** | This is the point of them. In a place where every light has a source, a light without one is the evidence |
 | The canopy lamp going out and coming back at four minutes | Square | A lamp can fail |
 | The aisle being 28 m long behind an 8 m building | Not light | The place's one impossible thing; untouched by the rule |
-| Night with no moon | Open | Real desert nights have a moon half the time. PROPOSED: none, "it should just be darker". A question for him, queued |
+| The moon: far bigger than real, and up every night | Exception, his | "Yes there's a moon and it's always epic… should be exaggerated." Its light then behaves as real moonlight: one direction, real shadows, through the door and windows. Its phase is open (`lights.md`: always full; real phase always up; fully real) |
 
 ## Where this goes against the concept as written
 

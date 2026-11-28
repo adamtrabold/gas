@@ -48,7 +48,7 @@ The owner: **"Lighting should work as in the real world."** True of the place wh
 - Nothing follows where you look ("The light that follows where I look" is what he turned down).
 - A thing's own marks are drawn once and stay; the light and shade on it are real and move.
 
-Every light is listed, with its position and reach, in `lights.md`. The sun rises on your right as you arrive, crosses the south sky behind you, and sets on your left.
+Every light is listed, with its position and reach, in `lights.md`. The sun rises on your right as you arrive, crosses the south sky behind you, and sets on your left. At night the moon does the same (the owner: "there's a moon and it's always epic… exaggerated"): up every night, far bigger than real, lighting the open ground dimly and throwing real shadows.
 
 The exceptions kept on purpose are listed there and in `05-left-on.md` ("Checked against 'as in the real world'"): the alien material above all.
 

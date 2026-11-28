@@ -17,10 +17,37 @@ This is the list of them, made the way the element list was. **Against any line 
 | **The sun** — [you] [concept] | Rises in the east (your right as you arrive), crosses the **south** sky (behind you as you arrive), sets in the west (your left). A desert at about 35° north: at midday it stands 78° up in midsummer, 55° in spring and autumn, 31° in midwinter | One hard light from very far off | Everything outdoors; indoors only through the door and the front windows | Yes: hard, the same direction everywhere | By your own clock (below) | Away from the sun. On arrival at midday it lies ahead of you, toward the station. 0.4 m long at midsummer noon, 1.2 m in spring, 2.8 m at midwinter noon; many metres early and late |
 | **The sky's own light** — PROPOSED (it is what makes shade shade, not black) | All round, from above | Soft, from everywhere | Everything outdoors; a little way in at the door and windows | None | Whenever the sun is up, and through twilight | None from it. In the canopy's shade you have no shadow |
 | **Twilight** — [concept] | The sky after sunset and before sunrise, about half an hour each | The sky alone, fading | Outdoors | None, anywhere | Half an hour at each end of the day | None |
-| **The moon** — PROPOSED: **none** | — | — | — | — | — | See the question at the end |
+| **The moon** — [you: "Yes there's a moon and it's always epic… should be exaggerated"] | Up all night, every night: rises in the east (your right as you arrive) as the sun sets, stands high in the **south** at midnight (behind you as you arrive), sets in the west at dawn. That is a full moon's real path — PROPOSED | One light from very far off, like a weak sun | Everything outdoors that isn't in something's shadow; indoors through the door and the front windows | Yes: the building, the sign, the canopy and the poles all throw them, long at dusk and dawn, short at midnight | Every night, dusk to dawn | Out in the open at night: yes, away from the moon, fainter than by day. At midnight it lies ahead of you as you arrive, toward the station |
 | **The stars** — [concept] | Overhead at night, turning round a still point in the north, above the station | Points. They light nothing | Nothing | None | At night; you see them once you've stood still ten seconds or so | None |
 
 **The clock.** The hour is the hour on your own clock and the date is your date — [concept]. No time zones: your noon is the sun due south. Sunrise and sunset, roughly: 5 am and 7 pm at midsummer, 6 and 6 in spring and autumn, 7 am and 5 pm at midwinter — PROPOSED (a plain 35° north; you said "nowhere in particular"). The wall clock indoors turns it by hand — [concept].
+
+### The moon, worked out
+
+You: "Yes there's a moon and it's always epic (though it could also be cool to match real moon cycle... either way should be exaggerated)".
+
+**What its light does**
+- The desert at night is there: dim, but you can see the ground, the scrub, the hills. Night is still much darker than day; the moon makes it a dark you can walk in.
+- The station's front faces south, so the moon lights it for most of the night. Behind the building, under the canopy and in the sign's shadow it is fully dark.
+- You have a faint shadow anywhere in the open. In the moon's shade you have none. Under the canopy lamp or the lamp post, the lamp's shadow is the one you see.
+- Indoors it comes through the door and the front windows as faint patches on the floor, the way the sun does by day. Around midnight the first pull cord hangs in the moon's patch.
+- The stars are fewer near it.
+
+**"Exaggerated", as rules** — PROPOSED
+- **Size:** about fifteen times its real width in the sky. On a phone that is roughly a quarter of the screen's width. (The real moon would be six pixels.)
+- **Brightness:** enough to see the ground by and throw a shadow you can make out. A real full moon does both, barely; ours does both plainly.
+- **Always up at night.** It never sets before dawn and there is never a night without it.
+- **Where it is when you arrive:** behind you or to your right, never over the station. You see its light on the station first, and your own shadow; you turn round and it's there. Hanging it over the station would put it in the first picture, and would break "as in the real world": a moon is never in the north there. Your call; we'd keep it real.
+
+**Its shape: three ways**
+
+| | What you get | What it costs |
+|---|---|---|
+| **A. Always full** | The same epic moon every night. Its path above is exactly a full moon's, so everything is real | Nothing changes from one night to the next |
+| **B. The real phase, always up** — our lean | Tonight's real shape: full when the real moon is full, a crescent when it is. Never thinner than a clear crescent; its light is weaker when it's thin, never gone. Something different each time you come back, and a real full moon becomes a night worth coming for | A crescent that is up all night isn't real (real crescents set early). Few would know. Needs the date, nothing more |
+| **C. The real phase and the real rising and setting** | Fully true to the sky | Some nights it isn't up when you visit, and at new moon there's none. Against "always epic" |
+
+**What it looks like is the visual designer's:** how a huge moon is drawn in dots, and how moonlit ground differs from unlit ground.
 
 ## The station's own lights
 
@@ -69,7 +96,7 @@ Not lamps; what real light does with a door and a window.
 |---|---|---|
 | **Day** | Everything outdoors, by the sun and sky. Indoors: sun patches, the aisle-mouth light, the payphone lamp, and whatever you've switched on. The neon and the bulbs are off or can't be seen | Outdoors wherever you're in sun; not in shade. Indoors in the sun patches and under lights you've switched on |
 | **Dusk and dawn** | The sky only, fading. The name comes on a letter at a time, then the arrow, then the lamps (at dawn they go out in turn) | Nowhere outdoors until the lamps are on and the sky has gone |
-| **Night, as the station keeps it** | The name, the arrow, the middle canopy lamp, one pump globe, the lamp post; indoors the aisle-mouth light and the payphone lamp. Everything else is dark, and drawn dark | Under the canopy lamp; faintly by the lamp post; between the sign and the door when the arrow flashes. Where you arrive, across the road: none |
+| **Night, as the station keeps it** | The moon over all of it, dimly. Then the name, the arrow, the middle canopy lamp, one pump globe, the lamp post; indoors the aisle-mouth light, the payphone lamp, and faint moon patches at the door and windows. The moon's shade and the insides are dark, and drawn dark | A faint one from the moon wherever you're in the open, including where you arrive. A clear one under the canopy lamp; one by the lamp post; one toward the door when the arrow flashes |
 | **Night, after you've switched things on** | All of that, and the counter, stretches of the aisle, the cooler's patch of floor, the dials. From the road, lit windows, and their light on the slab | Also indoors under each light you lit, and on the slab in front of a lit window |
 | **Everything off** (you pulled the main) | As the station keeps it. The main doesn't touch the station's own | As the station keeps it |
 | **Power really off** | Never happens — [you: "abandoned can still have power"] | — |
@@ -83,7 +110,8 @@ For the design director to confirm; they are in the concept and they break your 
 - **"One left on":** a light indoors that you didn't switch on. The light itself is real; that it's on is not yours — [concept]
 - **Lights can't be seen from more than about 100 m off.** A real sign would be seen for miles. It hides where the world joins up — [concept]
 - **At dusk the name comes on a letter a second.** Real signs come on at dusk; the pace is ours — [concept]
-- **The wall clock moves the sun** — [concept]
+- **The wall clock moves the sun** (and the moon with it) — [concept]
+- **The moon's size, and that it is up every night** — [you: "always epic… exaggerated"]
 
 ## Not known
 
@@ -92,6 +120,6 @@ For the design director to confirm; they are in the concept and they break your 
 - Whether the dark, with only these lights, is a picture you can find your way in. That is the drawing's job now, in dots.
 - Which canopy lamp works, and where the lamp post stands, until you say.
 
-## One question
+## Answered
 
-**Is there a moon?** With one, on some nights the desert is dim but you can see it, and you'd have a faint shadow out in the open. Without one, night is dark except for the lamps above. We've written it with none, from "it should just be darker".
+**Is there a moon?** "Yes there's a moon and it's always epic." Written in above. Its shape (A, B or C) is yours to pick when you like; we'll build B unless you say.
