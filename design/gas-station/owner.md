@@ -235,6 +235,12 @@ Asked: when you pinch, should you actually move through the place, or stay where
 
 (Nothing of the surroundings has been drawn in the new look yet: only the pump, the slab and island, and the canopy. The road, the desert, the horizon and sky, and the station front are next on the list; the sign waits for his photos.)
 
+## 26. Night (verbatim)
+
+"Also I don't like the light thing at night. It should just be darker. More dots or maybe reversed dot approach on a dark background."
+
+(He is looking at the walked prototype at night on the site. "The light thing" is not yet pinned down: it may be the visitor's own lamp — the disc of light that follows where you look — or the pool under the canopy lamp, or both. Asked. What he wants instead: night is simply darker, made with more dots, or with the dots reversed — light dots on a dark ground. Note for the team: in the concept, Left on, the visitor's lamp is one of the two marks ("where the sun isn't, you are a lamp"); if it is the lamp he dislikes, that is a change to the concept, not only to the look.)
+
 ## Still open (asked, not answered)
 
 - Should the time of day do something (choose which work shows), or only change how the place looks and what odd things happen? (Related: he said "no" to choosing what shows in office hours versus at night.)
