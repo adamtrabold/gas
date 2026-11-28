@@ -379,6 +379,13 @@ Asked, with the station live on his iPhone: tap "night, dark dots", then "night,
 
 (Night is the dark-dots direction — ink dots on paper, packed — but less gritty. The light-dots version is smoother in texture but its even screen makes a bad moiré on his phone. Wanted: a middle ground — the dark-dots night with a calmer, less gritty texture, and no moiré. He said nothing against the controls in the station, the lamp, or the moon.)
 
+## 45. Edges at night, from his phone (verbatim)
+
+With two screenshots from his iPhone (Safari) of the station in "night, light dots" — saved as `concepts/stills/owner-phone-night-1.png` (close to the building's corner and a window) and `owner-phone-night-2.png` (the station from out on the ground):
+"It's also doing these inconsistent distracting edges"
+
+(What the screenshots show, as the orchestrator sees them: pale outline strokes round the window and along the building's corners that are broken, blobby and of uneven weight — present on some edges and missing on others; and, in the second, rings and bands in the ground's dot screen — the moiré he named in section 44 — with a visible seam where the screen changes scale. These are the first real-device captures of the look.)
+
 ## Still open (asked, not answered)
 
 - Should the time of day do something (choose which work shows), or only change how the place looks and what odd things happen? (Related: he said "no" to choosing what shows in office hours versus at night.)
