@@ -339,6 +339,10 @@ Asked whether the pinch works now on the controls test page: "No pinch doesn't w
 
 (The controls test page as published has no press-and-hold: holding does nothing there. The station still has the old controls — drag to look, hold to walk — and no pinch at all. So he may have tried the station rather than the test page, or his phone may still be showing an older copy. Asked which.)
 
+Asked which page he was in: "Ah I see I wasn't in new controls pinch works there. But swipes are backwards"
+
+(On the controls test page, on his iPhone in Safari: PINCH WORKS. Swipe is backwards again — after he had said of the previous published version "Swiping works great l r and u d". Between the two, the test page's touch handling was rebuilt for the pinch; the swipe direction has most likely been reversed by that rebuild. The version he approved is the one to restore, in both axes.)
+
 ## Still open (asked, not answered)
 
 - Should the time of day do something (choose which work shows), or only change how the place looks and what odd things happen? (Related: he said "no" to choosing what shows in office hours versus at night.)
