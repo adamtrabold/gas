@@ -361,6 +361,13 @@ Asked whether the left–right swipe and the two-finger slide go the right way n
 
 (Confirmed on his iPhone: all directions are right; "the picture follows your fingers" stands. Two refinements: two-finger tracking is a little slow; and every move should have a curve — a faster swipe ("swore" is a typo for "swipe") should carry you further than a slow one of the same length, i.e. speed-sensitive response rather than a fixed ratio.)
 
+## 43. The speed curves (verbatim)
+
+Asked whether the curves feel right on the controls test page, swiping slowly then fast:
+"Slightly slightly slightly too intense pull back a LITTLE"
+
+(The curve and coasting are right in kind and a touch too strong: reduce a little, not a lot.)
+
 ## Still open (asked, not answered)
 
 - Should the time of day do something (choose which work shows), or only change how the place looks and what odd things happen? (Related: he said "no" to choosing what shows in office hours versus at night.)
