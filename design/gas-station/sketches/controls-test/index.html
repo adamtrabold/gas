@@ -15,11 +15,11 @@
 <div id="dbg"></div><div id="stroke"></div>
 <script type="module">
 // Throwaway. A test of concepts/controls.md only: crude boxes on the systems lot, no look, no lamp, no sound.
-// Swipe turns (the picture follows the finger). Pinch moves you along the line to whatever was between your fingers. Tap goes there. No press and hold.
-// Switches after the #, joined by '&':  k=1.5 (pinch gain)  turn=old (swipe left turns left)  tap=0 (no tap-to-go)  dbg=1
+// Swipe turns: you look the way you swipe (swipe right, look right; swipe up, look up). The owner on the first version, where the picture followed the finger: "Swiping is backwards". Pinch moves you along the line to whatever was between your fingers. Tap goes there. No press and hold.
+// Switches after the #, joined by '&':  k=1.5 (pinch gain)  turn=follow (the picture follows the finger, both ways: the first version)  updown=follow (only up and down follow the finger, as the first walkable prototype did)  tap=0 (no tap-to-go)  dbg=1
 import * as T from '../ink-is-shadow/vendor/three.module.min.js';
 const H = new URLSearchParams(location.hash.slice(1)), num = (k, d) => H.has(k) ? +H.get(k) : d;
-const K = num('k', 1.5), GRAB = H.get('turn') === 'old' ? -1 : 1, REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches || H.has('reduced');
+const K = num('k', 1.5), GX = H.get('turn') === 'follow' ? 1 : -1, GY = H.get('turn') === 'follow' || H.get('updown') === 'follow' ? 1 : -1, REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches || H.has('reduced');
 const STOP = .9, DMIN = 3, DMAX = 40, TMAX = 30, RAD = Math.PI / 180, PAPER = 0xefe9dc, INK = 0x141312;
 const R = new T.WebGLRenderer({ antialias: true }), CV = R.domElement; document.body.prepend(CV); R.setClearColor(PAPER);
 const scene = new T.Scene(), cam = new T.PerspectiveCamera(68, 1, .1, 400); scene.fog = new T.Fog(PAPER, 60, 105);
@@ -83,7 +83,7 @@ const atDoorStop = () => DOORS.find(d => Math.abs(EYE.x - d.x) < .7 && Math.abs(
 const facing = d => { const dn = d.n - (-EYE.z); return Math.cos(heading) * Math.sign(dn) > .5; };       // looking through it
 // ---- fingers. one turns, two move, never both
 const pts = new Map(); let mode = null, sw = null, pin = null, glide = [0, 0], go = null, lean = 0, did = { swipe: 0, pinch: 0 };
-const turnBy = (dx, dy) => { heading += GRAB * dx * (90 * RAD / innerWidth); pitch = Math.max(-60 * RAD, Math.min(75 * RAD, pitch + GRAB * dy * (60 * RAD / innerHeight))); };
+const turnBy = (dx, dy) => { heading += GX * dx * (90 * RAD / innerWidth); pitch = Math.max(-60 * RAD, Math.min(75 * RAD, pitch + GY * dy * (60 * RAD / innerHeight))); };
 ['touchstart', 'touchmove', 'touchend', 'touchcancel'].forEach(t => CV.addEventListener(t, e => { if (e.cancelable) e.preventDefault(); }, { passive: false }));
 ['contextmenu', 'selectstart', 'dragstart', 'gesturestart', 'gesturechange', 'gestureend'].forEach(t => addEventListener(t, e => e.preventDefault(), { capture: true }));
 function startPinch() { const [a, b] = [...pts.values()], mx = (a.x + b.x) / 2, my = (a.y + b.y) / 2, an = under(mx, my);
@@ -115,7 +115,7 @@ function tap(cx, cy) { if (H.get('tap') === '0') return; const an = under(cx, cy
   if (REDUCED) { EYE.x = m.x; EYE.z = -m.n; return; } go = { x0: EYE.x, n0: -EYE.z, x1: m.x, n1: m.n, t0: performance.now(), dur: Math.max(.3, Math.min(2.5, len / 10)) * 1000 }; }
 // ---- mouse wheel and trackpad pinch: the same move, anchored on the pointer
 let wh = null; CV.addEventListener('wheel', e => { e.preventDefault(); const now = performance.now();
-  if (!e.ctrlKey && Math.abs(e.deltaX) > Math.abs(e.deltaY)) { turnBy(-e.deltaX * .5, 0); return; }
+  if (!e.ctrlKey && Math.abs(e.deltaX) > Math.abs(e.deltaY)) { heading -= e.deltaX * .5 * (90 * RAD / innerWidth); return; }
   if (!wh || now - wh.t > 250) { pts.clear(); pin = { base: 1, an: under(e.clientX, e.clientY), x: EYE.x, n: -EYE.z, live: true, s0: 1, door: atDoorStop(), crossed: false }; wh = { ls: 0 }; go = null; }
   wh.t = now; wh.ls -= e.deltaY * (e.ctrlKey ? .01 : .0022); pinchTo(Math.exp(wh.ls)); if (pin.to) { EYE.x += (pin.to.x - EYE.x); EYE.z += (-pin.to.n - EYE.z); } }, { passive: false });
 // ---- keys: holding a key is fine on a keyboard. arrows / WASD walk and turn; Enter at a door goes through; Escape puts you outside

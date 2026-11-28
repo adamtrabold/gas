@@ -58,7 +58,7 @@ One world, no stops. The owner walked "drag to look, hold to walk" and said: "I 
 
 | | Turn | Move | Use |
 |---|---|---|---|
-| Phone | Swipe: the picture follows your finger. Or turn the phone | Pinch: out carries you toward what is between your fingers, in backs you away. Or tap a thing or a spot to be taken there | Tap a thing you're at |
+| Phone | Swipe: you look the way you swipe. Or turn the phone | Pinch: out carries you toward what is between your fingers, in backs you away. Or tap a thing or a spot to be taken there | Tap a thing you're at |
 | Mouse, trackpad | Drag | Wheel, or trackpad pinch, toward what's under the pointer. Or click a thing or a spot | Click |
 | Keyboard | Left and right arrows | Up and down arrows, held | Tab to a thing; Enter goes, Enter again uses |
 

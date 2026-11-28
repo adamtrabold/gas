@@ -12,7 +12,7 @@ His words:
 
 **One finger turns you. Two fingers move you. A tap goes there, or uses the thing. Holding a finger down does nothing.**
 
-- **Swipe:** the picture follows your finger, both ways. You turn; you never move.
+- **Swipe:** you look the way you swipe. You turn; you never move.
 - **Pinch:** you move along a straight line toward whatever was between your fingers when they landed, or back away from it. You never turn.
 - **Tap:** a thing you're standing at answers. Anything further off, you're taken there.
 - **Tilt (phones):** turning the phone turns the view by the same angle.
@@ -68,7 +68,8 @@ In hand: an easy pinch out (fingers 120 px apart to 330 px) covers about three q
 ## Swipe
 
 - One finger. Starts after 10 px of travel; counts from there.
-- **The picture follows the finger.** Swipe left and the picture slides left, so you turn right. Swipe down and the picture slides down, so you look up. (Left–right this is the reverse of the prototype as he walked it. Keep the switch `turn=old` so it can be flipped on his phone.)
+- **You look the way you swipe.** Swipe right and you turn right; swipe up and you look up. He tried the first version of this spec, where the picture followed the finger, and said: "Swiping is backwards." Left and right now match the first walkable prototype, which he called fluid.
+- **Up and down is the one unsure part.** That first prototype had finger-down-looks-up, the opposite sense to its own left and right, and he has not spoken about up and down by itself. The spec uses one sense for both. Switches on the test page: `turn=follow` (picture follows the finger both ways, the version he called backwards) and `updown=follow` (only up and down follow the finger, as the first prototype did).
 - **A swipe the full width of the screen turns you a quarter turn (90°). A swipe the full height tilts you 60°.**
 - Tilt limits: 75° up (the top of the sign from its foot), 60° down (your feet). No limit round.
 - **Let go while moving and the turn carries on briefly:** it starts at the finger's speed and halves every 0.12 s. Any touch stops it.
@@ -101,6 +102,7 @@ In hand: an easy pinch out (fingers 120 px apart to 330 px) covers about three q
 ## Tilt: the phone turns the view
 
 - Turn the phone left or right and the view turns by the same angle. Tip its top toward or away from you and the view tilts by the same angle. Rolling it does nothing; the horizon stays level.
+- **It agrees with the swipe:** turn the phone right, or swipe right, and you look right; tip it up, or swipe up, and you look up.
 - **It is added to the swipe; neither wins.** There is one direction you face, and both push it. It is relative: wherever the phone points when tilt starts is where you were already looking. So a swipe is how you re-centre: turn the view with a finger and the phone's "ahead" has moved with it. Nothing to reset.
 - **Slack:** the view ignores the phone until it has turned 0.75° from where the view last followed it, then follows exactly. A hand's tremor does nothing; a slow drift in the sensor does nothing you'd see.
 - Same limits as the swipe. At a limit, tipping further does nothing, and tipping back answers at once.
@@ -132,7 +134,7 @@ The place acts when you've stopped, so "stopped" has to be exact, and a hand is 
 
 | | Turn | Move | Use | Door |
 |---|---|---|---|---|
-| **Mouse** | Drag: the picture follows the pointer, same amounts | Wheel: each notch is a pinch of ×1.25, anchored on the pointer. A new anchor after a quarter second without scrolling | Click | Click it, or scroll again after stopping |
+| **Mouse** | Drag: you look the way you drag, same amounts | Wheel: each notch is a pinch of ×1.25, anchored on the pointer. A new anchor after a quarter second without scrolling | Click | Click it, or scroll again after stopping |
 | **Trackpad** | Drag, or a two-finger sideways scroll | Pinch (anchored on the pointer), or two-finger scroll up and down | Click | The same |
 | **Keyboard** | Left, right, A, D: 90° a second | Up, down, W, S: 4 m a second, held. Holding a key is not what he disliked | Tab steps through what you can see, nearest first. Enter goes to it; Enter again uses it | Enter, or hold forward half a second. Escape: outside |
 | **Screen reader, no pointer, no 3D** | — | The list of places (`00-shared.md`). Unchanged | Buttons | "The door" is a place |
@@ -216,7 +218,7 @@ What the controls do touch is **your shadow**, now cast by any real light (`ligh
 | Keys | 4 m/s; 90°/s; door after 0.5 s |
 | Wheel | ×1.25 a notch; new anchor after 0.25 s |
 
-**Tune first, on his phone, in this order:** the pinch-out power (1.5; 1 is exactly a photo and feels slower), the swipe amount (90° a width), which way a swipe turns. The test page takes `#k=1` and `#turn=old`.
+**Tune first, on his phone, in this order:** the pinch-out power (1.5; 1 is exactly a photo and feels slower), the swipe amount (90° a width), up and down on a swipe. The test page takes `#k=1`, `#turn=follow` and `#updown=follow`.
 
 ## Not proven
 
