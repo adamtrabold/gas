@@ -190,6 +190,12 @@ Asked: can a `gh-pages` branch be pushed to adamtrabold/gas for the site; told t
 
 (Read as: yes to pushing `gh-pages`. He raised no objection to the other two points.)
 
+## 20. The format of sheets from now on (verbatim)
+
+Asked whether future sheets should be made as web pages with only the drawings as images (the current sheets have their text baked into the picture): "Yes future sheets should just be images on a webpage with web text"
+
+(So: from Sheet 3 on, a sheet is a page on the project site. Each drawing is its own image; titles, captions, tags to the list, questions and the "Plainly" notes are real HTML text. Sheets 1 and 2 stay as they are.)
+
 ## Still open (asked, not answered)
 
 - Should the time of day do something (choose which work shows), or only change how the place looks and what odd things happen? (Related: he said "no" to choosing what shows in office hours versus at night.)
