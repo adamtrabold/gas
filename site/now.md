@@ -8,7 +8,7 @@
 - You sent it back on the look: "pixellated", "posterized", more detail through texture and crosshatching. The idea and the place stand.
 - Since then the look is being worked out one element at a time, on sheets. Each sheet has a matching view you can walk.
 - **Sheet 1, the pump.** Your picks: the short pump, dots, drawn once, a paper on each part. Brand names are yours to supply; LLANO is a stand-in.
-- **Sheet 2, the slab, the island and the canopy**, with the pump settled in dots, is the latest. The director cleared it to go to you as a test of how things and light are drawn, not a finished picture.
+- **Sheet 2, the slab, the island and the canopy**, with the pump settled in dots, is the latest, and it is with you now. It is a test of how things and light are drawn, not a finished picture. The shade lines are still ruled and are being redrawn to look hand-laid: judge where the lines go, not how they are drawn.
 
 ## Waiting on you
 
@@ -21,7 +21,9 @@ On Sheet 2:
 
 From earlier, still not answered:
 
-- **The sign.** You asked for "the best amalgamation" from more photos. The photos didn't arrive with the message.
+- **The sign.** You asked for "the best amalgamation" from more photos. The photos didn't arrive with the message, so the sign isn't drawn yet.
+- **Your things, as the squatter.** We guessed: a cup, a camp stove, a jacket, brushes and a bottle of ink, a notebook, a bedroll, an instrument case. Strike what's wrong, add what's missing.
+- **Brand names**, when you're ready. LLANO is a stand-in.
 - **"D no" on Sheet 1.** We read it as: a thing is drawn once and keeps its own shading at every hour. Is that what you meant?
 - **Flash sheet vibes.** Is what the sheets show what you meant?
 - **You as the squatter.** The concept now proposes that the things left in the station are yours, and that you are out, not hiding. It is written up under "Who isn't here" in the concept, for you to check.

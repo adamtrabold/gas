@@ -236,7 +236,14 @@ for s in order:
     qmd, qfrom = "", ""
     for pat, lab in ((r"Final wording of the questions", "the director's final wording"), (r"What to ask him, in plain words", "the director's wording"), (r"Questions\s*$", "the designer's wording")):
         qmd = under(jt, pat) if lab != "the designer's wording" else under(t, pat)
-        if qmd: qfrom = lab; break
+        if qmd:   # the questions themselves: the numbered list only, not the director's notes to the team after it
+            keep, seen = [], False
+            for ln in qmd.splitlines():
+                if re.match(r"\s*\d+[.)]\s", ln): seen = True
+                elif seen and ln.strip() and not ln.startswith((" ", "\t")): break
+                keep.append(ln)
+            qmd = "\n".join(keep).strip() if seen else qmd
+            qfrom = lab; break
     ans = next((x for x in owner["sections"] if re.search(rf"\bSheet {n}\b", x["title"])), None)
     views = SHEET_VIEWS.get(n) or [k for k, _, _ in VIEWS if re.search(rf"#{k}\b", t)]
     names = [x for x in dict.fromkeys(named_stills(t) + named_stills(jt)) if not re.match(r"(sheet-|pairs-)", x)]
