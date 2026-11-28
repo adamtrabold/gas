@@ -1,6 +1,6 @@
 # Shared by every concept — how it works
 
-*How it works (systems). Current as of round 3, after `score-2.md` and `owner.md` section 7. One concept is built on this place: `05-left-on.md`. The look-and-feel half below is the visual designer's.*
+*How it works (systems). Current to `owner.md` section 30 and `steer-5.md`: moving is swipe, pinch and tap (`controls.md`); the lamp that followed the view is out; light works as in the real world. Before that, round 3, after `score-2.md` and `owner.md` section 7. One concept is built on this place: `05-left-on.md`. The look-and-feel half below is the visual designer's.*
 
 ## One place, one concept
 
@@ -10,7 +10,7 @@ After two rounds there is one concept, `05-left-on.md`. 01 and 03 are merged int
 
 Kept: ink is where the light isn't; a latch at the door, never a puzzle; the real hour is the hour; evidence, never the creature; nothing needed is hidden behind a time, a wait or a secret.
 
-Changed: composed stops became one walked world ("walk around"). One plain Route 66 station with one Googie arrow sign and his name ("Route 66 but there's gotta be a googie arrow sign"; "Me"). Five gestures became four: **Look, Cross, Call, Wait.** Pick up is dropped until there is something to hold. The moments the concept shows: arriving by day; arriving at night; crossing the door; inside; doing nothing; a view nobody composed.
+Changed: composed stops became one walked world ("walk around"). One plain Route 66 station with one Googie arrow sign and his name ("Route 66 but there's gotta be a googie arrow sign"; "Me"). Five gestures became four: **Look, Cross, Call, Wait.** How the hand makes them changed with `owner.md` section 24 (below, "Moving"). Pick up is dropped until there is something to hold. The moments the concept shows: arriving by day; arriving at night; crossing the door; inside; doing nothing; a view nobody composed.
 
 Dropped: the timetable, the piece of the hour, the receipt, the office-hours order, a real latitude, the streamlined station, the raking beam, The board, and any note of whose it is beyond the sign ("yes but no").
 
@@ -38,49 +38,62 @@ One layout. It comes from where the sign's shadow really falls (a 12 m sign, a g
 - The owner has confirmed it: "Canopy over pumps yes." And it is **joined to the building** ("joined"): it comes off the front wall west of the door, as in his abandoned desert station photo.
 - **The station is abandoned** ("abandoned"), and the wall is **stucco over brick**. Labels on things are **realistic, with invented brand names**. **The power never went off** ("abandoned can still have power"). What each of these does to each element is in `elements.md`, which is now the list of what the place contains: it adds utility poles and wires along the road, a lamp post on the forecourt, lettering on the window glass, boulders, clouds, and mountains and brush in the distance, all at his word.
 
+## Light
+
+The owner: **"Lighting should work as in the real world."** True of the place whatever is built on it:
+
+- A light lights what it really would. The sun; the station's own lamps; anything switched on. Nothing else is lit, and where no light reaches it is dark. The dark is drawn, never blank.
+- Things, and the visitor, cast shadows from whatever light is really there, and have none where there is no light.
+- A thing in shade is shaded.
+- Nothing follows where you look ("The light that follows where I look" is what he turned down).
+- A thing's own marks are drawn once and stay; the light and shade on it are real and move.
+
+The exceptions kept on purpose are listed in `05-left-on.md` ("Checked against 'as in the real world'"): the alien material above all.
+
 ## Moving
 
-One world, no stops. Two ways to move, on every device, and they are the same two everywhere.
+One world, no stops. The owner walked "drag to look, hold to walk" and said: "I dislike press and hold. It should do pinch to zoom in and out and swiping should rotate camera"; "Pinch out zooms in pinch in backs up like photos"; and "It would be cool for phone gyro to move me around camera wise". **The exact spec, with every number, is `controls.md`.** In short:
 
-**Walk and look.**
+| | Turn | Move | Use |
+|---|---|---|---|
+| Phone | Swipe: the picture follows your finger. Or turn the phone | Pinch: out carries you toward what is between your fingers, in backs you away. Or tap a thing or a spot to be taken there | Tap a thing you're at |
+| Mouse, trackpad | Drag | Wheel, or trackpad pinch, toward what's under the pointer. Or click a thing or a spot | Click |
+| Keyboard | Left and right arrows | Up and down arrows, held | Tab to a thing; Enter goes, Enter again uses |
 
-| | Look | Walk |
-|---|---|---|
-| Phone | Drag | Hold: you walk toward where you're looking |
-| Desktop | Drag, or move the pointer to the edge | W A S D or arrow keys; or hold the mouse button |
-| Keyboard only | Left and right arrows turn | Up and down arrows walk |
+**Holding a finger down does nothing, anywhere.**
 
-**Go to.** Tap or click a spot on the ground, or a thing, and you walk there and stop. Every thing has a standing spot and a facing, so going to a thing puts you down in front of it with a picture worth having. This is where the composed views went. It is also the whole of keyboard and screen-reader movement (below), so it isn't an extra.
+**What a pinch is.** It moves you; it does not narrow the view. The point between your fingers is the anchor: you travel the straight level line toward whatever is under it, and that thing grows as your fingers part, as a photo would. A long way goes quickly and the last metre slowly. You stop 0.9 m short of a thing or a wall, and can stand on any spot of ground. A pinch never turns you and a swipe never moves you.
 
-Rules of walking:
+**Go to.** Tap or click a thing, or a spot on the ground, within 40 m, and you're taken there and stop. Every thing has a standing spot and a facing, so going to a thing by a tap puts you down in front of it with a picture worth having; a pinch brings you to it along your own line instead. This is where the composed views went. It is the one-handed way to move, and the whole of keyboard and screen-reader movement (below), so it isn't an extra.
 
-- Eye height, always. You can look up to the top of the sign and the sky, and down to your feet.
-- Four metres a second. From where you arrive, the door is 37 m and about nine seconds held; a go-to never takes more than four, however far.
-- You slide along walls. You can't get stuck, fall, or be anywhere you can't walk out of.
-- Stop, and the view levels itself over a second.
-- Motion turned off: walking and go-to become cuts to standing spots.
+Rules of moving:
+
+- Eye height, always. You can look up to the top of the sign and the sky, and down to your feet. The view stays where you leave it; it does not level itself.
+- No walking pace on a touch screen: a pinch takes you as far as your fingers say. From where you arrive, the door is 37 m: three easy pinches, or one tap and two and a half seconds. The keyboard walks at four metres a second.
+- You slide along walls going forward and stop dead going back. You can't get stuck, fall, or be anywhere you can't get out of.
+- Motion turned off: a pinch, a tap and the door become cuts.
 
 **Named places** are the old stops, kept as standing spots with names: the road, the forecourt, the door, the counter, the aisle, the far end, the back lot. You never have to use the names. They exist so that anyone can jump (see "Without the picture").
 
-## The four gestures, walked
+## The four gestures, as the hand makes them
 
 | Gesture | What you do | Note |
 |---|---|---|
-| Look | Stand near a thing and face it | No pointing from across the lot. On a phone a pump is 20 pixels wide from the road; anything that matters is worth walking up to |
-| Call | Tap or click a thing you're standing at; Enter on the keyboard | Out of reach, the same tap is a go-to. So one tap walks you there and the next one acts |
-| Cross | Keep walking into the door for a second | The hold that walks you is the hold that leans on the latch. Tap-and-hold or Enter does the same |
-| Wait | Stand still | Below |
+| Look | Be near a thing and face it | No pointing from across the lot. On a phone a pump is 20 pixels wide from the road; anything that matters is worth going up to |
+| Call | Tap or click a thing you're at; Enter on the keyboard | Out of reach, the same tap takes you there. So one tap brings you to it and the next one acts |
+| Cross | Come up to the door, where you stop. Then one more pinch, or a tap on it, or Enter | Two beats: arrive, open. That is the latch. A single pinch never carries through a doorway, except at midday |
+| Wait | Stop | Below |
 
 ## The door, and the inside being bigger
 
-The door is still one act of about a second, answered by the stroke across the screen. That stroke is also what hides the join between two spaces:
+The door is still one act, answered by the stroke across the screen: anything that would carry you through a doorway stops you at it, and the next pinch, tap or Enter takes you through and puts you a step and a half inside. That stroke is also what hides the join between two spaces:
 
 - **Outside** is the lot and the desert. The building is 8 m deep. You can walk all the way round it.
 - **The front room** is real and the right size. You see it through the window from the lot, and you see the lot through the window from inside.
 - **Past the front room, the inside keeps going** further than the back wall you walked round. In the concept it is one aisle, 28 metres long. Nothing explains it. From no single spot can you see both facts at once; you only know because you walked both.
 - **The back door** at the far end lets you out behind the building. Walk round the corner and the front is eight metres away.
 
-A link someone sends always lands on the road. Crossing a door is the only thing that adds to the browser's history, so **back puts you outside the last door you came through**, and Escape does the same. Walking never fills the history.
+A link someone sends always lands on the road. Crossing a door is the only thing that adds to the browser's history, so **back puts you outside the last door you came through**, and Escape does the same. Moving never fills the history.
 
 ## Where the world ends
 
@@ -91,7 +104,7 @@ The director's proposal, agreed, with a mechanism:
 - A few seconds later the top of the sign comes up ahead.
 - The centre of the turn-round is the foot of the sign, which is on the road. So someone walking off down the road comes back up the road; someone walking into the desert behind the station arrives from the front.
 
-Any direction, about half a minute out and you're arriving again. Same station, same hour. Nobody can be lost, and "the road" is always in the list of places.
+Any direction, five easy pinches out (about half a minute at the keyboard's pace) and you're arriving again. Backing out over the edge works too: you keep backing, and the station comes past you from behind. Same station, same hour. Nobody can be lost, and "the road" is always in the list of places.
 
 **The desert has to obey the same join.** The far hills are at the horizon and look the same from both sides, so they can stay. Marks on the ground (scrub, a fence line, a cactus) either stop before 100 m, or are laid so that the ground at any spot matches the ground at the opposite spot. Otherwise the scrub at your feet jumps when you're moved.
 
@@ -111,7 +124,7 @@ These came out of the folded concepts and belong to the place.
 
 For about half an hour at each end of the day there's no sun and not yet dark. Lights can only show against ink, so dusk is the sky being inked in from the top while the sign comes on against it.
 
-What someone arriving then sees, so it doesn't look broken:
+No sun and no dark means no shadows, yours included, as on any evening. What someone arriving then sees, so it doesn't look broken:
 
 | | |
 |---|---|
@@ -126,9 +139,9 @@ Whenever in the half hour you arrive, the next letter comes at three seconds. At
 
 Standing still is the gesture. Shared rules:
 
-- **Still** means not walking and not acting. The clock for it starts when the view has levelled.
-- **Turning to look does not restart it.** Otherwise you could never watch what the place does. (In the concept, turning brings your lamp back; it still doesn't restart the place's list.)
-- **Walking or acting ends it at once.** Anything that was moving by itself stops. Anything that already changed stays changed for the visit: that's the evidence it happened.
+- **Still** means not being moved (no pinch, no go-to, no walking key) and not acting. The clock for it starts the moment you stop.
+- **Turning to look does not restart it,** by finger or by turning the phone. Otherwise you could never watch what the place does; and a hand holding a phone is never still, so with tilt on, nothing else would work.
+- **Moving or acting ends it at once.** Anything that was moving by itself stops. Anything that already changed stays changed for the visit: that's the evidence it happened.
 - If the page is hidden, the clock stops. Nothing happens while you can't see it; that would be a different kind of site.
 
 The concept says what Wait gives, second by second.
@@ -152,13 +165,13 @@ No 3D, or a screen reader, or keyboard only: **the named places as a list.** Eac
 | 11 Send it | Same address |
 | 12 Phone and desktop | The list is one column on both |
 
-Honest limit: your shadow has no version without a picture. Your lamp does, roughly: "look at" a thing gives it in a line. The list says what is lit and lets you switch things on and off, and the room's sound still builds.
+Honest limit: your shadow has no version without a picture. "Look at" a thing gives it in a line. The list says what is lit and lets you switch things on and off, and the room's sound still builds.
 
 **Keyboard with the picture:** arrows walk and turn; Tab steps through the things and places you can see, nearest first; Enter goes to it, and again to act; Escape puts you outside the last door.
 
 ## The margin
 
-Outside the picture: sound on or off; the hour (and "wound" with the real time beside it, when the clock has been turned); the mark that opens the list of places. Nothing else. No name, no credit, no contact ("yes but no").
+Outside the picture: sound on or off; the hour (and "wound" with the real time beside it, when the clock has been turned); the mark that opens the list of places; on a phone, **tilt** (the phone turning the view: on, off, and on an iPhone the tap that asks for it). On a first visit, two words that go once you've done them: **swipe · pinch**. Nothing else. No name, no credit, no contact ("yes but no").
 
 The visual designer wrote that the margin loses the way out, and it does: a walked world has a door. I've added the list of places in its place. That's a disagreement with keeping the margin to two things, and I think job 12 needs it.
 
@@ -185,7 +198,7 @@ The owner: "yes but idk how to even begin there." And earlier: "we need sound ef
 | Kind | What | Heard |
 |---|---|---|
 | The bed | The lights that are on | From where each light is. Walk toward the sign and its buzz grows; walk away and it's wind |
-| Your own | Footsteps | Under you. Stop walking and they stop, so Wait is something you hear yourself begin |
+| Your own | Footsteps | Under you. Stop and they stop, so Wait is something you hear yourself begin. (A pinch can cover twenty metres in half a second; what your steps sound like then is open) |
 | Answers and events | The bell, the latch, a switch; and the things the place does by itself | From where the thing is, left or right, near or far. You hear it and turn |
 
 That third line matters more now that you walk. A sound behind you is the plainest reason to turn round, and most of what the place does when you're still should be heard before it's seen.
@@ -218,18 +231,20 @@ That third line matters more now that you walk. A sound behind you is the plaine
 |---|---|
 | Loading | The road still for this hour and the sign's name as text, at once. The world arrives behind it and you can start walking when it has |
 | No 3D | The list of places, above |
-| Motion off | Cuts between standing spots; the light moves in steps |
+| Motion off | A pinch, a tap and the door are cuts; a swipe still turns under the finger; tilt starts off |
 | Sound off or blocked | Small marks where sounds would be; the bell's word; the switch shows off |
 | First visit, nothing remembered | Complete |
 | Clock wound | Marked in the margin. Stays wound while you walk about, so you can go out and see it. Lets go when you touch the clock again or leave the site |
 | Tall phone | The main canvas |
 | Wide desktop | The same world, a wider slice of it. Nothing depends on the width |
 | You walk off into the desert | You arrive again |
+| You pinch at a wall, or at the thing itself | You stop 0.9 m short; the view leans a little and comes back |
+| You hold a finger down | Nothing |
 | You stand inside a wall, a thing, a marked-out footprint | You can't enter the first two; the third is allowed |
 
 ## What the browser remembers
 
-Sound on or off; the chart; the date of your first visit. Concepts add to it where they say. Clearing it loses nothing you need.
+Sound on or off; tilt on or off; the chart; the date of your first visit. Concepts add to it where they say. Clearing it loses nothing you need.
 
 # Shared by every concept — how it looks and feels
 

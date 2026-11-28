@@ -1,9 +1,9 @@
 # Left on
 
-**You are** never drawn. You're a shadow where the sun is, and a lamp where no daylight reaches: indoors and at night.
-**The hour** decides how much of the place is the sun's and how much is yours.
+**You are** never drawn. You are a shadow, wherever a real light falls on you: the sun, a lit lamp, a room light you switched on. In the dark there is nothing of you but the lights you left on.
+**The hour** decides how much of the place the sun lights, and how much is dark until something is switched on.
 
-*How it works (systems). Round 3: brought in line with `score-2.md` and `owner.md` section 7. This is the one concept: 01 Nobody's here merged into 03 Your light, as `score-1.md` asked. It replaces both files' how-it-works halves. Read `00-shared.md` for the place itself: the lot, walking, the door, the world's edge, sound, twilight.*
+*How it works (systems). Brought in line with `owner.md` sections 24 to 30 and `steer-5.md`: the lamp that followed your view is out; light works as it really would; you move by swipe, pinch and tap (`controls.md` is the exact spec). Before that, round 3: `score-2.md` and `owner.md` section 7. This is the one concept: 01 Nobody's here merged into 03 Your light, as `score-1.md` asked. It replaces both files' how-it-works halves. Read `00-shared.md` for the place itself: the lot, walking, the door, the world's edge, sound, twilight.*
 
 An abandoned station with things left on. It has been empty for years and the power never went off (the owner: "This is liminal space logic so abandoned can still have power"). Everything is faded and rusted, and everything still works. One cup on the counter is still warm. Where this file says "the attendant", read: Adam. He has said "it would probably be me squatting"; see "Who isn't here" below, which is a proposal for him to check.
 
@@ -11,14 +11,24 @@ The name is for three things at once: the place was left with things on; you lea
 
 ## Where it comes from
 
-- **From 03 Your light:** you as shadow and lamp; every thing indoors is a light with a sound; lights stay as you left them; the main; the fourth light; the sky when you stand still at night.
+- **From 03 Your light:** you as shadow (and, until `owner.md` section 28, a lamp); every thing indoors is a light with a sound; lights stay as you left them; the main; the fourth light; the sky when you stand still at night.
 - **From 01 Nobody's here:** the attendant's things; the aisle that is longer than the building; Call answered by nobody; the place acting when you stop; "nothing moves while you're looking at it"; the chart.
 - **From 02 The Arrow** (folded): nothing here. Its leftovers are true of the place and live in the shared file.
 - **Draws on, from the jam:** ink is where the light isn't; evidence, never the creature; the interior bigger than the outside; self-service; the visitor is the sighting.
 
-**How the day and the night join.** In 03 the hour switched you: shadow by day, lamp by night. Here nothing switches. **You always cast a shadow and you always carry the lamp. Each only shows where it can:** a shadow needs sun to fall in; a lamp needs somewhere no daylight reaches. So *the sun's part of the place is whole and indifferent; the dark part is yours*, and the hour sets how big each part is. At midnight the dark part is everything. At noon it is still most of the front room and all of the aisle, so a daytime visitor has the lamp within ten steps of the door.
+## The rule for light
 
-**Ruled in round 2:** the lamp does not show in daytime shade outdoors. I had proposed that it did, under the canopy; the visual designer drew it and it reads as a fault, and the director ruled it out. Daylight is the sun's, shade included. Under the canopy by day the shade is brushed and near things keep a paper edge, so the pumps are there without you.
+The owner: **"Lighting should work as in the real world."** This is the rule for all of it, and it replaces the two marks this file used to have.
+
+- **A light lights what it really would, and nothing else is lit.** The sun; the name; the arrow's bulbs; the canopy lamp; the lamp post; each thing you switch on. Where none reaches, it is dark, and the dark is drawn ("It should just be darker").
+- **Nothing follows where you look.** He turned the lamp down in so many words: "The light that follows where I look". Nothing is carried, and looking lights nothing.
+- **You have one mark: your shadow, cast by whatever light is really there.** The sun by day. At night the canopy lamp casts it, the lamp post casts it, the lit window throws it across the forecourt. Indoors the tube you just pulled on casts it on the floor. In the dark you have none.
+- **What you switch on stays on.** That was always the title. It is now also what gives you a shadow indoors and at night: turning a light on is how you appear.
+- **A thing in shade is shaded.** A pump under the canopy at noon is in shade and looks it.
+
+So the day and the night join by themselves. Nothing switches. By day the sun does nearly everything and your shadow is everywhere you walk. At night the place is dark except where something is on, and you exist where the lights are. The hour sets the proportions.
+
+**The one deliberate exception is the other thing.** Its light is the light that doesn't work as in the real world: a patch on the ground with no lamp over it. Because everything else obeys, that is how you know it. (For the director to confirm; the full list of what was checked against the rule is at the end of this half.)
 
 I don't see a second concept that differs in kind and is worth making. The owner described the place closely; what's left are choices inside it (below, "Choices for the owner").
 
@@ -27,8 +37,8 @@ I don't see a second concept that differs in kind and is worth making. The owner
 | Who | Never seen | Seen as |
 |---|---|---|
 | Adam, who lives here | Him | His things, his plans chalked on the ground, and what he left on |
-| You | You | Your shadow in the sun; your light in the dark |
-| The other thing | It | A light that isn't the sun's, the station's or yours |
+| You | You | Your shadow, in any real light; the lights you left on |
+| The other thing | It | Light with nothing to cast it |
 
 Every act you can make puts light somewhere or takes it away. There is nothing else to do here, so nothing needs an interface.
 
@@ -44,41 +54,54 @@ The owner: "Well it would probably be me squatting." So the absent person is Ada
 - **Liminal, not funny:** no jokes, no self-portrait, no signature but the sign. A visitor who doesn't know the name learns only that someone lives here, draws, and is out.
 - **For the parked jobs** (nothing designed): who Adam is → his things; the work → what he's been making here; get in touch → leaving word for someone who's out.
 
-## Your two marks
+## Your mark
 
-**Your shadow.** Wherever you stand in sun. It moves exactly as the view moves and is cut by the bottom of the screen. Long early and late, almost nothing at noon. It falls on what you walk up to, and where it lies on a thing, the two join into one mark. It has a person's proportions, a head and shoulders, plain, so it reads as whoever is holding the phone. That's all it does. It isn't a way of acting on things, and nobody has to come at anything from a particular side. It is how the place shows that you're standing in it.
+**Your shadow.** Wherever a real light falls on you. It moves exactly as you move and is cut by the bottom of the screen. It has a person's proportions, a head and shoulders, plain, so it reads as whoever is holding the phone. It falls on what you come up to, and where it lies on a thing, the two join into one mark. That's all it does. It isn't a way of acting on things, and nobody has to come at anything from a particular side. It is how the place shows that you're standing in it.
 
-**Your lamp.** Indoors, and everywhere at night. It follows where you look, sits a little above your eye so things in it throw shadows you can see, and makes a disc of paper. Things stand in the disc as ink. A thing you've lit and left keeps two or three of its own strokes for the rest of the visit, so a dark place fills in as you go through it. **It always lands on something.** If there's nothing in front of you, it lands on the ground ahead of your feet, so you're never holding a black screen: turn your back on the station at night and you still have a disc of paper with the ground's strokes in it.
+- **In the sun:** long early and late, almost nothing at noon, away from the sun.
+- **In shade by day** (under the canopy, in the building's shadow): none. Shade is shade.
+- **At night under a lamp:** away from the lamp, short beneath it and longer as you leave it, gone when you're out of its reach. Crossing the forecourt at night you get one under the canopy lamp, lose it, and get a weaker one by the lamp post.
+- **Indoors:** in the patch of sun from the door and windows by day. Otherwise none until you turn a light on; then away from that light.
+- **In the dark:** none. There is nothing of you in the picture. What there is of you is whatever you left on.
+- Two lamps, two shadows, as it would be. (Whether the drawing shows both or only the nearer lamp's is the visual designer's; PROPOSED: the nearer only.)
 
-Step through the door out of the sun and the shadow goes and the lamp is there. Step out and it's the other way round. No moment is announced.
+Moving by a pinch changes nothing here: the shadow is cast from where you are, every frame, and slides over the ground with you. You stop 0.9 m short of a thing, which is near enough for your shadow to reach it.
+
+**What went with the lamp** is listed once, below, in "What the lamp did, and what does it now".
 
 ## What you can do
 
-Three acts and standing still. The same everywhere, at every hour.
+Three acts and standing still. The same everywhere, at every hour. On a phone it is three gestures: **one finger turns you, two fingers move you, a tap goes there or uses the thing.** Holding a finger down does nothing. The exact rules, the numbers, the mouse, the keyboard and the phone's own tilt are in `controls.md`.
 
 | Act | How | What it means here |
 |---|---|---|
-| Walk up to a thing | Walk, or tap it to go there | In sun your shadow joins it. Indoors or at night your lamp is on it |
+| Look round | Swipe: the picture follows your finger. Or turn the phone | Nothing but looking. It lights nothing and it never counts as moving |
+| Go up to a thing | Pinch out with the thing between your fingers: you're carried toward it and stop just short. Pinch in to back away. Or tap it and you're taken there | In a real light your shadow joins it. In the dark you are simply at it |
 | Use it | Tap it when you're at it | A light comes on or goes off, with its sound. Or you ask for someone |
-| Go through a door | Keep walking into it for a second | You take the light with you: daylight in through the doorway, or your lamp in ahead of you |
-| Stand still | Stop | Your lamp closes. Then the place does what it does when nobody's there |
+| Go through a door | Come up to it: you stop at it. Then pinch once more, or tap it | By day the daylight comes in with you through the doorway. At night nothing does |
+| Stand still | Stop | The place does what it does when nobody's there |
+
+**Pinching is moving, not zooming.** The owner: "Pinch out zooms in pinch in backs up like photos." What is between your fingers grows as they part, because you are getting nearer to it; the view itself never narrows. A long way is quick and the last metre is slow, as with a photo. You can pinch on something you can't see in the dark: you still stop at whatever is there.
+
+**The door is two beats:** you arrive at it and stop; the next pinch or tap takes you through. That is the latch, and it replaces "keep walking into it for a second". At midday it is off the latch and one pinch carries through.
 
 ## The place, by how light gets to it
 
-**The lot, by day.** All the sun's. Whole, still, complete without you. You arrive across the road from the sign, and your shadow goes ahead of you. You can walk up to anything and use it. Under the canopy is shade, brushed, with the pumps standing in it; you have no shadow there and no lamp, and everything still answers a tap.
+**The lot, by day.** All the sun's. Whole, still, complete without you. You arrive across the road from the sign, and your shadow lies where the sun puts it. You can go up to anything and use it. Under the canopy is shade, with the pumps standing in it, shaded; you have no shadow there, and everything still answers a tap.
 
-**The lot, by night.** All dark, except what the station itself keeps lit: the name, the arrow's bulbs, the canopy from below. Those are always on at night, so you know where you are before you've done anything. Everything else exists where you point.
+**The lot, by night.** All dark, except what the station itself keeps lit: the name, the arrow's bulbs, the canopy from below. Those are always on at night, so you know where you are before you've done anything. Everything else is there, dark, drawn. Under the canopy lamp and by the lamp post you have a shadow; between them you don't.
 
 **The front room.** Eight metres deep, the size the outside says. The counter with the register, the bell, the cup, the radio. A jacket on a hook. The wall clock, and the chart under it. The card in the door: BACK IN 5 MINUTES.
 
 - By day the sun comes in through the door you opened and through the front windows, as patches on the floor. Where they fall and how deep they reach is the hour and the season: far into the room in winter, barely over the sill in midsummer. The door's patch has your shadow in it.
-- The rest of the room is dark, so there your lamp works.
-- A pull cord hangs just inside the door, in the door's patch. It's the first switch and it can't be missed. It lights the tube over the counter, which lights the counter and little else.
+- The rest of the room is dark until you pull the cord.
+- A pull cord hangs just inside the door, in the door's patch. It's the first switch and it can't be missed by day. It lights the tube over the counter, which lights the counter and little else, and puts your shadow on the floor.
+- **At night there is no patch of sun to hang it in.** What really comes through the door glass and the front windows at night is the sign: his name's light lies on the floor inside, weakly, and the cord hangs in that. PROPOSED, and it has to be seen to be believed; if it isn't enough, the cord is the one thing in the room that needs its own small glow.
 
 **The aisle.** Beside the counter, where the back wall should be, an opening with one small light at its mouth that you can see from the door. Through it, one aisle of shelves runs straight back for fourteen bays, about 28 metres, behind a building eight metres deep.
 
-- **No daylight gets here. It is always night in the aisle.** So at any hour this is where the lamp is fully yours.
-- A pull cord every third bay lights that stretch. You light it a stretch at a time, or walk it by lamp alone.
+- **No daylight gets here. It is always night in the aisle.**
+- A pull cord every third bay lights that stretch. You light it a stretch at a time, or go down it in the dark toward the payphone's lamp. The light at the mouth and the lamp at the far end carry the walk: one behind you, one ahead. Three pinches on the payphone's lamp take you the length of it.
 - Stock on the first shelves, with realistic labels and invented brand names (owner: "realistic labeling with fake brand names"). Bare shelves further back.
 - **The far end:** a payphone with its own small lamp, and the back door, both big enough to be the picture when you get there.
 - **Behind you** is the way you came: the aisle runs in line with the front window, so from the far end the daylight is straight back down it. (Round 1 called this view the reason to walk the aisle. It doesn't work as a picture yet, so I've taken the claim out. If the visual designer solves it, it goes back in.)
@@ -98,11 +121,11 @@ Every thing you can use indoors is a light and a sound. The room's drawing is th
 | Radio | Its dial, and what's next to it | Static; a station that won't come in |
 | Register | Its small window | The drawer |
 | Payphone | Its lamp | Dial tone |
-| Light at the aisle mouth | The opening | — (it's the attendant's; it was on when you came) |
+| Light at the aisle mouth | The opening | — (it's his; it was on when you came) |
 
 Switches have their light and their sound and no word in the picture.
 
-**What you leave.** Lights stay as you left them. From the road at night the windows you lit are lit. They are still on the next time you come; the browser keeps them.
+**What you leave.** Lights stay as you left them. Each one lights what it really would and casts your shadow while you're near it. From the road at night the windows you lit are lit. They are still on the next time you come; the browser keeps them.
 
 **The main.** A knife switch on the wall by the door, in the same patch of light as the cord. One pull and everything you ever turned on goes out, the hum falling away a light at a time, and the room is as he left it. It doesn't touch the name, the arrow or the canopy. Those aren't yours.
 
@@ -112,7 +135,7 @@ Some things aren't lights. They're how you'd call a person. Nobody comes. The pl
 
 | Thing | You | It |
 |---|---|---|
-| Bell line across the forecourt | Walk over it | A bell, from inside the building |
+| Bell line across the forecourt | Cross it, however you're moving | A bell, from inside the building |
 | Counter bell | Tap | DING. The radio slips off its station |
 | Pump handle | Tap | The numbers roll and stop |
 | Payphone receiver | Tap, and keep it | Dial tone; then something that isn't one |
@@ -121,67 +144,66 @@ The counter bell is the only thing in the place that lands a word, and it lands 
 
 ## Standing still
 
-One sequence, wherever you are. Still means not walking and not using anything.
+One sequence, wherever you are. **Still means you are not being moved and not using anything.** Looking round, by finger or by turning the phone, never counts; a hand is never still, and it doesn't have to be. The clock starts the moment you stop.
 
 | Since you stopped | What happens |
 |---|---|
-| 1 s | The view levels |
-| 4 s | If your lamp is showing, it starts to close. It gets smaller, not fainter |
-| 8 s | The lamp is gone. Your marks go: a thing you joined gives back its blacks |
-| 10–15 s | Outdoors at night: the stars, one stroke each, with tails as long as the night is old |
+| 10–15 s | Outdoors at night: the stars, one mark each, with tails as long as the night is old |
 | 15 s | **The first small thing**, near you and not in the middle of your view. The steam off the cup stops. A pump's numbers tick over once |
 | 45 s | One thing further off. The radio finds a station for a few seconds. The bell line rings with nobody on it |
 | 2 min | The payphone rings at the far end of the aisle. You hear it from anywhere, through the wall if you're outside |
-| 4 min | The canopy lamp goes out. A disc of light crosses the forecourt from nothing overhead. The lamp comes back |
+| 4 min | The canopy lamp goes out. A patch of light crosses the forecourt from nothing overhead. The lamp comes back |
+
+Gone from this table: the view levelling at 1 s (the view now stays where you left it; see "Where this goes against the concept as written"), and the lamp closing at 4 s and 8 s.
 
 The rules that keep it from being a haunted house:
 
-- **Nothing moves in your light, and nothing moves while you're looking straight at it.** You hear it, you turn, it has already happened. The cup is cold.
-- **Turning brings your lamp back and the stars go**, but it doesn't restart the list. Walking or using something does. Then everything stops at once: walk toward the phone and it stops ringing three steps before you reach it, every time.
+- **Nothing moves while you're looking straight at it.** You hear it, you turn, it has already happened. The cup is cold.
+- **Turning doesn't restart the list, and doesn't put the stars out.** Moving or using something does. Then everything stops at once: the first pinch toward the phone and it stops ringing, every time.
 - **What changed stays changed** until you leave.
 - **Each thing on the list happens once a visit.** Stand still again and you get the next one you haven't had.
-- By day in the sun there's no lamp to close, so the first thing you get is at fifteen seconds. At night the sky comes first and the place second.
+- By day the first thing you get is at fifteen seconds. At night the sky comes first and the place second.
 
 ## The hour
 
-It sets how much is the sun's. That is all it does, and it's a lot.
+It sets how much the sun lights. That is all it does, and it's a lot.
 
-| | The sun's | Yours |
+| | The sun's | Dark, until something is on |
 |---|---|---|
 | Midday | The whole lot, shade included; a patch inside the door | Most of the room; the aisle |
 | Morning, evening | The lot, with long shadows; sun deep into the room | Less of the room; the aisle |
-| Twilight | Nothing: no sun | Indoors only. Outside, nothing you do leaves a mark while the sky is inked in (shared) |
+| Twilight | Nothing: no sun, and the sky still light. No shadows anywhere, yours included, as on any evening | Indoors |
 | Night | Nothing | Everything the station doesn't light itself |
 
-The wall clock turns the sun (shared). Turn it at noon to midnight and the lot outside the window goes dark and your lamp reaches through the glass.
+The wall clock turns the sun (shared). Turn it at noon to midnight and the lot outside the window goes dark.
 
 ## The alien material
 
-A light that is none of the three.
+Light with nothing to cast it. Everything else in the place is lit the way it really would be, so this is the one thing that isn't.
 
-- **The fourth light.** A disc on the ground like yours, a little way off, that isn't yours. It closes when you turn toward it.
+- **The patch.** A patch of light on the ground a little way off, with no lamp over it. It closes when you turn toward it. Stand in it, if you ever could, and you'd have no shadow.
 - **One left on.** A light in the place that you didn't turn on. From the road, a lit window that wasn't yours.
-- **The disc at four minutes.**
-- **The three circles** east of the slab, in another hand (shared). By night they show only when a light is on them.
+- **The light at four minutes,** crossing the forecourt from nothing overhead.
+- **The three circles** east of the slab, in another hand (shared). Paint: faint in the dark, plain under a light.
 - **The radio**, between stations.
 
 **The chart.** A grid under the clock, after the owner's sightings chart: a small drawing, a place, a date. It fills as you see these. On your second visit there's an entry dated the day of your first, with the place you stood longest. No sentence.
 
 ## The moments
 
-**Arriving by day.** Across the road, 21 metres south of the sign, so the whole name is in the picture on a phone. The road in front of you, the sign with his name and nothing else on it, the arrow at the door, the canopy and pumps to the left, the desert all round. The door is about nine seconds' walk. Nothing moves until you do; then your shadow does.
+**Arriving by day.** Across the road, 21 metres south of the sign, so the whole name is in the picture on a phone. The road in front of you, the sign with his name and nothing else on it, the arrow at the door, the canopy and pumps to the left, the desert all round. The door is three pinches away, or one tap. Nothing moves until you do.
 
-**Arriving at night.** The same spot. Ink. The name, the bulbs, the canopy lit from below. You look round and a disc of paper goes where you look, on the road at your feet if nowhere else.
+**Arriving at night.** The same spot. Ink. The name, the bulbs, the canopy lit from below. Everything else is dark and drawn. You look round and nothing lights; you go toward what's lit.
 
-**Arriving at twilight.** No shadows, no disc. Within three seconds a stroke of ink is laid into the sky and a letter of the name comes on against it (shared).
+**Arriving at twilight.** No shadows. Within three seconds a stroke of ink is laid into the sky and a letter of the name comes on against it (shared).
 
-**Crossing the door.** You walk into it and keep walking; it gives. By day a patch of sun opens across a dark floor with your shadow in it, and a cord hangs in it. By night your lamp goes in ahead of you.
+**Crossing the door.** You come up to it and stop. One more pinch, or a tap, and it gives. By day a patch of sun opens across a dark floor with your shadow in it, and a cord hangs in it. By night the room is dark: the small light at the aisle mouth, the sign's light on the floor behind you, and whatever you left on last time.
 
-**Inside, by day.** You pull the cord. The counter is there. You go past it by lamp, find the cooler, the radio, the aisle. Each thing you turn on stays on and adds its sound. After a few minutes the room is half drawn, by you.
+**Inside, by day.** You pull the cord. The counter is there, and your shadow. Past it the cooler and the radio are dark shapes at the edge of the tube's light; you go to them and turn them on. Each thing you turn on stays on and adds its sound. After a few minutes the room is half drawn, by you.
 
-**The aisle.** Pool to pool, or lamp only. The phone at the end. You turn round and the front window is a long way off.
+**The aisle.** Pool to pool, or in the dark toward the lamp at the end. The phone at the end. You turn round and the front window is a long way off.
 
-**Doing nothing.** You stop. The lamp closes. Something small happens behind you.
+**Doing nothing.** You stop. Something small happens behind you.
 
 **Leaving.** Out the back and round, or back the way you came. From the road, the windows you lit.
 
@@ -189,7 +211,7 @@ A light that is none of the three.
 
 **Coming back another day.** Your lights are on. One you don't remember. A line on the chart with a date.
 
-**A view nobody composed.** By day, anywhere: paper, a stripe of building, your shadow if you look down. By night, anywhere: your disc on whatever is there.
+**A view nobody composed.** By day, anywhere: paper, a stripe of building, your shadow if you look down. By night, anywhere: the dark, drawn, and something lit a way off.
 
 ## Every state
 
@@ -200,17 +222,20 @@ A light that is none of the three.
 | Everything on, weeks later | The room fully drawn and humming. That's your place now. The main is by the door |
 | After the main | As he left it |
 | Noon in midsummer | Almost no shadow outdoors; the sun barely over the sill indoors. The room is nearly all yours |
-| Under the canopy by day | Brushed shade. Near things keep a paper edge, so the pumps are there. No shadow, no lamp; things answer a tap |
-| Twilight | Outdoors you leave no mark; things in reach still answer; indoors the lamp works |
+| Under the canopy by day | Shade, and the pumps shaded in it. No shadow; things answer a tap |
+| Under the canopy at night | The lamp's pool. Your shadow, away from the lamp |
+| Twilight | No shadows outdoors; things in reach still answer; indoors as at any hour |
 | Clock wound | Marked in the margin; stays wound while you walk; lets go when you touch it again or leave |
 | You never go in | The lot is whole: the bell line, the pumps, the phone heard through the wall, and all of the night |
 | You never stand still | You never get the list. You still have the lights, the aisle and the night. This is the difference from 01: stillness adds to the concept and doesn't carry it |
 | Sound off or blocked | Each light that's on has a short repeating stroke beside it. Things heard-first leave a small mark where they happened. The bell has its word |
-| Motion off | Walking is cuts between standing spots. The lamp jumps between things and closes in three steps. The disc at four minutes is a held frame |
-| Keyboard | The lamp is the focus. Tab moves it thing to thing, nearest first; Enter goes there, and again to use it; Escape puts you outside the last door |
-| Phone | Drag to look and aim; hold to walk; tap to go or use |
-| Desktop | The same, wider. Nothing depends on width |
-| No 3D, or a screen reader | The list of places (shared). Each place says what is lit and what you can hear. "Look at" a thing is your lamp: it gives the thing in a line. Every switch is a button, and the main. The list's events arrive as lines. What has no version: the shadow. I'd sooner say so than fake it |
+| Motion off | A pinch or a tap is a cut, not a move. A swipe still turns under the finger. The phone's tilt starts off. The light at four minutes is a held frame |
+| Keyboard | Arrows walk and turn. Tab steps thing to thing, nearest first; Enter goes there, and again to use it; Escape puts you outside the last door. The thing in focus needs a mark of its own now that the lamp isn't it (visual; unsolved in the dark) |
+| Phone | Swipe to turn; pinch to move; tap to go or use; turn the phone to look, if you've allowed it (`controls.md`) |
+| Desktop | Drag to turn; wheel or trackpad pinch to move; click. The same place, wider. Nothing depends on width |
+| First seconds, never been | Two words in the margin, **swipe · pinch** (and **tilt** on a phone). Each goes when you've done it |
+| At a wall, or the thing you pinched on | You stop just short; the view leans a little and comes back |
+| No 3D, or a screen reader | The list of places (shared). Each place says what is lit and what you can hear. "Look at" a thing gives it in a line. Every switch is a button, and the main. The list's events arrive as lines. What has no version: the shadow. I'd sooner say so than fake it |
 | Browser memory cleared | Lights off, chart empty. Nothing needed is lost |
 | Loading | The road still for this hour and the name as text; then the world |
 | Nothing made yet beyond the building | The sign, the door, one cord, the aisle with bare shelves. It's still the concept |
@@ -234,16 +259,16 @@ The shared plan is this concept's plan: the place's sound is the sum of the ligh
 |---|---|
 | 1 Arrive, place first | The road; nothing on screen but the place |
 | 2 Arrow sign, his name, pulled in | The sign straight ahead, arrow at the door; lit at night |
-| 3 Go in | Lean on the door for a second; off the latch at midday |
-| 4 Walk around, in and out | The lot, the room, the aisle, out the back, round; off into the desert and back |
-| 5 Each touch means something | Every act puts light somewhere or takes it away; or asks for someone who doesn't come |
+| 3 Go in | Come up to the door, then one more pinch or a tap; off the latch at midday |
+| 4 Walk around, in and out | Pinch, tap, keys or wheel: the lot, the room, the aisle, out the back, round; off into the desert and back |
+| 5 Each touch means something | Every act puts light somewhere or takes it away; or asks for someone who doesn't come. Moving itself is the pinch: you go to what you touched |
 | 6 Hear it, also when doing nothing | The sum of the lights; your steps; the list, heard first |
 | 7 Different at another hour | How much is the sun's; where the patches fall; night; twilight |
-| 8 Alien things | The fourth light; one left on; the disc; the circles; the chart |
-| 9 Do nothing | The lamp closes, the sky, then the list |
+| 8 Alien things | The patch with no lamp over it; one left on; the light at four minutes; the circles; the chart |
+| 9 Do nothing | The sky, then the list |
 | 10 Find more next time | Your lights; the one that isn't; the chart entry; the rest of the list |
 | 11 Send it | They land on the road with everything off |
-| 12 Phone, desktop, fallbacks | The states table; the list of places |
+| 12 Phone, desktop, fallbacks | The states table; `controls.md`, every way in; the list of places |
 | 13 Add a thing | A light, a thing to ask at, a line on the list, a marked-out plan |
 | 14 Swap in his own | Per thing, unseen; sounds too |
 | 15–19 The work, later | A piece of work is a thing you put a light on. The shelves are there. The counter, the phone and the blank price slats are there |
@@ -254,17 +279,78 @@ One is left.
 
 1. **The hums tuned to notes, or just hums.**
 
-Settled since round 2: the canopy (his answer: yes); the sign carries his name and nothing else ("Gas is unnecessary"); the lamp is for indoors and night (ruled); the shadow has a person's proportions (ruled).
+Settled since round 2: the canopy (his answer: yes); the sign carries his name and nothing else ("Gas is unnecessary"); the shadow has a person's proportions (ruled). Settled since: no lamp ("The light that follows where I look"); light as in the real world; swipe, pinch, tap, tilt.
 
-His open question, whether the time of day does something, is answered by the concept: it changes how much of the place is yours.
+His open question, whether the time of day does something, is answered by the concept: it changes how much of the place the sun lights, and so where you have a shadow and what you have to switch on.
 
 ## Not proven
 
 - The look back down the aisle as a picture.
 - The desert round the station, and brush in the day arrival (score 2, fixes 2 and 3). Not mine to fix.
-- Any of it in a hand, on a phone.
-- Whether the first minute indoors by day is a pleasure. The cord in the door's light, the lamp, and a light at the aisle mouth are meant to make it one. Nobody has walked it.
+- Any of it in a hand, on a phone. The new controls least of all: they have only been driven by emulated touches (`controls.md`, "Not proven").
+- The first minute indoors **at night**, with no lamp: whether the sign's light through the glass is enough to find the cord by.
+- Whether a night with nothing of you in it until you reach a light is right for him. It is what real light does.
+- Whether the first minute indoors by day is a pleasure. The cord in the door's light and a light at the aisle mouth are meant to make it one, now without a lamp to find the rest by. Nobody has walked it.
 - Whether fifteen seconds is short enough. If people never stop, the concept still stands; that's the point of the merge.
+
+## What the lamp did, and what does it now
+
+The lamp is out: "I don't like the light thing at night… The light that follows where I look." The director ruled Left on stands (`steer-5.md`). Everything that leaned on it, plainly:
+
+| It did this | What still does it | Left with nothing |
+|---|---|---|
+| **Showed you were there**, indoors and at night | Your shadow under any real lamp; the lights you leave on | In full dark, nothing of you. Real, and he asked for it |
+| **Found things in the dark** (the cooler, the radio, the far shelves, a pump at night away from the canopy) | The station's own lights; the cord by the door; the aisle-mouth light; the payphone's lamp; anything already on. You can pinch or tap toward a dark thing and you stop at it | Seeing a thing nothing lights, unless the dark drawing shows it. That is now the drawing's job ("more dots, or reversed dots on dark"): Sheet 3 |
+| **"Your lamp is on it"** when you came up to a thing | In light, your shadow joins it | In the dark, no sign you've arrived except that you stopped |
+| **Never a black screen** (it always landed on something, the ground at your feet if nothing else) | — | The duty stays; the means has to be the dark drawing itself. Not proven |
+| **Closed when you stood still** (4 s and 8 s): the first sign that stopping does something | — | Nothing before the stars at 10–15 s at night, and the first small thing at 15 s by day. Whether fifteen seconds with no sign is too long is open |
+| **"Turning brings your lamp back and the stars go"** | Turning does nothing to the list, and nothing to the stars | — |
+| **Went in ahead of you through the door** at night | By day the daylight still comes in with you. At night: the aisle-mouth light, the sign through the glass | A lit way to the first cord at night. PROPOSED above: the sign's light on the floor |
+| **Left two or three strokes on a thing you'd lit**, so a dark place filled in as you went | What you switch on stays on, and fills the place in | The trail of where you'd merely looked. Gone, not replaced |
+| **Was the keyboard's focus** | Tab still steps thing to thing | A visible mark for the thing in focus, above all in the dark |
+| **Reached through the glass** when the clock was wound to night | The lot outside goes dark | — |
+| **Was what the fourth light resembled** ("a disc like yours") | A patch of light with no lamp over it. Plainer, and easier to read now | — |
+| **"Look at" in the list of places** stood in for it | "Look at" gives the thing in a line; it never needed the lamp | — |
+| **The walk down the aisle by lamp alone** | The light at the mouth behind you, the payphone's lamp ahead | The shelves between cords, unless you pull one |
+
+In `elements.md`, element 10 ("Your lamp") is struck.
+
+## Checked against "as in the real world"
+
+Everything in this half and in `00-shared.md` that makes or uses light, against his rule. **Square** means it is what real light does. **Exception** means it isn't, and is kept on purpose, for the director to confirm. **Flag** means it isn't, and I don't think it should be kept as it is.
+
+| Thing | Verdict | Note |
+|---|---|---|
+| Your shadow in the sun, joining what it falls on | Square | |
+| Your shadow under the canopy lamp, the lamp post, a room light, a lit window's spill | Square | New. One per lamp really; the drawing may show the nearer only |
+| No shadow in shade, at twilight, in the dark | Square | |
+| What you switch on lights what's near it and stays on | Square | |
+| Sun patches on the floor moving with hour and season | Square | Through filthy glass, weaker |
+| The sign's shadow on the slab, reaching the door on winter middays | Square | Worked from a real sun |
+| A thing in the canopy's shade is shaded | Square | The old line "near things keep a paper edge in shade" was a drawing device to keep the pumps visible. How they stay readable while shaded is the visual designer's (dots) |
+| **"Drawn once" against "lit by the hour"** (his "no" to the light redrawing a thing, section 18) | Square, restated | A thing's own marks, its paint, wear and grain, are drawn once and don't change. The shade and shadow that fall on it are real and move. The two no longer compete: one is the thing, the other is the light |
+| The door: daylight comes in with you | Square | "You take the light with you" was a figure of speech; a door opening lets the day in. The lamp half is gone |
+| The sign's light through the front glass onto the floor at night | Square | PROPOSED, new; it is what would happen |
+| The stars appearing after 10–15 s of standing still | Square, near enough | Eyes adjust. They should not go out when you look round, and now don't |
+| The stars' tails, "as long as the night is old" | Exception, small | Not light; a way of drawing time. Visual's and the director's |
+| "A light that dims gets smaller, not fainter"; light arriving "in strokes, nearest first, in four held steps" | Flag, for the visual designer | Drawing rules from the brush rounds. A tube that stutters and then holds is real; a pool that grows outward along a grain is not. With dots and real light these want restating |
+| Lights lost past 100 m (so the world's join doesn't show) | Exception | A lit sign in a desert is seen for miles. Kept, or the edge shows. The dark drawing may hide it some other way |
+| Twilight: the sky inked in from the top, a letter of the name a second | Exception | Staging, not light. A sign coming on at dusk is real; a letter a second is ours |
+| The wall clock turning the sun | Exception | The one control over light that isn't a switch. Once turned, the light obeys |
+| At midday the door is off the latch | Not light | |
+| **The patch of light with no lamp over it; the light at four minutes; one left on that nobody left** | **Exception: the alien material** | This is the point of them. In a place where every light has a source, a light without one is the evidence |
+| The canopy lamp going out and coming back at four minutes | Square | A lamp can fail |
+| The aisle being 28 m long behind an 8 m building | Not light | The place's one impossible thing; untouched by the rule |
+| Night with no moon | Open | Real desert nights have a moon half the time. PROPOSED: none, "it should just be darker". A question for him, queued |
+
+## Where this goes against the concept as written
+
+1. **"Walking" is no longer continuous.** You are carried by a pinch: three to the door where there were nine seconds of walking. "The door is about nine seconds' walk", "four metres a second" and "half a minute out and back" described a pace the phone no longer has (the keyboard keeps it). Footsteps as a sound have to be rethought with it.
+2. **The view no longer levels when you stop.** It was the first row of standing still, and the director's steer keeps it ("the list starts with the view levelling"). I've taken it out: with swipe and tilt the view is where your hand put it, and a picture that drifts by itself is not "like photos". If you've tilted up to read the name, it should stay read. Director to overrule if wanted.
+3. **"Keep walking into it for a second" is gone.** The door is arrive, then one more pinch or tap.
+4. **"Nothing needs an interface" has two small exceptions:** two or three words in the margin on a first visit, and the word **tilt**, which on an iPhone has to be tapped before the phone will share its motion. Both are in the margin, not on the picture.
+5. **Looking does nothing.** In the concept as approved, where you looked was where your light was. Now a swipe is only a swipe.
+6. **The margin has a fourth item** on phones (tilt).
 
 # Left on — how it looks and feels
 
