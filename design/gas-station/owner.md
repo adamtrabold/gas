@@ -229,6 +229,12 @@ Asked: when you pinch, should you actually move through the place, or stay where
 
 (Pinch out — fingers spreading — brings you in; pinch in backs you out; it should feel like pinching a photo. Whether "in" is done by moving you forward or by narrowing the view is for the designers to work out so that it feels like that and you can still get through the door and down the aisle.)
 
+## 25. The environment (verbatim)
+
+"I also want to see the environment when are we getting that"
+
+(Nothing of the surroundings has been drawn in the new look yet: only the pump, the slab and island, and the canopy. The road, the desert, the horizon and sky, and the station front are next on the list; the sign waits for his photos.)
+
 ## Still open (asked, not answered)
 
 - Should the time of day do something (choose which work shows), or only change how the place looks and what odd things happen? (Related: he said "no" to choosing what shows in office hours versus at night.)
