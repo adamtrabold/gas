@@ -347,6 +347,13 @@ Asked which page he was in: "Ah I see I wasn't in new controls pinch works there
 
 (A new gesture: two fingers swiped sideways together "track" left and right. Orchestrator's reading, unconfirmed: tracking in the camera sense — you slide sideways, left or right, without turning — as distinct from one finger, which turns the view, and a pinch, which moves you in and out.)
 
+## 41. Swipe and tracking directions, settled by trying (verbatim)
+
+On the test page as of the version where finger right turned you right, finger down looked up, and two fingers right slid you right:
+"Left and right are still backwards I think I answered wrong earlier as is the tracking but otherwise is great"
+
+(So, on his iPhone: up and down is right as it is (finger down → look up); the pinch is right; left–right must be reversed (finger right → the view turns left, i.e. the picture moves with the finger); two-finger tracking must be reversed too (two fingers right → the picture moves right, you slide left). "I think I answered wrong earlier" refers to his first "Swiping is backwards". Taken together: in every gesture the picture follows the fingers, as when dragging a photo or a map — which is also how the pinch already behaves.)
+
 ## Still open (asked, not answered)
 
 - Should the time of day do something (choose which work shows), or only change how the place looks and what odd things happen? (Related: he said "no" to choosing what shows in office hours versus at night.)
