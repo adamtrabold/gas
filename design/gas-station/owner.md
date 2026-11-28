@@ -241,6 +241,12 @@ Asked: when you pinch, should you actually move through the place, or stay where
 
 (He is looking at the walked prototype at night on the site. "The light thing" is not yet pinned down: it may be the visitor's own lamp — the disc of light that follows where you look — or the pool under the canopy lamp, or both. Asked. What he wants instead: night is simply darker, made with more dots, or with the dots reversed — light dots on a dark ground. Note for the team: in the concept, Left on, the visitor's lamp is one of the two marks ("where the sun isn't, you are a lamp"); if it is the lamp he dislikes, that is a change to the concept, not only to the look.)
 
+## 27. Gyro (verbatim)
+
+"It would be cool for phone gyro to move me around camera wise"
+
+(Turning the phone turns the camera. Said as "it would be cool", alongside swipe to turn. Orchestrator's note: on iPhones a web page can only read the motion sensors after the visitor taps to allow it, so it needs one tap and an answer for "no".)
+
 ## Still open (asked, not answered)
 
 - Should the time of day do something (choose which work shows), or only change how the place looks and what odd things happen? (Related: he said "no" to choosing what shows in office hours versus at night.)
