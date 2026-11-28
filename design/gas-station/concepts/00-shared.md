@@ -48,7 +48,9 @@ The owner: **"Lighting should work as in the real world."** True of the place wh
 - Nothing follows where you look ("The light that follows where I look" is what he turned down).
 - A thing's own marks are drawn once and stay; the light and shade on it are real and move.
 
-The exceptions kept on purpose are listed in `05-left-on.md` ("Checked against 'as in the real world'"): the alien material above all.
+Every light is listed, with its position and reach, in `lights.md`. The sun rises on your right as you arrive, crosses the south sky behind you, and sets on your left.
+
+The exceptions kept on purpose are listed there and in `05-left-on.md` ("Checked against 'as in the real world'"): the alien material above all.
 
 ## Moving
 

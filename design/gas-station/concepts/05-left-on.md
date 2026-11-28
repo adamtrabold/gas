@@ -28,6 +28,8 @@ The owner: **"Lighting should work as in the real world."** This is the rule for
 
 So the day and the night join by themselves. Nothing switches. By day the sun does nearly everything and your shadow is everywhere you walk. At night the place is dark except where something is on, and you exist where the lights are. The hour sets the proportions.
 
+Every real light in the place, with where it is and what it reaches, is listed in `lights.md` (the owner: "we need to establish proper scene lights").
+
 **The one deliberate exception is the other thing.** Its light is the light that doesn't work as in the real world: a patch on the ground with no lamp over it. Because everything else obeys, that is how you know it. (For the director to confirm; the full list of what was checked against the rule is at the end of this half.)
 
 I don't see a second concept that differs in kind and is worth making. The owner described the place closely; what's left are choices inside it (below, "Choices for the owner").
@@ -96,7 +98,7 @@ Three acts and standing still. The same everywhere, at every hour. On a phone it
 - By day the sun comes in through the door you opened and through the front windows, as patches on the floor. Where they fall and how deep they reach is the hour and the season: far into the room in winter, barely over the sill in midsummer. The door's patch has your shadow in it.
 - The rest of the room is dark until you pull the cord.
 - A pull cord hangs just inside the door, in the door's patch. It's the first switch and it can't be missed by day. It lights the tube over the counter, which lights the counter and little else, and puts your shadow on the floor.
-- **At night there is no patch of sun to hang it in.** What really comes through the door glass and the front windows at night is the sign: his name's light lies on the floor inside, weakly, and the cord hangs in that. PROPOSED, and it has to be seen to be believed; if it isn't enough, the cord is the one thing in the room that needs its own small glow.
+- **At night there is no patch of sun to hang it in.** What really comes through the door glass at night is the sign, 16 m straight in front of it: the arrow's bulbs, in pulses, throw a faint patch on the floor, and the cord hangs in that. PROPOSED, and it has to be seen to be believed; if it isn't enough, the cord needs a real small light of its own.
 
 **The aisle.** Beside the counter, where the back wall should be, an opening with one small light at its mouth that you can see from the door. Through it, one aisle of shelves runs straight back for fourteen bays, about 28 metres, behind a building eight metres deep.
 
@@ -197,7 +199,7 @@ Light with nothing to cast it. Everything else in the place is lit the way it re
 
 **Arriving at twilight.** No shadows. Within three seconds a stroke of ink is laid into the sky and a letter of the name comes on against it (shared).
 
-**Crossing the door.** You come up to it and stop. One more pinch, or a tap, and it gives. By day a patch of sun opens across a dark floor with your shadow in it, and a cord hangs in it. By night the room is dark: the small light at the aisle mouth, the sign's light on the floor behind you, and whatever you left on last time.
+**Crossing the door.** You come up to it and stop. One more pinch, or a tap, and it gives. By day a patch of sun opens across a dark floor with your shadow in it, and a cord hangs in it. By night the room is dark: the small light at the aisle mouth, the arrow's flash on the floor behind you, and whatever you left on last time.
 
 **Inside, by day.** You pull the cord. The counter is there, and your shadow. Past it the cooler and the radio are dark shapes at the edge of the tube's light; you go to them and turn them on. Each thing you turn on stays on and adds its sound. After a few minutes the room is half drawn, by you.
 
@@ -305,7 +307,7 @@ The lamp is out: "I don't like the light thing at night… The light that follow
 | **Never a black screen** (it always landed on something, the ground at your feet if nothing else) | — | The duty stays; the means has to be the dark drawing itself. Not proven |
 | **Closed when you stood still** (4 s and 8 s): the first sign that stopping does something | — | Nothing before the stars at 10–15 s at night, and the first small thing at 15 s by day. Whether fifteen seconds with no sign is too long is open |
 | **"Turning brings your lamp back and the stars go"** | Turning does nothing to the list, and nothing to the stars | — |
-| **Went in ahead of you through the door** at night | By day the daylight still comes in with you. At night: the aisle-mouth light, the sign through the glass | A lit way to the first cord at night. PROPOSED above: the sign's light on the floor |
+| **Went in ahead of you through the door** at night | By day the daylight still comes in with you. At night: the aisle-mouth light, the sign through the glass | A lit way to the first cord at night. PROPOSED above: the arrow's flash through the door glass |
 | **Left two or three strokes on a thing you'd lit**, so a dark place filled in as you went | What you switch on stays on, and fills the place in | The trail of where you'd merely looked. Gone, not replaced |
 | **Was the keyboard's focus** | Tab still steps thing to thing | A visible mark for the thing in focus, above all in the dark |
 | **Reached through the glass** when the clock was wound to night | The lot outside goes dark | — |
@@ -330,7 +332,7 @@ Everything in this half and in `00-shared.md` that makes or uses light, against 
 | A thing in the canopy's shade is shaded | Square | The old line "near things keep a paper edge in shade" was a drawing device to keep the pumps visible. How they stay readable while shaded is the visual designer's (dots) |
 | **"Drawn once" against "lit by the hour"** (his "no" to the light redrawing a thing, section 18) | Square, restated | A thing's own marks, its paint, wear and grain, are drawn once and don't change. The shade and shadow that fall on it are real and move. The two no longer compete: one is the thing, the other is the light |
 | The door: daylight comes in with you | Square | "You take the light with you" was a figure of speech; a door opening lets the day in. The lamp half is gone |
-| The sign's light through the front glass onto the floor at night | Square | PROPOSED, new; it is what would happen |
+| The arrow's bulbs lighting the forecourt in pulses, throwing your shadow toward the door, and reaching the floor inside through the door glass | Square | PROPOSED, new; many bare bulbs really are a strong light. How strong is not known |
 | The stars appearing after 10–15 s of standing still | Square, near enough | Eyes adjust. They should not go out when you look round, and now don't |
 | The stars' tails, "as long as the night is old" | Exception, small | Not light; a way of drawing time. Visual's and the director's |
 | "A light that dims gets smaller, not fainter"; light arriving "in strokes, nearest first, in four held steps" | Flag, for the visual designer | Drawing rules from the brush rounds. A tube that stutters and then holds is real; a pool that grows outward along a grain is not. With dots and real light these want restating |

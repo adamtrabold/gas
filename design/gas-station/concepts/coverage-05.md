@@ -2,6 +2,8 @@
 
 Systems designer, round 3. Checked against `jobs.md` as it stands (owner's answers through `owner.md` section 7) and the how-it-works half of `05-left-on.md` plus `00-shared.md` as written today. The visual designer was editing the look-and-feel half and the prototype at the same time, so "drawn" below means frames that existed at `score-2.md`.
 
+**Update, after `owner.md` sections 24 to 31 (controls, no lamp, real light).** Not re-run line by line; the changes job by job: **3** go in is now arrive at the door, then one more pinch or tap (`controls.md`). **4** moving is swipe, pinch, tap, wheel or keys; every job was walked on each input in `controls.md`. **5** unchanged, less the lamp. **9** stillness no longer shows before 10–15 s (the lamp closing is gone). **12** tilt has an answer for no sensor and for "no". **New gaps:** finding the first cord indoors at night with no lamp (job 5 at night); reading the name at night from the road in the new dark (job 2); neither is proven. The table below predates all this where it mentions the lamp or "keep walking into it".
+
 **Result: every job is supported by the concept as written. None is unsupported.** Two are supported with a stated gap (6 and 12). Several are supported on paper and not yet in the prototype; that's listed separately at the end, because it's a different question.
 
 ## Jobs: the world

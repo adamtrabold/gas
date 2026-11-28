@@ -57,11 +57,13 @@ The receipt and the office-hours ordering are dropped (owner: "no" to both). The
 
 **First arrival.** Open the site → outside, on the road, the station ahead, the arrow sign with Adam's name → something responds when I look or touch, in ink and sound → I know there's a way in.
 
-**Going in and out.** Walk to the door → lean on it for about a second → inside → walk about, touch things → back out the way I came, or out the back and round to the front.
+**Going in and out.** Go up to the door, where I stop → one more pinch, or a tap on it → inside → move about, touch things → back out the way I came, or out the back and round to the front.
 
-**Walking off.** Walk away into the desert in any direction → the station is lost behind me → the sign comes up ahead → I'm arriving again.
+**Moving about.** Swipe to turn; pinch out toward a thing to go to it, pinch in to back away; tap to be taken there or to use it; holding a finger down does nothing. Mouse, keyboard and the phone's own turning each do the same jobs (`concepts/controls.md`).
 
-**Doing nothing.** Stop touching → the light moves, the place makes its own sounds → sooner or later something happens that wouldn't have if I'd kept poking.
+**Walking off.** Go away into the desert in any direction → the station is lost behind me → the sign comes up ahead → I'm arriving again.
+
+**Doing nothing.** Stop moving (looking round doesn't count) → the place makes its own sounds → sooner or later something happens that wouldn't have if I'd kept poking.
 
 **Another hour.** Come back at night → dark, the sign lit, the door still opens → different light, different sounds, different odd things. Inside, the wall clock can be turned by hand to see other hours; it says it's been turned, and lets go when I leave.
 
@@ -69,7 +71,7 @@ The receipt and the office-hours ordering are dropped (owner: "no" to both). The
 
 **Sending it.** Copy the address → the other person lands outside, at their own hour.
 
-**When things are missing.** No 3D → a still picture of the station at this hour, and a list of its places, each described in words with its things as buttons. Motion turned off → cuts in place of moves. Sound blocked or off → visibly off, and nothing depends on hearing.
+**When things are missing.** No 3D → a still picture of the station at this hour, and a list of its places, each described in words with its things as buttons. Motion turned off → cuts in place of moves; the phone's turning starts off. Sound blocked or off → visibly off, and nothing depends on hearing.
 
 **Adam adds a thing.** Make one object or one event → give it a place and, if wanted, an hour → it's there → nothing else was touched.
 

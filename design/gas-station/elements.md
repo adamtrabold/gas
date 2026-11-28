@@ -14,6 +14,9 @@ Your words: "before drawing elements let's first establish a list of things they
 - **[Inn]** — your photo of the alien inn sign with the saucer on a crane
 - **[Chart]** — your chart of UFO shapes
 - **[Article]** — the sign article you sent, now read, with its pictures
+- **[Diver]** — your photo of the tall MOTEL sign at dusk with the neon diver down the pole
+- **[Palms]** — your photo of The Palms Motor Hotel sign at night, with the neon palm trees and the arrow full of bulbs
+- **[Desert Hills]** — your photo of the Desert Hills Motel sign on Route 66, with the neon cactus
 - **[you]** — your words
 - **[concept]** — Left on needs it to do something
 - **PROPOSED** — we made it up, and you haven't said yes yet
@@ -35,7 +38,10 @@ Each element ends with an empty slot for the visual designer. I've left those em
 | "lettering yes utility poles yes lamp post yes clouds boulders mountains and brush in the distance yes" | All added, each in its element below |
 | "not yet" | No picture for the inside. It stays proposed |
 | "neon and historically accurate… maybe some of the letters could flicker" | The sign entry is rewritten from your article |
-| "I want the best amalgamation?" | The sign is to be the best mix of neon and plastic letter boxes, drawing on more photos from you. **Waiting on those photos; none has arrived** |
+| "I want the best amalgamation?" / "Here are the additional images I think you still need" | The three photos arrived. The sign is now written as one sign made from them and the article: element 5 |
+| "The light that follows where I look" (the light you don't like at night) | Your lamp is gone. Element 10 is struck. Looking lights nothing |
+| "Lighting should work as in the real world" | Every light lights what it really would; you cast a shadow wherever a real light falls on you, the sun or a lamp, and none in the dark; a thing in shade is shaded. Elements 8 and 9 |
+| "I dislike press and hold… pinch… swiping should rotate camera"; "like photos"; "phone gyro" | One finger turns you, two fingers move you, a tap goes there or uses the thing; turning the phone turns the view. Not an element; written in `concepts/controls.md` |
 | "don't care" (which arrow; the starburst) | The designers decide both |
 | "Well it would probably be me squatting" | The person who isn't there is you. Written up below as a proposal for you to check |
 | Pump sheet: "A1 b3 d no e2" | Short flat-topped pump; drawn in dots; a scanned paper on each part. "No" to the light redrawing it is read as: drawn once. See element 1 |
@@ -146,10 +152,10 @@ Outside before inside, day before night. The inside is last, so nothing waits on
 - *Kinds of mark:* a fine contour; then dots, packed closer for dark, round on the screen, each with a place on the pump that it keeps as you walk. Pits on the steel. Rust as packed dots rising from the base. Cracks across the hose. The print itself worn (ink dropping out in the paper's low places).
 - *Where tone turns:* across the cabinet's rounded corners, round the globe's rim, round the hose. Lightest on the side toward the upper left. This shading is the pump's own and is the same at every hour.
 - *Hose and nozzle:* the hose leaves the side high up through a small fitting, hangs in one long loop nearly to the island, and comes back up to the nozzle. The nozzle hangs by its hooked spout in a boot on the side: a grip, a thin trigger guard, a spout.
-- *Two pumps:* drawn as the same pump twice, mirror images, both facing the road with their hoses toward each other, as in your Route 66 photo. HI-TEST on one, REGULAR on the other; one globe cracked. **Same or one of each is still your call.**
+- *Two pumps:* the same model twice, mirror images, both facing the road with their hoses toward each other, as in your Route 66 photo. **Settled by you: same pump, worn separately.** Each has its own wear: the west one (HI-TEST) is rustier, the rust has climbed higher, it is stained and its globe is cracked; the east one (REGULAR) is paler and more faded, with less rust. Their dots, rust patches, pits and the flecks out of their lettering all fall in different places. Not done yet: different dents, a different hang to each hose.
 - *Flat paint (hard, like lettering):* the globe's face with the brand, grade plate, number window and its digits, notice, knob, the two seam lines. All worn.
-- *What light does to it:* it stays in dots in every light. By day, in the canopy's shade or in your shadow, at most a few faint broken lines are laid over it. At night the dark comes onto it as its own dots packing closer, then black; a lamp shows the same drawing. The globe's face is lit all night.
-- *Its own ground:* its cast shadow, in lines along the sun.
+- *What light does to it:* light works as it does in the real world, and it is all drawn in dots. The pump keeps its own loose dots at every hour. In the canopy's shade or in your shadow it is shaded, as it would be: a fine, even screen of small dots is laid over its own, lighter than the shade on the wall behind. So that it never sinks into that shade, the shade behind stops just short of the pump's outline and leaves a thin edge of bare paper round it, and its outline is heavier in shade. At night under the canopy lamp it is lit on the lamp's side; away from any light its own dots pack closer (or, in the reversed night, it is drawn in paper dots on black). The globe's face is lit all night. With no light on them, the plates and number window go dark with pale lettering.
+- *Its own ground:* its cast shadow, in the same fine screen of dots as all shade: heavier close to the pump's foot, lighter toward the far end, with an edge made of whole dots.
 - *Open:* lettering is set type until someone draws it. LLANO is a stand-in name; you are supplying the brands.
 
 ---
@@ -180,8 +186,8 @@ Outside before inside, day before night. The inside is last, so nothing waits on
 - *Edge:* ragged, drawn as a broken line, with dirt beyond it. The edge against the building is hidden by the wall.
 - *The island:* a raised block 14 cm high with a contour, and a line set in from its edge for the kerb stones. Drips and stains on top. Sand drifted against its foot.
 - *The bell line:* a thin dark hose that wanders across the forecourt south of the island and turns in to the wall beside the door.
-- *What light does to it:* everything. Shade and shadows are drawn on it in lines laid along the sun, and each shadow ends where its lines stop. At night it is black except in a lamp's pool, where lines run out from the lamp and cross as they close to black. This is where your shadow and your lamp show.
-- *Open:* cracks, stains and sand are generated, not placed by hand. Up close the joints are plain rules. Sand against the wall is hard to see. Not yet seen with the road beside it.
+- *What light does to it:* everything, and in dots. Shade and shadows are a screen: small dots, all one size, evenly spaced (a kind of halftone), so they can't be mistaken for the slab's own pits and stains, which are loose and of every size. Each dot is whole or absent, so a shadow's edge is a clean line of dots. Shade is heavier close under what casts it. Your shadow is the closest screen on the lot, a figure with a head and shoulders. On the ground the dots lie flat, so further off they are ovals, as dots printed on a floor would be. At night the slab is lit where a real lamp reaches (the one canopy lamp), with your shadow and the pumps' in that light; where no light reaches it is a close dark screen, never blank (or, reversed, black with a thin scatter of paper dots).
+- *Open:* cracks, stains and sand are generated, not placed by hand. Up close the joints are plain rules. Sand against the wall is hard to see. Beyond about 15 m the screen on the ground thins to faint dashes: far shade needs another answer (solid shapes), which the road and desert will force. Every octave of distance the screen drops every other dot; on the ground that shows as a faint band. Not yet seen with the road beside it.
 
 ---
 
@@ -209,9 +215,9 @@ Outside before inside, day before night. The inside is last, so nothing waits on
 **Drawing needs (visual designer):**
 - *Made of:* a flat slab with a plastered fascia 46 cm deep; two thin steel posts; three lamp fittings (a ceiling plate, a stem, an enamel shade, a bulb).
 - *Paper:* plaster paper under the fascia and the underside; steel paper under the posts and shades.
-- *Kinds of mark:* dots, like the pump. It is a thing, so it is drawn once: the underside is dark with close dots because it is an underside, at every hour. Stains underneath as patches of closer dots. On the fascia, two stripes of which only broken bands of packed dots are left, and patches of close dots where paint has peeled. Posts: rust rising from the foot.
+- *Kinds of mark:* dots. The underside is in shade by nature, so its dark is the same even screen as all shade (it was loose dots, and read as a speckled ceiling); its stains stay loose dots on top. On the fascia, two stripes of which only broken bands of packed dots are left, and patches of close dots where paint has peeled. Posts: rust rising from the foot.
 - *Lamps:* west, dead (shade and stem, no bulb). Middle, the one that works. East, gone (a plate and a stub of flex). PROPOSED, as on the list.
-- *What light does to it:* by day it takes no shade; it makes it. Its shade is drawn in lines on the slab, the island's top and the wall behind; the pumps under it stay in dots. At night the working lamp's bulb is paper-white, and the underside, the forecourt under it and the pumps show in its light; beyond its reach, black.
+- *What light does to it:* by day it makes the biggest shade on the lot: a screen of dots on the slab, the island and the wall behind, heaviest on the wall right under it, with a clean edge. The pumps under it are shaded too and stand clear by a paper edge. At night the one working lamp is a real light: its bulb is paper-white, the forecourt, the wall and the pumps are lit from it and fall off into the dark, and things under it (you too) throw shadows away from it.
 - *Joined:* it runs into the front wall. The wall is element 4 and is not drawn yet; for now it is an outline that takes the canopy's shade.
 - *Open:* the posts in your abandoned-station photo are square and one has a painted band; ours are round and plain. The fascia has no lettering. Which lamp works is ours to choose until you say.
 
@@ -252,70 +258,79 @@ Outside before inside, day before night. The inside is last, so nothing waits on
 
 **Where:** at the road, straight in front of the door, 16 m from it. About 12 m tall.
 
-**What you've said:** a Googie arrow sign; your name on it and nothing else; neon; historically accurate to the article; some letters could flicker; and, asked to choose neon or plastic boxes: "I want the best amalgamation?"
+**What you've said:** a Googie arrow sign; your name on it and nothing else; "neon and historically accurate"; "maybe some of the letters could flicker"; "I want the best amalgamation?", with three photos; which arrow and whether a starburst, "don't care".
 
-**Where it stands now**
-- **The name: a mix of neon and plastic letter boxes, on one frame.** Your article shows exactly that: the MOTEL photo has plastic letter boxes and an older neon sign on the same rusted frame. How the mix is made for TRABOLD waits on the photos you're sending. **None has arrived yet.** Nothing of the sign is drawn until they do.
-- **Which arrow, and the starburst:** you don't mind, so the designers decide. From the systems side the hooked arrow down the side fits a tall stacked name; that's a lean, not a ruling.
-- The two tables below are kept as the record of what each kind is and when it dates from. They are no longer questions for you.
+**The sign, as one thing made from your three photos and the article.** No drawing yet; this is the list to draw from.
 
-**What the article says, with dates**
-- Neon came to America in the 1920s and stayed popular until the early 1950s — [Article]
-- From the early 1950s: plastic signs lit from inside — [Article]
-- 1958 on: the "Superior arrow", a steel arrow studded with light bulbs, **made to be bolted onto a sign a business already had**. The article calls it "flashing" — [Article]
-- 1964 on: "Spell-Out" signs, one letter to a rounded plastic box. Plastic, not neon — [Article]
+**The story it tells:** a neon name put up in the late 1940s or early 50s, with a bulb arrow bolted on about ten years later, and a plastic board added last. That is the order the article gives: neon until the early 1950s, the bolt-on arrow from 1958, lit plastic after. Nobody has touched it since.
 
-So "neon" and "accurate to the article" fit together, and they tell a story: **an older neon name, with a newer bulb arrow bolted to it.** That's also right for an abandoned station nobody ever modernised.
+**Your name**
+- TRABOLD, one letter to a box, seven boxes stacked down one side of the pole — [Diver] (MOTEL is done exactly this way). ACCEPTED earlier as "one letter to a box, stacked"; your photo makes it neon, which settles the neon-or-plastic question: **neon letters, in boxes**
+- Each box is dark painted sheet metal, a little taller than wide, with a small gap between boxes — [Diver]
+- Each letter is painted on the box face in a pale colour, block capitals, and a neon tube follows the painted shape — [Desert Hills] (MOTEL there is painted letters with the tube laid over them). So the name reads by day from the paint, with the tubes off
+- The tube runs round each letter twice, an outer line and an inner line — [Diver]
+- At night the tube lights the box face round it, so from a distance each letter is a glowing letter shape on a dark box, not a thin line — [Diver] (the glow is plain on the box faces in your photo)
+- Nothing else is written on the sign — [you]
 
-It does mean two things you've said don't fit. You accepted "TRABOLD, one letter to a box", and then said neon. One-letter boxes are the 1964 plastic kind.
+**The arrow**
+- A steel arrow filled with bulbs, in rows — [Palms] [Article]
+- Bolted on later, to the other side of the pole from the name; it runs down beside the name and turns in at the bottom to a triangular head pointing at the door — [Article] (the 1961 hooked arrow). It takes the place the diver has in [Diver]. Designers' call, since you don't mind which
+- The bulbs light a few at a time down the arrow and then all flash — PROPOSED. The article only says "flashing". Your [Diver] photo is a sign that moves in steps (the diver in three positions, lit in turn), which is the same idea
 
-**Parts that hold either way**
-- Your name, TRABOLD, stacked top to bottom — ACCEPTED
-- A steel arrow studded with bulbs, bolted on — [Article]
-- The bulbs flash — [Article]. Lighting one after another down the arrow is PROPOSED; the article doesn't say they did
-- One steel pole — ACCEPTED
+**What holds it up**
+- One steel pole, the boxes hung off it on short arms — [Diver]. ACCEPTED
+- A low base of long thin stone round the foot of the pole — [Desert Hills]. PROPOSED for ours
+- The slanted posts in [Desert Hills] are the most Googie thing in your three photos. Ours has one upright pole, as accepted. Left out so far
 
-**For reference — the two ways a name was made**
+**A plastic board under the name** — PROPOSED, and it needs your yes
+- A lit plastic panel with rails for stick-on letters, hung low on the pole — [Palms] [Desert Hills]. Both photos have one. It is the plastic in "neon and plastic"
+- **Ours is blank.** The letters have fallen off; a few rails hang loose. You said the sign carries your name and nothing else, and a blank board keeps that
+- Why have it: it is lit, low down, at the road. So it is the one light near where you arrive at night, and light now works as it really would: the ground by the sign's foot is lit, and you'd have a shadow there. Later it is somewhere for words to go
+- If you'd sooner not, strike it and nothing else changes
 
-| | Neon | Plastic boxes |
-|---|---|---|
-| Picture it as | The VACANCY sign at the left edge of the MOTEL photo in your article: a tall narrow metal panel, letters painted on it one under another, a glass tube bent along each letter | MOTEL in the same photo: one letter to a fat rounded plastic box, lit from inside |
-| Date | 1920s to early 1950s | 1964 on |
-| Is it neon? | Yes | No |
-| By day | Painted letters on a faded panel, the tubes a thin line over them | Blocks with a letter on each |
-| At night | Each letter is a line of light. Thin. From across the road on a phone it will be harder to read than boxes; it needs testing before it's promised | Each letter is a lit block. Easy to read from far off |
-| Flicker | What failing neon does: it stutters and buzzes | Possible, less natural |
-| Sound | The buzz is neon's own | A hum |
-| Its shadow on the slab | A solid bar | A bar with gaps |
+**The starburst** — dropped. None of your three photos has one, and you don't mind.
 
-**For reference — the two arrows in your article**
-
-| | Hooked arrow down the side | Arrow through the sign |
-|---|---|---|
-| Picture it as | The red arrow on the meat market sign in your article: a steel channel running down the edge of the sign, turning in at the bottom to a triangle head | The Circle Inn sign in your article: tail feathers sticking out above the sign and the arrowhead coming out below, as if shot through it |
-| Date | 1961 patent | 1963 patent |
-| With a tall stacked name | Runs down beside the name and points in under it. Fits | Made for a round sign. Would need the name on something round or square. Fits less well |
-
-**The starburst on top** — you accepted it; it isn't in the article. Starbursts are right for late-1950s Googie signs generally, so it isn't wrong, but nothing you've sent shows one. The designers decide.
+**In all three of your photos, left out so far**
+- **A neon picture.** The diver, the palm trees, the cactus. Every one of your three signs has one; ours has none, because you said your name and nothing else, and because the obvious pictures for this place would be a joke. If you want one, it's yours to name
+- Small neon words (Welcome, Enter, Free TV, Vacancy) — [Palms]. Left out: nothing else is written
+- A script name — [Palms] [Desert Hills]. Ours is block capitals so it reads from across the road
 
 **Kept on purpose, though a real one differed:** the sign faces you across the road. A real roadside sign faces up and down the road, for drivers. Ours has to be read from where you arrive.
 
 **Abandoned means**
-- Paint faded, rust streaks down the pole — PROPOSED
-- Some of the arrow's bulbs dead — PROPOSED
-- Letters flicker — [you]
+- The boxes' paint faded and chalky; rust running down from every bolt and down the pole — PROPOSED
+- The painted letters faded but whole — PROPOSED
+- On one or two letters, a stretch of tube is dead — [Palms] (the P of Palms has dark gaps in it). Only ever the inner line or the outer, never both, so the letter still reads
+- About a third of the arrow's bulbs dead, in no pattern — PROPOSED
+- The plastic board yellowed and cracked, lit unevenly — PROPOSED
+- Wires from the nearest utility pole — [Desert Hills] [you]
 
-**The flicker rule.** My earlier rule was "every letter still lights", because TRABOLD with letters out spells other things (lose the first three and it says BOLD; lose the B and it says TRA OLD). You'd like some flicker, and it can be kept if it's this:
-- A letter may stutter. It never stays dark for longer than a blink.
+**Still works (left on)**
+- All seven letters light, every night — [concept]
+- The arrow runs — [concept]
+- It buzzes — neon's own sound
+
+**The flicker rule** (you: "maybe some of the letters could flicker")
+
+TRABOLD with letters out spells other things: lose the first three and it says BOLD; lose the B and it says TRA OLD. So:
+- A letter may stutter. It is never dark for longer than a blink.
 - One letter at a time.
 - For the first few seconds after you arrive at night, all seven are steady. You read the name, then it starts.
 - With motion turned off on the phone, no flicker.
 - By day it doesn't matter: the letters are painted.
 
 **What the sign does**
-- Day: read from across the road. Its shadow lies on the slab and moves through the day. (With either choice the shadow is a tall bar with the arrow's hook at the near end. "The shadow is an arrow" in the concept becomes "the shadow is the sign's shape".) — [concept]
-- Dusk: the letters come on one at a time as the sky goes dark — [concept]
-- Night: lit, buzzing, the bulbs flashing. Never yours to switch off — [concept]
+- **Day:** read from across the road, from the paint. Its shadow lies on the slab and moves through the day: seven blocks with gaps between, and the arrow's hook at the near end — [concept]
+- **Dusk:** the letters come on one at a time as the sky goes dark — [concept]
+- **Night:** lit, buzzing, the arrow running. Never yours to switch off — [concept]
+
+**Reading your name when you arrive at night**
+
+Night is now simply dark, with no light of your own. So when you arrive at night the sign is nearly all there is, and it has to do the whole job of telling you where you are and whose place it is.
+- You stand 21 m from it. On a phone each letter is about 30 pixels tall from there. A real neon tube at that size would be thinner than one pixel. What reads is the glow on the box face, which is how it looks in [Diver], and the double line makes each letter's stroke wide.
+- The name lights what it really would: the box faces, the pole, a little of the road at its foot. The arrow's bulbs are the strong light: when they flash they reach across the forecourt toward the door. Neither reaches you: where you arrive is dark, and there is nothing of you in the picture until you come to a light. (Every light is listed in `lights.md`.)
+- **This is the thing to test before anything else of the sign is promised:** the name at night, from the arrival spot, at a phone's size, in dots. If it can't be read there, the letters get bigger before anything else changes.
+- The stutter must never start until the name has been read once (the rule above).
 
 **Drawing needs (visual designer):** _empty_
 
@@ -369,15 +384,20 @@ It does mean two things you've said don't fit. You accepted "TRABOLD, one letter
 
 ## 8. Your shadow
 
-**Where:** on the ground in front of you, wherever you stand in sun.
+**Where:** on the ground, wherever a real light falls on you. You: "Lighting should work as in the real world."
 
 **Parts**
 - A plain head and shoulders, cut off by the bottom of the screen — [concept]
 - No hat, no hood, nothing pointed — [you: "liminal not funny"]
+- Drawn in dots, like all shade — [you]
 
 **Does**
-- Moves as you move. Long early and late, almost nothing at noon — [concept]
-- Gone in shade, indoors and at night — [concept]
+- Moves as you move — [concept]
+- In the sun: long early and late, almost nothing at noon, away from the sun — [concept]
+- At night under a lit lamp (the canopy lamp, the lamp post, the light spilling from a lit window, the board on the sign if you keep it): away from the lamp, longer as you leave it, gone beyond its reach — [you]
+- Indoors: in the sun that comes through the door and windows; and under any light you've switched on — [you]
+- None in shade, at dusk, or in the dark — [you]
+- It is the only mark of you there is. The light that followed where you looked is gone — [you]
 
 **Drawing needs (visual designer):** _empty_
 
@@ -393,27 +413,24 @@ It does mean two things you've said don't fit. You accepted "TRABOLD, one letter
 - One working canopy lamp — [1934] [concept]
 - **A lamp post: a pole with an enamel dome shade** — SETTLED [you] [Route 66]. Where it stands is PROPOSED: at the east end of the slab, in the open. (In your photo they stand by the pumps; ours have a canopy over them.) Whether it still lights is PROPOSED: yes, weakly
 - A small light at the aisle mouth, on when you arrive — [concept]. Yours: you left it on
+- A small lamp on the payphone at the far end of the aisle — [concept]
+- The blank plastic board on the sign, if you keep it — PROPOSED (element 5)
 
 **Abandoned means**
 - The power never went off — SETTLED [you]. Fewer lights than there were, weaker, some bulbs gone
 
 **Does**
 - On from dusk to dawn, whatever you do. Each has a hum, a buzz or a click — [concept]
+- Each lights what it really would and nothing more, and casts a shadow from anything standing near it, you included — [you]
+- With your own lamp gone these, and whatever you switch on, are the only light at night. The walk down the aisle is from the light at its mouth to the lamp on the payphone
 
 **Drawing needs (visual designer):** _empty_
 
 ---
 
-## 10. Your lamp
+## 10. ~~Your lamp~~ — struck
 
-**Where:** wherever you look, indoors and at night.
-
-**Parts**
-- A disc of light where you're looking — [concept]
-- It always lands on something; the ground at your feet if nothing else — [concept]
-- A few strokes left behind on a thing you lit and left — [concept]
-
-**Drawing needs (visual designer):** _empty_
+You: "I don't like the light thing at night… The light that follows where I look." It is gone, and nothing follows your view. What it used to do, and what does each of those things now, is listed in `concepts/05-left-on.md` ("What the lamp did, and what does it now"). The number is kept so the others don't move.
 
 ---
 
@@ -535,6 +552,8 @@ You said "not yet" to a picture for the inside, and none of yours shows one. So 
 
 **2. The two pumps: both the same, or one of each?** You picked the short flat-topped one. One says REGULAR and the other HI-TEST; should they otherwise be twins?
 
-**3. "Does the light redraw it?" — you said no.** We've read that as: each thing is drawn once and keeps its own shading at any hour, and shadows and night are laid over it. Is that what you meant?
+**3. "Does the light redraw it?" — you said no; then: "Lighting should work as in the real world."** Read together as: a thing's own marks, its paint and wear, are drawn once and stay; the shade and shadows on it are real and move with the light. Say if that's wrong.
 
-**Waiting on you, not questions:** the extra sign photos (none came through), and the brand names when you're ready.
+**4. On the sign (element 5):** the blank plastic board under your name, yes or no; and whether you want a neon picture, as all three of your photos have.
+
+**Waiting on you, not questions:** the brand names when you're ready. (The sign photos came.)

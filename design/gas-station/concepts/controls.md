@@ -193,6 +193,8 @@ The lamp is out (`owner.md` 28, `steer-5.md`). **Nothing above depends on it.** 
 - Keyboard: "the lamp is the focus". The focused thing needs its own mark now, at every hour (visual: a heavier outline; unsolved in the dark).
 - Standing still: the lamp closing was the first sign. Stillness now shows only from the stars on.
 
+What the controls do touch is **your shadow**, now cast by any real light (`lights.md`): it is worked from where you stand each frame, so it slides with a pinch and needs nothing from the controls. A swipe or a tilt doesn't move it on the ground; it moves in the picture as the picture turns.
+
 ## Numbers in one place
 
 | | |
@@ -220,5 +222,6 @@ The lamp is out (`owner.md` 28, `steer-5.md`). **Nothing above depends on it.** 
 
 - **None of this has been in a hand.** The test page was driven by emulated touches in a desktop browser. That checks the sums (how far, where you stop, the door, the edge), and nothing about feel.
 - Tilt has not run on any phone. Emulation has no sensor.
+- The test page leaves out: the 20 px edge rule, the mouse and keyboard hint words, standing spots and facings for taps, Tab, and everything that isn't moving. Its things are boxes and "use" just flips one black or white.
 - How the drawing takes being crossed at this speed. A pinch covers 25 m in the time it takes to part two fingers, and can be rocked in and out. The dots that change with distance will all change in that time. Visual to judge.
 - Footsteps: twenty metres in half a second can't be twenty-five steps. A sound question, not started.
