@@ -247,6 +247,13 @@ Asked: when you pinch, should you actually move through the place, or stay where
 
 (Turning the phone turns the camera. Said as "it would be cool", alongside swipe to turn. Orchestrator's note: on iPhones a web page can only read the motion sensors after the visitor taps to allow it, so it needs one tap and an answer for "no".)
 
+## 28. Which light at night (verbatim)
+
+Asked: is "the light thing" the patch under the canopy lamp, the light that follows where you look, or both? —
+"The light that follows where I look"
+
+(So it is the visitor's lamp he dislikes — the disc of light that follows your view. The station's own lit things were not objected to. With section 26: night is simply darker, by more dots or by reversed dots on a dark ground, with no light following the view. This removes one of the two marks of the concept as written — "where the sun isn't, you are a lamp" — so the concept has to be restated.)
+
 ## Still open (asked, not answered)
 
 - Should the time of day do something (choose which work shows), or only change how the place looks and what odd things happen? (Related: he said "no" to choosing what shows in office hours versus at night.)
