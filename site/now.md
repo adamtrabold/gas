@@ -3,9 +3,9 @@
 
 ## Latest
 
-- The controls test page has a rebuilt pinch for iPhone Safari. Swipe is settled: you look the way you swipe.
+- Controls test page: every gesture now follows your fingers. One finger turns, a pinch moves you in and out, two fingers sideways slide you left and right.
 - The station is mid-change and not ready to judge: shade and night in dots are going in now, then real scene lights and the moon. It still has the old controls.
 
 ## One thing to try
 
-On the controls test page: pinch out to move in, pinch in to back up. Does it work now?
+On the controls test page: swipe left and right, and slide with two fingers. Do both go the right way now?

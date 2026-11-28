@@ -16,12 +16,13 @@
 <script type="module">
 // Throwaway. A test of concepts/controls.md only: crude boxes on the systems lot, no look, no lamp, no sound.
 // One finger turns. Two fingers parting or closing move you in and out. Two fingers moving sideways together slide you sideways.
-// Swipe turns, exactly as the station prototype he called "works great l r and u d": finger right, you turn right. finger down, you look up (up and down, the picture follows the finger). Pinch moves you along the line to whatever was between your fingers. Tap goes there. No press and hold.
-// Switches after the #, joined by '&':  k=1.5 (pinch gain)  turn=follow (left and right, the picture follows the finger: the first version, which he called backwards)  updown=look (finger up looks up: the second version, which he also called backwards)  track=follow (two fingers right slides you left, so the picture follows the fingers)  tap=0 (no tap-to-go)  debug (a readout top left: fingers the page sees, the gesture, the last events. for a screenshot when something fails)
+// THE RULE: the picture follows the fingers. You drag the world. Finger right: the picture moves right (you turn left). Finger down: the picture moves down (you look up).
+// Two fingers right: the picture moves right (you step left). Fingers apart: what is between them grows (you go in). Confirmed by the owner on his iPhone, section 41. Pinch moves you along the line to whatever was between your fingers. Tap goes there. No press and hold.
+// Switches after the #, joined by '&':  k=1.5 (pinch gain)  to compare, each makes the picture go AGAINST the fingers for one gesture:  leftright=against (finger right, you turn right)  updown=against (finger up, you look up)  track=against (two fingers right, you step right)  tap=0 (no tap-to-go)  debug (a readout top left: fingers the page sees, the gesture, the last events. for a screenshot when something fails)
 import * as T from '../ink-is-shadow/vendor/three.module.min.js';
 const H = new URLSearchParams(location.hash.slice(1)), num = (k, d) => H.has(k) ? +H.get(k) : d;
-const K = num('k', 1.5), GX = H.get('turn') === 'follow' ? 1 : -1, GY = H.get('updown') === 'look' ? -1 : 1, REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches || H.has('reduced');
-const TRACK = H.get('track') === 'follow' ? -1 : 1, STOP = .9, DMIN = 3, DMAX = 40, TMAX = 30, RAD = Math.PI / 180, PAPER = 0xefe9dc, INK = 0x141312;
+const K = num('k', 1.5), GX = H.get('leftright') === 'against' ? -1 : 1, GY = H.get('updown') === 'against' ? -1 : 1, REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches || H.has('reduced');
+const TRACK = H.get('track') === 'against' ? 1 : -1, STOP = .9, DMIN = 3, DMAX = 40, TMAX = 30, RAD = Math.PI / 180, PAPER = 0xefe9dc, INK = 0x141312;
 const R = new T.WebGLRenderer({ antialias: true }), CV = R.domElement; document.body.prepend(CV); R.setClearColor(PAPER);
 const scene = new T.Scene(), cam = new T.PerspectiveCamera(68, 1, .1, 400); scene.fog = new T.Fog(PAPER, 60, 105);
 // ---- the lot. x east, n north (z = -n). sign at 0,0; door at x 0, n 16; station 20 m by 8 m; pumps west; aisle 28 m behind the back wall, only from inside
@@ -103,8 +104,8 @@ function pinchTo(s) { const p = pin; if (!p.live) { if (Math.abs(Math.log(s)) < 
   let over = 0; if (p.an.kind === 'solid') { const lim = Math.max(0, p.an.d - STOP); if (t > lim) { over = t - lim; t = lim; } } t = Math.max(-TMAX, t);
   const m = march(p.x, p.n, p.an.flat[0], p.an.flat[1], t); pin.to = m; pin.lean = .25 * (1 - Math.exp(-over / 2)); if (m.atDoor) pin.lean = 0;
   if (Math.abs(t) > .3 && !did.pinch) { did.pinch = 1; document.getElementById('h2').classList.add('done'); } }
-// track: two fingers to the right, you step to the right (what is in front of you slides left). a full screen width is 0.6 of the distance to what was under the fingers
-function trackTo(dx) { const p = pin, D = Math.max(DMIN, Math.min(DMAX, p.an.d)); let t = TRACK * .6 * D * dx / innerWidth; if (REDUCED) t = Math.abs(dx) > 40 ? Math.sign(dx) * TRACK * .3 * D : 0;
+// track: two fingers to the right, the picture goes right with them, so you step to the left
+function trackTo(dx) { const p = pin, D = Math.max(DMIN, Math.min(DMAX, p.an.d)); let t = TRACK * D * dx / (innerHeight / 2 / Math.tan(cam.fov / 2 * RAD));   // exactly enough that the thing between the fingers stays between them if (REDUCED) t = Math.abs(dx) > 40 ? Math.sign(dx) * TRACK * .3 * D : 0;
   const sg = Math.sign(t) || 1; p.to = march(p.x, p.n, Math.cos(heading) * sg, Math.sin(heading) * sg, Math.abs(t)); if (p.to.atDoor) p.to = { x: p.to.x, n: p.to.n }; p.lean = 0; p.s = 1; }
 function sidestep(m) { const sg = Math.sign(m) || 1, r = march(EYE.x, -EYE.z, Math.cos(heading) * sg, Math.sin(heading) * sg, Math.abs(m)); EYE.x = r.x; EYE.z = -r.n; lastMoved = performance.now(); go = null; }
 function endPinch() { if (pin?.to && !pin.crossed) { EYE.x = pin.to.x; EYE.z = -pin.to.n; } pin = null; lean = 0; }

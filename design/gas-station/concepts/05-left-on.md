@@ -78,8 +78,8 @@ Three acts and standing still. The same everywhere, at every hour. On a phone it
 
 | Act | How | What it means here |
 |---|---|---|
-| Look round | Swipe: finger right, you turn right; finger down, you look up. Or turn the phone | Nothing but looking. It lights nothing and it never counts as moving |
-| Go up to a thing | Pinch out with the thing between your fingers: you're carried toward it and stop just short. Pinch in to back away. Two fingers sideways together slide you sideways. Or tap it and you're taken there | In a real light your shadow joins it. In the dark you are simply at it |
+| Look round | Swipe: the picture follows your finger, as when you drag a photo. Or turn the phone | Nothing but looking. It lights nothing and it never counts as moving |
+| Go up to a thing | Pinch out with the thing between your fingers: you're carried toward it and stop just short. Pinch in to back away. Two fingers sideways together drag the picture sideways (you step the other way). Or tap it and you're taken there | In a real light your shadow joins it. In the dark you are simply at it |
 | Use it | Tap it when you're at it | A light comes on or goes off, with its sound. Or you ask for someone |
 | Go through a door | Come up to it: you stop at it. Then pinch once more, or tap it | By day the daylight comes in with you through the doorway. At night nothing does |
 | Stand still | Stop | The place does what it does when nobody's there |
