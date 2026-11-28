@@ -35,32 +35,16 @@ nav.filters a{font-size:15px;color:var(--ink2);padding:6px 0 9px;border-bottom:2
 nav.filters a.on{color:var(--ink);font-weight:600;border-bottom-color:var(--ink)}
 .brand a{color:var(--ink);text-decoration:none;white-space:nowrap}
 @media(min-width:1024px){:root{--m:48px}.name{font-size:26px}}
-/* label */
-.label{border-top:1px solid var(--ink);padding-top:8px}
-.lh{display:flex;align-items:baseline;gap:8px;font-size:15px;flex-wrap:wrap}
-.lh b{font-weight:700}
-.doc-html #lights{margin-top:44px;padding-top:6px;border-top:1.5px solid var(--ink)}
-.lf{font-size:12.5px;color:var(--ink2);margin:2px 0 8px;overflow-wrap:anywhere}
 /* lists */
 h2.sec{font-size:11.5px;font-weight:500;letter-spacing:.09em;text-transform:uppercase;color:var(--ink2);margin:22px 0 10px}
 /* item */
 .back{display:flex;justify-content:space-between;align-items:center;padding:0 var(--m) 10px;font-size:14px;color:var(--ink2)}
 .back button{font-size:13px;color:var(--ink2)}
-.hint{font-size:12px;color:var(--ink2);margin-top:6px}
-.btn{display:inline-block;border:1px solid var(--ink);padding:6px 12px;font-size:13px;font-weight:500}
-.btns{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 0}
 .chips{display:flex;gap:8px;flex-wrap:wrap}
 .chips a,.chips button{border:1px solid var(--rule);padding:4px 10px;font-size:13px}
 .chips .on{border-color:var(--ink);font-weight:600}
 /* docs */
 .doc-html{max-width:68ch;font-size:15px;line-height:1.55;overflow-wrap:anywhere}
-.doc-html figure{margin:14px 0}.doc-html figure img{width:100%;height:auto;display:block;background:var(--paper)}
-.doc-html figcaption{font-size:12px;font-weight:500;color:var(--ink2);margin-top:6px;line-height:1.6}
-.doc-html figcaption .cst{margin-left:2px}
-/* a sheet written as a page: text at reading width, drawings at their own; side-by-side drawings stack on a phone */
-.sheetdoc{max-width:none}.sheetdoc>*:not(figure):not(.pair){max-width:68ch}
-.pair{display:grid;grid-template-columns:minmax(0,1fr);gap:0 18px;align-items:start}
-@media(min-width:600px){.pair{grid-template-columns:repeat(var(--n),minmax(0,1fr));max-width:1100px}}
 .doc-html h1{font-size:22px;line-height:1.25;font-weight:600}
 .doc-html h2{font-size:17px;font-weight:600;margin:26px 0 8px}
 .doc-html h3{font-size:15px;font-weight:600}
@@ -75,35 +59,14 @@ h2.sec{font-size:11.5px;font-weight:500;letter-spacing:.09em;text-transform:uppe
 details.jump{margin:6px 0 16px;font-size:13px}
 details.jump summary{cursor:pointer;color:var(--ink2)}
 details.jump a{display:block;padding:3px 0}
+.proto{border-top:1.5px solid var(--ink);padding-top:10px;margin-top:26px}.proto h2{font-size:19px;font-weight:600;margin:0 0 6px}.proto p{margin:0 0 10px}
+#lights{margin-top:44px;padding-top:6px;border-top:1.5px solid var(--ink)}
 .wide{max-width:900px}
 .wrap.wide{margin-left:max(0px,calc((100% - 1440px)/2));margin-right:auto}
-/* the newest work, cards, gallery */
-.nowcard{display:grid;grid-template-columns:minmax(0,1fr);gap:10px;margin:6px 0 18px}
-.nowcard img{width:100%;height:auto;max-height:46vh;object-fit:contain;background:var(--paper);display:block}
-@media(min-width:900px){.nowcard{grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);align-items:center;gap:24px}}
-.cases{display:grid;grid-template-columns:minmax(0,1fr);gap:26px 22px}
-@media(min-width:700px){.cases{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(min-width:1100px){.cases{grid-template-columns:repeat(3,minmax(0,1fr))}}
-.case{display:block}.case .cimg{background:var(--paper);aspect-ratio:3/2;display:flex;align-items:center;justify-content:center;overflow:hidden}
-.case img{width:100%;height:100%;object-fit:contain;display:block}
-.cmeta{display:flex;gap:10px;align-items:baseline;margin-top:8px;font-size:17px;flex-wrap:wrap}.cmeta b{font-weight:700}
-.cst{font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--ink2);border:1px solid var(--rule);padding:1px 6px;vertical-align:middle}
-.cline{font-size:14px;margin:2px 0}
-/* a sheet: a tall image made for a phone. Phone: edge to edge, in the page's own scroll. Wider: half size, click for its actual pixels. */
-.sheet{background:var(--paper);margin:0 calc(-1 * var(--m)) 6px}
-.sheet img{display:block;width:100%;height:auto}
-.hint .wideonly{display:none}
-@media(min-width:700px){
-  .sheet{margin:0 0 6px;overflow-x:auto;cursor:zoom-in;width:fit-content;max-width:100%}
-  .sheet img{width:var(--half);max-width:100%}
-  .sheet.z{cursor:zoom-out}.sheet.z img{width:var(--full);max-width:none}
-  .hint .wideonly{display:inline}.hint .phoneonly{display:none}
-}
 /* page point, waiting list, about */
 .back a,.back button,[data-copy]{display:inline-block;padding-top:5px;padding-bottom:5px;margin-top:-5px;margin-bottom:-5px}
 .purpose{font-size:15px;margin:0 0 20px;max-width:70ch}
 main p,main pre{overflow-wrap:anywhere}
-.wsec{border-top:1.5px solid var(--ink);padding-top:10px;margin-top:26px}.wsec h2{font-size:19px;font-weight:600;margin:0 0 6px}
 .about{margin-top:40px;padding-top:12px;border-top:1px solid var(--rule);font-size:12.5px;color:var(--ink2)}.about b{color:var(--ink);font-weight:600}
 .drow{display:grid;grid-template-columns:minmax(0,1fr);gap:4px 16px;padding:12px 0;border-top:1px solid var(--rule)}
 .drow .t{font-weight:600;font-size:15px}.drow .c{font-size:13px;color:var(--ink2)}
@@ -118,28 +81,6 @@ main p,main pre{overflow-wrap:anywhere}
  .doc-html td[data-label=""]{padding-left:0}.doc-html td[data-label=""]::before{display:none}
 }
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
-/* lightbox (Ramka island): every content image opens here */
-.lb-wrap{position:relative;display:block}
-.lb-host{position:absolute;inset:0;display:block}
-.lb-trigger{position:absolute;inset:0;width:100%;height:100%;background:transparent;border:0;padding:0;cursor:zoom-in;display:block}
-.lb-trigger:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
-.lb-backdrop{position:fixed;inset:0;background:rgba(17,17,17,.94);z-index:90}
-.lb-content{position:fixed;inset:0;z-index:91;display:flex;flex-direction:column;color:#eee;outline:none}
-.lb-slides{flex:1;min-height:0}
-.lb-slide{flex:0 0 100%;width:100%;height:100%;min-width:0}
-.lb-item{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
-.lb-zoom{width:100%;height:100%;display:flex;align-items:center;justify-content:center;touch-action:none;container-type:size}
-.lb-media{max-width:100%;max-height:100%}
-.lb-media img{display:block;width:100%;height:100%;object-fit:contain;user-select:none}
-.lb-bar{position:absolute;top:0;left:0;right:0;display:flex;gap:8px;align-items:center;justify-content:flex-end;padding:10px 14px;font-size:13px;z-index:2}
-.lb-counter{margin-right:auto;color:#bbb;font-variant-numeric:tabular-nums}
-.lb-btn{color:#eee;border:1px solid rgba(255,255,255,.35);padding:6px 12px;min-height:36px;font-size:14px}
-.lb-nav{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:64px;font-size:34px;color:#eee;z-index:2}
-.lb-nav[data-disabled]{opacity:.2}
-.lb-prev{left:6px}.lb-next{right:6px}
-@media(max-width:599px){.lb-nav{display:none}}
-.lb-caption{padding:10px 16px calc(14px + env(safe-area-inset-bottom));font-size:14px;line-height:1.45;max-height:30vh;overflow:auto;color:#ddd}
-.lb-caption:empty{display:none}
 </style>
 </head>
 <body>
@@ -152,125 +93,62 @@ const D = JSON.parse(document.getElementById("data").textContent);
 const $app = document.getElementById("app");
 const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 
-/* ------- small builders */
-function label(o){ // {code,title,fields,extra}
-  return `<div class="label"><div class="lh"><b>${esc(o.code)}</b><span>${esc(o.title||"")}</span></div>
-  <div class="lf">${esc(o.fields)}</div>${o.extra||""}</div>`;
-}
-const WD = D.words, SHEET = WD.sheet, cap = s => s.charAt(0).toUpperCase() + s.slice(1);
-const SECTIONS = [["now","#now","now"],["sheets","#sheets",WD.sheets_nav],["walk","#try",WD.try_nav],["elements","#elements",WD.elements_nav]];
+/* ------- the three parts */
+const WD = D.words, cap = s => s.charAt(0).toUpperCase() + s.slice(1);
+const SECTIONS = [["try","#try",WD.try],["elements","#elements",WD.elements],["how","#how",WD.how]];
 function header(sel){
   return `<header class="band wrap"><div class="hgrid">
-    <div class="name brand"><a href="#now">${esc(D.project.name)}</a></div>
+    <div class="name brand"><a href="#try">${esc(D.project.name)}</a></div>
     <div class="sub">${esc(D.project.line)}</div>
   </div></header><div class="wrap"><nav class="filters" aria-label="Sections">${SECTIONS.map(([k,h,t])=>`<a href="${h}" class="${k===sel?"on":""}">${t}</a>`).join("")}</nav></div>`;
 }
 function point(t){ return `<p class="purpose">${esc(t)}</p>`; }
-function about(){
-  return `<footer class="wrap about"><p>Built from the project's repo. Everything else the team keeps is there.
-    <a class="u" href="media/vendor/LICENSES.txt">Licences</a> for the image viewer.</p></footer>`;
-}
-function backBar(href, text){
-  return `<div class="back wrap"><a href="${href}">‹ ${esc(text)}</a><button data-copy="1">copy link</button></div>`;
-}
-function walkBtns(sh){
-  return sh.views.length ? `<div class="btns">${sh.views.map((v,i)=>{ const w = D.walk.views.find(x=>x.hash===v); return `<a class="btn" href="walk/#${v}">${i===0?"Try it: ":""}${esc(w.title.toLowerCase())} ›</a>`; }).join("")}</div>` : ""; }
-const sheetState = sh => sh.questions ? (sh.answered ? "answered" : "waiting on you") : "";
-function sheetCard(sh, cls){
-  const m = sh.card; if (!m) return ""; const st = sheetState(sh);
-  return `<a class="${cls||"case"}" href="#sheet-${sh.code}">
-    <div class="cimg"><img src="${m.thumb}" width="${m.tw}" height="${m.th}" alt="${esc(SHEET)} ${esc(sh.code)}: ${esc(sh.title)}" loading="lazy"></div>
-    <div><div class="cmeta"><b>${esc(SHEET)} ${esc(sh.code)}</b>${st?`<span class="cst">${st}</span>`:""}</div>
-    <div class="cline">${esc(sh.title)}</div>${sh.changed?`<div class="ink2" style="font-size:12.5px">${esc(sh.changed)}</div>`:""}
-    ${cls?'<div class="u" style="margin-top:4px">Open it ›</div>':""}</div></a>`;
-}
-
-/* ------- views */
-function vNow(){
-  const sh = D.sheets[0];
-  return header("now") + `<main class="wrap wide">
-    ${sh ? `<h2 class="sec" style="margin-top:0">The latest</h2>${sheetCard(sh, "nowcard")}${walkBtns(sh)}` : ""}
-    ${D.now.blocks.map(b=>`<section class="wsec"><h2>${esc(b.title)}</h2><div class="doc-html">${b.html}</div></section>`).join("")}
-  </main>${about()}`;
-}
-function vSheets(){
-  return header("sheets") + `<main class="wrap">${point("Drawings of the place, one part at a time, each with questions for you. Newest first.")}
-    <div class="cases">${D.sheets.map(s=>sheetCard(s)).join("")}</div>
-  </main>${about()}`;
-}
-function vSheet(code){
-  const sh = D.sheets.find(s => s.code === code); if (!sh) return null;
-  const m = sh.img;
-  const q = sh.questions ? `<section class="wsec"><h2>${sh.answered ? "Questions (answered)" : "Questions for you"}</h2><div class="doc-html">${sh.questions}</div>
-      <p class="hint">${sh.answered ? "Answered." : "Answer in chat."}</p></section>` : "";
-  return header("sheets") + backBar("#sheets", cap(WD.sheets_nav)) + `<main class="wrap">
-    <div class="wide">${label({code:SHEET + " " + sh.code, title:sh.title, fields:sh.changed, extra:walkBtns(sh)})}${q}</div>
-    ${sh.page ? `<article class="doc-html sheetdoc" style="margin-top:24px">${sh.page}</article>` : ""}
-    ${m ? `<div style="margin-top:24px"><div class="sheet" style="--half:${Math.round(m.w/2)}px;--full:${m.w}px"><img src="${m.src}" width="${m.w}" height="${m.h}" alt="${esc(SHEET)} ${esc(sh.code)}: ${esc(sh.title)}"></div>
-      <div class="hint"><span class="phoneonly">Scroll to read it. Pinch to zoom.</span><span class="wideonly">Click it for its actual pixels; click again to go back.</span></div></div>` : ""}
-  </main>${about()}`;
-}
-function vWalk(){
-  const W = D.walk;
-  return header("walk") + `<main class="wrap wide" style="max-width:1100px">${point("The 3D prototype of the station. It opens full screen; use your browser's back to return here. It still has the old controls for now: drag to look, hold to walk.")}
-    ${W.views.map(v=>`<div class="drow"><span class="t"><a href="walk/#${v.hash}">${esc(v.title)}</a></span><span class="c">${esc(v.line)}</span><span class="chips"><a href="walk/#${v.hash}-day">day</a><a href="walk/#${v.hash}-night">night</a></span></div>`).join("")}
-    ${D.controlsTest ? `<a class="drow" href="controls-test/"><span class="t">Try the new controls (test page)</span><span class="c">A test of the gestures on stand-in shapes, not the station. Best on a phone.</span></a>` : ""}
-  </main>${about()}`;
-}
+function about(){ return `<footer class="wrap about"><p>Built from the project's repo. Everything else the team keeps is there.</p></footer>`; }
 function jumpList(hs){ return hs.length > 3 ? `<details class="jump"><summary>Contents (${hs.length})</summary>${hs.map(h=>`<a href="#" data-h="${esc(h)}">${esc(h)}</a>`).join("")}</details>` : ""; }
+
+function vTry(){
+  const proto = p => `<section class="proto"><h2><a class="u" href="${p.href}">${esc(p.title)} ›</a></h2><p>${esc(p.line)}</p>
+    ${p.views.map(v=>`<div class="drow"><span class="t"><a href="${p.href}#${v.hash}">${esc(v.hash)}</a></span><span class="c">${esc(v.line)}</span><span class="chips">${p.hours.map(h=>`<a href="${p.href}#${v.hash}-${h}">${esc(h)}</a>`).join("")}</span></div>`).join("")}</section>`;
+  return header("try") + `<main class="wrap wide" style="max-width:1100px">
+    ${D.note.trim() ? `<div class="doc-html" style="margin-bottom:8px">${D.note}</div>` : ""}
+    ${D.protos.map(proto).join("")}
+    <p class="ink2" style="font-size:12.5px;margin-top:18px">Each opens full screen. Use your browser's back to return here.</p>
+  </main>${about()}`;
+}
 function vElements(){
   const e = D.docs.elements, l = D.docs.lights; if (!e && !l) return null;
   const hs = (e ? e.jump : []).concat(l ? [l.title].concat(l.jump) : []);
-  return header("elements") + `<main class="wrap">${point("The lists you are asked to approve: the elements, then the lights. Against any line say wrong, missing or strike.")}
+  return header("elements") + `<main class="wrap">${point("What the place is made of: the elements, then the lights. Against any line say wrong, missing or strike.")}
     <article class="doc-html" id="doc">${jumpList(hs)}${e ? e.html : ""}${l ? `<div id="lights">${l.html}</div>` : ""}</article>
-    ${D.docs.concept ? `<p style="margin-top:28px"><a class="u" href="#concept">The concept these lists belong to: Left on ›</a></p>` : ""}
   </main>${about()}`;
 }
-function vConcept(){
-  const d = D.docs.concept; if (!d) return null;
-  return header("elements") + backBar("#elements", cap(WD.elements_nav)) + `<main class="wrap"><article class="doc-html" id="doc">${jumpList(d.jump)}${d.html}</article></main>${about()}`;
+const HOW = ["concept","controls","place"].filter(k => D.docs[k]);
+function vHow(key){
+  const d = D.docs[key]; if (!d) return null;
+  return header("how") + `<main class="wrap">${point("The logic, architecture and systems of the place.")}
+    <div class="chips" style="margin:0 0 20px">${HOW.map(k=>`<a class="${k===key?"on":""}" href="${D.docs[k].route}">${esc(D.docs[k].tab)}</a>`).join("")}</div>
+    <article class="doc-html" id="doc">${jumpList(d.jump)}${d.html}</article>
+  </main>${about()}`;
 }
 
-/* ------- router. Addresses of pages the site no longer has land on "now". */
+/* ------- router. Addresses of pages the site no longer has land on "try". */
 function route(){
-  let h = (location.hash || "").slice(1), html = null, m;
+  let h = (location.hash || "").slice(1), html = null;
   try { h = decodeURIComponent(h); } catch(e){}
-  if (h === "sheets") html = vSheets();
-  else if ((m = h.match(/^sheet-(\w+)$/))) html = vSheet(m[1]);
-  else if (h === "try" || h === "walk") html = vWalk();
-  else if (h === "elements" || h === "lists" || h === "lights") html = vElements();
-  else if (h === "concept") html = vConcept();
-  if (html === null) { if (h && h !== "now") { try { history.replaceState(null, "", "#now"); } catch(e){} } html = vNow(); }
+  if (h === "elements" || h === "lights") html = vElements();
+  else if (h === "how" || h === "concept") html = vHow(HOW[0]);
+  else if (h === "how-controls") html = vHow("controls");
+  else if (h === "how-place") html = vHow("place");
+  if (html === null) { if (h && h !== "try") { try { history.replaceState(null, "", "#try"); } catch(e){} } html = vTry(); }
   $app.innerHTML = html;
-  wire();
+  document.querySelectorAll("[data-h]").forEach(a => a.onclick = ev => { ev.preventDefault();
+    const t = [...document.querySelectorAll("#doc h1,#doc h2,#doc h3")].find(x => x.textContent.trim() === a.dataset.h); if (t) t.scrollIntoView(); });
   const sec = h === "lights" && document.getElementById("lights");
   if (sec) sec.scrollIntoView(); else window.scrollTo(0, 0);
 }
 window.addEventListener("hashchange", route);
-
-/* ------- wiring per view */
-function wire(){
-  document.querySelectorAll("[data-copy]").forEach(b => b.onclick = () => {
-    try { navigator.clipboard.writeText(location.href).then(() => { b.textContent = "copied"; }, () => { b.textContent = "copy the address bar"; }); } catch(e){ b.textContent = "copy the address bar"; }
-  });
-  document.querySelectorAll(".sheet").forEach(v => v.onclick = () => { if (window.matchMedia("(min-width: 700px)").matches) v.classList.toggle("z"); });
-  document.querySelectorAll("[data-h]").forEach(a => a.onclick = ev => { ev.preventDefault();
-    const t = [...document.querySelectorAll("#doc h1,#doc h2,#doc h3")].find(x => x.textContent.trim() === a.dataset.h); if (t) t.scrollIntoView(); });
-  wireLightbox();
-}
-const LB_SKIP = ".case, .nowcard, .sheet";  // cards keep their own taps; a tall sheet is read in the page
-function wireLightbox(){
-  const imgs = [...document.querySelectorAll("main img")].filter(im => !im.closest(LB_SKIP));
-  const items = imgs.map(im => {
-    const fig = im.closest("figure"), cap = fig && fig.querySelector("figcaption");
-    return {src: im.getAttribute("src"), alt: im.alt || "", caption: (cap ? cap.textContent : im.alt || "").trim(), width: +im.getAttribute("width") || 1170, height: +im.getAttribute("height") || 1992};
-  });
-  const set = () => window.BELightbox.set(items, imgs);
-  if (window.BELightbox) set(); else document.addEventListener("belightbox-ready", set, {once: true});
-}
 route();
 })();
 </script>
-<script src="media/vendor/lightbox.js" defer></script>
 </body>
 </html>

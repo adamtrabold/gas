@@ -321,6 +321,12 @@ Asked whether "sheets" is wrong as a word or as the whole idea of separate numbe
 
 ("Sheet" was the team's word for how drawings happened to be exported, not something he asked for or thinks in. Don't use the word with him.)
 
+## 38. Elements shown in 3D (verbatim)
+
+"I think it's fine to have each element rendered in the elements -- but they should be embedded and 3d so I can rotate them, zoom in, etc"
+
+(On the site's elements page, each element can be shown — as a live 3D view embedded in the page, which he can rotate and zoom, not as an exported picture.)
+
 ## Still open (asked, not answered)
 
 - Should the time of day do something (choose which work shows), or only change how the place looks and what odd things happen? (Related: he said "no" to choosing what shows in office hours versus at night.)
