@@ -354,6 +354,13 @@ On the test page as of the version where finger right turned you right, finger d
 
 (So, on his iPhone: up and down is right as it is (finger down → look up); the pinch is right; left–right must be reversed (finger right → the view turns left, i.e. the picture moves with the finger); two-finger tracking must be reversed too (two fingers right → the picture moves right, you slide left). "I think I answered wrong earlier" refers to his first "Swiping is backwards". Taken together: in every gesture the picture follows the fingers, as when dragging a photo or a map — which is also how the pinch already behaves.)
 
+## 42. The controls, confirmed, with two refinements (verbatim)
+
+Asked whether the left–right swipe and the two-finger slide go the right way now:
+"Yes controls feel great now. Tracking feels a little slow and I feel like all moves could have curves, like, if I swore faster it should shift more in space"
+
+(Confirmed on his iPhone: all directions are right; "the picture follows your fingers" stands. Two refinements: two-finger tracking is a little slow; and every move should have a curve — a faster swipe ("swore" is a typo for "swipe") should carry you further than a slow one of the same length, i.e. speed-sensitive response rather than a fixed ratio.)
+
 ## Still open (asked, not answered)
 
 - Should the time of day do something (choose which work shows), or only change how the place looks and what odd things happen? (Related: he said "no" to choosing what shows in office hours versus at night.)
