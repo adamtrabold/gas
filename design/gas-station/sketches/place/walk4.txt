@@ -29,3 +29,4 @@ loose stipple screen
    one frame forward (7 cm):  change 0.016  flipped 0.0%  (3600 points)
    one frame sideways (7 cm): change 0.006  flipped 0.0%  (3600 points)
    half a metre forward:      change 0.093  flipped 2.4%  (3600 points)
+ slab in shade, 3.2 m away, 22% ink
