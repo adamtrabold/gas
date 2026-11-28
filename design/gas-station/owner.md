@@ -287,6 +287,12 @@ Asked, after he tried the controls test page on the site: does the swipe turn th
 
 (The test page's default — the picture follows the finger — is the wrong way round for him. The swipe direction is to be reversed, to the way the first walkable prototype turned; the test page's `#turn=old` is that direction.)
 
+## 34. The controls test page on his phone (verbatim)
+
+"Swiping works great  l r and u d but pinching doesn't work yet"
+
+(Swipe is settled in both axes as now built: you look the way you swipe. Pinch does not work on his phone on the test page — a defect to reproduce and fix; it had only ever been driven by emulated touches in a desktop browser.)
+
 ## Still open (asked, not answered)
 
 - Should the time of day do something (choose which work shows), or only change how the place looks and what odd things happen? (Related: he said "no" to choosing what shows in office hours versus at night.)
