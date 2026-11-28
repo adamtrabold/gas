@@ -31,6 +31,10 @@ DIST = os.path.abspath(ARGS.out) if ARGS.out else os.path.join(HERE, "dist")
 assert not FIX or ARGS.out, "--fixture needs --out, so a trial sheet never lands in site/dist/"
 MEDIA = os.path.join(DIST, "media")
 
+# The words the site uses for its parts, in one place. The owner is still choosing the name for sheets (owner.md 36).
+WORDS = {"sheets_nav": "drawings",   # the nav item and the list page
+         "sheet": "Sheet",           # one of them, as in "Sheet 2"
+         "try_nav": "try", "elements_nav": "elements"}
 NAME = "gas station"
 LINE = "the design work for Adam Trabold's portfolio site, a walkable ink-drawn gas station"
 
@@ -273,7 +277,7 @@ VEND = os.path.join(HERE, "vendor", "lightbox")
 shutil.copyfile(os.path.join(VEND, "lightbox.js"), os.path.join(MEDIA, "vendor", "lightbox.js"))
 shutil.copyfile(os.path.join(VEND, "LICENSES.txt"), os.path.join(MEDIA, "vendor", "LICENSES.txt"))   # MIT: the notice travels with the bundle
 
-data = {"project": {"name": NAME, "line": LINE}, "now": now, "sheets": sheets, "walk": walk, "controlsTest": controls_test, "docs": docs}
+data = {"project": {"name": NAME, "line": LINE}, "words": WORDS, "now": now, "sheets": sheets, "walk": walk, "controlsTest": controls_test, "docs": docs}
 tpl = open(os.path.join(HERE, "app.html"), encoding="utf-8").read()
 js = json.dumps(data, ensure_ascii=False).replace("</", "<\\/")
 open(os.path.join(DIST, "index.html"), "w", encoding="utf-8").write(tpl.replace("/*DATA*/", js))
