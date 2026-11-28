@@ -10,29 +10,45 @@ synths-to-go site and uses its viewer.
   GitHub Pages serves at https://adamtrabold.github.io/gas/. Pages is turned on once in the repo's
   Settings → Pages (branch `gh-pages`, folder `/`).
 
+## What the site shows
+
+Kept to the essentials (owner record, section 35). Four items in the nav:
+
+- **now** — the latest sheet's card, then `site/now.md`.
+- **sheets** — every sheet, newest first. A sheet's page shows its walk buttons, what it asks the owner, and the sheet.
+- **walk it** — the walkable prototype's views and the controls test page.
+- **lists** — the element list, the lights list, and the concept (Left on).
+
+Everything else (notes, scores, the owner record, history, earlier concepts, other stills) stays in the repo and
+is not published. Addresses of pages the site used to have land on "now".
+
 ## What is where
 
-- `build.py` reads `design/gas-station/` and `git log`, renders every markdown record to HTML, copies the stills
-  and the walkable prototype (`sketches/place`, with its three.js import path fixed), and writes one `index.html`.
+- `build.py` reads `design/gas-station/`, renders the few records above to HTML, copies only the images a page
+  shows, copies the walkable prototype (`sketches/place`) and the controls test page (`sketches/controls-test`)
+  with their three.js import path fixed, and writes one `index.html`.
 - `app.html` is the viewer: styles and script, with the data dropped in by the build.
 - `now.md` is the one hand-kept file: where things stand and what is waiting on the owner. The orchestrator
-  updates it when a sheet goes out or an answer comes in. Everything else on the site comes from the records.
-- `vendor/lightbox/` is the image viewer bundle from the synths-to-go site (Ramka; licences beside it).
+  updates it when a sheet goes out or an answer comes in.
+- `vendor/lightbox/` is the image viewer bundle from the synths-to-go site (Ramka; its licence file is published
+  beside it, linked from the footer).
 
 ## Rules it follows
 
 - Markdown in the repo is the source; the site shows it as HTML. Don't edit records for the site's sake.
-- Nothing under `design/gas-station/inspo/` is published: those images are other people's work. Records that
-  mention them show as text.
-- New sheets are picked up by name: `concepts/sheet-N.md`, `concepts/stills/sheet-N-*.png`,
-  `concepts/sheet-N-judge.md`. Which walkable views match a sheet is the small `SHEET_VIEWS` table in `build.py`.
+- Nothing under `design/gas-station/inspo/` is published: those images are other people's work.
+- Sheets are picked up by name: `concepts/sheet-N.md` with either `concepts/stills/sheet-N/` (a page sheet, below)
+  or a tall `concepts/stills/sheet-N-*.png` (Sheets 1 and 2). For a tall sheet the questions shown are the numbered
+  list the director cleared in `concepts/sheet-N-judge.md`; its walk buttons are the `SHEET_VIEWS` table in `build.py`.
+- A sheet shows as "answered" once `owner.md` has a section heading that names it ("Sheet N").
 
 ## Writing a sheet
 
 From Sheet 3 on, a sheet is a page on the site: each drawing is its own image, and every word is web text
 (owner record, section 20). Sheets 1 and 2 stay as tall images.
 
-A sheet is two things in the repo, and nothing in `site/` needs touching:
+A sheet is two things in the repo, and nothing in `site/` needs touching. Without a `walk:` line a page sheet has no walk buttons.
+
 
 - `design/gas-station/concepts/sheet-N.md` — the sheet itself, in ordinary Markdown. This is what the owner reads.
 - `design/gas-station/concepts/stills/sheet-N/` — its drawings, one PNG each, at phone size (1170 px wide for a
@@ -54,8 +70,8 @@ The whole format:
 | Optional, at the very top: `---` / `walk: together, pump` / `---` | "Walk it" buttons to those views of the prototype (`together`, `pump`, `slab`, each also with `-day` or `-night`) |
 
 Rules: write to the owner (the page is his); no words inside the images; keep working notes out of it. Notes on
-how the sheet was made go in `concepts/sheet-N-notes.md`, and the director's check stays `concepts/sheet-N-judge.md`;
-both are linked under "Behind it" on the sheet's page. The first drawing in the file is the picture on the sheet's card.
+how the sheet was made go in `concepts/sheet-N-notes.md` and the director's check in `concepts/sheet-N-judge.md`;
+neither is published. The first drawing in the file is the picture on the sheet's card.
 If a sheet has both this form and an old tall `stills/sheet-N-*.png`, the page form is used.
 
 A worked example (it is the fixture in `site/verify/fixture/`, when that folder is present):

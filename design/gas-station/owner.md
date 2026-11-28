@@ -306,6 +306,10 @@ Told the nav would be cut to: now · sheets · walk it · lists —
 
 ("walk it" becomes "try" (or "test"). "Sheets" doesn't make sense to him as a concept — whether that is the word or the whole idea of numbered sheets is being asked.)
 
+"Lists should just be elements"
+
+(The nav item "lists" is to be called "elements". Orchestrator's reading: one page, the element list, with the lights as part of it rather than a second list beside it. Unconfirmed.)
+
 ## Still open (asked, not answered)
 
 - Should the time of day do something (choose which work shows), or only change how the place looks and what odd things happen? (Related: he said "no" to choosing what shows in office hours versus at night.)
