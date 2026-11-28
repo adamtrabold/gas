@@ -170,7 +170,14 @@ Every job in `jobs.md` can be done by each column: arriving, reading the sign, g
 - **The list of places, the loading screen and the no-3D page take over nothing.** Pinch zooms the page there as anywhere. Do not set `user-scalable=no` or `maximum-scale`.
 - Viewport: `width=device-width, initial-scale=1, viewport-fit=cover`.
 
-**Fingers:** pointer events, captured. Track two; ignore a third. `pointercancel` ends the gesture as if the fingers lifted.
+**Fingers: touch events, not pointer events.** The first version read fingers from pointer events and counted downs and ups. Swipe worked on his iPhone (Safari); pinch did not. So:
+
+- On a touch screen, work the gesture out **from `e.touches`, the whole list of fingers down, on every `touchstart`, `touchmove`, `touchend` and `touchcancel`.** Two or more in the list: pinch (start it there if it hasn't started). One: swipe. None: end. Never keep your own count. iOS Safari is known to swallow a second finger's start when it suspects a double tap, and to deliver pointer events in odd orders during a pinch (WebKit bugs 246313, 211521, 203237); a list that is re-read every event can't go stale.
+- Pointer events are for the mouse and pen only (`pointerType !== 'touch'`).
+- Safari's own `gesturestart` / `gesturechange` / `gestureend` are always prevented. They also carry the spread as `e.scale`: use it to drive the same pinch **only** when the touch list is not showing two fingers.
+- **The page, not just the canvas, refuses the browser's zoom:** `touch-action: none` on `html` and `body` as well; a non-passive, capturing `touchmove` listener on `document` that prevents default; the same on `touchstart` when more than one finger is down; `dblclick` prevented. (The list of places and the no-3D page are other pages and keep their zoom.)
+- A third finger is ignored. `touchcancel` ends the gesture as if the fingers lifted.
+- **`#debug`** on the test page shows, top left: fingers the page sees, the gesture, the last events, page zoom, whether motion is reduced. One screenshot of it says why something failed. Keep it in the prototype.
 
 ## States
 
@@ -222,7 +229,7 @@ What the controls do touch is **your shadow**, now cast by any real light (`ligh
 
 ## Not proven
 
-- **None of this has been in a hand.** The test page was driven by emulated touches in a desktop browser. That checks the sums (how far, where you stop, the door, the edge), and nothing about feel.
+- **Swipe has been in his hand** (iPhone, Safari): "Swiping works great l r and u d". **Pinch has not worked on his phone yet.** The first version failed there; the cause was not seen, only inferred (above). The rebuilt version was checked in desktop Chromium three ways: real multi-touch TouchEvents sent through the browser's debugging channel, with the two fingers landing one after the other; a second finger whose start never arrives (only moves listing two fingers); and Safari's gesture events alone with no touches. All three move you as the sums say. None of that is iOS Safari. Only his phone can confirm it, and say anything about how it feels.
 - Tilt has not run on any phone. Emulation has no sensor.
 - The test page leaves out: the 20 px edge rule, the mouse and keyboard hint words, standing spots and facings for taps, Tab, and everything that isn't moving. Its things are boxes and "use" just flips one black or white.
 - How the drawing takes being crossed at this speed. A pinch covers 25 m in the time it takes to part two fingers, and can be rocked in and out. The dots that change with distance will all change in that time. Visual to judge.
