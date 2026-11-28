@@ -9,11 +9,11 @@ const srv = http.createServer((q, r) => { const u = decodeURIComponent(q.url.spl
   const b = await chromium.launch(), only = process.argv[2];
   const grid = (f) => { const o = []; for (let i = 0; i < 60; i++) for (let j = 0; j < 60; j++) o.push(f(i / 100, j / 100)); return o; };
   const patches = { 'slab in shade': [grid((a, c) => [-7.1 + a, .004, -(11.4 + c) + 1.3]), [-6.8, 10.4, 0]], 'wall in shade': [grid((a, c) => [-7.1 + a, 1.2 + c, -16]), [-6.8, 16, 1.5]] };   // points, and where the patch is [x, n, up]
-  const kinds = [['halftone screen (the link)', 'view=together&day=1&body=0'], ['loose stipple screen', 'view=together&day=1&body=0&screen=stipple'], ['Sheet 2: ruled lines', 'view=together&day=1&body=0&shade=lines']];
+  const kinds = [['night, more dots', 'view=together&night=1', 1], ['night, reversed', 'view=together&night=1&reversed=1', 1], ['halftone screen (the link)', 'view=together&day=1&body=0'], ['loose stipple screen', 'view=together&day=1&body=0&screen=stipple'], ['Sheet 2: ruled lines', 'view=together&day=1&body=0&shade=lines']];
   for (const [label, q] of kinds) { if (only && !label.startsWith(only)) continue; const ctx = await b.newContext({ ...devices['iPhone 14'] }), p = await ctx.newPage(); p.on('pageerror', e => console.log('ERR', e.message));
-    await p.goto('http://localhost:' + srv.address().port + '/place/index.html?still=1&' + q); await p.waitForFunction(() => document.title === 'done', null, { timeout: 300000 });
+    await p.goto('http://localhost:' + srv.address().port + '/place/index.html?still=1&' + q, { timeout: 300000 }); await p.waitForFunction(() => document.title === 'done', null, { timeout: 300000 });
     console.log('\n' + label);
-    for (const [pn, [pts, c]] of Object.entries(patches)) for (const dist of pn[0] === 's' ? [1.6, 3.2, 6.5] : [3.2, 6.5]) {
+    if (!q.includes('night')) for (const [pn, [pts, c]] of Object.entries(patches)) for (const dist of pn[0] === 's' ? [1.6, 3.2, 6.5] : [3.2, 6.5]) {
       const rd = (back, side) => p.evaluate(([x, n, pitch, pts]) => { window.shot(x, n, 0, pitch); return window.inkPts(pts); }, [c[0] + side, c[1] - dist - back, Math.atan2(c[2] - 1.65, dist) * 180 / Math.PI, pts]);
       const A = await rd(0, 0), cmp = B => { let s = 0, f = 0, m = 0; for (let i = 0; i < A.length; i++) { if (A[i] < 0 || B[i] < 0) continue; m++; s += Math.abs(A[i] - B[i]); if ((A[i] > .5) !== (B[i] > .5) && Math.abs(A[i] - B[i]) > .35) f++; } return `change ${(s / m).toFixed(3)}  flipped ${(100 * f / m).toFixed(1)}%  (${m} points)`; };
       const ok = A.filter(x => x >= 0); console.log(` ${pn}, ${dist} m away, ${(ok.reduce((s, x) => s + x, 0) / ok.length * 100).toFixed(0)}% ink`);
