@@ -217,6 +217,13 @@ Same pump is fine, that's how it'd be irl. Textures should be different so they 
 
 (On dots: offered as something to consider — "could" — the stipple treated as a kind of halftone, which he says fits the inspiration. Asked: the same short pump twice, or two different pumps? — the same model, but each with its own texture and wear, so they don't look identical.)
 
+## 24. Controls on the phone (verbatim)
+
+Asked: when you walk up to a pump on your phone, does press-and-hold only walk now, or does the copy/paste tooltip still come up? —
+"It walks now but I dislike press and hold. It should do pinch to zoom in and out and swiping should rotate camera"
+
+(So: the tooltip defect is fixed on his phone. Press-and-hold to walk is rejected. He wants pinch to go in and out, and a swipe to turn the camera. Not yet clear: whether pinch moves you through the place or only zooms the view from where you stand — asked.)
+
 ## Still open (asked, not answered)
 
 - Should the time of day do something (choose which work shows), or only change how the place looks and what odd things happen? (Related: he said "no" to choosing what shows in office hours versus at night.)
