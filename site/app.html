@@ -185,7 +185,7 @@ function updatedLine(){
   return `<div class="status" title="${esc(u.what)}">Updated <b>${esc(u.when)}</b> · ${esc(u.what)}</div>`;
 }
 const SECTIONS = [ // the site's whole structure, one row
-  ["now","#now","now"],["sheets","#sheets","sheets"],["walk","#walk","walk it"],["concept","#concept","concept"],["elements","#elements","elements"],
+  ["now","#now","now"],["sheets","#sheets","sheets"],["walk","#walk","walk it"],["concept","#concept","concept"],["elements","#elements","elements"],["lights","#lights","lights"],
   ["jobs","#jobs","jobs"],["owner","#owner","owner record"],["scores","#scores","scores"],["history","#history","history"],["archive","#archive","archive"]];
 function header(sel){
   return `<header class="band wrap"><div class="hgrid">
@@ -198,8 +198,8 @@ function about(){
   return `<footer class="wrap about"><div class="cap">Where things live</div><p>
     Everything is in the repo under design/gas-station/ ·
     <b>Now</b> ← site/now.md (kept by hand), owner.md · <b>Sheets</b> ← concepts/sheet-N.md, concepts/stills/ ·
-    <b>Walk it</b> ← sketches/place/ · <b>Concept</b> ← concepts/05-left-on.md, concepts/00-shared.md ·
-    <b>Elements</b> ← elements.md · <b>Jobs</b> ← jobs.md · <b>Owner record</b> ← owner.md ·
+    <b>Walk it</b> ← sketches/place/, sketches/controls-test/ · <b>Concept</b> ← concepts/05-left-on.md, concepts/00-shared.md, concepts/controls.md ·
+    <b>Elements</b> ← elements.md · <b>Lights</b> ← lights.md · <b>Jobs</b> ← jobs.md · <b>Owner record</b> ← owner.md ·
     <b>Scores</b> ← scores.md, concepts/score-N.md, steer-N.md, the judge files · <b>History</b> ← git log ·
     <b>Archive</b> ← notes/, jam.md, brief.md, earlier concepts, every still.
     Markdown is the source; site/publish.sh rebuilds this site from the repo. The inspiration images in the repo are other people's work and are not shown here.
@@ -242,6 +242,7 @@ function vNow(){
     <a class="drow" href="#walk"><span class="t">Walk it</span><span class="c">The walkable prototype, on your phone or a computer.</span></a>
     <a class="drow" href="#concept"><span class="t">Concept</span><span class="c">Left on: the idea behind the place.</span></a>
     <a class="drow" href="#elements"><span class="t">Elements</span><span class="c">What each thing needs before it is drawn.</span></a>
+    ${DOC["lights"] ? '<a class="drow" href="#lights"><span class="t">Lights</span><span class="c">Every real light in the place.</span></a>' : ""}
     <a class="drow" href="#owner"><span class="t">Owner record</span><span class="c">Everything you have said, in your words, newest first.</span></a>
   </main>${about()}`;
 }
@@ -278,13 +279,16 @@ function vWalk(){
   return header("walk") + `<main class="wrap wide" style="max-width:1100px">${point("The place, walked: a throwaway prototype for testing the look on a real phone. It opens full screen. Drag to look, press and hold to walk. Use your browser's back to return here.")}
     ${W.views.map(v=>`<div class="drow"><span class="t"><a href="walk/#${v.hash}">${esc(v.title)}</a></span><span class="c">${esc(v.line)}</span><span class="chips"><a href="walk/#${v.hash}-day">day</a><a href="walk/#${v.hash}-night">night</a></span></div>`).join("")}
     <p class="hint" style="margin-top:16px">Inside it, the links at the foot switch between together, pump and slab, and between day and night. It is drawn live, so it needs a phone or computer from the last few years.</p>
+    ${D.controlsTest || DOC["concepts-controls"] ? `<h2 class="sec">The new controls</h2>
+      ${D.controlsTest ? `<a class="drow" href="controls-test/"><span class="t">Try the new controls (test page)</span><span class="c">A test of the gestures on stand-in shapes, not the station. Best on a phone. Opens full screen; use your browser's back to return.</span><span class="x">test page${D.controlsTest.changed ? " · " + esc(D.controlsTest.changed) : ""}</span></a>` : ""}
+      ${docRow("concepts-controls", "How you move and look, written out.")}` : ""}
     <h2 class="sec">Which sheet goes with which view</h2>
     ${D.sheets.filter(s=>s.views.length).map(s=>`<a class="drow" href="#sheet-${s.code}"><span class="t">Sheet ${esc(s.code)}</span><span class="c">${esc(s.title)}</span><span class="x">${s.views.join(" · ")}</span></a>`).join("")}
     <p class="hint" style="margin-top:16px">Source: ${esc(W.path)} · last changed ${esc(W.changed)}</p>
   </main>${about()}`;
 }
 function jumpList(d){ return (d.jump && d.jump.length > 3) ? `<details class="jump"><summary>Contents (${d.jump.length})</summary>${d.jump.map(h=>`<a href="#" data-h="${esc(h)}">${esc(h)}</a>`).join("")}</details>` : ""; }
-const BACK = {sheets:["#sheets","Sheets"], concept:["#concept","Concept"], scores:["#scores","Scores"], archive:["#archive","Archive"], owner:["#owner","Owner record"], elements:["#elements","Elements"], jobs:["#jobs","Jobs"]};
+const BACK = {sheets:["#sheets","Sheets"], concept:["#concept","Concept"], scores:["#scores","Scores"], archive:["#archive","Archive"], owner:["#owner","Owner record"], elements:["#elements","Elements"], lights:["#lights","Lights"], jobs:["#jobs","Jobs"]};
 function vDoc(slug, o){ // o: {pt, top, noBack}
   o = o || {}; const d = DOC[slug]; if (!d) return vMissing(slug);
   const frames = d.stills.filter(n => !D.sheetStems.includes(n));
@@ -297,7 +301,7 @@ function vDoc(slug, o){ // o: {pt, top, noBack}
   </main>${about()}`;
 }
 function vConcept(){
-  const top = `<div class="wide" style="margin-bottom:22px">${docRow("concepts-00-shared", "The place itself: the lot, walking, the door, the world's edge, sound, twilight.")}${docRow("concepts-coverage-05", "Every job walked against the concept.")}
+  const top = `<div class="wide" style="margin-bottom:22px">${docRow("concepts-00-shared", "The place itself: the lot, walking, the door, the world's edge, sound, twilight.")}${docRow("concepts-controls", "How you move and look: swipe, pinch, tilt.")}${docRow("concepts-coverage-05", "Every job walked against the concept.")}
     ${D.earlier.map(s=>`<a class="drow" href="#sheet-${s.code}"><span class="t">Sheet ${esc(s.code)}</span><span class="c">${esc(s.title)}</span><span class="x">pictures</span></a>`).join("")}</div>`;
   return vDoc("concepts-05-left-on", {noBack:true, top, pt:"Left on is the one concept: what the place is and what you do in it. The director scored it 9; you sent it back on the look, not the idea."});
 }
@@ -374,6 +378,7 @@ function route(){
   else if (h === "walk") html = vWalk();
   else if (h === "concept") html = vConcept();
   else if (h === "elements") html = vDoc("elements", {noBack:true, pt:"The list you asked for before anything is drawn: every thing the place has and what each one needs. Against any line say wrong, missing or strike."});
+  else if (h === "lights") html = vDoc("lights", {noBack:true, pt:"Every real light in the place, listed the way the elements are. Against any line say wrong, missing or strike."});
   else if (h === "jobs") html = vDoc("jobs", {noBack:true, pt:"What a visitor comes to do, and what you need the site to do. Every concept is checked against these."});
   else if (h === "owner") html = vOwner();
   else if ((m = h.match(/^owner-(\w+)$/))) { html = vOwner(); after = "owner-" + m[1]; }

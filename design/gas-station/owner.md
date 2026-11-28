@@ -273,6 +273,13 @@ Told the concept stands without the light that follows the view, and asked: shou
 
 (Following "Lighting should work as in the real world". Read as: the place needs its real light sources set up properly as lights in the scene — the sun, and each lamp, sign and lit thing — and the picture lit from them, rather than light being faked per view. As with the elements, the lights should be established as a list before they are built.)
 
+## 32. The moon (verbatim)
+
+Asked: is there a moon? —
+"Yes there's a moon and it's always epic (though it could also be cool to match real moon cycle... either way should be exaggerated)"
+
+(Settled: there is a moon, it is always epic, and it is exaggerated. Offered as a possibility, not decided: its phase following the real moon's cycle. An exaggerated moon is his own deliberate exception to "Lighting should work as in the real world" in how it looks; the light it gives should still behave as moonlight would.)
+
 ## Still open (asked, not answered)
 
 - Should the time of day do something (choose which work shows), or only change how the place looks and what odd things happen? (Related: he said "no" to choosing what shows in office hours versus at night.)

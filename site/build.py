@@ -211,6 +211,8 @@ def classify(rel):
     b = os.path.basename(rel)
     if rel == "owner.md": return "owner", "the owner's record", "#owner"
     if rel == "elements.md": return "elements", "the element list", "#elements"
+    if rel == "lights.md": return "lights", "the list of lights", "#lights"
+    if rel == "concepts/controls.md": return "concept", "concept: how you move and look", None
     if rel == "jobs.md": return "jobs", "the jobs", "#jobs"
     if rel == "scores.md": return "scores", "scores", "#scores"
     if rel == "concepts/05-left-on.md": return "concept", "the concept", "#concept"
@@ -270,6 +272,16 @@ shutil.copyfile(G(PROTO, "strokes.js"), os.path.join(WALK, "strokes.js"))
 shutil.copyfile(G("sketches/ink-is-shadow/vendor/three.module.min.js"), os.path.join(WALK, "vendor", "three.module.min.js"))
 for f in sorted(os.listdir(G(PROTO, "paper"))):
     if f.endswith(".png"): shutil.copyfile(G(PROTO, "paper", f), os.path.join(WALK, "paper", f))
+# the controls test page (a throwaway for feeling the gestures): copied the same way, sharing the prototype's three.js
+CT = "sketches/controls-test/index.html"
+controls_test = None
+if os.path.isfile(G(CT)):
+    cpage = rd(CT)
+    assert cpage.count(OLD_IMPORT) == 1, "the controls test page's three.js import has changed: fix it in site/build.py"
+    assert not re.search(r"""(?:src|href)=["'](?!#|https?:)|from\s+['"]\./|fetch\(""", cpage), "the controls test page now loads other files: copy them in site/build.py"
+    os.makedirs(os.path.join(DIST, "controls-test"))
+    open(os.path.join(DIST, "controls-test", "index.html"), "w", encoding="utf-8").write(cpage.replace(OLD_IMPORT, "'../walk/vendor/three.module.min.js'"))
+    controls_test = {"path": f"{GS_REL}/{CT}", "changed": changed(CT)}
 # the three views the prototype offers by name (its own words for them, from the comment at the top of its source)
 VIEWS = [("together", "Together", "The slab, the island, both pumps and the canopy, from the road. This is how the link opens."),
          ("slab", "The slab", "The slab, the island and both pumps in open sun."),
@@ -355,7 +367,7 @@ licenses = [{"name": "Image viewer: Ramka (@ramka/react 0.0.2), React 18.3.1", "
              "text": (three_head.group(0) if three_head else "three.js, MIT") + "\n\nThe full MIT licence text is at the address above."}]
 
 data = {"project": {"name": NAME, "line": LINE}, "updated": updated, "now": now, "sheets": sheets, "earlier": earlier, "sheetStems": sorted(SHEET_STEMS),
-        "walk": walk, "docs": docs, "order": order, "owner": owner, "stills": stills, "history": history, "licenses": licenses}
+        "walk": walk, "controlsTest": controls_test, "docs": docs, "order": order, "owner": owner, "stills": stills, "history": history, "licenses": licenses}
 tpl = open(os.path.join(HERE, "app.html"), encoding="utf-8").read()
 js = json.dumps(data, ensure_ascii=False).replace("</", "<\\/")
 open(os.path.join(DIST, "index.html"), "w", encoding="utf-8").write(tpl.replace("/*DATA*/", js))
