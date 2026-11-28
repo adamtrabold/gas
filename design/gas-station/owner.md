@@ -224,6 +224,11 @@ Asked: when you walk up to a pump on your phone, does press-and-hold only walk n
 
 (So: the tooltip defect is fixed on his phone. Press-and-hold to walk is rejected. He wants pinch to go in and out, and a swipe to turn the camera. Not yet clear: whether pinch moves you through the place or only zooms the view from where you stand — asked.)
 
+Asked: when you pinch, should you actually move through the place, or stay where you stand while the view zooms? —
+"Pinch out zooms in pinch in backs up like photos"
+
+(Pinch out — fingers spreading — brings you in; pinch in backs you out; it should feel like pinching a photo. Whether "in" is done by moving you forward or by narrowing the view is for the designers to work out so that it feels like that and you can still get through the door and down the aisle.)
+
 ## Still open (asked, not answered)
 
 - Should the time of day do something (choose which work shows), or only change how the place looks and what odd things happen? (Related: he said "no" to choosing what shows in office hours versus at night.)
