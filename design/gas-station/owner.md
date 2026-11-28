@@ -327,6 +327,12 @@ Asked whether "sheets" is wrong as a word or as the whole idea of separate numbe
 
 (On the site's elements page, each element can be shown — as a live 3D view embedded in the page, which he can rotate and zoom, not as an exported picture.)
 
+## 39. Employee of the month (verbatim)
+
+"We haven't worked on gas station interior yet but I want an employee of the month on the wall in a frame and it should be a portrait of art bell with the name "art" on the frame name plaque"
+
+(An element for the interior, specified by him: a framed "employee of the month" on the wall — a portrait of Art Bell, with the name "Art" on the frame's name plaque. Art Bell was the late-night radio host of Coast to Coast AM, broadcast from the Nevada desert and known for its callers on UFOs and the unexplained — so it sits with the alien Easter eggs he asked for at the start, and with the radio already on the counter. Orchestrator's note for the team: the portrait should be drawn fresh in the place's own hand, not traced from someone's photograph.)
+
 ## Still open (asked, not answered)
 
 - Should the time of day do something (choose which work shows), or only change how the place looks and what odd things happen? (Related: he said "no" to choosing what shows in office hours versus at night.)
