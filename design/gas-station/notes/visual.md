@@ -59,7 +59,7 @@ A port of `sketches/controls-test/index.html`, same functions and names (`under`
 - **Not built:** Tab, standing spots and facings, "use" (nothing in these views can be used), the door off the latch at midday, the aisle's back door.
 - Removed: "stop, and the view levels". The view stays where he leaves it.
 
-**Checked** (`ctl.js` and `flick.js` in my scratch, method in `look-notes.md`): one finger both axes and both ways, a hold, pinch out on a pump, the stop, pinch in, a lopsided pinch, two fingers both ways, two fingers down, tracking into a pump, taps on ground, pump and sky, the door's two beats by pinch, by tap and by a held key, back, Escape, a pinch whose second start never arrives, the edge rule, arrows, W, D, the wheel, a canopy post, the world's edge. No page errors.
+**Checked** (`sketches/place/controls-check.js`; method and results in `look-notes.md`): one finger both axes and both ways, a hold, pinch out on a pump, the stop, pinch in, a lopsided pinch, two fingers both ways, two fingers down, tracking into a pump, taps on ground, pump and sky, the door's two beats by pinch, by tap and by a held key, back, Escape, a pinch whose second start never arrives, the edge rule, arrows, W, D, the wheel, a canopy post, the world's edge. No page errors.
 
 ## Numbers (rerun this turn)
 
@@ -78,7 +78,8 @@ A port of `sketches/controls-test/index.html`, same functions and names (`under`
 
 - The halftone's numbers are a little worse than the pre-fix ones my predecessor quoted (8.4 % → 10.4 % over half a metre at 1.6 m) and its patch is much darker (40 % → 55 %): those were taken before the gap went to 2.5. These are the true ones for the link.
 - The stipple by day is lighter and flips more than before (2.4 % → 5.7 %): my change to its ordering. If stipple is ever chosen for day shade, retune it first.
-- Night ground and frame times: see `look-notes.md` (from `walk5.js`).
+- **Night ground** (`walk5.js`, new; moonlit open slab): dark dots 0.042 and 0.5 % a frame, **0.203 and 16.6 % over half a metre at 1.6 m** (11.9 % at 3.2 m); light dots 0.017 and 0 %, 0.104 and 0.5 %. The dark stipple re-dots as you close in: worse than day's shade. It is the price of losing the rows. If it swims on his phone, the fix is to hold the stipple's dots at one scale for longer (bigger steps between levels) or to give dark dots the ruled screen back with the paper-hole trick (white dots on black above half tone).
+- **Seconds a frame here, alone**: day 13.3, lines 10.5, night dark dots 13.9, night light dots 15.0. Night was about twice day; now about a tenth more.
 - **Frame rate is still not measured.** No GPU here.
 
 ## How it is built: what changed in `sketches/place/index.html`
