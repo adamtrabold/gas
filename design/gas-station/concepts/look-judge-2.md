@@ -92,3 +92,32 @@ Controls before environment only because it is small and because every judgement
 ## For the next director
 
 Private placing: day, the three together, 8.5. Night, 6.5 as built; the drawing is right and the light is wrong. Nothing is a 9 and nothing is offered to him as finished.
+
+---
+
+# After the night fixes: send, with one small thing first
+
+Checked from the stills asked for (`night-fix-1` to `-4b`); not walked again.
+
+**Night is now night.** From the opening stand the picture is mostly dark, the lamp makes a pool on the island, the lit globe and plates are the bright things, and moonlight comes in under the canopy as a wedge on the wall. That is "just darker", with real light. The moon is big, ringed, and has ground under it. The hairline is reported gone.
+
+**One thing he'd catch, to fix before the link goes (no further look from me):**
+- Turned round to the moon, a band of bare paper lies along the horizon under a black sky, where the far ground runs out of dots. At night it reads as a glow or a fault. Far ground at night ends in black, not paper.
+
+**Seen and accepted for a test:**
+- In "light dots" the rows on the ground are still there near the island, and the pumps have blobby pale outlines. It is the rougher of the two.
+- In "dark dots" the moonlit ground is dense and reads a little like gravel.
+- The fascia is a pale band between a black sky and a black underside. True to the moon; odd until there is a sky.
+
+## The two calls
+
+1. **Two nights in two kinds of drawing: accepted for the question.** He is choosing between two pictures, and both are honest pictures. Don't explain the mechanics to him. Two things follow:
+   - Whichever he picks has to be brought back to one hand with the day. If he picks dark dots, night's packed dots and day's even screen must be reconciled, and it must be steadied; one point in six changing over half a metre may swim as he pinches in. That is the next job, not a reason to wait.
+   - The follow-up question (do the dots hold still, is it smooth) is asked in the night he picked.
+2. **"Always epic" does not mean always low.** Epic is its size and that it is always there. "Lighting should work as in the real world" means it crosses the sky and the shadows move with it. Fixing the hour so it sits near the horizon is fine for this test and should be said in "how it works". Whether it should be held low is his to say later, alongside the phase question; don't ask now.
+
+## The question, final wording
+
+> Night is now just darker, in dots, with a big moon behind you (turn round to see it). There are two ways to draw it. Open the link, tap "night, dark dots", then "night, light dots". Which one is night? (The sky and the land around aren't drawn yet; that's next.)
+
+Queue after it, unchanged: holds still and smooth on his phone; even screen or looser dots for shade; the moon's shape, and with it whether it stays low; the 3D views.

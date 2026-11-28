@@ -79,7 +79,8 @@ Read these before judging anything.
 - **Look judge 2:** day in dots is ready and is the first frame that is "walking through an illustration" (halftone screen for shade, loose dots for matter, paper halo, figure shadow). Night is not: it isn't darker than day (canopy lamp is a bare point reaching 14 m), the moon is small in a black screen, a white hairline at the horizon, bands on the ground. Fix those three and port the controls, then ask ONE question: which night, dark dots or light dots. Queue after: phone smoothness; halftone or stipple; moon phase; 3D views.
 - **Ruled, not asked:** real light beats "drawn once". Matter (rust, stains, wear) is fixed; tone follows sun, moon and lamps. Goes in with the environment.
 - **Order:** fixes and controls now; then the environment in two turns (whole picture first), which he asked for by name; then the sign.
-- Private placing: day 8.5, night 6.5.
+- **After the night fixes:** cleared to send once the paper band at the night horizon is made black. Night is now dark with a real lamp pool and a big moon. Accepted: the two nights are different kinds of drawing (packed dots against a ruled screen of light dots); whichever he picks must be brought back to one hand with day, and dark dots may swim. Ruled: "always epic" is size and presence, not always low; the moon crosses the sky; the fixed hour is a test convenience. Controls are in the station.
+- Private placing: day 8.5, night 6.5 before the fixes, about 8 after.
 
 ## Open
 
