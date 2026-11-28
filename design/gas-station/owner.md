@@ -280,6 +280,13 @@ Asked: is there a moon? —
 
 (Settled: there is a moon, it is always epic, and it is exaggerated. Offered as a possibility, not decided: its phase following the real moon's cycle. An exaggerated moon is his own deliberate exception to "Lighting should work as in the real world" in how it looks; the light it gives should still behave as moonlight would.)
 
+## 33. Swipe direction (verbatim)
+
+Asked, after he tried the controls test page on the site: does the swipe turn the view the way you expect, or backwards? —
+"Swiping is backwards"
+
+(The test page's default — the picture follows the finger — is the wrong way round for him. The swipe direction is to be reversed, to the way the first walkable prototype turned; the test page's `#turn=old` is that direction.)
+
 ## Still open (asked, not answered)
 
 - Should the time of day do something (choose which work shows), or only change how the place looks and what odd things happen? (Related: he said "no" to choosing what shows in office hours versus at night.)
