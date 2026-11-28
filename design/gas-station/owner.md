@@ -196,6 +196,12 @@ Asked whether future sheets should be made as web pages with only the drawings a
 
 (So: from Sheet 3 on, a sheet is a page on the project site. Each drawing is its own image; titles, captions, tags to the list, questions and the "Plainly" notes are real HTML text. Sheets 1 and 2 stay as they are.)
 
+## 21. How to ask him things (verbatim)
+
+"Ok it's up on pages ask me one question at a time this is overwhelming"
+
+(The site is live on GitHub Pages. STANDING RULE for everyone who talks to him: one question per message, short, in plain words; hold the rest until he has answered. He set the same rule on his synths project.)
+
 ## Still open (asked, not answered)
 
 - Should the time of day do something (choose which work shows), or only change how the place looks and what odd things happen? (Related: he said "no" to choosing what shows in office hours versus at night.)
