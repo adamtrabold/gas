@@ -54,6 +54,14 @@ details.jump{margin:6px 0 16px;font-size:13px}
 details.jump summary{cursor:pointer;color:var(--ink2)}
 details.jump a{display:block;padding:3px 0}
 .proto{border-top:1.5px solid var(--ink);padding-top:10px;margin-top:26px}.proto h2{font-size:19px;font-weight:600;margin:0 0 6px}.proto p{margin:0 0 10px}
+/* an element you can turn round: the prototype in a frame. Only the one in view runs; touches scroll the page until you tap. */
+.embed{margin:12px 0 18px}
+.embed .frame{height:clamp(300px,60vh,520px);background:var(--paper);border:1px solid var(--rule);position:relative}
+.embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block;pointer-events:none}
+.embed.live iframe{pointer-events:auto}
+.embed.live .frame{border-color:var(--ink)}
+.embedbar{display:flex;gap:16px;align-items:baseline;flex-wrap:wrap;font-size:13px;margin:6px 0 0}
+.embedbar button{font:inherit;color:inherit;background:none;border:1px solid var(--ink);padding:5px 10px;cursor:pointer}
 #lights{margin-top:44px;padding-top:6px;border-top:1.5px solid var(--ink)}
 .wide{max-width:900px}
 .wrap.wide{margin-left:max(0px,calc((100% - 1440px)/2));margin-right:auto}
@@ -135,8 +143,29 @@ function route(){
   $app.innerHTML = html;
   document.querySelectorAll("[data-h]").forEach(a => a.onclick = ev => { ev.preventDefault();
     const t = [...document.querySelectorAll("#doc h1,#doc h2,#doc h3")].find(x => x.textContent.trim() === a.dataset.h); if (t) t.scrollIntoView(); });
+  wireEmbeds();
   const sec = h === "lights" && document.getElementById("lights");
   if (sec) sec.scrollIntoView(); else window.scrollTo(0, 0);
+}
+/* Elements in 3D. Each is the prototype in a frame. Many of them running at once would stall a phone, so only the
+   one most in view is loaded, and it is unloaded when it leaves. Until you tap, touches on it scroll the page. */
+let embedWatch = null;
+function wireEmbeds(){
+  if (embedWatch) { embedWatch.disconnect(); embedWatch = null; }
+  const all = [...document.querySelectorAll(".embed")]; if (!all.length) return;
+  const seen = new Map();
+  const stop = e => { e.classList.remove("live"); e.querySelector(".frame").innerHTML = ""; e.querySelector("button").textContent = "Tap to turn it and zoom"; };
+  const start = e => { all.forEach(o => { if (o !== e && o.querySelector("iframe")) stop(o); });
+    if (!e.querySelector("iframe")) { const f = document.createElement("iframe"); f.src = e.dataset.src; f.loading = "lazy"; f.title = "This element in 3D"; f.setAttribute("allow", "accelerometer; gyroscope"); e.querySelector(".frame").appendChild(f); } };
+  all.forEach(e => e.querySelector("button").onclick = () => { start(e); const on = e.classList.toggle("live"); e.querySelector("button").textContent = on ? "Done: back to scrolling" : "Tap to turn it and zoom"; });
+  if (!("IntersectionObserver" in window)) return;   // then a frame loads only when its button is tapped
+  embedWatch = new IntersectionObserver(es => {
+    es.forEach(x => seen.set(x.target, x.intersectionRatio));
+    let best = null; all.forEach(e => { const r = seen.get(e) || 0; if (r >= 0.6 && (!best || r > seen.get(best))) best = e; });
+    all.forEach(e => { if (e !== best && (seen.get(e) || 0) < 0.1 && e.querySelector("iframe")) stop(e); });
+    if (best) start(best);
+  }, {threshold: [0, 0.1, 0.6, 0.9]});
+  all.forEach(e => embedWatch.observe(e));
 }
 window.addEventListener("hashchange", route);
 route();

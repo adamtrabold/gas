@@ -42,15 +42,19 @@ const LINES = HASH.includes('lines') || Q.get('shade') === 'lines', TEAMH = HASH
 const HOURH = HASH.find(h => ['day', 'night'].concat(TEAMH ? ['dusk'] : []).includes(h)), LOOKS = ['brush', 'cut', 'dot', 'paper'], LOOKH = HASH.find(h => LOOKS.includes(h));
 const MODE = Q.has('night') ? 'night' : Q.has('dusk') ? 'dusk' : Q.has('hour') || Q.has('day') ? 'day' : HOURH ? HOURH : !TEAMH || (CLOCK >= 6.5 && CLOCK < 17.75) ? 'day' : 'night', DUSK = MODE === 'dusk';   // dusk has not been redrawn: only by name, behind #team
 const TEAM = TEAMH || Q.has('study') || Q.has('team');
+// THE OBJECT VIEWER: one element alone on paper, in the real look and the real light, to turn and to come close to. #view-pump, #view-slab (the slab and its island), #view-canopy; add -night (or -night-reversed).
+// It is made to sit in a small frame on a page, several to a page: it draws once and then only when touched. One finger across turns it (the thing turns with the finger); up and down is left to the page, so the page still scrolls;
+// two fingers pinch closer and back, and tip it. A mouse drags to turn and tip; the wheel comes closer once you have clicked on it. No words in the frame.
+const VOBJS = ['pump', 'slab', 'canopy'], VOBJ = VOBJS.includes(Q.get('obj')) ? Q.get('obj') : HASH.includes('view') ? VOBJS.find(o => HASH.includes(o)) || null : null, VIEWER = !!VOBJ;
 const TALL = TEAM && (HASH.includes('tall') || Q.has('tall')), OWN = !(TEAM && (HASH.includes('lit') || Q.has('lit'))),   // things keep their own drawing (as on the sheet) unless the link says lit: then the hour's light makes all of it
   PX = TALL ? -5.4 : -8.2;
 // a view: where you stand [x, n, heading, pitch], and (for the owner's three) the hour and season it is shown in by day
 const STUDIES = { pump: [PX - 2.1, 9.2, -43, -2], slab: [-3.4, 5.2, 36, -9, 10.5, -21], together: [-6.8, 2.4, 0, 2, 13.5, 15], wall: [2.6, 11.2, -4, 1], ground: [-.8, 7.6, 74, -24], lot: [-2.5, 6.5, 42, 0] }, VIEWS = ['pump', 'slab', 'together'],
-  STUDY = STUDIES[Q.get('study')] ? Q.get('study') : VIEWS.includes(Q.get('view')) ? Q.get('view') : HASH.find(h => STUDIES[h] && (TEAM || VIEWS.includes(h))) || (TEAM ? undefined : 'together'), VIEW = VIEWS.includes(STUDY) ? STUDY : null,   // the link shows the pump and nothing else. the rest of the place is not redrawn yet: it is behind #team (#team-lot, #team-wall, #team-ground, #team alone for the arrival)
+  STUDY = VIEWER ? { pump: 'pump', slab: 'slab', canopy: 'together' }[VOBJ] : STUDIES[Q.get('study')] ? Q.get('study') : VIEWS.includes(Q.get('view')) ? Q.get('view') : HASH.find(h => STUDIES[h] && (TEAM || VIEWS.includes(h))) || (TEAM ? undefined : 'together'), VIEW = VIEWS.includes(STUDY) ? STUDY : null,   // the link shows the pump and nothing else. the rest of the place is not redrawn yet: it is behind #team (#team-lot, #team-wall, #team-ground, #team alone for the arrival)
   SV = STUDIES[STUDY] || [2.6, -21, 6, 9], SOLO = STUDY === 'pump' && num('solo', 1), NEAR = !TEAM && VIEW !== 'pump';
 const LOOKN = LOOKS.includes(Q.get('look')) ? Q.get('look') : (TEAM && LOOKH) || 'dot', LOOK = LOOKS.indexOf(LOOKN), PICK = LOOKN === 'dot' && OWN && !Q.has('nopick'), DOTS = PICK && !LINES, NN = DOTS && MODE === 'night' ? (REV ? 2 : 1) : 0, CANLIT = !!NN && (TEAM || VIEW === 'together');   // DOTS: shade, your shadow and the dark are dots too. NN: the new night, with no lamp of yours: 1 darker by more dots, 2 reversed (paper dots on black)   // the owner's picks: dots for the thing, lines for the light
 document.getElementById('looks').style.display = TEAM ? '' : 'none'; document.getElementById('views').style.display = TEAM ? 'none' : '';
-document.querySelectorAll('#note a').forEach(a => { const h = a.dataset.hour, l = a.dataset.look, tg = a.dataset.t, vw = a.dataset.view; if (!TEAM) { const pre = (LINES ? 'team-lines-' : '') + (TONE === 'stipple' ? 'stipple-' : ''), hr = MODE + (NN === 2 ? '-reversed' : ''); if (a.dataset.rev && LINES) a.style.display = 'none'; a.href = '#' + pre + (vw || STUDY) + (vw ? (HOURH ? '-' + hr : '') : '-' + h); a.classList.toggle('on', vw ? vw === STUDY : h === hr); return; } if (a.dataset.rev) { a.style.display = 'none'; return; } if (vw) return; if (tg) { const on = { tall: TALL, lit: !OWN }, fl = k => (k === tg ? !on[k] : on[k]) ? k + '-' : ''; a.href = '#' + (TEAM ? 'team-' + (STUDY ? STUDY + '-' : '') : '') + fl('tall') + fl('lit') + LOOKN + (HOURH ? '-' + HOURH : ''); a.classList.toggle('on', on[tg]); return; } a.href = '#' + (TEAM ? 'team-' + (STUDY ? STUDY + '-' : '') : '') + (TALL ? 'tall-' : '') + (OWN ? '' : 'lit-') + (l || LOOKN) + (h || HOURH ? '-' + (h || HOURH) : ''); a.classList.toggle('on', h === MODE || l === LOOKN); }); if (STILL) document.getElementById('note').style.display = 'none';
+document.querySelectorAll('#note a').forEach(a => { const h = a.dataset.hour, l = a.dataset.look, tg = a.dataset.t, vw = a.dataset.view; if (!TEAM) { const pre = (LINES ? 'team-lines-' : '') + (TONE === 'stipple' ? 'stipple-' : ''), hr = MODE + (NN === 2 ? '-reversed' : ''); if (a.dataset.rev && LINES) a.style.display = 'none'; a.href = '#' + pre + (vw || STUDY) + (vw ? (HOURH ? '-' + hr : '') : '-' + h); a.classList.toggle('on', vw ? vw === STUDY : h === hr); return; } if (a.dataset.rev) { a.style.display = 'none'; return; } if (vw) return; if (tg) { const on = { tall: TALL, lit: !OWN }, fl = k => (k === tg ? !on[k] : on[k]) ? k + '-' : ''; a.href = '#' + (TEAM ? 'team-' + (STUDY ? STUDY + '-' : '') : '') + fl('tall') + fl('lit') + LOOKN + (HOURH ? '-' + HOURH : ''); a.classList.toggle('on', on[tg]); return; } a.href = '#' + (TEAM ? 'team-' + (STUDY ? STUDY + '-' : '') : '') + (TALL ? 'tall-' : '') + (OWN ? '' : 'lit-') + (l || LOOKN) + (h || HOURH ? '-' + (h || HOURH) : ''); a.classList.toggle('on', h === MODE || l === LOOKN); }); if (STILL || VIEWER) document.getElementById('note').style.display = 'none';
 const LAT = 35 * Math.PI / 180, RAD = Math.PI / 180;
 const R = new T.WebGLRenderer({ antialias: false, preserveDrawingBuffer: true, powerPreference: 'high-performance' });
 R.shadowMap.enabled = true; R.shadowMap.type = T.PCFShadowMap; R.outputColorSpace = T.LinearSRGBColorSpace; document.body.prepend(R.domElement);
@@ -249,7 +253,7 @@ function inkMat(kind, { amb = 1, tone = 1, along = null, drift = false, vert = f
   return m;
 }
 const TAU = Math.PI * 2;
-const Wm = inkMat('plaster', { bare: VIEW ? 1 : 0 }), Wg = inkMat('dirt', { drift: true }), Wt = inkMat('steel', { tone: .62 }), Wd = inkMat('steel', { tone: .6 }), Wp = inkMat('steel', { vert: true, round: [.7, 4] }), Wl = inkMat('steel', { round: [TAU * .27, Math.PI * .27], fine: .7 }), Wa = inkMat('plaster', { amb: 0 }), Wr = inkMat('blacktop', { tone: .42, along: new T.Vector2(1, 0) }),
+const Wm = inkMat('plaster', { bare: VIEW ? 1 : 0 }), Wg = inkMat('dirt', { drift: true, bare: VIEWER ? 1 : 0 }), Wt = inkMat('steel', { tone: .62 }), Wd = inkMat('steel', { tone: .6 }), Wp = inkMat('steel', { vert: true, round: [.7, 4] }), Wl = inkMat('steel', { round: [TAU * .27, Math.PI * .27], fine: .7 }), Wa = inkMat('plaster', { amb: 0 }), Wr = inkMat('blacktop', { tone: .42, along: new T.Vector2(1, 0) }),
   Wc = inkMat('concrete'), Wk = inkMat('wood', { tone: .7 }), Wn = inkMat('tin', { tone: .8 }), Wgl = inkMat('glass', { tone: .5 }), K = new T.MeshBasicMaterial({ color: 0 }), LIT = new T.MeshBasicMaterial({ color: 0xffffff });
 const v = (x, n, u) => new T.Vector3(x, u, -n);                         // x east, n north, u up
 const things = {};
@@ -439,9 +443,9 @@ const CANOPY = NIGHT && num('canopy', 1) && (TEAM || VIEW === 'together'); if (N
 const TUBE = num('tube', 0), AISLEON = num('aislelights', 0), COOL = num('cooler', 0), MOUTH = num('mouth', TEAM ? 1 : 0);
 tube.intensity = TUBE ? 9 : 0; cooler.intensity = COOL ? 5 : 0; if (COOL) coolGlow.material = LIT; mouth.intensity = MOUTH ? 4 : 0; payLamp.intensity = 3;
 // you. never drawn. a shape that only throws a shadow where there is sun, and a lamp a little above the eye that only shows where it is dark
-const cam = new T.PerspectiveCamera(68, 1, .1, 1500), FOV = () => num('fov', innerWidth > innerHeight ? 46 : 68), EYE = v(num('x', SV[0]), num('n', SV[1]), num('h', 1.65));
+const cam = new T.PerspectiveCamera(68, 1, .1, 1500), FOV = () => num('fov', VIEWER ? (innerWidth > innerHeight ? 30 : 44) : innerWidth > innerHeight ? 46 : 68), EYE = v(num('x', SV[0]), num('n', SV[1]), num('h', 1.65));
 const you = new T.SpotLight(0xffffff, 0, 0, .11, .5, 0); you.castShadow = true; you.shadow.mapSize.set(1024, 1024); you.shadow.bias = -.0006; scene.add(you, you.target);
-SU.sunD.value.copy(FARL); SU.youOn.value = (DAY || MOONI > 0) && num('body', 1) !== 0 ? 1 : 0;
+SU.sunD.value.copy(FARL); SU.youOn.value = (DAY || MOONI > 0) && num('body', 1) !== 0 && !VIEWER ? 1 : 0;
 const feet = new T.SpotLight(0xffffff, 0, 0, .42, .75, 0); scene.add(feet, feet.target);                                   // the lamp always finds the ground in front of your feet, so the dark is never a blank screen
 
 // ---------------------------------------------------------------- the desert
@@ -491,7 +495,7 @@ if (DUSK) { const W = 2048, Hc = 512, c = document.createElement('canvas'); c.wi
 const other = new T.SpotLight(0xffffff, Q.has('other') ? 5 : 0, 0, .07, .3, 0); other.position.copy(v(num('ox', 9), num('on', 8), 40)); other.target.position.copy(v(num('ox', 9), num('on', 8), 0)); scene.add(other, other.target);
 // a study: one thing by itself on the bare ground, in the same light, to be judged alone (#pump). everything else is put away, and so are their shadows
 layer('rest'); if (!TEAM) inner.visible = false;
-if (!TEAM || SOLO) { const show = { pump: ['pumps'], slab: ['slab', 'pumps'], together: ['slab', 'pumps', 'canopy', 'shell'] }[STUDY], hide = (Q.get('hide') || '').split(','); scene.children.forEach(o => { const l = o.userData.layer; if (!o.isLight && ['road', 'shell', 'detail', 'canopy', 'slab', 'pumps', 'rest'].includes(l) && (!show.includes(l) || hide.includes(l))) o.visible = false; });
+if (!TEAM || SOLO) { const show = { pump: ['pumps'], slab: ['slab', 'pumps'], together: ['slab', 'pumps', 'canopy', 'shell'] }[STUDY], hide = (Q.get('hide') || '').split(',').concat(VOBJ === 'slab' ? ['pumps'] : VOBJ === 'canopy' ? ['pumps', 'slab', 'shell'] : []); scene.children.forEach(o => { const l = o.userData.layer; if (!o.isLight && ['road', 'shell', 'detail', 'canopy', 'slab', 'pumps', 'rest'].includes(l) && (!show.includes(l) || hide.includes(l))) o.visible = false; });
   if (SOLO) things[TALL ? 'pumpW' : 'pumpE'].visible = false; if (Q.has('one')) things.pumpE.visible = false; }
 (Q.get('seen') || '').split(',').forEach(n => { if (things[n]) things[n].userData.marks.visible = true; });
 
@@ -543,6 +547,7 @@ const keys = {}; let drag = null, finger = null; const CV = R.domElement;
 addEventListener('keydown', e => { keys[e.key.toLowerCase()] = 1; lastMove = performance.now(); }); addEventListener('keyup', e => { keys[e.key.toLowerCase()] = 0; });
 // a finger held down walks; a finger dragged looks. the phone must do nothing else with it: no callout, no selection, no magnifier, no menu, no zoom, no scroll, no pull to refresh.
 // so the touch itself is refused on the drawing (that is what stops iOS's long-press), the menu and selection are refused everywhere, and the pointer is kept until it lifts
+if (!VIEWER) {
 ['touchstart', 'touchmove', 'touchend', 'touchcancel'].forEach(t => CV.addEventListener(t, e => { if (e.cancelable) e.preventDefault(); }, { passive: false }));
 ['contextmenu', 'selectstart', 'dragstart', 'gesturestart', 'gesturechange', 'gestureend'].forEach(t => addEventListener(t, e => e.preventDefault(), { capture: true }));
 document.addEventListener('touchmove', e => { if (e.cancelable && !e.target.closest?.('a')) e.preventDefault(); }, { passive: false });
@@ -550,6 +555,7 @@ CV.addEventListener('pointerdown', e => { if (finger !== null && e.pointerType =
 CV.addEventListener('pointermove', e => { if (e.pointerType === 'touch' && e.pointerId !== finger) return; aim.set(e.clientX / innerWidth * 2 - 1, -(e.clientY / innerHeight * 2 - 1)); if (drag) { const dx = e.clientX - drag[0], dy = e.clientY - drag[1]; heading -= dx * .005; pitch = Math.max(-1.2, Math.min(1.3, pitch + dy * .004)); drag = [e.clientX, e.clientY]; if (Math.abs(dx) + Math.abs(dy) > 3) held = performance.now(); } lastMove = performance.now(); });
 const lift = e => { if (e.pointerId !== finger && finger !== null) return; finger = null; drag = null; held = 0; };
 CV.addEventListener('pointerup', lift); CV.addEventListener('pointercancel', lift); addEventListener('blur', () => { finger = null; drag = null; held = 0; }); document.addEventListener('visibilitychange', () => { finger = null; drag = null; held = 0; });
+}
 function canStand(x, n) {                                      // crude: the building is solid except through the door; the aisle exists only from inside
   if (inside) { const room = x > -5.0 && x < BX1 - .4 && n > FN + .35 && n < BN - .4 && !(n > 20.6 && n < 22.2 && x < 4.2) && !(x < -3.6 && n > 18 && n < 19.2), al = x > AX0 + .45 && x < AX1 - .45 && n >= BN - .5 && n < BN + ALEN - .4, dr = Math.abs(x) < .5 && n > FN - .6 && n <= FN + .4; return room || al || dr; }
   const near = (cx, cn, r) => Math.hypot(x - cx, n - cn) < r; if (VIEW === 'pump') return !near(PX, 11.5, .75); if (VIEW === 'slab') return !(near(-8.2, 11.5, .75) || near(-5.4, 11.5, .75));   // the sign's pole, the canopy posts, the pumps, the air post and the phone box are solid. so nothing can fill the screen
@@ -559,7 +565,7 @@ function canStand(x, n) {                                      // crude: the bui
 let last = performance.now(), frames = 0, ftime = 0;
 function step(now) {
   const dt = Math.min(.05, (now - last) / 1000); last = now;
-  if (!STILL) { const fwd = (keys['w'] || keys['arrowup'] ? 1 : 0) - (keys['s'] || keys['arrowdown'] ? 1 : 0) + (held && now - held > 350 ? 1 : 0), turn = (keys['d'] || keys['arrowright'] ? 1 : 0) - (keys['a'] || keys['arrowleft'] ? 1 : 0);
+  if (!STILL && !VIEWER) { const fwd = (keys['w'] || keys['arrowup'] ? 1 : 0) - (keys['s'] || keys['arrowdown'] ? 1 : 0) + (held && now - held > 350 ? 1 : 0), turn = (keys['d'] || keys['arrowright'] ? 1 : 0) - (keys['a'] || keys['arrowleft'] ? 1 : 0);
     heading -= turn * 1.6 * dt;
     if (fwd) { const sp = 4 * dt * fwd, nx = EYE.x - Math.sin(heading) * sp, nz = EYE.z - Math.cos(heading) * sp; if (canStand(nx, -nz)) { EYE.x = nx; EYE.z = nz; } else if (canStand(nx, -EYE.z)) EYE.x = nx; else if (canStand(EYE.x, -nz)) EYE.z = nz; lastMove = now; }
     if (!inside && -EYE.z > FN + .2 && Math.abs(EYE.x) < .6) inside = true; if (inside && -EYE.z < FN - .3) inside = false;
@@ -611,7 +617,23 @@ window.inkPts = pts => { const W = R.domElement.width, Hh = R.domElement.height;
   return pts.map(p => { q.set(p[0], p[1], p[2]).project(cam); const fx = (q.x + 1) / 2 * W - .5, fy = (1 - q.y) / 2 * Hh - .5, X = Math.floor(fx), Y = Math.floor(fy), u = fx - X, w = fy - Y; if (X < 2 || Y < 2 || X > W - 4 || Y > Hh - 4) return -1; return (bx(X, Y) * (1 - u) + bx(X + 1, Y) * u) * (1 - w) + (bx(X, Y + 1) * (1 - u) + bx(X + 1, Y + 1) * u) * w; }); };
 window.bench = n => { const gl = R.getContext(), px = new Uint8Array(4), t0 = performance.now(); for (let i = 0; i < n; i++) { heading += .01; step(performance.now()); gl.readPixels(0, 0, 1, 1, gl.RGBA, gl.UNSIGNED_BYTE, px); } return (performance.now() - t0) / n; };   // (reading a pixel back is what makes the frame actually get drawn before the clock is read)
 window.stat = () => ({ dpr: devicePixelRatio, drawnAt: +DPX.toFixed(3), canvas: [R.domElement.width, R.domElement.height], look: LOOKN, mode: MODE, ms: window.lastMs });
-if (STILL) { const go = () => { if (!window.papersLoaded) return setTimeout(go, 50); step(performance.now()); step(performance.now()); document.title = 'done'; }; go(); }
+// the viewer's camera goes round the thing. az: which side you are on (0: in front of it, south). el: how far above. r: how far off
+const ORB = VIEWER && { pump: [-8.2, .98, -11.5, 4.3, 1.7, 9, .55, .1], slab: [-3, 0, -8.6, 31, 9, 46, .5, .42], canopy: [-6.9, 2.3, -12.2, 21, 8, 32, .6, .07] }[VOBJ]; let az = num('az', ORB ? ORB[6] : 0), el = num('el', ORB ? ORB[7] : 0), orr = num('r', ORB ? ORB[3] : 1), pend = false;
+function orbit() { pend = false; el = Math.max(.02, Math.min(1.35, el)); orr = Math.max(ORB[4], Math.min(ORB[5], orr)); const ce = Math.cos(el); EYE.set(ORB[0] + orr * Math.sin(az) * ce, ORB[1] + orr * Math.sin(el), ORB[2] + orr * Math.cos(az) * ce); heading = az; pitch = -el; far.visible = false; step(performance.now()); }
+if (VIEWER) { [document.documentElement, document.body, CV].forEach(e => { e.style.touchAction = 'pan-y'; }); const ask = () => { if (!pend) { pend = true; requestAnimationFrame(orbit); } }; let t0 = null, md = null, active = false;
+  const pts = e => Array.from(e.touches, t => [t.clientX, t.clientY]), gap = t => Math.hypot(t[0][0] - t[1][0], t[0][1] - t[1][1]);
+  CV.addEventListener('touchstart', e => { t0 = pts(e); if (t0.length > 1 && e.cancelable) e.preventDefault(); }, { passive: false });
+  CV.addEventListener('touchmove', e => { const t = pts(e); if (!t0 || t0.length !== t.length) { t0 = t; return; }
+    if (t.length === 1) az -= (t[0][0] - t0[0][0]) * .009;                                            // across: the thing turns with the finger. up and down is the page's
+    else { if (e.cancelable) e.preventDefault(); orr *= gap(t0) / Math.max(gap(t), 1); el += ((t[0][1] + t[1][1]) - (t0[0][1] + t0[1][1])) * .003; }   // two fingers: apart comes closer, together backs off; both up or down tips it
+    t0 = t; ask(); }, { passive: false });
+  ['touchend', 'touchcancel'].forEach(n => CV.addEventListener(n, e => { t0 = e.touches.length ? pts(e) : null; }));
+  CV.addEventListener('mousedown', e => { md = [e.clientX, e.clientY]; active = true; e.preventDefault(); }); addEventListener('mouseup', () => { md = null; }); CV.addEventListener('mouseleave', () => { active = false; });
+  addEventListener('mousemove', e => { if (!md) return; az -= (e.clientX - md[0]) * .009; el += (e.clientY - md[1]) * .006; md = [e.clientX, e.clientY]; ask(); });
+  CV.addEventListener('wheel', e => { if (!active) return; e.preventDefault(); orr *= Math.exp(e.deltaY * .0015); ask(); }, { passive: false });
+  addEventListener('resize', ask); window.turn = (a, e2, r2) => { az = a; el = e2 ?? el; orr = r2 ?? orr; orbit(); };
+  const go = () => { if (!window.papersLoaded) return setTimeout(go, 50); orbit(); orbit(); document.title = 'done'; }; go(); }
+else if (STILL) { const go = () => { if (!window.papersLoaded) return setTimeout(go, 50); step(performance.now()); step(performance.now()); document.title = 'done'; }; go(); }
 else { let n = -90, t0 = 0, slow = 0, walked = false; const loop = now => { requestAnimationFrame(loop); step(now); if (n === 0) t0 = now;
     if (!walked && held && now - held > 600) { walked = true; document.getElementById('hint').style.opacity = 0; }
     if (++n === 40) { const ms = (now - t0) / 40; window.lastMs = ms; n = 0; slow = ms > 36 && !document.hidden ? slow + 1 : 0; if (slow >= 2 && RES > FLOOR() + .01 && !Q.has('res')) { RES = Math.max(FLOOR(), RES * .85); size(); slow = 0; n = -20; } } }; requestAnimationFrame(loop); }
