@@ -293,6 +293,12 @@ Asked, after he tried the controls test page on the site: does the swipe turn th
 
 (Swipe is settled in both axes as now built: you look the way you swipe. Pinch does not work on his phone on the test page — a defect to reproduce and fix; it had only ever been driven by emulated touches in a desktop browser.)
 
+## 35. His phone, and the site (verbatim)
+
+Asked which phone and browser: "iPhone safari. Also this website is too complicated reduce the nav to only essentials and let's make sure we're not putting a ton of unnecessary content up there"
+
+(The project site had eleven nav items — now, sheets, walk it, concept, elements, lights, jobs, owner record, scores, history, archive — and published every record, note and old still. He wants only the essentials in the nav and far less on the site.)
+
 ## Still open (asked, not answered)
 
 - Should the time of day do something (choose which work shows), or only change how the place looks and what odd things happen? (Related: he said "no" to choosing what shows in office hours versus at night.)
