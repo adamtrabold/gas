@@ -25,3 +25,4 @@ halftone screen (the link)
 
 loose stipple screen
  slab in shade, 1.6 m away, 23% ink
+   same stand twice:          change 0.000  flipped 0.0%  (3600 points)
