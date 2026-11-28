@@ -31,6 +31,31 @@ His words:
 
 There is no walking speed on a touch screen any more. You are moved as far as your fingers say, while they say it.
 
+## The curve: faster goes further
+
+His words, with the directions confirmed ("Yes controls feel great now"): "Tracking feels a little slow and I feel like all moves could have curves, like, if I [swipe] faster it should shift more in space."
+
+One curve, the same for turning, tracking and the pinch:
+
+- **Slowly, the picture follows your fingers exactly.** Under 300 px a second of finger travel nothing is added. This is where you are being careful, and it stays precise.
+- **Faster, the same travel carries further:** rising in a straight line from ×1 at 300 px a second to **×2 at 1,500 px a second**, and no higher. A quick swipe is about 1,000 to 1,500; so a flick roughly doubles.
+- The fingers' speed is measured over the last 80 ms of their travel, not from one touch event to the next (phones deliver them in uneven bursts).
+- For a pinch the curve is applied to the *ratio*: parting the fingers quickly counts as parting them further.
+- **Lift while still moving and the move carries on and settles.** Its speed halves every 0.12 s. Turning already did this; tracking and the pinch now do too. Fingers that stop before lifting leave you exactly where you are.
+- **Limits.** The carry-on adds at most 60° to a turn, 100 px' worth to a track, ×1.4 to a pinch. It is the same move continuing, so it stops where the move would: 0.9 m short of a thing, at a wall, and **at a doorway. A flick can't carry you through the door**; the second beat still has to be made. Any touch stops it.
+- **Motion turned off: no curve and no carry-on.**
+- To compare on the test page: `#curve=off` (today's rule without the curve: fixed response, tracking at ×1, only the turn carries on).
+
+Measured (touch events timed inside the page, phone-sized window, from the arrival spot):
+
+| The same finger travel | Slow, fingers stop | Fast, fingers stop | Fast, flicked |
+|---|---|---|---|
+| One finger, 200 px | 43.7° | 76.7° | 137.6° |
+| Two fingers together, 150 px (the station 37 m off) | 13.2 m | 16.8 m | 28.2 m |
+| Fingers parting 120 → 240 px (the door 37 m off) | 12.3 m | 14.0 m | 16.8 m |
+
+With `#curve=off` the first two columns are the same as each other: 43.7°, 8.2 m, 12.3 m.
+
 ## Pinch
 
 What it is: **moving you, not narrowing the view.** The thing between your fingers grows as your fingers part, the way a photo does, because you are getting closer to it. The lens never changes.
@@ -49,14 +74,14 @@ The line you move on is the level line from where you stood to the anchor. It is
 
 - Pinch out (`s` > 1): forward by `D × (1 − 1/s^1.5)`.
 - Pinch in (`s` < 1): back by `D × (1/s − 1)`, never more than 30 m.
-- Worked from the fingers' start each frame, so it is live and reversible: part them and close them again and you are back where you were.
+- Live under the fingers. Part them and close them again at the same pace and you are back where you were.
 
 In hand: an easy pinch out (fingers 120 px apart to 330 px) covers about three quarters of the way to the thing. A small one covers a third. Far things come fast and the last metre is slow, as zooming a photo is. Pinching in on a thing 5 m away puts it about 14 m away.
 
 **Feel.**
 - Nothing happens until the spread has changed by 4%; then it counts from there, with no jump.
 - If the fingers land less than 60 px apart, treat the start as 60 px.
-- The view follows the fingers with a very short lag (it closes two thirds of the gap every 60 ms). No coasting after the fingers lift. You stop when they stop.
+- The view follows the fingers with a very short lag (it closes two thirds of the gap every 60 ms). Faster goes further, and a pinch let go while moving carries on a little (the curve, above). Fingers that stop, stop you.
 - The view does not turn or tilt during a pinch. The phone's tilt is ignored for as long as two fingers are down.
 - When one of the two fingers lifts, the other does nothing until it lifts too.
 
@@ -82,7 +107,7 @@ In hand: an easy pinch out (fingers 120 px apart to 330 px) covers about three q
 His words: "two finger swipe should track left and right". Tracking in the camera's sense: you slide sideways and keep facing the way you were.
 
 - **Two fingers to the right → the picture moves right with them, so you step to the left.** (His first try had it the other way: "backwards".)
-- **How far:** exactly enough that the thing between your fingers stays between them. That works out as: a drag the full width of a phone slides you about 0.6 × `D`, where `D` is the distance to what was between the fingers, held between 3 m and 40 m as for a pinch. Beside a pump, a full drag is about 2 m; out on the road, about 20 m. Live under the fingers, no coasting.
+- **How far:** half as far again as it takes to keep the thing between your fingers between them. He tried exact following and said "Tracking feels a little slow"; ×1.5 is the smallest step up that is plainly felt while the picture still stays near the fingers. That works out as: a slow drag the full width of a phone slides you about 0.9 × `D`, where `D` is the distance to what was between the fingers, held between 3 m and 40 m as for a pinch. Beside a pump, a full drag is about 3 m; out on the road, about 30 m. Faster goes further (the curve, above).
 - **Telling it from a pinch.** Two fingers do one thing per gesture, and it is settled once, in the first 12 px: compare how far the middle of the two fingers has moved sideways with how much the gap between them has changed. **Gap changed more: pinch. Middle moved more: track.** A lopsided pinch (a still thumb, a moving finger) moves its middle only half as far as its gap changes, so it stays a pinch. After that the other measure is ignored until the fingers lift. Not both at once, as on a map: a 3D place can't keep both fingers on their spots, and a pinch that also slid you would undo the reason two fingers never turn.
 - **What stops you:** walls and things, as walking sideways would. You stop; you don't slide round. Tracking never takes you through a doorway.
 - **Two fingers moved up or down together: nothing.** He asked for left and right only, and up and down already has a meaning for two fingers when they part.
@@ -99,7 +124,7 @@ His words: "two finger swipe should track left and right". Tracking in the camer
 - Switches on the test page, to compare. Each makes the picture go against the fingers for one gesture: `leftright=against`, `updown=against`, `track=against`.
 - **A swipe the full width of the screen turns you a quarter turn (90°). A swipe the full height tilts you 60°.**
 - Tilt limits: 75° up (the top of the sign from its foot), 60° down (your feet). No limit round.
-- **Let go while moving and the turn carries on briefly:** it starts at the finger's speed and halves every 0.12 s. Any touch stops it.
+- **Let go while moving and the turn carries on briefly:** it starts at the finger's speed and halves every 0.12 s, adding at most 60°. Any touch stops it. Faster swipes turn further (the curve, above).
 - **The view stays where you leave it.** It does not level itself. (This removes "stop, and the view levels"; see contradictions.)
 
 ## Tap
@@ -243,11 +268,12 @@ What the controls do touch is **your shadow**, now cast by any real light (`ligh
 | Pinch in | `D × (1/s − 1)`, at most 30 m |
 | Pinch dead zone; smallest start spread | 4%; 60 px |
 | Two fingers: pinch or track | settled in the first 12 px: gap change against sideways move of the middle |
-| Track | full width = 0.6 × `D`; keys 3 m/s; wheel 1 m a notch |
+| Track | ×1.5 of exact following: full width ≈ 0.9 × `D`; keys 3 m/s; wheel 1 m a notch |
+| The curve | ×1 under 300 px/s, straight up to ×2 at 1,500 px/s; speed over the last 80 ms |
+| Carry-on after a flick | halves every 0.12 s; at most 60° of turn, 100 px of track, ×1.4 of pinch; stops at things, walls, doorways |
 | Follow lag | 60 ms |
 | Swipe | width = 90°, height = 60°; starts at 10 px |
 | Tilt limits | 75° up, 60° down |
-| Carry-on after a swipe | halves every 0.12 s |
 | Tap | under 0.5 s, under 10 px; use within 2.5 m; go within 40 m |
 | Tap travel | 10 m/s, 0.3 s to 2.5 s |
 | Door | stop 0.9 m short; ×1.15 on a new pinch; land 1.5 m in |
@@ -255,10 +281,11 @@ What the controls do touch is **your shadow**, now cast by any real light (`ligh
 | Keys | 4 m/s; 90°/s; door after 0.5 s |
 | Wheel | ×1.25 a notch; new anchor after 0.25 s |
 
-**Tune first, on his phone, in this order:** the pinch-out power (1.5; 1 is exactly a photo and feels slower), the swipe amount (90° a width), nothing else about direction; it is settled. The test page takes `#k=1`, and `#leftright=against`, `#updown=against`, `#track=against` to compare.
+**Tune first, on his phone, in this order:** the curve's top (×2) and the tracking amount (×1.5), then the pinch-out power (1.5; 1 is exactly a photo and feels slower), the swipe amount (90° a width), nothing else about direction; it is settled. The test page takes `#k=1`, and `#leftright=against`, `#updown=against`, `#track=against` to compare.
 
 ## Not proven
 
+- **The curve, the faster tracking and the carry-on have not been in his hand.** The figures in the table are from touch events built and timed inside a desktop browser page (the browser's debugging channel can't send them fast enough to be a flick). They show the sums. Whether ×2 and 0.12 s are right is his thumb's to say.
 - **Directions are settled by his hand** (iPhone, Safari): up–down and pinch "great"; left–right and tracking flipped at his word to follow the finger. The flipped two have not been back in his hand yet. **Pinch works on his iPhone** ("pinch works there"), on the touch-events version. Whether the first, pointer-events version ever really failed is not known: his "pinching doesn't work yet" was said in the station, which has no pinch. Keep the touch-events version regardless; it is the sturdier one. The rebuilt version was checked in desktop Chromium three ways: real multi-touch TouchEvents sent through the browser's debugging channel, with the two fingers landing one after the other; a second finger whose start never arrives (only moves listing two fingers); and Safari's gesture events alone with no touches. All three move you as the sums say. None of that is iOS Safari. Only his phone can confirm it, and say anything about how it feels.
 - **Two-finger tracking has not been in his hand.** Checked with real multi-touch TouchEvents in desktop Chromium: two fingers right slide you right and left slide you left with the heading unchanged; two fingers up do nothing; a symmetric pinch, a lopsided pinch out and a lopsided pinch in all stay pinches; tracking stops at a pump and at the building's corner. Whether 12 px is the right moment to decide, for a real hand, only his iPhone can say.
 - Tilt has not run on any phone. Emulation has no sensor.

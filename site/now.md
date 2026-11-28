@@ -3,9 +3,9 @@
 
 ## Latest
 
-- Controls test page: every gesture now follows your fingers. One finger turns, a pinch moves you in and out, two fingers sideways slide you left and right.
+- Controls test page: faster two-finger tracking, and speed curves on every move. A faster swipe, slide or pinch carries you further, and a flick coasts and settles.
 - The station is mid-change and not ready to judge: shade and night in dots are going in now, then real scene lights and the moon. It still has the old controls.
 
 ## One thing to try
 
-On the controls test page: swipe left and right, and slide with two fingers. Do both go the right way now?
+On the controls test page: swipe slowly, then fast. Do the curves feel right?
