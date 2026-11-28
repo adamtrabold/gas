@@ -28,7 +28,7 @@ So:
 2. **Each dot decides for itself.** A dot of the screen looks up the sun's (or moon's) shadow at its own centre. It is whole or absent, never cut. A shadow's edge is a row of whole dots, like the flash sheet.
 3. **A rim.** Just inside a shadow's edge the screen is a step heavier (four more look-ups a dot, a dot's width out).
 4. **Heavier near the caster.** The shadow map gives the distance to what stands in the light's way; shade under 15 cm from its caster is the heaviest, shade 3 m or more from it the lightest. The wall right under the canopy is dark; the forecourt shade is light; a pump's shadow is darkest at its foot.
-5. **A paper edge** (the inker's halo). In the last pass, shade on ground or wall is wiped within about 2 points of anything standing nearer than it. A pump in shade never touches the shade behind it.
+5. **A paper edge** (the inker's halo). In the last pass, shade on ground or wall is wiped within about 2 points of anything standing nearer than it. A pump in shade never touches the shade behind it. "Nearer" is a bend in 1/depth across the pixel, not a difference in depth: a plain difference wiped all far ground, which slopes away fast (that was a white band at the night horizon for an hour).
 6. **A thing in shade is shaded** (he said real light): a light screen over its own dots (`veil` .22), lighter than the wall behind, heavier outline.
 7. **His shadow** is the closest screen on the lot (`shyou` .86), from the same seven capsules as before, looked up per dot.
 8. **The canopy's underside** is a screen (`under` .5) with its stains loose on top.
@@ -39,7 +39,7 @@ Both are in the file; the link uses the halftone.
 
 | | Halftone screen (the link) | Hand's stipple (`stipple-` in the hash) |
 |---|---|---|
-| Places | A square grid, 1.9 points apart, turned 0.5 rad from the sun's direction on the ground, a tenth of a cell of wander | The same grid, each dot up to 0.6 of a cell off its place, not turned |
+| Places | A square grid, 2.5 points apart, turned 0.5 rad from the sun's direction on the ground, a tenth of a cell of wander | A grid 1.9 points apart, each dot up to 0.6 of a cell off its place, not turned |
 | Tone carried by | Dot size (every place filled) | How many places are filled, then size |
 | Reads as | A printed comic's screen. Dark, firm, a clear shape | His stippled flash sheet. Lighter, softer, nearer the pump's own dots |
 | Walking away | Every other dot shrinks together; the screen keeps its tone | Dots drop out one at a time |
@@ -53,17 +53,31 @@ Only the light's tone is a screen. A thing's own form shading is still the loose
 
 How: the screen's places are fixed on the surface (`gP`, metres along the sun's direction on flat ground; along the wall on walls; `gM` on things). Spacing is by the phone's points, so there are nested grids, each twice the last. A dot at a place that is also on the coarser grid stays for good; the in-between dots shrink out as you back away (`lv 0` in the loop) and the rest never move. A dot's wander, size and order are hashed from its place reduced to its own coarsest grid, so they are the same at every distance. The same ordering thins the stipple when tone gets lighter, so tone and distance thin it the same way.
 
-On ground seen at a slant the cells keep their screen area (up to 9 to 1) and a dot is an oval, as a dot printed on the floor would be, up to 2 to 1 (`soval`); past that it is clipped and the tone lightens; past about 20 to 1 the tone snaps to paper or black (`thin`).
+On ground seen at a slant the cells keep their screen area (up to 9 to 1) and a dot is an oval, as a dot printed on the floor would be, up to 2 to 1 (`soval`); past that it is clipped and the tone lightens; past about 20 to 1 the tone snaps to paper or black (`thin`). The slant is worked out from the surface's two stretches on the screen (singular values), not from `fwidth`, which a turned grid fools.
+
+**The numbers below were taken just before that last fix and before the halftone's gap went from 1.9 to 2.5 to keep the same look.** Close up, where they were measured, the screen is the same within a few per cent; I did not have the 25 minutes to run it again. Rerun `walk4.js` before quoting them to him.
 
 `walk4.js` (new): an emulated iPhone 14 at true density, the three together by day. A 60 cm patch of slab in the canopy's shade and a patch of shaded wall, a point every centimetre, read at the same world points before and after a move.
 
-WALK4_TABLE
+| Where, and the move | Halftone (the link) | Stipple | Sheet 2's lines |
+|---|---|---|---|
+| Slab, 1.6 m: one frame forward (7 cm) | 0.033, 0.6 % | 0.016, 0 % | 0.028, 2.0 % |
+| Slab, 1.6 m: one frame sideways | 0.013, 0.1 % | 0.006, 0 % | 0.008, 0.3 % |
+| Slab, 1.6 m: half a metre forward | 0.165, 8.4 % | 0.093, 2.4 % | 0.208, 20.7 % |
+| Slab, 3.2 m: one frame forward | 0.032, 0.4 % | 0.015, 0 % | 0.011, 0 % |
+| Slab, 3.2 m: half a metre forward | 0.142, 6.6 % | 0.068, 0.8 % | 0.146, 12.8 % |
+| Wall, 3.2 m: one frame forward | 0.014, 0 % | 0.015, 0.3 % | 0.008, 0 % |
+| Wall, 3.2 m: half a metre forward | 0.050, 0 % | 0.053, 0.3 % | 0.041, 0 % |
+| Ink in the patch | 40 %, 34 % wall | 22 % | 24 % |
+| Seconds a frame in this machine's software renderer | 12.4 (night: 21) | 12.5 | 10.1 |
+
+Each cell: mean change in ink (0 none, 1 all swapped), then the share of points that flipped between paper and ink. "Same stand twice" is 0 for all. An earlier run of the halftone also had the slab at 6.5 m (0.029 a frame, 0.057 over half a metre, nothing flipped) and the wall at 6.5 m (0.011, 0.031, nothing flipped).
 
 For scale, `walk3.js` last turn: the pump's own dots at 1.6 m change 0.012 a frame, 0.053 and 2.3 % over half a metre.
 
-Reading: frame to frame the screen is as still as anything else in the picture. Over half a metre close up on the ground it is not: dots are sized by the screen, so their footprint on the ground shrinks as you close in and the ovals change shape, and that is 7 to 8 % of points flipping. On the wall nothing flips. Whether that reads as shimmer on a phone is not known.
+Reading: frame to frame the halftone changes about 3 % on the ground and 1.4 % on the wall with well under 1 % of points flipping. Over half a metre close up on the ground it changes 14 to 17 % with 7 to 8 % flipping: dots are sized by the screen, so their footprint on the ground shrinks as you close in and the ovals change shape. That is less than half of what Sheet 2's lines did from the same stands (13 to 21 % flipped), which he walked and called fluid. The stipple is the steadiest of the three, partly because it is lighter. On the wall nothing flips. Whether any of it reads as shimmer on a phone is not known.
 
-**Frame rate is not measured.** No GPU here; the software renderer takes 12 s a frame by day and 21 s at night for this view (`window.bench`, which now reads a pixel back so the frame is really drawn). Only the ratio means anything. Cost per pixel: lit ground reads the shadow map about 8 times; shaded ground up to 8 dots times 5 reads; lines read it 32 times; night adds the point lamp's shadow. The post pass has 8 more depth reads on shaded ground for the paper edge.
+**Frame rate is not measured.** No GPU here; the software renderer takes 12.4 s a frame by day (lines: 10.1, so dots cost about a quarter more here) and 21 s at night for this view (`window.bench`, which now reads a pixel back so the frame is really drawn). Only the ratio means anything. Cost per pixel: lit ground reads the shadow map about 8 times; shaded ground up to 8 dots times 5 reads; lines read it 32 times; night adds the point lamp's shadow. The post pass has 8 more depth reads on shaded ground for the paper edge.
 
 ## The lights that are built (against `lights.md`)
 
@@ -71,7 +85,7 @@ Reading: frame to frame the screen is as still as anything else in the picture. 
 |---|---|---|
 | Sun | The one directional light, 2048 shadow map fixed to the lot. Per-dot shadows on ground and walls; analytic roofs for things (`structSh`); his shadow from capsules (`youD`) | Each view still has its own fixed hour and season (pump and slab 10:30 midwinter, together 13:30 summer). Not his clock |
 | Sky's light | Hemisphere light, .75 | — |
-| Moon | The same directional light at night, weak (`moon` 1.5), pointing from the antisolar point: a full moon. A link that asks for night at a day hour gets 11 pm. Everything the sun does, it does: per-dot shadows, his shadow | Full only; no phase (the list leans to the real phase). In midsummer it is low (32 degrees), not "high". Brightness by eye. Indoors patches not built |
+| Moon | The same directional light at night, weak (`moon` .8: moonlit open ground is a middling screen, the moon's shade a close one), pointing from the antisolar point: a full moon. A link that asks for night at a day hour gets 11 pm. Everything the sun does, it does: per-dot shadows, his shadow | Full only; no phase (the list leans to the real phase). In midsummer it is low (32 degrees), not "high". Brightness by eye. Indoors patches not built |
 | The moon in the sky | A disc 7.5 degrees wide, paper with seas in a screen of dots, in the group that travels with you | Not seen as the link opens (it is behind you; the list wants that) |
 | Canopy lamp, middle | three's point light at the bulb, 14 m reach, decay 1.5, its own shadow map; his shadow from it worked out (`youD` toward the lamp). On only in `together` | A bare point: lights upward too, and reaches much further than "2 m beyond the canopy". Should be a cone. Its shadows are per pixel, so they cut dots |
 | Pump globes | West lit (its face is paper-white all night), east dead (dark with pale lettering). A glow: lights nothing else | — |
@@ -85,7 +99,7 @@ A thing's own form shading does not follow any light (his "no" on Sheet 1). Real
 
 - No lamp of his. `you` and `feet` spot lights are off in the link (they survive behind `#team-lines-...`).
 - Light at a point = what three works out for the lamps, plus the moon where nothing is in its way (per dot on ground and walls).
-- **Dark dots** (default): light to tone to the screen. Full light is a light screen (.16), no light is a close one (`ntg` .8), never solid. Things: their own dots pack closer in the dark (`ntt`).
+- **Dark dots** (default): light to tone to the screen. Full light is a light screen (.16), no light is a close one (`ntg` .86), never solid. Things: their own dots pack closer in the dark (`ntt`).
 - **Light dots** (`reversed`): everything drawn so far becomes paper and the rest is black. Ground: paper dots, most where the light is, a thin scatter (`nlg` .1) where there is none. Things: their loose dots in paper, most on their light side. Contours come out as broken paper lines (the old "line of paper in black").
 - Sky: flat black with the moon. Not solved; it is the top third of every night frame.
 - Plates: see "weak points".
@@ -97,7 +111,7 @@ A thing's own form shading does not follow any light (his "no" on Sheet 1). Real
 - `#team-lines-together`, `#team-lines-pump-night` ...: Sheet 2's look in the owner's views (lines, the old lamp-lit night). `lines` turns `team` back into an owner's view. For comparison only.
 - `#view-pump`, `#view-slab`, `#view-canopy` (+ `-night`, `-night-reversed`): the object viewer.
 - `#team`, `#team-lot`, `#team-wall`, `#team-ground`, hands `brush` `cut` `dot`, `tall`, `lit`, `dusk`: as before, unmaintained. Shade there is dots now too.
-- Query, for scripts: `view=`, `obj=`, `day=1`, `night=1`, `reversed=1`, `screen=stipple`, `shade=lines`, `hour`, `decl`, `x n h head pitch fov`, `hide=`, `body=0`, `az el r`. Tuning: `sgap` 1.9 (screen gap, points), `sjit`, `sang`, `srho`, `srhomax`, `st1`, `soval`, `shnear` .62, `shfar` .4, `shrim` .74, `shyou` .86, `veil`, `veilyou`, `under`, `halo` 2.1, `ntg`, `ntt`, `nlg`, `nlt`, `moon`, `mhour`, `moonsize`, and the old ones.
+- Query, for scripts: `view=`, `obj=`, `day=1`, `night=1`, `reversed=1`, `screen=stipple`, `shade=lines`, `hour`, `decl`, `x n h head pitch fov`, `hide=`, `body=0`, `az el r`. Tuning: `sgap` 2.5 halftone, 1.9 stipple (screen gap, points), `sjit`, `sang`, `srho`, `srhomax`, `st1`, `soval`, `shnear` .62, `shfar` .4, `shrim` .74, `shyou` .86, `veil`, `veilyou`, `under`, `halo` 2.1, `ntg`, `ntt`, `nlg`, `nlt`, `moon`, `mhour`, `moonsize`, and the old ones.
 - `window.stat()` reports shade, night kind and viewer.
 
 ## How it is built (`sketches/place/index.html`)

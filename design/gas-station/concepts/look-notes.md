@@ -55,11 +55,23 @@ Each also takes `-night` and `-night-reversed`. Same file: `sketches/place/index
 
 Emulated iPhone 14 (Playwright's descriptor, nothing overridden), canvas 1170 x 1992 at 3 dots per point. Software renderer, no GPU.
 
-**Do the shade dots keep their place as you walk?** (`walk4.js`; the same points of the world read before and after a move; change 0 = nothing, 1 = all swapped; flipped = points gone from paper to ink or back.) See the table in `notes/visual.md`. In short: the halftone screen changes about 0.03 a frame on the slab and 0.01 on the wall with under 1 % of points flipped, the same order as the pump's own dots (0.012) and as Sheet 2's lines.
+**Do the shade dots keep their place as you walk?** (`walk4.js`; the same points of the world read before and after a move; change 0 = nothing, 1 = all swapped; flipped = points gone from paper to ink or back.) 
 
-**Half a metre forward, close up on the ground, is the weak spot:** 0.14 to 0.17 change, 7 to 8 % flipped. Dots are sized by the screen, so as you close in each dot covers less ground, and every halving of distance brings in the in-between dots. On the wall, and from 6 m, nothing flips.
+| | Halftone (the link) | Stipple | Sheet 2's lines |
+|---|---|---|---|
+| Slab at 1.6 m, one frame forward (7 cm) | 0.033, 0.6 % | 0.016, 0 % | 0.028, 2.0 % |
+| Slab at 1.6 m, half a metre forward | 0.165, 8.4 % | 0.093, 2.4 % | 0.208, 20.7 % |
+| Slab at 3.2 m, half a metre forward | 0.142, 6.6 % | 0.068, 0.8 % | 0.146, 12.8 % |
+| Wall at 3.2 m, one frame forward | 0.014, 0 % | 0.015, 0.3 % | 0.008, 0 % |
+| Wall at 3.2 m, half a metre forward | 0.050, 0 % | 0.053, 0.3 % | 0.041, 0 % |
 
-**Frame rate: not measured.** There is no GPU here. What I can say: a shaded pixel of ground now reads the sun's shadow map about 8 to 40 times (it was 32 for lines) and the lit ground about 8; the old stipple on things is unchanged. It should cost about what Sheet 2 did, which he called fluid, but that is a guess until it is on his phone.
+Frame to frame the dots hold as well as the lines did. Over a step they hold better than the lines did on the ground, and the stipple best of all.
+
+These were taken before two late fixes to the screen on slanted ground; they need one more run before they are quoted to him.
+
+**Half a metre forward, close up on the ground, is still the weak spot** (7 to 8 % of points flip). Dots are sized by the screen, so as you close in each dot covers less ground, and every halving of distance brings in the in-between dots. On the wall, and from 6 m, nothing flips.
+
+**Frame rate: not measured.** There is no GPU here. What I can say: a shaded pixel of ground now reads the sun's shadow map about 8 to 40 times (it was 32 for lines) and the lit ground about 8; the old stipple on things is unchanged. In this machine's software renderer a day frame takes 12.4 s in dots against 10.1 s in lines, and a night frame 21 s. So: about a quarter dearer than Sheet 2 by day, and night about twice. Only the ratios mean anything, and a phone's GPU may not keep them.
 
 ## Not good yet, or not real
 

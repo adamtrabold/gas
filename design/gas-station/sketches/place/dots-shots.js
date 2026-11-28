@@ -5,6 +5,6 @@ const D = 'day=1', T = 'view=together', I = 'index.html';
 module.exports = [
   ['together-day', `${T}&${D}`], ['shade-edge', `${T}&${D}&body=0&x=-2.2&n=9.2&head=68&pitch=-14`], ['pump-in-shade', `${T}&${D}&body=0&x=-9.45&n=10.25&head=-45&pitch=-6`], ['your-shadow', `view=slab&${D}`],
   ['wall-stipple', `${T}&${D}&body=0&x=-6.8&n=5.6&head=0&pitch=1&screen=stipple`],
-  ['together-night', `${T}&night=1`], ['together-night-reversed', `${T}&night=1&reversed=1`], ['your-shadow-night', `${T}&night=1&x=-6.8&n=10.1&head=180&pitch=-38`], ['slab-night-moon', 'view=slab&night=1'], ['moon', 'view=slab&night=1&x=-3&n=9&head=165&pitch=24'],
+  ['together-night', `${T}&night=1`], ['together-night-reversed', `${T}&night=1&reversed=1`], ['your-shadow-night', `${T}&night=1&x=-6.8&n=10.1&head=180&pitch=-38`], ['slab-night-moon', 'view=slab&night=1'], ['moon', `${T}&night=1&x=-3&n=3&head=-160&pitch=34`],
   ['view-pump', 'obj=pump', I, 'iPhone 14 landscape'], ['view-canopy', 'obj=canopy', I, 'iPhone 14 landscape'], ['view-slab', 'obj=slab', I, 'iPhone 14 landscape'],
 ];
