@@ -1,6 +1,6 @@
 # Director notes — gas station portfolio
 
-Rewritten at the Sheet 2 judge as a compact, current file. I am the third director. Earlier notes (37 KB of round-by-round history) are in git; what matters from them is here.
+Rewritten at the Sheet 2 judge as a compact, current file; updated at steer 5. I am the third director. Earlier notes (37 KB of round-by-round history) are in git; what matters from them is here.
 
 ## Where things stand
 
@@ -38,7 +38,10 @@ Read these before judging anything.
 7. **Never ask him by picture number or sheet letter.** "I don't know what you're talking about." Describe in words. He does answer in letters ("A1 b3 d no e2"), so letters on a sheet must not change meaning between sheets.
 8. **Check any word he'll read for a second meaning.** PLAYA.
 9. **He moves the look by adding references, always toward more line, texture, detail and paper.** The jam rule "mass before line" produced the posterized look and has been overturned in the same direction every time.
-10. **Directors' picks have erred plain.** Sheet 1: the director picked the cut hand and one paper; he picked dots and a paper on each part. When unsure which he'll choose, expect the richer one.
+10. **Four misses, one cause.** Sheet 1: the director picked the cut hand and one paper; he picked dots and a paper on each part. Sheet 2: the team and I picked lines for shade, and the concept carried the lamp; he said dots, and "it should just be darker". We pick what is easiest to justify in words (a rule, a system of two). He picks what looks like one drawing. Test every device: would it be in the illustration if nobody could touch it?
+13. **A pick outranks an earlier example.** I read "shadow methods like crosshatching" as licence for ruled lines after he had picked dots. "Like… etc" was an example.
+14. **He reasons from the real thing and the familiar gesture.** "That's how it'd be irl." "Like photos." "Just darker."
+15. **My guess before Sheet 2 went (yes to lines, more black by day) was wrong on the first count.** Don't lean on guesses about him.
 11. **One sentence from him after walking it does more than a round of our objections.** Put a walkable thing in front of him early, small and plainly labelled. But don't spend his look on faults we can already see.
 12. **Captions must claim only what's drawn.** "From your photo" for a shape not matched to the photo is an overclaim he can check.
 
@@ -55,22 +58,22 @@ Read these before judging anything.
 - "Realistic labeling with fake brand names"; he will supply them.
 - Canopy over the pumps, joined; stucco over brick; Route 66 station with a Googie arrow sign carrying his name only.
 
-## The look rule now on the table (Sheet 2)
+## After Sheet 2: what he said (owner.md 19 to 28) and my ruling (`concepts/steer-5.md`)
 
-"Dots for the thing, lines for the light."
-
-- A thing (pump, canopy, post, lamp, hose) is drawn once in dots on its own paper and does not change with the hour.
-- Shade, his shadow and the dark at night are lines, laid along the sun or out from a lamp, on the ground and walls.
-- A thing in shade keeps its dots and takes a thin veil of lines.
-
-My reading: a fair reading of his picks, supported by his own phrase "shadow methods like crosshatching" and by the Sheet 1 caption he answered. **Not confirmed by him.** Two places it breaks his pick as built: the veil up close, and his own lamp at night; both rule the pump over with lines. And in the walked day frame most of the ink is line, though he picked dots. He has to be asked.
+- **Shade in dots, not lines.** "The world should look like walking through an illustration." "Dots for the thing, lines for the light" is rejected; one hand for everything. Stipple may be treated as a halftone.
+- **Two pumps:** same model, worn separately.
+- **Controls:** press-and-hold rejected. Swipe turns; pinch out goes in, pinch in backs out, "like photos"; gyro turns the camera.
+- **Night:** "I don't like the light thing at night. It should just be darker." It is the light that follows where he looks. The station's own lights stand.
+- **Ruling:** the lamp is out; Left on survives and is nearer its name. Stands: the squatter, the shadow by day, what you switch on stays on, the main, the station's lights, asking for someone, the place by how light gets to it, the hour, standing still from the stars on. Falls: the lamp as a mark, "lit and left" strokes, the 4 s and 8 s rows, "walk the aisle by lamp", the fourth light as "a disc like yours" (now a patch of light with no lamp over it). Element 10 is struck. "Never a black screen" becomes the drawing's duty.
+- **Options for a night mark:** A nothing replaces it; B you are a shadow in any light (sun, canopy lamp, a tube you switched on); C heard, not seen; D the dark opens with time. Ruled out: anything that follows the view. **My pick: B on top of A.** It goes to him as one question (wording in steer 5). Build for A until he answers.
+- Sheets are now web pages on https://adamtrabold.github.io/gas/ with drawings as images and text as HTML. **One question per message.**
 
 ## Open
 
 **With the owner**
-- Is "drawn once" what his "no" meant, and is dots-for-things, lines-for-light the split he wants?
-- Two pumps: the same pump twice, or one of each shape?
-- Should a pump in shade look shaded at all?
+- The one concept question: nothing of you at night, or your shadow wherever there's a lamp (steer 5).
+- Night: more dots on paper, or light dots on a dark ground (Sheet 3 shows both; ask after).
+- Should a pump in shade look shaded at all? (Not answered; Sheet 3 has to show it in dots.)
 - Is this what he meant by flash sheet vibes?
 - Phone check: sharp, fluid, do the dots hold still, does press and hold only walk, which browser.
 - Sign: he wants "the best amalgamation" of neon and plastic letter boxes and said he'd send more photos. None has arrived. Nothing of the sign is drawn until they do.
@@ -95,12 +98,14 @@ My reading: a fair reading of his picks, supported by his own phrase "shadow met
 - No GAS on the sign. His name is on the sign and nowhere else.
 - Arrival across the road; walk, not composed stops.
 - Flat paint may stay flat for lettering; a thing gets drawn.
+- Nothing follows where he looks. No lamp.
 - Take from flash: each thing a complete drawing, line first, tone made of marks, old paper, wear. Don't take: creatures, emblems, whimsy, crowding, costume.
 - A flash sheet is the element list drawn; a sheet he agrees is how the thing is drawn.
 
 ## Next
 
-1. Add the one line to "Plainly"; Sheet 2 goes to him with four questions in plain words (end of the judge file).
-2. Read his answer against my guess below before steering anything.
-3. Then the station front (element 4), which is the hardest test of the rule: a detailed wall in shade behind a pump. The sign waits for his photos.
-4. My guess at his reply, to check myself against: yes to twin pumps; yes to lines for shade, with a remark that the lines look mechanical or the ground is plain; a wish for more black by day.
+1. The one question goes to him, alone.
+2. Sheet 3 (fresh visual designer): shade in dots, stipple against halftone, night both ways, no lamp, two pumps worn differently. I judge it against "walking through an illustration" and "never a black screen", and check things still stand clear of shade behind them now that lines are gone.
+3. Sheet 4: the environment, as a whole picture he can stand in. He is waiting for it.
+4. Systems rewrites `05-left-on.md` and `controls.md` from the table in steer 5; I check the rewrite against his answer.
+5. The sign still waits for his photos.
