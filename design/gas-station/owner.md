@@ -317,6 +317,10 @@ Asked whether "sheets" is wrong as a word or as the whole idea of separate numbe
 
 (So: no more sheets, in any format. The site is for the prototypes — things to try — and for the logic, architecture and systems: how the place works, what it is made of, its lights, its controls. The look is to be judged in the prototypes themselves, not in composed pages of drawings. This supersedes section 20's "future sheets should just be images on a webpage with web text" and retires Sheet 3 as a deliverable; the work in it goes into the prototype.)
 
+"I have no idea what a sheet even is outside of the original images you exported as separate "sheets" -- it was an artifact form"
+
+("Sheet" was the team's word for how drawings happened to be exported, not something he asked for or thinks in. Don't use the word with him.)
+
 ## Still open (asked, not answered)
 
 - Should the time of day do something (choose which work shows), or only change how the place looks and what odd things happen? (Related: he said "no" to choosing what shows in office hours versus at night.)
