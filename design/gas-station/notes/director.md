@@ -1,6 +1,6 @@
 # Director notes — gas station portfolio
 
-Rewritten at the Sheet 2 judge as a compact, current file; updated at steer 5. I am the third director. Earlier notes (37 KB of round-by-round history) are in git; what matters from them is here.
+Rewritten at the Sheet 2 judge as a compact, current file; updated at steer 5 and at look judge 2. I am the third director. Earlier notes (37 KB of round-by-round history) are in git; what matters from them is here.
 
 ## Where things stand
 
@@ -41,6 +41,8 @@ Read these before judging anything.
 10. **Four misses, one cause.** Sheet 1: the director picked the cut hand and one paper; he picked dots and a paper on each part. Sheet 2: the team and I picked lines for shade, and the concept carried the lamp; he said dots, and "it should just be darker". We pick what is easiest to justify in words (a rule, a system of two). He picks what looks like one drawing. Test every device: would it be in the illustration if nobody could touch it?
 13. **A pick outranks an earlier example.** I read "shadow methods like crosshatching" as licence for ruled lines after he had picked dots. "Like… etc" was an example.
 14. **He reasons from the real thing and the familiar gesture.** "That's how it'd be irl." "Like photos." "Just darker."
+16. **Check the thing against his plainest sentence first.** Night was built with care and still wasn't "just darker".
+17. **Never ask him to judge through something he has already rejected** (press and hold).
 15. **My guess before Sheet 2 went (yes to lines, more black by day) was wrong on the first count.** Don't lean on guesses about him.
 11. **One sentence from him after walking it does more than a round of our objections.** Put a walkable thing in front of him early, small and plainly labelled. But don't spend his look on faults we can already see.
 12. **Captions must claim only what's drawn.** "From your photo" for a shape not matched to the photo is an overclaim he can check.
@@ -68,12 +70,22 @@ Read these before judging anything.
 - **Options for a night mark:** A nothing replaces it; B you are a shadow in any light (sun, canopy lamp, a tube you switched on); C heard, not seen; D the dark opens with time. Ruled out: anything that follows the view. **My pick: B on top of A.** It goes to him as one question (wording in steer 5). Build for A until he answers.
 - Sheets are now web pages on https://adamtrabold.github.io/gas/ with drawings as images and text as HTML. **One question per message.**
 
+## After steer 5: what he said (owner.md 29 to 42) and look judge 2 (`concepts/look-judge-2.md`)
+
+- "Lighting should work as in the real world." "We need to establish proper scene lights" (`lights.md`). A moon, "always epic… exaggerated". This answered the night-mark question: his shadow under any real light (my option B, by his rule, not by my argument).
+- **No sheets.** He never knew what one was. The site (try · elements · how it works) is for prototypes and systems; he judges the look in the prototype on his iPhone in Safari. Elements shown as live 3D views. Don't say "sheet" to him.
+- Controls settled on a test page: the picture follows your fingers; pinch moves you; two fingers track; speed curves. Not yet in the station.
+- Interior: an Employee of the Month frame, a portrait of Art Bell, plaque "Art". Sign photos arrived.
+- **Look judge 2:** day in dots is ready and is the first frame that is "walking through an illustration" (halftone screen for shade, loose dots for matter, paper halo, figure shadow). Night is not: it isn't darker than day (canopy lamp is a bare point reaching 14 m), the moon is small in a black screen, a white hairline at the horizon, bands on the ground. Fix those three and port the controls, then ask ONE question: which night, dark dots or light dots. Queue after: phone smoothness; halftone or stipple; moon phase; 3D views.
+- **Ruled, not asked:** real light beats "drawn once". Matter (rust, stains, wear) is fixed; tone follows sun, moon and lamps. Goes in with the environment.
+- **Order:** fixes and controls now; then the environment in two turns (whole picture first), which he asked for by name; then the sign.
+- Private placing: day 8.5, night 6.5.
+
 ## Open
 
 **With the owner**
-- The one concept question: nothing of you at night, or your shadow wherever there's a lamp (steer 5).
-- Night: more dots on paper, or light dots on a dark ground (Sheet 3 shows both; ask after).
-- Should a pump in shade look shaded at all? (Not answered; Sheet 3 has to show it in dots.)
+- Night: dark dots or light dots (first question, after the fixes).
+- Then: smooth on his phone; halftone or stipple; moon phase; the 3D element views.
 - Is this what he meant by flash sheet vibes?
 - Phone check: sharp, fluid, do the dots hold still, does press and hold only walk, which browser.
 - Sign: he wants "the best amalgamation" of neon and plastic letter boxes and said he'd send more photos. None has arrived. Nothing of the sign is drawn until they do.
@@ -104,8 +116,8 @@ Read these before judging anything.
 
 ## Next
 
-1. The one question goes to him, alone.
-2. Sheet 3 (fresh visual designer): shade in dots, stipple against halftone, night both ways, no lamp, two pumps worn differently. I judge it against "walking through an illustration" and "never a black screen", and check things still stand clear of shade behind them now that lines are gone.
-3. Sheet 4: the environment, as a whole picture he can stand in. He is waiting for it.
-4. Systems rewrites `05-left-on.md` and `controls.md` from the table in steer 5; I check the rewrite against his answer.
-5. The sign still waits for his photos.
+1. Designer: night darker in both modes, an epic moon in a frame that isn't empty, no hairline; controls ported into the station. I look at four stills (opening stand at night both ways, the moon, the ground looked along at night).
+2. The night question goes to him, alone.
+3. The environment, two turns, whole picture first; real light on things goes in with it.
+4. Systems: `05-left-on.md` restated for no lamp and real lights; check against steer 5 and `lights.md`.
+5. The sign (photos are in); the interior later, with Art.
