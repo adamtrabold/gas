@@ -7,13 +7,15 @@ His words:
 > "I dislike press and hold. It should do pinch to zoom in and out and swiping should rotate camera"
 > "Pinch out zooms in pinch in backs up like photos"
 > "It would be cool for phone gyro to move me around camera wise"
+> "Also two finger swipe should track left and right"
 
 ## The whole of it
 
-**One finger turns you. Two fingers move you. A tap goes there, or uses the thing. Holding a finger down does nothing.**
+**One finger turns you. Two fingers move you: parting or closing, in and out; sideways together, sideways. A tap goes there, or uses the thing. Holding a finger down does nothing.**
 
 - **Swipe:** finger right, you turn right; finger down, you look up. You turn; you never move.
 - **Pinch:** you move along a straight line toward whatever was between your fingers when they landed, or back away from it. You never turn.
+- **Two-finger swipe:** two fingers moved sideways together slide you sideways. You never turn.
 - **Tap:** a thing you're standing at answers. Anything further off, you're taken there.
 - **Tilt (phones):** turning the phone turns the view by the same angle.
 
@@ -62,8 +64,20 @@ In hand: an easy pinch out (fingers 120 px apart to 330 px) covers about three q
 - **Moving along the centre of the view.** A photo zooms on your fingers, not on its middle. You would have to turn to face a thing before every pinch.
 - **A fixed distance per pinch.** Six pinches to the door and forty to walk off and back.
 - **Stepping between set spots.** He said "walk around".
-- **Two fingers also turning.** Nearly every pinch is lopsided (a still thumb, a moving finger), so the midpoint moves and you'd turn by accident.
+- **Two fingers also turning.** Nearly every pinch is lopsided (a still thumb, a moving finger), so the midpoint moves and you'd turn by accident. (Two fingers moving sideways *together* now slide you sideways; that is told apart from a pinch at the start of the gesture and never mixed with one. See the two-finger swipe.)
 - **Tilting to keep the thing under your fingers.** Pinch on the ground and you would arrive staring at your feet.
+
+## Two-finger swipe: tracking sideways
+
+His words: "two finger swipe should track left and right". Tracking in the camera's sense: you slide sideways and keep facing the way you were.
+
+- **Two fingers to the right → you step to the right.** What is in front of you slides to the left. (The same sense as one finger: finger right, the view goes right.) Switch on the test page to compare: `track=follow`.
+- **How far:** a drag the full width of the screen slides you 0.6 × `D`, where `D` is the distance to what was between the fingers, held between 3 m and 40 m as for a pinch. Beside a pump, a full drag is about 2 m; out on the road, about 20 m. Live under the fingers, no coasting.
+- **Telling it from a pinch.** Two fingers do one thing per gesture, and it is settled once, in the first 12 px: compare how far the middle of the two fingers has moved sideways with how much the gap between them has changed. **Gap changed more: pinch. Middle moved more: track.** A lopsided pinch (a still thumb, a moving finger) moves its middle only half as far as its gap changes, so it stays a pinch. After that the other measure is ignored until the fingers lift. Not both at once, as on a map: a 3D place can't keep both fingers on their spots, and a pinch that also slid you would undo the reason two fingers never turn.
+- **What stops you:** walls and things, as walking sideways would. You stop; you don't slide round. Tracking never takes you through a doorway.
+- **Two fingers moved up or down together: nothing.** He asked for left and right only, and up and down already has a meaning for two fingers when they part.
+- It counts as moving, so it ends standing still.
+- **Motion turned off:** one cut of 0.3 × `D` to that side per gesture, once the fingers have gone 40 px.
 
 ## Swipe
 
@@ -138,9 +152,9 @@ The place acts when you've stopped, so "stopped" has to be exact, and a hand is 
 
 | | Turn | Move | Use | Door |
 |---|---|---|---|---|
-| **Mouse** | Drag: the same sense as the finger, same amounts | Wheel: each notch is a pinch of ×1.25, anchored on the pointer. A new anchor after a quarter second without scrolling | Click | Click it, or scroll again after stopping |
-| **Trackpad** | Drag, or a two-finger sideways scroll | Pinch (anchored on the pointer), or two-finger scroll up and down | Click | The same |
-| **Keyboard** | Left, right, A, D: 90° a second | Up, down, W, S: 4 m a second, held. Holding a key is not what he disliked | Tab steps through what you can see, nearest first. Enter goes to it; Enter again uses it | Enter, or hold forward half a second. Escape: outside |
+| **Mouse** | Drag: the same sense as the finger, same amounts | Wheel: each notch is a pinch of ×1.25, anchored on the pointer. A new anchor after a quarter second without scrolling. Shift + wheel (a sideways wheel) tracks: 1 m a notch | Click | Click it, or scroll again after stopping |
+| **Trackpad** | Drag | Pinch (anchored on the pointer), or two-finger scroll up and down. **Two fingers sideways tracks,** as on the phone | Click | The same |
+| **Keyboard** | Left and right arrows: 90° a second | Up, down, W, S: 4 m a second, held. **A and D track** left and right at 3 m a second. Holding a key is not what he disliked | Tab steps through what you can see, nearest first. Enter goes to it; Enter again uses it | Enter, or hold forward half a second. Escape: outside |
 | **Screen reader, no pointer, no 3D** | — | The list of places (`00-shared.md`). Unchanged | Buttons | "The door" is a place |
 
 Gone: holding the mouse button to walk; turning by pushing the pointer to the edge.
@@ -163,7 +177,7 @@ Every job in `jobs.md` can be done by each column: arriving, reading the sign, g
 | Ctrl + wheel / trackpad pinch zoom | Takes it: `preventDefault()` on `wheel` over the canvas (not passive) |
 | Pull to refresh; rubber-band scrolling | Takes it: `overscroll-behavior: none` on `html` and `body`; the page never scrolls |
 | Long press: callout, selection, magnifier, context menu | Refused, as now. A long press does nothing at all |
-| Two-finger sideways scroll going back (desktop) | Takes it over the canvas (it turns you) |
+| Two-finger sideways scroll going back (desktop) | Takes it over the canvas (it tracks you sideways) |
 
 **Left alone, always:**
 
@@ -218,6 +232,8 @@ What the controls do touch is **your shadow**, now cast by any real light (`ligh
 | Pinch out | `D × (1 − 1/s^1.5)` |
 | Pinch in | `D × (1/s − 1)`, at most 30 m |
 | Pinch dead zone; smallest start spread | 4%; 60 px |
+| Two fingers: pinch or track | settled in the first 12 px: gap change against sideways move of the middle |
+| Track | full width = 0.6 × `D`; keys 3 m/s; wheel 1 m a notch |
 | Follow lag | 60 ms |
 | Swipe | width = 90°, height = 60°; starts at 10 px |
 | Tilt limits | 75° up, 60° down |
@@ -234,6 +250,7 @@ What the controls do touch is **your shadow**, now cast by any real light (`ligh
 ## Not proven
 
 - **Swipe has been in his hand** (iPhone, Safari): "Swiping works great l r and u d" was the station's sense, now copied here; the test page itself awaits his word. **Pinch works on his iPhone** ("pinch works there"), on the touch-events version. Whether the first, pointer-events version ever really failed is not known: his "pinching doesn't work yet" was said in the station, which has no pinch. Keep the touch-events version regardless; it is the sturdier one. The rebuilt version was checked in desktop Chromium three ways: real multi-touch TouchEvents sent through the browser's debugging channel, with the two fingers landing one after the other; a second finger whose start never arrives (only moves listing two fingers); and Safari's gesture events alone with no touches. All three move you as the sums say. None of that is iOS Safari. Only his phone can confirm it, and say anything about how it feels.
+- **Two-finger tracking has not been in his hand.** Checked with real multi-touch TouchEvents in desktop Chromium: two fingers right slide you right and left slide you left with the heading unchanged; two fingers up do nothing; a symmetric pinch, a lopsided pinch out and a lopsided pinch in all stay pinches; tracking stops at a pump and at the building's corner. Whether 12 px is the right moment to decide, for a real hand, only his iPhone can say.
 - Tilt has not run on any phone. Emulation has no sensor.
 - The test page leaves out: the 20 px edge rule, the mouse and keyboard hint words, standing spots and facings for taps, Tab, and everything that isn't moving. Its things are boxes and "use" just flips one black or white.
 - How the drawing takes being crossed at this speed. A pinch covers 25 m in the time it takes to part two fingers, and can be rocked in and out. The dots that change with distance will all change in that time. Visual to judge.
