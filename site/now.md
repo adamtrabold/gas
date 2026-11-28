@@ -12,17 +12,20 @@
 
 ## Waiting on you
 
-Answered: shade and shadows are dots, not lines. "The world should look like walking through an illustration." The shade on Sheet 2 is being redrawn in dots, with the stipple treated as a kind of halftone, as you suggested. That will be Sheet 3.
+Nothing right now. Sheet 3 (shade and night in dots) is being drawn, then Sheet 4, the environment.
 
-Answered: the two pumps are the same model, each with its own wear.
+## What you've settled lately
 
-From earlier, still not answered:
+- Shade, shadows and night are dots, one hand for everything: "The world should look like walking through an illustration." The stipple can work as a kind of halftone.
+- "Lighting should work as in the real world." No light follows where you look; night is just darker. You cast a shadow wherever a real light is.
+- The two pumps are the same model, each worn in its own way.
+- No press and hold. Swipe turns the camera, pinch out brings you in, pinch in backs you up, like photos. Tilting the phone turns the camera too.
+- New sheets are web pages: drawings as images, everything else as text.
+- You are the squatter. The proposal is under "Who isn't here" in the concept.
+- The sign: neon, drawn from your three photos and the article. It gets its own sheet after the environment.
 
-- **The sign.** Your three neon sign photos have arrived. The sign gets its own sheet after the environment.
-- **Your things, as the squatter.** We guessed: a cup, a camp stove, a jacket, brushes and a bottle of ink, a notebook, a bedroll, an instrument case. Strike what's wrong, add what's missing.
-- **Brand names**, when you're ready. LLANO is a stand-in.
-- **"D no" on Sheet 1.** We read it as: a thing is drawn once and keeps its own shading at every hour. Is that what you meant?
-- **Flash sheet vibes.** Is what the sheets show what you meant?
-- **You as the squatter.** The concept now proposes that the things left in the station are yours, and that you are out, not hiding. It is written up under "Who isn't here" in the concept, for you to check.
+## Still to ask you, one at a time
 
-Answer in chat. The team records it and updates this page.
+- Whether the sheets are what you meant by "flash sheet vibes".
+- Your things in the station, as the squatter.
+- Brand names, when you're ready. LLANO is a stand-in.

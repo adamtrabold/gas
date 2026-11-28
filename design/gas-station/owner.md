@@ -260,6 +260,13 @@ Asked: is "the light thing" the patch under the canopy lamp, the light that foll
 
 with three photos of neon motel signs, saved as `inspo/23.jpg`–`25.jpg` (described in `brief.md`). These are the photos he meant in section 17: "Here are some more photos to draw inspo from. I want the best amalgamation?" — for the sign and his name on it. With section 16: "it should be neon and historically accurate… and also maybe some of the letters could flicker"; arrow and starburst: "don't care".
 
+## 30. Light (verbatim)
+
+Told the concept stands without the light that follows the view, and asked: should night stay with nothing of you in the picture, or should you keep your shadow at night wherever a lamp is lit? —
+"Lighting should work as in the real world"
+
+(A rule, wider than the question. Read as: light and shadow behave as they really would — things and the visitor cast shadows from whatever light is actually there, the sun by day, a lit canopy lamp or a switched-on room light at night; where there is no light there is no shadow and it is dark; nothing is lit that a real light wouldn't light. It answers the night-shadow question as a consequence — yes, under a real lamp — and it also bears on the earlier open question of a pump standing in the canopy's shade: in the real world it is shaded. With section 18's "no" to the light redrawing a thing and section 22's dots: the marks are one hand, dots; what the light does is real.)
+
 ## Still open (asked, not answered)
 
 - Should the time of day do something (choose which work shows), or only change how the place looks and what odd things happen? (Related: he said "no" to choosing what shows in office hours versus at night.)
