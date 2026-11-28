@@ -372,6 +372,13 @@ Asked whether the curves are right now (top gain ×1.8, eased coasting): "Ok thi
 
 (Settled for now at ×1.8. He may want it eased further, to ×1.6 or ×1.7, later; leave it until he says.)
 
+## 44. Which night (verbatim)
+
+Asked, with the station live on his iPhone: tap "night, dark dots", then "night, light dots" — which one is night?
+"I like dark dots but they're a little too gritty. Light dots less so but they moire bad. So find a middle ground"
+
+(Night is the dark-dots direction — ink dots on paper, packed — but less gritty. The light-dots version is smoother in texture but its even screen makes a bad moiré on his phone. Wanted: a middle ground — the dark-dots night with a calmer, less gritty texture, and no moiré. He said nothing against the controls in the station, the lamp, or the moon.)
+
 ## Still open (asked, not answered)
 
 - Should the time of day do something (choose which work shows), or only change how the place looks and what odd things happen? (Related: he said "no" to choosing what shows in office hours versus at night.)
