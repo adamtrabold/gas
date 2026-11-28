@@ -18,7 +18,7 @@
 // One finger turns. Two fingers parting or closing move you in and out. Two fingers moving sideways together slide you sideways.
 // THE RULE: the picture follows the fingers. You drag the world. Finger right: the picture moves right (you turn left). Finger down: the picture moves down (you look up).
 // Two fingers right: the picture moves right (you step left). Fingers apart: what is between them grows (you go in). Confirmed by the owner on his iPhone, section 41. Pinch moves you along the line to whatever was between your fingers. Tap goes there. No press and hold.
-// Switches after the #, joined by '&':  k=1.5 (pinch gain)  to compare, each makes the picture go AGAINST the fingers for one gesture:  leftright=against (finger right, you turn right)  updown=against (finger up, you look up)  track=against (two fingers right, you step right)   and  curve=off (no speed curve, no carry-on for moves, tracking at x1: the version before)  tap=0 (no tap-to-go)  debug (a readout top left: fingers the page sees, the gesture, the last events. for a screenshot when something fails)
+// Switches after the #, joined by '&':  k=1.5 (pinch gain)  to compare, each makes the picture go AGAINST the fingers for one gesture:  leftright=against (finger right, you turn right)  updown=against (finger up, you look up)  track=against (two fingers right, you step right)   and  curve=off (no speed curve, no carry-on for moves, tracking at x1)  curve=before (the stronger first curve)  tap=0 (no tap-to-go)  debug (a readout top left: fingers the page sees, the gesture, the last events. for a screenshot when something fails)
 import * as T from '../ink-is-shadow/vendor/three.module.min.js';
 const H = new URLSearchParams(location.hash.slice(1)), num = (k, d) => H.has(k) ? +H.get(k) : d;
 const K = num('k', 1.5), GX = H.get('leftright') === 'against' ? -1 : 1, GY = H.get('updown') === 'against' ? -1 : 1, REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches || H.has('reduced');
@@ -97,7 +97,10 @@ document.addEventListener('touchstart', e => { if (e.touches.length > 1 && e.can
 const evs = []; function log(t) { if (evs[evs.length - 1]?.[0] === t) evs[evs.length - 1][1]++; else { evs.push([t, 1]); if (evs.length > 8) evs.shift(); } }
 // THE CURVE: the same finger travel carries further when it is made faster. Under 300 px a second the picture follows the fingers exactly (x1);
 // from there it rises in a straight line to x2 at 1500 px a second and stays there. `speed` is the fingers' own speed in px a second, smoothed
-const gain = v => CURVE ? 1 + Math.max(0, Math.min(1, (v - 300) / 1200)) : 1;
+// THE NUMBERS OF THE CURVE, all here. top: the most a fast move is multiplied by. half: seconds for the carry-on's speed to halve. the three caps: the most a carry-on may add.
+// #curve=before gives the stronger first set, which he called "slightly slightly slightly too intense"
+const C = H.get('curve') === 'before' ? { top: 2, half: .12, capTurn: 60, capTrack: 100, capPinch: .35 } : { top: 1.8, half: .10, capTurn: 50, capTrack: 80, capPinch: .28 };
+const gain = v => CURVE ? 1 + (C.top - 1) * Math.max(0, Math.min(1, (v - 300) / 1200)) : 1;
 // the fingers' speed, measured over the last 80 ms of their travel (not event to event: phones deliver moves in uneven bursts). returns [vx, vy] in px a second
 function speedo() { const h = []; return (x, y, t) => { h.push([t, x, y]); while (h.length > 2 && t - h[1][0] >= 80) h.shift(); const a = h[0], dt = (t - a[0]) / 1000; return dt < .016 ? null : [(x - a[1]) / dt, (y - a[2]) / dt]; }; }
 function startPinch(a, b) { if (pin?.coast) endPinch(); const mx = (a.x + b.x) / 2, my = (a.y + b.y) / 2, an = under(mx, my);
@@ -115,15 +118,15 @@ function trackTo(dx) { const p = pin, D = Math.max(DMIN, Math.min(DMAX, p.an.d))
 function sidestep(m) { const sg = Math.sign(m) || 1, r = march(EYE.x, -EYE.z, Math.cos(heading) * sg, Math.sin(heading) * sg, Math.abs(m)); EYE.x = r.x; EYE.z = -r.n; lastMoved = performance.now(); go = null; }
 // when the fingers lift while still moving, the move carries on and settles: its speed halves every 0.12 s. It is the same move, so it stops where the move would
 // (0.9 m short of a thing, at a wall, at a doorway) and can add at most x1.4 to a pinch or 100 px to a track
-function liftPinch() { const p = pin; if (!p || !CURVE || !p.kind || p.crossed || p.safari || performance.now() - p.pt > 80 || Math.abs(p.rate) < (p.kind === 'pinch' ? .3 : 60)) return endPinch(); p.coast = { left: p.kind === 'pinch' ? .35 : 100 }; }
-function coastPinch(dt) { const p = pin, c = p.coast; let d = p.rate * dt; if (Math.abs(d) > c.left) d = Math.sign(d) * c.left; c.left -= Math.abs(d); p.acc += d; p.rate *= Math.pow(.5, dt / .12);
+function liftPinch() { const p = pin; if (!p || !CURVE || !p.kind || p.crossed || p.safari || performance.now() - p.pt > 80 || Math.abs(p.rate) < (p.kind === 'pinch' ? .3 : 60)) return endPinch(); p.coast = { left: p.kind === 'pinch' ? C.capPinch : C.capTrack }; }
+function coastPinch(dt) { const p = pin, c = p.coast; let d = p.rate * dt; if (Math.abs(d) > c.left) d = Math.sign(d) * c.left; c.left -= Math.abs(d); p.acc += d; p.rate *= Math.pow(.5, dt / C.half);
   if (p.kind === 'pinch') pinchTo(Math.exp(p.acc)); else trackTo(p.acc); if (c.left <= 0 || Math.abs(p.rate) < (p.kind === 'pinch' ? .05 : 10) || p.crossed) { if (!p.crossed) { EYE.x = p.to.x; EYE.z = -p.to.n; } pin = null; lean = 0; } }
 function endPinch() { if (pin?.to && !pin.crossed) { EYE.x = pin.to.x; EYE.z = -pin.to.n; } pin = null; lean = 0; }
 function startSwipe(x, y) { sw = { x, y, x0: x, y0: y, t0: performance.now(), moved: false, v: [0, 0], g: 1, sm: speedo(), lt: performance.now() }; mode = 'swipe'; glide = [0, 0]; go = null; }
 function swipeTo(x, y) { if (!sw) return; if (!sw.moved) { if (Math.hypot(x - sw.x0, y - sw.y0) < 10) return; sw.moved = true; sw.x = x; sw.y = y; }
   const now = performance.now(), v = sw.sm(x, y, now); if (v) { sw.v = v; sw.g = gain(Math.hypot(v[0], v[1])); } turnBy((x - sw.x) * sw.g, (y - sw.y) * sw.g); sw.x = x; sw.y = y; sw.lt = now;
   if (!did.swipe && Math.abs(x - sw.x0) > 40) { did.swipe = 1; document.getElementById('h1').classList.add('done'); } }
-function endSwipe(tapOK) { if (!sw) return; const now = performance.now(); if (!sw.moved && now - sw.t0 < 500 && tapOK) tap(sw.x0, sw.y0); else if (sw.moved && now - sw.lt < 60 && !REDUCED) { glide = sw.v.map(v => v * sw.g); const m = Math.hypot(...glide), cap = 60 * RAD / .173 / (90 * RAD / innerWidth); if (m > cap) glide = glide.map(v => v * cap / m); } sw = null; }   // the carry-on never adds more than 60 degrees
+function endSwipe(tapOK) { if (!sw) return; const now = performance.now(); if (!sw.moved && now - sw.t0 < 500 && tapOK) tap(sw.x0, sw.y0); else if (sw.moved && now - sw.lt < 60 && !REDUCED) { glide = sw.v.map(v => v * sw.g); const m = Math.hypot(...glide), cap = C.capTurn * RAD / (C.half / Math.LN2) / (90 * RAD / innerWidth); if (m > cap) glide = glide.map(v => v * cap / m); } sw = null; }   // the carry-on never adds more than capTurn degrees
 // ---- fingers, straight from touch events. Every touch event carries the whole list of fingers that are down (e.touches), so the gesture is worked out
 // from that list each time and never from counting downs and ups. If a browser swallows the second finger's "start" (iOS does, when it suspects a double tap),
 // the very next "move" still shows two fingers and the pinch begins there. Pointer events are used for the mouse and pen only.
@@ -188,7 +191,7 @@ function step(now) { const dt = Math.min(.05, (now - last) / 1000); last = now;
   if (pin?.coast) coastPinch(dt);
   if (pin?.to && !pin.crossed) { const a = REDUCED || wh && now - wh.t < 300 ? 1 : 1 - Math.exp(-dt / .06); EYE.x += (pin.to.x - EYE.x) * a; EYE.z += (-pin.to.n - EYE.z) * a; lean += ((pin.lean || 0) - lean) * a; lastMoved = now; } else lean += (0 - lean) * (1 - Math.exp(-dt / .05));
   if (wh && now - wh.t > 250 && mode !== 'pinch') { pin = null; wh = null; }
-  if (glide[0] || glide[1]) { turnBy(glide[0] * dt, glide[1] * dt); const k = Math.pow(.5, dt / .12); glide[0] *= k; glide[1] *= k; if (Math.hypot(...glide) < 20) glide = [0, 0]; }
+  if (glide[0] || glide[1]) { turnBy(glide[0] * dt, glide[1] * dt); const k = Math.pow(.5, dt / C.half); glide[0] *= k; glide[1] *= k; if (Math.hypot(...glide) < 20) glide = [0, 0]; }
   if (go) { const u = Math.min(1, (now - go.t0) / go.dur), e = u * u * (3 - 2 * u); EYE.x = go.x0 + (go.x1 - go.x0) * e; EYE.z = -(go.n0 + (go.n1 - go.n0) * e); lastMoved = now; if (u >= 1) go = null; }
   const fwd = (keys['w'] || keys['arrowup'] ? 1 : 0) - (keys['s'] || keys['arrowdown'] ? 1 : 0), trn = (keys['arrowleft'] ? 1 : 0) - (keys['arrowright'] ? 1 : 0), side = (keys['d'] ? 1 : 0) - (keys['a'] ? 1 : 0); heading += trn * 90 * RAD * dt; if (side) sidestep(side * 3 * dt);
   if (fwd) { const m = march(EYE.x, -EYE.z, -Math.sin(heading), Math.cos(heading), 4 * dt * fwd); EYE.x = m.x; EYE.z = -m.n; lastMoved = now; go = null; const d = atDoorStop(); if (m.atDoor || (d && fwd > 0 && facing(d) && Math.hypot(m.x - EYE.x, m.n + EYE.z) < .01)) { pushT += dt; if (pushT > .5) { cross(d || m.atDoor); pushT = 0; } } else pushT = 0; } else pushT = 0;
