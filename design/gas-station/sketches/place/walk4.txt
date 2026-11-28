@@ -56,3 +56,4 @@ Sheet 2: ruled lines
    same stand twice:          change 0.000  flipped 0.0%  (3600 points)
    one frame forward (7 cm):  change 0.008  flipped 0.0%  (3600 points)
    one frame sideways (7 cm): change 0.001  flipped 0.0%  (3600 points)
+   half a metre forward:      change 0.041  flipped 0.0%  (3600 points)
