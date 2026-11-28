@@ -59,6 +59,13 @@ h2.sec{font-size:11.5px;font-weight:500;letter-spacing:.09em;text-transform:uppe
 .chips .on{border-color:var(--ink);font-weight:600}
 /* docs */
 .doc-html{max-width:68ch;font-size:15px;line-height:1.55;overflow-wrap:anywhere}
+.doc-html figure{margin:14px 0}.doc-html figure img{width:100%;height:auto;display:block;background:var(--paper)}
+.doc-html figcaption{font-size:12px;font-weight:500;color:var(--ink2);margin-top:6px;line-height:1.6}
+.doc-html figcaption .cst{margin-left:2px}
+/* a sheet written as a page: text at reading width, drawings at their own; side-by-side drawings stack on a phone */
+.sheetdoc{max-width:none}.sheetdoc>*:not(figure):not(.pair){max-width:68ch}
+.pair{display:grid;grid-template-columns:minmax(0,1fr);gap:0 18px;align-items:start}
+@media(min-width:600px){.pair{grid-template-columns:repeat(var(--n),minmax(0,1fr));max-width:1100px}}
 .doc-html h1{font-size:22px;line-height:1.25;font-weight:600}
 .doc-html h2{font-size:17px;font-weight:600;margin:26px 0 8px}
 .doc-html h3{font-size:15px;font-weight:600}
@@ -214,7 +221,7 @@ function sheetStatus(sh){
   return {v, a};
 }
 function sheetCard(sh, cls){
-  const m = ST[sh.images[0]]; if (!m) return ""; const s = sheetStatus(sh);
+  const m = sh.card; if (!m) return ""; const s = sheetStatus(sh);
   return `<a class="${cls||"case"}" href="#sheet-${sh.code}">
     <div class="cimg"><img src="${m.thumb}" width="${m.tw}" height="${m.th}" alt="Sheet ${esc(sh.code)}: ${esc(sh.title)}" loading="lazy"></div>
     <div><div class="cmeta"><b>Sheet ${esc(sh.code)}</b>${s.a?`<span class="cst">${s.a}</span>`:""}</div>
@@ -256,11 +263,12 @@ function vSheet(code){
   return header("sheets") + backBar("#sheets", "Sheets", sh.line || "One sheet: the picture, what it asks you, the view you can walk, and the notes behind it.") + `<main class="wrap">
     <div class="wide">${label({code:"Sheet " + sh.code, title:sh.title, fields:["sheet", sh.changed, s.v].filter(Boolean).join(" · "), extra:walkBtns(sh)})}
     ${!sh.questions && sh.answered ? `<p class="hint">Your response: <a class="u" href="#owner-${sh.answered}">your record, section ${esc(sh.answered)}</a>.</p>` : ""}${q}</div>
+    ${sh.page ? `<article class="doc-html sheetdoc" style="margin-top:24px">${sh.page}</article>` : ""}
     <div style="margin-top:24px">${sh.images.map((n,i)=>sheetFig(n, sh.captions ? sh.captions[n] : (i===0 ? "The sheet" : n))).join("")}</div>
     <div class="wide">
     ${sh.frames.length ? `<h2 class="sec">Frames from the walk that this sheet's notes name (${sh.frames.length})</h2>${gallery(sh.frames)}` : ""}
-    <h2 class="sec">Behind it</h2>
-    ${d && sh.doc !== "concepts-05-left-on" ? `<details class="gdocd"><summary>The designer's notes on this sheet</summary><div class="doc-html" style="margin-top:8px">${d.html}</div></details>` : docRow(sh.doc)}
+    ${sh.page && !sh.notes && !j ? "" : '<h2 class="sec">Behind it</h2>'}
+    ${sh.page ? (sh.notes ? docRow(sh.notes, "How the sheet was made, and what is not good yet.") : "") : d && sh.doc !== "concepts-05-left-on" ? `<details class="gdocd"><summary>The designer's notes on this sheet</summary><div class="doc-html" style="margin-top:8px">${d.html}</div></details>` : docRow(sh.doc)}
     ${j ? docRow(sh.judge, "The design director's check before it went to you.") : ""}
     </div>
   </main>${about()}`;

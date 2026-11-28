@@ -13,7 +13,7 @@ The one hand-kept input is site/now.md (where things stand, what is waiting on t
 Nothing under design/gas-station/inspo/ is ever copied: those images are other people's work.
 Needs: Python 3, markdown, Pillow.
 """
-import os, re, json, html, shutil, subprocess, fnmatch
+import os, re, sys, json, html, shutil, subprocess, fnmatch, argparse
 from PIL import Image
 import markdown
 
@@ -21,7 +21,13 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.abspath(os.path.join(HERE, ".."))
 GS_REL = "design/gas-station"
 GS = os.path.join(ROOT, GS_REL)
-DIST = os.path.join(HERE, "dist")
+# --fixture DIR: also read DIR as if it were design/gas-station/concepts/ (for trying a sheet without touching the records)
+# --out DIR: write there and not to site/dist/
+ap = argparse.ArgumentParser(); ap.add_argument("--fixture"); ap.add_argument("--out")
+ARGS = ap.parse_args()
+FIX = os.path.abspath(ARGS.fixture) if ARGS.fixture else None
+DIST = os.path.abspath(ARGS.out) if ARGS.out else os.path.join(HERE, "dist")
+assert not FIX or ARGS.out, "--fixture needs --out, so a trial sheet never lands in site/dist/"
 MEDIA = os.path.join(DIST, "media")
 
 NAME = "gas station"
@@ -31,8 +37,18 @@ shutil.rmtree(DIST, ignore_errors=True)
 for d in ("stills", "t", "vendor"):
     os.makedirs(os.path.join(MEDIA, d))
 
-def G(*a): return os.path.join(GS, *a)
+def G(*a):
+    p = os.path.join(GS, *a)
+    if FIX:   # a fixture file stands in for concepts/<same path>
+        rel = os.path.relpath(p, os.path.join(GS, "concepts"))
+        if not rel.startswith("..") and (os.path.isfile(os.path.join(FIX, rel)) or (os.path.isdir(os.path.join(FIX, rel)) and not os.path.exists(p))): return os.path.join(FIX, rel)
+    return p
 def rd(rel): return open(G(rel), encoding="utf-8").read()
+def front(text):
+    """a small front-matter block (--- / key: value lines / ---) at the top of a record -> ({key: value}, the rest)"""
+    m = re.match(r"\A---\n(.*?)\n---\n", text, flags=re.S)
+    if not m: return {}, text
+    return {k.strip().lower(): v.strip() for k, v in (l.split(":", 1) for l in m.group(1).splitlines() if ":" in l)}, text[m.end():]
 def git(*a): return subprocess.run(["git", "-C", ROOT, *a], capture_output=True, text=True).stdout
 
 # ------------------------------------------------------------------ stills (copies only; never inspo/)
@@ -101,12 +117,47 @@ def loosen_lists(text):
         out.append(line); prev = line
     return "\n".join(out)
 
+SHEET_IMGS = {}
+def sheet_image(href, src):
+    """a drawing a sheet places: a PNG under concepts/stills/, copied as it is. None for anything else (never inspo/)."""
+    if not href or href.startswith("http") or not src: return None
+    rel = os.path.normpath(os.path.join(os.path.dirname(src), html.unescape(href)))
+    if not rel.startswith("concepts/stills/") or not rel.lower().endswith(".png") or not os.path.isfile(G(rel)): return None
+    if rel not in SHEET_IMGS:
+        sub = rel[len("concepts/stills/"):]
+        out = os.path.join(MEDIA, "stills", sub); os.makedirs(os.path.dirname(out), exist_ok=True)
+        shutil.copyfile(G(rel), out)
+        im = Image.open(G(rel)); W, H = im.size
+        tn = re.sub(r"[^A-Za-z0-9]+", "-", sub[:-4]) + ".jpg"
+        rgb = im.convert("RGB")
+        if H > 2.2 * W: rgb = rgb.crop((0, 0, W, int(W * 2 / 3)))
+        rgb.thumbnail((640, 640), Image.LANCZOS); rgb.save(os.path.join(MEDIA, "t", tn), "JPEG", quality=74, optimize=True)
+        SHEET_IMGS[rel] = {"src": "media/stills/" + sub, "thumb": "media/t/" + tn, "w": W, "h": H, "tw": rgb.size[0], "th": rgb.size[1]}
+    return SHEET_IMGS[rel]
+
+def figures(h, src):
+    """a paragraph that is only images becomes figures: one image alone, or several side by side (they stack on a phone).
+    The caption is the image's alt text; its optional title ("Route 66, PROPOSED") becomes tags."""
+    def para(m):
+        figs = []
+        for tag in re.findall(r"<img [^>]*>", m.group(0)):
+            a = dict(re.findall(r'(\w+)="([^"]*)"', tag))
+            f = sheet_image(a.get("src", ""), src)
+            if not f: return m.group(0)
+            tags = " ".join(f'<span class="cst">{t.strip()}</span>' for t in a.get("title", "").split(",") if t.strip())
+            cap = a.get("alt", "")
+            figs.append(f'<figure style="max-width:{round(f["w"] / 2)}px"><img data-done src="{f["src"]}" width="{f["w"]}" height="{f["h"]}" alt="{cap}" loading="lazy">'
+                        + (f'<figcaption>{cap}{" " if cap and tags else ""}{tags}</figcaption>' if cap or tags else "") + "</figure>")
+        return figs[0] if len(figs) == 1 else f'<div class="pair" style="--n:{len(figs)}">{"".join(figs)}</div>'
+    return re.sub(r"<p>(?:\s*<img [^>]*>\s*(?:<br\s*/?>)?\s*)+</p>", para, h)
+
 def md(text, src=None):
-    text = re.sub(r"<!--.*?-->", "", text, flags=re.S)
+    text = re.sub(r"<!--.*?-->", "", front(text)[1], flags=re.S)
     h = markdown.markdown(loosen_lists(text), extensions=["tables", "fenced_code", "sane_lists"])
+    h = figures(h, src)
     # no record embeds an image today; if one ever does, show its words only (inspiration images are never published)
-    h = re.sub(r"<img [^>]*?alt=\"([^\"]*)\"[^>]*>", lambda m: f'<span class="ref">[image: {m.group(1)}]</span>', h)
-    h = re.sub(r"<img [^>]*>", '<span class="ref">[image]</span>', h)
+    h = re.sub(r"<img (?![^>]*data-done)[^>]*?alt=\"([^\"]*)\"[^>]*>", lambda m: f'<span class="ref">[image: {m.group(1)}]</span>', h)
+    h = re.sub(r"<img (?![^>]*data-done)[^>]*>", '<span class="ref">[image]</span>', h).replace(" data-done", "")
     def link(m):
         href, inner = m.group(1), m.group(2)
         if href.startswith("http"): return f'<a class="u" href="{href}" rel="noopener" target="_blank">{inner}</a>'
@@ -166,6 +217,7 @@ def classify(rel):
     if rel in ("concepts/00-shared.md", "concepts/coverage-05.md"): return "concept", "concept", None
     if re.match(r"sheet-\d+-judge\.md", b): return "scores", "director's check of a sheet", None
     if re.match(r"sheet-\d+\.md", b): return "sheets", "designer's notes on a sheet", None
+    if re.match(r"sheet-\d+-notes\.md", b): return "sheets", "designer's notes on a sheet", None
     if re.match(r"score-\d+\.md", b): return "scores", "director's score", None
     if re.match(r"steer-\d+\.md", b): return "scores", "director's steer", None
     if b.endswith("-judge.md"): return "scores", "director's check", None
@@ -175,17 +227,19 @@ def classify(rel):
     return "archive", "record", None
 
 docs, order = {}, []
+found = []
 for dp, dn, fs in os.walk(GS):
     dn[:] = sorted(d for d in dn if d not in ("sketches", "stills", "out"))
-    for f in sorted(fs):
-        if not f.endswith(".md") or f == "COPYRIGHT-NOTICE.md": continue
-        rel = os.path.relpath(os.path.join(dp, f), GS)
+    found += [os.path.relpath(os.path.join(dp, f), GS) for f in sorted(fs) if f.endswith(".md") and f != "COPYRIGHT-NOTICE.md"]
+if FIX: found += [f"concepts/{f}" for f in sorted(os.listdir(FIX)) if f.endswith(".md") and f"concepts/{f}" not in found]
+for rel in found:
+    if True:
         sec, kind, route = classify(rel)
         docs[slug(rel)] = {"slug": slug(rel), "rel": rel, "path": f"{GS_REL}/{rel}", "sec": sec, "kind": kind, "route": route or "#doc-" + slug(rel)}
         PATHMAP[os.path.normpath(rel)] = docs[slug(rel)]["route"]
         order.append(slug(rel))
 for s in order:
-    d = docs[s]; t = rd(d["rel"])
+    d = docs[s]; t = front(rd(d["rel"]))[1]
     d.update(title=plain(h1(t)) or d["rel"], lead=first_para(t), changed=changed(d["rel"]), html=md(t, src=d["rel"]),
              jump=[plain(h) for h, _ in sections(t) if h][:40], stills=named_stills(t), kb=round(len(t) / 1024))
     for st in d["stills"]: stills[st]["docs"].append(s)
@@ -229,13 +283,16 @@ sheets = []
 for s in order:
     m = re.fullmatch(r"concepts/sheet-(\d+)\.md", docs[s]["rel"])
     if not m: continue
-    n = int(m.group(1)); t = rd(docs[s]["rel"])
+    n = int(m.group(1)); meta, t = front(rd(docs[s]["rel"]))
     imgs = [k for k in stills if re.match(rf"sheet-{n}-", k)]
+    # the page format (owner.md 20): the sheet is this file, with its drawings as separate PNGs in stills/sheet-N/.
+    # It wins over a tall sheet-N-*.png if both exist.
+    page = os.path.isdir(G(f"concepts/stills/sheet-{n}")) and bool(re.search(rf"!\[[^\]]*\]\(\s*stills/sheet-{n}/", t))
     js = slug(f"concepts/sheet-{n}-judge.md")
     jt = rd(docs[js]["rel"]) if js in docs else ""
     qmd, qfrom = "", ""
-    for pat, lab in ((r"Final wording of the questions", "the director's final wording"), (r"What to ask him, in plain words", "the director's wording"), (r"Questions\s*$", "the designer's wording")):
-        qmd = under(jt, pat) if lab != "the designer's wording" else under(t, pat)
+    for pat, lab in ((r"Questions\s*$", "the sheet's own"),) if page else ((r"Final wording of the questions", "the director's final wording"), (r"What to ask him, in plain words", "the director's wording"), (r"Questions\s*$", "the designer's wording")):
+        qmd = under(jt, pat) if lab.startswith("the director") else under(t, pat)
         if qmd:   # the questions themselves: the numbered list only, not the director's notes to the team after it
             keep, seen = [], False
             for ln in qmd.splitlines():
@@ -245,9 +302,21 @@ for s in order:
             qmd = "\n".join(keep).strip() if seen else qmd
             qfrom = lab; break
     ans = next((x for x in owner["sections"] if re.search(rf"\bSheet {n}\b", x["title"])), None)
-    views = SHEET_VIEWS.get(n) or [k for k, _, _ in VIEWS if re.search(rf"#{k}\b", t)]
-    names = [x for x in dict.fromkeys(named_stills(t) + named_stills(jt)) if not re.match(r"(sheet-|pairs-)", x)]
+    views = [v.strip().lstrip("#") for v in meta["walk"].split(",")] if "walk" in meta else SHEET_VIEWS.get(n) or [k for k, _, _ in VIEWS if re.search(rf"#{k}\b", t)]
+    ns = slug(f"concepts/sheet-{n}-notes.md")
+    nt_ = rd(docs[ns]["rel"]) if ns in docs else ""
+    names = [x for x in dict.fromkeys(named_stills(t) + named_stills(jt) + named_stills(nt_)) if not re.match(r"(sheet-|pairs-)", x)]
+    body, card = "", (stills[imgs[0]] if imgs else None)
+    if page:
+        rel = docs[s]["rel"]
+        parts = [(h, b) for h, b in sections(t) if not (h and re.fullmatch(r"Questions", h.strip(), flags=re.I))]
+        body = md("\n\n".join((f"## {h}\n" if h else "") + (b if h else re.sub(r"^# .*$", "", b, count=1, flags=re.M)) for h, b in parts), src=rel)
+        first = re.search(rf"!\[[^\]]*\]\(\s*(stills/sheet-{n}/[^)\s]+)", t)
+        card = sheet_image(first.group(1), rel) or card
+        docs[s]["route"] = PATHMAP[os.path.normpath(rel)] = f"#sheet-{n}"; docs[s]["kind"] = "sheet"
+        imgs = []
     sheets.append({"n": n, "code": str(n), "title": re.sub(r"^Sheet \d+\s*[—–-]\s*", "", docs[s]["title"]), "images": imgs, "doc": s, "judge": js if js in docs else None,
+                   "page": body, "card": card, "notes": ns if ns in docs else None,
                    "verdicts": [plain(x) for x in re.findall(r"^#{1,2} +((?:Verdict|After the fixes):?.*)$", jt, flags=re.M)],
                    "questions": md(qmd, src=docs[s]["rel"]) if qmd else "", "qfrom": qfrom, "answered": ans["n"] if ans else None,
                    "views": [v for v in views if any(w["hash"] == v for w in walk["views"])], "frames": names, "changed": docs[s]["changed"]})
@@ -257,7 +326,7 @@ if "sheet-05-left-on" in stills:
     earlier.append({"code": "05", "title": "Left on, the concept sheet", "images": [k for k in ("sheet-05-left-on", "pairs-05") if k in stills],
                     "captions": {"sheet-05-left-on": "The concept sheet for Left on", "pairs-05": "Before and after pairs: the five fixes made before the link went out"},
                     "line": "The sheet and the before and after pairs shown with the concept when the director scored it 9. Sent back on the look; the sheets above came after.",
-                    "doc": "concepts-05-left-on", "judge": None, "verdicts": [], "questions": "", "qfrom": "", "answered": "9" if any(x["n"] == "9" for x in owner["sections"]) else None,
+                    "doc": "concepts-05-left-on", "judge": None, "page": "", "notes": None, "card": stills["sheet-05-left-on"], "verdicts": [], "questions": "", "qfrom": "", "answered": "9" if any(x["n"] == "9" for x in owner["sections"]) else None,
                     "views": [], "frames": [], "changed": docs["concepts-05-left-on"]["changed"]})
 SHEET_STEMS = {i for sh in sheets + earlier for i in sh["images"]}
 
